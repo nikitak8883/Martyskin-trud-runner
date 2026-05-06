@@ -92,6 +92,18 @@ function rectsIntersect(a, b) {
          a.y + a.h > b.y;
 }
 
+function unionRect(a, b) {
+  const x1 = Math.min(a.x, b.x);
+  const y1 = Math.min(a.y, b.y);
+  const x2 = Math.max(a.x + a.w, b.x + b.w);
+  const y2 = Math.max(a.y + a.h, b.y + b.h);
+  return { x: x1, y: y1, w: x2 - x1, h: y2 - y1 };
+}
+
+function sweptRectsIntersect(a0, a1, b0, b1) {
+  return rectsIntersect(unionRect(a0, a1), unionRect(b0, b1));
+}
+
 const SKINS = [
   { name: "Бригадир", fur: "#764623", face: "#cd965c", helmet: "#2db446", accent: "#5f371c" },
   { name: "Мудрец", fur: "#d2be9b", face: "#f5dcb9", helmet: "#4682dc", accent: "#8a6f50" },
@@ -196,16 +208,17 @@ const STORY = [
 ];
 
 const OBSTACLE_TYPES = [
-  { id: 0, label: "КИРПИЧ\nС ДУШОЙ", w: 58, h: 62 },
-  { id: 1, label: "ОТЧЁТ", w: 54, h: 86 },
-  { id: 2, label: "ОКНО\nВ БОК", w: 76, h: 74 },
-  { id: 3, label: "Я НА\nМИНУТКУ", w: 122, h: 54 },
-  { id: 4, label: "КО-КО", w: 58, h: 56 },
-  { id: 5, label: "НЕ\nБОЯТЬСЯ", w: 90, h: 100 },
-  { id: 6, label: "ДОРОГА\nЗАКРЫТА", w: 62, h: 68 },
-  { id: 7, label: "220V\nИ ВЕРА", w: 92, h: 42 },
-  { id: 8, label: "КРАСКА\nС ДУШОЙ", w: 66, h: 64 },
-  { id: 9, label: "БАЛКА\nСЮРПРИЗ", w: 100, h: 56 }
+  { id: 0, label: "КИРПИЧ\nС ДУШОЙ", w: 96, h: 72 },
+  { id: 1, label: "ОТЧЁТ", w: 68, h: 94 },
+  { id: 2, label: "ОКНО\nВ БОК", w: 92, h: 82 },
+  { id: 3, label: "Я НА\nМИНУТКУ", w: 150, h: 64 },
+  { id: 4, label: "КО-КО", w: 72, h: 66 },
+  { id: 5, label: "НЕ\nБОЯТЬСЯ", w: 106, h: 108 },
+  { id: 6, label: "ДОРОГА\nЗАКРЫТА", w: 78, h: 76 },
+  { id: 7, label: "220V\nИ ВЕРА", w: 118, h: 52 },
+  { id: 8, label: "КРАСКА\nС ДУШОЙ", w: 86, h: 72 },
+  { id: 9, label: "БАЛКА\nСЮРПРИЗ", w: 152, h: 68 },
+  { id: 10, label: "ТУТ\nНОРМ", w: 104, h: 98 }
 ];
 
 const BONUS_TYPES = [
@@ -339,25 +352,28 @@ class AudioEngine {
    Advanced Render Engine
 =========================== */
 
-class RenderEngine {
+class MartyshkinRenderEngine {
   constructor(canvas) {
     this.canvas = canvas;
-    this.ctx = canvas.getContext("2d");
+    this.ctx = canvas.getContext("2d", { alpha: false, desynchronized: true });
 
     this.scene = document.createElement("canvas");
     this.glow = document.createElement("canvas");
     this.ui = document.createElement("canvas");
+    this.grade = document.createElement("canvas");
 
-    this.scene.width = this.glow.width = this.ui.width = LOGICAL_W;
-    this.scene.height = this.glow.height = this.ui.height = LOGICAL_H;
+    this.scene.width = this.glow.width = this.ui.width = this.grade.width = LOGICAL_W;
+    this.scene.height = this.glow.height = this.ui.height = this.grade.height = LOGICAL_H;
 
     this.sceneCtx = this.scene.getContext("2d");
     this.glowCtx = this.glow.getContext("2d");
     this.uiCtx = this.ui.getContext("2d");
+    this.gradeCtx = this.grade.getContext("2d");
 
     this.scale = 1;
     this.offsetX = 0;
     this.offsetY = 0;
+    this.frame = 0;
 
     this.resize();
   }
@@ -367,6 +383,8 @@ class RenderEngine {
     this.canvas.width = Math.floor(window.innerWidth * dpr);
     this.canvas.height = Math.floor(window.innerHeight * dpr);
     this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    this.ctx.imageSmoothingEnabled = true;
+    this.ctx.imageSmoothingQuality = "high";
 
     this.scale = Math.min(window.innerWidth / LOGICAL_W, window.innerHeight / LOGICAL_H);
     this.offsetX = (window.innerWidth - LOGICAL_W * this.scale) / 2;
@@ -377,10 +395,12 @@ class RenderEngine {
     this.sceneCtx.setTransform(1, 0, 0, 1, 0, 0);
     this.glowCtx.setTransform(1, 0, 0, 1, 0, 0);
     this.uiCtx.setTransform(1, 0, 0, 1, 0, 0);
+    this.gradeCtx.setTransform(1, 0, 0, 1, 0, 0);
 
     this.sceneCtx.clearRect(0, 0, LOGICAL_W, LOGICAL_H);
     this.glowCtx.clearRect(0, 0, LOGICAL_W, LOGICAL_H);
     this.uiCtx.clearRect(0, 0, LOGICAL_W, LOGICAL_H);
+    this.gradeCtx.clearRect(0, 0, LOGICAL_W, LOGICAL_H);
 
     return {
       scene: this.sceneCtx,
@@ -403,8 +423,30 @@ class RenderEngine {
     c.restore();
   }
 
-  end() {
+  buildGrade(ts) {
+    const c = this.gradeCtx;
+    const warm = c.createLinearGradient(0, 0, LOGICAL_W, LOGICAL_H);
+    warm.addColorStop(0, "rgba(255,229,144,0.08)");
+    warm.addColorStop(0.42, "rgba(80,220,150,0.045)");
+    warm.addColorStop(1, "rgba(75,120,255,0.06)");
+    c.fillStyle = warm;
+    c.fillRect(0, 0, LOGICAL_W, LOGICAL_H);
+
+    const floorGlow = c.createLinearGradient(0, GROUND_Y - 140, 0, LOGICAL_H);
+    floorGlow.addColorStop(0, "rgba(255,255,255,0)");
+    floorGlow.addColorStop(1, "rgba(255,210,110,0.12)");
+    c.fillStyle = floorGlow;
+    c.fillRect(0, GROUND_Y - 140, LOGICAL_W, LOGICAL_H - GROUND_Y + 140);
+
+    c.fillStyle = "rgba(255,255,255,0.018)";
+    const drift = Math.floor((ts || 0) * 0.02) % 9;
+    for (let y = drift; y < LOGICAL_H; y += 9) c.fillRect(0, y, LOGICAL_W, 1);
+  }
+
+  end(ts = 0) {
     const c = this.ctx;
+    this.frame++;
+    this.buildGrade(ts);
 
     c.save();
     c.fillStyle = "#020302";
@@ -413,21 +455,47 @@ class RenderEngine {
     c.translate(this.offsetX, this.offsetY);
     c.scale(this.scale, this.scale);
 
-    // Glow pass
+    // Wide soft light pass
     c.save();
-    c.globalAlpha = 0.55;
-    c.filter = "blur(10px)";
+    c.globalCompositeOperation = "screen";
+    c.globalAlpha = 0.72;
+    c.filter = "blur(18px) saturate(1.35)";
     c.drawImage(this.glow, 0, 0);
     c.restore();
 
-    // Main pass
-    c.drawImage(this.scene, 0, 0);
-
-    // Soft bloom from scene itself
+    // Bloom from the scene itself
     c.save();
-    c.globalAlpha = 0.18;
-    c.filter = "blur(5px)";
-    c.drawImage(this.scene, -4, -4, LOGICAL_W + 8, LOGICAL_H + 8);
+    c.globalCompositeOperation = "screen";
+    c.globalAlpha = 0.20;
+    c.filter = "blur(8px) contrast(1.12)";
+    c.drawImage(this.scene, -6, -5, LOGICAL_W + 12, LOGICAL_H + 10);
+    c.restore();
+
+    // Subtle chromatic paint fringe
+    c.save();
+    c.globalCompositeOperation = "screen";
+    c.globalAlpha = 0.05;
+    c.filter = "blur(1.1px)";
+    c.drawImage(this.scene, 2, 0);
+    c.globalAlpha = 0.04;
+    c.drawImage(this.scene, -2, 0);
+    c.restore();
+
+    c.filter = "saturate(1.18) contrast(1.06)";
+    c.drawImage(this.scene, 0, 0);
+    c.filter = "none";
+
+    c.save();
+    c.globalCompositeOperation = "soft-light";
+    c.drawImage(this.grade, 0, 0);
+    c.restore();
+
+    // Crisp foreground glow accents
+    c.save();
+    c.globalCompositeOperation = "lighter";
+    c.globalAlpha = 0.32;
+    c.filter = "blur(3px)";
+    c.drawImage(this.glow, 0, 0);
     c.restore();
 
     // UI pass
@@ -447,9 +515,15 @@ class RenderEngine {
     c.fillStyle = v;
     c.fillRect(0, 0, LOGICAL_W, LOGICAL_H);
 
-    // Scanlines, subtle
-    c.fillStyle = "rgba(255,255,255,0.022)";
-    for (let y = 0; y < LOGICAL_H; y += 4) c.fillRect(0, y, LOGICAL_W, 1);
+    // Fine grain and scanlines
+    c.fillStyle = "rgba(255,255,255,0.024)";
+    for (let y = (this.frame % 4); y < LOGICAL_H; y += 4) c.fillRect(0, y, LOGICAL_W, 1);
+    c.fillStyle = "rgba(0,0,0,0.035)";
+    for (let i = 0; i < 80; i++) {
+      const x = (i * 73 + this.frame * 17) % LOGICAL_W;
+      const y = (i * 41 + this.frame * 11) % LOGICAL_H;
+      c.fillRect(x, y, 1, 1);
+    }
 
     c.restore();
   }
@@ -468,7 +542,7 @@ class RenderEngine {
 
 class Game {
   constructor() {
-    this.engine = new RenderEngine(document.getElementById("game"));
+    this.engine = new MartyshkinRenderEngine(document.getElementById("game"));
     this.audio = new AudioEngine();
 
     this.state = GameState.MENU;
@@ -506,8 +580,10 @@ class Game {
     this.dashTimer = 0;
     this.dashCooldown = 0;
     this.jumpBoostTimer = 0;
+    this.dashBoostTimer = 0;
     this.armorTimer = 0;
     this.magnetTimer = 0;
+    this.gliding = false;
 
     this.bannerText = "";
     this.bannerTimer = 0;
@@ -528,19 +604,44 @@ class Game {
   bindInput() {
     window.addEventListener("resize", () => this.engine.resize());
 
-    const handlePointer = (e) => {
+    const getPointerPos = (e) => {
+      const p = e.touches ? e.touches[0] : e;
+      return this.engine.toGame(p.clientX, p.clientY);
+    };
+
+    const handlePointerDown = (e) => {
       this.audio.resume();
 
-      const p = e.touches ? e.touches[0] : e;
-      const pos = this.engine.toGame(p.clientX, p.clientY);
+      const pos = getPointerPos(e);
+      const handledButton = this.handleTap(pos.x, pos.y);
 
-      this.handleTap(pos.x, pos.y);
+      if (!handledButton && this.state === GameState.PLAYING) {
+        this.gliding = pos.x < LOGICAL_W * 0.58;
+      }
 
       if (e.cancelable) e.preventDefault();
     };
 
-    this.engine.canvas.addEventListener("mousedown", handlePointer);
-    this.engine.canvas.addEventListener("touchstart", handlePointer, { passive: false });
+    const handlePointerMove = (e) => {
+      if (this.state !== GameState.PLAYING) return;
+      if (!e.touches && e.buttons !== 1) return;
+      const pos = getPointerPos(e);
+      this.gliding = pos.x < LOGICAL_W * 0.58;
+      if (e.cancelable) e.preventDefault();
+    };
+
+    const stopGliding = () => {
+      this.gliding = false;
+    };
+
+    this.engine.canvas.addEventListener("mousedown", handlePointerDown);
+    this.engine.canvas.addEventListener("mousemove", handlePointerMove);
+    this.engine.canvas.addEventListener("touchstart", handlePointerDown, { passive: false });
+    this.engine.canvas.addEventListener("touchmove", handlePointerMove, { passive: false });
+    this.engine.canvas.addEventListener("touchend", stopGliding);
+    this.engine.canvas.addEventListener("touchcancel", stopGliding);
+    this.engine.canvas.addEventListener("mouseleave", stopGliding);
+    window.addEventListener("mouseup", stopGliding);
 
     window.addEventListener("keydown", (e) => {
       if (e.key === "p" || e.key === "Escape") {
@@ -549,9 +650,16 @@ class Game {
       }
 
       if (this.state === GameState.PLAYING) {
-        if (e.key === " " || e.key === "ArrowUp") this.jump();
+        if (e.key === " " || e.key === "ArrowUp") {
+          this.gliding = true;
+          if (!e.repeat) this.jump();
+        }
         if (e.key === "ArrowRight" || e.key.toLowerCase() === "d") this.dash();
       }
+    });
+
+    window.addEventListener("keyup", (e) => {
+      if (e.key === " " || e.key === "ArrowUp") this.gliding = false;
     });
   }
 
@@ -559,7 +667,7 @@ class Game {
     for (const b of this.buttons) {
       if (x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h) {
         b.action();
-        return;
+        return true;
       }
     }
 
@@ -567,6 +675,8 @@ class Game {
       if (x < LOGICAL_W * 0.58) this.jump();
       else this.dash();
     }
+
+    return false;
   }
 
   generateLevel() {
@@ -625,34 +735,49 @@ class Game {
       }
     }
 
-    // Obstacles
-    let pool = [0, 1, 2, 6, 7, 8, 9];
-    if (this.levelIndex > 0) pool.push(3);
-    if (this.levelIndex > 3) pool.push(4, 5);
+    // Obstacles: Android-faithful pattern with fewer impossible platform overlaps.
+    const difficulty = this.difficultyForLevel();
+    const introPattern = [0, 1, 2, 6, 7, 8, 0, 9, 1, 2, 6, 10];
+    let obstacleCounter = 0;
 
-    for (let x = 900; x < level.length - 500; x += 720 + rand() * 360) {
+    for (let x = 880; x < level.length - 500;) {
+      if (this.conflictsWithPlatform(x)) {
+        x += 180;
+        continue;
+      }
+
+      const type = this.levelIndex === 0
+        ? introPattern[obstacleCounter % introPattern.length]
+        : (level.theme + obstacleCounter + Math.floor(rand() * 11)) % 11;
+
       this.obstacles.push({
         x,
         y: GROUND_Y,
-        type: pool[Math.floor(rand() * pool.length)],
+        type,
         dead: false
       });
+      obstacleCounter++;
 
-      if (rand() < 0.25 + level.theme * 0.04) {
+      const doubleChance = this.levelIndex < 3 ? 0.10 : 0.22 + difficulty * 0.10;
+      if (rand() < doubleChance && !this.conflictsWithPlatform(x + 220)) {
         this.obstacles.push({
-          x: x + 170 + rand() * 140,
+          x: x + 190 + rand() * 140,
           y: GROUND_Y,
-          type: pool[Math.floor(rand() * pool.length)],
+          type: (type + 3) % 11,
           dead: false
         });
+        obstacleCounter++;
       }
+
+      x += Math.max(420, 860 - difficulty * 105 + rand() * 330);
     }
 
     // Bonuses
-    for (let x = 1600; x < level.length - 800; x += 1800 + rand() * 900) {
+    for (let x = 1450; x < level.length - 800; x += 2450 + rand() * 900) {
+      const platform = this.nearbyPlatform(x);
       this.bonuses.push({
         x,
-        y: 390 + rand() * 100,
+        y: platform ? platform.y - 42 : GROUND_Y - (120 + rand() * 60),
         type: Math.floor(rand() * 4),
         taken: false
       });
@@ -677,10 +802,44 @@ class Game {
     return this.player.x + (worldX - this.progress);
   }
 
+  worldToScreenXAt(worldX, progress) {
+    return this.player.x + (worldX - progress);
+  }
+
+  difficultyForLevel() {
+    return Math.max(0, Math.floor(this.levelIndex / 2));
+  }
+
+  conflictsWithPlatform(worldX) {
+    return this.platforms.some((p) => (
+      worldX > p.x - 80 &&
+      worldX < p.x + p.w + 80 &&
+      p.y < GROUND_Y - 45
+    ));
+  }
+
+  nearbyPlatform(worldX) {
+    let best = null;
+    let bestDist = Infinity;
+    for (const p of this.platforms) {
+      const center = p.x + p.w * 0.5;
+      const dist = Math.abs(center - worldX);
+      if (dist < bestDist && dist < Math.max(160, p.w)) {
+        best = p;
+        bestDist = dist;
+      }
+    }
+    return best;
+  }
+
   playerRect() {
+    return this.playerRectAt(this.player.y);
+  }
+
+  playerRectAt(bottomY) {
     return {
       x: this.player.x - 24,
-      y: this.player.y - 70,
+      y: bottomY - 70,
       w: 48,
       h: 66
     };
@@ -699,14 +858,13 @@ class Game {
   jump() {
     const p = this.player;
 
-    // Веб-версия: чуть выше и отзывчивее, чем предыдущая.
     if (p.onGround) {
-      p.vy = -(this.jumpBoostTimer > 0 ? 640 : 555);
+      p.vy = -(this.jumpBoostTimer > 0 ? 680 : 590);
       p.onGround = false;
       p.doubleJump = true;
       this.audio.play("jump");
     } else if (p.doubleJump) {
-      p.vy = -(this.jumpBoostTimer > 0 ? 560 : 475);
+      p.vy = -(this.jumpBoostTimer > 0 ? 595 : 510);
       p.doubleJump = false;
       this.audio.play("jump");
     }
@@ -714,8 +872,8 @@ class Game {
 
   dash() {
     if (this.dashCooldown <= 0) {
-      this.dashTimer = 0.34;
-      this.dashCooldown = this.dashBoostTimer > 0 ? 0.55 : 0.95;
+      this.dashTimer = this.dashBoostTimer > 0 ? 0.68 : 0.40;
+      this.dashCooldown = this.dashBoostTimer > 0 ? 0.55 : 1.08;
       this.audio.play("dash");
       this.emit(this.player.x + 20, this.player.y - 30, "#fff06a", 20);
       this.cameraShake = Math.max(this.cameraShake, 0.08);
@@ -723,10 +881,56 @@ class Game {
   }
 
   activateBonus(type) {
-    if (type === 0) this.jumpBoostTimer = 8;
-    else if (type === 1) this.dashBoostTimer = 8;
-    else if (type === 2) this.armorTimer = 8;
-    else if (type === 3) this.magnetTimer = 8;
+    if (type === 0) this.jumpBoostTimer = 14;
+    else if (type === 1) {
+      this.dashBoostTimer = 12;
+      this.dashCooldown = 0;
+    } else if (type === 2) this.armorTimer = 18;
+    else if (type === 3) this.magnetTimer = 14;
+  }
+
+  damagePlayer(reason, sx, y) {
+    if (this.invincibleTimer > 0) return false;
+
+    this.invincibleTimer = 1.05;
+    this.cameraShake = 0.25;
+    this.dashTimer = 0;
+    this.player.vy = -330;
+    this.player.onGround = false;
+    this.progress = Math.max(0, this.progress - 95);
+    this.audio.play("hit");
+
+    if (this.armorTimer > 0) {
+      this.armorTimer = 0;
+      this.emit(sx, y, "#9cff8a", 22);
+      return true;
+    }
+
+    this.hp--;
+    this.emit(sx, y, "#ff6969", 24);
+
+    if (this.hp <= 0) {
+      this.reason = reason;
+      this.saveRecord();
+      this.state = GameState.GAME_OVER;
+    }
+
+    return true;
+  }
+
+  obstacleJoke(type) {
+    switch (type) {
+      case 0: return "Кирпич с душой победил мартышку. Архитектура: 1, здравый смысл: 0.";
+      case 1: return "Бумажная башня рухнула. Бюрократия снова сильнее спорта.";
+      case 2: return "Кривое окно нанесло удар по кадровому резерву.";
+      case 3: return "Парковка абсурда заблокировала эволюцию.";
+      case 4: return "Курица перешла дорогу. Мартышка не прошла аудит.";
+      case 5: return "Павлин оказался не препятствием, а полномочным инспектором.";
+      case 6: return "Конус безопасности небезопасно объяснил правила.";
+      case 9: return "Балка-сюрприз оказалась слишком убедительной.";
+      case 10: return "Знак говорил, что тут норм. Это было неточно.";
+      default: return "Проводка текла, отчёт шёл, мартышка легла.";
+    }
   }
 
   emit(x, y, color, count) {
@@ -779,7 +983,8 @@ class Game {
     this.bannerTimer -= dt;
     this.cameraShake -= dt;
 
-    const speedMul = this.dashTimer > 0 ? (this.dashBoostTimer > 0 ? 2.2 : 1.9) : 1;
+    const previousProgress = this.progress;
+    const speedMul = this.dashTimer > 0 ? (this.dashBoostTimer > 0 ? 2.32 : 2.02) : 1;
     this.progress += level.speed * speedMul * dt;
 
     const stage = Math.min(3, Math.floor(this.progress / level.length * 4));
@@ -792,9 +997,10 @@ class Game {
 
     const p = this.player;
     const prevY = p.y;
+    const prevPlayerRect = this.playerRectAt(prevY);
 
-    // Стабильнее: гравитация не зверская, прыжок читается лучше.
-    const gravity = p.vy > 0 ? 1180 : 1450;
+    let gravity = p.vy > 0 ? 1120 : 1320;
+    if (this.gliding && p.vy > 0 && !p.onGround) gravity *= 0.38;
     p.vy += gravity * dt;
     p.y += p.vy * dt;
     p.onGround = false;
@@ -868,34 +1074,17 @@ class Game {
       if (rectsIntersect(pr, rr)) {
         if (p.vy > 80 && pr.y + pr.h - 8 < rr.y + 18) {
           npc.dead = true;
-          p.vy = -380;
-          this.score += 40;
-          if (Math.random() < 0.5) this.activateBonus(Math.floor(Math.random() * 4));
-          else {
-            this.bananasCollected += 2;
-            this.score += 30;
-          }
+          p.vy = -390;
+          p.onGround = false;
+          const gain = 4 + this.difficultyForLevel();
+          this.bananasCollected += gain;
+          this.score += 120 + gain * 15;
+          if (Math.random() < 0.45) this.activateBonus(Math.floor(Math.random() * 4));
           this.emit(sx, GROUND_Y - 40, "#ffef70", 20);
           this.audio.play("monkey");
         } else if (this.invincibleTimer <= 0) {
-          if (this.armorTimer > 0) {
-            npc.dead = true;
-            this.emit(sx, GROUND_Y - 40, "#9cff8a", 20);
-            continue;
-          }
-
-          this.hp--;
-          this.invincibleTimer = 1;
-          this.cameraShake = 0.25;
-          this.audio.play("hit");
-          this.emit(sx, GROUND_Y - 40, "#ff6969", 24);
-
-          if (this.hp <= 0) {
-            this.reason = "Динамическое препятствие оказалось умнее примата.";
-            this.saveRecord();
-            this.state = GameState.GAME_OVER;
-            return;
-          }
+          this.damagePlayer("NPC-примат доказал, что хаос бывает не только архитектурный.", sx, GROUND_Y - 40);
+          if (this.state === GameState.GAME_OVER) return;
         }
       }
     }
@@ -905,28 +1094,18 @@ class Game {
       for (const o of this.obstacles) {
         if (o.dead) continue;
         const sx = this.worldToScreenX(o.x);
+        const prevSx = this.worldToScreenXAt(o.x, previousProgress);
         const rr = this.obstacleRect(sx, o.y, o.type);
+        const prevRr = this.obstacleRect(prevSx, o.y, o.type);
 
-        if (sx > -150 && sx < LOGICAL_W + 150 && rectsIntersect(pr, rr)) {
-          if (this.armorTimer > 0) {
-            o.dead = true;
-            this.emit(sx, o.y - 40, "#9cff8a", 18);
-            continue;
-          }
-
-          this.hp--;
-          this.invincibleTimer = 1;
-          this.cameraShake = 0.25;
-          this.audio.play("hit");
-          this.emit(sx, o.y - 40, "#ff6969", 22);
-
-          if (this.hp <= 0) {
-            this.reason = "Объект победил мартышку. Отчёт, конечно, всё равно успешный.";
-            this.saveRecord();
-            this.state = GameState.GAME_OVER;
-            return;
-          }
-
+        if (
+          sx > -220 &&
+          sx < LOGICAL_W + 220 &&
+          sweptRectsIntersect(prevPlayerRect, pr, prevRr, rr)
+        ) {
+          o.dead = true;
+          this.damagePlayer(this.obstacleJoke(o.type), sx, o.y - 40);
+          if (this.state === GameState.GAME_OVER) return;
           break;
         }
       }
@@ -1049,7 +1228,7 @@ class Game {
 
     if (this.state !== GameState.PLAYING) this.drawMenu(ui);
 
-    this.engine.end();
+    this.engine.end(ts);
   }
 
   drawBackground(c, ts) {
@@ -1057,74 +1236,176 @@ class Game {
     const theme = level.theme;
 
     const palettes = [
-      ["#10202a", "#244c3a"],
-      ["#1d1828", "#4f375d"],
-      ["#181818", "#514c33"],
-      ["#0d1816", "#275f4b"],
-      ["#112027", "#4d6c55"],
-      ["#15112d", "#2d5c78"],
-      ["#06081d", "#24306c"],
-      ["#160f0c", "#64432e"],
-      ["#211414", "#683337"],
-      ["#06100b", "#19643b"]
+      ["#132634", "#37684c", "#d79b55"],
+      ["#241b35", "#694b75", "#7fc9ff"],
+      ["#242421", "#6b6341", "#d6c778"],
+      ["#10231f", "#2f7158", "#e4e1b2"],
+      ["#142b34", "#6b7c58", "#fff2b0"],
+      ["#211b3d", "#386f84", "#62d99b"],
+      ["#070a24", "#26377c", "#a7c9ff"],
+      ["#21140f", "#775033", "#65d5c8"],
+      ["#2b191a", "#783d44", "#ffd36f"],
+      ["#07180f", "#257248", "#e8c078"]
     ][theme];
 
     const bg = c.createLinearGradient(0, 0, 0, LOGICAL_H);
     bg.addColorStop(0, palettes[0]);
-    bg.addColorStop(1, palettes[1]);
+    bg.addColorStop(0.62, palettes[1]);
+    bg.addColorStop(1, "#101814");
     c.fillStyle = bg;
     c.fillRect(0, 0, LOGICAL_W, LOGICAL_H);
 
-    // Sun / mood light
-    if (theme !== 6) {
-      this.engine.glowCircle(1050, 95, 130, "#ffea99", 0.18);
-      c.fillStyle = "rgba(255,245,170,0.12)";
-      c.beginPath();
-      c.arc(1050, 95, 56, 0, Math.PI * 2);
-      c.fill();
-
-      c.strokeStyle = "rgba(255,245,160,0.08)";
-      c.lineWidth = 2;
-      for (let i = -3; i <= 3; i++) {
-        c.beginPath();
-        c.moveTo(1050 + i * 24, 110);
-        c.lineTo(1050 + i * 42, 420);
-        c.stroke();
-      }
-    }
-
-    if (theme === 6) {
-      c.fillStyle = "rgba(255,255,255,0.9)";
-      for (let i = 0; i < 85; i++) {
-        const x = (i * 97 - this.progress * 0.06) % LOGICAL_W;
-        const y = 30 + (i * 53 % 380);
-        c.fillRect(x, y, 2, 2);
-      }
-    }
-
-    this.drawClouds(c);
-    this.drawDistantCity(c);
+    this.drawAtmosphere(c, theme, palettes[2], ts);
+    this.drawFarParallax(c, theme);
     this.drawThemeBackdrop(c, theme);
     this.drawBackdropPanels(c, theme);
     this.drawJokeBillboards(c, theme);
+    this.drawThemeBanner(c, level);
 
     // Ground
-    c.fillStyle = "#161d15";
+    const ground = c.createLinearGradient(0, GROUND_Y, 0, LOGICAL_H);
+    ground.addColorStop(0, "#243022");
+    ground.addColorStop(1, "#0d120d");
+    c.fillStyle = ground;
     c.fillRect(0, GROUND_Y, LOGICAL_W, LOGICAL_H - GROUND_Y);
 
-    c.strokeStyle = "#63ff70";
-    c.lineWidth = 4;
+    c.strokeStyle = "rgba(118,255,128,0.92)";
+    c.lineWidth = 5;
     c.beginPath();
     c.moveTo(0, GROUND_Y);
     c.lineTo(LOGICAL_W, GROUND_Y);
     c.stroke();
 
     // Ground texture
-    c.fillStyle = "rgba(255,220,120,0.04)";
-    for (let i = 0; i < 14; i++) {
-      const x = (i * 112 + this.progress * 0.15) % LOGICAL_W;
-      c.fillRect(x, GROUND_Y, 2, LOGICAL_H - GROUND_Y);
+    c.fillStyle = "rgba(255,220,120,0.055)";
+    for (let i = 0; i < 22; i++) {
+      const x = (i * 86 - this.progress * 0.18) % (LOGICAL_W + 120);
+      c.fillRect(x, GROUND_Y + 9 + (i % 4) * 18, 42 + (i % 3) * 26, 3);
     }
+    this.drawForegroundProps(c, theme);
+  }
+
+  wrapX(value, span = LOGICAL_W + 260) {
+    let v = value % span;
+    if (v < -160) v += span;
+    return v;
+  }
+
+  drawAtmosphere(c, theme, accent, ts) {
+    if (theme === 6) {
+      c.fillStyle = "rgba(255,255,255,0.92)";
+      for (let i = 0; i < 110; i++) {
+        const x = this.wrapX(i * 113 - this.progress * (0.035 + (i % 4) * 0.008), LOGICAL_W + 80);
+        const y = 24 + (i * 47 % 395);
+        const s = 1 + (i % 3) * 0.55;
+        c.fillRect(x, y, s, s);
+      }
+      this.engine.glowCircle(1035, 115, 170, "#92b9ff", 0.22);
+      c.fillStyle = "rgba(156,190,255,0.25)";
+      c.beginPath();
+      c.arc(1035, 115, 54, 0, Math.PI * 2);
+      c.fill();
+      c.strokeStyle = "rgba(220,235,255,0.22)";
+      c.lineWidth = 4;
+      c.beginPath();
+      c.ellipse(1035, 115, 88, 24, -0.18, 0, Math.PI * 2);
+      c.stroke();
+      return;
+    }
+
+    this.engine.glowCircle(1050, 95, 155, accent, 0.20);
+    c.fillStyle = "rgba(255,245,170,0.16)";
+    c.beginPath();
+    c.arc(1050, 95, 56, 0, Math.PI * 2);
+    c.fill();
+    this.drawSunRays(c, 1050, 110);
+    this.drawClouds(c);
+  }
+
+  drawSunRays(c, x, y) {
+    c.strokeStyle = "rgba(255,245,170,0.08)";
+    c.lineWidth = 2;
+    for (let i = -4; i <= 4; i++) {
+      c.beginPath();
+      c.moveTo(x + i * 22, y);
+      c.lineTo(x + i * 47, GROUND_Y - 105);
+      c.stroke();
+    }
+  }
+
+  drawFarParallax(c, theme) {
+    const cityColor = theme === 6 ? "rgba(34,45,88,0.48)" : "rgba(26,38,42,0.35)";
+    const shift = (this.progress * 0.035) % 380;
+    c.fillStyle = cityColor;
+    for (let i = -1; i < 9; i++) {
+      const x = i * 180 - shift;
+      const h = 70 + (i % 4) * 34;
+      c.fillRect(x, GROUND_Y - h - 60, 118, h);
+      c.fillStyle = theme === 6 ? "rgba(135,170,255,0.18)" : "rgba(145,230,170,0.14)";
+      for (let w = 0; w < 3; w++) c.fillRect(x + 22 + w * 30, GROUND_Y - h - 35, 10, 18);
+      c.fillStyle = cityColor;
+    }
+
+    this.drawHills(c, "rgba(26,66,43,0.50)", "rgba(44,96,55,0.42)", 0.065, GROUND_Y - 42);
+  }
+
+  drawHills(c, c1, c2, speed, baseY) {
+    const shift = (this.progress * speed) % (LOGICAL_W + 220);
+    c.fillStyle = c1;
+    for (let i = -1; i < 5; i++) {
+      const x = i * 360 - shift;
+      c.beginPath();
+      c.ellipse(x + 180, baseY + 40, 250, 76, 0, 0, Math.PI * 2);
+      c.fill();
+    }
+    c.fillStyle = c2;
+    for (let i = -1; i < 5; i++) {
+      const x = i * 330 - shift * 1.25;
+      c.beginPath();
+      c.ellipse(x + 165, baseY + 60, 210, 62, 0, 0, Math.PI * 2);
+      c.fill();
+    }
+  }
+
+  drawThemeBanner(c, level) {
+    const signX = this.wrapX(LOGICAL_W * 0.70 - this.progress * 0.06, LOGICAL_W * 1.24);
+    this.fillRound(c, signX - 165, 126, 330, 60, 10, "rgba(0,0,0,0.42)");
+    this.strokeRound(c, signX - 165, 126, 330, 60, 10, "rgba(145,255,150,0.42)", 1.8);
+    this.text(c, level.name.replace(/^Уровень \d+:\s*/, ""), signX, 164, 16, "#9cff9c");
+  }
+
+  drawForegroundProps(c, theme) {
+    const shift = (this.progress * 0.21) % (LOGICAL_W + 260);
+    for (let i = -1; i < 8; i++) {
+      const x = i * 210 - shift;
+      if (theme === 3) {
+        c.strokeStyle = "rgba(255,255,255,0.38)";
+        c.lineWidth = 4;
+        c.beginPath();
+        c.moveTo(x, GROUND_Y + 42);
+        c.lineTo(x + 120, GROUND_Y + 20);
+        c.stroke();
+      } else if (theme === 4 || theme === 5) {
+        this.drawChickenSilhouette(c, x, GROUND_Y - 18);
+      } else {
+        this.drawForegroundBarrel(c, x, GROUND_Y + 3);
+      }
+    }
+  }
+
+  drawForegroundBarrel(c, x, y) {
+    this.fillRound(c, x - 18, y - 42, 36, 42, 8, "rgba(124,84,45,0.58)");
+    c.fillStyle = "rgba(210,170,86,0.42)";
+    c.fillRect(x - 14, y - 31, 28, 4);
+    c.fillRect(x - 14, y - 12, 28, 4);
+  }
+
+  drawChickenSilhouette(c, x, y) {
+    c.fillStyle = "rgba(255,255,235,0.42)";
+    c.beginPath();
+    c.ellipse(x, y, 19, 12, 0, 0, Math.PI * 2);
+    c.arc(x + 17, y - 10, 7, 0, Math.PI * 2);
+    c.fill();
   }
 
   drawClouds(c) {
@@ -1183,6 +1464,8 @@ class Game {
       for (let i = 0; i < 6; i++) this.drawChickenBg(c, 120 + i * 190 - (this.progress * 0.06 % 180), 525);
     } else if (theme === 5) {
       for (let i = 0; i < 4; i++) this.drawPeacockBg(c, 180 + i * 280, 530, 1);
+    } else if (theme === 6) {
+      for (let i = 0; i < 6; i++) this.drawRocketPad(c, 120 + i * 210 - (this.progress * 0.08 % 210), 525, i);
     } else if (theme === 7) {
       for (let i = 0; i < 7; i++) {
         c.fillStyle = "rgba(130,90,50,0.7)";
@@ -1332,6 +1615,22 @@ class Game {
     c.fill();
   }
 
+  drawRocketPad(c, x, y, i) {
+    c.fillStyle = "rgba(85,110,150,0.56)";
+    c.fillRect(x + 20, y - 115, 24, 115);
+    c.beginPath();
+    c.moveTo(x, y - 115);
+    c.lineTo(x + 65, y - 115);
+    c.lineTo(x + 32, y - 170);
+    c.closePath();
+    c.fillStyle = i % 2 ? "rgba(120,235,170,0.66)" : "rgba(170,205,255,0.66)";
+    c.fill();
+    c.strokeStyle = "rgba(210,235,255,0.42)";
+    c.lineWidth = 3;
+    c.stroke();
+    this.drawSmallLabel(c, x + 32, y - 185, "СТАРТ\nНОРМ");
+  }
+
   drawLargeLabel(c, x, y, label) {
     const lines = label.split("\n");
     const w = 220;
@@ -1437,47 +1736,54 @@ class Game {
     c.save();
 
     c.translate(x, y);
-    c.rotate(-0.18);
+    c.rotate(-0.28);
+    c.scale(1.08, 0.96);
 
-    const path = new Path2D();
-    path.moveTo(-28, 5);
-    path.bezierCurveTo(-20, -24, 18, -25, 34, -8);
-    path.bezierCurveTo(24, 8, 0, 22, -22, 16);
-    path.bezierCurveTo(-28, 14, -31, 10, -28, 5);
+    c.lineCap = "round";
+    c.lineJoin = "round";
 
-    c.fillStyle = "#ffd93a";
-    c.fill(path);
-
-    c.strokeStyle = "#9b6a12";
-    c.lineWidth = 3;
-    c.stroke(path);
-
-    const inner = new Path2D();
-    inner.moveTo(-16, 3);
-    inner.bezierCurveTo(-7, -11, 17, -13, 25, -5);
-    inner.bezierCurveTo(14, 5, 1, 11, -12, 9);
-    inner.bezierCurveTo(-18, 8, -20, 6, -16, 3);
-
-    c.fillStyle = "rgba(255,245,150,0.75)";
-    c.fill(inner);
-
-    c.fillStyle = "#7d4f0e";
+    c.strokeStyle = "#86520f";
+    c.lineWidth = 18;
     c.beginPath();
-    c.ellipse(-28, 7, 4, 3, 0.3, 0, Math.PI * 2);
+    c.moveTo(-31, 5);
+    c.bezierCurveTo(-18, -21, 20, -26, 37, -7);
+    c.stroke();
+
+    c.strokeStyle = "#ffd63a";
+    c.lineWidth = 13;
+    c.beginPath();
+    c.moveTo(-30, 5);
+    c.bezierCurveTo(-17, -17, 18, -21, 35, -7);
+    c.stroke();
+
+    c.strokeStyle = "#fff28c";
+    c.lineWidth = 4;
+    c.beginPath();
+    c.moveTo(-17, -2);
+    c.bezierCurveTo(-5, -12, 17, -14, 28, -6);
+    c.stroke();
+
+    c.strokeStyle = "rgba(163,104,22,0.52)";
+    c.lineWidth = 2.2;
+    c.beginPath();
+    c.moveTo(-20, 3);
+    c.bezierCurveTo(-8, -8, 12, -10, 25, -4);
+    c.stroke();
+
+    c.fillStyle = "#5b3310";
+    c.beginPath();
+    c.ellipse(-33, 6, 5, 3.2, 0.25, 0, Math.PI * 2);
+    c.ellipse(38, -7, 5, 3.2, -0.3, 0, Math.PI * 2);
     c.fill();
 
+    c.fillStyle = "rgba(255,255,210,0.82)";
     c.beginPath();
-    c.ellipse(31, -6, 4, 3, -0.3, 0, Math.PI * 2);
-    c.fill();
-
-    c.fillStyle = "rgba(255,255,220,0.65)";
-    c.beginPath();
-    c.arc(-7, -8, 2.5, 0, Math.PI * 2);
+    c.arc(5, -12, 2.2, 0, Math.PI * 2);
     c.fill();
 
     c.restore();
 
-    this.engine.glowCircle(x, y, 30, "#ffe14a", 0.18);
+    this.engine.glowCircle(x, y, 34, "#ffe14a", 0.20);
   }
 
   drawBonus(c, x, y, type) {
@@ -1508,6 +1814,7 @@ class Game {
       case 7: this.drawWetWire(c, x, bottomY); break;
       case 8: this.drawPaintBucket(c, x, bottomY); break;
       case 9: this.drawLooseBeam(c, x, bottomY); break;
+      case 10: this.drawWarningSignObstacle(c, x, bottomY); break;
     }
   }
 
@@ -1732,6 +2039,22 @@ class Game {
     c.restore();
 
     this.drawSmallLabel(c, x, base - 70, "БАЛКА\nСЮРПРИЗ");
+  }
+
+  drawWarningSignObstacle(c, x, b) {
+    const base = b - 2;
+
+    c.fillStyle = "#54351f";
+    c.fillRect(x - 4, base - 68, 8, 68);
+
+    this.fillRound(c, x - 48, base - 98, 96, 38, 5, "#ffd54a");
+    c.strokeStyle = "#6e4315";
+    c.lineWidth = 3;
+    this.strokeRound(c, x - 48, base - 98, 96, 38, 5, "#6e4315", 3);
+    this.multilineText(c, "ТУТ\nНОРМ", x, base - 82, 13, "#352512", 14);
+
+    c.fillStyle = "#7c5530";
+    c.fillRect(x - 25, base, 50, 7);
   }
 
   drawNpcPrimate(c, x, skinIndex) {
@@ -1976,7 +2299,7 @@ class Game {
 
     if (this.state === GameState.MENU) {
       this.text(c, "ГЛАВНОЕ МЕНЮ", 640, 180, 42, "#8cff8c");
-      this.text(c, "Web-порт Android-версии: новый рендер, эффекты, скины и нормальные бананы.", 640, 235, 18, "#fff", "center", false);
+      this.text(c, "Мартышкин мир кипит, отчёт дышит, бананы ждут.", 640, 235, 18, "#fff", "center", false);
 
       this.button(c, 430, 285, 420, 56, "ВПЕРЁД, ПРИМАТЫ!", () => {
         this.playerName = (prompt("Имя примата:", this.playerName) || this.playerName).slice(0, 24) || "Безымянный примат";
@@ -2063,7 +2386,7 @@ class Game {
         const y = 285 + row * 85;
         const open = i < this.unlockedLevel;
 
-        this.button(c, x, y, 160, 55, `${open ? "УРОВЕНЬ " : "🔒 "}${i + 1}`, () => {
+        this.button(c, x, y, 160, 55, `${open ? "УРОВЕНЬ " : "ЗАКР. "}${i + 1}`, () => {
           if (open) this.startLevel(i);
         }, {
           stroke: open ? "#8cff8c" : "#7a7a7a",
