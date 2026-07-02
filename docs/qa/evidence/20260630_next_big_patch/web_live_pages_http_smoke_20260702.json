@@ -1,0 +1,107 @@
+{
+  "timestamp": "2026-07-02T14:10:00.6273497+03:00",
+  "base": "https://nikitak8883.github.io/Martyskin-trud-runner",
+  "ok": true,
+  "mainMarkers": {
+    "path": "/assets/main/index.js",
+    "url": "https://nikitak8883.github.io/Martyskin-trud-runner/assets/main/index.js",
+    "status": 200,
+    "bytes": 537472,
+    "contentType": [
+      "application/javascript; charset=utf-8"
+    ],
+    "containsNativeStartupQueryMarker": true,
+    "containsQaStartupPauseMarker": true,
+    "containsBonusAssets": true,
+    "containsPromptCall": false
+  },
+  "results": [
+    {
+      "path": "/",
+      "url": "https://nikitak8883.github.io/Martyskin-trud-runner/",
+      "status": 200,
+      "bytes": 2161,
+      "contentType": [
+        "text/html; charset=utf-8"
+      ],
+      "containsNativeStartupQueryMarker": false,
+      "containsQaStartupPauseMarker": false,
+      "containsBonusAssets": false,
+      "containsPromptCall": false
+    },
+    {
+      "path": "/index.html",
+      "url": "https://nikitak8883.github.io/Martyskin-trud-runner/index.html",
+      "status": 200,
+      "bytes": 2161,
+      "contentType": [
+        "text/html; charset=utf-8"
+      ],
+      "containsNativeStartupQueryMarker": false,
+      "containsQaStartupPauseMarker": false,
+      "containsBonusAssets": false,
+      "containsPromptCall": false
+    },
+    {
+      "path": "/application.js",
+      "url": "https://nikitak8883.github.io/Martyskin-trud-runner/application.js",
+      "status": 200,
+      "bytes": 3302,
+      "contentType": [
+        "application/javascript; charset=utf-8"
+      ],
+      "containsNativeStartupQueryMarker": false,
+      "containsQaStartupPauseMarker": false,
+      "containsBonusAssets": false,
+      "containsPromptCall": false
+    },
+    {
+      "path": "/index.js",
+      "url": "https://nikitak8883.github.io/Martyskin-trud-runner/index.js",
+      "status": 200,
+      "bytes": 818,
+      "contentType": [
+        "application/javascript; charset=utf-8"
+      ],
+      "containsNativeStartupQueryMarker": false,
+      "containsQaStartupPauseMarker": false,
+      "containsBonusAssets": false,
+      "containsPromptCall": false
+    },
+    {
+      "path": "/assets/main/index.js",
+      "url": "https://nikitak8883.github.io/Martyskin-trud-runner/assets/main/index.js",
+      "status": 200,
+      "bytes": 537472,
+      "contentType": [
+        "application/javascript; charset=utf-8"
+      ],
+      "containsNativeStartupQueryMarker": true,
+      "containsQaStartupPauseMarker": true,
+      "containsBonusAssets": true,
+      "containsPromptCall": false
+    },
+    {
+      "path": "/assets/resources/index.js",
+      "url": "https://nikitak8883.github.io/Martyskin-trud-runner/assets/resources/index.js",
+      "status": 200,
+      "bytes": 605,
+      "contentType": [
+        "application/javascript; charset=utf-8"
+      ],
+      "containsNativeStartupQueryMarker": false,
+      "containsQaStartupPauseMarker": false,
+      "containsBonusAssets": false,
+      "containsPromptCall": false
+    },
+    {
+      "path": "/favicon.png",
+      "url": "https://nikitak8883.github.io/Martyskin-trud-runner/favicon.png",
+      "status": 200,
+      "bytes": 535812,
+      "contentType": [
+        "image/png"
+      ]
+    }
+  ]
+}

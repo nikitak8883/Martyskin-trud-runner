@@ -1,0 +1,80 @@
+{
+  "timestamp": "2026-07-02T00:00:00+03:00",
+  "base": "http://127.0.0.1:8124",
+  "ok": true,
+  "results": [
+    {
+      "path": "/",
+      "url": "http://127.0.0.1:8124/",
+      "status": 200,
+      "bytes": 2227,
+      "content_type": "text/html",
+      "contains_native_query_marker": false,
+      "contains_pause_marker": false,
+      "contains_bonus_assets": false,
+      "contains_prompt_call": false
+    },
+    {
+      "path": "/index.html",
+      "url": "http://127.0.0.1:8124/index.html",
+      "status": 200,
+      "bytes": 2227,
+      "content_type": "text/html",
+      "contains_native_query_marker": false,
+      "contains_pause_marker": false,
+      "contains_bonus_assets": false,
+      "contains_prompt_call": false
+    },
+    {
+      "path": "/application.js",
+      "url": "http://127.0.0.1:8124/application.js",
+      "status": 200,
+      "bytes": 3302,
+      "content_type": "application/javascript",
+      "contains_native_query_marker": false,
+      "contains_pause_marker": false,
+      "contains_bonus_assets": false,
+      "contains_prompt_call": false
+    },
+    {
+      "path": "/index.js",
+      "url": "http://127.0.0.1:8124/index.js",
+      "status": 200,
+      "bytes": 818,
+      "content_type": "application/javascript",
+      "contains_native_query_marker": false,
+      "contains_pause_marker": false,
+      "contains_bonus_assets": false,
+      "contains_prompt_call": false
+    },
+    {
+      "path": "/assets/main/index.js",
+      "url": "http://127.0.0.1:8124/assets/main/index.js",
+      "status": 200,
+      "bytes": 537472,
+      "content_type": "application/javascript",
+      "contains_native_query_marker": true,
+      "contains_pause_marker": true,
+      "contains_bonus_assets": true,
+      "contains_prompt_call": false
+    },
+    {
+      "path": "/assets/resources/index.js",
+      "url": "http://127.0.0.1:8124/assets/resources/index.js",
+      "status": 200,
+      "bytes": 605,
+      "content_type": "application/javascript",
+      "contains_native_query_marker": false,
+      "contains_pause_marker": false,
+      "contains_bonus_assets": false,
+      "contains_prompt_call": false
+    },
+    {
+      "path": "/favicon.png",
+      "url": "http://127.0.0.1:8124/favicon.png",
+      "status": 200,
+      "bytes": 151593,
+      "content_type": "image/png"
+    }
+  ]
+}

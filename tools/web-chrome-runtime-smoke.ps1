@@ -6,7 +6,9 @@ param(
     [string]$ScreenshotPath = "screenshots\web-runtime-smoke.png",
     [string]$BrowserLogPath = "logs\web-runtime-smoke-browser.log",
     [string]$ProbePath = "logs\web-runtime-smoke-probe.json",
-    [int]$TimeoutSeconds = 75
+    [int]$TimeoutSeconds = 75,
+    [string]$WaitForLogPattern = "",
+    [int]$WaitForLogPatternTimeoutSeconds = 30
 )
 
 $ErrorActionPreference = "Stop"
@@ -64,7 +66,10 @@ $args = @(
     "--disable-component-update",
     "--disable-default-apps",
     "--disable-extensions",
-    "--disable-features=Translate",
+    "--disable-background-timer-throttling",
+    "--disable-renderer-backgrounding",
+    "--disable-backgrounding-occluded-windows",
+    "--disable-features=CalculateNativeWinOcclusion,Translate",
     "--disable-popup-blocking",
     "--disable-sync",
     "--enable-logging",
@@ -105,6 +110,23 @@ try {
         Start-Sleep -Milliseconds 500
     }
 
+    $waitForLogPatternReady = $null
+    if ($WaitForLogPattern) {
+        $waitForLogPatternReady = $false
+        $patternDeadline = (Get-Date).AddSeconds($WaitForLogPatternTimeoutSeconds)
+        while ((Get-Date) -lt $patternDeadline) {
+            if ($browser.HasExited) { throw "Browser exited before WaitForLogPattern was observed" }
+            if (Test-Path -LiteralPath $BrowserLogPath) {
+                $text = Get-Content -LiteralPath $BrowserLogPath -Raw -ErrorAction SilentlyContinue
+                if ($text -match $WaitForLogPattern) {
+                    $waitForLogPatternReady = $true
+                    break
+                }
+            }
+            Start-Sleep -Milliseconds 500
+        }
+    }
+
     Start-Sleep -Milliseconds 1500
 
     $tabs = Invoke-RestMethod -Uri "http://127.0.0.1:$Port/json/list" -TimeoutSec 3
@@ -127,6 +149,8 @@ try {
         url = $Url
         runtimeReady = $ready
         targetUrl = $tab.url
+        waitForLogPattern = $WaitForLogPattern
+        waitForLogPatternReady = $waitForLogPatternReady
         probe = $probe.result.result.value
         screenshot = if (Test-Path -LiteralPath $ScreenshotPath) { (Resolve-Path -LiteralPath $ScreenshotPath).Path } else { $null }
         browserLog = if (Test-Path -LiteralPath $BrowserLogPath) { (Resolve-Path -LiteralPath $BrowserLogPath).Path } else { $null }
