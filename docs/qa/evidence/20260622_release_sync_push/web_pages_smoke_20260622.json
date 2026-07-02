@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-06-22T20:42:29.3567843+03:00",
+  "web_dir": "C:\\Projects\\Monkey Work\\_github\\Martyskin-trud-runner",
+  "port": 8923,
+  "root_status": 200,
+  "root_length": 2164,
+  "js_status": 200,
+  "js_length": 531693,
+  "contains_qa_preload": true,
+  "contains_primatal": true,
+  "contains_skin_variants": true,
+  "server_stdout": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260622_release_sync_push\\web-pages-server-8923.out.log",
+  "server_stderr": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260622_release_sync_push\\web-pages-server-8923.err.log"
+}

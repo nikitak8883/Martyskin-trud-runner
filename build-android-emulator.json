@@ -1,0 +1,40 @@
+{
+  "name": "Martyshkin Trud Runner Emulator",
+  "platform": "android",
+  "buildPath": "project://build",
+  "outputName": "android-emulator",
+  "debug": true,
+  "md5Cache": false,
+  "replaceSplashScreen": false,
+  "startScene": "9b5fe441-884f-49d0-b7e7-1037af1377d8",
+  "scenes": [
+    {
+      "url": "db://assets/scenes/main.scene",
+      "uuid": "9b5fe441-884f-49d0-b7e7-1037af1377d8"
+    }
+  ],
+  "packages": {
+    "android": {
+      "packageName": "com.martyskin.trudrunner",
+      "sdkPath": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk",
+      "ndkPath": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\ndk\\23.2.8568313",
+      "javaHome": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot",
+      "javaPath": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin",
+      "apiLevel": 35,
+      "appABIs": [
+        "x86_64"
+      ],
+      "useDebugKeystore": true,
+      "orientation": {
+        "landscapeLeft": true,
+        "landscapeRight": true,
+        "portrait": false,
+        "upsideDown": false
+      },
+      "renderBackEnd": {
+        "vulkan": false,
+        "gles3": true
+      }
+    }
+  }
+}

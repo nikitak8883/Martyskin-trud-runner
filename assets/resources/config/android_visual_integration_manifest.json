@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 2,
+  "target": "android",
+  "status": "latest-texture-runtime-integrated",
+  "backgrounds": {
+    "runtimeFolder": "assets/resources/backgrounds",
+    "runtimeFramePattern": "backgrounds/levelXX/spriteFrame",
+    "runtimeLevelCount": 15,
+    "preloadPolicy": "preload current level preview first, then full runtime SpriteFrame",
+    "apkPolicy": "use optimized runtime backgrounds already present in Cocos resources"
+  },
+  "objects": {
+    "sourceFolder": "C:/Test/MTRCocosCreator/nessesary/9",
+    "sourcePngCount": 30,
+    "runtimeManifest": "assets/resources/config/last_iteration_asset_manifest.generated.json",
+    "runtimeFolder": "assets/resources/objectives/themed/last_iteration",
+    "runtimeCatalog": "assets/scripts/generated/ThemeAssetCatalog.generated.ts",
+    "runtimeAssignments": {
+      "platforms": "GameRoot.themedPlatformKeysForLevel(levelIndex)",
+      "hazards": "GameRoot.themedObstacleKeysForType(levelIndex, obstacleType)",
+      "ui": "GameRoot.themedUiAssetKeysForSurface(surface, role)",
+      "bonusesNpcEquipment": "current objective runtime sprites and generated texture9 catalog"
+    },
+    "supplementalPolicy": "missing main walkable platforms are generated only as style-matched transparent composites from necessary/9 cutouts",
+    "fallbackPolicy": "no retired gameplay or menu fallback is allowed"
+  },
+  "renderSwitch": {
+    "gameRootFlag": "THEMED_LAST_ITERATION_RUNTIME_ONLY",
+    "reason": "GameRoot uses the necessary/9 themed catalog directly; retired fallback paths are removed."
+  },
+  "bananaDensity20260524": {
+    "bananaDensityMultiplier": 0.45,
+    "maxVisibleBananasNormal": 14,
+    "maxVisibleBananasMagnet": 20,
+    "maxBananaClustersOnScreen": 2,
+    "minClusterGapPx": 420,
+    "minBananaGapPx": 56,
+    "targetsReducedByAboutHalf": false,
+    "targetPolicy": "banana goals stay at the original level targets; only physical banana spawn density and on-screen visible count are reduced"
+  }
+}

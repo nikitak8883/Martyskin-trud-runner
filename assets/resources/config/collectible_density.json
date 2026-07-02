@@ -1,0 +1,21 @@
+{
+  "version": "2026-05-27",
+  "weights": {
+    "banana": 0.55,
+    "fig_leaf": 0.3,
+    "coconut": 0.15
+  },
+  "values": {
+    "banana": 1,
+    "fig_leaf": 2,
+    "coconut": 5
+  },
+  "limits": {
+    "maxVisibleCollectiblesNormal": 12,
+    "maxVisibleCollectiblesMagnet": 16,
+    "maxClustersOnScreen": 3,
+    "maxItemsPerCluster": 5,
+    "minClusterGapPx": 280,
+    "minItemGapPx": 52
+  }
+}

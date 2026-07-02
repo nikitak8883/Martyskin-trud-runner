@@ -1,0 +1,49 @@
+{
+  "anchors": {
+    "head": {
+      "allowed": ["hardhat", "helmet_lamp", "goggles"],
+      "zGroup": "equipment_front"
+    },
+    "torso_front": {
+      "allowed": ["vest", "badge", "pass_card"],
+      "zGroup": "equipment_front"
+    },
+    "torso_back": {
+      "allowed": ["backpack", "magnet_pack"],
+      "zGroup": "equipment_back"
+    },
+    "right_hand": {
+      "allowed": ["coffee_mug", "blueprint", "wrench"],
+      "zGroup": "hands_items"
+    },
+    "left_hand": {
+      "allowed": ["clipboard", "pass"],
+      "zGroup": "hands_items"
+    },
+    "feet": {
+      "allowed": ["speed_boots"],
+      "zGroup": "equipment_front"
+    },
+    "aura": {
+      "allowed": ["shield", "extra_life"],
+      "zGroup": "aura_front"
+    },
+    "ground_fx": {
+      "allowed": ["speed_trail", "dust", "sparks"],
+      "zGroup": "gameplay_ground"
+    }
+  },
+  "mutual_exclusion": [
+    ["coffee_mug", "blueprint", "wrench"],
+    ["vest", "large_front_badge"],
+    ["shield", "extra_life_aura"]
+  ],
+  "forbidden": [
+    "vest on head",
+    "helmet on torso",
+    "mug over face",
+    "blueprint over face",
+    "shield under background",
+    "banana over player face"
+  ]
+}

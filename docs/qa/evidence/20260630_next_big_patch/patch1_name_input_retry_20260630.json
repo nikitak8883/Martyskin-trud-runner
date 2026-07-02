@@ -1,0 +1,361 @@
+{
+  "generatedAt": "2026-06-30T08:53:24.552Z",
+  "screenshots": {
+    "afterWait": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_name_retry_screens\\01_after_wait_menu.png",
+    "afterClickStart": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_name_retry_screens\\02_after_click_start.png",
+    "afterType": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_name_retry_screens\\03_after_type.png",
+    "afterSave": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_name_retry_screens\\04_after_save.png"
+  },
+  "storedName": "QA Primat 7",
+  "domBefore": [
+    {
+      "tag": "TEXTAREA",
+      "type": null,
+      "value": "",
+      "placeholder": null,
+      "style": "color: rgb(0, 0, 0); border: 0px; background: transparent; width: 520px; height: 58px; outline: medium; padding: 0px; text-transform: none; display: none; position: absolute; bottom: 0px; left: 2px; font-family: Arial; resize: none; overflow-y: scroll; transform: matrix(1, 0, 0, 1, 380, -373); transform-origin: 0px 100% 0px;"
+    }
+  ],
+  "domAfterFocus": [
+    {
+      "tag": "TEXTAREA",
+      "type": null,
+      "value": "Безымянный примат",
+      "placeholder": null,
+      "active": true,
+      "style": "color: rgb(255, 255, 255); border: 0px; background: transparent; width: 520px; height: 58px; outline: medium; padding: 0px; text-transform: none; position: absolute; bottom: 0px; left: 2px; font-family: Arial; resize: none; overflow-y: scroll; transform: matrix(1, 0, 0, 1, 380, -373); transform-origin: 0px 100% 0px; font-size: 40px; text-align: center;"
+    }
+  ],
+  "domAfterType": [
+    {
+      "tag": "TEXTAREA",
+      "type": null,
+      "value": "QA Primat 7",
+      "placeholder": null,
+      "active": true,
+      "style": "color: rgb(255, 255, 255); border: 0px; background: transparent; width: 520px; height: 58px; outline: medium; padding: 0px; text-transform: none; position: absolute; bottom: 0px; left: 2px; font-family: Arial; resize: none; overflow-y: scroll; transform: matrix(1, 0, 0, 1, 380, -373); transform-origin: 0px 100% 0px; font-size: 40px; text-align: center;"
+    }
+  ],
+  "consoleTail": [
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=equipment id=bonus_blueprint_01 level=1 spawned=1 reason=level_registry"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE_SUMMARY level=1 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment"
+    },
+    {
+      "type": "log",
+      "text": "MTR_GAMESTATE reason=reset mode=MENU level=1 speed=430 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=43/34/99/0"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=background_decor id=story_banner_component level=1 spawned=1 reason=z_20"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_SPRITE_ENQUEUE_BATCH reason=main-menu-background:draw-main-menu-background count=1 requested=0 priority=critical platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_MAIN_MENU_BACKGROUND_PRELOAD_REQUESTED reason=draw-main-menu-background count=1"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_SPRITE_ENQUEUE_BATCH reason=menu-ui-critical:menu-frame:main_menu count=3 requested=0 priority=critical platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_MENU_UI_GATE_WAIT surface=main_menu missing=3 sample=ui/main_menu_background/main_menu_bg_far|objectives/themed/last_iteration/ui/main_menu/title/mtr_last_main_menu_ui_main_menu_main_title_01|objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_start_08"
+    },
+    {
+      "type": "log",
+      "text": "MTR_BACKGROUND_PREVIEW_LOAD_OK level=1 elapsedMs=64"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/main_menu/title/mtr_last_main_menu_ui_main_menu_main_title_01 path=objectives/themed/last_iteration/ui/main_menu/title/mtr_last_main_menu_ui_main_menu_main_title_01/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_start_08 path=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_start_08/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_BACKGROUND_LOAD_REQUEST level=1 path=backgrounds/level01/spriteFrame reason=boot-current"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_forward_01 path=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_forward_01/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_skins_03 path=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_skins_03/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=background_decor id=main_menu_bg_far level=1 spawned=1 reason=main_menu_bg_far"
+    },
+    {
+      "type": "log",
+      "text": "MTR_MENU_UI_GATE_READY surface=main_menu"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_last_main_menu_ui_main_menu_main_title_01 level=1 spawned=1 reason=main_menu_title_png"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_last_main_menu_ui_main_menu_button_start_08 level=1 spawned=1 reason=main_menu_baked_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_last_main_menu_ui_main_menu_button_skins_03 level=1 spawned=1 reason=main_menu_baked_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_BACKGROUND_LOAD_OK level=1 elapsedMs=48 strategy=critical-current-first"
+    },
+    {
+      "type": "log",
+      "text": "MTR_BACKGROUND_PRELOAD_OK platform=web level=1"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_PRELOAD_DEFERRED_START platform=web reason=after-current-background:boot-current"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_SPRITE_QUEUE_HIGH_WATER queued=19 active=5 priority=critical platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_SPRITE_QUEUE_HIGH_WATER queued=20 active=5 priority=critical platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_SPRITE_ENQUEUE_BATCH reason=web-critical-first-screen count=27 requested=15 priority=critical platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_UTILITY_SPRITE_WARMUP_SCHEDULED reason=web-post-first-screen count=47 platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_LEVEL_THEME_WARMUP_SCHEDULED reason=web-post-first-screen level=1 deferredCount=41 platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_WEB_OBJECT_PRELOAD_REQUESTED critical=27 strategy=web-critical-first-lazy-chunked fullCatalogDeferred=true themedFullCatalog=280"
+    },
+    {
+      "type": "log",
+      "text": "MTR_AUDIO_LOAD_SCHEDULED reason=after-current-background:boot-current delay=0"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_sound_05 path=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_sound_05/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_last_main_menu_ui_main_menu_button_sound_05 level=1 spawned=1 reason=main_menu_baked_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_records_02 path=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_records_02/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_developer_06 path=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_developer_06/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_levels_04 path=objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_levels_04/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_last_main_menu_ui_main_menu_button_records_02 level=1 spawned=1 reason=main_menu_baked_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_last_main_menu_ui_main_menu_button_levels_04 level=1 spawned=1 reason=main_menu_baked_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_last_main_menu_ui_main_menu_button_developer_06 level=1 spawned=1 reason=main_menu_baked_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_AUDIO_LOAD_REQUEST reason=core count=8"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_007 path=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_007/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_002 path=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_002/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_001 path=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_001/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_003 path=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_003/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_001 path=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_001/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_001 path=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_001/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_002 path=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_002/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_002 path=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_002/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_004 path=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_004/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_005 path=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_005/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_006 path=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_006/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_003 path=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_003/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_008 path=objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_008/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_FSM:MENU->CHARACTER_SELECT state=menu->name reason=ui_start_menu"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=panel_dialog level=1 spawned=1 reason=shared_main_menu_panel"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=title_banner_blank level=1 spawned=1 reason=shared_main_menu_title"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=button_primary_idle level=1 spawned=1 reason=shared_menu_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_save_name_01 path=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_save_name_01/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_profile_box_01 path=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_profile_box_01/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_start_menu_profile_box_01 level=1 spawned=1 reason=start_menu_profile_box"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_start_menu_button_save_name_01 level=1 spawned=1 reason=start_menu_baked_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_SPRITE_CHUNKED_ENQUEUE_SCHEDULED reason=level-theme-warmup:web-post-first-screen:level-1 count=41 chunkSize=4 intervalSec=0.22 priority=idle platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=ui_label_plate_01 level=1 spawned=1 reason=button_runtime_label_plate"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_002 path=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_002/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_forward_01 path=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_forward_01/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_back_menu_01 path=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_back_menu_01/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_start_menu_button_forward_01 level=1 spawned=1 reason=start_menu_baked_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_ASSET_USAGE category=ui_achievements id=mtr_start_menu_button_back_menu_01 level=1 spawned=1 reason=start_menu_baked_button"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_003 path=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_003/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_SPRITE_CHUNKED_ENQUEUE_SCHEDULED reason=secondary-ui:after-main-menu-ready count=48 chunkSize=4 intervalSec=0.22 priority=idle platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_SECONDARY_UI_PRELOAD_REQUESTED reason=after-main-menu-ready policy=shared_blank_runtime_text_chunked surfaces=death,pause,level_select,skin_select,sound_settings,records,achievements,developer count=48"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_004 path=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_004/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_001 path=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_001/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_AUDIO_LOAD_REQUEST reason=deferred count=31"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_003 path=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_003/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_004 path=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_004/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_005 path=objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_005/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_extended_platforms_001 path=objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_extended_platforms_001/spriteFrame"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_SPRITE_CHUNKED_ENQUEUE_SCHEDULED reason=utility-warmup:web-post-first-screen count=38 chunkSize=4 intervalSec=0.22 priority=idle platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_OBJECT_SPRITE_CHUNKED_ENQUEUE_SCHEDULED reason=player-skin-variants:web-idle-after-first-screen:brigadir count=117 chunkSize=4 intervalSec=0.22 priority=idle platform=web"
+    },
+    {
+      "type": "log",
+      "text": "MTR_PLAYER_SKIN_VARIANTS_DEFERRED_PRELOAD_REQUESTED reason=web-idle-after-first-screen skin=brigadir count=117 policy=chunked-idle"
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "skin_id": "brigadir",
+  "display_name": "Бригадир",
+  "canonical_index": 0,
+  "source_group": "source_group_01",
+  "source_files": [
+    "ChatGPT Image Jun 19, 2026, 12_50_06 PM (1).png",
+    "ChatGPT Image Jun 19, 2026, 12_50_06 PM (2).png"
+  ],
+  "synth_kind": null,
+  "notes": "direct source group 01",
+  "resource_root": "characters/player_skins/brigadir",
+  "poses": [
+    "idle",
+    "run_1",
+    "run_2",
+    "jump",
+    "jump_2",
+    "fall",
+    "crouch_dash",
+    "hit",
+    "victory"
+  ],
+  "variants": [
+    "base",
+    "helmet",
+    "vest",
+    "helmet_vest",
+    "boots",
+    "helmet_vest_boots",
+    "magnet",
+    "shield"
+  ],
+  "pose_manifest": {
+    "idle": {
+      "base": "characters/player_skins/brigadir/base/idle",
+      "helmet": "characters/player_skins/brigadir/bonus/helmet/idle",
+      "vest": "characters/player_skins/brigadir/bonus/vest/idle",
+      "helmet_vest": "characters/player_skins/brigadir/bonus/helmet_vest/idle",
+      "boots": "characters/player_skins/brigadir/bonus/boots/idle",
+      "helmet_vest_boots": "characters/player_skins/brigadir/bonus/helmet_vest_boots/idle",
+      "magnet": "characters/player_skins/brigadir/bonus/magnet/idle",
+      "shield": "characters/player_skins/brigadir/bonus/shield/idle"
+    },
+    "run_1": {
+      "base": "characters/player_skins/brigadir/base/run_1",
+      "helmet": "characters/player_skins/brigadir/bonus/helmet/run_1",
+      "vest": "characters/player_skins/brigadir/bonus/vest/run_1",
+      "helmet_vest": "characters/player_skins/brigadir/bonus/helmet_vest/run_1",
+      "boots": "characters/player_skins/brigadir/bonus/boots/run_1",
+      "helmet_vest_boots": "characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1",
+      "magnet": "characters/player_skins/brigadir/bonus/magnet/run_1",
+      "shield": "characters/player_skins/brigadir/bonus/shield/run_1"
+    },
+    "run_2": {
+      "base": "characters/player_skins/brigadir/base/run_2",
+      "helmet": "characters/player_skins/brigadir/bonus/helmet/run_2",
+      "vest": "characters/player_skins/brigadir/bonus/vest/run_2",
+      "helmet_vest": "characters/player_skins/brigadir/bonus/helmet_vest/run_2",
+      "boots": "characters/player_skins/brigadir/bonus/boots/run_2",
+      "helmet_vest_boots": "characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2",
+      "magnet": "characters/player_skins/brigadir/bonus/magnet/run_2",
+      "shield": "characters/player_skins/brigadir/bonus/shield/run_2"
+    },
+    "jump": {
+      "base": "characters/player_skins/brigadir/base/jump",
+      "helmet": "characters/player_skins/brigadir/bonus/helmet/jump",
+      "vest": "characters/player_skins/brigadir/bonus/vest/jump",
+      "helmet_vest": "characters/player_skins/brigadir/bonus/helmet_vest/jump",
+      "boots": "characters/player_skins/brigadir/bonus/boots/jump",
+      "helmet_vest_boots": "characters/player_skins/brigadir/bonus/helmet_vest_boots/jump",
+      "magnet": "characters/player_skins/brigadir/bonus/magnet/jump",
+      "shield": "characters/player_skins/brigadir/bonus/shield/jump"
+    },
+    "jump_2": {
+      "base": "characters/player_skins/brigadir/base/jump_2",
+      "helmet": "characters/player_skins/brigadir/bonus/helmet/jump_2",
+      "vest": "characters/player_skins/brigadir/bonus/vest/jump_2",
+      "helmet_vest": "characters/player_skins/brigadir/bonus/helmet_vest/jump_2",
+      "boots": "characters/player_skins/brigadir/bonus/boots/jump_2",
+      "helmet_vest_boots": "characters/player_skins/brigadir/bonus/helmet_vest_boots/jump_2",
+      "magnet": "characters/player_skins/brigadir/bonus/magnet/jump_2",
+      "shield": "characters/player_skins/brigadir/bonus/shield/jump_2"
+    },
+    "fall": {
+      "base": "characters/player_skins/brigadir/base/fall",
+      "helmet": "characters/player_skins/brigadir/bonus/helmet/fall",
+      "vest": "characters/player_skins/brigadir/bonus/vest/fall",
+      "helmet_vest": "characters/player_skins/brigadir/bonus/helmet_vest/fall",
+      "boots": "characters/player_skins/brigadir/bonus/boots/fall",
+      "helmet_vest_boots": "characters/player_skins/brigadir/bonus/helmet_vest_boots/fall",
+      "magnet": "characters/player_skins/brigadir/bonus/magnet/fall",
+      "shield": "characters/player_skins/brigadir/bonus/shield/fall"
+    },
+    "crouch_dash": {
+      "base": "characters/player_skins/brigadir/base/crouch_dash",
+      "helmet": "characters/player_skins/brigadir/bonus/helmet/crouch_dash",
+      "vest": "characters/player_skins/brigadir/bonus/vest/crouch_dash",
+      "helmet_vest": "characters/player_skins/brigadir/bonus/helmet_vest/crouch_dash",
+      "boots": "characters/player_skins/brigadir/bonus/boots/crouch_dash",
+      "helmet_vest_boots": "characters/player_skins/brigadir/bonus/helmet_vest_boots/crouch_dash",
+      "magnet": "characters/player_skins/brigadir/bonus/magnet/crouch_dash",
+      "shield": "characters/player_skins/brigadir/bonus/shield/crouch_dash"
+    },
+    "hit": {
+      "base": "characters/player_skins/brigadir/base/hit",
+      "helmet": "characters/player_skins/brigadir/bonus/helmet/hit",
+      "vest": "characters/player_skins/brigadir/bonus/vest/hit",
+      "helmet_vest": "characters/player_skins/brigadir/bonus/helmet_vest/hit",
+      "boots": "characters/player_skins/brigadir/bonus/boots/hit",
+      "helmet_vest_boots": "characters/player_skins/brigadir/bonus/helmet_vest_boots/hit",
+      "magnet": "characters/player_skins/brigadir/bonus/magnet/hit",
+      "shield": "characters/player_skins/brigadir/bonus/shield/hit"
+    },
+    "victory": {
+      "base": "characters/player_skins/brigadir/base/victory",
+      "helmet": "characters/player_skins/brigadir/bonus/helmet/victory",
+      "vest": "characters/player_skins/brigadir/bonus/vest/victory",
+      "helmet_vest": "characters/player_skins/brigadir/bonus/helmet_vest/victory",
+      "boots": "characters/player_skins/brigadir/bonus/boots/victory",
+      "helmet_vest_boots": "characters/player_skins/brigadir/bonus/helmet_vest_boots/victory",
+      "magnet": "characters/player_skins/brigadir/bonus/magnet/victory",
+      "shield": "characters/player_skins/brigadir/bonus/shield/victory"
+    }
+  },
+  "generated_at_utc": "2026-06-19T18:08:47+00:00",
+  "generator": "tools/skins/integrate_skin_pack.py"
+}

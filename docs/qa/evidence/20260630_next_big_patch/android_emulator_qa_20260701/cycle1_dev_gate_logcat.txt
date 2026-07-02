@@ -1,0 +1,34 @@
+--------- beginning of main
+07-01 07:37:05.214  3929  3949 D Cocos   : 07:37:05 [DEBUG]: JS: MTR_FSM:MENU->DEV_MODE state=menu->devgate reason=open_dev_gate
+07-01 07:37:05.230  3929  3949 D Cocos   : 07:37:05 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=panel_dialog level=1 spawned=1 reason=shared_developer_panel
+07-01 07:37:05.230  3929  3949 D Cocos   : 07:37:05 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=title_banner_blank level=1 spawned=1 reason=shared_developer_title
+07-01 07:37:05.231  3929  3949 D Cocos   : 07:37:05 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=panel_chip level=1 spawned=1 reason=dev_password_field_back
+07-01 07:37:05.235  3929  3949 D Cocos   : 07:37:05 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=button_primary_idle level=1 spawned=1 reason=shared_menu_button
+07-01 07:37:05.237  3929  3949 D Cocos   : 07:37:05 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=button_back_idle level=1 spawned=1 reason=shared_menu_button
+07-01 07:37:05.491  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 10(1968KB) LOS objects, 49% free, 2530KB/5060KB, paused 1.507ms,5.688ms total 20.555ms
+07-01 07:37:05.607  3929  3971 D EGL_emulation: app_time_stats: avg=25.11ms min=17.95ms max=72.48ms count=36
+07-01 07:37:05.648   499   601 D AF::Track: interceptBuffer: took 3457us to intercept 0 tracks
+07-01 07:37:05.657  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(2240KB) LOS objects, 49% free, 2530KB/5060KB, paused 1.083ms,6.470ms total 22.998ms
+07-01 07:37:05.968  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(3664KB) LOS objects, 49% free, 2214KB/4428KB, paused 1.208ms,6.023ms total 22.072ms
+07-01 07:37:06.616  3929  3971 D EGL_emulation: app_time_stats: avg=27.50ms min=20.62ms max=42.85ms count=34
+07-01 07:37:07.298  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 15(3516KB) LOS objects, 49% free, 2498KB/4996KB, paused 939us,6.239ms total 24.305ms
+07-01 07:37:07.448  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(3368KB) LOS objects, 49% free, 2374KB/4748KB, paused 2.027ms,5.260ms total 22.069ms
+07-01 07:37:07.459  4062  4062 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+07-01 07:37:07.461  4062  4062 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+--------- beginning of kernel
+07-01 07:37:07.463     0     0 I servicemanager: Caller(pid=4062,uid=2000,sid=u:r:shell:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+07-01 07:37:07.496   204   204 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+07-01 07:37:07.496  4062  4063 I Gralloc4: mapper 4.x is not supported
+07-01 07:37:07.548   499   601 D AudioFlinger: mixer(0x70de318098e0) throttle end: throttle time(1)
+07-01 07:37:07.618  3929  3971 D EGL_emulation: app_time_stats: avg=27.19ms min=18.33ms max=41.99ms count=34
+07-01 07:37:07.665  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 19(3868KB) LOS objects, 49% free, 3050KB/6100KB, paused 1.174ms,5.709ms total 26.559ms
+07-01 07:37:08.161   499   601 D AudioFlinger: mixer(0x70de318098e0) throttle end: throttle time(8)
+07-01 07:37:08.162   499   601 D AF::Track: interceptBuffer: took 1116us to intercept 0 tracks
+07-01 07:37:08.218  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 18(3032KB) LOS objects, 49% free, 2530KB/5060KB, paused 1.771ms,9.055ms total 32.698ms
+07-01 07:37:08.487  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(3368KB) LOS objects, 49% free, 2226KB/4452KB, paused 1.305ms,8.241ms total 45.707ms
+07-01 07:37:08.528  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(2400KB) LOS objects, 48% free, 2214KB/4292KB, paused 3.224ms,6.931ms total 24.044ms
+07-01 07:37:08.578  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 12(2104KB) LOS objects, 49% free, 2530KB/5060KB, paused 523us,6.955ms total 27.917ms
+07-01 07:37:08.625  3929  3971 D EGL_emulation: app_time_stats: avg=30.72ms min=21.95ms max=54.33ms count=30
+07-01 07:37:08.632  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(3368KB) LOS objects, 49% free, 2374KB/4748KB, paused 6.047ms,2.399ms total 26.382ms
+07-01 07:37:09.284  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3936KB) LOS objects, 49% free, 2982KB/5964KB, paused 648us,5.266ms total 43.457ms
+07-01 07:37:09.433  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(2704KB) LOS objects, 49% free, 2778KB/5556KB, paused 2.013ms,6.319ms total 26.923ms

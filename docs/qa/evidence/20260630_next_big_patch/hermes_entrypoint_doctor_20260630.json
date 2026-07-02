@@ -1,0 +1,1679 @@
+{
+  "config_path": "C:\\Users\\nikit\\.codex\\config.toml",
+  "created_at": "2026-06-30T10:14:14Z",
+  "critical_failed": [],
+  "cwd": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator",
+  "entrypoints": [
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\Microsoft\\WindowsApps\\codex.cmd",
+        "C:\\Users\\nikit\\bin\\codex.cmd",
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\bin\\d8dfab353c0001dc\\codex.exe",
+        "C:\\Program Files\\WindowsApps\\OpenAI.Codex_26.623.9142.0_x64__2p2nqsd0c76g0\\app\\resources\\codex.exe"
+      ],
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\nikit\\AppData\\Local\\Microsoft\\WindowsApps\\codex.cmd"
+      ],
+      "critical": true,
+      "kind": "windows_cmd_or_exe",
+      "name": "codex",
+      "notes": [
+        "prefers user codex.cmd shim before hash-versioned codex.exe"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\AppData\\Local\\Microsoft\\WindowsApps\\codex.cmd",
+      "path_exists": true,
+      "requested": "codex",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "Codex Doctor v0.142.4 · windows-x86_64\n\nNotes\n   ⚠ rollouts     12 active files · 1.13 GB on disk\n   ⚠ sandbox      filesystem unrestricted · network enabled\n─────────────────────────────────────────────────────────────\n\nEnvironment\n  ✓ system       en-US\n  ✓ runtime      other\n  ✓ install      consistent\n  ✓ search       ripgrep 15.1.0 (rev af60c2de9d) (system, `rg.exe`)\n  ✓ git          git version 2.54.0.windows.1\n  ✓ terminal     unknown\n  ✓ title        default · project Monkey Work\n  ✓ state        databases healthy\n  ✓ threads      rollout files and state DB thread inventory agree\n\nConfiguration\n  ✓ config       loaded\n  ✓ auth         auth is configured\n  ✓ mcp          2 server (2 stdio) · 0 disabled\n  ✓ sandbox      unrestricted fs + enabled network · approval Never\n\nUpdates\n  ✓ updates      update configuration is locally consistent\n\nConnectivity\n  ✓ network      no proxy env vars\n  ✓ websocket    connected (HTTP 101 Switching Protocols) · 15s timeout\n  ✓ reachability active provider endpoints are reachable over HTTP\n\nBackground Server\n  ○ app-server   not running (ephemeral mode)\n\n─────────────────────────────────────────────────────────────\n17 ok · 1 idle · 2 notes · 0 warn · 0 fail ok\n\nRun codex doctor without --summary for detailed diagnostics.\n--all expand truncated lists       --json redacted report"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\plugins\\hermes-proagents\\scripts\\hermes.py"
+      ],
+      "command": [
+        "C:\\Users\\nikit\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "C:\\Users\\nikit\\plugins\\hermes-proagents\\scripts\\hermes.py"
+      ],
+      "critical": true,
+      "kind": "python_script",
+      "name": "hermes",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\plugins\\hermes-proagents\\scripts\\hermes.py",
+      "path_exists": true,
+      "requested": "hermes",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "{\n  \"database\": \"C:\\\\Users\\\\nikit\\\\.hermes-proagents\\\\context.sqlite3\",\n  \"checkpoint_root\": \"C:\\\\Users\\\\nikit\\\\.hermes-proagents\\\\checkpoints\",\n  \"integrity\": \"ok\",\n  \"checkpoints\": 528,\n  \"fts_rows\": 528,\n  \"fts_consistent\": true,\n  \"compact_limit\": 258000,\n  \"threshold_ratio\": 0.95,\n  \"threshold_tokens\": 245100\n}"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+        "C:\\Users\\nikit\\AppData\\Local\\Programs\\Python\\Launcher\\py.exe"
+      ],
+      "command": [
+        "C:\\Users\\nikit\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"
+      ],
+      "critical": true,
+      "kind": "executable",
+      "name": "python",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+      "path_exists": true,
+      "requested": "python",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "Python 3.13.14"
+    },
+    {
+      "candidates": [
+        "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+      ],
+      "command": [
+        "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+      ],
+      "critical": true,
+      "kind": "executable",
+      "name": "powershell",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+      "path_exists": true,
+      "requested": "powershell",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "7.6.3"
+    },
+    {
+      "candidates": [
+        "C:\\Program Files\\Git\\cmd\\git.exe"
+      ],
+      "command": [
+        "C:\\Program Files\\Git\\cmd\\git.exe"
+      ],
+      "critical": true,
+      "kind": "executable",
+      "name": "git",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "path_exists": true,
+      "requested": "git",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "git version 2.54.0.windows.1"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\bin\\ada252862d154cdd\\rg.exe"
+      ],
+      "command": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\bin\\ada252862d154cdd\\rg.exe"
+      ],
+      "critical": true,
+      "kind": "executable",
+      "name": "rg",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\bin\\ada252862d154cdd\\rg.exe",
+      "path_exists": true,
+      "requested": "rg",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "ripgrep 15.1.0 (rev af60c2de9d)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,-SSSE3,-AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node.exe",
+        "C:\\Program Files\\nodejs\\node.exe"
+      ],
+      "command": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node.exe"
+      ],
+      "critical": false,
+      "kind": "executable",
+      "name": "node",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node.exe",
+      "path_exists": true,
+      "requested": "node",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "v24.14.0"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\npm.cmd",
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\npm.exe",
+        "C:\\Program Files\\nodejs\\npm.cmd"
+      ],
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\npm.cmd"
+      ],
+      "critical": false,
+      "kind": "executable",
+      "name": "npm",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\npm.cmd",
+      "path_exists": true,
+      "requested": "npm",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "11.9.0"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\pnpm.cmd",
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\pnpm.exe",
+        "C:\\Users\\nikit\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\pnpm.cmd"
+      ],
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Users\\nikit\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\pnpm.cmd"
+      ],
+      "critical": false,
+      "kind": "executable",
+      "name": "pnpm",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\pnpm.cmd",
+      "path_exists": true,
+      "requested": "pnpm",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "11.7.0"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_repl.exe"
+      ],
+      "command": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_repl.exe"
+      ],
+      "critical": false,
+      "kind": "executable",
+      "name": "node_repl",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_repl.exe",
+      "path_exists": true,
+      "requested": "node_repl",
+      "status": "resolved",
+      "validation": "path only"
+    },
+    {
+      "candidates": [
+        "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+        "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+      ],
+      "command": [
+        "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+        "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+      ],
+      "critical": false,
+      "kind": "codex_mcp_server",
+      "mcp_server": "local_worker",
+      "name": "local_worker",
+      "notes": [
+        "global local AI gateway for Codex; Codex remains final decision-maker",
+        "Lemonade-only profiles; NPU quick helper is for short routing/classification/summary tasks",
+        "Hermes should route to local_worker/routing_policy and must not call heavy models directly"
+      ],
+      "npu_policy": {
+        "avoid_for": [
+          "long architectural reasoning",
+          "large code generation",
+          "final approval"
+        ],
+        "handoff": "Codex -> Hermes routing surface -> local_worker -> Lemonade NPU quick helper when task size fits",
+        "preferred_for": [
+          "routing",
+          "classification",
+          "short summaries",
+          "lightweight helper checks"
+        ]
+      },
+      "ok": true,
+      "path": "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py",
+      "path_exists": true,
+      "requested": "local_worker",
+      "status": "configured",
+      "validation": "path only"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe"
+      ],
+      "command": [
+        "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe",
+        "turn-ended"
+      ],
+      "critical": false,
+      "kind": "codex_plugin_notify",
+      "name": "computer-use",
+      "notes": [
+        "interactive control is exposed through the Codex Computer plugin"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe",
+      "path_exists": true,
+      "requested": "computer-use",
+      "status": "resolved",
+      "validation": "path only"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-bundled\\browser\\26.623.70822"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "browser",
+      "notes": [
+        "in-app Browser is a Codex tool surface, not a standalone executable"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-bundled\\browser\\26.623.70822",
+      "path_exists": true,
+      "requested": "browser",
+      "resolution_source": "config",
+      "status": "plugin-enabled",
+      "validation": "plugin config/cache"
+    },
+    {
+      "candidates": [
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        "C:\\Users\\nikit\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
+      ],
+      "command": [
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+      ],
+      "critical": false,
+      "kind": "gui_app",
+      "name": "chrome",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+      "path_exists": true,
+      "requested": "chrome",
+      "status": "resolved",
+      "validation": "path only"
+    },
+    {
+      "candidates": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java"
+      ],
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe"
+      ],
+      "critical": false,
+      "kind": "executable",
+      "name": "java",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+      "path_exists": true,
+      "requested": "java",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "openjdk version \"17.0.19\" 2026-04-21\nOpenJDK Runtime Environment Temurin-17.0.19+10 (build 17.0.19+10)\nOpenJDK 64-Bit Server VM Temurin-17.0.19+10 (build 17.0.19+10, mixed mode, sharing)"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
+        "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb"
+      ],
+      "command": [
+        "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe"
+      ],
+      "critical": false,
+      "kind": "executable",
+      "name": "adb",
+      "notes": [
+        "Android device/emulator control; required before Android runtime QA"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
+      "path_exists": true,
+      "requested": "adb",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "Android Debug Bridge version 1.0.41\nVersion 37.0.0-14910828\nInstalled as C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe\nRunning on Windows 10.0.26200"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected to project-local Gradle wrapper"
+      ],
+      "candidates": [
+        "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\gradlew.bat",
+        "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\gradlew",
+        "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android-emulator\\proj\\gradlew.bat",
+        "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android-emulator\\proj\\gradlew"
+      ],
+      "command": [
+        "cmd.exe",
+        "/d",
+        "/c",
+        "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\gradlew.bat"
+      ],
+      "critical": false,
+      "kind": "project_wrapper_or_executable",
+      "name": "gradle",
+      "notes": [
+        "project-local Gradle wrapper is preferred over global Gradle",
+        "autocorrected to project-local Gradle wrapper"
+      ],
+      "ok": true,
+      "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\gradlew.bat",
+      "path_exists": true,
+      "requested": "gradle",
+      "resolution_source": "workspace-wrapper",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "------------------------------------------------------------\nGradle 8.11.1\n------------------------------------------------------------\n\nBuild time:    2024-11-20 16:56:46 UTC\nRevision:      481cb05a490e0ef9f8620f7873b83bd8a72e7c39\n\nKotlin:        2.0.20\nGroovy:        3.0.22\nAnt:           Apache Ant(TM) version 1.10.14 compiled on August 16 2023\nLauncher JVM:  17.0.19 (Eclipse Adoptium 17.0.19+10)\nDaemon JVM:    C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot (no JDK specified, using current Java home)\nOS:            Windows 11 10.0 amd64"
+    },
+    {
+      "candidates": [
+        "C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe",
+        "C:\\Program Files (x86)\\Android\\Android Studio\\bin\\studio64.exe",
+        "C:\\Users\\nikit\\AppData\\Local\\Programs\\Android Studio\\bin\\studio64.exe"
+      ],
+      "command": [
+        "C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe"
+      ],
+      "critical": false,
+      "kind": "gui_app",
+      "name": "android-studio",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe",
+      "path_exists": true,
+      "requested": "android-studio",
+      "status": "resolved",
+      "validation": "path only"
+    },
+    {
+      "candidates": [
+        "C:\\WINDOWS\\system32\\cmd.exe"
+      ],
+      "command": [
+        "C:\\WINDOWS\\system32\\cmd.exe"
+      ],
+      "critical": false,
+      "kind": "windows_shell",
+      "name": "cmd",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\WINDOWS\\system32\\cmd.exe",
+      "path_exists": true,
+      "requested": "cmd",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "Microsoft Windows [Version 10.0.26200.8737]"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\AppData\\Local\\Microsoft\\WindowsApps\\winget.exe"
+      ],
+      "command": [
+        "C:\\Users\\nikit\\AppData\\Local\\Microsoft\\WindowsApps\\winget.exe"
+      ],
+      "critical": false,
+      "kind": "executable",
+      "name": "winget",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\AppData\\Local\\Microsoft\\WindowsApps\\winget.exe",
+      "path_exists": true,
+      "requested": "winget",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "v1.28.240"
+    },
+    {
+      "candidates": [
+        "C:\\WINDOWS\\System32\\wsl.exe"
+      ],
+      "command": [
+        "C:\\WINDOWS\\System32\\wsl.exe"
+      ],
+      "critical": false,
+      "kind": "linux_subsystem",
+      "name": "wsl",
+      "notes": [
+        "Windows-to-Linux bridge; use before Linux-specific commands on Windows"
+      ],
+      "ok": false,
+      "path": "C:\\WINDOWS\\System32\\wsl.exe",
+      "path_exists": true,
+      "requested": "wsl",
+      "returncode": 50,
+      "status": "resolved",
+      "validation": "T\u0000h\u0000e\u0000 \u0000W\u0000i\u0000n\u0000d\u0000o\u0000w\u0000s\u0000 \u0000S\u0000u\u0000b\u0000s\u0000y\u0000s\u0000t\u0000e\u0000m\u0000 \u0000f\u0000o\u0000r\u0000 \u0000L\u0000i\u0000n\u0000u\u0000x\u0000 \u0000i\u0000s\u0000 \u0000n\u0000o\u0000t\u0000 \u0000i\u0000n\u0000s\u0000t\u0000a\u0000l\u0000l\u0000e\u0000d\u0000.\u0000 \u0000Y\u0000o\u0000u\u0000 \u0000c\u0000a\u0000n\u0000 \u0000i\u0000n\u0000s\u0000t\u0000a\u0000l\u0000l\u0000 \u0000b\u0000y\u0000 \u0000r\u0000u\u0000n\u0000n\u0000i\u0000n\u0000g\u0000 \u0000'\u0000w\u0000s\u0000l\u0000.\u0000e\u0000x\u0000e\u0000 \u0000-\u0000-\u0000i\u0000n\u0000s\u0000t\u0000a\u0000l\u0000l\u0000'\u0000.\u0000\n\u0000\n\u0000\n\u0000F\u0000o\u0000r\u0000 \u0000m\u0000o\u0000r\u0000e\u0000 \u0000i\u0000n\u0000f\u0000o\u0000r\u0000m\u0000a\u0000t\u0000i\u0000o\u0000n\u0000 \u0000p\u0000l\u0000e\u0000a\u0000s\u0000e\u0000 \u0000v\u0000i\u0000s\u0000i\u0000t\u0000 \u0000h\u0000t\u0000t\u0000p\u0000s\u0000:\u0000/\u0000/\u0000a\u0000k\u0000a\u0000.\u0000m\u0000s\u0000/\u0000w\u0000s\u0000l\u0000i\u0000n\u0000s\u0000t\u0000a\u0000l\u0000l\u0000\n\u0000\n\u0000\n\u0000"
+    },
+    {
+      "candidates": [
+        "C:\\WINDOWS\\System32\\bash.exe",
+        "C:\\Program Files\\Git\\bin\\bash.exe",
+        "C:\\Program Files\\Git\\usr\\bin\\bash.exe"
+      ],
+      "command": [
+        "C:\\Program Files\\Git\\bin\\bash.exe"
+      ],
+      "critical": false,
+      "kind": "shell",
+      "name": "bash",
+      "notes": [],
+      "ok": true,
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "path_exists": true,
+      "requested": "bash",
+      "returncode": 0,
+      "status": "resolved",
+      "validation": "GNU bash, version 5.3.9(1)-release (x86_64-pc-cygwin)\nCopyright (C) 2025 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law."
+    },
+    {
+      "candidates": [],
+      "command": null,
+      "critical": false,
+      "kind": "executable",
+      "name": "docker",
+      "notes": [],
+      "ok": false,
+      "path": null,
+      "path_exists": null,
+      "requested": "docker",
+      "status": "missing",
+      "validation": "missing path"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\test-android-apps\\0.1.2"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "test-android-apps",
+      "notes": [
+        "Android emulator QA is exposed through the Codex test-android-apps plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\test-android-apps\\0.1.2",
+      "path_exists": true,
+      "requested": "test-android-apps",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\build-web-apps\\0.1.2"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "build-web-apps",
+      "notes": [
+        "Web app build/debug workflows are exposed through the Codex build-web-apps plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\build-web-apps\\0.1.2",
+      "path_exists": true,
+      "requested": "build-web-apps",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\build-web-data-visualization\\0.1.21"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "build-web-data-visualization",
+      "notes": [
+        "Web data visualization workflows are exposed through the Codex build-web-data-visualization plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\build-web-data-visualization\\0.1.21",
+      "path_exists": true,
+      "requested": "build-web-data-visualization",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\canva\\9.0.0"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "canva",
+      "notes": [
+        "Canva workflows are exposed through the Codex Canva plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\canva\\9.0.0",
+      "path_exists": true,
+      "requested": "canva",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\coderabbit\\1.1.4"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "coderabbit",
+      "notes": [
+        "Code review workflows are exposed through the Codex CodeRabbit plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\coderabbit\\1.1.4",
+      "path_exists": true,
+      "requested": "coderabbit",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\codex-security\\0.1.10"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "codex-security",
+      "notes": [
+        "codex-security is exposed through a local Codex plugin surface, not necessarily a standalone executable",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\codex-security\\0.1.10",
+      "path_exists": true,
+      "requested": "codex-security",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\convex\\1.0.0"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "convex",
+      "notes": [
+        "Convex workflows are exposed through the Codex Convex plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\convex\\1.0.0",
+      "path_exists": true,
+      "requested": "convex",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\creative-production\\0.1.23"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "creative-production",
+      "notes": [
+        "Creative Production workflows are exposed through the Codex creative-production plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\creative-production\\0.1.23",
+      "path_exists": true,
+      "requested": "creative-production",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\documents\\26.623.12021"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "documents",
+      "notes": [
+        "documents is exposed through a local Codex plugin surface, not necessarily a standalone executable"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\documents\\26.623.12021",
+      "path_exists": true,
+      "requested": "documents",
+      "resolution_source": "config",
+      "status": "plugin-enabled",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\game-studio\\0.1.2"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "game-studio",
+      "notes": [
+        "Game development workflows are exposed through the Codex game-studio plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\game-studio\\0.1.2",
+      "path_exists": true,
+      "requested": "game-studio",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "github",
+      "notes": [
+        "GitHub workflows are exposed through the Codex GitHub plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\github\\0.1.5",
+      "path_exists": true,
+      "requested": "github",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\google-drive\\0.1.7"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "google-drive",
+      "notes": [
+        "Google Drive/Docs/Sheets/Slides workflows are exposed through the Codex Google Drive plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\google-drive\\0.1.7",
+      "path_exists": true,
+      "requested": "google-drive",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\personal\\hermes-proagents\\0.1.0+codex.20260618133236"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "hermes-proagents",
+      "notes": [
+        "Hermes Proagents workflows are exposed through the personal Hermes plugin"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\personal\\hermes-proagents\\0.1.0+codex.20260618133236",
+      "path_exists": true,
+      "requested": "hermes-proagents",
+      "resolution_source": "config",
+      "status": "plugin-enabled",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\hugging-face\\1.0.0"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "hugging-face",
+      "notes": [
+        "Hugging Face workflows are exposed through the Codex Hugging Face plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\hugging-face\\1.0.0",
+      "path_exists": true,
+      "requested": "hugging-face",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\nvidia\\1.0.2"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "nvidia",
+      "notes": [
+        "NVIDIA workflows are exposed through the Codex NVIDIA plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\nvidia\\1.0.2",
+      "path_exists": true,
+      "requested": "nvidia",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.623.12021"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "pdf",
+      "notes": [
+        "pdf is exposed through a local Codex plugin surface, not necessarily a standalone executable"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\pdf\\26.623.12021",
+      "path_exists": true,
+      "requested": "pdf",
+      "resolution_source": "config",
+      "status": "plugin-enabled",
+      "validation": "plugin config/cache"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\presentations\\26.623.12021"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "presentations",
+      "notes": [
+        "presentations is exposed through a local Codex plugin surface, not necessarily a standalone executable"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\presentations\\26.623.12021",
+      "path_exists": true,
+      "requested": "presentations",
+      "resolution_source": "config",
+      "status": "plugin-enabled",
+      "validation": "plugin config/cache"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\spreadsheets\\26.623.12021"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "spreadsheets",
+      "notes": [
+        "spreadsheets is exposed through a local Codex plugin surface, not necessarily a standalone executable"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\spreadsheets\\26.623.12021",
+      "path_exists": true,
+      "requested": "spreadsheets",
+      "resolution_source": "config",
+      "status": "plugin-enabled",
+      "validation": "plugin config/cache"
+    },
+    {
+      "autocorrected": true,
+      "autocorrections": [
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\supabase\\1.0.0"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "supabase",
+      "notes": [
+        "Supabase workflows are exposed through the Codex Supabase plugin",
+        "autocorrected plugin surface from local Codex plugin cache/skills"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\supabase\\1.0.0",
+      "path_exists": true,
+      "requested": "supabase",
+      "resolution_source": "plugin-cache",
+      "status": "plugin-autocorrected",
+      "validation": "plugin config/cache"
+    },
+    {
+      "candidates": [
+        "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\template-creator\\26.623.12021"
+      ],
+      "command": null,
+      "critical": false,
+      "kind": "codex_plugin",
+      "name": "template-creator",
+      "notes": [
+        "template-creator is exposed through a local Codex plugin surface, not necessarily a standalone executable"
+      ],
+      "ok": true,
+      "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-primary-runtime\\template-creator\\26.623.12021",
+      "path_exists": true,
+      "requested": "template-creator",
+      "resolution_source": "config",
+      "status": "plugin-enabled",
+      "validation": "plugin config/cache"
+    }
+  ],
+  "failed": [
+    "wsl",
+    "docker"
+  ],
+  "ok": true,
+  "platform_profiles": {
+    "android": {
+      "cwd": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator",
+      "decision_rules": [
+        "Use global local_worker MCP for local AI helper routing; NPU-backed quick helper is only for short routing/classification/summary, while Codex remains final decision-maker.",
+        "Use for AndroidManifest.xml, Gradle Android plugins, Kotlin/Java Android code, and Android emulator QA.",
+        "Default Android QA targets are emulators only; ignore/log physical adb devices unless the user explicitly requests physical-device testing.",
+        "Prefer project-local gradlew over global gradle when a wrapper exists in the project.",
+        "If java or adb is missing, stop before Android runtime work and report the missing prerequisite."
+      ],
+      "entrypoints": {
+        "optional": [
+          {
+            "candidates": [
+              "C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe",
+              "C:\\Program Files (x86)\\Android\\Android Studio\\bin\\studio64.exe",
+              "C:\\Users\\nikit\\AppData\\Local\\Programs\\Android Studio\\bin\\studio64.exe"
+            ],
+            "command": [
+              "C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe"
+            ],
+            "critical": false,
+            "kind": "gui_app",
+            "name": "android-studio",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Program Files\\Android\\Android Studio\\bin\\studio64.exe",
+            "path_exists": true,
+            "requested": "android-studio",
+            "status": "resolved",
+            "validation": "path only"
+          }
+        ],
+        "preferred": [
+          {
+            "candidates": [
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+            ],
+            "command": [
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+            ],
+            "critical": false,
+            "kind": "codex_mcp_server",
+            "mcp_server": "local_worker",
+            "name": "local_worker",
+            "notes": [
+              "global local AI gateway for Codex; Codex remains final decision-maker",
+              "Lemonade-only profiles; NPU quick helper is for short routing/classification/summary tasks",
+              "Hermes should route to local_worker/routing_policy and must not call heavy models directly"
+            ],
+            "npu_policy": {
+              "avoid_for": [
+                "long architectural reasoning",
+                "large code generation",
+                "final approval"
+              ],
+              "handoff": "Codex -> Hermes routing surface -> local_worker -> Lemonade NPU quick helper when task size fits",
+              "preferred_for": [
+                "routing",
+                "classification",
+                "short summaries",
+                "lightweight helper checks"
+              ]
+            },
+            "ok": true,
+            "path": "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py",
+            "path_exists": true,
+            "requested": "local_worker",
+            "status": "configured",
+            "validation": "path only"
+          },
+          {
+            "autocorrected": true,
+            "autocorrections": [
+              "autocorrected to project-local Gradle wrapper"
+            ],
+            "candidates": [
+              "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\gradlew.bat",
+              "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\gradlew",
+              "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android-emulator\\proj\\gradlew.bat",
+              "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android-emulator\\proj\\gradlew"
+            ],
+            "command": [
+              "cmd.exe",
+              "/d",
+              "/c",
+              "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\gradlew.bat"
+            ],
+            "critical": false,
+            "kind": "project_wrapper_or_executable",
+            "name": "gradle",
+            "notes": [
+              "project-local Gradle wrapper is preferred over global Gradle",
+              "autocorrected to project-local Gradle wrapper"
+            ],
+            "ok": true,
+            "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\gradlew.bat",
+            "path_exists": true,
+            "requested": "gradle",
+            "resolution_source": "workspace-wrapper",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "------------------------------------------------------------\nGradle 8.11.1\n------------------------------------------------------------\n\nBuild time:    2024-11-20 16:56:46 UTC\nRevision:      481cb05a490e0ef9f8620f7873b83bd8a72e7c39\n\nKotlin:        2.0.20\nGroovy:        3.0.22\nAnt:           Apache Ant(TM) version 1.10.14 compiled on August 16 2023\nLauncher JVM:  17.0.19 (Eclipse Adoptium 17.0.19+10)\nDaemon JVM:    C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot (no JDK specified, using current Java home)\nOS:            Windows 11 10.0 amd64"
+          },
+          {
+            "autocorrected": true,
+            "autocorrections": [
+              "autocorrected plugin surface from local Codex plugin cache/skills"
+            ],
+            "candidates": [
+              "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\test-android-apps\\0.1.2"
+            ],
+            "command": null,
+            "critical": false,
+            "kind": "codex_plugin",
+            "name": "test-android-apps",
+            "notes": [
+              "Android emulator QA is exposed through the Codex test-android-apps plugin",
+              "autocorrected plugin surface from local Codex plugin cache/skills"
+            ],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\test-android-apps\\0.1.2",
+            "path_exists": true,
+            "requested": "test-android-apps",
+            "resolution_source": "plugin-cache",
+            "status": "plugin-autocorrected",
+            "validation": "plugin config/cache"
+          }
+        ],
+        "required": [
+          {
+            "candidates": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java"
+            ],
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe"
+            ],
+            "critical": false,
+            "kind": "executable",
+            "name": "java",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+            "path_exists": true,
+            "requested": "java",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "openjdk version \"17.0.19\" 2026-04-21\nOpenJDK Runtime Environment Temurin-17.0.19+10 (build 17.0.19+10)\nOpenJDK 64-Bit Server VM Temurin-17.0.19+10 (build 17.0.19+10, mixed mode, sharing)"
+          },
+          {
+            "candidates": [
+              "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
+              "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb"
+            ],
+            "command": [
+              "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe"
+            ],
+            "critical": false,
+            "kind": "executable",
+            "name": "adb",
+            "notes": [
+              "Android device/emulator control; required before Android runtime QA"
+            ],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
+            "path_exists": true,
+            "requested": "adb",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "Android Debug Bridge version 1.0.41\nVersion 37.0.0-14910828\nInstalled as C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe\nRunning on Windows 10.0.26200"
+          }
+        ]
+      },
+      "missing_preferred": [],
+      "missing_required": [],
+      "ok": true,
+      "platform": "android",
+      "ready": true,
+      "requested": "android",
+      "summary": {
+        "optional_ok": 1,
+        "optional_total": 1,
+        "preferred_ok": 3,
+        "preferred_total": 3,
+        "required_ok": 2,
+        "required_total": 2
+      }
+    },
+    "linux": {
+      "cwd": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator",
+      "decision_rules": [
+        "Use global local_worker MCP for local AI helper routing; NPU-backed quick helper is only for short routing/classification/summary, while Codex remains final decision-maker.",
+        "Use for POSIX shell, Docker/Linux containers, WSL, package managers, and Linux-only tooling.",
+        "On Windows, route Linux-specific commands through WSL when the profile is ready.",
+        "If the required Linux bridge is missing, stop before pretending Linux execution is available."
+      ],
+      "entrypoints": {
+        "optional": [],
+        "preferred": [
+          {
+            "candidates": [
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+            ],
+            "command": [
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+            ],
+            "critical": false,
+            "kind": "codex_mcp_server",
+            "mcp_server": "local_worker",
+            "name": "local_worker",
+            "notes": [
+              "global local AI gateway for Codex; Codex remains final decision-maker",
+              "Lemonade-only profiles; NPU quick helper is for short routing/classification/summary tasks",
+              "Hermes should route to local_worker/routing_policy and must not call heavy models directly"
+            ],
+            "npu_policy": {
+              "avoid_for": [
+                "long architectural reasoning",
+                "large code generation",
+                "final approval"
+              ],
+              "handoff": "Codex -> Hermes routing surface -> local_worker -> Lemonade NPU quick helper when task size fits",
+              "preferred_for": [
+                "routing",
+                "classification",
+                "short summaries",
+                "lightweight helper checks"
+              ]
+            },
+            "ok": true,
+            "path": "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py",
+            "path_exists": true,
+            "requested": "local_worker",
+            "status": "configured",
+            "validation": "path only"
+          },
+          {
+            "candidates": [
+              "C:\\WINDOWS\\System32\\bash.exe",
+              "C:\\Program Files\\Git\\bin\\bash.exe",
+              "C:\\Program Files\\Git\\usr\\bin\\bash.exe"
+            ],
+            "command": [
+              "C:\\Program Files\\Git\\bin\\bash.exe"
+            ],
+            "critical": false,
+            "kind": "shell",
+            "name": "bash",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+            "path_exists": true,
+            "requested": "bash",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "GNU bash, version 5.3.9(1)-release (x86_64-pc-cygwin)\nCopyright (C) 2025 Free Software Foundation, Inc.\nLicense GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\nThis is free software; you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law."
+          },
+          {
+            "candidates": [],
+            "command": null,
+            "critical": false,
+            "kind": "executable",
+            "name": "docker",
+            "notes": [],
+            "ok": false,
+            "path": null,
+            "path_exists": null,
+            "requested": "docker",
+            "status": "missing",
+            "validation": "missing path"
+          }
+        ],
+        "required": [
+          {
+            "candidates": [
+              "C:\\WINDOWS\\System32\\wsl.exe"
+            ],
+            "command": [
+              "C:\\WINDOWS\\System32\\wsl.exe"
+            ],
+            "critical": false,
+            "kind": "linux_subsystem",
+            "name": "wsl",
+            "notes": [
+              "Windows-to-Linux bridge; use before Linux-specific commands on Windows"
+            ],
+            "ok": false,
+            "path": "C:\\WINDOWS\\System32\\wsl.exe",
+            "path_exists": true,
+            "requested": "wsl",
+            "returncode": 50,
+            "status": "resolved",
+            "validation": "T\u0000h\u0000e\u0000 \u0000W\u0000i\u0000n\u0000d\u0000o\u0000w\u0000s\u0000 \u0000S\u0000u\u0000b\u0000s\u0000y\u0000s\u0000t\u0000e\u0000m\u0000 \u0000f\u0000o\u0000r\u0000 \u0000L\u0000i\u0000n\u0000u\u0000x\u0000 \u0000i\u0000s\u0000 \u0000n\u0000o\u0000t\u0000 \u0000i\u0000n\u0000s\u0000t\u0000a\u0000l\u0000l\u0000e\u0000d\u0000.\u0000 \u0000Y\u0000o\u0000u\u0000 \u0000c\u0000a\u0000n\u0000 \u0000i\u0000n\u0000s\u0000t\u0000a\u0000l\u0000l\u0000 \u0000b\u0000y\u0000 \u0000r\u0000u\u0000n\u0000n\u0000i\u0000n\u0000g\u0000 \u0000'\u0000w\u0000s\u0000l\u0000.\u0000e\u0000x\u0000e\u0000 \u0000-\u0000-\u0000i\u0000n\u0000s\u0000t\u0000a\u0000l\u0000l\u0000'\u0000.\u0000\n\u0000\n\u0000\n\u0000F\u0000o\u0000r\u0000 \u0000m\u0000o\u0000r\u0000e\u0000 \u0000i\u0000n\u0000f\u0000o\u0000r\u0000m\u0000a\u0000t\u0000i\u0000o\u0000n\u0000 \u0000p\u0000l\u0000e\u0000a\u0000s\u0000e\u0000 \u0000v\u0000i\u0000s\u0000i\u0000t\u0000 \u0000h\u0000t\u0000t\u0000p\u0000s\u0000:\u0000/\u0000/\u0000a\u0000k\u0000a\u0000.\u0000m\u0000s\u0000/\u0000w\u0000s\u0000l\u0000i\u0000n\u0000s\u0000t\u0000a\u0000l\u0000l\u0000\n\u0000\n\u0000\n\u0000"
+          }
+        ]
+      },
+      "missing_preferred": [
+        "docker"
+      ],
+      "missing_required": [
+        "wsl"
+      ],
+      "ok": false,
+      "platform": "linux",
+      "ready": false,
+      "requested": "linux",
+      "summary": {
+        "optional_ok": 0,
+        "optional_total": 0,
+        "preferred_ok": 2,
+        "preferred_total": 3,
+        "required_ok": 0,
+        "required_total": 1
+      }
+    },
+    "web": {
+      "cwd": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator",
+      "decision_rules": [
+        "Use global local_worker MCP for local AI helper routing; NPU-backed quick helper is only for short routing/classification/summary, while Codex remains final decision-maker.",
+        "Use for package.json, Vite, Next, React, browser UI, frontend build/debug/test work.",
+        "Prefer local package manager lockfiles and scripts before ad-hoc commands.",
+        "Use Browser/build-web-apps surfaces for rendered UI verification when available."
+      ],
+      "entrypoints": {
+        "optional": [
+          {
+            "candidates": [
+              "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+              "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "C:\\Users\\nikit\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
+            ],
+            "command": [
+              "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+            ],
+            "critical": false,
+            "kind": "gui_app",
+            "name": "chrome",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            "path_exists": true,
+            "requested": "chrome",
+            "status": "resolved",
+            "validation": "path only"
+          },
+          {
+            "candidates": [
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_repl.exe"
+            ],
+            "command": [
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_repl.exe"
+            ],
+            "critical": false,
+            "kind": "executable",
+            "name": "node_repl",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_repl.exe",
+            "path_exists": true,
+            "requested": "node_repl",
+            "status": "resolved",
+            "validation": "path only"
+          }
+        ],
+        "preferred": [
+          {
+            "candidates": [
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+            ],
+            "command": [
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+            ],
+            "critical": false,
+            "kind": "codex_mcp_server",
+            "mcp_server": "local_worker",
+            "name": "local_worker",
+            "notes": [
+              "global local AI gateway for Codex; Codex remains final decision-maker",
+              "Lemonade-only profiles; NPU quick helper is for short routing/classification/summary tasks",
+              "Hermes should route to local_worker/routing_policy and must not call heavy models directly"
+            ],
+            "npu_policy": {
+              "avoid_for": [
+                "long architectural reasoning",
+                "large code generation",
+                "final approval"
+              ],
+              "handoff": "Codex -> Hermes routing surface -> local_worker -> Lemonade NPU quick helper when task size fits",
+              "preferred_for": [
+                "routing",
+                "classification",
+                "short summaries",
+                "lightweight helper checks"
+              ]
+            },
+            "ok": true,
+            "path": "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py",
+            "path_exists": true,
+            "requested": "local_worker",
+            "status": "configured",
+            "validation": "path only"
+          },
+          {
+            "candidates": [
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\npm.cmd",
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\npm.exe",
+              "C:\\Program Files\\nodejs\\npm.cmd"
+            ],
+            "command": [
+              "cmd.exe",
+              "/d",
+              "/c",
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\npm.cmd"
+            ],
+            "critical": false,
+            "kind": "executable",
+            "name": "npm",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\npm.cmd",
+            "path_exists": true,
+            "requested": "npm",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "11.9.0"
+          },
+          {
+            "candidates": [
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\pnpm.cmd",
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\pnpm.exe",
+              "C:\\Users\\nikit\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\pnpm.cmd"
+            ],
+            "command": [
+              "cmd.exe",
+              "/d",
+              "/c",
+              "C:\\Users\\nikit\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\pnpm.cmd"
+            ],
+            "critical": false,
+            "kind": "executable",
+            "name": "pnpm",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\bin\\pnpm.cmd",
+            "path_exists": true,
+            "requested": "pnpm",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "11.7.0"
+          },
+          {
+            "candidates": [
+              "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-bundled\\browser\\26.623.70822"
+            ],
+            "command": null,
+            "critical": false,
+            "kind": "codex_plugin",
+            "name": "browser",
+            "notes": [
+              "in-app Browser is a Codex tool surface, not a standalone executable"
+            ],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-bundled\\browser\\26.623.70822",
+            "path_exists": true,
+            "requested": "browser",
+            "resolution_source": "config",
+            "status": "plugin-enabled",
+            "validation": "plugin config/cache"
+          },
+          {
+            "autocorrected": true,
+            "autocorrections": [
+              "autocorrected plugin surface from local Codex plugin cache/skills"
+            ],
+            "candidates": [
+              "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\build-web-apps\\0.1.2"
+            ],
+            "command": null,
+            "critical": false,
+            "kind": "codex_plugin",
+            "name": "build-web-apps",
+            "notes": [
+              "Web app build/debug workflows are exposed through the Codex build-web-apps plugin",
+              "autocorrected plugin surface from local Codex plugin cache/skills"
+            ],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\.codex\\plugins\\cache\\openai-curated-remote\\build-web-apps\\0.1.2",
+            "path_exists": true,
+            "requested": "build-web-apps",
+            "resolution_source": "plugin-cache",
+            "status": "plugin-autocorrected",
+            "validation": "plugin config/cache"
+          }
+        ],
+        "required": [
+          {
+            "candidates": [
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node.exe",
+              "C:\\Program Files\\nodejs\\node.exe"
+            ],
+            "command": [
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node.exe"
+            ],
+            "critical": false,
+            "kind": "executable",
+            "name": "node",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node.exe",
+            "path_exists": true,
+            "requested": "node",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "v24.14.0"
+          }
+        ]
+      },
+      "missing_preferred": [],
+      "missing_required": [],
+      "ok": true,
+      "platform": "web",
+      "ready": true,
+      "requested": "web",
+      "summary": {
+        "optional_ok": 2,
+        "optional_total": 2,
+        "preferred_ok": 5,
+        "preferred_total": 5,
+        "required_ok": 1,
+        "required_total": 1
+      }
+    },
+    "windows": {
+      "cwd": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator",
+      "decision_rules": [
+        "Use global local_worker MCP for local AI helper routing; NPU-backed quick helper is only for short routing/classification/summary, while Codex remains final decision-maker.",
+        "Use for Windows apps, PowerShell scripts, .bat/.cmd, registry/path/app-launch work, and GUI control.",
+        "Prefer PowerShell native cmdlets for Windows filesystem and process work.",
+        "Use Computer plugin only for interactive GUI tasks that cannot be handled through local files or CLI."
+      ],
+      "entrypoints": {
+        "optional": [
+          {
+            "candidates": [
+              "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+              "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+              "C:\\Users\\nikit\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"
+            ],
+            "command": [
+              "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+            ],
+            "critical": false,
+            "kind": "gui_app",
+            "name": "chrome",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+            "path_exists": true,
+            "requested": "chrome",
+            "status": "resolved",
+            "validation": "path only"
+          }
+        ],
+        "preferred": [
+          {
+            "candidates": [
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+            ],
+            "command": [
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\.venv\\Scripts\\python.exe",
+              "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py"
+            ],
+            "critical": false,
+            "kind": "codex_mcp_server",
+            "mcp_server": "local_worker",
+            "name": "local_worker",
+            "notes": [
+              "global local AI gateway for Codex; Codex remains final decision-maker",
+              "Lemonade-only profiles; NPU quick helper is for short routing/classification/summary tasks",
+              "Hermes should route to local_worker/routing_policy and must not call heavy models directly"
+            ],
+            "npu_policy": {
+              "avoid_for": [
+                "long architectural reasoning",
+                "large code generation",
+                "final approval"
+              ],
+              "handoff": "Codex -> Hermes routing surface -> local_worker -> Lemonade NPU quick helper when task size fits",
+              "preferred_for": [
+                "routing",
+                "classification",
+                "short summaries",
+                "lightweight helper checks"
+              ]
+            },
+            "ok": true,
+            "path": "C:\\Projects\\Optimization\\LLM_local\\codex_local_ai_integration_kit\\codex_local_ai_integration_kit\\local_worker\\server.py",
+            "path_exists": true,
+            "requested": "local_worker",
+            "status": "configured",
+            "validation": "path only"
+          },
+          {
+            "candidates": [
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe"
+            ],
+            "command": [
+              "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe",
+              "turn-ended"
+            ],
+            "critical": false,
+            "kind": "codex_plugin_notify",
+            "name": "computer-use",
+            "notes": [
+              "interactive control is exposed through the Codex Computer plugin"
+            ],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\1b23c930bdf84ed6\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe",
+            "path_exists": true,
+            "requested": "computer-use",
+            "status": "resolved",
+            "validation": "path only"
+          },
+          {
+            "candidates": [
+              "C:\\Users\\nikit\\AppData\\Local\\Microsoft\\WindowsApps\\winget.exe"
+            ],
+            "command": [
+              "C:\\Users\\nikit\\AppData\\Local\\Microsoft\\WindowsApps\\winget.exe"
+            ],
+            "critical": false,
+            "kind": "executable",
+            "name": "winget",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Users\\nikit\\AppData\\Local\\Microsoft\\WindowsApps\\winget.exe",
+            "path_exists": true,
+            "requested": "winget",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "v1.28.240"
+          }
+        ],
+        "required": [
+          {
+            "candidates": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+              "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+            ],
+            "command": [
+              "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+            ],
+            "critical": true,
+            "kind": "executable",
+            "name": "powershell",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+            "path_exists": true,
+            "requested": "powershell",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "7.6.3"
+          },
+          {
+            "candidates": [
+              "C:\\WINDOWS\\system32\\cmd.exe"
+            ],
+            "command": [
+              "C:\\WINDOWS\\system32\\cmd.exe"
+            ],
+            "critical": false,
+            "kind": "windows_shell",
+            "name": "cmd",
+            "notes": [],
+            "ok": true,
+            "path": "C:\\WINDOWS\\system32\\cmd.exe",
+            "path_exists": true,
+            "requested": "cmd",
+            "returncode": 0,
+            "status": "resolved",
+            "validation": "Microsoft Windows [Version 10.0.26200.8737]"
+          }
+        ]
+      },
+      "missing_preferred": [],
+      "missing_required": [],
+      "ok": true,
+      "platform": "windows",
+      "ready": true,
+      "requested": "windows",
+      "summary": {
+        "optional_ok": 1,
+        "optional_total": 1,
+        "preferred_ok": 3,
+        "preferred_total": 3,
+        "required_ok": 2,
+        "required_total": 2
+      }
+    }
+  },
+  "summary": {
+    "critical_failed": 0,
+    "failed": 2,
+    "ok": 41,
+    "platforms_ready": 3,
+    "platforms_total": 4,
+    "total": 43
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "name": "Martyshkin Trud Runner",
+  "platform": "web-mobile",
+  "buildPath": "project://build",
+  "outputName": "web-mobile",
+  "debug": false,
+  "md5Cache": false,
+  "replaceSplashScreen": false,
+  "startScene": "9b5fe441-884f-49d0-b7e7-1037af1377d8",
+  "scenes": [
+    {
+      "url": "db://assets/scenes/main.scene",
+      "uuid": "9b5fe441-884f-49d0-b7e7-1037af1377d8"
+    }
+  ],
+  "packages": {
+    "web-mobile": {
+      "polyfills": {
+        "asyncFunctions": true
+      }
+    }
+  },
+  "customPipeline": false,
+  "renderPipeline": "",
+  "includeModules": [
+    "2d",
+    "affine-transform",
+    "animation",
+    "audio",
+    "base",
+    "gfx-webgl",
+    "gfx-webgl2",
+    "graphics",
+    "intersection-2d",
+    "legacy-pipeline",
+    "mask",
+    "particle-2d",
+    "profiler",
+    "rich-text",
+    "tween",
+    "ui"
+  ],
+  "overwriteProjectSettings": {
+    "includeModules": {
+      "custom-pipeline": "off",
+      "dragon-bones": "off",
+      "legacy-pipeline": "on",
+      "spine": "off",
+      "spine-3.8": "off",
+      "tiled-map": "off",
+      "video": "off",
+      "webview": "off"
+    }
+  }
+}

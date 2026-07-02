@@ -1,0 +1,212 @@
+[
+  {
+    "id": "platform_scaffold_construction_01",
+    "category": "platform",
+    "filename": "platform_scaffold_construction_01.png",
+    "description_ru": "Стройплощадка: платформа из лесов",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      784,
+      70
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  },
+  {
+    "id": "platform_wooden_work_planks_01",
+    "category": "platform",
+    "filename": "platform_wooden_work_planks_01.png",
+    "description_ru": "Деревянный рабочий настил",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      804,
+      118
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  },
+  {
+    "id": "platform_metal_i_beam_01",
+    "category": "platform",
+    "filename": "platform_metal_i_beam_01.png",
+    "description_ru": "Металлическая балка-платформа",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      824,
+      80
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  },
+  {
+    "id": "platform_brick_wall_01",
+    "category": "platform",
+    "filename": "platform_brick_wall_01.png",
+    "description_ru": "Кирпичная платформа",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      804,
+      140
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  },
+  {
+    "id": "platform_suspended_chain_01",
+    "category": "platform",
+    "filename": "platform_suspended_chain_01.png",
+    "description_ru": "Подвесная платформа на цепях",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      734,
+      75
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  },
+  {
+    "id": "platform_concrete_slab_rebar_01",
+    "category": "platform",
+    "filename": "platform_concrete_slab_rebar_01.png",
+    "description_ru": "Бетонная плита с арматурой",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      805,
+      90
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  },
+  {
+    "id": "platform_conveyor_belt_01",
+    "category": "platform",
+    "filename": "platform_conveyor_belt_01.png",
+    "description_ru": "Конвейерная платформа",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      795,
+      95
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  },
+  {
+    "id": "platform_bureaucracy_office_desk_01",
+    "category": "platform",
+    "filename": "platform_bureaucracy_office_desk_01.png",
+    "description_ru": "Офисный стол-платформа",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      795,
+      75
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  },
+  {
+    "id": "platform_archive_shelf_01",
+    "category": "platform",
+    "filename": "platform_archive_shelf_01.png",
+    "description_ru": "Архивная полка-платформа",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      795,
+      180
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  },
+  {
+    "id": "platform_banana_crate_01",
+    "category": "platform",
+    "filename": "platform_banana_crate_01.png",
+    "description_ru": "Банановый ящик-платформа",
+    "canvas_px": [
+      1024,
+      512
+    ],
+    "transparent_background": true,
+    "cocos_import_type": "sprite-frame",
+    "suggested_anchor": [
+      0.5,
+      0.5
+    ],
+    "suggested_collision_size_px": [
+      765,
+      120
+    ],
+    "visual_style": "flat_2d_side_view_cocos_ready_no_perspective"
+  }
+]

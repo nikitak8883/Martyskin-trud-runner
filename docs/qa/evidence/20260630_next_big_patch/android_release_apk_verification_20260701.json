@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-07-01T11:41:33.6111556+03:00",
+  "source_apk": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\build\\CocosGame\\outputs\\apk\\release\\CocosGame-release.apk",
+  "release_apk": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\releases\\android\\mtr-20260701-next-big-patch-release.apk",
+  "size_bytes": 137968594,
+  "sha256": "5BA586CAA604AF01C8BAA1B75FB616C0D0CD2BA8FEA06AF7116785569F97E3E9",
+  "abi": [
+    "arm64-v8a",
+    "armeabi-v7a"
+  ],
+  "has_arm64_v8a": true,
+  "has_armeabi_v7a": true,
+  "has_x86_64": false,
+  "js_entry": "assets/assets/main/index.js",
+  "checks": {
+    "containsPrimatal": true,
+    "containsNativeStartupQuery": true,
+    "containsPauseQa": true,
+    "containsBonusJump": true,
+    "containsBonusDash": true,
+    "containsBonusExtraLife": true,
+    "containsPromptCall": false
+  },
+  "apksigner": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\build-tools\\37.0.0\\apksigner.bat",
+  "apksigner_exit": 0,
+  "apksigner_stdout": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\apksigner-release-verify-20260701.out.log",
+  "apksigner_stderr": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\apksigner-release-verify-20260701.err.log",
+  "apksigner_ok": true,
+  "ok": true
+}

@@ -1,0 +1,43 @@
+{
+  "version": "2026-05-17-v2",
+  "default_bubble_allowed": false,
+  "anchors_required": [
+    "head_anchor",
+    "neck_anchor",
+    "torso_anchor",
+    "hand_l_anchor",
+    "hand_r_anchor",
+    "back_anchor",
+    "feet_anchor",
+    "aura_anchor"
+  ],
+  "mapping": {
+    "helmet": "head_anchor",
+    "hardhat": "head_anchor",
+    "vest": "torso_anchor",
+    "boots": "feet_anchor",
+    "magnet": [
+      "back_anchor",
+      "hand_r_anchor"
+    ],
+    "coffee": "hand_r_anchor",
+    "blueprint": "hand_l_anchor",
+    "pass": "hand_l_anchor",
+    "card": "hand_l_anchor",
+    "shield": "aura_anchor",
+    "speed_fx": "feet_anchor"
+  },
+  "forbidden": [
+    "vest_to_head_anchor",
+    "helmet_to_torso_anchor",
+    "default_shield",
+    "default_aura",
+    "square_as_equipment_placeholder",
+    "bubble_as_equipment_placeholder"
+  ],
+  "shield_rules": {
+    "only_when_active": true,
+    "max_alpha": 0.3,
+    "below_equipment": true
+  }
+}

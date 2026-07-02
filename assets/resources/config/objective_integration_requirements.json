@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 2,
+  "failOnZeroCategory": true,
+  "runtimeLogPrefix": "MTR_ASSET_USAGE",
+  "activeTextureSource": "nessesary/9",
+  "manifest": "assets/resources/config/last_iteration_asset_manifest.generated.json",
+  "requiredCategories": {
+    "platforms": {
+      "minRuntimeReferences": 40,
+      "examples": [
+        "objectives/themed/last_iteration/construction/platforms",
+        "objectives/themed/last_iteration/farm/platforms",
+        "objectives/themed/last_iteration/security/platforms"
+      ]
+    },
+    "hazards": {
+      "minRuntimeReferences": 60,
+      "examples": [
+        "objectives/themed/last_iteration/construction/hazards",
+        "objectives/themed/last_iteration/office/hazards",
+        "objectives/themed/last_iteration/inspection/hazards"
+      ]
+    },
+    "bonuses": {
+      "minRuntimeReferences": 6,
+      "examples": [
+        "objectives/bonuses/bonus_blueprint_01",
+        "objectives/equipment/equipment_dash_boots_01"
+      ]
+    },
+    "npc_decor": {
+      "minRuntimeReferences": 4,
+      "examples": [
+        "objectives/npc/npc_worker_wrench_01",
+        "objectives/npc/npc_worker_clipboard_01"
+      ]
+    },
+    "ui_achievements": {
+      "minRuntimeReferences": 4,
+      "examples": [
+        "objectives/themed/last_iteration/ui/main_menu",
+        "objectives/ui/ui_achievement_trophy_01"
+      ]
+    },
+    "labels_signage": {
+      "minRuntimeReferences": 6,
+      "examples": [
+        "obstacle_label_component",
+        "story_banner_component"
+      ]
+    },
+    "foreground_decor": {
+      "minRuntimeReferences": 2,
+      "examples": [
+        "foreground_safe_area_matte",
+        "objectives/themed/last_iteration/shared/foreground_decor"
+      ]
+    },
+    "background_decor": {
+      "minRuntimeReferences": 2,
+      "examples": [
+        "story_banner_component",
+        "objectives/npc/npc_worker_clipboard_01"
+      ]
+    }
+  }
+}

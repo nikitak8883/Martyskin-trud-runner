@@ -1,0 +1,1267 @@
+--------- beginning of main
+06-22 00:28:09.804 D/EGL_emulation( 5732): app_time_stats: avg=37.26ms min=26.64ms max=63.41ms count=24
+06-22 00:28:10.006 W/BpBinder( 5783): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+06-22 00:28:10.007 W/ProcessState( 5783): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+06-22 00:28:10.035 I/hwservicemanager(  217): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+06-22 00:28:10.036 I/Gralloc4( 5783): mapper 4.x is not supported
+--------- beginning of kernel
+06-22 00:28:10.015 I/servicemanager(    0): Caller(pid=5783,uid=2000,sid=u:r:shell:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+06-22 00:28:10.077 W/MediaProvider( 1337): isAppCloneUserPair for user 0: false
+06-22 00:28:10.154 I/wpa_supplicant(  868): wlan0: CTRL-EVENT-BEACON-LOSS 
+--------- beginning of system
+06-22 00:28:10.192 D/ActivityManager(  630): freezing 3775 com.google.android.apps.messaging
+06-22 00:28:10.263 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 5990 [CONTEXT service_id=218 ]
+06-22 00:28:10.271 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 85 uptime_millis: 85 exec_start_elapsed_seconds: 5990 [CONTEXT service_id=218 ]
+06-22 00:28:10.275 I/keystore2(  233): system/security/keystore2/watchdog/src/lib.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+06-22 00:28:10.419 D/AudioFlinger(  490): mixer(0x792f353ba8e0) throttle end: throttle time(5)
+06-22 00:28:10.707 D/ActivityManager(  630): freezing 3412 com.google.android.documentsui
+06-22 00:28:10.715 D/InetDiagMessage(  630): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+06-22 00:28:10.717 D/InetDiagMessage(  630): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+06-22 00:28:10.718 D/InetDiagMessage(  630): Destroyed live tcp sockets for uids={10096} in 4ms
+06-22 00:28:10.819 D/EGL_emulation( 5732): app_time_stats: avg=29.35ms min=22.70ms max=41.57ms count=28
+06-22 00:28:10.947 D/AF::Track(  490): interceptBuffer: took 5870us to intercept 0 tracks
+06-22 00:28:11.083 D/ActivityManager(  630): freezing 1661 com.android.chrome
+06-22 00:28:11.103 D/InetDiagMessage(  630): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+06-22 00:28:11.107 D/InetDiagMessage(  630): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+06-22 00:28:11.107 D/InetDiagMessage(  630): Destroyed live tcp sockets for uids={10145} in 8ms
+06-22 00:28:11.263 D/ActivityManager(  630): freezing 1545 com.google.android.permissioncontroller
+06-22 00:28:11.268 D/InetDiagMessage(  630): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+06-22 00:28:11.270 D/InetDiagMessage(  630): Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+06-22 00:28:11.270 D/InetDiagMessage(  630): Destroyed live tcp sockets for uids={10186} in 3ms
+06-22 00:28:11.529 D/AF::Track(  490): interceptBuffer: took 558us to intercept 0 tracks
+06-22 00:28:11.834 D/EGL_emulation( 5732): app_time_stats: avg=26.53ms min=20.94ms max=32.36ms count=29
+06-22 00:28:12.839 D/EGL_emulation( 5732): app_time_stats: avg=26.91ms min=21.51ms max=33.06ms count=30
+06-22 00:28:12.923 D/Cocos   ( 5732): 00:28:12 [DEBUG]: JS: MTR_AUDIO_LOAD_REQUEST reason=deferred count=31
+06-22 00:28:12.967 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/11/110b1f98-d6f9-4164-8c8a-b20bebce6b05.wav) file size: 50758
+06-22 00:28:12.969 V/AssetFd ( 5732): ~AssetFd: 164
+06-22 00:28:12.973 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/3c/3c0b68b2-adb0-4564-9eba-e9c46ad79708.wav) file size: 52964
+06-22 00:28:12.974 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/11/110b1f98-d6f9-4164-8c8a-b20bebce6b05.wav)
+06-22 00:28:12.975 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/11/110b1f98-d6f9-4164-8c8a-b20bebce6b05.wav, extension:.wav
+06-22 00:28:12.975 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:12.975 V/AssetFd ( 5732): ~AssetFd: 164
+06-22 00:28:12.975 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/3c/3c0b68b2-adb0-4564-9eba-e9c46ad79708.wav)
+06-22 00:28:12.975 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/3c/3c0b68b2-adb0-4564-9eba-e9c46ad79708.wav, extension:.wav
+06-22 00:28:12.976 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:12.976 D/AudioDecoderWav( 5732): wav info: frames: 25357, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:12.976 D/AudioDecoderWav( 5732): wav info: frames: 26460, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:12.977 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/a0/a0fb52e3-ce2a-47cf-a1bf-7f64b8e1ad81.wav) file size: 44144
+06-22 00:28:12.977 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/11/110b1f98-d6f9-4164-8c8a-b20bebce6b05.wav) to pcm data wasted 2.252000ms
+06-22 00:28:12.977 V/AssetFd ( 5732): ~AssetFd: 164
+06-22 00:28:12.979 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/a0/a0fb52e3-ce2a-47cf-a1bf-7f64b8e1ad81.wav)
+06-22 00:28:12.979 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/a0/a0fb52e3-ce2a-47cf-a1bf-7f64b8e1ad81.wav, extension:.wav
+06-22 00:28:12.979 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:12.980 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:12.980 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:12.980 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:12.980 V/AudioDecoder( 5732): resample() 55198 output frames
+06-22 00:28:12.981 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/f6/f6f5b81c-fd5f-452d-acdf-5ded0b746fd9.wav) file size: 36206
+06-22 00:28:12.981 D/AudioDecoderWav( 5732): wav info: frames: 22050, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:12.981 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/3c/3c0b68b2-adb0-4564-9eba-e9c46ad79708.wav) to pcm data wasted 2.426000ms
+06-22 00:28:12.981 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:12.983 V/AudioDecoder( 5732): outFrames: 110396
+06-22 00:28:12.983 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:12.984 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:12.984 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/f6/f6f5b81c-fd5f-452d-acdf-5ded0b746fd9.wav)
+06-22 00:28:12.984 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/f6/f6f5b81c-fd5f-452d-acdf-5ded0b746fd9.wav, extension:.wav
+06-22 00:28:12.985 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:12.987 V/AssetFd ( 5732): ~AssetFd: 164
+06-22 00:28:12.987 D/AudioDecoderWav( 5732): wav info: frames: 18081, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:12.988 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/a0/a0fb52e3-ce2a-47cf-a1bf-7f64b8e1ad81.wav) to pcm data wasted 2.598000ms
+06-22 00:28:12.988 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:12.990 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/f6/f6f5b81c-fd5f-452d-acdf-5ded0b746fd9.wav) to pcm data wasted 3.479000ms
+06-22 00:28:12.990 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:12.991 V/AudioResampler( 5732): resampler load 6 -> 12 MHz due to delta +6 MHz from quality 2
+06-22 00:28:12.992 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:12.992 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/81/81a4de6d-4c85-4dfd-9843-67d795a34cf0.wav) file size: 24740
+06-22 00:28:12.993 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:12.993 V/AudioResampler( 5732): resampler load 12 -> 6 MHz due to delta -6 MHz from quality 2
+06-22 00:28:12.994 V/AudioDecoder( 5732): pcm buffer size: 110396
+06-22 00:28:12.995 V/AudioResampler( 5732): resampler load 6 -> 12 MHz due to delta +6 MHz from quality 2
+06-22 00:28:12.996 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/4f/4f6d2353-d855-4ea7-b661-21c2fec61803.wav) file size: 15920
+06-22 00:28:12.996 V/AudioDecoder( 5732): resample() 57600 output frames
+06-22 00:28:12.996 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/81/81a4de6d-4c85-4dfd-9843-67d795a34cf0.wav)
+06-22 00:28:12.996 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:12.996 D/ThreadPool( 5732): stretch pool from 5 to 7, waste 0.000000 seconds
+06-22 00:28:12.997 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/81/81a4de6d-4c85-4dfd-9843-67d795a34cf0.wav, extension:.wav
+06-22 00:28:12.998 V/AudioDecoder( 5732): resample() 48000 output frames
+06-22 00:28:12.998 V/AudioDecoder( 5732): outFrames: 115200
+06-22 00:28:12.999 V/AudioResampler( 5732): resampler load 12 -> 18 MHz due to delta +6 MHz from quality 2
+06-22 00:28:12.999 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:12.999 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/4f/4f6d2353-d855-4ea7-b661-21c2fec61803.wav)
+06-22 00:28:12.999 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/4f/4f6d2353-d855-4ea7-b661-21c2fec61803.wav, extension:.wav
+06-22 00:28:13.000 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.001 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.002 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.002 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.002 V/AudioDecoder( 5732): resample() 39360 output frames
+06-22 00:28:13.003 V/AudioDecoder( 5732): outFrames: 78720
+06-22 00:28:13.003 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.003 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.003 V/AudioResampler( 5732): resampler load 18 -> 12 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.004 V/AudioResampler( 5732): resampler load 12 -> 6 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.004 D/AudioDecoderWav( 5732): wav info: frames: 7938, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.004 V/AudioDecoder( 5732): pcm buffer size: 115200
+06-22 00:28:13.004 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.004 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/4f/4f6d2353-d855-4ea7-b661-21c2fec61803.wav) to pcm data wasted 4.685000ms
+06-22 00:28:13.004 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.005 V/AudioDecoder( 5732): outFrames: 96000
+06-22 00:28:13.005 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.005 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.006 V/AudioDecoder( 5732): pcm buffer size: 78720
+06-22 00:28:13.009 V/AudioResampler( 5732): resampler load 6 -> 12 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.010 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.012 V/AudioDecoder( 5732): resample() 17280 output frames
+06-22 00:28:13.012 D/AudioDecoderWav( 5732): wav info: frames: 12348, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.018 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/3c/3c0b68b2-adb0-4564-9eba-e9c46ad79708.wav) wasted 29.993999ms
+06-22 00:28:13.019 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/12/122988a1-05b9-4ca5-a465-b16a6e3ff0e3.wav) file size: 16802
+06-22 00:28:13.019 V/AudioResampler( 5732): resampler load 12 -> 6 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.019 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/12/122988a1-05b9-4ca5-a465-b16a6e3ff0e3.wav)
+06-22 00:28:13.020 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/12/122988a1-05b9-4ca5-a465-b16a6e3ff0e3.wav, extension:.wav
+06-22 00:28:13.020 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.022 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/f6/f6f5b81c-fd5f-452d-acdf-5ded0b746fd9.wav) wasted 21.452000ms
+06-22 00:28:13.023 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/11/110b1f98-d6f9-4164-8c8a-b20bebce6b05.wav) wasted 30.066999ms
+06-22 00:28:13.024 V/AudioDecoder( 5732): outFrames: 34560
+06-22 00:28:13.024 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.024 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.024 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.025 V/AudioDecoder( 5732): pcm buffer size: 34560
+06-22 00:28:13.026 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/81/81a4de6d-4c85-4dfd-9843-67d795a34cf0.wav) to pcm data wasted 13.807000ms
+06-22 00:28:13.026 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.027 V/AudioDecoder( 5732): pcm buffer size: 96000
+06-22 00:28:13.027 D/AudioDecoderWav( 5732): wav info: frames: 8379, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.027 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 1561KB AllocSpace bytes, 24(7040KB) LOS objects, 49% free, 2050KB/4101KB, paused 2.193ms,6.963ms total 38.200ms
+06-22 00:28:13.028 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/12/122988a1-05b9-4ca5-a465-b16a6e3ff0e3.wav) to pcm data wasted 7.170000ms
+06-22 00:28:13.031 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.031 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/a0/a0fb52e3-ce2a-47cf-a1bf-7f64b8e1ad81.wav) wasted 44.993999ms
+06-22 00:28:13.031 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.032 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/4f/4f6d2353-d855-4ea7-b661-21c2fec61803.wav) wasted 23.132000ms
+06-22 00:28:13.033 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.033 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.033 V/AudioDecoder( 5732): resample() 18240 output frames
+06-22 00:28:13.034 V/AudioResampler( 5732): resampler load 6 -> 12 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.034 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.034 V/AudioDecoder( 5732): outFrames: 36480
+06-22 00:28:13.034 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.034 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.035 V/AudioResampler( 5732): resampler load 12 -> 6 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.035 V/AudioDecoder( 5732): resample() 26880 output frames
+06-22 00:28:13.036 V/AudioDecoder( 5732): pcm buffer size: 36480
+06-22 00:28:13.036 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/12/122988a1-05b9-4ca5-a465-b16a6e3ff0e3.wav) wasted 8.258000ms
+06-22 00:28:13.036 V/AudioDecoder( 5732): outFrames: 53760
+06-22 00:28:13.036 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.036 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.036 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.037 V/AudioDecoder( 5732): pcm buffer size: 53760
+06-22 00:28:13.038 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/81/81a4de6d-4c85-4dfd-9843-67d795a34cf0.wav) wasted 20.264999ms
+06-22 00:28:13.040 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/12/122988a1-05b9-4ca5-a465-b16a6e3ff0e3.wav) wasted 4.652000ms
+06-22 00:28:13.041 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.042 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/12/122988a1-05b9-4ca5-a465-b16a6e3ff0e3.wav) callback count: 1
+06-22 00:28:13.042 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/4f/4f6d2353-d855-4ea7-b661-21c2fec61803.wav) wasted 14.489000ms
+06-22 00:28:13.043 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.043 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a623b450
+06-22 00:28:13.048 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/4f/4f6d2353-d855-4ea7-b661-21c2fec61803.wav) callback count: 1
+06-22 00:28:13.048 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62ace50
+06-22 00:28:13.050 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/11/110b1f98-d6f9-4164-8c8a-b20bebce6b05.wav) wasted 43.166000ms
+06-22 00:28:13.050 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.051 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/11/110b1f98-d6f9-4164-8c8a-b20bebce6b05.wav) callback count: 1
+06-22 00:28:13.051 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62dc400
+06-22 00:28:13.051 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/f6/f6f5b81c-fd5f-452d-acdf-5ded0b746fd9.wav) wasted 34.582001ms
+06-22 00:28:13.051 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/3c/3c0b68b2-adb0-4564-9eba-e9c46ad79708.wav) wasted 33.237000ms
+06-22 00:28:13.051 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.052 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/3c/3c0b68b2-adb0-4564-9eba-e9c46ad79708.wav) callback count: 1
+06-22 00:28:13.052 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/a0/a0fb52e3-ce2a-47cf-a1bf-7f64b8e1ad81.wav) wasted 24.485001ms
+06-22 00:28:13.052 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.054 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.054 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62ba410
+06-22 00:28:13.054 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/a0/a0fb52e3-ce2a-47cf-a1bf-7f64b8e1ad81.wav) callback count: 1
+06-22 00:28:13.055 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62bca50
+06-22 00:28:13.056 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/f6/f6f5b81c-fd5f-452d-acdf-5ded0b746fd9.wav) callback count: 1
+06-22 00:28:13.057 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62dd330
+06-22 00:28:13.058 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/81/81a4de6d-4c85-4dfd-9843-67d795a34cf0.wav) wasted 19.231001ms
+06-22 00:28:13.058 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.058 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/81/81a4de6d-4c85-4dfd-9843-67d795a34cf0.wav) callback count: 1
+06-22 00:28:13.059 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62bdbc0
+06-22 00:28:13.062 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/30/30ecec41-0d14-4096-951a-7933ef0a0110.wav) file size: 18566
+06-22 00:28:13.063 V/AssetFd ( 5732): ~AssetFd: 6
+06-22 00:28:13.063 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/30/30ecec41-0d14-4096-951a-7933ef0a0110.wav)
+06-22 00:28:13.063 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/30/30ecec41-0d14-4096-951a-7933ef0a0110.wav, extension:.wav
+06-22 00:28:13.063 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.064 D/AudioDecoderWav( 5732): wav info: frames: 9261, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.064 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/30/306d1cb9-1e18-436b-ad2a-61689b3c19d4.wav) file size: 15918
+06-22 00:28:13.064 V/AssetFd ( 5732): ~AssetFd: 6
+06-22 00:28:13.065 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/30/306d1cb9-1e18-436b-ad2a-61689b3c19d4.wav)
+06-22 00:28:13.065 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/30/306d1cb9-1e18-436b-ad2a-61689b3c19d4.wav, extension:.wav
+06-22 00:28:13.066 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/30/30ecec41-0d14-4096-951a-7933ef0a0110.wav) to pcm data wasted 0.761000ms
+06-22 00:28:13.067 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.067 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.068 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/f5/f5873059-e123-4ae1-818a-4341db6c0ccd.wav) file size: 19448
+06-22 00:28:13.069 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.069 D/AudioDecoderWav( 5732): wav info: frames: 7937, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.071 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.071 V/AudioDecoder( 5732): resample() 20160 output frames
+06-22 00:28:13.071 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/f5/f5873059-e123-4ae1-818a-4341db6c0ccd.wav)
+06-22 00:28:13.071 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/f5/f5873059-e123-4ae1-818a-4341db6c0ccd.wav, extension:.wav
+06-22 00:28:13.072 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.072 D/AudioDecoderWav( 5732): wav info: frames: 9702, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.073 V/AudioDecoder( 5732): outFrames: 40320
+06-22 00:28:13.073 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.073 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/30/306d1cb9-1e18-436b-ad2a-61689b3c19d4.wav) to pcm data wasted 3.387000ms
+06-22 00:28:13.073 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.073 V/AudioResampler( 5732): resampler load 6 -> 12 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.074 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/f5/f5873059-e123-4ae1-818a-4341db6c0ccd.wav) to pcm data wasted 0.809000ms
+06-22 00:28:13.074 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.074 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.075 V/AudioResampler( 5732): resampler load 12 -> 18 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.075 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.076 V/AudioDecoder( 5732): resample() 21120 output frames
+06-22 00:28:13.076 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.078 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.081 V/AudioDecoder( 5732): resample() 17277 output frames
+06-22 00:28:13.082 V/AudioDecoder( 5732): outFrames: 42240
+06-22 00:28:13.082 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.083 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.083 V/AudioDecoder( 5732): outFrames: 34554
+06-22 00:28:13.083 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.083 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.084 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/70/70c0d4fb-6481-43c1-9527-8383ef018f93.wav) file size: 22976
+06-22 00:28:13.085 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.085 V/AudioResampler( 5732): resampler load 18 -> 12 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.085 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/70/70c0d4fb-6481-43c1-9527-8383ef018f93.wav)
+06-22 00:28:13.086 V/AudioDecoder( 5732): pcm buffer size: 40320
+06-22 00:28:13.087 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/70/70c0d4fb-6481-43c1-9527-8383ef018f93.wav, extension:.wav
+06-22 00:28:13.087 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.088 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/30/30ecec41-0d14-4096-951a-7933ef0a0110.wav) wasted 22.193001ms
+06-22 00:28:13.089 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/87/87e9fe90-0bcf-49e3-bde4-dd1bf82f0e29.wav) file size: 22094
+06-22 00:28:13.089 V/AudioResampler( 5732): resampler load 12 -> 6 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.089 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/87/87e9fe90-0bcf-49e3-bde4-dd1bf82f0e29.wav)
+06-22 00:28:13.091 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.091 V/AudioDecoder( 5732): pcm buffer size: 42240
+06-22 00:28:13.091 V/AudioDecoder( 5732): pcm buffer size: 34554
+06-22 00:28:13.091 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/f5/f5873059-e123-4ae1-818a-4341db6c0ccd.wav) wasted 18.433001ms
+06-22 00:28:13.091 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/30/306d1cb9-1e18-436b-ad2a-61689b3c19d4.wav) wasted 20.559999ms
+06-22 00:28:13.092 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/30/30ecec41-0d14-4096-951a-7933ef0a0110.wav) wasted 5.517000ms
+06-22 00:28:13.092 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.092 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/30/30ecec41-0d14-4096-951a-7933ef0a0110.wav) callback count: 1
+06-22 00:28:13.092 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a6289b40
+06-22 00:28:13.094 D/AudioDecoderWav( 5732): wav info: frames: 11466, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.094 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/30/306d1cb9-1e18-436b-ad2a-61689b3c19d4.wav) wasted 2.228000ms
+06-22 00:28:13.094 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.094 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/30/306d1cb9-1e18-436b-ad2a-61689b3c19d4.wav) callback count: 1
+06-22 00:28:13.094 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62dd330
+06-22 00:28:13.094 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/87/87e9fe90-0bcf-49e3-bde4-dd1bf82f0e29.wav, extension:.wav
+06-22 00:28:13.095 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.095 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/70/70c0d4fb-6481-43c1-9527-8383ef018f93.wav) to pcm data wasted 6.202000ms
+06-22 00:28:13.095 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.095 D/AudioDecoderWav( 5732): wav info: frames: 11025, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.096 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.096 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.096 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.096 V/AudioDecoder( 5732): resample() 24960 output frames
+06-22 00:28:13.097 V/AudioDecoder( 5732): outFrames: 49920
+06-22 00:28:13.097 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.098 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.098 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.098 V/AudioDecoder( 5732): pcm buffer size: 49920
+06-22 00:28:13.098 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/87/87e9fe90-0bcf-49e3-bde4-dd1bf82f0e29.wav) to pcm data wasted 0.976000ms
+06-22 00:28:13.099 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/70/70c0d4fb-6481-43c1-9527-8383ef018f93.wav) wasted 4.288000ms
+06-22 00:28:13.099 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.099 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.099 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.099 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/f5/f5873059-e123-4ae1-818a-4341db6c0ccd.wav) wasted 3.700000ms
+06-22 00:28:13.099 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.100 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/f5/f5873059-e123-4ae1-818a-4341db6c0ccd.wav) callback count: 1
+06-22 00:28:13.100 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a6265cf0
+06-22 00:28:13.100 V/AudioDecoder( 5732): resample() 24000 output frames
+06-22 00:28:13.101 V/AudioDecoder( 5732): outFrames: 48000
+06-22 00:28:13.101 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.101 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.101 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.101 V/AudioDecoder( 5732): pcm buffer size: 48000
+06-22 00:28:13.101 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/87/87e9fe90-0bcf-49e3-bde4-dd1bf82f0e29.wav) wasted 5.566000ms
+06-22 00:28:13.102 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/70/70c0d4fb-6481-43c1-9527-8383ef018f93.wav) wasted 3.232000ms
+06-22 00:28:13.102 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.103 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/70/70c0d4fb-6481-43c1-9527-8383ef018f93.wav) callback count: 1
+06-22 00:28:13.103 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62b53a0
+06-22 00:28:13.108 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/87/87e9fe90-0bcf-49e3-bde4-dd1bf82f0e29.wav) wasted 6.463000ms
+06-22 00:28:13.108 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.108 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/87/87e9fe90-0bcf-49e3-bde4-dd1bf82f0e29.wav) callback count: 1
+06-22 00:28:13.109 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a6289b40
+06-22 00:28:13.112 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/3b/3b2bc7c2-cde0-4064-9d35-7409840d47fe.wav) file size: 22976
+06-22 00:28:13.113 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.113 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/3b/3b2bc7c2-cde0-4064-9d35-7409840d47fe.wav)
+06-22 00:28:13.113 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/3b/3b2bc7c2-cde0-4064-9d35-7409840d47fe.wav, extension:.wav
+06-22 00:28:13.114 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.115 D/AudioDecoderWav( 5732): wav info: frames: 11466, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.117 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/3b/3b2bc7c2-cde0-4064-9d35-7409840d47fe.wav) to pcm data wasted 1.992000ms
+06-22 00:28:13.118 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.118 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.119 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.119 V/AudioDecoder( 5732): resample() 24960 output frames
+06-22 00:28:13.120 V/AudioDecoder( 5732): outFrames: 49920
+06-22 00:28:13.120 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.120 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.120 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.120 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/0e/0e738bef-b46a-4b65-80e7-466a651d7357.wav) file size: 24738
+06-22 00:28:13.121 V/AudioDecoder( 5732): pcm buffer size: 49920
+06-22 00:28:13.122 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.123 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/3b/3b2bc7c2-cde0-4064-9d35-7409840d47fe.wav) wasted 6.084000ms
+06-22 00:28:13.124 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/68/68df11b3-87db-44f7-8eea-482f7cd10ecd.wav) file size: 26504
+06-22 00:28:13.125 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.125 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/68/68df11b3-87db-44f7-8eea-482f7cd10ecd.wav)
+06-22 00:28:13.125 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/0e/0e738bef-b46a-4b65-80e7-466a651d7357.wav)
+06-22 00:28:13.125 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/0e/0e738bef-b46a-4b65-80e7-466a651d7357.wav, extension:.wav
+06-22 00:28:13.126 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.126 D/AudioDecoderWav( 5732): wav info: frames: 12347, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.127 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/0e/0e738bef-b46a-4b65-80e7-466a651d7357.wav) to pcm data wasted 0.878000ms
+06-22 00:28:13.127 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.127 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.130 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.130 V/AudioDecoder( 5732): resample() 26877 output frames
+06-22 00:28:13.131 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/e1/e1f85429-5ef2-44d1-9e94-34af025bc17e.mp3) file size: 116284
+06-22 00:28:13.131 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.132 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/68/68df11b3-87db-44f7-8eea-482f7cd10ecd.wav, extension:.wav
+06-22 00:28:13.132 V/AudioDecoder( 5732): outFrames: 53754
+06-22 00:28:13.133 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.133 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.133 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.134 V/AudioDecoder( 5732): pcm buffer size: 53754
+06-22 00:28:13.134 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.134 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/0e/0e738bef-b46a-4b65-80e7-466a651d7357.wav) wasted 7.908000ms
+06-22 00:28:13.135 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/69/69569fcc-0c79-4c3d-b02b-658d3c39e6e2.wav) file size: 16802
+06-22 00:28:13.135 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.135 D/AudioDecoderWav( 5732): wav info: frames: 13230, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.136 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/e1/e1f85429-5ef2-44d1-9e94-34af025bc17e.mp3)
+06-22 00:28:13.136 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/69/69569fcc-0c79-4c3d-b02b-658d3c39e6e2.wav)
+06-22 00:28:13.137 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/3b/3b2bc7c2-cde0-4064-9d35-7409840d47fe.wav) wasted 13.528000ms
+06-22 00:28:13.138 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.138 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/3b/3b2bc7c2-cde0-4064-9d35-7409840d47fe.wav) callback count: 1
+06-22 00:28:13.138 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a628b010
+06-22 00:28:13.139 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/69/69569fcc-0c79-4c3d-b02b-658d3c39e6e2.wav, extension:.wav
+06-22 00:28:13.139 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.139 D/AudioDecoderWav( 5732): wav info: frames: 8379, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.139 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/5d/5dab63b5-9309-411a-ae8c-026c8ec51248.wav) file size: 16802
+06-22 00:28:13.140 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.140 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/5d/5dab63b5-9309-411a-ae8c-026c8ec51248.wav)
+06-22 00:28:13.140 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/5d/5dab63b5-9309-411a-ae8c-026c8ec51248.wav, extension:.wav
+06-22 00:28:13.140 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.141 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/68/68df11b3-87db-44f7-8eea-482f7cd10ecd.wav) to pcm data wasted 2.820000ms
+06-22 00:28:13.143 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.143 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/69/69569fcc-0c79-4c3d-b02b-658d3c39e6e2.wav) to pcm data wasted 0.505000ms
+06-22 00:28:13.144 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.144 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/ef/ef66d1d4-0839-4256-9be7-ebe311c3557b.wav) file size: 15920
+06-22 00:28:13.146 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/e1/e1f85429-5ef2-44d1-9e94-34af025bc17e.mp3, extension:.mp3
+06-22 00:28:13.148 V/AudioDecoderMp3( 5732): Create AudioDecoderMp3
+06-22 00:28:13.150 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/0e/0e738bef-b46a-4b65-80e7-466a651d7357.wav) wasted 5.617000ms
+06-22 00:28:13.150 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.150 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/0e/0e738bef-b46a-4b65-80e7-466a651d7357.wav) callback count: 1
+06-22 00:28:13.150 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62a9df0
+06-22 00:28:13.150 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.151 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.152 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/ef/ef66d1d4-0839-4256-9be7-ebe311c3557b.wav)
+06-22 00:28:13.152 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/ef/ef66d1d4-0839-4256-9be7-ebe311c3557b.wav, extension:.wav
+06-22 00:28:13.152 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.154 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.155 V/AudioResampler( 5732): resampler load 6 -> 12 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.155 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.155 V/AudioDecoder( 5732): resample() 18240 output frames
+06-22 00:28:13.155 V/AudioDecoder( 5732): resample() 28800 output frames
+06-22 00:28:13.156 V/AudioDecoder( 5732): outFrames: 36480
+06-22 00:28:13.156 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.156 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.156 V/AudioResampler( 5732): resampler load 12 -> 6 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.157 V/AudioDecoder( 5732): pcm buffer size: 36480
+06-22 00:28:13.157 V/AudioDecoder( 5732): outFrames: 57600
+06-22 00:28:13.157 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.158 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.158 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.159 V/mp3reader( 5732): skipped ID3 tag, new starting offset is 8484 (0x0000000000002124)
+06-22 00:28:13.159 V/mp3reader( 5732): subsequent header is fffb7060
+06-22 00:28:13.159 V/mp3reader( 5732): found subsequent frame #2 at 8797
+06-22 00:28:13.160 V/mp3reader( 5732): subsequent header is fffb7060
+06-22 00:28:13.161 V/mp3reader( 5732): found subsequent frame #3 at 9110
+06-22 00:28:13.161 V/mp3reader( 5732): subsequent header is fffb7060
+06-22 00:28:13.161 V/mp3reader( 5732): found subsequent frame #4 at 9423
+06-22 00:28:13.162 D/AudioDecoderWav( 5732): wav info: frames: 7938, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.162 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/ef/ef66d1d4-0839-4256-9be7-ebe311c3557b.wav) to pcm data wasted 8.575000ms
+06-22 00:28:13.162 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.162 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.163 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.163 V/AudioDecoder( 5732): resample() 17280 output frames
+06-22 00:28:13.163 V/AudioDecoder( 5732): outFrames: 34560
+06-22 00:28:13.163 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.163 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.163 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.164 V/AudioDecoder( 5732): pcm buffer size: 34560
+06-22 00:28:13.164 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/ef/ef66d1d4-0839-4256-9be7-ebe311c3557b.wav) wasted 1.999000ms
+06-22 00:28:13.167 D/AudioDecoderWav( 5732): wav info: frames: 8379, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.168 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/5d/5dab63b5-9309-411a-ae8c-026c8ec51248.wav) to pcm data wasted 27.583000ms
+06-22 00:28:13.168 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.169 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.170 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.170 V/AudioDecoder( 5732): resample() 18240 output frames
+06-22 00:28:13.170 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/c0/c0841f77-f0ff-4449-a3ce-bd8dc3aec07a.wav) file size: 15038
+06-22 00:28:13.174 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.175 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/dc/dc08607e-62d2-48ba-b5d5-7bcb7d9714c1.wav) file size: 15038
+06-22 00:28:13.176 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.176 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/c0/c0841f77-f0ff-4449-a3ce-bd8dc3aec07a.wav)
+06-22 00:28:13.176 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/c0/c0841f77-f0ff-4449-a3ce-bd8dc3aec07a.wav, extension:.wav
+06-22 00:28:13.176 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.177 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/0f/0f55c602-6ad6-42f1-bcdf-e46185ade777.wav) file size: 32678
+06-22 00:28:13.177 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/69/69569fcc-0c79-4c3d-b02b-658d3c39e6e2.wav) wasted 18.108000ms
+06-22 00:28:13.178 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/dc/dc08607e-62d2-48ba-b5d5-7bcb7d9714c1.wav)
+06-22 00:28:13.178 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/dc/dc08607e-62d2-48ba-b5d5-7bcb7d9714c1.wav, extension:.wav
+06-22 00:28:13.179 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.179 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/ef/ef66d1d4-0839-4256-9be7-ebe311c3557b.wav) wasted 8.066000ms
+06-22 00:28:13.179 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.180 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/ef/ef66d1d4-0839-4256-9be7-ebe311c3557b.wav) callback count: 1
+06-22 00:28:13.180 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62a9df0
+06-22 00:28:13.180 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/0f/0f55c602-6ad6-42f1-bcdf-e46185ade777.wav)
+06-22 00:28:13.181 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/0f/0f55c602-6ad6-42f1-bcdf-e46185ade777.wav, extension:.wav
+06-22 00:28:13.181 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.182 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.183 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/69/69569fcc-0c79-4c3d-b02b-658d3c39e6e2.wav) wasted 26.003000ms
+06-22 00:28:13.184 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.184 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/d2/d211064b-2362-4de9-9244-d636728eef26.wav) file size: 33560
+06-22 00:28:13.185 V/AudioDecoder( 5732): outFrames: 36480
+06-22 00:28:13.186 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.187 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.187 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.187 V/AudioDecoder( 5732): pcm buffer size: 36480
+06-22 00:28:13.188 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/5d/5dab63b5-9309-411a-ae8c-026c8ec51248.wav) wasted 19.924000ms
+06-22 00:28:13.189 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/69/69569fcc-0c79-4c3d-b02b-658d3c39e6e2.wav) callback count: 1
+06-22 00:28:13.190 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a628b010
+06-22 00:28:13.191 V/AudioDecoder( 5732): pcm buffer size: 57600
+06-22 00:28:13.191 D/AudioDecoderWav( 5732): wav info: frames: 16317, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.191 D/AudioDecoderWav( 5732): wav info: frames: 7497, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.191 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/68/68df11b3-87db-44f7-8eea-482f7cd10ecd.wav) wasted 53.705002ms
+06-22 00:28:13.192 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/dc/dc08607e-62d2-48ba-b5d5-7bcb7d9714c1.wav) to pcm data wasted 12.692000ms
+06-22 00:28:13.192 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.192 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.198 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.199 V/AudioDecoder( 5732): resample() 16320 output frames
+06-22 00:28:13.199 V/AudioDecoder( 5732): outFrames: 32640
+06-22 00:28:13.200 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.200 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.201 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.204 V/AudioDecoder( 5732): pcm buffer size: 32640
+06-22 00:28:13.205 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/dc/dc08607e-62d2-48ba-b5d5-7bcb7d9714c1.wav) wasted 13.361000ms
+06-22 00:28:13.208 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/0f/0f55c602-6ad6-42f1-bcdf-e46185ade777.wav) to pcm data wasted 10.798000ms
+06-22 00:28:13.209 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.210 V/AssetFd ( 5732): ~AssetFd: 160
+06-22 00:28:13.211 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/dc/dc08607e-62d2-48ba-b5d5-7bcb7d9714c1.wav) wasted 5.572000ms
+06-22 00:28:13.211 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.211 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/dc/dc08607e-62d2-48ba-b5d5-7bcb7d9714c1.wav) callback count: 1
+06-22 00:28:13.211 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a628d5c0
+06-22 00:28:13.212 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/5d/5dab63b5-9309-411a-ae8c-026c8ec51248.wav) wasted 7.251000ms
+06-22 00:28:13.212 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/d2/d211064b-2362-4de9-9244-d636728eef26.wav)
+06-22 00:28:13.212 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/d2/d211064b-2362-4de9-9244-d636728eef26.wav, extension:.wav
+06-22 00:28:13.213 D/AudioDecoderWav( 5732): wav info: frames: 7497, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.214 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.214 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/d2/d252ab71-a770-47cc-8460-30937a0b29e6.wav) file size: 34442
+06-22 00:28:13.214 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.215 V/AssetFd ( 5732): ~AssetFd: 152
+06-22 00:28:13.215 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.215 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/68/68df11b3-87db-44f7-8eea-482f7cd10ecd.wav) wasted 10.700000ms
+06-22 00:28:13.216 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/c0/c0841f77-f0ff-4449-a3ce-bd8dc3aec07a.wav) to pcm data wasted 37.398998ms
+06-22 00:28:13.216 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.216 V/AudioResampler( 5732): resampler load 6 -> 12 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.216 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.216 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/da/dad711db-b3aa-4cd7-a4bf-1171053bf8b2.wav) file size: 35324
+06-22 00:28:13.217 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.218 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/68/68df11b3-87db-44f7-8eea-482f7cd10ecd.wav) callback count: 1
+06-22 00:28:13.218 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62abfb0
+06-22 00:28:13.218 D/AudioDecoderWav( 5732): wav info: frames: 16758, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.219 V/AudioDecoder( 5732): resample() 16320 output frames
+06-22 00:28:13.219 V/AudioDecoder( 5732): outFrames: 32640
+06-22 00:28:13.220 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.220 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.220 V/AudioResampler( 5732): resampler load 12 -> 6 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.221 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/d2/d211064b-2362-4de9-9244-d636728eef26.wav) to pcm data wasted 3.590000ms
+06-22 00:28:13.221 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.221 V/AudioResampler( 5732): resampler load 6 -> 12 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.222 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.222 V/AudioDecoder( 5732): resample() 36480 output frames
+06-22 00:28:13.223 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/d2/d252ab71-a770-47cc-8460-30937a0b29e6.wav)
+06-22 00:28:13.224 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/d2/d252ab71-a770-47cc-8460-30937a0b29e6.wav, extension:.wav
+06-22 00:28:13.224 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.224 D/AudioDecoderWav( 5732): wav info: frames: 17199, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.224 V/AudioDecoder( 5732): outFrames: 72960
+06-22 00:28:13.224 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.225 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.225 V/AudioResampler( 5732): resampler load 12 -> 6 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.226 V/AudioDecoder( 5732): resample() 35520 output frames
+06-22 00:28:13.226 V/AudioDecoder( 5732): outFrames: 71040
+06-22 00:28:13.226 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.226 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.226 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.227 V/AudioDecoder( 5732): pcm buffer size: 71040
+06-22 00:28:13.228 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/d2/d252ab71-a770-47cc-8460-30937a0b29e6.wav) to pcm data wasted 1.397000ms
+06-22 00:28:13.228 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.228 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.228 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.228 D/ThreadPool( 5732): stretch pool from 7 to 8, waste 0.000000 seconds
+06-22 00:28:13.229 V/AssetFd ( 5732): ~AssetFd: 152
+06-22 00:28:13.229 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.230 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/5d/5dab63b5-9309-411a-ae8c-026c8ec51248.wav) callback count: 1
+06-22 00:28:13.231 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62b8e20
+06-22 00:28:13.234 V/AudioDecoder( 5732): pcm buffer size: 72960
+06-22 00:28:13.235 V/AudioDecoder( 5732): resample() 37440 output frames
+06-22 00:28:13.236 V/AudioDecoder( 5732): outFrames: 74880
+06-22 00:28:13.236 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.236 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.236 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.236 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/da/dad711db-b3aa-4cd7-a4bf-1171053bf8b2.wav)
+06-22 00:28:13.236 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/da/dad711db-b3aa-4cd7-a4bf-1171053bf8b2.wav, extension:.wav
+06-22 00:28:13.237 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.239 V/AudioDecoder( 5732): pcm buffer size: 74880
+06-22 00:28:13.239 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/d2/d252ab71-a770-47cc-8460-30937a0b29e6.wav) wasted 14.124000ms
+06-22 00:28:13.240 V/AudioDecoder( 5732): pcm buffer size: 32640
+06-22 00:28:13.240 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/d2/d211064b-2362-4de9-9244-d636728eef26.wav) wasted 16.974001ms
+06-22 00:28:13.241 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/c0/c0841f77-f0ff-4449-a3ce-bd8dc3aec07a.wav) wasted 26.947001ms
+06-22 00:28:13.245 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/c0/c0841f77-f0ff-4449-a3ce-bd8dc3aec07a.wav) wasted 3.847000ms
+06-22 00:28:13.245 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.245 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/c0/c0841f77-f0ff-4449-a3ce-bd8dc3aec07a.wav) callback count: 1
+06-22 00:28:13.245 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62b98d0
+06-22 00:28:13.246 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/d9/d9ba6418-c310-4de2-a6bb-f813667a1129.wav) file size: 36206
+06-22 00:28:13.246 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/d2/d211064b-2362-4de9-9244-d636728eef26.wav) wasted 10.696000ms
+06-22 00:28:13.247 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/0f/0f55c602-6ad6-42f1-bcdf-e46185ade777.wav) wasted 36.847000ms
+06-22 00:28:13.249 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/d9/d9ba6418-c310-4de2-a6bb-f813667a1129.wav)
+06-22 00:28:13.250 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/d9/d9ba6418-c310-4de2-a6bb-f813667a1129.wav, extension:.wav
+06-22 00:28:13.250 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.251 D/AudioDecoderWav( 5732): wav info: frames: 18081, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.252 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/d9/d9ba6418-c310-4de2-a6bb-f813667a1129.wav) to pcm data wasted 1.511000ms
+06-22 00:28:13.252 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.252 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.252 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.252 V/AudioDecoder( 5732): resample() 39360 output frames
+06-22 00:28:13.253 V/AudioDecoder( 5732): outFrames: 78720
+06-22 00:28:13.256 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.256 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.256 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.257 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/d2/d252ab71-a770-47cc-8460-30937a0b29e6.wav) wasted 6.302000ms
+06-22 00:28:13.257 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.258 V/AssetFd ( 5732): ~AssetFd: 152
+06-22 00:28:13.258 D/AudioDecoderWav( 5732): wav info: frames: 17640, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.259 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/d2/d252ab71-a770-47cc-8460-30937a0b29e6.wav) callback count: 1
+06-22 00:28:13.259 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.260 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/da/dad711db-b3aa-4cd7-a4bf-1171053bf8b2.wav) to pcm data wasted 21.136999ms
+06-22 00:28:13.260 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.260 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.261 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.261 V/AudioDecoder( 5732): resample() 38400 output frames
+06-22 00:28:13.261 V/AudioDecoder( 5732): pcm buffer size: 78720
+06-22 00:28:13.261 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62b85b0
+06-22 00:28:13.262 V/AudioDecoder( 5732): outFrames: 76800
+06-22 00:28:13.262 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.262 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.262 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.263 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/d9/d9ba6418-c310-4de2-a6bb-f813667a1129.wav) wasted 10.108000ms
+06-22 00:28:13.264 V/AudioDecoder( 5732): pcm buffer size: 76800
+06-22 00:28:13.265 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/0f/0f55c602-6ad6-42f1-bcdf-e46185ade777.wav) wasted 36.686001ms
+06-22 00:28:13.266 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.266 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav) file size: 18566
+06-22 00:28:13.267 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/d2/d211064b-2362-4de9-9244-d636728eef26.wav) callback count: 1
+06-22 00:28:13.267 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a628d5c0
+06-22 00:28:13.268 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/0f/0f55c602-6ad6-42f1-bcdf-e46185ade777.wav) callback count: 1
+06-22 00:28:13.268 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62a9df0
+06-22 00:28:13.269 V/AssetFd ( 5732): ~AssetFd: 152
+06-22 00:28:13.269 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav)
+06-22 00:28:13.269 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav, extension:.wav
+06-22 00:28:13.269 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.270 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/da/dad711db-b3aa-4cd7-a4bf-1171053bf8b2.wav) wasted 5.412000ms
+06-22 00:28:13.271 D/AudioDecoderWav( 5732): wav info: frames: 9261, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.272 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/95/95423f4c-9aa1-43a3-a9a0-ac2ab7a7b673.wav) file size: 17684
+06-22 00:28:13.272 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav) to pcm data wasted 2.469000ms
+06-22 00:28:13.272 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.272 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.272 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.273 V/AudioDecoder( 5732): resample() 20160 output frames
+06-22 00:28:13.274 V/AssetFd ( 5732): ~AssetFd: 152
+06-22 00:28:13.274 V/AudioDecoder( 5732): outFrames: 40320
+06-22 00:28:13.274 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.274 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.275 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.275 V/AudioDecoder( 5732): pcm buffer size: 40320
+06-22 00:28:13.276 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/95/95423f4c-9aa1-43a3-a9a0-ac2ab7a7b673.wav)
+06-22 00:28:13.276 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/95/95423f4c-9aa1-43a3-a9a0-ac2ab7a7b673.wav, extension:.wav
+06-22 00:28:13.276 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.276 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav) wasted 4.610000ms
+06-22 00:28:13.277 D/AudioDecoderWav( 5732): wav info: frames: 8820, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.277 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/95/95423f4c-9aa1-43a3-a9a0-ac2ab7a7b673.wav) to pcm data wasted 0.694000ms
+06-22 00:28:13.277 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.277 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.277 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.278 V/AudioDecoder( 5732): resample() 19200 output frames
+06-22 00:28:13.282 V/AudioDecoder( 5732): outFrames: 38400
+06-22 00:28:13.282 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.282 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.282 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.283 V/AudioDecoder( 5732): pcm buffer size: 38400
+06-22 00:28:13.283 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav) wasted 5.359000ms
+06-22 00:28:13.283 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/95/95423f4c-9aa1-43a3-a9a0-ac2ab7a7b673.wav) wasted 5.834000ms
+06-22 00:28:13.284 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/d9/d9ba6418-c310-4de2-a6bb-f813667a1129.wav) wasted 17.715000ms
+06-22 00:28:13.284 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.284 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/d9/d9ba6418-c310-4de2-a6bb-f813667a1129.wav) callback count: 1
+06-22 00:28:13.288 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62b98d0
+06-22 00:28:13.290 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/57/57e6445e-adbb-4f56-89bd-56a222ba5606.wav) file size: 16802
+06-22 00:28:13.290 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/da/dad711db-b3aa-4cd7-a4bf-1171053bf8b2.wav) wasted 21.190001ms
+06-22 00:28:13.290 D/ActivityManager(  630): freezing 1593 com.google.android.googlequicksearchbox:search
+06-22 00:28:13.291 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.291 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/95/95423f4c-9aa1-43a3-a9a0-ac2ab7a7b673.wav) wasted 5.034000ms
+06-22 00:28:13.291 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/57/57e6445e-adbb-4f56-89bd-56a222ba5606.wav)
+06-22 00:28:13.291 V/AssetFd ( 5732): ~AssetFd: 152
+06-22 00:28:13.291 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.291 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.292 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/57/57e6445e-adbb-4f56-89bd-56a222ba5606.wav, extension:.wav
+06-22 00:28:13.292 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.293 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/da/dad711db-b3aa-4cd7-a4bf-1171053bf8b2.wav) callback count: 1
+06-22 00:28:13.294 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a628b010
+06-22 00:28:13.294 D/AudioDecoderWav( 5732): wav info: frames: 8379, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.296 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/95/95423f4c-9aa1-43a3-a9a0-ac2ab7a7b673.wav) callback count: 1
+06-22 00:28:13.296 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62bd590
+06-22 00:28:13.296 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/57/57e6445e-adbb-4f56-89bd-56a222ba5606.wav) to pcm data wasted 2.824000ms
+06-22 00:28:13.297 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.298 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav) callback count: 1
+06-22 00:28:13.298 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62aeef0
+06-22 00:28:13.299 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.299 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.299 V/AudioDecoder( 5732): resample() 18240 output frames
+06-22 00:28:13.299 V/AudioDecoder( 5732): outFrames: 36480
+06-22 00:28:13.300 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.300 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.300 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.300 V/AudioDecoder( 5732): pcm buffer size: 36480
+06-22 00:28:13.300 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/57/57e6445e-adbb-4f56-89bd-56a222ba5606.wav) wasted 4.506000ms
+06-22 00:28:13.303 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/57/57e6445e-adbb-4f56-89bd-56a222ba5606.wav) wasted 2.717000ms
+06-22 00:28:13.303 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.303 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/57/57e6445e-adbb-4f56-89bd-56a222ba5606.wav) callback count: 1
+06-22 00:28:13.304 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62b98d0
+06-22 00:28:13.305 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/04/04d198ec-beb6-443a-8de2-0ee59db0e3af.wav) file size: 15920
+06-22 00:28:13.305 V/AssetFd ( 5732): ~AssetFd: 152
+06-22 00:28:13.306 V/AudioPlayerProvider( 5732): (@assets/assets/resources/native/70/70571c02-cb14-400b-ba2d-2f8b13a7d0dd.wav) file size: 15038
+06-22 00:28:13.307 V/AssetFd ( 5732): ~AssetFd: 152
+06-22 00:28:13.308 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/04/04d198ec-beb6-443a-8de2-0ee59db0e3af.wav)
+06-22 00:28:13.309 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/04/04d198ec-beb6-443a-8de2-0ee59db0e3af.wav, extension:.wav
+06-22 00:28:13.309 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.310 D/AudioDecoderWav( 5732): wav info: frames: 7938, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.310 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/04/04d198ec-beb6-443a-8de2-0ee59db0e3af.wav) to pcm data wasted 1.173000ms
+06-22 00:28:13.317 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.318 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.318 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.318 V/AudioDecoder( 5732): resample() 17280 output frames
+06-22 00:28:13.319 V/AudioPlayerProvider( 5732): AudioPlayerProvider::preloadEffect: (@assets/assets/resources/native/70/70571c02-cb14-400b-ba2d-2f8b13a7d0dd.wav)
+06-22 00:28:13.319 V/AudioDecoder( 5732): outFrames: 34560
+06-22 00:28:13.319 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.319 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.319 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.319 V/AudioDecoderProvider( 5732): url:@assets/assets/resources/native/70/70571c02-cb14-400b-ba2d-2f8b13a7d0dd.wav, extension:.wav
+06-22 00:28:13.320 V/AudioDecoderWav( 5732): Create AudioDecoderWav
+06-22 00:28:13.320 V/AudioDecoder( 5732): pcm buffer size: 34560
+06-22 00:28:13.321 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/04/04d198ec-beb6-443a-8de2-0ee59db0e3af.wav) wasted 10.498000ms
+06-22 00:28:13.321 D/AudioDecoderWav( 5732): wav info: frames: 7497, samplerate: 22050, channels: 1, format: 3
+06-22 00:28:13.323 I/AudioDecoderMp3( 5732): Original audio info: numChannels: 2, sampleRate: 44100, bitPerSample: 16, containerSize: 16, channelMask: 3, endianness: 2, numFrames: 396288, duration: 8.986122, total size: 1585152
+06-22 00:28:13.323 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/e1/e1f85429-5ef2-44d1-9e94-34af025bc17e.mp3) to pcm data wasted 173.947998ms
+06-22 00:28:13.324 V/AudioDecoder( 5732): Resample: 44100 --> 48000
+06-22 00:28:13.324 D/AudioDecoder( 5732): Decoding (@assets/assets/resources/native/70/70571c02-cb14-400b-ba2d-2f8b13a7d0dd.wav) to pcm data wasted 3.802000ms
+06-22 00:28:13.324 V/AudioDecoder( 5732): Resample: 22050 --> 48000
+06-22 00:28:13.325 V/AudioResampler( 5732): resampler load 0 -> 6 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.325 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/04/04d198ec-beb6-443a-8de2-0ee59db0e3af.wav) wasted 4.321000ms
+06-22 00:28:13.325 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.325 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/04/04d198ec-beb6-443a-8de2-0ee59db0e3af.wav) callback count: 1
+06-22 00:28:13.327 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62b98d0
+06-22 00:28:13.329 V/AudioResampler( 5732): resampler load 6 -> 12 MHz due to delta +6 MHz from quality 2
+06-22 00:28:13.329 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.329 V/AudioDecoder( 5732): resample() 16320 output frames
+06-22 00:28:13.330 V/AudioResampler( 5732): Create cubic Resampler
+06-22 00:28:13.331 V/AudioDecoder( 5732): outFrames: 32640
+06-22 00:28:13.331 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.331 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.331 V/AudioResampler( 5732): resampler load 12 -> 6 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.331 V/AudioDecoder( 5732): pcm buffer size: 32640
+06-22 00:28:13.332 V/AudioDecoder( 5732): resample() 431333 output frames
+06-22 00:28:13.332 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/70/70571c02-cb14-400b-ba2d-2f8b13a7d0dd.wav) wasted 8.094000ms
+06-22 00:28:13.335 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/70/70571c02-cb14-400b-ba2d-2f8b13a7d0dd.wav) wasted 3.113000ms
+06-22 00:28:13.339 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.339 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/70/70571c02-cb14-400b-ba2d-2f8b13a7d0dd.wav) callback count: 1
+06-22 00:28:13.341 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a62bb730
+06-22 00:28:13.351 V/AudioDecoder( 5732): outFrames: 431333
+06-22 00:28:13.351 V/AudioDecoder( 5732): resample() complete
+06-22 00:28:13.351 V/AudioDecoder( 5732): reset() complete
+06-22 00:28:13.351 V/AudioResampler( 5732): resampler load 6 -> 0 MHz due to delta -6 MHz from quality 2
+06-22 00:28:13.401 V/AudioDecoder( 5732): pcm buffer size: 1725332
+06-22 00:28:13.442 D/AudioDecoder( 5732): Resampling (@assets/assets/resources/native/e1/e1f85429-5ef2-44d1-9e94-34af025bc17e.mp3) wasted 118.591003ms
+06-22 00:28:13.442 I/AudioDecoder( 5732): Audio channel count is 2, no need to interleave
+06-22 00:28:13.442 D/AudioDecoder( 5732): Interleave (@assets/assets/resources/native/e1/e1f85429-5ef2-44d1-9e94-34af025bc17e.mp3) wasted 0.432000ms
+06-22 00:28:13.443 V/AudioPlayerProvider( 5732): decode succeed
+06-22 00:28:13.443 V/AudioPlayerProvider( 5732): preload (@assets/assets/resources/native/e1/e1f85429-5ef2-44d1-9e94-34af025bc17e.mp3) callback count: 1
+06-22 00:28:13.443 V/AudioDecoder( 5732): ~AudioDecoder() 0x7438a628d800
+06-22 00:28:13.503 I/ActivityManager(  630): Broadcasting: Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }
+06-22 00:28:13.507 I/ActivityManager(  630): Enqueued broadcast Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }: 0
+06-22 00:28:13.509 W/JobInfo (  630): Job 'com.google.android.providers.media.module/com.android.providers.media.MediaService#-300' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+06-22 00:28:13.525 I/ActivityManager(  630): Broadcast completed: result=0
+06-22 00:28:13.538 I/MediaProvider( 1337): Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+06-22 00:28:13.565 I/MediaProvider( 1337): End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+06-22 00:28:13.595 D/WM-SystemJobScheduler( 1337): Scheduling work ID 4da5cf86-c3ef-41bb-b004-d47fbee4d0afJob ID 35
+06-22 00:28:13.600 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: ea65f043-677b-4d88-873b-c04b60309f50}. Requires device idle.
+06-22 00:28:13.601 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: 16a7357e-0f5e-4253-bafa-08ecc9ad5468}. Requires device idle.
+06-22 00:28:13.648 D/AF::Track(  490): interceptBuffer: took 6426us to intercept 0 tracks
+06-22 00:28:13.751 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 5994 [CONTEXT service_id=218 ]
+06-22 00:28:13.764 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 65 uptime_millis: 65 exec_start_elapsed_seconds: 5994 [CONTEXT service_id=218 ]
+06-22 00:28:13.830 W/MediaProvider( 1337): Ignoring param:deletedata post U for external apps
+06-22 00:28:13.838 I/MediaProvider( 1337): Deleted 0 1 0 0 0 0 0 items on external_primary due to com.android.shell
+06-22 00:28:13.856 D/EGL_emulation( 5732): app_time_stats: avg=39.76ms min=22.02ms max=79.69ms count=23
+06-22 00:28:13.879 D/WM-Processor( 1337): Processor cancelling 4da5cf86-c3ef-41bb-b004-d47fbee4d0af
+06-22 00:28:13.879 D/WM-Processor( 1337): WorkerWrapper could not be found for 4da5cf86-c3ef-41bb-b004-d47fbee4d0af
+06-22 00:28:13.918 D/WM-GreedyScheduler( 1337): Cancelling work ID 4da5cf86-c3ef-41bb-b004-d47fbee4d0af
+06-22 00:28:13.927 D/WM-SystemJobScheduler( 1337): Scheduling work ID 90d013ef-36ec-4b05-b7de-c1284f393b11Job ID 36
+06-22 00:28:13.947 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: ea65f043-677b-4d88-873b-c04b60309f50}. Requires device idle.
+06-22 00:28:13.947 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: 16a7357e-0f5e-4253-bafa-08ecc9ad5468}. Requires device idle.
+06-22 00:28:13.987 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 5994 [CONTEXT service_id=218 ]
+06-22 00:28:14.005 D/Cocos   ( 5732): 00:28:14 [DEBUG]: JS: MTR_FSM:MENU->CHARACTER_SELECT state=menu->name reason=ui_start_menu
+06-22 00:28:14.007 D/Cocos   ( 5732): 00:28:14 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=panel_dialog level=1 spawned=1 reason=shared_main_menu_panel
+06-22 00:28:14.008 D/Cocos   ( 5732): 00:28:14 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=title_banner_blank level=1 spawned=1 reason=shared_main_menu_title
+06-22 00:28:14.009 D/Cocos   ( 5732): 00:28:14 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=mtr_start_menu_profile_box_01 level=1 spawned=1 reason=start_menu_profile_box
+06-22 00:28:14.015 D/Cocos   ( 5732): 00:28:14 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=mtr_start_menu_button_enter_name_01 level=1 spawned=1 reason=start_menu_baked_button
+06-22 00:28:14.016 D/Cocos   ( 5732): 00:28:14 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=mtr_start_menu_button_forward_01 level=1 spawned=1 reason=start_menu_baked_button
+06-22 00:28:14.017 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 65 uptime_millis: 66 exec_start_elapsed_seconds: 5994 [CONTEXT service_id=218 ]
+06-22 00:28:14.018 D/Cocos   ( 5732): 00:28:14 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=button_back_idle level=1 spawned=1 reason=shared_menu_button
+06-22 00:28:14.191 D/Cocos   ( 5732): 00:28:14 [DEBUG]: JS: MTR_THEMED_OBJECT_SPRITE_LOAD_OK key=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_back_menu_01 path=objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_back_menu_01/spriteFrame
+06-22 00:28:14.195 D/Cocos   ( 5732): 00:28:14 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=mtr_start_menu_button_back_menu_01 level=1 spawned=1 reason=start_menu_baked_button
+06-22 00:28:14.196 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 8(2520KB) LOS objects, 49% free, 2074KB/4149KB, paused 1.870ms,5.145ms total 22.817ms
+06-22 00:28:14.225 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2042KB/4085KB, paused 1.086ms,6.457ms total 21.700ms
+06-22 00:28:14.274 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2598KB/5197KB, paused 1.052ms,5.165ms total 25.166ms
+06-22 00:28:14.442 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 3122KB/6245KB, paused 1.634ms,9.767ms total 34.235ms
+06-22 00:28:14.632 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 12(4400KB) LOS objects, 49% free, 2042KB/4085KB, paused 863us,8.028ms total 29.824ms
+06-22 00:28:14.877 D/EGL_emulation( 5732): app_time_stats: avg=37.70ms min=26.78ms max=106.51ms count=23
+06-22 00:28:15.129 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 10(3352KB) LOS objects, 49% free, 2598KB/5197KB, paused 990us,6.743ms total 22.801ms
+06-22 00:28:15.188 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 10(3752KB) LOS objects, 49% free, 2722KB/5445KB, paused 2.151ms,5.435ms total 24.764ms
+06-22 00:28:15.378 D/WM-DelayedWorkTracker( 1337): Scheduling work 90d013ef-36ec-4b05-b7de-c1284f393b11
+06-22 00:28:15.379 D/WM-GreedyScheduler( 1337): Starting tracking for 90d013ef-36ec-4b05-b7de-c1284f393b11
+06-22 00:28:15.394 D/WM-ConstraintTracker( 1337): BatteryNotLowTracker: initial state = true
+06-22 00:28:15.395 D/WM-BrdcstRcvrCnstrntTrc( 1337): BatteryNotLowTracker: registering receiver
+06-22 00:28:15.405 D/WM-GreedyScheduler( 1337): Constraints met: Scheduling work ID WorkGenerationalId(workSpecId=90d013ef-36ec-4b05-b7de-c1284f393b11, generation=0)
+06-22 00:28:15.410 D/WM-Processor( 1337): Processor: processing WorkGenerationalId(workSpecId=90d013ef-36ec-4b05-b7de-c1284f393b11, generation=0)
+06-22 00:28:15.417 D/WM-WorkerWrapper( 1337): Starting work for com.android.providers.media.photopicker.sync.ProactiveSyncWorker
+06-22 00:28:15.419 I/PSyncWorker( 1337): Starting proactive picker sync from sync source: 1
+06-22 00:28:15.420 I/PickerSyncTracker( 1337): Created new sync future java.util.concurrent.CompletableFuture@3c0d161[Not completed, 1 dependents]. Future map: {90d013ef-36ec-4b05-b7de-c1284f393b11=java.util.concurrent.CompletableFuture@3c0d161[Not completed, 1 dependents]}
+06-22 00:28:15.421 D/PickerSyncController( 1337): syncAllMediaFromProvider() LOCAL, auth=com.android.providers.media.photopicker, retry=true
+06-22 00:28:15.421 D/PickerSyncController( 1337): getSyncRequestParams() LOCAL, auth=com.android.providers.media.photopicker
+06-22 00:28:15.433 D/WM-SystemJobService( 1337): onStartJob for WorkGenerationalId(workSpecId=90d013ef-36ec-4b05-b7de-c1284f393b11, generation=0)
+06-22 00:28:15.451 D/PickerSyncController( 1337):    Latest ID/Gen=1409:d260e185-6a8e-4322-95b8-60a49bdc62c7:external_primary/272
+06-22 00:28:15.452 D/WM-Processor( 1337): Work WorkGenerationalId(workSpecId=90d013ef-36ec-4b05-b7de-c1284f393b11, generation=0) is already enqueued for processing
+06-22 00:28:15.453 D/PickerSyncController( 1337):    Cached ID/Gen=1409:d260e185-6a8e-4322-95b8-60a49bdc62c7:external_primary/260
+06-22 00:28:15.453 D/PickerSyncController( 1337):    RESULT=SyncRequestParams{type=MEDIA_INCREMENTAL, gen=260, latest=Bundle[{last_media_sync_generation=272, media_collection_id=1409:d260e185-6a8e-4322-95b8-60a49bdc62c7:external_primary}], pageSize=1000}
+06-22 00:28:15.454 I/PickerSyncController( 1337): Executing SyncAdd. isLocal: true. authority: com.android.providers.media.photopicker
+06-22 00:28:15.455 D/PickerSyncLockManager( 1337): Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+06-22 00:28:15.456 D/CloseableReentrantLock( 1337): Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Locked by thread pool-3-thread-2]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:15.456 D/CloseableReentrantLock( 1337): Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:15.457 D/ExternalDbFacade( 1337): Token received for queryMedia = null
+06-22 00:28:15.460 D/PickerSyncLockManager( 1337): Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+06-22 00:28:15.460 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 3122KB/6245KB, paused 2.698ms,22.473ms total 60.971ms
+06-22 00:28:15.461 D/CloseableReentrantLock( 1337): Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Locked by thread pool-3-thread-2]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:15.462 D/PickerSyncController( 1337): Clearing next page token for key: local_provider:media_add:resume
+06-22 00:28:15.462 D/CloseableReentrantLock( 1337): Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:15.463 D/PickerNotificationSender( 1337): Sending a notification for media update
+06-22 00:28:15.464 D/PickerNotificationSender( 1337): Sending a notification for merged album media update Favorites
+06-22 00:28:15.464 D/PickerNotificationSender( 1337): Sending a notification for album media update Favorites
+06-22 00:28:15.469 D/PickerNotificationSender( 1337): Sending a notification for merged album media update Videos
+06-22 00:28:15.469 D/PickerNotificationSender( 1337): Sending a notification for album media update Videos
+06-22 00:28:15.473 I/PickerSyncController( 1337): Paged sync successful. QueryArgs: Bundle[{android.provider.extra.SYNC_GENERATION=260, android.provider.extra.PAGE_SIZE=1000}] Total Rows: 0
+06-22 00:28:15.474 I/PickerSyncController( 1337): Executing SyncRemove. isLocal: true. authority: com.android.providers.media.photopicker
+06-22 00:28:15.474 D/PickerSyncLockManager( 1337): Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+06-22 00:28:15.474 D/CloseableReentrantLock( 1337): Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Locked by thread pool-3-thread-2]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:15.474 D/CloseableReentrantLock( 1337): Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:15.477 E/PickerDbFacade( 1337): Could not get first date taken millis for media id: 1000000056
+06-22 00:28:15.479 W/PickerDbFacade( 1337): Unable to promote cloud media with localId: 1000000056
+06-22 00:28:15.479 D/PickerSyncLockManager( 1337): Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+06-22 00:28:15.480 D/CloseableReentrantLock( 1337): Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Locked by thread pool-3-thread-2]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:15.480 D/PickerSyncController( 1337): Clearing next page token for key: local_provider:media_remove:resume
+06-22 00:28:15.480 D/CloseableReentrantLock( 1337): Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:15.480 D/PickerNotificationSender( 1337): Sending a notification for media update
+06-22 00:28:15.485 D/PickerNotificationSender( 1337): Sending a notification for merged album media update Favorites
+06-22 00:28:15.485 D/PickerNotificationSender( 1337): Sending a notification for album media update Favorites
+06-22 00:28:15.488 D/PickerNotificationSender( 1337): Sending a notification for merged album media update Videos
+06-22 00:28:15.488 D/PickerNotificationSender( 1337): Sending a notification for album media update Videos
+06-22 00:28:15.491 I/PickerSyncController( 1337): Paged sync successful. QueryArgs: Bundle[{android.provider.extra.SYNC_GENERATION=260, android.provider.extra.PAGE_SIZE=1000}] Total Rows: 0
+06-22 00:28:15.492 I/PickerSyncTracker( 1337): Marked sync future complete for work id: 90d013ef-36ec-4b05-b7de-c1284f393b11. Future map: {}
+06-22 00:28:15.492 I/PSyncWorker( 1337): Completed picker proactive sync complete from local provider.
+06-22 00:28:15.493 I/ChimeraConfigurator( 1365): Starting update, reason: 4 urgentFeatures: vision.ocr:-1
+06-22 00:28:15.494 I/WM-WorkerWrapper( 1337): Worker result SUCCESS for Work [ id=90d013ef-36ec-4b05-b7de-c1284f393b11, tags={ com.android.providers.media.photopicker.sync.ProactiveSyncWorker } ]
+06-22 00:28:15.497 D/WM-Processor( 1337): Processor 90d013ef-36ec-4b05-b7de-c1284f393b11 executed; reschedule = false
+06-22 00:28:15.497 D/WM-GreedyScheduler( 1337): Stopping tracking for WorkGenerationalId(workSpecId=90d013ef-36ec-4b05-b7de-c1284f393b11, generation=0)
+06-22 00:28:15.497 D/WM-SystemJobService( 1337): 90d013ef-36ec-4b05-b7de-c1284f393b11 executed on JobScheduler
+06-22 00:28:15.504 D/WM-GreedyScheduler( 1337): Cancelling work ID 90d013ef-36ec-4b05-b7de-c1284f393b11
+06-22 00:28:15.509 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: ea65f043-677b-4d88-873b-c04b60309f50}. Requires device idle.
+06-22 00:28:15.510 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: 16a7357e-0f5e-4253-bafa-08ecc9ad5468}. Requires device idle.
+06-22 00:28:15.511 D/WM-BrdcstRcvrCnstrntTrc( 1337): BatteryNotLowTracker: unregistering receiver
+06-22 00:28:15.543 I/ChimeraConfigurator( 1365): Detected pending changes for urgent request: [vision.ocr]. Pending module sets: container:2423359190800+mlkit.ocr.common+vision.ocr,tflite_dynamite:2605805025100800+tflite_dynamite
+06-22 00:28:15.566 I/GmsDebugLogger( 1365): [73] 1801
+06-22 00:28:15.589 W/ZappDownloader( 1365): No successful Zapp module downloads for requested modules [VisionOcr.optional:242335100000:permitMetered, TfliteDynamiteDynamite.integ:260580502100800:permitMetered, MlkitOcrCommon.optional:242335100800:permitMetered].
+06-22 00:28:15.591 I/GmsDebugLogger( 1365): [30] [VisionOcr.optional:242335100000],[TfliteDynamiteDynamite.integ:260580502100800],[MlkitOcrCommon.optional:242335100800]
+06-22 00:28:15.608 W/ChimeraConfigService( 1365): Retry attempt was throttled. [CONTEXT service_id=264 ]
+06-22 00:28:15.608 I/GmsDebugLogger( 1365): [83] 1 [vision.ocr]
+06-22 00:28:15.630 W/Vision  ( 1365): Request for optional module download of ocr failed. Request again.
+06-22 00:28:15.631 W/Vision  ( 1365): Would have logged:
+06-22 00:28:15.631 W/Vision  ( 1365): # fbxl@37884fe7
+06-22 00:28:15.631 I/Vision  ( 1365): Schedule retrying download ocr at 5996358 with backoff 5120 seconds
+06-22 00:28:15.775 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2042KB/4085KB, paused 945us,5.055ms total 28.378ms
+06-22 00:28:15.905 D/EGL_emulation( 5732): app_time_stats: avg=37.24ms min=24.97ms max=69.17ms count=24
+06-22 00:28:16.011 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2598KB/5197KB, paused 2.081ms,5.042ms total 26.594ms
+06-22 00:28:16.161 W/BpBinder( 5809): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+06-22 00:28:16.162 W/ProcessState( 5809): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+06-22 00:28:16.179 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 8(2848KB) LOS objects, 49% free, 3122KB/6245KB, paused 802us,6.335ms total 31.342ms
+06-22 00:28:16.206 I/hwservicemanager(  217): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+06-22 00:28:16.206 I/Gralloc4( 5809): mapper 4.x is not supported
+06-22 00:28:16.188 I/servicemanager(    0): Caller(pid=5809,uid=2000,sid=u:r:shell:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+06-22 00:28:16.254 W/MediaProvider( 1337): isAppCloneUserPair for user 0: false
+06-22 00:28:16.309 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 4(1552KB) LOS objects, 49% free, 2042KB/4085KB, paused 1.166ms,11.997ms total 36.991ms
+06-22 00:28:16.395 I/.gms.persistent( 1172): Waiting for a blocking GC ProfileSaver
+06-22 00:28:16.409 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 5997 [CONTEXT service_id=218 ]
+06-22 00:28:16.445 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 66 uptime_millis: 66 exec_start_elapsed_seconds: 5997 [CONTEXT service_id=218 ]
+06-22 00:28:16.466 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 13(4724KB) LOS objects, 49% free, 2398KB/4797KB, paused 6.956ms,13.461ms total 67.504ms
+06-22 00:28:16.478 I/.gms.persistent( 1172): Background concurrent mark compact GC freed 15MB AllocSpace bytes, 4(184KB) LOS objects, 49% free, 16MB/32MB, paused 1.454ms,13.638ms total 132.443ms
+06-22 00:28:16.482 I/.gms.persistent( 1172): WaitForGcToComplete blocked ProfileSaver on Background for 87.832ms
+06-22 00:28:16.491 D/AudioFlinger(  490): mixer(0x792f353ba8e0) throttle end: throttle time(13)
+06-22 00:28:16.492 D/AF::Track(  490): interceptBuffer: took 711us to intercept 0 tracks
+06-22 00:28:16.529 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 8(3248KB) LOS objects, 49% free, 2902KB/5805KB, paused 852us,10.398ms total 45.455ms
+06-22 00:28:16.533 W/.gms.persistent( 1172): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~---4q7mt7FcAySlgBNSN2w==/com.martyskin.trudrunner-TfPdQu-3BQQbCGRFdIDaMg==/base.apk' with 1 weak references
+06-22 00:28:16.588 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 11(3676KB) LOS objects, 49% free, 2074KB/4149KB, paused 5.535ms,2.766ms total 23.387ms
+06-22 00:28:16.638 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 5(1876KB) LOS objects, 49% free, 2398KB/4797KB, paused 4.958ms,7.005ms total 34.320ms
+06-22 00:28:16.683 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 7(2524KB) LOS objects, 49% free, 3122KB/6245KB, paused 588us,5.149ms total 27.365ms
+06-22 00:28:16.860 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2042KB/4085KB, paused 2.170ms,8.223ms total 22.535ms
+06-22 00:28:16.948 D/EGL_emulation( 5732): app_time_stats: avg=38.50ms min=26.78ms max=64.30ms count=24
+06-22 00:28:17.013 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 7(2452KB) LOS objects, 49% free, 2598KB/5197KB, paused 1.651ms,6.409ms total 30.690ms
+06-22 00:28:17.073 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 7(2724KB) LOS objects, 49% free, 3102KB/6205KB, paused 1.022ms,6.001ms total 28.184ms
+06-22 00:28:17.140 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 11(3876KB) LOS objects, 49% free, 2074KB/4149KB, paused 1.615ms,10.595ms total 31.879ms
+06-22 00:28:17.189 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2598KB/5197KB, paused 2.669ms,7.832ms total 34.130ms
+06-22 00:28:17.247 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 8(3248KB) LOS objects, 49% free, 2578KB/5157KB, paused 3.774ms,5.250ms total 33.136ms
+06-22 00:28:17.267 D/AF::Track(  490): interceptBuffer: took 4124us to intercept 0 tracks
+06-22 00:28:17.301 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 10(3352KB) LOS objects, 49% free, 2074KB/4149KB, paused 6.769ms,4.016ms total 31.377ms
+06-22 00:28:17.396 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2598KB/5197KB, paused 770us,6.157ms total 26.272ms
+06-22 00:28:17.669 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 4274KB/8549KB, paused 3.772ms,7ms total 47.299ms
+06-22 00:28:17.854 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2074KB/4149KB, paused 6.937ms,4.885ms total 32.485ms
+06-22 00:28:17.967 D/EGL_emulation( 5732): app_time_stats: avg=36.53ms min=28.08ms max=50.83ms count=24
+06-22 00:28:17.990 D/AudioFlinger(  490): mixer(0x792f353ba8e0) throttle end: throttle time(1)
+06-22 00:28:18.020 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2074KB/4149KB, paused 1.719ms,5.297ms total 36.059ms
+06-22 00:28:18.087 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2042KB/4085KB, paused 2.205ms,5.431ms total 22.944ms
+06-22 00:28:18.091 I/wpa_supplicant(  868): wlan0: CTRL-EVENT-BEACON-LOSS 
+06-22 00:28:18.247 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(5048KB) LOS objects, 49% free, 3122KB/6245KB, paused 6.078ms,3.848ms total 35.250ms
+06-22 00:28:18.382 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 3122KB/6245KB, paused 3.205ms,5.656ms total 26.091ms
+06-22 00:28:18.450 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 12(4400KB) LOS objects, 49% free, 2074KB/4149KB, paused 1.309ms,7.800ms total 27.774ms
+06-22 00:28:18.526 V/AudioMixerController( 5732): Mix a frame waste: 1.119000ms
+06-22 00:28:18.543 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2598KB/5197KB, paused 3.073ms,6.242ms total 36.786ms
+06-22 00:28:18.876 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2200KB) LOS objects, 49% free, 2074KB/4149KB, paused 1.934ms,6.825ms total 31.540ms
+06-22 00:28:18.912 I/ActivityManager(  630): Broadcasting: Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }
+06-22 00:28:18.920 I/ActivityManager(  630): Enqueued broadcast Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }: 0
+06-22 00:28:18.924 W/JobInfo (  630): Job 'com.google.android.providers.media.module/com.android.providers.media.MediaService#-300' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+06-22 00:28:18.932 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 7(2724KB) LOS objects, 49% free, 2598KB/5197KB, paused 7.393ms,6.117ms total 40.767ms
+06-22 00:28:18.949 I/ActivityManager(  630): Broadcast completed: result=0
+06-22 00:28:18.964 I/MediaProvider( 1337): Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+06-22 00:28:18.980 D/EGL_emulation( 5732): app_time_stats: avg=34.05ms min=25.26ms max=50.02ms count=25
+06-22 00:28:18.989 I/MediaProvider( 1337): End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+06-22 00:28:18.991 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 10(3552KB) LOS objects, 49% free, 2398KB/4797KB, paused 875us,9.685ms total 34.346ms
+06-22 00:28:19.037 D/WM-SystemJobScheduler( 1337): Scheduling work ID 01cdc51b-d152-4058-a656-bdedc64043edJob ID 37
+06-22 00:28:19.042 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: ea65f043-677b-4d88-873b-c04b60309f50}. Requires device idle.
+06-22 00:28:19.043 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: 16a7357e-0f5e-4253-bafa-08ecc9ad5468}. Requires device idle.
+06-22 00:28:19.075 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 9(3572KB) LOS objects, 49% free, 2074KB/4149KB, paused 1.747ms,15.076ms total 58.360ms
+06-22 00:28:19.132 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 5999 [CONTEXT service_id=218 ]
+06-22 00:28:19.141 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 5(1676KB) LOS objects, 49% free, 2850KB/5701KB, paused 2.673ms,7.333ms total 32.294ms
+06-22 00:28:19.151 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 44 uptime_millis: 44 exec_start_elapsed_seconds: 5999 [CONTEXT service_id=218 ]
+06-22 00:28:19.192 W/MediaProvider( 1337): Ignoring param:deletedata post U for external apps
+06-22 00:28:19.201 I/MediaProvider( 1337): Deleted 0 1 0 0 0 0 0 items on external_primary due to com.android.shell
+06-22 00:28:19.235 D/WM-Processor( 1337): Processor cancelling 01cdc51b-d152-4058-a656-bdedc64043ed
+06-22 00:28:19.235 D/WM-Processor( 1337): WorkerWrapper could not be found for 01cdc51b-d152-4058-a656-bdedc64043ed
+06-22 00:28:19.242 V/AudioMixerController( 5732): Mix a frame waste: 1.271000ms
+06-22 00:28:19.270 D/WM-GreedyScheduler( 1337): Cancelling work ID 01cdc51b-d152-4058-a656-bdedc64043ed
+06-22 00:28:19.279 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(2128KB) LOS objects, 49% free, 3446KB/6893KB, paused 3.420ms,6.345ms total 44.066ms
+06-22 00:28:19.289 D/WM-SystemJobScheduler( 1337): Scheduling work ID d834750c-5064-4983-9570-80bbf961f877Job ID 38
+06-22 00:28:19.300 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: ea65f043-677b-4d88-873b-c04b60309f50}. Requires device idle.
+06-22 00:28:19.300 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: 16a7357e-0f5e-4253-bafa-08ecc9ad5468}. Requires device idle.
+06-22 00:28:19.345 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_OBJECT_SPRITE_ENQUEUE_BATCH reason=player-skin-critical:start-level-gate count=9 requested=0 priority=critical platform=native
+06-22 00:28:19.345 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_PLAYER_SKIN_CRITICAL_PRELOAD_REQUESTED reason=start-level-gate skin=brigadir count=9
+06-22 00:28:19.351 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_OBJECT_SPRITE_ENQUEUE_BATCH reason=level-critical:start-level-gate:level-1 count=54 requested=0 priority=critical platform=native
+06-22 00:28:19.352 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_CRITICAL_LEVEL_ASSET_PRELOAD_REQUESTED reason=start-level-gate level=1 count=54 policy=visible-plus-limited-startup
+06-22 00:28:19.355 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_FSM:CHARACTER_SELECT->RUNNING state=name->playing reason=start_level
+06-22 00:28:19.355 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_PLATFORM_DENSITY_CONFIG level=1 profile=early-open primary=35 secondary=8 total=43 start=1040 step=860+430 secondaryChance=0.16 yLift=76+72
+06-22 00:28:19.356 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_BANANA_DENSITY_CONFIG multiplier=0.7 clusters=25 totalCollectibles=99 bananas=84 bananaValue=84 coconuts=4 figLeaves=11 topUp=0 desired=53 sideChance=0.18 maxVisible=12/16 minClusterGap=280 minBananaGap=52 target=50
+06-22 00:28:19.358 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_base_platforms_001 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.358 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_base_platforms_002 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.359 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_base_platforms_003 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.359 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_001 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.360 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_002 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.360 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_003 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.360 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_004 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.360 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_extended_platforms_001 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.360 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_001 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.360 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_002 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.361 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_003 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.361 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_004 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.361 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_005 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.362 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_006 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.362 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_007 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.363 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_008 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.363 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_bunch_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.363 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_single_new level=1 spawned=1 reason=level_registry
+06-22 00:28:19.364 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_large_new level=1 spawned=1 reason=level_registry
+06-22 00:28:19.364 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_glow_new level=1 spawned=1 reason=level_registry
+06-22 00:28:19.365 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_hardhat_new level=1 spawned=1 reason=level_registry
+06-22 00:28:19.365 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_bunch_new level=1 spawned=1 reason=level_registry
+06-22 00:28:19.365 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_coffee_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.365 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_blueprint_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.367 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_pass_card_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.367 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_banana_coin_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.367 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_worker_wrench_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.368 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_worker_clipboard_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.368 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_scholar_files_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.368 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_guard_baton_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.369 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_banana_carrier_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.371 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_mechanic_wrench_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.371 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_label_plate_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.371 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_achievement_trophy_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.372 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_speedrun_badge_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.373 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_bonus_bundle_badge_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.374 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_level_lock_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.375 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 96KB AllocSpace bytes, 13(4724KB) LOS objects, 49% free, 2074KB/4149KB, paused 3.257ms,6.219ms total 50.667ms
+06-22 00:28:19.375 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_avatar_worker_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.375 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=labels_signage id=ui_label_plate_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.376 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=labels_signage id=obstacle_label_component level=1 spawned=1 reason=level_registry
+06-22 00:28:19.376 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=labels_signage id=story_banner_component level=1 spawned=1 reason=level_registry
+06-22 00:28:19.376 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=active_labels id=ui_label_plate_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.377 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=active_labels id=obstacle_label_component level=1 spawned=1 reason=level_registry
+06-22 00:28:19.377 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=active_labels id=story_banner_component level=1 spawned=1 reason=level_registry
+06-22 00:28:19.378 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=foreground_safe_area_matte level=1 spawned=1 reason=level_registry
+06-22 00:28:19.378 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:5 exec_start_elapsed_seconds: 6000 [CONTEXT service_id=218 ]
+06-22 00:28:19.378 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=themed_platform_contact level=1 spawned=1 reason=level_registry
+06-22 00:28:19.379 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=story_banner_component level=1 spawned=1 reason=level_registry
+06-22 00:28:19.379 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_worker_wrench_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.380 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_worker_clipboard_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.381 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_scholar_files_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.382 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_guard_baton_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.382 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_banana_carrier_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.383 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=idle level=1 spawned=1 reason=level_registry
+06-22 00:28:19.383 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_1 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.383 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_2 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.384 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=jump level=1 spawned=1 reason=level_registry
+06-22 00:28:19.384 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=jump_2 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.385 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=fall level=1 spawned=1 reason=level_registry
+06-22 00:28:19.385 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=equipment_hardhat_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.385 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=equipment_safety_vest_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.385 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=equipment_dash_boots_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.386 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=equipment_magnet_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.386 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=bonus_coffee_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.387 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=bonus_blueprint_01 level=1 spawned=1 reason=level_registry
+06-22 00:28:19.387 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE_SUMMARY level=1 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment
+06-22 00:28:19.388 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_GAMESTATE reason=reset mode=RUNNING level=1 speed=430 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=43/34/99/0
+06-22 00:28:19.389 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d6260870) stop, url: @assets/assets/resources/native/6d/6d2645de-7223-4ca3-adc9-010e820d08e5.wav
+06-22 00:28:19.389 V/AudioEngineImpl( 5732): Removing player id=1, state:4
+06-22 00:28:19.389 V/AudioPlayerProvider( 5732): preload return from cache: (@assets/assets/resources/native/37/3786664f-9b28-4d02-bf24-0bbbae035dc4.wav)
+06-22 00:28:19.391 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LEVEL_MUSIC_RESTART level=1 volume=0.33
+06-22 00:28:19.393 V/AudioPlayerProvider( 5732): preload return from cache: (@assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav)
+06-22 00:28:19.395 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=story_banner_component level=1 spawned=1 reason=z_20
+06-22 00:28:19.396 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_BACKGROUND_BITMAP_APPLIED level=1 source=full path=backgrounds/level01/spriteFrame
+06-22 00:28:19.396 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_BG_DUPLICATE_OK
+06-22 00:28:19.398 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_BG_TEXTURE layer=BG_FAR level=1 sourceWidth=1920 sourceHeight=886 drawWidth=1781 drawHeight=822 viewport=1560 mode=scenic-fit repeat=none packable=false panRange=221
+06-22 00:28:19.399 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_BG_SYNC layer=BG_FAR level=1 mode=scenic-fit source=single offset=0 panRange=221 segmentCount=1 worldDistancePx=7
+06-22 00:28:19.400 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_BACKGROUND_DUPLICATE_SCAN:OK:theme=1:sources=1
+06-22 00:28:19.401 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=foreground_safe_area_matte level=1 spawned=1 reason=gameplay_lane_contact_line
+06-22 00:28:19.402 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=foreground_safe_area_matte level=1 spawned=1 reason=static_touch_control_matte_no_scroll_stripes
+06-22 00:28:19.402 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_BG_SYNC layer=TRACK_BACKDROP mode=static source=viewport-matte pattern=disabled worldDistancePx=7
+06-22 00:28:19.403 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_extended_platforms_002 level=1 spawned=1 reason=platform_visual_asset
+06-22 00:28:19.404 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:5 result: 1 elapsed_millis: 52 uptime_millis: 52 exec_start_elapsed_seconds: 6000 [CONTEXT service_id=218 ]
+06-22 00:28:19.404 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_007 level=1 spawned=1 reason=hazard_visual_type_0
+06-22 00:28:19.407 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_large_new level=1 spawned=1 reason=banana_skin_single
+06-22 00:28:19.410 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_hardhat_new level=1 spawned=1 reason=banana_skin_single
+06-22 00:28:19.412 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=foreground_safe_area_matte level=1 spawned=1 reason=player_contact_shadow
+06-22 00:28:19.412 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_SKIN_VARIANT_ACTIVE skin=brigadir variant=base model=selected_skin pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:19.412 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:19.414 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_1 level=1 spawned=1 reason=player_skin_base_run1
+06-22 00:28:19.416 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=hud_panel level=1 spawned=1 reason=shared_hud_left
+06-22 00:28:19.418 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=hud_panel level=1 spawned=1 reason=shared_hud_right
+06-22 00:28:19.421 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=hud_control level=1 spawned=1 reason=shared_hud_button
+06-22 00:28:19.421 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_label_plate_01 level=1 spawned=1 reason=button_runtime_label_plate
+06-22 00:28:19.427 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:BG_FAR:1
+06-22 00:28:19.428 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:BG_MID:6
+06-22 00:28:19.430 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:BG_NEAR_DECOR:0
+06-22 00:28:19.430 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:PLATFORMS_SOLID:1
+06-22 00:28:19.431 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:OBJECTIVES_ACTIVE:1
+06-22 00:28:19.431 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:COLLECTIBLES:6
+06-22 00:28:19.432 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_BODY:9
+06-22 00:28:19.432 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EQUIPMENT:0
+06-22 00:28:19.432 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EFFECTS:0
+06-22 00:28:19.433 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:FOREGROUND_LIGHT_DECOR:0
+06-22 00:28:19.434 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:HUD:18
+06-22 00:28:19.434 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_LAYER_DRAW:DEV_OVERLAY:0
+06-22 00:28:19.435 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_COLLECTIBLE_PRIORITY_OK
+06-22 00:28:19.436 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_PLATFORM_ALPHA_OK:latest_themed_sprite_or_pending_gate
+06-22 00:28:19.483 V/AudioEngineImpl( 5732): play2d, _audioPlayers.size=0
+06-22 00:28:19.484 V/PcmAudioPlayer( 5732): PcmAudioPlayer constructor: 0x7438d626ba80
+06-22 00:28:19.484 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d626ba80) play, url: @assets/assets/resources/native/37/3786664f-9b28-4d02-bf24-0bbbae035dc4.wav
+06-22 00:28:19.484 V/AudioEngineImpl( 5732): play2d, _audioPlayers.size=1
+06-22 00:28:19.484 V/PcmAudioPlayer( 5732): PcmAudioPlayer constructor: 0x7438d626ac10
+06-22 00:28:19.484 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d626ac10) play, url: @assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav
+06-22 00:28:19.487 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_single_new level=1 spawned=1 reason=banana_skin_single
+06-22 00:28:19.488 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_glow_new level=1 spawned=1 reason=banana_skin_single
+06-22 00:28:19.545 V/PcmAudioPlayer( 5732): In the destructor of PcmAudioPlayer (0x7438d6260870)
+06-22 00:28:19.546 V/Track   ( 5732): ~Track(): 0x7439b6277790
+06-22 00:28:19.559 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:19.560 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_1 level=1 spawned=1 reason=player_skin_blend_from_run2
+06-22 00:28:19.560 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_2 level=1 spawned=1 reason=player_skin_base_run2
+06-22 00:28:19.594 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_DT_OK fixedDt=0.016666666666666666 steps=10
+06-22 00:28:19.631 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:19.632 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_2 level=1 spawned=1 reason=player_skin_blend_from_run1
+06-22 00:28:19.680 V/AudioMixerController( 5732): Play over ...
+06-22 00:28:19.700 V/AudioEngineImpl( 5732): Removing player id=3, state:5
+06-22 00:28:19.700 V/PcmAudioPlayer( 5732): In the destructor of PcmAudioPlayer (0x7438d626ac10)
+06-22 00:28:19.700 V/Track   ( 5732): ~Track(): 0x7439b6260b10
+06-22 00:28:19.714 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:19.715 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2472KB) LOS objects, 49% free, 2078KB/4157KB, paused 510us,8.114ms total 22.518ms
+06-22 00:28:19.843 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:19.924 D/Cocos   ( 5732): 00:28:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:19.988 D/EGL_emulation( 5732): app_time_stats: avg=48.79ms min=33.79ms max=123.07ms count=20
+06-22 00:28:20.019 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2472KB) LOS objects, 49% free, 2078KB/4157KB, paused 526us,11.130ms total 32.207ms
+06-22 00:28:20.044 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:20.123 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:20.223 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:20.323 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:20.371 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 19(2960KB) LOS objects, 49% free, 2294KB/4589KB, paused 1.219ms,7.062ms total 35.279ms
+06-22 00:28:20.439 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:20.552 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:20.604 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:20.717 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:20.734 D/WM-DelayedWorkTracker( 1337): Scheduling work d834750c-5064-4983-9570-80bbf961f877
+06-22 00:28:20.735 D/WM-GreedyScheduler( 1337): Starting tracking for d834750c-5064-4983-9570-80bbf961f877
+06-22 00:28:20.738 D/WM-ConstraintTracker( 1337): BatteryNotLowTracker: initial state = true
+06-22 00:28:20.739 D/WM-BrdcstRcvrCnstrntTrc( 1337): BatteryNotLowTracker: registering receiver
+06-22 00:28:20.742 D/WM-GreedyScheduler( 1337): Constraints met: Scheduling work ID WorkGenerationalId(workSpecId=d834750c-5064-4983-9570-80bbf961f877, generation=0)
+06-22 00:28:20.743 D/WM-Processor( 1337): Processor: processing WorkGenerationalId(workSpecId=d834750c-5064-4983-9570-80bbf961f877, generation=0)
+06-22 00:28:20.748 D/WM-WorkerWrapper( 1337): Starting work for com.android.providers.media.photopicker.sync.ProactiveSyncWorker
+06-22 00:28:20.749 I/PSyncWorker( 1337): Starting proactive picker sync from sync source: 1
+06-22 00:28:20.750 I/PickerSyncTracker( 1337): Created new sync future java.util.concurrent.CompletableFuture@72a0855[Not completed, 1 dependents]. Future map: {d834750c-5064-4983-9570-80bbf961f877=java.util.concurrent.CompletableFuture@72a0855[Not completed, 1 dependents]}
+06-22 00:28:20.751 D/PickerSyncController( 1337): syncAllMediaFromProvider() LOCAL, auth=com.android.providers.media.photopicker, retry=true
+06-22 00:28:20.751 D/PickerSyncController( 1337): getSyncRequestParams() LOCAL, auth=com.android.providers.media.photopicker
+06-22 00:28:20.755 D/PickerSyncController( 1337):    Latest ID/Gen=1409:d260e185-6a8e-4322-95b8-60a49bdc62c7:external_primary/283
+06-22 00:28:20.755 D/PickerSyncController( 1337):    Cached ID/Gen=1409:d260e185-6a8e-4322-95b8-60a49bdc62c7:external_primary/272
+06-22 00:28:20.756 D/PickerSyncController( 1337):    RESULT=SyncRequestParams{type=MEDIA_INCREMENTAL, gen=272, latest=Bundle[{last_media_sync_generation=283, media_collection_id=1409:d260e185-6a8e-4322-95b8-60a49bdc62c7:external_primary}], pageSize=1000}
+06-22 00:28:20.759 I/PickerSyncController( 1337): Executing SyncAdd. isLocal: true. authority: com.android.providers.media.photopicker
+06-22 00:28:20.759 D/PickerSyncLockManager( 1337): Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+06-22 00:28:20.759 D/CloseableReentrantLock( 1337): Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Locked by thread pool-3-thread-3]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:20.760 D/CloseableReentrantLock( 1337): Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:20.760 D/ExternalDbFacade( 1337): Token received for queryMedia = null
+06-22 00:28:20.767 D/PickerSyncLockManager( 1337): Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+06-22 00:28:20.767 D/CloseableReentrantLock( 1337): Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Locked by thread pool-3-thread-3]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:20.767 D/PickerSyncController( 1337): Clearing next page token for key: local_provider:media_add:resume
+06-22 00:28:20.768 D/CloseableReentrantLock( 1337): Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:20.768 D/PickerNotificationSender( 1337): Sending a notification for media update
+06-22 00:28:20.771 D/PickerNotificationSender( 1337): Sending a notification for merged album media update Favorites
+06-22 00:28:20.771 D/PickerNotificationSender( 1337): Sending a notification for album media update Favorites
+06-22 00:28:20.773 D/PickerNotificationSender( 1337): Sending a notification for merged album media update Videos
+06-22 00:28:20.773 D/PickerNotificationSender( 1337): Sending a notification for album media update Videos
+06-22 00:28:20.776 I/PickerSyncController( 1337): Paged sync successful. QueryArgs: Bundle[{android.provider.extra.SYNC_GENERATION=272, android.provider.extra.PAGE_SIZE=1000}] Total Rows: 0
+06-22 00:28:20.776 I/PickerSyncController( 1337): Executing SyncRemove. isLocal: true. authority: com.android.providers.media.photopicker
+06-22 00:28:20.778 D/PickerSyncLockManager( 1337): Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+06-22 00:28:20.779 D/CloseableReentrantLock( 1337): Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Locked by thread pool-3-thread-3]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:20.779 D/CloseableReentrantLock( 1337): Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:20.781 E/PickerDbFacade( 1337): Could not get first date taken millis for media id: 1000000057
+06-22 00:28:20.783 W/PickerDbFacade( 1337): Unable to promote cloud media with localId: 1000000057
+06-22 00:28:20.784 D/PickerSyncLockManager( 1337): Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+06-22 00:28:20.786 D/CloseableReentrantLock( 1337): Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Locked by thread pool-3-thread-3]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:20.787 D/PickerSyncController( 1337): Clearing next page token for key: local_provider:media_remove:resume
+06-22 00:28:20.787 D/CloseableReentrantLock( 1337): Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@36f3c37[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+06-22 00:28:20.787 D/PickerNotificationSender( 1337): Sending a notification for media update
+06-22 00:28:20.789 D/PickerNotificationSender( 1337): Sending a notification for merged album media update Favorites
+06-22 00:28:20.789 D/PickerNotificationSender( 1337): Sending a notification for album media update Favorites
+06-22 00:28:20.791 D/PickerNotificationSender( 1337): Sending a notification for merged album media update Videos
+06-22 00:28:20.792 D/PickerNotificationSender( 1337): Sending a notification for album media update Videos
+06-22 00:28:20.795 I/PickerSyncController( 1337): Paged sync successful. QueryArgs: Bundle[{android.provider.extra.SYNC_GENERATION=272, android.provider.extra.PAGE_SIZE=1000}] Total Rows: 0
+06-22 00:28:20.796 I/PickerSyncTracker( 1337): Marked sync future complete for work id: d834750c-5064-4983-9570-80bbf961f877. Future map: {}
+06-22 00:28:20.796 I/PSyncWorker( 1337): Completed picker proactive sync complete from local provider.
+06-22 00:28:20.799 I/WM-WorkerWrapper( 1337): Worker result SUCCESS for Work [ id=d834750c-5064-4983-9570-80bbf961f877, tags={ com.android.providers.media.photopicker.sync.ProactiveSyncWorker } ]
+06-22 00:28:20.801 D/WM-Processor( 1337): Processor d834750c-5064-4983-9570-80bbf961f877 executed; reschedule = false
+06-22 00:28:20.801 D/WM-GreedyScheduler( 1337): Stopping tracking for WorkGenerationalId(workSpecId=d834750c-5064-4983-9570-80bbf961f877, generation=0)
+06-22 00:28:20.815 D/WM-GreedyScheduler( 1337): Cancelling work ID d834750c-5064-4983-9570-80bbf961f877
+06-22 00:28:20.818 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: ea65f043-677b-4d88-873b-c04b60309f50}. Requires device idle.
+06-22 00:28:20.819 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: 16a7357e-0f5e-4253-bafa-08ecc9ad5468}. Requires device idle.
+06-22 00:28:20.819 D/WM-BrdcstRcvrCnstrntTrc( 1337): BatteryNotLowTracker: unregistering receiver
+06-22 00:28:20.823 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:20.928 D/Cocos   ( 5732): 00:28:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:21.014 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:21.023 D/EGL_emulation( 5732): app_time_stats: avg=51.59ms min=35.80ms max=66.03ms count=20
+06-22 00:28:21.110 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:21.143 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(2968KB) LOS objects, 49% free, 2262KB/4525KB, paused 3.523ms,5.736ms total 27.859ms
+06-22 00:28:21.206 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:21.291 V/AudioPlayerProvider( 5732): preload return from cache: (@assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav)
+06-22 00:28:21.292 V/AudioPlayerProvider( 5732): preload return from cache: (@assets/assets/resources/native/70/70571c02-cb14-400b-ba2d-2f8b13a7d0dd.wav)
+06-22 00:28:21.294 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=hit key=characters/player_skins/brigadir/base/hit
+06-22 00:28:21.294 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_1 level=1 spawned=1 reason=player_skin_blend_from_hit
+06-22 00:28:21.295 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=hit level=1 spawned=1 reason=player_skin_base_hit
+06-22 00:28:21.318 V/AudioEngineImpl( 5732): play2d, _audioPlayers.size=1
+06-22 00:28:21.320 V/PcmAudioPlayer( 5732): PcmAudioPlayer constructor: 0x7438d624f990
+06-22 00:28:21.320 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d624f990) play, url: @assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav
+06-22 00:28:21.322 V/AudioEngineImpl( 5732): play2d, _audioPlayers.size=2
+06-22 00:28:21.324 V/PcmAudioPlayer( 5732): PcmAudioPlayer constructor: 0x7438d626aab0
+06-22 00:28:21.325 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d626aab0) play, url: @assets/assets/resources/native/70/70571c02-cb14-400b-ba2d-2f8b13a7d0dd.wav
+06-22 00:28:21.587 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=fall key=characters/player_skins/brigadir/base/fall
+06-22 00:28:21.588 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=hit level=1 spawned=1 reason=player_skin_blend_from_fall
+06-22 00:28:21.588 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=fall level=1 spawned=1 reason=player_skin_base_fall
+06-22 00:28:21.663 V/AudioMixerController( 5732): Play over ...
+06-22 00:28:21.668 V/AudioEngineImpl( 5732): Removing player id=5, state:5
+06-22 00:28:21.669 V/PcmAudioPlayer( 5732): In the destructor of PcmAudioPlayer (0x7438d626aab0)
+06-22 00:28:21.669 V/Track   ( 5732): ~Track(): 0x7439b6296330
+06-22 00:28:21.726 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 19(2436KB) LOS objects, 49% free, 2382KB/4765KB, paused 3.107ms,5.138ms total 30.782ms
+06-22 00:28:21.746 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_004 level=1 spawned=1 reason=platform_visual_asset
+06-22 00:28:21.748 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:21.749 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=fall level=1 spawned=1 reason=player_skin_blend_from_run2
+06-22 00:28:21.764 V/AudioMixerController( 5732): Play over ...
+06-22 00:28:21.780 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 21(3152KB) LOS objects, 49% free, 2370KB/4741KB, paused 1.812ms,5.102ms total 28.610ms
+06-22 00:28:21.793 V/AudioEngineImpl( 5732): Removing player id=4, state:5
+06-22 00:28:21.793 V/PcmAudioPlayer( 5732): In the destructor of PcmAudioPlayer (0x7438d624f990)
+06-22 00:28:21.793 V/Track   ( 5732): ~Track(): 0x7439b6296e70
+06-22 00:28:21.835 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(3048KB) LOS objects, 49% free, 2262KB/4525KB, paused 1.957ms,5.658ms total 28.796ms
+06-22 00:28:21.843 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:21.922 D/Cocos   ( 5732): 00:28:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:22.011 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:22.028 D/EGL_emulation( 5732): app_time_stats: avg=45.46ms min=38.41ms max=69.64ms count=22
+06-22 00:28:22.123 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:22.237 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:22.332 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:22.432 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:22.511 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:22.516 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2128KB) LOS objects, 49% free, 2230KB/4461KB, paused 621us,5.453ms total 21.353ms
+06-22 00:28:22.573 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2128KB) LOS objects, 49% free, 2230KB/4461KB, paused 1.566ms,5.756ms total 38.995ms
+06-22 00:28:22.632 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_roadworks_base_hazards_008 level=1 spawned=1 reason=hazard_visual_type_1
+06-22 00:28:22.634 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:22.685 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(3552KB) LOS objects, 49% free, 2078KB/4157KB, paused 4.140ms,14.371ms total 48.629ms
+06-22 00:28:22.726 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:22.829 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 19(2432KB) LOS objects, 49% free, 2386KB/4773KB, paused 646us,8.415ms total 24.421ms
+06-22 00:28:22.840 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:22.885 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 21(2440KB) LOS objects, 49% free, 2614KB/5229KB, paused 1.737ms,8.145ms total 31.203ms
+06-22 00:28:22.905 D/Cocos   ( 5732): 00:28:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:22.965 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3648KB) LOS objects, 49% free, 2078KB/4157KB, paused 926us,5.454ms total 47.405ms
+06-22 00:28:23.035 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:23.050 D/EGL_emulation( 5732): app_time_stats: avg=45.86ms min=22.87ms max=81.89ms count=22
+06-22 00:28:23.106 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:23.219 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:23.305 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 17(2188KB) LOS objects, 49% free, 2170KB/4341KB, paused 2.922ms,6.564ms total 31.103ms
+06-22 00:28:23.311 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:23.351 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 17(2252KB) LOS objects, 49% free, 2046KB/4093KB, paused 1.029ms,6.315ms total 20.744ms
+06-22 00:28:23.412 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2128KB) LOS objects, 49% free, 2078KB/4157KB, paused 1.458ms,8.923ms total 40.183ms
+06-22 00:28:23.415 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:23.473 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_extended_hazards_003 level=1 spawned=1 reason=hazard_visual_type_8
+06-22 00:28:23.502 W/BpBinder( 5824): Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+06-22 00:28:23.504 W/ProcessState( 5824): Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+06-22 00:28:23.508 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:23.530 I/hwservicemanager(  217): getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+06-22 00:28:23.512 I/servicemanager(    0): Caller(pid=5824,uid=2000,sid=u:r:shell:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+06-22 00:28:23.530 I/Gralloc4( 5824): mapper 4.x is not supported
+06-22 00:28:23.531 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 19(2360KB) LOS objects, 49% free, 2078KB/4157KB, paused 1.306ms,17.693ms total 38.922ms
+06-22 00:28:23.555 W/MediaProvider( 1337): isAppCloneUserPair for user 0: false
+06-22 00:28:23.616 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:23.650 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 6004 [CONTEXT service_id=218 ]
+06-22 00:28:23.659 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 39 uptime_millis: 39 exec_start_elapsed_seconds: 6004 [CONTEXT service_id=218 ]
+06-22 00:28:23.673 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 17(2188KB) LOS objects, 49% free, 2506KB/5013KB, paused 997us,10.353ms total 35.494ms
+06-22 00:28:23.744 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:23.817 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:23.870 W/IPCThreadState(  630): Sending oneway calls to frozen process.
+06-22 00:28:23.931 D/Cocos   ( 5732): 00:28:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:24.019 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:24.071 D/EGL_emulation( 5732): app_time_stats: avg=42.17ms min=32.89ms max=71.49ms count=24
+06-22 00:28:24.123 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:24.159 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=mtr_last_roadworks_base_platforms_004 level=1 spawned=1 reason=platform_near_player_contact_shadow
+06-22 00:28:24.208 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3648KB) LOS objects, 49% free, 2614KB/5229KB, paused 1.781ms,7.323ms total 33.290ms
+06-22 00:28:24.223 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:24.292 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_extended_platforms_005 level=1 spawned=1 reason=platform_visual_asset
+06-22 00:28:24.332 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:24.424 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:24.471 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2008KB) LOS objects, 49% free, 2346KB/4693KB, paused 1.838ms,5.738ms total 29.446ms
+06-22 00:28:24.517 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:24.646 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:24.728 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:24.841 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:24.903 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(1824KB) LOS objects, 49% free, 2614KB/5229KB, paused 1.533ms,6.345ms total 27.223ms
+06-22 00:28:24.923 D/Cocos   ( 5732): 00:28:24 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:25.028 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:25.071 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_extended_hazards_002 level=1 spawned=1 reason=hazard_visual_type_6
+06-22 00:28:25.084 D/EGL_emulation( 5732): app_time_stats: avg=38.49ms min=29.13ms max=55.34ms count=26
+06-22 00:28:25.140 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:25.226 V/AudioMixerController( 5732): Mix a frame waste: 2.302000ms
+06-22 00:28:25.227 V/AudioPlayerProvider( 5732): preload return from cache: (@assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav)
+06-22 00:28:25.228 V/AudioPlayerProvider( 5732): preload return from cache: (@assets/assets/resources/native/57/57e6445e-adbb-4f56-89bd-56a222ba5606.wav)
+06-22 00:28:25.232 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=hit key=characters/player_skins/brigadir/base/hit
+06-22 00:28:25.233 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_2 level=1 spawned=1 reason=player_skin_blend_from_hit
+06-22 00:28:25.271 V/AudioEngineImpl( 5732): play2d, _audioPlayers.size=1
+06-22 00:28:25.271 V/PcmAudioPlayer( 5732): PcmAudioPlayer constructor: 0x7438d6266120
+06-22 00:28:25.271 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d6266120) play, url: @assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav
+06-22 00:28:25.272 V/AudioEngineImpl( 5732): play2d, _audioPlayers.size=2
+06-22 00:28:25.272 V/PcmAudioPlayer( 5732): PcmAudioPlayer constructor: 0x7438d62649c0
+06-22 00:28:25.274 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d62649c0) play, url: @assets/assets/resources/native/57/57e6445e-adbb-4f56-89bd-56a222ba5606.wav
+06-22 00:28:25.284 V/AudioMixerController( 5732): Mix a frame waste: 1.121000ms
+06-22 00:28:25.398 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 23(2744KB) LOS objects, 49% free, 2262KB/4525KB, paused 2.338ms,5.998ms total 26.796ms
+06-22 00:28:25.460 V/AudioMixerController( 5732): Mix a frame waste: 1.562000ms
+06-22 00:28:25.469 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 15(1916KB) LOS objects, 49% free, 2706KB/5413KB, paused 2.299ms,8.316ms total 34.873ms
+06-22 00:28:25.486 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=jump key=characters/player_skins/brigadir/base/jump
+06-22 00:28:25.488 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=hit level=1 spawned=1 reason=player_skin_blend_from_jump
+06-22 00:28:25.490 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=jump level=1 spawned=1 reason=player_skin_base_jump
+06-22 00:28:25.531 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(3308KB) LOS objects, 49% free, 2326KB/4653KB, paused 2.926ms,7.382ms total 27.796ms
+06-22 00:28:25.540 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=fall key=characters/player_skins/brigadir/base/fall
+06-22 00:28:25.540 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=jump level=1 spawned=1 reason=player_skin_blend_from_fall
+06-22 00:28:25.606 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 18(2256KB) LOS objects, 49% free, 2614KB/5229KB, paused 1.157ms,22.591ms total 46.679ms
+06-22 00:28:25.663 V/AudioMixerController( 5732): Play over ...
+06-22 00:28:25.671 V/AudioEngineImpl( 5732): Removing player id=7, state:5
+06-22 00:28:25.671 V/PcmAudioPlayer( 5732): In the destructor of PcmAudioPlayer (0x7438d62649c0)
+06-22 00:28:25.672 V/Track   ( 5732): ~Track(): 0x7439b62904b0
+06-22 00:28:25.674 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:25.675 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=fall level=1 spawned=1 reason=player_skin_blend_from_run1
+06-22 00:28:25.703 V/AudioMixerController( 5732): Play over ...
+06-22 00:28:25.751 V/AudioEngineImpl( 5732): Removing player id=6, state:5
+06-22 00:28:25.752 V/PcmAudioPlayer( 5732): In the destructor of PcmAudioPlayer (0x7438d6266120)
+06-22 00:28:25.752 V/Track   ( 5732): ~Track(): 0x7439b62995d0
+06-22 00:28:25.766 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:25.839 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:25.887 V/AudioMixerController( 5732): Mix a frame waste: 1.004000ms
+06-22 00:28:25.939 D/Cocos   ( 5732): 00:28:25 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:26.010 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:26.109 D/EGL_emulation( 5732): app_time_stats: avg=42.03ms min=21.84ms max=59.79ms count=24
+06-22 00:28:26.118 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_2 key=characters/player_skins/brigadir/base/run_2
+06-22 00:28:26.223 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 18(2728KB) LOS objects, 49% free, 2294KB/4589KB, paused 849us,5.296ms total 24.211ms
+06-22 00:28:26.225 I/ActivityManager(  630): Broadcasting: Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }
+06-22 00:28:26.227 I/ActivityManager(  630): Enqueued broadcast Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }: 0
+06-22 00:28:26.231 W/JobInfo (  630): Job 'com.google.android.providers.media.module/com.android.providers.media.MediaService#-300' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+06-22 00:28:26.242 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=run_1 key=characters/player_skins/brigadir/base/run_1
+06-22 00:28:26.243 I/ActivityManager(  630): Broadcast completed: result=0
+06-22 00:28:26.248 I/MediaProvider( 1337): Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+06-22 00:28:26.286 I/wpa_supplicant(  868): wlan0: CTRL-EVENT-BEACON-LOSS 
+06-22 00:28:26.292 I/MediaProvider( 1337): End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+06-22 00:28:26.319 I/skin.trudrunner( 5732): Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2040KB) LOS objects, 49% free, 2166KB/4333KB, paused 2.342ms,16.777ms total 57.171ms
+06-22 00:28:26.339 V/AudioPlayerProvider( 5732): preload return from cache: (@assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav)
+06-22 00:28:26.344 V/AudioPlayerProvider( 5732): preload return from cache: (@assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav)
+06-22 00:28:26.345 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_FSM:RUNNING->GAME_OVER state=playing->over reason=hp_zero
+06-22 00:28:26.347 V/AudioPlayerProvider( 5732): preload return from cache: (@assets/assets/resources/native/d2/d252ab71-a770-47cc-8460-30937a0b29e6.wav)
+06-22 00:28:26.356 D/WM-SystemJobScheduler( 1337): Scheduling work ID 0eca2e8e-b8b5-43b8-8447-f5795634df43Job ID 39
+06-22 00:28:26.359 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: ea65f043-677b-4d88-873b-c04b60309f50}. Requires device idle.
+06-22 00:28:26.360 D/WM-GreedyScheduler( 1337): Ignoring {WorkSpec: 16a7357e-0f5e-4253-bafa-08ecc9ad5468}. Requires device idle.
+06-22 00:28:26.379 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=base pose=hit key=characters/player_skins/brigadir/base/hit
+06-22 00:28:26.386 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=panel_dialog level=1 spawned=1 reason=shared_death_panel
+06-22 00:28:26.388 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=title_banner_blank level=1 spawned=1 reason=shared_death_title
+06-22 00:28:26.388 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=empty_state_card level=1 spawned=1 reason=death_summary
+06-22 00:28:26.393 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=button_primary_idle level=1 spawned=1 reason=shared_menu_button
+06-22 00:28:26.397 D/Cocos   ( 5732): 00:28:26 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=button_back_idle level=1 spawned=1 reason=shared_menu_button
+06-22 00:28:26.434 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 6007 [CONTEXT service_id=218 ]
+06-22 00:28:26.440 I/NetworkScheduler.Stats( 1172): Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 22 uptime_millis: 22 exec_start_elapsed_seconds: 6007 [CONTEXT service_id=218 ]
+06-22 00:28:26.447 V/AudioEngineImpl( 5732): play2d, _audioPlayers.size=1
+06-22 00:28:26.447 V/PcmAudioPlayer( 5732): PcmAudioPlayer constructor: 0x7438d6263e10
+06-22 00:28:26.447 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d6263e10) play, url: @assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav
+06-22 00:28:26.448 V/AudioEngineImpl( 5732): play2d, _audioPlayers.size=2
+06-22 00:28:26.448 V/PcmAudioPlayer( 5732): PcmAudioPlayer constructor: 0x7438d6262340
+06-22 00:28:26.448 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d6262340) play, url: @assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav
+06-22 00:28:26.450 V/AudioEngineImpl( 5732): play2d, _audioPlayers.size=3
+06-22 00:28:26.451 V/PcmAudioPlayer( 5732): PcmAudioPlayer constructor: 0x7438d626a8a0
+06-22 00:28:26.452 V/PcmAudioPlayer( 5732): PcmAudioPlayer (0x7438d626a8a0) play, url: @assets/assets/resources/native/d2/d252ab71-a770-47cc-8460-30937a0b29e6.wav
+06-22 00:28:26.472 W/MediaProvider( 1337): Ignoring param:deletedata post U for external apps
+06-22 00:28:26.486 I/MediaProvider( 1337): Deleted 0 1 0 0 0 0 0 items on external_primary due to com.android.shell
+06-22 00:28:26.518 V/AudioMixerController( 5732): Mix a frame waste: 1.621000ms
+06-22 00:28:26.537 D/WM-Processor( 1337): Processor cancelling 0eca2e8e-b8b5-43b8-8447-f5795634df43
+06-22 00:28:26.538 D/WM-Processor( 1337): WorkerWrapper could not be found for 0eca2e8e-b8b5-43b8-8447-f5795634df43
+06-22 00:28:26.559 D/AF::Track(  490): interceptBuffer: took 2309us to intercept 0 tracks
+06-22 00:28:26.574 D/WM-GreedyScheduler( 1337): Cancelling work ID 0eca2e8e-b8b5-43b8-8447-f5795634df43
+06-22 00:28:26.580 D/WM-SystemJobScheduler( 1337): Scheduling work ID ce831bd5-0802-4e8b-a92f-c954da2cacbcJob ID 40
+06-22 00:28:26.561 I/logd    (    0): logdr: UID=2000 GID=2000 PID=5834 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns

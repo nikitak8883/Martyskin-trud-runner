@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-06-22T21:01:10.8931760+03:00",
+  "source_apk": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\build\\CocosGame\\outputs\\apk\\release\\CocosGame-release.apk",
+  "release_apk": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\releases\\android\\mtr-20260622-runtime-qa-skins-release-arm64.apk",
+  "size_bytes": 137795501,
+  "sha256": "D899514C20F1BF896270D22014EFF0FDF21CF2C680BEABD89931F7283093DFD3",
+  "last_write": "2026-06-22T21:00:41.7681396+03:00",
+  "abi": [
+    "arm64-v8a",
+    "armeabi-v7a"
+  ],
+  "has_arm64_v8a": true,
+  "has_armeabi_v7a": true,
+  "has_x86_64": false,
+  "js_entry": "assets/assets/main/index.js",
+  "contains_qa_preload": true,
+  "contains_primatal": true,
+  "contains_skin_variants": true,
+  "contains_scrub_label": true,
+  "apksigner": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\build-tools\\37.0.0\\apksigner.bat",
+  "apksigner_exit": 0,
+  "apksigner_stdout": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260622_release_sync_push\\apksigner-release-verify-20260622.out.log",
+  "apksigner_stderr": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260622_release_sync_push\\apksigner-release-verify-20260622.err.log",
+  "apksigner_ok": true
+}

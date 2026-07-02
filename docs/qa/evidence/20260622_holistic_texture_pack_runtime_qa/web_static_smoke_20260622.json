@@ -1,0 +1,10 @@
+{
+  "port": 8922,
+  "indexStatus": 200,
+  "indexLength": 2164,
+  "mainStatus": 200,
+  "mainLength": 531693,
+  "containsQaGate": true,
+  "containsVariantGate": true,
+  "containsDevPassword": true
+}

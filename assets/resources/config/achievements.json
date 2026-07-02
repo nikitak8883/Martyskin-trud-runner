@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "storageKey": "mtr_achievements",
+  "antiSpam": "one unlock per achievement id per nickname",
+  "toastQueue": true,
+  "devUnlockQuery": "mtr_unlock_achievements=1",
+  "achievements": [
+    { "id": "banana_50", "title": "Банановая ведомость", "category": "bananas" },
+    { "id": "banana_100", "title": "Банановый бухгалтер", "category": "bananas" },
+    { "id": "bonus_three_run", "title": "Карман прораба", "category": "bonuses" },
+    { "id": "bonus_all_types", "title": "Инвентарь шевелится", "category": "bonuses" },
+    { "id": "helmet_imitation", "title": "Каска не жмёт", "category": "bonuses" },
+    { "id": "almost_engineer", "title": "Почти инженер", "category": "bonuses" },
+    { "id": "self_approved", "title": "Согласовано само с собой", "category": "bonuses" },
+    { "id": "level_clear", "title": "Труд без финиша", "category": "progress" },
+    { "id": "no_damage_clear", "title": "Не переиграй себя", "category": "progress" },
+    { "id": "bonus_bananas", "title": "Сверхплановый примат", "category": "bananas" }
+  ]
+}

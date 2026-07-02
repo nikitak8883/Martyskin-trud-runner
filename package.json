@@ -1,0 +1,9 @@
+{
+  "name": "martyskin-trud-runner-cocos",
+  "version": "1.0.0",
+  "description": "Martyshkin Trud Runner ported to Cocos Creator 3.8 for Web and Android",
+  "creator": {
+    "version": "3.8.8"
+  },
+  "uuid": "c1388105-2ed5-4a8e-859c-72fccfc177e8"
+}

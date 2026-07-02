@@ -1,0 +1,27 @@
+--------- beginning of main
+07-01 07:47:15.601  3929  3971 D EGL_emulation: app_time_stats: avg=45.31ms min=36.95ms max=60.97ms count=23
+07-01 07:47:15.661  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3520KB) LOS objects, 49% free, 2348KB/4696KB, paused 1.459ms,5.193ms total 26.089ms
+07-01 07:47:16.168  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2368KB) LOS objects, 49% free, 2800KB/5600KB, paused 862us,5.708ms total 23.490ms
+07-01 07:47:16.635  3929  3971 D EGL_emulation: app_time_stats: avg=42.94ms min=35.69ms max=56.47ms count=24
+07-01 07:47:16.725  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2348KB/4696KB, paused 1.126ms,6.091ms total 29.639ms
+07-01 07:47:16.801  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 68KB AllocSpace bytes, 26(2728KB) LOS objects, 49% free, 2516KB/5032KB, paused 1.206ms,6.495ms total 26.110ms
+07-01 07:47:17.365  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3520KB) LOS objects, 49% free, 2272KB/4544KB, paused 632us,5.145ms total 25.822ms
+07-01 07:47:17.668  3929  3971 D EGL_emulation: app_time_stats: avg=42.84ms min=36.36ms max=52.69ms count=24
+07-01 07:47:17.832  1439  1693 I BistoHotwordHelper: (REDACTED) getHotwordActive::active query: %s, watch: %s, devices connected: %s
+07-01 07:47:18.034  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3068KB) LOS objects, 49% free, 2800KB/5600KB, paused 1.032ms,5.002ms total 23.811ms
+07-01 07:47:18.641   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:47:18.689  3929  3971 D EGL_emulation: app_time_stats: avg=40.71ms min=34.41ms max=50.66ms count=25
+07-01 07:47:18.882  4459  4459 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+07-01 07:47:18.883  4459  4459 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+07-01 07:47:18.896   204   204 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+07-01 07:47:18.896  4459  4460 I Gralloc4: mapper 4.x is not supported
+--------- beginning of kernel
+07-01 07:47:18.863     0     0 I servicemanager: Caller(pid=4459,uid=2000,sid=u:r:shell:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+07-01 07:47:19.026  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(2440KB) LOS objects, 49% free, 2424KB/4848KB, paused 665us,10.924ms total 31.299ms
+07-01 07:47:19.209   499   601 D AF::Track: interceptBuffer: took 576us to intercept 0 tracks
+07-01 07:47:19.218  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3124KB) LOS objects, 49% free, 2424KB/4848KB, paused 901us,5.904ms total 27.262ms
+07-01 07:47:19.273  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2652KB/5304KB, paused 754us,7.485ms total 35.004ms
+07-01 07:47:19.725  3929  3971 D EGL_emulation: app_time_stats: avg=49.05ms min=38.05ms max=64.57ms count=21
+07-01 07:47:19.844   499   601 D AudioFlinger: mixer(0x70de318098e0) throttle end: throttle time(1)
+07-01 07:47:20.233  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 68KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2348KB/4696KB, paused 1.020ms,5.109ms total 28.074ms
+07-01 07:47:20.287  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 60KB AllocSpace bytes, 25(2276KB) LOS objects, 49% free, 2652KB/5304KB, paused 1.569ms,5.328ms total 26.412ms

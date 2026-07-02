@@ -1,0 +1,160 @@
+--------- beginning of main
+07-01 07:39:00.651  3929  3946 D EGL_emulation: app_time_stats: avg=511.85ms min=480.30ms max=543.40ms count=2
+07-01 07:39:00.677  3929  3971 D EGL_emulation: app_time_stats: avg=35.72ms min=20.70ms max=56.48ms count=26
+07-01 07:39:00.695  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 128KB AllocSpace bytes, 23(4564KB) LOS objects, 49% free, 2656KB/5312KB, paused 884us,12.886ms total 35.311ms
+07-01 07:39:00.746   499   601 D AudioFlinger: mixer(0x70de318098e0) throttle end: throttle time(4)
+07-01 07:39:00.810  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 12(1944KB) LOS objects, 49% free, 2656KB/5312KB, paused 1.403ms,10.006ms total 34.470ms
+07-01 07:39:00.814  3929  3929 I ImeTracker: com.martyskin.trudrunner:a468c5d4: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT_FROM_VIEW fromUser false
+07-01 07:39:00.824  1302  1302 I GoogleInputMethodService: GoogleInputMethodService.onFinishInputView():2393 
+07-01 07:39:00.827  3929  3929 D InsetsController: hide(ime(), fromIme=true)
+07-01 07:39:00.831  1302  2228 D EGL_emulation: app_time_stats: avg=19247.36ms min=69.15ms max=38425.57ms count=2
+--------- beginning of system
+07-01 07:39:00.845   884   957 D WindowManagerShell: onKeepClearAreasChanged: restricted={}, unrestricted={}
+07-01 07:39:00.850  3929  3929 I ImeTracker: com.martyskin.trudrunner:6ecc42ee: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+07-01 07:39:00.853   432   432 I netd    : tetherGetStats() -> {[]} <0.54ms>
+07-01 07:39:00.855   636   757 I ImeTracker: com.martyskin.trudrunner:6ecc42ee: onCancelled at PHASE_SERVER_SHOULD_HIDE
+07-01 07:39:00.863   884   957 V WindowManagerShell: Transition requested (#15): android.os.BinderProxy@47057c0 TransitionRequestInfo { type = CLOSE, triggerTask = null, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 15 }
+07-01 07:39:00.877   506   506 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+07-01 07:39:00.880  1302  1302 W TooltipLifecycleManager: TooltipLifecycleManager.dismissTooltips():152 Tooltip with id spell_check_add_to_dictionary not found in tooltipManager.
+07-01 07:39:00.883  1302  1302 I AndroidIME: AbstractIme.onDeactivate():202 PasswordIme.onDeactivate()
+07-01 07:39:00.889  1302  1302 I WindowMetricsNotification: WindowMetricsNotification.notifyWithWindow():113 
+07-01 07:39:00.889  1302  1302 I WindowMetricsNotification: WindowMetricsNotification.notify():106 WindowMetricsNotification{bounds=Rect(151, 0 - 2992, 1344), insets=Rect(0, 0 - 0, 144), densityDpi=480, smallestScreenWidthDp=448, displayWidth=2992, displayHeight=1344, xdpi=480.0, ydpi=480.0}; DisplayMetrics{density=3.0, width=2992, height=1344, scaledDensity=3.0, xdpi=480.0, ydpi=480.0}
+07-01 07:39:00.901   506  1120 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+07-01 07:39:00.904   499   601 D AudioFlinger: mixer(0x70de318098e0) throttle end: throttle time(2)
+07-01 07:39:00.909  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 208KB AllocSpace bytes, 13(3140KB) LOS objects, 49% free, 2972KB/5945KB, paused 7.468ms,7.569ms total 61.532ms
+07-01 07:39:00.910   884  1012 V WindowManagerShell: onTransitionReady(transaction=2731599200875)
+07-01 07:39:00.912   636   663 V WindowManager: Sent Transition (#15) createdAt=07-01 07:39:00.857 via request=TransitionRequestInfo { type = CLOSE, triggerTask = null, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 15 }
+07-01 07:39:00.912   636   663 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+07-01 07:39:00.913   636   663 V WindowManager:     info={id=15 t=CLOSE f=0x0 trk=0 opt={t=FROM_STYLE} r=[0@Point(0, 0)] c=[
+07-01 07:39:00.913   636   663 V WindowManager:         {null m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{3fd6cf3 u0 com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity)/@0x3387a86 sb=Rect(0, 0 - 2992, 1344) eb=Rect(0, 0 - 2992, 1344) d=0 bc=ff000000 component=com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity}
+07-01 07:39:00.913   636   663 V WindowManager:     ]}
+07-01 07:39:00.916   884   957 V WindowManagerShell: onTransitionReady (#15) android.os.BinderProxy@47057c0: {id=15 t=CLOSE f=0x0 trk=0 opt={t=FROM_STYLE} r=[0@Point(0, 0)] c=[{null m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{3fd6cf3 u0 com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity)/@0xd120cf9 sb=Rect(0, 0 - 2992, 1344) eb=Rect(0, 0 - 2992, 1344) d=0 bc=ff000000 component=com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity}]}
+07-01 07:39:00.918   884   957 V WindowManagerShell: Playing animation for (#15) android.os.BinderProxy@47057c0@0
+07-01 07:39:00.918   884   957 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultMixedHandler@49fe6f7
+07-01 07:39:00.918   884   957 V WindowManagerShell:  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@a7ec964
+07-01 07:39:00.919   884   957 V WindowManagerShell:  try handler com.android.wm.shell.pip.PipTransition@b067cd
+07-01 07:39:00.919   884   957 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@4ad882
+07-01 07:39:00.919   884   957 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@461fb93
+07-01 07:39:00.920   884   957 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+07-01 07:39:00.920   884   957 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@f1117d0
+07-01 07:39:00.920   884   957 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@a68b3c9
+07-01 07:39:00.920   884   957 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=15 t=CLOSE f=0x0 trk=0 opt={t=FROM_STYLE} r=[0@Point(0, 0)] c=[{null m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{3fd6cf3 u0 com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity)/@0xd120cf9 sb=Rect(0, 0 - 2992, 1344) eb=Rect(0, 0 - 2992, 1344) d=0 bc=ff000000 component=com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity}]}
+07-01 07:39:00.923   884   957 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=undefined independent=true modes=[OPEN,TO_FRONT] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=undefined independent=true modes=[CLOSE,TO_BACK] flags=IN_TASK_WITH_EMBEDDED_ACTIVITY mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@e8756fc, appThread = android.app.IApplicationThread$Stub$Proxy@f090185, debugName = OverlaySwipeBack }}
+07-01 07:39:00.924   884   957 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@72a5bda, appThread = android.app.IApplicationThread$Stub$Proxy@9a1b80b, debugName = LauncherToDream }}
+07-01 07:39:00.924   884   957 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@370e6e8, appThread = android.app.IApplicationThread$Stub$Proxy@cdd3101, debugName = QuickstepLaunchHome }}
+07-01 07:39:00.924   884   957 V WindowManagerShell:  Delegate animation for (#15) to null
+07-01 07:39:00.924   884   957 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultTransitionHandler@bd1face
+07-01 07:39:00.924   884   957 V WindowManagerShell: start default transition animation, info = {id=15 t=CLOSE f=0x0 trk=0 opt={t=FROM_STYLE} r=[0@Point(0, 0)] c=[{null m=CLOSE f=TRANSLUCENT|FILLS_TASK leash=Surface(name=ActivityRecord{3fd6cf3 u0 com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity)/@0xd120cf9 sb=Rect(0, 0 - 2992, 1344) eb=Rect(0, 0 - 2992, 1344) d=0 bc=ff000000 component=com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity}]}
+07-01 07:39:00.924   884   957 V WindowManagerShell: loadAnimation: anim=null animAttr=0x7 type=CLOSE isEntrance=false
+07-01 07:39:00.930   884   957 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#15) android.os.BinderProxy@47057c0@0
+07-01 07:39:00.936   636  1631 W UserManagerService: Requested status bar icon for non-badged user 0
+07-01 07:39:00.957  3929  3929 I ImeTracker: com.martyskin.trudrunner:81f9dfab: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT fromUser false
+07-01 07:39:00.958   636   663 V WindowManager: Finish Transition (#15): created at 07-01 07:39:00.857 collect-started=0.095ms request-sent=0.265ms started=14.361ms ready=44.638ms sent=52.456ms finished=100.308ms
+07-01 07:39:00.960   636   757 I ImeTracker: com.martyskin.trudrunner:81f9dfab: onCancelled at PHASE_SERVER_SHOULD_HIDE
+07-01 07:39:00.962   884   957 V WindowManagerShell: Track 0 became idle
+07-01 07:39:00.962   884   957 V WindowManagerShell: All active transition animations finished
+07-01 07:39:00.962   884   957 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@bd1face
+07-01 07:39:00.963   884   957 V WindowManagerShell: Track 0 became idle
+07-01 07:39:00.963   884   957 V WindowManagerShell: All active transition animations finished
+07-01 07:39:00.965   884   957 W Looper  : Slow dispatch took 46ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda0@be32fec m=0
+07-01 07:39:00.966   884   957 W Looper  : Slow delivery took 47ms wmshell.main h=android.os.Handler c=com.android.wm.shell.common.DisplayInsetsController$PerDisplay$DisplayWindowInsetsControllerImpl$$ExternalSyntheticLambda3@4dd7fb5 m=0
+07-01 07:39:00.969   636  1864 W ActivityTaskManager: Duplicate finish request for r=ActivityRecord{3fd6cf3 u0 com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity t111 f}}
+07-01 07:39:00.970   636   922 W UserManagerService: Requested status bar icon for non-badged user 0
+07-01 07:39:00.974  3929  3929 V threaded_app: Resume: 0x74ffe9396530
+07-01 07:39:00.988  3929  3949 V threaded_app: activityState=11
+07-01 07:39:00.989  3929  3949 I Cocos   : 07:39:00 [INFO]: AndroidPlatform: APP_CMD_RESUME
+07-01 07:39:00.996  3929  3929 D VRI[CocosEditBoxActivity]: visibilityChanged oldVisibility=true newVisibility=false
+07-01 07:39:00.997  3929  3929 V threaded_app: WindowFocusChanged: 0x74ffe9396530 -- 1
+07-01 07:39:01.009   884   957 W Looper  : Drained
+07-01 07:39:01.016   636   757 I ImeTracker: com.martyskin.trudrunner:5884a5fe: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+07-01 07:39:01.017   636   757 I ImeTracker: com.martyskin.trudrunner:5884a5fe: onCancelled at PHASE_SERVER_SHOULD_HIDE
+07-01 07:39:01.018  3929  3949 I Cocos   : 07:39:01 [INFO]: AndroidPlatform: APP_CMD_GAINED_FOCUS
+07-01 07:39:01.019  3929  3929 D AutofillManager: onActivityFinishing(): calling cancelLocked()
+07-01 07:39:01.020   636   922 D AutofillSession: Set the response has expired.
+07-01 07:39:01.021  3929  3929 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@d9ff68e
+07-01 07:39:01.021   636   922 W FillRequestEventLogger: Shouldn't be logging AutofillFillRequestReported again for same event
+07-01 07:39:01.022   636   922 W FillResponseEventLogger: Shouldn't be logging AutofillFillRequestReported again for same event
+07-01 07:39:01.022   636   922 W PresentationStatsEventLogger: Shouldn't be logging AutofillPresentationEventReported again for same event
+07-01 07:39:01.022   636   922 D AutofillSession: clearPendingIntentLocked
+07-01 07:39:01.023   636  1631 D CoreBackPreview: Window{d78a9e5 u0 com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity}: Setting back callback null
+07-01 07:39:01.024  1302  1302 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3157 
+07-01 07:39:01.025   636   664 D AutofillUI: destroySaveUiUiThread(): already destroyed
+07-01 07:39:01.033  1083  1083 V InlineSuggestionRenderService: handleDestroySuggestionViews called for 0:869482039
+07-01 07:39:01.033  1302  1302 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+07-01 07:39:01.034  1302  1302 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=com.martyskin.trudrunner, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+07-01 07:39:01.036  1302  1302 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+07-01 07:39:01.036  3929  3929 I ImeTracker: com.martyskin.trudrunner:a468c5d4: onCancelled at PHASE_CLIENT_ANIMATION_CANCEL
+07-01 07:39:01.037  1302  1302 I AndroidIME: InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+07-01 07:39:01.038  1302  1302 I HardKeyTracker: HardKeyTracker.registerKeySequence():139 Register key sequence lnk{labelResId=2132019800, callback=gnd@ac0ccf4, lastModifier=0, keyCodes=[57, 57], actions=[1, 0]}
+07-01 07:39:01.038  1302  1302 I HardKeyTracker: HardKeyTracker.registerKeySequence():139 Register key sequence lnk{labelResId=0, callback=gnd@afc4063, lastModifier=0, keyCodes=[58, 58], actions=[1, 0]}
+07-01 07:39:01.038  3929  3929 I ImeTracker: com.martyskin.trudrunner:5021a3fd: onRequestHide at ORIGIN_CLIENT reason HIDE_SOFT_INPUT_ON_ANIMATION_STATE_CHANGED fromUser false
+07-01 07:39:01.040   636  1864 W PackageConfigPersister: App-specific configuration not found for packageName: com.martyskin.trudrunner and userId: 0
+07-01 07:39:01.040  3929  3929 I ImeTracker: com.martyskin.trudrunner:5021a3fd: onFailed at PHASE_CLIENT_VIEW_SERVED
+07-01 07:39:01.041   636  1864 W InputManager-JNI: Input channel object 'd78a9e5 com.martyskin.trudrunner/com.cocos.lib.CocosEditBoxActivity (client)' was disposed without first being removed with the input manager!
+07-01 07:39:01.105  3929  3946 D EGL_emulation: app_time_stats: avg=102555.23ms min=79763.24ms max=125347.23ms count=2
+07-01 07:39:01.132  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 220KB AllocSpace bytes, 16(3344KB) LOS objects, 49% free, 3756KB/7513KB, paused 1.242ms,3.106ms total 111.483ms
+07-01 07:39:01.468  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(3548KB) LOS objects, 49% free, 2680KB/5360KB, paused 1.518ms,6.467ms total 23.799ms
+07-01 07:39:01.688  3929  3971 D EGL_emulation: app_time_stats: avg=33.67ms min=18.97ms max=82.18ms count=28
+07-01 07:39:01.797  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 15(3300KB) LOS objects, 49% free, 2680KB/5360KB, paused 974us,7.326ms total 26.617ms
+07-01 07:39:01.848  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 15(2892KB) LOS objects, 49% free, 3132KB/6264KB, paused 661us,5.116ms total 22.543ms
+07-01 07:39:02.078  3929  3949 W Cocos   : 07:39:02 [WARN]: JS: MTR_DEV_MODE_DENIED inputLength=10 normalizedLength=10
+07-01 07:39:02.081  3929  3949 D Cocos   : 07:39:02 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=status_chip level=1 spawned=1 reason=shared_status_chip
+07-01 07:39:02.134  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 14(2264KB) LOS objects, 49% free, 2184KB/4368KB, paused 729us,11.489ms total 27.348ms
+07-01 07:39:02.227  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 3088KB/6176KB, paused 959us,5.697ms total 25.481ms
+07-01 07:39:02.705  3929  3971 D EGL_emulation: app_time_stats: avg=26.69ms min=19.77ms max=36.83ms count=35
+07-01 07:39:02.770   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:39:03.120  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 2184KB/4368KB, paused 897us,5.576ms total 23.305ms
+07-01 07:39:03.199  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 17(3780KB) LOS objects, 49% free, 2320KB/4640KB, paused 1.446ms,5.711ms total 23.931ms
+07-01 07:39:03.241  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 13(2196KB) LOS objects, 49% free, 2636KB/5272KB, paused 962us,9.436ms total 28.841ms
+07-01 07:39:03.609  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 3088KB/6176KB, paused 1.502ms,11.209ms total 31.059ms
+07-01 07:39:03.718  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 3088KB/6176KB, paused 1.140ms,5.906ms total 25.364ms
+07-01 07:39:03.725  3929  3971 D EGL_emulation: app_time_stats: avg=26.86ms min=18.13ms max=42.76ms count=35
+07-01 07:39:03.848  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 11(2444KB) LOS objects, 49% free, 2884KB/5768KB, paused 728us,5.095ms total 26.501ms
+07-01 07:39:03.911  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 19(3532KB) LOS objects, 49% free, 3088KB/6176KB, paused 475us,7.814ms total 22.487ms
+07-01 07:39:04.070   636  1465 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+07-01 07:39:04.212  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(3392KB) LOS objects, 49% free, 2504KB/5008KB, paused 873us,7.300ms total 23.131ms
+07-01 07:39:04.259  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2584KB) LOS objects, 49% free, 3088KB/6176KB, paused 603us,9.845ms total 26.531ms
+07-01 07:39:04.319  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 3088KB/6176KB, paused 1.092ms,5.282ms total 23.255ms
+07-01 07:39:04.472  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 2184KB/4368KB, paused 1.430ms,5.084ms total 20.745ms
+07-01 07:39:04.505  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 10(1992KB) LOS objects, 49% free, 2636KB/5272KB, paused 729us,5.586ms total 20.455ms
+07-01 07:39:04.548  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(3392KB) LOS objects, 49% free, 2504KB/5008KB, paused 1.154ms,9.106ms total 26.301ms
+07-01 07:39:04.594  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2584KB) LOS objects, 49% free, 3088KB/6176KB, paused 864us,5.459ms total 26.128ms
+07-01 07:39:04.661  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 3088KB/6176KB, paused 502us,16.929ms total 33.430ms
+07-01 07:39:04.752  3929  3971 D EGL_emulation: app_time_stats: avg=28.19ms min=18.72ms max=39.29ms count=34
+07-01 07:39:05.103  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 11(2060KB) LOS objects, 49% free, 3088KB/6176KB, paused 1.262ms,5.116ms total 24.744ms
+07-01 07:39:05.158  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 19(3824KB) LOS objects, 49% free, 3248KB/6496KB, paused 568us,9.501ms total 30.138ms
+07-01 07:39:05.180  3929  3992 V AudioMixerController: Mix a frame waste: 1.349000ms
+07-01 07:39:05.246  4193  4193 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+07-01 07:39:05.246  4193  4193 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+07-01 07:39:05.278  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 13(3144KB) LOS objects, 49% free, 2432KB/4864KB, paused 1.873ms,7.997ms total 28.384ms
+07-01 07:39:05.278   204   204 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+--------- beginning of kernel
+07-01 07:39:05.246     0     0 I servicemanager: Caller(pid=4193,uid=2000,sid=u:r:shell:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+07-01 07:39:05.279  4193  4194 I Gralloc4: mapper 4.x is not supported
+07-01 07:39:05.369  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 12(2128KB) LOS objects, 49% free, 3088KB/6176KB, paused 6.020ms,8.991ms total 30.619ms
+07-01 07:39:05.432  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 19(3824KB) LOS objects, 49% free, 3248KB/6496KB, paused 718us,5.524ms total 30.994ms
+07-01 07:39:05.488  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 21(4144KB) LOS objects, 49% free, 3088KB/6176KB, paused 499us,5.356ms total 31.040ms
+07-01 07:39:05.549  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 2636KB/5272KB, paused 1.620ms,8.575ms total 32.164ms
+07-01 07:39:05.622  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 3088KB/6176KB, paused 6.361ms,5.851ms total 47.145ms
+07-01 07:39:05.697  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 3088KB/6176KB, paused 597us,7.460ms total 26.538ms
+07-01 07:39:05.752  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 39% free, 2636KB/4368KB, paused 1.079ms,8.128ms total 33.488ms
+07-01 07:39:05.758  3929  3971 D EGL_emulation: app_time_stats: avg=29.57ms min=19.16ms max=47.68ms count=32
+07-01 07:39:05.798  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 10(1992KB) LOS objects, 49% free, 3088KB/6176KB, paused 796us,10.896ms total 32.464ms
+07-01 07:39:05.853  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 2636KB/5272KB, paused 1.050ms,7.978ms total 33.157ms
+07-01 07:39:05.904  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(3392KB) LOS objects, 49% free, 2344KB/4688KB, paused 1.112ms,7.366ms total 27.169ms
+07-01 07:39:05.956  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2584KB) LOS objects, 49% free, 2636KB/5272KB, paused 542us,10.386ms total 32.817ms
+07-01 07:39:06.017  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 2636KB/5272KB, paused 724us,7.205ms total 38.268ms
+07-01 07:39:06.182  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 3088KB/6176KB, paused 890us,6.154ms total 33.420ms
+07-01 07:39:06.293  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 2184KB/4368KB, paused 1.198ms,5.651ms total 26.873ms
+07-01 07:39:06.337  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 10(1992KB) LOS objects, 49% free, 3088KB/6176KB, paused 2.243ms,5.885ms total 31.200ms
+07-01 07:39:06.407  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 3088KB/6176KB, paused 2.420ms,10.156ms total 33.315ms
+07-01 07:39:06.533  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 15(2716KB) LOS objects, 49% free, 2636KB/5272KB, paused 1.382ms,6.366ms total 24.579ms
+07-01 07:39:06.626  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 12(2128KB) LOS objects, 49% free, 3088KB/6176KB, paused 1.127ms,12.325ms total 30.332ms
+07-01 07:39:06.743  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 19(3916KB) LOS objects, 49% free, 3156KB/6312KB, paused 1.179ms,8.205ms total 28.748ms
+07-01 07:39:06.788  3929  3971 D EGL_emulation: app_time_stats: avg=30.69ms min=19.88ms max=46.00ms count=31
+07-01 07:39:06.829  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 10(1992KB) LOS objects, 49% free, 2636KB/5272KB, paused 1.893ms,5.690ms total 26.239ms
+07-01 07:39:06.880  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(3984KB) LOS objects, 49% free, 2184KB/4368KB, paused 1.227ms,5.118ms total 25.137ms
+07-01 07:39:06.926  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 6(1720KB) LOS objects, 49% free, 2456KB/4912KB, paused 3.765ms,8.126ms total 34.915ms
+07-01 07:39:07.032  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 15(2512KB) LOS objects, 49% free, 3088KB/6176KB, paused 733us,6.969ms total 25.898ms
+07-01 07:39:07.107  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 8(1856KB) LOS objects, 49% free, 2320KB/4640KB, paused 8.793ms,1.998ms total 22.125ms
+07-01 07:39:07.142  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 12(2128KB) LOS objects, 49% free, 2184KB/4368KB, paused 2.148ms,5.177ms total 20.384ms

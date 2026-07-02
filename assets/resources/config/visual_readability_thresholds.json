@@ -1,0 +1,9 @@
+{
+  "player_min_contrast_vs_local_background": 0.28,
+  "banana_min_contrast_vs_platform": 0.22,
+  "max_overlapping_transparent_layers_on_gameplay_lane": 2,
+  "platform_alpha_range": [
+    0.85,
+    1.0
+  ]
+}

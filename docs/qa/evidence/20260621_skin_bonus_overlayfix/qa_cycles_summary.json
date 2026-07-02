@@ -1,0 +1,74 @@
+[
+  {
+    "cycle": 1,
+    "label": "brigadir_level1_all_bonus",
+    "appPid": "3772",
+    "crash": false,
+    "legacySuppressedLog": false,
+    "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle1_brigadir_level1_all_bonus.png",
+    "logcat": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle1_brigadir_level1_all_bonus.logcat.txt"
+  },
+  {
+    "cycle": 2,
+    "label": "mudrec_level6_visual",
+    "appPid": "3982",
+    "crash": false,
+    "legacySuppressedLog": false,
+    "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle2_mudrec_level6_visual.png",
+    "logcat": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle2_mudrec_level6_visual.logcat.txt"
+  },
+  {
+    "cycle": 3,
+    "label": "cyber_level15_all_bonus",
+    "appPid": "4130",
+    "crash": false,
+    "legacySuppressedLog": false,
+    "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle3_cyber_level15_all_bonus.png",
+    "logcat": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle3_cyber_level15_all_bonus.logcat.txt"
+  },
+  {
+    "cycle": 4,
+    "label": "red_prorab_level6_visual",
+    "appPid": "4296",
+    "crash": false,
+    "legacySuppressedLog": false,
+    "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle4_red_prorab_level6_visual.png",
+    "logcat": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle4_red_prorab_level6_visual.logcat.txt"
+  },
+  {
+    "cycle": 5,
+    "label": "depo_level9_visual",
+    "appPid": "4458",
+    "crash": false,
+    "legacySuppressedLog": false,
+    "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle5_depo_level9_visual.png",
+    "logcat": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle5_depo_level9_visual.logcat.txt"
+  },
+  {
+    "cycle": 6,
+    "label": "orangutan_noir_level15_all_bonus",
+    "appPid": "4605",
+    "crash": false,
+    "legacySuppressedLog": false,
+    "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle6_orangutan_noir_level15_all_bonus.png",
+    "logcat": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle6_orangutan_noir_level15_all_bonus.logcat.txt"
+  },
+  {
+    "cycle": 7,
+    "label": "lab_level9_visual",
+    "appPid": "4771",
+    "crash": false,
+    "legacySuppressedLog": false,
+    "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle7_lab_level9_visual.png",
+    "logcat": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle7_lab_level9_visual.logcat.txt"
+  },
+  {
+    "cycle": 8,
+    "label": "golden_level15_all_bonus",
+    "appPid": "4917",
+    "crash": false,
+    "legacySuppressedLog": false,
+    "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle8_golden_level15_all_bonus.png",
+    "logcat": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260621_skin_bonus_overlayfix\\cycle8_golden_level15_all_bonus.logcat.txt"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "version": "2026-05-27",
+  "banana": { "kind": "collectible", "planValue": 1 },
+  "fig_leaf": { "kind": "collectible", "planValue": 2 },
+  "coconut": { "kind": "collectible", "planValue": 5 },
+  "helmet": { "kind": "equipment", "flag": "helmet" },
+  "vest": { "kind": "equipment", "flag": "vest" },
+  "boots": { "kind": "equipment", "flag": "boots" },
+  "magnet": { "kind": "powerup", "flag": "magnet", "durationSec": 14 },
+  "shield": { "kind": "powerup", "flag": "shield", "durationSec": 18 }
+}

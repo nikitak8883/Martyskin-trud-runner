@@ -1,0 +1,83 @@
+{
+  "generatedAt": "2026-06-30T08:52:10.099Z",
+  "base": "http://127.0.0.1:8123/index.html",
+  "results": [
+    {
+      "name": "main_menu",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_screens\\ui_01_main_menu.png"
+    },
+    {
+      "name": "name_menu_initial",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_screens\\ui_02_name_menu_initial.png"
+    },
+    {
+      "name": "name_typed",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_screens\\ui_03_name_typed.png"
+    },
+    {
+      "name": "name_saved",
+      "storedName": "Безымянный примат",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_screens\\ui_04_name_saved.png"
+    }
+  ],
+  "levelChecks": [
+    {
+      "level": 1,
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_screens\\level_01_patch1_autostart_bonus.png",
+      "state": {
+        "href": "http://127.0.0.1:8123/index.html?mtr_dev=1&mtr_autostart=1&mtr_level=1&mtr_qa_bonuses=1",
+        "canvases": 1
+      },
+      "lastGameState": "MTR_GAMESTATE reason=reset mode=RUNNING level=1 speed=430 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=43/34/99/0",
+      "assetSummary": "MTR_ASSET_USAGE_SUMMARY level=1 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment"
+    },
+    {
+      "level": 2,
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_screens\\level_02_patch1_autostart_bonus.png",
+      "state": {
+        "href": "http://127.0.0.1:8123/index.html?mtr_dev=1&mtr_autostart=1&mtr_level=2&mtr_qa_bonuses=1",
+        "canvases": 1
+      },
+      "lastGameState": "MTR_GAMESTATE reason=reset mode=RUNNING level=2 speed=438 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=47/36/109/0",
+      "assetSummary": "MTR_ASSET_USAGE_SUMMARY level=2 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment"
+    },
+    {
+      "level": 8,
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_screens\\level_08_patch1_autostart_bonus.png",
+      "state": {
+        "href": "http://127.0.0.1:8123/index.html?mtr_dev=1&mtr_autostart=1&mtr_level=8&mtr_qa_bonuses=1",
+        "canvases": 1
+      },
+      "lastGameState": "MTR_GAMESTATE reason=reset mode=RUNNING level=8 speed=491 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=73/66/145/13",
+      "assetSummary": "MTR_ASSET_USAGE_SUMMARY level=8 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment"
+    },
+    {
+      "level": 12,
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_screens\\level_12_patch1_autostart_bonus.png",
+      "state": {
+        "href": "http://127.0.0.1:8123/index.html?mtr_dev=1&mtr_autostart=1&mtr_level=12&mtr_qa_bonuses=1",
+        "canvases": 1
+      },
+      "lastGameState": "MTR_GAMESTATE reason=reset mode=RUNNING level=12 speed=528 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=98/88/164/14",
+      "assetSummary": "MTR_ASSET_USAGE_SUMMARY level=12 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment"
+    },
+    {
+      "level": 15,
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch1_screens\\level_15_patch1_autostart_bonus.png",
+      "state": {
+        "href": "http://127.0.0.1:8123/index.html?mtr_dev=1&mtr_autostart=1&mtr_level=15&mtr_qa_bonuses=1",
+        "canvases": 1
+      },
+      "lastGameState": "MTR_GAMESTATE reason=reset mode=RUNNING level=15 speed=538 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=98/110/195/18",
+      "assetSummary": "MTR_ASSET_USAGE_SUMMARY level=15 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment"
+    }
+  ],
+  "eventCount": 2709,
+  "flaggedCount": 1,
+  "flagged": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    }
+  ]
+}

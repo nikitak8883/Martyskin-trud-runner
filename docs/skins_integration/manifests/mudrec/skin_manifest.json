@@ -1,0 +1,128 @@
+{
+  "skin_id": "mudrec",
+  "display_name": "Мудрец",
+  "canonical_index": 1,
+  "source_group": "source_group_02",
+  "source_files": [
+    "ChatGPT Image Jun 19, 2026, 12_50_25 PM (1).png",
+    "ChatGPT Image Jun 19, 2026, 12_50_25 PM (2).png"
+  ],
+  "synth_kind": null,
+  "notes": "direct source group 02",
+  "resource_root": "characters/player_skins/mudrec",
+  "poses": [
+    "idle",
+    "run_1",
+    "run_2",
+    "jump",
+    "jump_2",
+    "fall",
+    "crouch_dash",
+    "hit",
+    "victory"
+  ],
+  "variants": [
+    "base",
+    "helmet",
+    "vest",
+    "helmet_vest",
+    "boots",
+    "helmet_vest_boots",
+    "magnet",
+    "shield"
+  ],
+  "pose_manifest": {
+    "idle": {
+      "base": "characters/player_skins/mudrec/base/idle",
+      "helmet": "characters/player_skins/mudrec/bonus/helmet/idle",
+      "vest": "characters/player_skins/mudrec/bonus/vest/idle",
+      "helmet_vest": "characters/player_skins/mudrec/bonus/helmet_vest/idle",
+      "boots": "characters/player_skins/mudrec/bonus/boots/idle",
+      "helmet_vest_boots": "characters/player_skins/mudrec/bonus/helmet_vest_boots/idle",
+      "magnet": "characters/player_skins/mudrec/bonus/magnet/idle",
+      "shield": "characters/player_skins/mudrec/bonus/shield/idle"
+    },
+    "run_1": {
+      "base": "characters/player_skins/mudrec/base/run_1",
+      "helmet": "characters/player_skins/mudrec/bonus/helmet/run_1",
+      "vest": "characters/player_skins/mudrec/bonus/vest/run_1",
+      "helmet_vest": "characters/player_skins/mudrec/bonus/helmet_vest/run_1",
+      "boots": "characters/player_skins/mudrec/bonus/boots/run_1",
+      "helmet_vest_boots": "characters/player_skins/mudrec/bonus/helmet_vest_boots/run_1",
+      "magnet": "characters/player_skins/mudrec/bonus/magnet/run_1",
+      "shield": "characters/player_skins/mudrec/bonus/shield/run_1"
+    },
+    "run_2": {
+      "base": "characters/player_skins/mudrec/base/run_2",
+      "helmet": "characters/player_skins/mudrec/bonus/helmet/run_2",
+      "vest": "characters/player_skins/mudrec/bonus/vest/run_2",
+      "helmet_vest": "characters/player_skins/mudrec/bonus/helmet_vest/run_2",
+      "boots": "characters/player_skins/mudrec/bonus/boots/run_2",
+      "helmet_vest_boots": "characters/player_skins/mudrec/bonus/helmet_vest_boots/run_2",
+      "magnet": "characters/player_skins/mudrec/bonus/magnet/run_2",
+      "shield": "characters/player_skins/mudrec/bonus/shield/run_2"
+    },
+    "jump": {
+      "base": "characters/player_skins/mudrec/base/jump",
+      "helmet": "characters/player_skins/mudrec/bonus/helmet/jump",
+      "vest": "characters/player_skins/mudrec/bonus/vest/jump",
+      "helmet_vest": "characters/player_skins/mudrec/bonus/helmet_vest/jump",
+      "boots": "characters/player_skins/mudrec/bonus/boots/jump",
+      "helmet_vest_boots": "characters/player_skins/mudrec/bonus/helmet_vest_boots/jump",
+      "magnet": "characters/player_skins/mudrec/bonus/magnet/jump",
+      "shield": "characters/player_skins/mudrec/bonus/shield/jump"
+    },
+    "jump_2": {
+      "base": "characters/player_skins/mudrec/base/jump_2",
+      "helmet": "characters/player_skins/mudrec/bonus/helmet/jump_2",
+      "vest": "characters/player_skins/mudrec/bonus/vest/jump_2",
+      "helmet_vest": "characters/player_skins/mudrec/bonus/helmet_vest/jump_2",
+      "boots": "characters/player_skins/mudrec/bonus/boots/jump_2",
+      "helmet_vest_boots": "characters/player_skins/mudrec/bonus/helmet_vest_boots/jump_2",
+      "magnet": "characters/player_skins/mudrec/bonus/magnet/jump_2",
+      "shield": "characters/player_skins/mudrec/bonus/shield/jump_2"
+    },
+    "fall": {
+      "base": "characters/player_skins/mudrec/base/fall",
+      "helmet": "characters/player_skins/mudrec/bonus/helmet/fall",
+      "vest": "characters/player_skins/mudrec/bonus/vest/fall",
+      "helmet_vest": "characters/player_skins/mudrec/bonus/helmet_vest/fall",
+      "boots": "characters/player_skins/mudrec/bonus/boots/fall",
+      "helmet_vest_boots": "characters/player_skins/mudrec/bonus/helmet_vest_boots/fall",
+      "magnet": "characters/player_skins/mudrec/bonus/magnet/fall",
+      "shield": "characters/player_skins/mudrec/bonus/shield/fall"
+    },
+    "crouch_dash": {
+      "base": "characters/player_skins/mudrec/base/crouch_dash",
+      "helmet": "characters/player_skins/mudrec/bonus/helmet/crouch_dash",
+      "vest": "characters/player_skins/mudrec/bonus/vest/crouch_dash",
+      "helmet_vest": "characters/player_skins/mudrec/bonus/helmet_vest/crouch_dash",
+      "boots": "characters/player_skins/mudrec/bonus/boots/crouch_dash",
+      "helmet_vest_boots": "characters/player_skins/mudrec/bonus/helmet_vest_boots/crouch_dash",
+      "magnet": "characters/player_skins/mudrec/bonus/magnet/crouch_dash",
+      "shield": "characters/player_skins/mudrec/bonus/shield/crouch_dash"
+    },
+    "hit": {
+      "base": "characters/player_skins/mudrec/base/hit",
+      "helmet": "characters/player_skins/mudrec/bonus/helmet/hit",
+      "vest": "characters/player_skins/mudrec/bonus/vest/hit",
+      "helmet_vest": "characters/player_skins/mudrec/bonus/helmet_vest/hit",
+      "boots": "characters/player_skins/mudrec/bonus/boots/hit",
+      "helmet_vest_boots": "characters/player_skins/mudrec/bonus/helmet_vest_boots/hit",
+      "magnet": "characters/player_skins/mudrec/bonus/magnet/hit",
+      "shield": "characters/player_skins/mudrec/bonus/shield/hit"
+    },
+    "victory": {
+      "base": "characters/player_skins/mudrec/base/victory",
+      "helmet": "characters/player_skins/mudrec/bonus/helmet/victory",
+      "vest": "characters/player_skins/mudrec/bonus/vest/victory",
+      "helmet_vest": "characters/player_skins/mudrec/bonus/helmet_vest/victory",
+      "boots": "characters/player_skins/mudrec/bonus/boots/victory",
+      "helmet_vest_boots": "characters/player_skins/mudrec/bonus/helmet_vest_boots/victory",
+      "magnet": "characters/player_skins/mudrec/bonus/magnet/victory",
+      "shield": "characters/player_skins/mudrec/bonus/shield/victory"
+    }
+  },
+  "generated_at_utc": "2026-06-19T18:08:48+00:00",
+  "generator": "tools/skins/integrate_skin_pack.py"
+}

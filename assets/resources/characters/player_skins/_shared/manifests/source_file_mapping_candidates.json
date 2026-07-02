@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-06-19T18:07:13+00:00",
+  "needsManualMapping": true,
+  "reason": "Source filenames are generic export names and do not encode canonical skin ID, pose, or variant.",
+  "groups": {
+    "source_group_01": {
+      "files": [
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_50_06 PM (1).png",
+          "variant": "1",
+          "sha256": "7de04dbc7634dee99b8615e6fb5cd35320e1952f421ffe02e80167d3c2799af3"
+        },
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_50_06 PM (2).png",
+          "variant": "2",
+          "sha256": "12409e18269407ae743eddb46db8844eb61d65d8c8792c8ab1df35cc3c96bca4"
+        }
+      ],
+      "candidateSkinId": null,
+      "confidence": "manual"
+    },
+    "source_group_02": {
+      "files": [
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_50_25 PM (1).png",
+          "variant": "1",
+          "sha256": "0f038f3dfd23d7abd814cbec996e63a8282cfea1b3caa5d57bcd19973bd68e1c"
+        },
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_50_25 PM (2).png",
+          "variant": "2",
+          "sha256": "2b3bc6c5019fcafbb47d5349ffb042e0d19d95efd1b823b6e06766c86ce080bf"
+        }
+      ],
+      "candidateSkinId": null,
+      "confidence": "manual"
+    },
+    "source_group_03": {
+      "files": [
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_50_38 PM (1).png",
+          "variant": "1",
+          "sha256": "9372ac5c9eee35327267fb2eb1f728ea976b636fd920cd1a0fbf9dcc35e52708"
+        },
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_50_38 PM (2).png",
+          "variant": "2",
+          "sha256": "de5174916e7363b98734eaa281b248d71be8ee7d5b7fe1109dbdf12be2d0c60f"
+        }
+      ],
+      "candidateSkinId": null,
+      "confidence": "manual"
+    },
+    "source_group_04": {
+      "files": [
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_50_51 PM (1).png",
+          "variant": "1",
+          "sha256": "7c2e8f2679857216b88e38673da8bb47525dcd7d4f2d007fb425860146308ce4"
+        },
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_50_51 PM (2).png",
+          "variant": "2",
+          "sha256": "3d9ce310eb3f1394caf41428b730fcc4ff72e2256a48d72983c26dad5403c6d8"
+        }
+      ],
+      "candidateSkinId": null,
+      "confidence": "manual"
+    },
+    "source_group_05": {
+      "files": [
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_51_01 PM (1).png",
+          "variant": "1",
+          "sha256": "909ff53dd625ce24161b4ac0768abafa7c6edd81c47269b4e9562be6703e6b7c"
+        },
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_51_01 PM (2).png",
+          "variant": "2",
+          "sha256": "67fd88bfd54766787a7776af584e0caf3ad679f8bf7a61d7eb7f6913089afefe"
+        }
+      ],
+      "candidateSkinId": null,
+      "confidence": "manual"
+    },
+    "source_group_06": {
+      "files": [
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_51_11 PM (1).png",
+          "variant": "1",
+          "sha256": "d74bff887736345db0a20386ce78c2a556588c6548a80124099d755d2b8bdbc4"
+        },
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_51_11 PM (2).png",
+          "variant": "2",
+          "sha256": "76d07f4f7ad8867fcd08c945eed821de221a3222645b8e436b3f7e73bed0de64"
+        }
+      ],
+      "candidateSkinId": null,
+      "confidence": "manual"
+    },
+    "source_group_07": {
+      "files": [
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_51_19 PM (1).png",
+          "variant": "1",
+          "sha256": "dfe86582606dcdf706409424379752b0bb743de07a15c06ccf318a08c58c4e39"
+        },
+        {
+          "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\Tasks\\1\\Skin-paks\\ChatGPT Image Jun 19, 2026, 12_51_19 PM (2).png",
+          "variant": "2",
+          "sha256": "0d2af7a1dd03d3f33bec5827760f0764efeb0dec9aafa44b2fb4375def40fc7a"
+        }
+      ],
+      "candidateSkinId": null,
+      "confidence": "manual"
+    }
+  }
+}

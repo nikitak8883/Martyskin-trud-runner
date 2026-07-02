@@ -1,0 +1,738 @@
+{
+  "generated_at_local": "2026-06-30T10:41:58.215977+03:00",
+  "levels_count": 15,
+  "levels": [
+    {
+      "index": 1,
+      "id": 1,
+      "theme": "construction_site",
+      "title": "Стройплощадка примата",
+      "subtitle": "Стройка, где план есть, смысл не завезли.",
+      "length": 4750,
+      "durationSec": 92,
+      "baseSpeed": 268,
+      "targetBananas": 50,
+      "platformTypes": [
+        "доски на лесах",
+        "кирпичные подпорки",
+        "ящики с инструментами",
+        "бетонные блоки",
+        "подвесные подмости"
+      ],
+      "backgroundRuntime": "backgrounds/level01",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "каска",
+        "жилет",
+        "магнит"
+      ]
+    },
+    {
+      "index": 2,
+      "id": 2,
+      "theme": "banana_logistics",
+      "title": "Банановая логистика",
+      "subtitle": "Склад, где бананы перемещают до тех пор, пока они не станут отчётом.",
+      "length": 5300,
+      "durationSec": 94,
+      "baseSpeed": 286,
+      "targetBananas": 55,
+      "platformTypes": [
+        "паллетные платформы",
+        "ящики BANANA LOGISTICS",
+        "погрузочные рампы",
+        "контейнерные настилы",
+        "тележки"
+      ],
+      "backgroundRuntime": "backgrounds/level02",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "магнит",
+        "чертёж",
+        "пропуск склада"
+      ]
+    },
+    {
+      "index": 3,
+      "id": 3,
+      "theme": "useless_forms_department",
+      "title": "Отдел бессмысленных заявлений",
+      "subtitle": "Офис, где каждый прыжок требует заявление в двух экземплярах.",
+      "length": 5850,
+      "durationSec": 96,
+      "baseSpeed": 304,
+      "targetBananas": 60,
+      "platformTypes": [
+        "столы",
+        "архивные шкафы",
+        "стопки бумаг",
+        "канцелярские платформы",
+        "стойки регистрации"
+      ],
+      "backgroundRuntime": "backgrounds/level03",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "печать",
+        "пропуск",
+        "кофе"
+      ]
+    },
+    {
+      "index": 4,
+      "id": 4,
+      "theme": "primate_jungle",
+      "title": "Джунгли примата",
+      "subtitle": "Природная зона, где труд ещё не оформлен, но уже подозрителен.",
+      "length": 6400,
+      "durationSec": 98,
+      "baseSpeed": 322,
+      "targetBananas": 65,
+      "platformTypes": [
+        "ветви",
+        "камни",
+        "лианы",
+        "деревянные мостики",
+        "корни"
+      ],
+      "backgroundRuntime": "backgrounds/level04",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "магнит",
+        "щит"
+      ]
+    },
+    {
+      "index": 5,
+      "id": 5,
+      "theme": "superplan_farm",
+      "title": "Ферма сверхплана",
+      "subtitle": "Сельхоз-абсурд: кокосы, куры и отчётность на одной грядке.",
+      "length": 6950,
+      "durationSec": 100,
+      "baseSpeed": 340,
+      "targetBananas": 70,
+      "platformTypes": [
+        "деревянные заборы",
+        "ящики с урожаем",
+        "тележки",
+        "амбарные настилы",
+        "стога"
+      ],
+      "backgroundRuntime": "backgrounds/level05",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "кофе",
+        "щит"
+      ]
+    },
+    {
+      "index": 6,
+      "id": 6,
+      "theme": "peacock_inspector",
+      "title": "Павлин-инспектор",
+      "subtitle": "Проверка ради проверки. Хвост распустил — значит акт составлен.",
+      "length": 7500,
+      "durationSec": 102,
+      "baseSpeed": 358,
+      "targetBananas": 75,
+      "platformTypes": [
+        "инспекторские помосты",
+        "кабинеты проверки",
+        "столы актов",
+        "перила контроля",
+        "сцены для важности"
+      ],
+      "backgroundRuntime": "backgrounds/level06",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "пропуск",
+        "щит",
+        "магнит"
+      ]
+    },
+    {
+      "index": 7,
+      "id": 7,
+      "theme": "factory_of_eternal_labor",
+      "title": "Фабрика вечного труда",
+      "subtitle": "Трубы, пар, шестерни и конвейер, который производит усталость.",
+      "length": 8050,
+      "durationSec": 104,
+      "baseSpeed": 376,
+      "targetBananas": 80,
+      "platformTypes": [
+        "металлические настилы",
+        "конвейеры",
+        "трубы",
+        "котельные площадки",
+        "шестерённые мосты"
+      ],
+      "backgroundRuntime": "backgrounds/level07",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "магнит",
+        "кофе",
+        "чертёж"
+      ]
+    },
+    {
+      "index": 8,
+      "id": 8,
+      "theme": "archive_of_importance",
+      "title": "Архив важности",
+      "subtitle": "Документы лежат так давно, что начали принимать решения сами.",
+      "length": 8600,
+      "durationSec": 106,
+      "baseSpeed": 394,
+      "targetBananas": 85,
+      "platformTypes": [
+        "картотеки",
+        "стопки дел",
+        "полки",
+        "архивные столы",
+        "лестницы"
+      ],
+      "backgroundRuntime": "backgrounds/level08",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "ключ",
+        "пропуск",
+        "магнит"
+      ]
+    },
+    {
+      "index": 9,
+      "id": 9,
+      "theme": "banana_reactor",
+      "title": "Банановый реактор",
+      "subtitle": "Энергия банана поставлена на поток. Очень зря.",
+      "length": 9150,
+      "durationSec": 108,
+      "baseSpeed": 412,
+      "targetBananas": 90,
+      "platformTypes": [
+        "технические настилы",
+        "трубы",
+        "реакторные блоки",
+        "лабораторные платформы",
+        "кабельные мостики"
+      ],
+      "backgroundRuntime": "backgrounds/level09",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "энерго-капсула",
+        "щит",
+        "магнит"
+      ]
+    },
+    {
+      "index": 10,
+      "id": 10,
+      "theme": "audit_corridor",
+      "title": "Коридор проверок",
+      "subtitle": "Каждая дверь ведёт к новой проверке предыдущей проверки.",
+      "length": 9700,
+      "durationSec": 110,
+      "baseSpeed": 430,
+      "targetBananas": 95,
+      "platformTypes": [
+        "дверные пороги",
+        "столы проверяющих",
+        "коридорные настилы",
+        "шкафы с актами"
+      ],
+      "backgroundRuntime": "backgrounds/level10",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "пропуск",
+        "печать",
+        "кофе"
+      ]
+    },
+    {
+      "index": 11,
+      "id": 11,
+      "theme": "night_shift",
+      "title": "Ночная смена",
+      "subtitle": "Когда весь мир спит, план продолжает требовать видимость.",
+      "length": 10250,
+      "durationSec": 112,
+      "baseSpeed": 448,
+      "targetBananas": 100,
+      "platformTypes": [
+        "освещённые доски",
+        "ночные настилы",
+        "тёмные платформы с лампами",
+        "ящики смены"
+      ],
+      "backgroundRuntime": "backgrounds/level11",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "кофе",
+        "щит",
+        "магнит"
+      ]
+    },
+    {
+      "index": 12,
+      "id": 12,
+      "theme": "training_department",
+      "title": "Учебный отдел плана",
+      "subtitle": "Здесь учат прыгать по инструкции, которую никто не читал.",
+      "length": 10800,
+      "durationSec": 114,
+      "baseSpeed": 466,
+      "targetBananas": 105,
+      "platformTypes": [
+        "парта",
+        "доска",
+        "учебные блоки",
+        "стопки методичек",
+        "макеты платформ"
+      ],
+      "backgroundRuntime": "backgrounds/level12",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "чертёж",
+        "кофе",
+        "щит"
+      ]
+    },
+    {
+      "index": 13,
+      "id": 13,
+      "theme": "approval_tower",
+      "title": "Башня согласований",
+      "subtitle": "Вертикальная бюрократия. Чем выше этаж, тем ниже смысл.",
+      "length": 11350,
+      "durationSec": 116,
+      "baseSpeed": 484,
+      "targetBananas": 110,
+      "platformTypes": [
+        "лифтовые площадки",
+        "этажные настилы",
+        "столы подписей",
+        "балконы согласований"
+      ],
+      "backgroundRuntime": "backgrounds/level13",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "ключ",
+        "печать",
+        "магнит"
+      ]
+    },
+    {
+      "index": 14,
+      "id": 14,
+      "theme": "factory_ministry",
+      "title": "Министерство фабричного труда",
+      "subtitle": "Фабрика, которая производит регламенты, и министерство, которое дымит.",
+      "length": 11900,
+      "durationSec": 118,
+      "baseSpeed": 502,
+      "targetBananas": 115,
+      "platformTypes": [
+        "штамповочные линии",
+        "трубные мостики",
+        "кабинетные настилы",
+        "конвейерные платформы"
+      ],
+      "backgroundRuntime": "backgrounds/level14",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "пропуск",
+        "щит",
+        "энерго-капсула"
+      ]
+    },
+    {
+      "index": 15,
+      "id": 15,
+      "theme": "martyshkin_core",
+      "title": "Сердце Мартышкиного труда",
+      "subtitle": "Финальный механизм, где все планы, бананы и акты крутятся без причины.",
+      "length": 12450,
+      "durationSec": 120,
+      "baseSpeed": 520,
+      "targetBananas": 120,
+      "platformTypes": [
+        "ядровые платформы",
+        "шестерённые настилы",
+        "механические арки",
+        "финальные мосты"
+      ],
+      "backgroundRuntime": "backgrounds/level15",
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "все ключевые бонусы",
+        "щит",
+        "магнит"
+      ]
+    }
+  ],
+  "expected_skins": [
+    "brigadir",
+    "mudrec",
+    "cyber_makaka",
+    "red_prorab",
+    "depo_primate",
+    "orangutan_noir",
+    "lab_assistant_act",
+    "golden_brigadir"
+  ],
+  "expected_poses": [
+    "idle",
+    "run_1",
+    "run_2",
+    "jump",
+    "jump_2",
+    "fall",
+    "crouch_dash",
+    "hit",
+    "victory"
+  ],
+  "expected_variants": [
+    "base",
+    "helmet",
+    "vest",
+    "helmet_vest",
+    "boots",
+    "helmet_vest_boots",
+    "magnet",
+    "shield",
+    "blueprint",
+    "radio",
+    "banana_boost",
+    "key_pass",
+    "coffee"
+  ],
+  "expected_runtime_skin_png_slots": 936,
+  "actual_runtime_skin_png_slots_expected_skins": 936,
+  "skin_matrix": [
+    {
+      "skin": "_shared",
+      "is_expected": false,
+      "base_count": 0,
+      "bonus_variant_count": 0,
+      "bonus_png_count": 0,
+      "preview_count": 0,
+      "headshot_count": 0,
+      "missing_base_poses": [
+        "idle",
+        "run_1",
+        "run_2",
+        "jump",
+        "jump_2",
+        "fall",
+        "crouch_dash",
+        "hit",
+        "victory"
+      ],
+      "missing_bonus_variants_or_poses": {
+        "helmet": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "vest": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "helmet_vest": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "boots": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "helmet_vest_boots": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "magnet": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "shield": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "blueprint": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "radio": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "banana_boost": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "key_pass": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ],
+        "coffee": [
+          "idle",
+          "run_1",
+          "run_2",
+          "jump",
+          "jump_2",
+          "fall",
+          "crouch_dash",
+          "hit",
+          "victory"
+        ]
+      }
+    },
+    {
+      "skin": "brigadir",
+      "is_expected": true,
+      "base_count": 9,
+      "bonus_variant_count": 12,
+      "bonus_png_count": 108,
+      "preview_count": 2,
+      "headshot_count": 1,
+      "missing_base_poses": [],
+      "missing_bonus_variants_or_poses": {}
+    },
+    {
+      "skin": "cyber_makaka",
+      "is_expected": true,
+      "base_count": 9,
+      "bonus_variant_count": 12,
+      "bonus_png_count": 108,
+      "preview_count": 2,
+      "headshot_count": 1,
+      "missing_base_poses": [],
+      "missing_bonus_variants_or_poses": {}
+    },
+    {
+      "skin": "depo_primate",
+      "is_expected": true,
+      "base_count": 9,
+      "bonus_variant_count": 12,
+      "bonus_png_count": 108,
+      "preview_count": 2,
+      "headshot_count": 1,
+      "missing_base_poses": [],
+      "missing_bonus_variants_or_poses": {}
+    },
+    {
+      "skin": "golden_brigadir",
+      "is_expected": true,
+      "base_count": 9,
+      "bonus_variant_count": 12,
+      "bonus_png_count": 108,
+      "preview_count": 2,
+      "headshot_count": 1,
+      "missing_base_poses": [],
+      "missing_bonus_variants_or_poses": {}
+    },
+    {
+      "skin": "lab_assistant_act",
+      "is_expected": true,
+      "base_count": 9,
+      "bonus_variant_count": 12,
+      "bonus_png_count": 108,
+      "preview_count": 2,
+      "headshot_count": 1,
+      "missing_base_poses": [],
+      "missing_bonus_variants_or_poses": {}
+    },
+    {
+      "skin": "mudrec",
+      "is_expected": true,
+      "base_count": 9,
+      "bonus_variant_count": 12,
+      "bonus_png_count": 108,
+      "preview_count": 2,
+      "headshot_count": 1,
+      "missing_base_poses": [],
+      "missing_bonus_variants_or_poses": {}
+    },
+    {
+      "skin": "orangutan_noir",
+      "is_expected": true,
+      "base_count": 9,
+      "bonus_variant_count": 12,
+      "bonus_png_count": 108,
+      "preview_count": 2,
+      "headshot_count": 1,
+      "missing_base_poses": [],
+      "missing_bonus_variants_or_poses": {}
+    },
+    {
+      "skin": "red_prorab",
+      "is_expected": true,
+      "base_count": 9,
+      "bonus_variant_count": 12,
+      "bonus_png_count": 108,
+      "preview_count": 2,
+      "headshot_count": 1,
+      "missing_base_poses": [],
+      "missing_bonus_variants_or_poses": {}
+    }
+  ],
+  "platform_png_count": 84,
+  "platform_png_by_theme": {
+    "archive": 7,
+    "construction": 8,
+    "farm": 4,
+    "industrial": 10,
+    "inspection": 6,
+    "jungle": 10,
+    "logistics": 10,
+    "office": 6,
+    "security": 5,
+    "shared": 8,
+    "steampunk": 10
+  },
+  "manifest_platform_entries": [],
+  "gameroot_anchors": [
+    {
+      "label": "askName",
+      "line": 2078,
+      "snippet": "private askName(): void {"
+    },
+    {
+      "label": "devPasswordEdit",
+      "line": 873,
+      "snippet": "private devPasswordEdit!: EditBox;"
+    },
+    {
+      "label": "playerName",
+      "line": 916,
+      "snippet": "private playerName = 'Безымянный примат';"
+    },
+    {
+      "label": "state_name_render",
+      "line": 1163,
+      "snippet": "if (state === 'skins' || state === 'name') return 'CHARACTER_SELECT';"
+    },
+    {
+      "label": "platformAssetKey",
+      "line": 1435,
+      "snippet": "if (screenX > minX && screenX < maxX) keys.push(this.platformAssetKey(platform.type, platform.x));"
+    },
+    {
+      "label": "themedPlatformKeysForLevel",
+      "line": 1423,
+      "snippet": "...themedPlatformKeysForLevel(levelIndex),"
+    },
+    {
+      "label": "scrubDefaultEditBoxLabels",
+      "line": 1076,
+      "snippet": "this.scrubDefaultEditBoxLabels(this.devPasswordNode);"
+    }
+  ]
+}

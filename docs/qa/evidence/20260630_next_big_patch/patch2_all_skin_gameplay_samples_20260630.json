@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-06-30T09:31:55.074Z",
+  "results": [
+    {
+      "skinIndex": 0,
+      "skin": "brigadir",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_skin_samples\\skin_00_brigadir.png",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=brigadir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1",
+      "missing": []
+    },
+    {
+      "skinIndex": 1,
+      "skin": "mudrec",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_skin_samples\\skin_01_mudrec.png",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=mudrec variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_2 key=characters/player_skins/mudrec/bonus/helmet_vest_boots/run_2",
+      "missing": []
+    },
+    {
+      "skinIndex": 2,
+      "skin": "cyber_makaka",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_skin_samples\\skin_02_cyber_makaka.png",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_2 key=characters/player_skins/cyber_makaka/bonus/helmet_vest_boots/run_2",
+      "missing": []
+    },
+    {
+      "skinIndex": 3,
+      "skin": "red_prorab",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_skin_samples\\skin_03_red_prorab.png",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_2 key=characters/player_skins/red_prorab/bonus/helmet_vest_boots/run_2",
+      "missing": []
+    },
+    {
+      "skinIndex": 4,
+      "skin": "depo_primate",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_skin_samples\\skin_04_depo_primate.png",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=depo_primate variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_2 key=characters/player_skins/depo_primate/bonus/helmet_vest_boots/run_2",
+      "missing": []
+    },
+    {
+      "skinIndex": 5,
+      "skin": "orangutan_noir",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_skin_samples\\skin_05_orangutan_noir.png",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_2 key=characters/player_skins/orangutan_noir/bonus/helmet_vest_boots/run_2",
+      "missing": []
+    },
+    {
+      "skinIndex": 6,
+      "skin": "lab_assistant_act",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_skin_samples\\skin_06_lab_assistant_act.png",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=lab_assistant_act variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_1 key=characters/player_skins/lab_assistant_act/bonus/helmet_vest_boots/run_1",
+      "missing": []
+    },
+    {
+      "skinIndex": 7,
+      "skin": "golden_brigadir",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_skin_samples\\skin_07_golden_brigadir.png",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=golden_brigadir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_1 key=characters/player_skins/golden_brigadir/bonus/helmet_vest_boots/run_1",
+      "missing": []
+    }
+  ],
+  "flaggedCount": 1,
+  "flagged": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)",
+      "skin": "brigadir"
+    }
+  ]
+}

@@ -1,0 +1,534 @@
+--------- beginning of main
+06-21 18:37:16.602  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_OBJECT_SPRITE_ENQUEUE_BATCH reason=player-skin-critical:start-level-gate count=9 requested=0 priority=critical platform=native
+06-21 18:37:16.603  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_PLAYER_SKIN_CRITICAL_PRELOAD_REQUESTED reason=start-level-gate skin=brigadir count=9
+06-21 18:37:16.604  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_OBJECT_SPRITE_ENQUEUE_BATCH reason=level-critical:start-level-gate:level-1 count=54 requested=0 priority=critical platform=native
+06-21 18:37:16.606  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_CRITICAL_LEVEL_ASSET_PRELOAD_REQUESTED reason=start-level-gate level=1 count=54 policy=visible-plus-limited-startup
+06-21 18:37:16.607  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_FSM:DEV_MODE->RUNNING state=devpanel->playing reason=start_level
+06-21 18:37:16.607  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_PLATFORM_DENSITY_CONFIG level=1 profile=early-open primary=35 secondary=8 total=43 start=1040 step=860+430 secondaryChance=0.16 yLift=76+72
+06-21 18:37:16.608  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_BANANA_DENSITY_CONFIG multiplier=0.7 clusters=25 totalCollectibles=99 bananas=84 bananaValue=84 coconuts=4 figLeaves=11 topUp=0 desired=53 sideChance=0.18 maxVisible=12/16 minClusterGap=280 minBananaGap=52 target=50
+06-21 18:37:16.608  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_base_platforms_001 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.609  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_base_platforms_002 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.609  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_base_platforms_003 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.609  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_001 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.609  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_002 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.609  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_003 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.610  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_004 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.610  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_extended_platforms_001 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.610  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_001 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.610  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_002 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.611  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_003 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.611  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_004 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.611  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_005 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.611  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_006 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.611  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_007 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.612  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_008 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.613  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_bunch_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.613  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_single_new level=1 spawned=1 reason=level_registry
+06-21 18:37:16.613  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_large_new level=1 spawned=1 reason=level_registry
+06-21 18:37:16.613  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_glow_new level=1 spawned=1 reason=level_registry
+06-21 18:37:16.614  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_hardhat_new level=1 spawned=1 reason=level_registry
+06-21 18:37:16.614  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_bunch_new level=1 spawned=1 reason=level_registry
+06-21 18:37:16.614  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_coffee_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.614  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_blueprint_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.614  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_pass_card_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.615  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_banana_coin_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.615  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_worker_wrench_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.615  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_worker_clipboard_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.615  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_scholar_files_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.616  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_guard_baton_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.617  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_banana_carrier_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.617  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=npc_decor id=npc_mechanic_wrench_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.617  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_label_plate_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.618  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_achievement_trophy_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.618  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_speedrun_badge_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.618  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_bonus_bundle_badge_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.618  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_level_lock_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.619  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_avatar_worker_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.619  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=labels_signage id=ui_label_plate_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.619  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=labels_signage id=obstacle_label_component level=1 spawned=1 reason=level_registry
+06-21 18:37:16.619  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=labels_signage id=story_banner_component level=1 spawned=1 reason=level_registry
+06-21 18:37:16.619  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=active_labels id=ui_label_plate_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.619  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=active_labels id=obstacle_label_component level=1 spawned=1 reason=level_registry
+06-21 18:37:16.620  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=active_labels id=story_banner_component level=1 spawned=1 reason=level_registry
+06-21 18:37:16.620  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=foreground_safe_area_matte level=1 spawned=1 reason=level_registry
+06-21 18:37:16.620  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=themed_platform_contact level=1 spawned=1 reason=level_registry
+06-21 18:37:16.620  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=story_banner_component level=1 spawned=1 reason=level_registry
+06-21 18:37:16.620  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_worker_wrench_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.620  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_worker_clipboard_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.620  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_scholar_files_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.620  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_guard_baton_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=npc_banana_carrier_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=idle level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_1 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_2 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=jump level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=jump_2 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=fall level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=equipment_hardhat_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=equipment_safety_vest_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.621  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=equipment_dash_boots_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.622  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=equipment_magnet_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.622  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=bonus_coffee_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.622  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=bonus_blueprint_01 level=1 spawned=1 reason=level_registry
+06-21 18:37:16.622  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE_SUMMARY level=1 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment
+06-21 18:37:16.622  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_GAMESTATE reason=reset mode=RUNNING level=1 speed=430 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=43/34/99/0
+06-21 18:37:16.622  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636afb80) stop, url: @assets/assets/resources/native/6d/6d2645de-7223-4ca3-adc9-010e820d08e5.wav
+06-21 18:37:16.622  6182  6201 V AudioEngineImpl: Removing player id=1, state:4
+06-21 18:37:16.623  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/37/3786664f-9b28-4d02-bf24-0bbbae035dc4.wav)
+06-21 18:37:16.623  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LEVEL_MUSIC_RESTART level=1 volume=0.33
+06-21 18:37:16.625  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav)
+06-21 18:37:16.626  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=background_decor id=story_banner_component level=1 spawned=1 reason=z_20
+06-21 18:37:16.627  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_BACKGROUND_BITMAP_APPLIED level=1 source=full path=backgrounds/level01/spriteFrame
+06-21 18:37:16.628  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_BG_DUPLICATE_OK
+06-21 18:37:16.629  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_BG_TEXTURE layer=BG_FAR level=1 sourceWidth=1920 sourceHeight=886 drawWidth=1823 drawHeight=842 viewport=1603 mode=scenic-fit repeat=none packable=false panRange=220
+06-21 18:37:16.629  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_BG_SYNC layer=BG_FAR level=1 mode=scenic-fit source=single offset=0.1 panRange=220 segmentCount=1 worldDistancePx=14
+06-21 18:37:16.629  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_BACKGROUND_DUPLICATE_SCAN:OK:theme=1:sources=1
+06-21 18:37:16.630  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=foreground_safe_area_matte level=1 spawned=1 reason=gameplay_lane_contact_line
+06-21 18:37:16.631  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=foreground_safe_area_matte level=1 spawned=1 reason=static_touch_control_matte_no_scroll_stripes
+06-21 18:37:16.631  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_BG_SYNC layer=TRACK_BACKDROP mode=static source=viewport-matte pattern=disabled worldDistancePx=14
+06-21 18:37:16.633  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_extended_platforms_002 level=1 spawned=1 reason=platform_visual_asset
+06-21 18:37:16.635  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_base_hazards_007 level=1 spawned=1 reason=hazard_visual_type_0
+06-21 18:37:16.636  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_large_new level=1 spawned=1 reason=banana_skin_single
+06-21 18:37:16.638  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_hardhat_new level=1 spawned=1 reason=banana_skin_single
+06-21 18:37:16.639  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=equipment_dash_boots_01 level=1 spawned=1 reason=bonus_visual_no_badge
+06-21 18:37:16.645  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=equipment_safety_vest_01 level=1 spawned=1 reason=bonus_visual_no_badge
+06-21 18:37:16.648  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_coffee_01 level=1 spawned=1 reason=bonus_visual_no_badge
+06-21 18:37:16.651  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=foreground_safe_area_matte level=1 spawned=1 reason=player_contact_shadow
+06-21 18:37:16.653  6182  6201 W Cocos   : 18:37:16 [WARN]: JS: MTR_POSE_MISSING skin=brigadir variant=helmet_vest_boots pose=run_1 fallback=skin_base_safe
+06-21 18:37:16.654  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_PLAYER_SKIN_SAFE_FALLBACK requested=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1 used=characters/player_skins/brigadir/base/run_1
+06-21 18:37:16.654  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_1 level=1 spawned=1 reason=player_skin_safe_fallback_helmet_vest_boots_run1
+06-21 18:37:16.656  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:16.657  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=1 spawned=1 reason=player_equipment_aura_anchor
+06-21 18:37:16.658  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:16.659  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=equipment id=equipment_magnet_01 level=1 spawned=1 reason=player_equipment_back_anchor
+06-21 18:37:16.659  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:16.660  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=hud_panel level=1 spawned=1 reason=shared_hud_left
+06-21 18:37:16.661  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=hud_panel level=1 spawned=1 reason=shared_hud_right
+06-21 18:37:16.661  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=hud_control level=1 spawned=1 reason=shared_hud_button
+06-21 18:37:16.661  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_label_plate_01 level=1 spawned=1 reason=button_runtime_label_plate
+06-21 18:37:16.663  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:BG_FAR:1
+06-21 18:37:16.663  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:BG_MID:6
+06-21 18:37:16.663  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:BG_NEAR_DECOR:0
+06-21 18:37:16.664  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:PLATFORMS_SOLID:1
+06-21 18:37:16.664  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:OBJECTIVES_ACTIVE:1
+06-21 18:37:16.664  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:COLLECTIBLES:34
+06-21 18:37:16.665  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_BODY:12
+06-21 18:37:16.665  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EQUIPMENT:0
+06-21 18:37:16.665  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EFFECTS:12
+06-21 18:37:16.665  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:FOREGROUND_LIGHT_DECOR:0
+06-21 18:37:16.665  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:HUD:18
+06-21 18:37:16.667  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_LAYER_DRAW:DEV_OVERLAY:0
+06-21 18:37:16.667  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_COLLECTIBLE_PRIORITY_OK
+06-21 18:37:16.667  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_PLATFORM_ALPHA_OK:latest_themed_sprite_or_pending_gate
+06-21 18:37:16.723  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=0
+06-21 18:37:16.723  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636bbf70
+06-21 18:37:16.723  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636bbf70) play, url: @assets/assets/resources/native/37/3786664f-9b28-4d02-bf24-0bbbae035dc4.wav
+06-21 18:37:16.723  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=1
+06-21 18:37:16.723  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b75e0
+06-21 18:37:16.723  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b75e0) play, url: @assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav
+06-21 18:37:16.729  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_single_new level=1 spawned=1 reason=banana_skin_single
+06-21 18:37:16.730  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=collectibles id=collectible_banana_glow_new level=1 spawned=1 reason=banana_skin_single
+06-21 18:37:16.731  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_blueprint_01 level=1 spawned=1 reason=bonus_visual_no_badge
+06-21 18:37:16.737  6182  6201 W Cocos   : 18:37:16 [WARN]: JS: MTR_POSE_MISSING skin=brigadir variant=helmet_vest_boots pose=run_2 fallback=skin_base_safe
+06-21 18:37:16.737  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_PLAYER_SKIN_SAFE_FALLBACK requested=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2 used=characters/player_skins/brigadir/base/run_2
+06-21 18:37:16.738  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_2 level=1 spawned=1 reason=player_skin_safe_fallback_helmet_vest_boots_run2
+06-21 18:37:16.804  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636afb80)
+06-21 18:37:16.804  6182  6201 V Track   : ~Track(): 0x704b636c8a30
+06-21 18:37:16.807  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_DT_OK fixedDt=0.016666666666666666 steps=10
+06-21 18:37:16.867  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=banana dx=-352.5 dy=19.5 distance_before=353.0 distance_after=342.7 status=OK
+06-21 18:37:16.873  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 14(1544KB) LOS objects, 49% free, 2326KB/4652KB, paused 8.118ms,2.664ms total 24.788ms
+06-21 18:37:16.911  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 17(2460KB) LOS objects, 49% free, 2314KB/4628KB, paused 1.375ms,6.905ms total 22.811ms
+06-21 18:37:16.926  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:16.931  6182  6201 V AudioEngineImpl: Removing player id=4, state:5
+06-21 18:37:16.931  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b75e0)
+06-21 18:37:16.931  6182  6201 V Track   : ~Track(): 0x704b636cdd70
+06-21 18:37:16.943   472   588 D AudioFlinger: mixer(0x78ee756808e0) throttle end: throttle time(3)
+06-21 18:37:16.949  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_SKIN_VARIANT_ACTIVE skin=brigadir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:16.950  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:16.951  6182  6201 D Cocos   : 18:37:16 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_2 level=1 spawned=1 reason=player_skin_helmet_vest_boots_run2
+06-21 18:37:17.064  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:17.065  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_2 level=1 spawned=1 reason=player_skin_blend_from_run1
+06-21 18:37:17.065  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_1 level=1 spawned=1 reason=player_skin_helmet_vest_boots_run1
+06-21 18:37:17.134  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=equipment_dash_boots_01 level=1 spawned=1 reason=bonus_visual_near_player_no_badge
+06-21 18:37:17.136  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:17.136  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_1 level=1 spawned=1 reason=player_skin_blend_from_run2
+06-21 18:37:17.201  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav)
+06-21 18:37:17.216  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav)
+06-21 18:37:17.216  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/8d/8d1cb61d-fa56-4ef7-a29d-ae843113bf35.wav)
+06-21 18:37:17.230  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav)
+06-21 18:37:17.232  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav)
+06-21 18:37:17.279  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=1
+06-21 18:37:17.279  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b5c70
+06-21 18:37:17.280  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b5c70) play, url: @assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav
+06-21 18:37:17.280  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=2
+06-21 18:37:17.280  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636bb260
+06-21 18:37:17.281  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636bb260) play, url: @assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav
+06-21 18:37:17.281  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=3
+06-21 18:37:17.281  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636bbd60
+06-21 18:37:17.281  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636bbd60) play, url: @assets/assets/resources/native/8d/8d1cb61d-fa56-4ef7-a29d-ae843113bf35.wav
+06-21 18:37:17.282  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=4
+06-21 18:37:17.282  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b5f30
+06-21 18:37:17.282  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b5f30) play, url: @assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav
+06-21 18:37:17.282  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=5
+06-21 18:37:17.282  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b17b0
+06-21 18:37:17.282  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b17b0) play, url: @assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav
+06-21 18:37:17.283  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=banana dx=-144.2 dy=23.5 distance_before=146.1 distance_after=135.8 status=OK
+06-21 18:37:17.287  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:17.290  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=equipment_hardhat_01 level=1 spawned=1 reason=achievement_toast
+06-21 18:37:17.303   472   588 D AudioFlinger: mixer(0x78ee756808e0) throttle end: throttle time(4)
+06-21 18:37:17.383  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:17.393  6182  6209 D EGL_emulation: app_time_stats: avg=67.26ms min=37.86ms max=128.83ms count=15
+06-21 18:37:17.483  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:17.487  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:17.487  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:17.488  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:17.488  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:17.488  6182  6226 V AudioMixerController: Mix a frame waste: 1.388000ms
+06-21 18:37:17.551  6182  6201 V AudioEngineImpl: Removing player id=5, state:5
+06-21 18:37:17.552  6182  6201 V AudioEngineImpl: Removing player id=6, state:5
+06-21 18:37:17.552  6182  6201 V AudioEngineImpl: Removing player id=7, state:5
+06-21 18:37:17.552  6182  6201 V AudioEngineImpl: Removing player id=8, state:5
+06-21 18:37:17.553  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b5c70)
+06-21 18:37:17.553  6182  6201 V Track   : ~Track(): 0x704b636ee770
+06-21 18:37:17.554  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636bb260)
+06-21 18:37:17.554  6182  6201 V Track   : ~Track(): 0x704b636ed0f0
+06-21 18:37:17.554  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636bbd60)
+06-21 18:37:17.555  6182  6201 V Track   : ~Track(): 0x704b636edc30
+06-21 18:37:17.555  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b5f30)
+06-21 18:37:17.555  6182  6201 V Track   : ~Track(): 0x704b636efbb0
+06-21 18:37:17.558  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav)
+06-21 18:37:17.619  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=2
+06-21 18:37:17.619  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636a9e00
+06-21 18:37:17.619  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636a9e00) play, url: @assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav
+06-21 18:37:17.620  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=bonus_ЩИТ dx=-262.9 dy=158.6 distance_before=307.1 distance_after=296.7 status=OK
+06-21 18:37:17.623  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:17.671  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:17.821  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:17.875  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:17.875  6182  6201 V AudioEngineImpl: Removing player id=9, state:5
+06-21 18:37:17.876  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b17b0)
+06-21 18:37:17.876  6182  6201 V Track   : ~Track(): 0x704b636ea2d0
+06-21 18:37:17.877  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav)
+06-21 18:37:17.891  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav)
+06-21 18:37:17.893  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav)
+06-21 18:37:17.894  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:17.934  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=2
+06-21 18:37:17.934  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636baad0
+06-21 18:37:17.935  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636baad0) play, url: @assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav
+06-21 18:37:17.935  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=3
+06-21 18:37:17.936  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b54e0
+06-21 18:37:17.936  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b54e0) play, url: @assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav
+06-21 18:37:17.936  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=4
+06-21 18:37:17.936  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b68d0
+06-21 18:37:17.937  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b68d0) play, url: @assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav
+06-21 18:37:17.939  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=bonus_МАГНИТ dx=-140.9 dy=59.0 distance_before=152.7 distance_after=142.4 status=OK
+06-21 18:37:18.000  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav)
+06-21 18:37:18.001  6182  6201 D Cocos   : 18:37:17 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:18.057  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=5
+06-21 18:37:18.057  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b10d0
+06-21 18:37:18.058  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b10d0) play, url: @assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav
+06-21 18:37:18.122  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:18.122  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:18.132  6182  6201 V AudioEngineImpl: Removing player id=11, state:5
+06-21 18:37:18.132  6182  6201 V AudioEngineImpl: Removing player id=12, state:5
+06-21 18:37:18.133  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636baad0)
+06-21 18:37:18.133  6182  6201 V Track   : ~Track(): 0x704b636f1e90
+06-21 18:37:18.133  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b54e0)
+06-21 18:37:18.133  6182  6201 V Track   : ~Track(): 0x704b636f04b0
+06-21 18:37:18.136  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:18.137  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:18.138  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:18.139  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:18.185  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:18.186  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:18.187  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:18.207  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:18.250  6182  6201 V AudioEngineImpl: Removing player id=10, state:5
+06-21 18:37:18.250  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636a9e00)
+06-21 18:37:18.251  6182  6201 V Track   : ~Track(): 0x704b636f0270
+06-21 18:37:18.252  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=bonus_ЖИЛЕТ dx=-98.5 dy=70.5 distance_before=121.1 distance_after=110.8 status=OK
+06-21 18:37:18.253  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=equipment_safety_vest_01 level=1 spawned=1 reason=bonus_visual_near_player_no_badge
+06-21 18:37:18.254  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:18.254  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:18.255  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:18.255  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:18.258  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:BG_FAR:1
+06-21 18:37:18.259  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:BG_MID:6
+06-21 18:37:18.259  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:BG_NEAR_DECOR:0
+06-21 18:37:18.260  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:PLATFORMS_SOLID:1
+06-21 18:37:18.260  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:OBJECTIVES_ACTIVE:1
+06-21 18:37:18.260  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:COLLECTIBLES:23
+06-21 18:37:18.261  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_BODY:13
+06-21 18:37:18.261  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EQUIPMENT:0
+06-21 18:37:18.261  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EFFECTS:75
+06-21 18:37:18.262  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:FOREGROUND_LIGHT_DECOR:0
+06-21 18:37:18.263  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:HUD:28
+06-21 18:37:18.264  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_LAYER_DRAW:DEV_OVERLAY:0
+06-21 18:37:18.264  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_COLLECTIBLE_PRIORITY_OK
+06-21 18:37:18.264  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_PLATFORM_ALPHA_OK:latest_themed_sprite_or_pending_gate
+06-21 18:37:18.310  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav)
+06-21 18:37:18.312  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:18.332   862   862 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+06-21 18:37:18.374  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=3
+06-21 18:37:18.374  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636a7a40
+06-21 18:37:18.375  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636a7a40) play, url: @assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav
+06-21 18:37:18.437  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:18.444  6182  6209 D EGL_emulation: app_time_stats: avg=65.56ms min=50.19ms max=92.27ms count=16
+06-21 18:37:18.498  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:18.500  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:18.553  6182  6201 V AudioEngineImpl: Removing player id=13, state:5
+06-21 18:37:18.553  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b68d0)
+06-21 18:37:18.553  6182  6201 V Track   : ~Track(): 0x704b636f1b30
+06-21 18:37:18.554  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav)
+06-21 18:37:18.559  6182  6201 W Cocos   : 18:37:18 [WARN]: JS: MTR_POSE_MISSING skin=brigadir variant=helmet_vest_boots pose=hit fallback=skin_base_safe
+06-21 18:37:18.559  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_PLAYER_SKIN_SAFE_FALLBACK requested=characters/player_skins/brigadir/bonus/helmet_vest_boots/hit used=characters/player_skins/brigadir/base/hit
+06-21 18:37:18.560  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=hit level=1 spawned=1 reason=player_skin_safe_fallback_helmet_vest_boots_hit
+06-21 18:37:18.616  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=3
+06-21 18:37:18.616  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b3d80
+06-21 18:37:18.617  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b3d80) play, url: @assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav
+06-21 18:37:18.620  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=bonus_КОФЕ dx=-155.6 dy=70.3 distance_before=170.8 distance_after=160.4 status=OK
+06-21 18:37:18.623  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:18.678  6182  6201 V AudioEngineImpl: Removing player id=14, state:5
+06-21 18:37:18.678  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b10d0)
+06-21 18:37:18.678  6182  6201 V Track   : ~Track(): 0x704b636f17d0
+06-21 18:37:18.685  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_coffee_01 level=1 spawned=1 reason=bonus_visual_near_player_no_badge
+06-21 18:37:18.755  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav)
+06-21 18:37:18.757  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=bonus_blueprint_01 level=1 spawned=1 reason=achievement_toast
+06-21 18:37:18.809  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=3
+06-21 18:37:18.810  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b6560
+06-21 18:37:18.810  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b6560) play, url: @assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav
+06-21 18:37:18.812  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=hit key=characters/player_skins/brigadir/bonus/helmet_vest_boots/hit
+06-21 18:37:18.813  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_1 level=1 spawned=1 reason=player_skin_blend_from_hit
+06-21 18:37:18.813  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=hit level=1 spawned=1 reason=player_skin_helmet_vest_boots_hit
+06-21 18:37:18.870  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_ASSET_USAGE category=bonuses id=bonus_blueprint_01 level=1 spawned=1 reason=bonus_visual_near_player_no_badge
+06-21 18:37:18.872  6182  6201 W Cocos   : 18:37:18 [WARN]: JS: MTR_POSE_MISSING skin=brigadir variant=helmet_vest_boots pose=fall fallback=skin_base_safe
+06-21 18:37:18.872  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_PLAYER_SKIN_SAFE_FALLBACK requested=characters/player_skins/brigadir/bonus/helmet_vest_boots/fall used=characters/player_skins/brigadir/base/fall
+06-21 18:37:18.873  6182  6201 D Cocos   : 18:37:18 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=fall level=1 spawned=1 reason=player_skin_safe_fallback_helmet_vest_boots_fall
+06-21 18:37:18.923  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav)
+06-21 18:37:18.956  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:18.980  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=4
+06-21 18:37:18.980  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b9dc0
+06-21 18:37:18.980  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b9dc0) play, url: @assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav
+06-21 18:37:18.983  6182  6201 V AudioEngineImpl: Removing player id=15, state:5
+06-21 18:37:18.983  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636a7a40)
+06-21 18:37:18.983  6182  6201 V Track   : ~Track(): 0x704b636d17f0
+06-21 18:37:19.049  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=bonus_ПРОПУСК dx=-328.5 dy=136.0 distance_before=355.5 distance_after=345.2 status=OK
+06-21 18:37:19.050  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_roadworks_base_platforms_004 level=1 spawned=1 reason=platform_visual_asset
+06-21 18:37:19.054  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:19.054  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=hit level=1 spawned=1 reason=player_skin_blend_from_run2
+06-21 18:37:19.056  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:19.056  6182  6226 V AudioMixerController: Mix a frame waste: 4.026000ms
+06-21 18:37:19.134  6182  6201 V AudioEngineImpl: Removing player id=16, state:5
+06-21 18:37:19.135  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b3d80)
+06-21 18:37:19.136  6182  6201 V Track   : ~Track(): 0x704b636eb710
+06-21 18:37:19.139  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:19.243  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:19.348  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav)
+06-21 18:37:19.350  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:19.383  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:19.393  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=3
+06-21 18:37:19.394  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b6090
+06-21 18:37:19.394  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b6090) play, url: @assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav
+06-21 18:37:19.394  6182  6201 V AudioEngineImpl: Removing player id=17, state:5
+06-21 18:37:19.396  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b6560)
+06-21 18:37:19.396  6182  6201 V Track   : ~Track(): 0x704b636ef070
+06-21 18:37:19.397  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=bonus_ЖИЗНЬ dx=-279.2 dy=163.8 distance_before=323.7 distance_after=313.4 status=OK
+06-21 18:37:19.455  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:19.461  6182  6209 D EGL_emulation: app_time_stats: avg=59.74ms min=37.86ms max=97.47ms count=17
+06-21 18:37:19.552  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:19.566  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:19.596  6182  6201 V AudioEngineImpl: Removing player id=18, state:5
+06-21 18:37:19.596  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b9dc0)
+06-21 18:37:19.596  6182  6201 V Track   : ~Track(): 0x704b636f2670
+06-21 18:37:19.640  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/a0/a0fb52e3-ce2a-47cf-a1bf-7f64b8e1ad81.wav)
+06-21 18:37:19.656  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav)
+06-21 18:37:19.657  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav)
+06-21 18:37:19.658  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:19.716  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=2
+06-21 18:37:19.716  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b57a0
+06-21 18:37:19.716  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b57a0) play, url: @assets/assets/resources/native/a0/a0fb52e3-ce2a-47cf-a1bf-7f64b8e1ad81.wav
+06-21 18:37:19.717  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=3
+06-21 18:37:19.717  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b1230
+06-21 18:37:19.717  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b1230) play, url: @assets/assets/resources/native/30/303432b2-f29d-43be-b3b8-994e73afa88e.wav
+06-21 18:37:19.717  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=4
+06-21 18:37:19.718  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b8b30
+06-21 18:37:19.718  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b8b30) play, url: @assets/assets/resources/native/75/7583a589-3716-402d-9c49-cf967ea3fb99.wav
+06-21 18:37:19.720  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:19.721  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:19.723  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:19.723  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:19.777  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:19.778  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:19.779  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:19.829  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:19.831  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:19.831  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:19.832  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:19.833  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:BG_FAR:1
+06-21 18:37:19.834  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:BG_MID:6
+06-21 18:37:19.834  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:BG_NEAR_DECOR:0
+06-21 18:37:19.834  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:PLATFORMS_SOLID:2
+06-21 18:37:19.834  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:OBJECTIVES_ACTIVE:0
+06-21 18:37:19.834  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:COLLECTIBLES:6
+06-21 18:37:19.835  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_BODY:13
+06-21 18:37:19.835  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EQUIPMENT:0
+06-21 18:37:19.835  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EFFECTS:65
+06-21 18:37:19.835  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:FOREGROUND_LIGHT_DECOR:0
+06-21 18:37:19.835  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:HUD:28
+06-21 18:37:19.836  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_LAYER_DRAW:DEV_OVERLAY:0
+06-21 18:37:19.836  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_COLLECTIBLE_PRIORITY_OK
+06-21 18:37:19.836  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLATFORM_ALPHA_OK:latest_themed_sprite_or_pending_gate
+06-21 18:37:19.902  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:19.917  6182  6201 V AudioEngineImpl: Removing player id=21, state:5
+06-21 18:37:19.918  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b1230)
+06-21 18:37:19.918  6182  6201 V Track   : ~Track(): 0x704b636f1110
+06-21 18:37:19.919  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_roadworks_base_hazards_008 level=1 spawned=1 reason=hazard_visual_type_1
+06-21 18:37:19.921  6182  6201 D Cocos   : 18:37:19 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:19.968  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:20.001  6182  6201 V AudioEngineImpl: Removing player id=19, state:5
+06-21 18:37:20.002  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b6090)
+06-21 18:37:20.002  6182  6201 V Track   : ~Track(): 0x704b636f3090
+06-21 18:37:20.050  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:20.146  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:20.244  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:20.245  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=bonus_pass_card_01 level=1 spawned=1 reason=achievement_toast
+06-21 18:37:20.282  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:20.292  6182  6201 V AudioEngineImpl: Removing player id=22, state:5
+06-21 18:37:20.292  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b8b30)
+06-21 18:37:20.292  6182  6201 V Track   : ~Track(): 0x704b636f7530
+06-21 18:37:20.336  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:20.451  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:20.499  6182  6209 D EGL_emulation: app_time_stats: avg=49.30ms min=40.98ms max=73.50ms count=21
+06-21 18:37:20.537  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=banana dx=-353.8 dy=15.1 distance_before=354.1 distance_after=343.8 status=OK
+06-21 18:37:20.538  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:20.630  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:20.738  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:20.758  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:20.776  6423  6423 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+06-21 18:37:20.777  6423  6423 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+06-21 18:37:20.779  6182  6226 V AudioMixerController: Mix a frame waste: 3.338000ms
+06-21 18:37:20.798  6182  6201 V AudioEngineImpl: Removing player id=20, state:5
+06-21 18:37:20.799  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b57a0)
+06-21 18:37:20.800  6182  6201 V Track   : ~Track(): 0x704b636f6330
+06-21 18:37:20.802  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_extended_hazards_003 level=1 spawned=1 reason=hazard_visual_type_8
+06-21 18:37:20.804   204   204 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+06-21 18:37:20.804  6423  6424 I Gralloc4: mapper 4.x is not supported
+--------- beginning of kernel
+06-21 18:37:20.777     0     0 I servicemanager: Caller(pid=6423,uid=2000,sid=u:r:shell:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+06-21 18:37:20.829  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(4060KB) LOS objects, 49% free, 2678KB/5356KB, paused 995us,5.489ms total 23.252ms
+06-21 18:37:20.860  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_MAGNET_ATTRACT item=banana dx=-145.3 dy=20.9 distance_before=146.8 distance_after=136.4 status=OK
+06-21 18:37:20.862  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:20.891  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 92KB AllocSpace bytes, 24(3520KB) LOS objects, 49% free, 2922KB/5844KB, paused 741us,5.143ms total 25.150ms
+06-21 18:37:20.916  6182  6201 D Cocos   : 18:37:20 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:21.042  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:21.067  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 68KB AllocSpace bytes, 19(2476KB) LOS objects, 49% free, 2578KB/5156KB, paused 634us,5.103ms total 22.322ms
+06-21 18:37:21.147  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:21.235  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(2640KB) LOS objects, 49% free, 2414KB/4828KB, paused 681us,6.992ms total 35.809ms
+06-21 18:37:21.263  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:21.264  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:21.266  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:21.266  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:21.315  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:21.316  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:21.318  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:21.319  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:21.368  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:21.369  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:21.371  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:21.372  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:BG_FAR:1
+06-21 18:37:21.373  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:BG_MID:6
+06-21 18:37:21.373  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:BG_NEAR_DECOR:0
+06-21 18:37:21.373  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:PLATFORMS_SOLID:1
+06-21 18:37:21.373  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:OBJECTIVES_ACTIVE:2
+06-21 18:37:21.374  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:COLLECTIBLES:0
+06-21 18:37:21.374  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_BODY:13
+06-21 18:37:21.374  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EQUIPMENT:0
+06-21 18:37:21.374  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EFFECTS:41
+06-21 18:37:21.375  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:FOREGROUND_LIGHT_DECOR:0
+06-21 18:37:21.375  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:HUD:25
+06-21 18:37:21.375  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_LAYER_DRAW:DEV_OVERLAY:0
+06-21 18:37:21.375  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_COLLECTIBLE_PRIORITY_OK
+06-21 18:37:21.375  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLATFORM_ALPHA_OK:latest_themed_sprite_or_pending_gate
+06-21 18:37:21.426  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:21.480  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_ASSET_USAGE category=foreground_decor id=mtr_last_roadworks_base_platforms_004 level=1 spawned=1 reason=platform_near_player_contact_shadow
+06-21 18:37:21.528  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:21.535  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 35(4284KB) LOS objects, 49% free, 2414KB/4828KB, paused 668us,5.240ms total 37.757ms
+06-21 18:37:21.540  6182  6209 D EGL_emulation: app_time_stats: avg=54.61ms min=40.96ms max=69.07ms count=19
+06-21 18:37:21.586  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 18(2600KB) LOS objects, 49% free, 2294KB/4588KB, paused 2.752ms,5.688ms total 25.247ms
+06-21 18:37:21.594  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_ASSET_USAGE category=platforms id=mtr_last_construction_extended_platforms_005 level=1 spawned=1 reason=platform_visual_asset
+06-21 18:37:21.648  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:21.701  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 16(2024KB) LOS objects, 49% free, 2314KB/4628KB, paused 1.202ms,14.358ms total 40.050ms
+06-21 18:37:21.734  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:21.735  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_ASSET_USAGE category=ui_achievements id=ui_bonus_bundle_badge_01 level=1 spawned=1 reason=achievement_toast
+06-21 18:37:21.762  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(2728KB) LOS objects, 49% free, 2206KB/4412KB, paused 5.969ms,2.636ms total 21.181ms
+06-21 18:37:21.789   472   588 D AF::Track: interceptBuffer: took 763us to intercept 0 tracks
+06-21 18:37:21.821  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(3664KB) LOS objects, 49% free, 2398KB/4796KB, paused 688us,7.183ms total 21.943ms
+06-21 18:37:21.838  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:21.926  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(3508KB) LOS objects, 49% free, 2262KB/4524KB, paused 7.206ms,3.980ms total 23.217ms
+06-21 18:37:21.941  6182  6201 D Cocos   : 18:37:21 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:21.976  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(2656KB) LOS objects, 49% free, 2242KB/4484KB, paused 7.608ms,2.478ms total 24.408ms
+06-21 18:37:22.046  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:22.141  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:22.170  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 22(2968KB) LOS objects, 49% free, 2326KB/4652KB, paused 675us,8.108ms total 24.792ms
+06-21 18:37:22.253  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:22.310  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:22.359  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_ASSET_USAGE category=hazards id=mtr_last_construction_extended_hazards_002 level=1 spawned=1 reason=hazard_visual_type_6
+06-21 18:37:22.412  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:22.508  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav)
+06-21 18:37:22.508  6182  6201 V AudioPlayerProvider: preload return from cache: (@assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav)
+06-21 18:37:22.510  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=hit key=characters/player_skins/brigadir/bonus/helmet_vest_boots/hit
+06-21 18:37:22.512  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=run_2 level=1 spawned=1 reason=player_skin_blend_from_hit
+06-21 18:37:22.562  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=1
+06-21 18:37:22.563  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636b24c0
+06-21 18:37:22.563  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636b24c0) play, url: @assets/assets/resources/native/f7/f754a241-7e41-4a96-907a-5d3769133fc0.wav
+06-21 18:37:22.563  6182  6201 V AudioEngineImpl: play2d, _audioPlayers.size=2
+06-21 18:37:22.564  6182  6201 V PcmAudioPlayer: PcmAudioPlayer constructor: 0x704c636a65a0
+06-21 18:37:22.564  6182  6201 V PcmAudioPlayer: PcmAudioPlayer (0x704c636a65a0) play, url: @assets/assets/resources/native/11/1159ea42-a621-472f-866d-b7f87b188e71.wav
+06-21 18:37:22.571  6182  6209 D EGL_emulation: app_time_stats: avg=54.21ms min=45.90ms max=79.23ms count=19
+06-21 18:37:22.773  6182  6201 W Cocos   : 18:37:22 [WARN]: JS: MTR_POSE_MISSING skin=brigadir variant=helmet_vest_boots pose=jump fallback=skin_base_safe
+06-21 18:37:22.774  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLAYER_SKIN_SAFE_FALLBACK requested=characters/player_skins/brigadir/bonus/helmet_vest_boots/jump used=characters/player_skins/brigadir/base/jump
+06-21 18:37:22.774  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=jump level=1 spawned=1 reason=player_skin_safe_fallback_helmet_vest_boots_jump
+06-21 18:37:22.775  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:22.775  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:22.776  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:22.829  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=fall key=characters/player_skins/brigadir/bonus/helmet_vest_boots/fall
+06-21 18:37:22.830  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=hit level=1 spawned=1 reason=player_skin_blend_from_fall
+06-21 18:37:22.830  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=fall level=1 spawned=1 reason=player_skin_helmet_vest_boots_fall
+06-21 18:37:22.831  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:22.831  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:22.831  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:22.885  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=shield semanticSlot=aura item=shield anchor=aura_anchor
+06-21 18:37:22.886  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=magnet semanticSlot=back item=magnet anchor=back_anchor
+06-21 18:37:22.886  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_EQUIPMENT_ATTACH slot=boots semanticSlot=feet item=boots anchor=feet_anchor
+06-21 18:37:22.888  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:BG_FAR:1
+06-21 18:37:22.888  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:BG_MID:6
+06-21 18:37:22.888  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:BG_NEAR_DECOR:0
+06-21 18:37:22.891  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:PLATFORMS_SOLID:2
+06-21 18:37:22.893  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:OBJECTIVES_ACTIVE:2
+06-21 18:37:22.894  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:COLLECTIBLES:8
+06-21 18:37:22.894  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_BODY:13
+06-21 18:37:22.895  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EQUIPMENT:0
+06-21 18:37:22.895  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:PLAYER_EFFECTS:32
+06-21 18:37:22.895  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:FOREGROUND_LIGHT_DECOR:0
+06-21 18:37:22.895  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:HUD:25
+06-21 18:37:22.896  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_LAYER_DRAW:DEV_OVERLAY:0
+06-21 18:37:22.896  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_COLLECTIBLE_PRIORITY_OK
+06-21 18:37:22.896  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLATFORM_ALPHA_OK:latest_themed_sprite_or_pending_gate
+06-21 18:37:22.962  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:22.963  6182  6201 D Cocos   : 18:37:22 [DEBUG]: JS: MTR_ASSET_USAGE category=player_body id=fall level=1 spawned=1 reason=player_skin_blend_from_run1
+06-21 18:37:22.999  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:22.999  6182  6226 V AudioMixerController: Play over ...
+06-21 18:37:23.016  6182  6201 V AudioEngineImpl: Removing player id=23, state:5
+06-21 18:37:23.018  6182  6201 V AudioEngineImpl: Removing player id=24, state:5
+06-21 18:37:23.018  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636b24c0)
+06-21 18:37:23.018  6182  6201 V Track   : ~Track(): 0x704b636e1e10
+06-21 18:37:23.018  6182  6201 V PcmAudioPlayer: In the destructor of PcmAudioPlayer (0x704c636a65a0)
+06-21 18:37:23.019  6182  6201 V Track   : ~Track(): 0x704b636e3b50
+06-21 18:37:23.020  6182  6201 D Cocos   : 18:37:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:23.139  6182  6201 D Cocos   : 18:37:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:23.235  6182  6201 D Cocos   : 18:37:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:23.312  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(3424KB) LOS objects, 49% free, 2398KB/4796KB, paused 699us,5.197ms total 21.138ms
+06-21 18:37:23.330  6182  6201 D Cocos   : 18:37:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1
+06-21 18:37:23.420  6182  6201 D Cocos   : 18:37:23 [DEBUG]: JS: MTR_PLAYER_POSE skin=brigadir variant=helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2
+06-21 18:37:23.497  6182  6187 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 21(2740KB) LOS objects, 49% free, 2470KB/4940KB, paused 1.635ms,5.316ms total 21.474ms
+06-21 18:37:23.507     0     0 I logd    : logdr: UID=2000 GID=2000 PID=6425 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns

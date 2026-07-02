@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 3,
+  "source": "texture9_current_objective_runtime",
+  "runtimeFolder": "assets/resources/objectives",
+  "requiredRuntimeCategories": [
+    "bonuses",
+    "npc_decor",
+    "ui_achievements",
+    "labels_signage",
+    "foreground_decor",
+    "background_decor"
+  ],
+  "requiredRuntimeKeys": {
+    "bonuses": [
+      "objectives/bonuses/bonus_coffee_01",
+      "objectives/bonuses/bonus_blueprint_01",
+      "objectives/bonuses/bonus_pass_card_01"
+    ],
+    "npc_decor": [
+      "objectives/npc/npc_worker_wrench_01",
+      "objectives/npc/npc_worker_clipboard_01"
+    ],
+    "ui_achievements": [
+      "objectives/ui/ui_achievement_trophy_01",
+      "objectives/ui/ui_label_plate_01"
+    ],
+    "labels_signage": [
+      "objectives/ui/ui_label_plate_01"
+    ],
+    "foreground_decor": [
+      "foreground_safe_area_matte"
+    ],
+    "background_decor": [
+      "story_banner_component"
+    ]
+  },
+  "runtimeAssignments": {
+    "platforms": "necessary/9 themed catalog only",
+    "hazards": "necessary/9 themed catalog only",
+    "bonuses": "GameRoot.BONUS_ASSET_KEYS and objective batch sprites",
+    "playerEquipment": "GameRoot.drawMonkey",
+    "npc_decor": "GameRoot.drawNpc",
+    "foreground_decor": "GameRoot.drawGameplayReadabilityBand",
+    "background_decor": "GameRoot.drawBackground",
+    "hud": "GameRoot.drawHud",
+    "ui_achievements": "GameRoot.drawAchievementToast and achievements screen",
+    "labels_signage": "GameRoot.drawObstacleLabel and drawBillboard"
+  }
+}

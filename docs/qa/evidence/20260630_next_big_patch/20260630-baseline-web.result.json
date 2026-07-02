@@ -1,0 +1,19 @@
+{
+    "configPath":  "build-web-mobile.json",
+    "configPathResolved":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build-web-mobile.json",
+    "buildArg":  "configPath=build-web-mobile.json;logDest=20260630-baseline-web.log",
+    "exitCode":  0,
+    "rawExitCode":  36,
+    "buildFinished":  true,
+    "stdout":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\20260630-baseline-web.out.log",
+    "stderr":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\20260630-baseline-web.err.log",
+    "cocosLog":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\20260630-baseline-web.log",
+    "entrypointLog":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\entrypoint-router-20260630.jsonl",
+    "autocorrections":  [
+                            "argument-array-to-safe-command-line",
+                            "quoted-whitespace-or-quote-arguments"
+                        ],
+    "completedBySuccessPattern":  false,
+    "successMatch":  null,
+    "androidPostPackage":  null
+}

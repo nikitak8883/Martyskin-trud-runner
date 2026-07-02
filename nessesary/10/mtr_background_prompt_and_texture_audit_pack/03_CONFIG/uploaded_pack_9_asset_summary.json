@@ -1,0 +1,7 @@
+{
+  "uploaded_zip": "9.zip",
+  "total_png_files": 37,
+  "generated_asset_sheets_rgb_no_alpha": 30,
+  "ui_level_09_15_rgba_alpha": 7,
+  "important_note": "В первых 30 PNG альфа-канала нет; прозрачная шахматка выглядит запечённой в RGB, поэтому это не true transparency. UI-наборы 09–15 внутри подпапки имеют RGBA alpha."
+}

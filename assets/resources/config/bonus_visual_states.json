@@ -1,0 +1,34 @@
+{
+  "bonusVisualStates": [
+    {
+      "bonus": "JUMP",
+      "visualId": "spring_boots",
+      "name": "Пружинные лапы"
+    },
+    {
+      "bonus": "DASH",
+      "visualId": "red_prorab_boost",
+      "name": "Жилет рывка"
+    },
+    {
+      "bonus": "ARMOR",
+      "visualId": "double_helmet",
+      "name": "Двойная каска"
+    },
+    {
+      "bonus": "MAGNET",
+      "visualId": "banana_magnet_backpack",
+      "name": "Бананомагнит"
+    },
+    {
+      "bonus": "LEVEL_REACTOR",
+      "visualId": "reactor_helmet",
+      "name": "Реакторный примат"
+    },
+    {
+      "bonus": "LEVEL_ELECTRIC",
+      "visualId": "electrician_gloves",
+      "name": "Электрик веры"
+    }
+  ]
+}

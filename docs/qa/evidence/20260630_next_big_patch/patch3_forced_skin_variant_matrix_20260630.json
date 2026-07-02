@@ -1,0 +1,435 @@
+{
+  "generatedAt": "2026-06-30T09:47:04.313Z",
+  "results": [
+    {
+      "skin": "cyber_makaka",
+      "variant": "shield",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\00_cyber_makaka_shield_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=shield pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=shield model=bonus/shield pose=run_1 key=characters/player_skins/cyber_makaka/bonus/shield/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=shield pose=run_1 key=characters/player_skins/cyber_makaka/bonus/shield/run_1",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "shield",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\01_cyber_makaka_shield_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=shield pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=shield model=bonus/shield pose=jump key=characters/player_skins/cyber_makaka/bonus/shield/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=shield pose=jump key=characters/player_skins/cyber_makaka/bonus/shield/jump",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "shield",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\02_cyber_makaka_shield_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=shield pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=shield model=bonus/shield pose=crouch_dash key=characters/player_skins/cyber_makaka/bonus/shield/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=shield pose=crouch_dash key=characters/player_skins/cyber_makaka/bonus/shield/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "blueprint",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\03_cyber_makaka_blueprint_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=blueprint pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=blueprint model=bonus/blueprint pose=run_1 key=characters/player_skins/cyber_makaka/bonus/blueprint/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=blueprint pose=run_1 key=characters/player_skins/cyber_makaka/bonus/blueprint/run_1",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "blueprint",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\04_cyber_makaka_blueprint_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=blueprint pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=blueprint model=bonus/blueprint pose=jump key=characters/player_skins/cyber_makaka/bonus/blueprint/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=blueprint pose=jump key=characters/player_skins/cyber_makaka/bonus/blueprint/jump",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "blueprint",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\05_cyber_makaka_blueprint_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=blueprint pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=blueprint model=bonus/blueprint pose=crouch_dash key=characters/player_skins/cyber_makaka/bonus/blueprint/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=blueprint pose=crouch_dash key=characters/player_skins/cyber_makaka/bonus/blueprint/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "key_pass",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\06_cyber_makaka_key_pass_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=key_pass pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=key_pass model=bonus/key_pass pose=run_1 key=characters/player_skins/cyber_makaka/bonus/key_pass/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=key_pass pose=run_1 key=characters/player_skins/cyber_makaka/bonus/key_pass/run_1",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "key_pass",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\07_cyber_makaka_key_pass_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=key_pass pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=key_pass model=bonus/key_pass pose=jump key=characters/player_skins/cyber_makaka/bonus/key_pass/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=key_pass pose=jump key=characters/player_skins/cyber_makaka/bonus/key_pass/jump",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "key_pass",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\08_cyber_makaka_key_pass_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=key_pass pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=key_pass model=bonus/key_pass pose=crouch_dash key=characters/player_skins/cyber_makaka/bonus/key_pass/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=key_pass pose=crouch_dash key=characters/player_skins/cyber_makaka/bonus/key_pass/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "helmet_vest_boots",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\09_cyber_makaka_helmet_vest_boots_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=helmet_vest_boots pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_1 key=characters/player_skins/cyber_makaka/bonus/helmet_vest_boots/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=helmet_vest_boots pose=run_1 key=characters/player_skins/cyber_makaka/bonus/helmet_vest_boots/run_1",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "helmet_vest_boots",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\10_cyber_makaka_helmet_vest_boots_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=helmet_vest_boots pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=jump key=characters/player_skins/cyber_makaka/bonus/helmet_vest_boots/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=helmet_vest_boots pose=jump key=characters/player_skins/cyber_makaka/bonus/helmet_vest_boots/jump",
+      "missing": []
+    },
+    {
+      "skin": "cyber_makaka",
+      "variant": "helmet_vest_boots",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\11_cyber_makaka_helmet_vest_boots_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=cyber_makaka variant=helmet_vest_boots pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=cyber_makaka variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=crouch_dash key=characters/player_skins/cyber_makaka/bonus/helmet_vest_boots/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=cyber_makaka variant=helmet_vest_boots pose=crouch_dash key=characters/player_skins/cyber_makaka/bonus/helmet_vest_boots/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "red_prorab",
+      "variant": "helmet_vest_boots",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\12_red_prorab_helmet_vest_boots_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=red_prorab variant=helmet_vest_boots pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_1 key=characters/player_skins/red_prorab/bonus/helmet_vest_boots/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=red_prorab variant=helmet_vest_boots pose=run_1 key=characters/player_skins/red_prorab/bonus/helmet_vest_boots/run_1",
+      "missing": []
+    },
+    {
+      "skin": "red_prorab",
+      "variant": "helmet_vest_boots",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\13_red_prorab_helmet_vest_boots_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=red_prorab variant=helmet_vest_boots pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=jump key=characters/player_skins/red_prorab/bonus/helmet_vest_boots/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=red_prorab variant=helmet_vest_boots pose=jump key=characters/player_skins/red_prorab/bonus/helmet_vest_boots/jump",
+      "missing": []
+    },
+    {
+      "skin": "red_prorab",
+      "variant": "helmet_vest_boots",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\14_red_prorab_helmet_vest_boots_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=red_prorab variant=helmet_vest_boots pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=crouch_dash key=characters/player_skins/red_prorab/bonus/helmet_vest_boots/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=red_prorab variant=helmet_vest_boots pose=crouch_dash key=characters/player_skins/red_prorab/bonus/helmet_vest_boots/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "red_prorab",
+      "variant": "radio",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\15_red_prorab_radio_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=red_prorab variant=radio pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=radio model=bonus/radio pose=run_1 key=characters/player_skins/red_prorab/bonus/radio/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=red_prorab variant=radio pose=run_1 key=characters/player_skins/red_prorab/bonus/radio/run_1",
+      "missing": []
+    },
+    {
+      "skin": "red_prorab",
+      "variant": "radio",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\16_red_prorab_radio_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=red_prorab variant=radio pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=radio model=bonus/radio pose=jump key=characters/player_skins/red_prorab/bonus/radio/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=red_prorab variant=radio pose=jump key=characters/player_skins/red_prorab/bonus/radio/jump",
+      "missing": []
+    },
+    {
+      "skin": "red_prorab",
+      "variant": "radio",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\17_red_prorab_radio_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=red_prorab variant=radio pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=radio model=bonus/radio pose=crouch_dash key=characters/player_skins/red_prorab/bonus/radio/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=red_prorab variant=radio pose=crouch_dash key=characters/player_skins/red_prorab/bonus/radio/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "red_prorab",
+      "variant": "blueprint",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\18_red_prorab_blueprint_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=red_prorab variant=blueprint pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=blueprint model=bonus/blueprint pose=run_1 key=characters/player_skins/red_prorab/bonus/blueprint/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=red_prorab variant=blueprint pose=run_1 key=characters/player_skins/red_prorab/bonus/blueprint/run_1",
+      "missing": []
+    },
+    {
+      "skin": "red_prorab",
+      "variant": "blueprint",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\19_red_prorab_blueprint_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=red_prorab variant=blueprint pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=blueprint model=bonus/blueprint pose=jump key=characters/player_skins/red_prorab/bonus/blueprint/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=red_prorab variant=blueprint pose=jump key=characters/player_skins/red_prorab/bonus/blueprint/jump",
+      "missing": []
+    },
+    {
+      "skin": "red_prorab",
+      "variant": "blueprint",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\20_red_prorab_blueprint_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=red_prorab variant=blueprint pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=red_prorab variant=blueprint model=bonus/blueprint pose=crouch_dash key=characters/player_skins/red_prorab/bonus/blueprint/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=red_prorab variant=blueprint pose=crouch_dash key=characters/player_skins/red_prorab/bonus/blueprint/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "orangutan_noir",
+      "variant": "shield",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\21_orangutan_noir_shield_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=orangutan_noir variant=shield pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=shield model=bonus/shield pose=run_1 key=characters/player_skins/orangutan_noir/bonus/shield/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=orangutan_noir variant=shield pose=run_1 key=characters/player_skins/orangutan_noir/bonus/shield/run_1",
+      "missing": []
+    },
+    {
+      "skin": "orangutan_noir",
+      "variant": "shield",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\22_orangutan_noir_shield_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=orangutan_noir variant=shield pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=shield model=bonus/shield pose=jump key=characters/player_skins/orangutan_noir/bonus/shield/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=orangutan_noir variant=shield pose=jump key=characters/player_skins/orangutan_noir/bonus/shield/jump",
+      "missing": []
+    },
+    {
+      "skin": "orangutan_noir",
+      "variant": "shield",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\23_orangutan_noir_shield_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=orangutan_noir variant=shield pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=shield model=bonus/shield pose=crouch_dash key=characters/player_skins/orangutan_noir/bonus/shield/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=orangutan_noir variant=shield pose=crouch_dash key=characters/player_skins/orangutan_noir/bonus/shield/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "orangutan_noir",
+      "variant": "blueprint",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\24_orangutan_noir_blueprint_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=orangutan_noir variant=blueprint pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=blueprint model=bonus/blueprint pose=run_1 key=characters/player_skins/orangutan_noir/bonus/blueprint/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=orangutan_noir variant=blueprint pose=run_1 key=characters/player_skins/orangutan_noir/bonus/blueprint/run_1",
+      "missing": []
+    },
+    {
+      "skin": "orangutan_noir",
+      "variant": "blueprint",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\25_orangutan_noir_blueprint_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=orangutan_noir variant=blueprint pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=blueprint model=bonus/blueprint pose=jump key=characters/player_skins/orangutan_noir/bonus/blueprint/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=orangutan_noir variant=blueprint pose=jump key=characters/player_skins/orangutan_noir/bonus/blueprint/jump",
+      "missing": []
+    },
+    {
+      "skin": "orangutan_noir",
+      "variant": "blueprint",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\26_orangutan_noir_blueprint_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=orangutan_noir variant=blueprint pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=blueprint model=bonus/blueprint pose=crouch_dash key=characters/player_skins/orangutan_noir/bonus/blueprint/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=orangutan_noir variant=blueprint pose=crouch_dash key=characters/player_skins/orangutan_noir/bonus/blueprint/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "orangutan_noir",
+      "variant": "radio",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\27_orangutan_noir_radio_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=orangutan_noir variant=radio pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=radio model=bonus/radio pose=run_1 key=characters/player_skins/orangutan_noir/bonus/radio/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=orangutan_noir variant=radio pose=run_1 key=characters/player_skins/orangutan_noir/bonus/radio/run_1",
+      "missing": []
+    },
+    {
+      "skin": "orangutan_noir",
+      "variant": "radio",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\28_orangutan_noir_radio_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=orangutan_noir variant=radio pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=radio model=bonus/radio pose=jump key=characters/player_skins/orangutan_noir/bonus/radio/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=orangutan_noir variant=radio pose=jump key=characters/player_skins/orangutan_noir/bonus/radio/jump",
+      "missing": []
+    },
+    {
+      "skin": "orangutan_noir",
+      "variant": "radio",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\29_orangutan_noir_radio_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=orangutan_noir variant=radio pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=orangutan_noir variant=radio model=bonus/radio pose=crouch_dash key=characters/player_skins/orangutan_noir/bonus/radio/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=orangutan_noir variant=radio pose=crouch_dash key=characters/player_skins/orangutan_noir/bonus/radio/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "lab_assistant_act",
+      "variant": "blueprint",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\30_lab_assistant_act_blueprint_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=lab_assistant_act variant=blueprint pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=lab_assistant_act variant=blueprint model=bonus/blueprint pose=run_1 key=characters/player_skins/lab_assistant_act/bonus/blueprint/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=lab_assistant_act variant=blueprint pose=run_1 key=characters/player_skins/lab_assistant_act/bonus/blueprint/run_1",
+      "missing": []
+    },
+    {
+      "skin": "lab_assistant_act",
+      "variant": "blueprint",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\31_lab_assistant_act_blueprint_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=lab_assistant_act variant=blueprint pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=lab_assistant_act variant=blueprint model=bonus/blueprint pose=jump key=characters/player_skins/lab_assistant_act/bonus/blueprint/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=lab_assistant_act variant=blueprint pose=jump key=characters/player_skins/lab_assistant_act/bonus/blueprint/jump",
+      "missing": []
+    },
+    {
+      "skin": "lab_assistant_act",
+      "variant": "blueprint",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\32_lab_assistant_act_blueprint_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=lab_assistant_act variant=blueprint pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=lab_assistant_act variant=blueprint model=bonus/blueprint pose=crouch_dash key=characters/player_skins/lab_assistant_act/bonus/blueprint/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=lab_assistant_act variant=blueprint pose=crouch_dash key=characters/player_skins/lab_assistant_act/bonus/blueprint/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "lab_assistant_act",
+      "variant": "shield",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\33_lab_assistant_act_shield_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=lab_assistant_act variant=shield pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=lab_assistant_act variant=shield model=bonus/shield pose=run_1 key=characters/player_skins/lab_assistant_act/bonus/shield/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=lab_assistant_act variant=shield pose=run_1 key=characters/player_skins/lab_assistant_act/bonus/shield/run_1",
+      "missing": []
+    },
+    {
+      "skin": "lab_assistant_act",
+      "variant": "shield",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\34_lab_assistant_act_shield_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=lab_assistant_act variant=shield pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=lab_assistant_act variant=shield model=bonus/shield pose=jump key=characters/player_skins/lab_assistant_act/bonus/shield/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=lab_assistant_act variant=shield pose=jump key=characters/player_skins/lab_assistant_act/bonus/shield/jump",
+      "missing": []
+    },
+    {
+      "skin": "lab_assistant_act",
+      "variant": "shield",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\35_lab_assistant_act_shield_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=lab_assistant_act variant=shield pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=lab_assistant_act variant=shield model=bonus/shield pose=crouch_dash key=characters/player_skins/lab_assistant_act/bonus/shield/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=lab_assistant_act variant=shield pose=crouch_dash key=characters/player_skins/lab_assistant_act/bonus/shield/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "golden_brigadir",
+      "variant": "helmet_vest_boots",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\36_golden_brigadir_helmet_vest_boots_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=golden_brigadir variant=helmet_vest_boots pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=golden_brigadir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_1 key=characters/player_skins/golden_brigadir/bonus/helmet_vest_boots/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=golden_brigadir variant=helmet_vest_boots pose=run_1 key=characters/player_skins/golden_brigadir/bonus/helmet_vest_boots/run_1",
+      "missing": []
+    },
+    {
+      "skin": "golden_brigadir",
+      "variant": "helmet_vest_boots",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\37_golden_brigadir_helmet_vest_boots_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=golden_brigadir variant=helmet_vest_boots pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=golden_brigadir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=jump key=characters/player_skins/golden_brigadir/bonus/helmet_vest_boots/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=golden_brigadir variant=helmet_vest_boots pose=jump key=characters/player_skins/golden_brigadir/bonus/helmet_vest_boots/jump",
+      "missing": []
+    },
+    {
+      "skin": "golden_brigadir",
+      "variant": "helmet_vest_boots",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\38_golden_brigadir_helmet_vest_boots_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=golden_brigadir variant=helmet_vest_boots pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=golden_brigadir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=crouch_dash key=characters/player_skins/golden_brigadir/bonus/helmet_vest_boots/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=golden_brigadir variant=helmet_vest_boots pose=crouch_dash key=characters/player_skins/golden_brigadir/bonus/helmet_vest_boots/crouch_dash",
+      "missing": []
+    },
+    {
+      "skin": "golden_brigadir",
+      "variant": "shield",
+      "pose": "run1",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\39_golden_brigadir_shield_run1.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=golden_brigadir variant=shield pose=run1",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=golden_brigadir variant=shield model=bonus/shield pose=run_1 key=characters/player_skins/golden_brigadir/bonus/shield/run_1",
+      "playerPose": "MTR_PLAYER_POSE skin=golden_brigadir variant=shield pose=run_1 key=characters/player_skins/golden_brigadir/bonus/shield/run_1",
+      "missing": []
+    },
+    {
+      "skin": "golden_brigadir",
+      "variant": "shield",
+      "pose": "jump",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\40_golden_brigadir_shield_jump.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=golden_brigadir variant=shield pose=jump",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=golden_brigadir variant=shield model=bonus/shield pose=jump key=characters/player_skins/golden_brigadir/bonus/shield/jump",
+      "playerPose": "MTR_PLAYER_POSE skin=golden_brigadir variant=shield pose=jump key=characters/player_skins/golden_brigadir/bonus/shield/jump",
+      "missing": []
+    },
+    {
+      "skin": "golden_brigadir",
+      "variant": "shield",
+      "pose": "crouch_dash",
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch3_forced_skin_matrix\\41_golden_brigadir_shield_crouch_dash.png",
+      "forced": "MTR_SKIN_QA_FORCED skin=golden_brigadir variant=shield pose=crouchDash",
+      "active": "MTR_SKIN_VARIANT_ACTIVE skin=golden_brigadir variant=shield model=bonus/shield pose=crouch_dash key=characters/player_skins/golden_brigadir/bonus/shield/crouch_dash",
+      "playerPose": "MTR_PLAYER_POSE skin=golden_brigadir variant=shield pose=crouch_dash key=characters/player_skins/golden_brigadir/bonus/shield/crouch_dash",
+      "missing": []
+    }
+  ],
+  "flaggedCount": 1,
+  "flagged": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)",
+      "skin": "cyber_makaka",
+      "variant": "shield",
+      "pose": "run1"
+    }
+  ]
+}

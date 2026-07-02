@@ -1,0 +1,516 @@
+{
+    "statusSchemaVersion":  2,
+    "timestampUtc":  "2026-07-01T07:21:12.1982095Z",
+    "projectRoot":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator",
+    "gradleProjectRoot":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android-emulator\\proj",
+    "sdkDir":  "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk",
+    "tools":  [
+                  {
+                      "name":  "adb",
+                      "found":  true,
+                      "source":  "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
+                      "resolution":  "PATH"
+                  },
+                  {
+                      "name":  "emulator",
+                      "found":  true,
+                      "source":  "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\emulator\\emulator.exe",
+                      "resolution":  "PATH"
+                  },
+                  {
+                      "name":  "java",
+                      "found":  true,
+                      "source":  "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+                      "resolution":  "PATH"
+                  },
+                  {
+                      "name":  "gradlew",
+                      "found":  true,
+                      "source":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android-emulator\\proj\\gradlew.bat",
+                      "resolution":  "project"
+                  }
+              ],
+    "adbProbe":  {
+                     "name":  "adb-devices",
+                     "ok":  true,
+                     "exitCode":  0,
+                     "timedOut":  false,
+                     "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-20260701-102030.stdout.log",
+                     "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-20260701-102030.stderr.log",
+                     "stdoutPreview":  "List of devices attached\r\n\r\n",
+                     "stderrPreview":  "",
+                     "error":  null
+                 },
+    "emulatorProbe":  {
+                          "name":  "emulator-list-avds",
+                          "ok":  true,
+                          "exitCode":  0,
+                          "timedOut":  false,
+                          "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\emulator-list-avds-20260701-102030.stdout.log",
+                          "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\emulator-list-avds-20260701-102030.stderr.log",
+                          "stdoutPreview":  "MTR_Galaxy_S25_Ultra_API_35\r\nMTR_Galaxy_S25_Ultra_Android_16\r\nMTR_Pixel_8_Pro_API_35\r\n",
+                          "stderrPreview":  "",
+                          "error":  null
+                      },
+    "ensureEmulator":  true,
+    "selectedAvdName":  "MTR_Pixel_8_Pro_API_35",
+    "emulatorStart":  {
+                          "attempted":  true,
+                          "avdName":  "MTR_Pixel_8_Pro_API_35",
+                          "processId":  13456,
+                          "hasExited":  false,
+                          "exitCode":  null,
+                          "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\emulator-start-20260701-102030.stdout.log",
+                          "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\emulator-start-20260701-102030.stderr.log",
+                          "error":  null
+                      },
+    "bootCompletedSerial":  "emulator-5554",
+    "bootPolls":  [
+                      {
+                          "poll":  1,
+                          "adbProbe":  {
+                                           "name":  "adb-devices-poll-001",
+                                           "ok":  true,
+                                           "exitCode":  0,
+                                           "timedOut":  false,
+                                           "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-001-20260701-102030.stdout.log",
+                                           "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-001-20260701-102030.stderr.log",
+                                           "stdoutPreview":  "List of devices attached\r\nemulator-5554          offline transport_id:1\r\n\r\n",
+                                           "stderrPreview":  "",
+                                           "error":  null
+                                       },
+                          "adbDevices":  [
+                                             {
+                                                 "serial":  "emulator-5554",
+                                                 "state":  "offline",
+                                                 "detail":  "transport_id:1"
+                                             }
+                                         ],
+                          "allOnlineDevices":  [
+
+                                               ],
+                          "emulatorDevices":  [
+
+                                              ],
+                          "onlineDevices":  [
+
+                                            ],
+                          "ignoredPhysicalDevices":  [
+
+                                                     ],
+                          "bootProbe":  null,
+                          "bootCompletedSerial":  null
+                      },
+                      {
+                          "poll":  2,
+                          "adbProbe":  {
+                                           "name":  "adb-devices-poll-002",
+                                           "ok":  true,
+                                           "exitCode":  0,
+                                           "timedOut":  false,
+                                           "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-002-20260701-102030.stdout.log",
+                                           "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-002-20260701-102030.stderr.log",
+                                           "stdoutPreview":  "List of devices attached\r\nemulator-5554          offline transport_id:1\r\n\r\n",
+                                           "stderrPreview":  "",
+                                           "error":  null
+                                       },
+                          "adbDevices":  [
+                                             {
+                                                 "serial":  "emulator-5554",
+                                                 "state":  "offline",
+                                                 "detail":  "transport_id:1"
+                                             }
+                                         ],
+                          "allOnlineDevices":  [
+
+                                               ],
+                          "emulatorDevices":  [
+
+                                              ],
+                          "onlineDevices":  [
+
+                                            ],
+                          "ignoredPhysicalDevices":  [
+
+                                                     ],
+                          "bootProbe":  null,
+                          "bootCompletedSerial":  null
+                      },
+                      {
+                          "poll":  3,
+                          "adbProbe":  {
+                                           "name":  "adb-devices-poll-003",
+                                           "ok":  true,
+                                           "exitCode":  0,
+                                           "timedOut":  false,
+                                           "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-003-20260701-102030.stdout.log",
+                                           "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-003-20260701-102030.stderr.log",
+                                           "stdoutPreview":  "List of devices attached\r\nemulator-5554          offline transport_id:1\r\n\r\n",
+                                           "stderrPreview":  "",
+                                           "error":  null
+                                       },
+                          "adbDevices":  [
+                                             {
+                                                 "serial":  "emulator-5554",
+                                                 "state":  "offline",
+                                                 "detail":  "transport_id:1"
+                                             }
+                                         ],
+                          "allOnlineDevices":  [
+
+                                               ],
+                          "emulatorDevices":  [
+
+                                              ],
+                          "onlineDevices":  [
+
+                                            ],
+                          "ignoredPhysicalDevices":  [
+
+                                                     ],
+                          "bootProbe":  null,
+                          "bootCompletedSerial":  null
+                      },
+                      {
+                          "poll":  4,
+                          "adbProbe":  {
+                                           "name":  "adb-devices-poll-004",
+                                           "ok":  true,
+                                           "exitCode":  0,
+                                           "timedOut":  false,
+                                           "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-004-20260701-102030.stdout.log",
+                                           "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-004-20260701-102030.stderr.log",
+                                           "stdoutPreview":  "List of devices attached\r\nemulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1\r\n\r\n",
+                                           "stderrPreview":  "",
+                                           "error":  null
+                                       },
+                          "adbDevices":  [
+                                             {
+                                                 "serial":  "emulator-5554",
+                                                 "state":  "device",
+                                                 "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                             }
+                                         ],
+                          "allOnlineDevices":  [
+                                                   {
+                                                       "serial":  "emulator-5554",
+                                                       "state":  "device",
+                                                       "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                   }
+                                               ],
+                          "emulatorDevices":  [
+                                                  {
+                                                      "serial":  "emulator-5554",
+                                                      "state":  "device",
+                                                      "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                  }
+                                              ],
+                          "onlineDevices":  [
+                                                {
+                                                    "serial":  "emulator-5554",
+                                                    "state":  "device",
+                                                    "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                }
+                                            ],
+                          "ignoredPhysicalDevices":  [
+
+                                                     ],
+                          "bootProbe":  {
+                                            "name":  "adb-boot-completed-004",
+                                            "ok":  true,
+                                            "exitCode":  0,
+                                            "timedOut":  false,
+                                            "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-004-20260701-102030.stdout.log",
+                                            "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-004-20260701-102030.stderr.log",
+                                            "stdoutPreview":  "\r\n",
+                                            "stderrPreview":  "",
+                                            "error":  null
+                                        },
+                          "bootCompletedSerial":  null
+                      },
+                      {
+                          "poll":  5,
+                          "adbProbe":  {
+                                           "name":  "adb-devices-poll-005",
+                                           "ok":  true,
+                                           "exitCode":  0,
+                                           "timedOut":  false,
+                                           "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-005-20260701-102030.stdout.log",
+                                           "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-005-20260701-102030.stderr.log",
+                                           "stdoutPreview":  "List of devices attached\r\nemulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1\r\n\r\n",
+                                           "stderrPreview":  "",
+                                           "error":  null
+                                       },
+                          "adbDevices":  [
+                                             {
+                                                 "serial":  "emulator-5554",
+                                                 "state":  "device",
+                                                 "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                             }
+                                         ],
+                          "allOnlineDevices":  [
+                                                   {
+                                                       "serial":  "emulator-5554",
+                                                       "state":  "device",
+                                                       "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                   }
+                                               ],
+                          "emulatorDevices":  [
+                                                  {
+                                                      "serial":  "emulator-5554",
+                                                      "state":  "device",
+                                                      "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                  }
+                                              ],
+                          "onlineDevices":  [
+                                                {
+                                                    "serial":  "emulator-5554",
+                                                    "state":  "device",
+                                                    "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                }
+                                            ],
+                          "ignoredPhysicalDevices":  [
+
+                                                     ],
+                          "bootProbe":  {
+                                            "name":  "adb-boot-completed-005",
+                                            "ok":  true,
+                                            "exitCode":  0,
+                                            "timedOut":  false,
+                                            "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-005-20260701-102030.stdout.log",
+                                            "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-005-20260701-102030.stderr.log",
+                                            "stdoutPreview":  "\r\n",
+                                            "stderrPreview":  "",
+                                            "error":  null
+                                        },
+                          "bootCompletedSerial":  null
+                      },
+                      {
+                          "poll":  6,
+                          "adbProbe":  {
+                                           "name":  "adb-devices-poll-006",
+                                           "ok":  true,
+                                           "exitCode":  0,
+                                           "timedOut":  false,
+                                           "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-006-20260701-102030.stdout.log",
+                                           "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-006-20260701-102030.stderr.log",
+                                           "stdoutPreview":  "List of devices attached\r\nemulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1\r\n\r\n",
+                                           "stderrPreview":  "",
+                                           "error":  null
+                                       },
+                          "adbDevices":  [
+                                             {
+                                                 "serial":  "emulator-5554",
+                                                 "state":  "device",
+                                                 "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                             }
+                                         ],
+                          "allOnlineDevices":  [
+                                                   {
+                                                       "serial":  "emulator-5554",
+                                                       "state":  "device",
+                                                       "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                   }
+                                               ],
+                          "emulatorDevices":  [
+                                                  {
+                                                      "serial":  "emulator-5554",
+                                                      "state":  "device",
+                                                      "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                  }
+                                              ],
+                          "onlineDevices":  [
+                                                {
+                                                    "serial":  "emulator-5554",
+                                                    "state":  "device",
+                                                    "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                }
+                                            ],
+                          "ignoredPhysicalDevices":  [
+
+                                                     ],
+                          "bootProbe":  {
+                                            "name":  "adb-boot-completed-006",
+                                            "ok":  true,
+                                            "exitCode":  0,
+                                            "timedOut":  false,
+                                            "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-006-20260701-102030.stdout.log",
+                                            "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-006-20260701-102030.stderr.log",
+                                            "stdoutPreview":  "\r\n",
+                                            "stderrPreview":  "",
+                                            "error":  null
+                                        },
+                          "bootCompletedSerial":  null
+                      },
+                      {
+                          "poll":  7,
+                          "adbProbe":  {
+                                           "name":  "adb-devices-poll-007",
+                                           "ok":  true,
+                                           "exitCode":  0,
+                                           "timedOut":  false,
+                                           "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-007-20260701-102030.stdout.log",
+                                           "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-007-20260701-102030.stderr.log",
+                                           "stdoutPreview":  "List of devices attached\r\nemulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1\r\n\r\n",
+                                           "stderrPreview":  "",
+                                           "error":  null
+                                       },
+                          "adbDevices":  [
+                                             {
+                                                 "serial":  "emulator-5554",
+                                                 "state":  "device",
+                                                 "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                             }
+                                         ],
+                          "allOnlineDevices":  [
+                                                   {
+                                                       "serial":  "emulator-5554",
+                                                       "state":  "device",
+                                                       "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                   }
+                                               ],
+                          "emulatorDevices":  [
+                                                  {
+                                                      "serial":  "emulator-5554",
+                                                      "state":  "device",
+                                                      "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                  }
+                                              ],
+                          "onlineDevices":  [
+                                                {
+                                                    "serial":  "emulator-5554",
+                                                    "state":  "device",
+                                                    "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                }
+                                            ],
+                          "ignoredPhysicalDevices":  [
+
+                                                     ],
+                          "bootProbe":  {
+                                            "name":  "adb-boot-completed-007",
+                                            "ok":  true,
+                                            "exitCode":  0,
+                                            "timedOut":  false,
+                                            "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-007-20260701-102030.stdout.log",
+                                            "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-007-20260701-102030.stderr.log",
+                                            "stdoutPreview":  "\r\n",
+                                            "stderrPreview":  "",
+                                            "error":  null
+                                        },
+                          "bootCompletedSerial":  null
+                      },
+                      {
+                          "poll":  8,
+                          "adbProbe":  {
+                                           "name":  "adb-devices-poll-008",
+                                           "ok":  true,
+                                           "exitCode":  0,
+                                           "timedOut":  false,
+                                           "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-008-20260701-102030.stdout.log",
+                                           "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-devices-poll-008-20260701-102030.stderr.log",
+                                           "stdoutPreview":  "List of devices attached\r\nemulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1\r\n\r\n",
+                                           "stderrPreview":  "",
+                                           "error":  null
+                                       },
+                          "adbDevices":  [
+                                             {
+                                                 "serial":  "emulator-5554",
+                                                 "state":  "device",
+                                                 "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                             }
+                                         ],
+                          "allOnlineDevices":  [
+                                                   {
+                                                       "serial":  "emulator-5554",
+                                                       "state":  "device",
+                                                       "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                   }
+                                               ],
+                          "emulatorDevices":  [
+                                                  {
+                                                      "serial":  "emulator-5554",
+                                                      "state":  "device",
+                                                      "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                  }
+                                              ],
+                          "onlineDevices":  [
+                                                {
+                                                    "serial":  "emulator-5554",
+                                                    "state":  "device",
+                                                    "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                                                }
+                                            ],
+                          "ignoredPhysicalDevices":  [
+
+                                                     ],
+                          "bootProbe":  {
+                                            "name":  "adb-boot-completed-008",
+                                            "ok":  true,
+                                            "exitCode":  0,
+                                            "timedOut":  false,
+                                            "stdoutPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-008-20260701-102030.stdout.log",
+                                            "stderrPath":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\adb-boot-completed-008-20260701-102030.stderr.log",
+                                            "stdoutPreview":  "1\r\n",
+                                            "stderrPreview":  "",
+                                            "error":  null
+                                        },
+                          "bootCompletedSerial":  "emulator-5554"
+                      }
+                  ],
+    "androidQaTargetPolicy":  "emulator-only-default",
+    "adbDevices":  [
+                       {
+                           "serial":  "emulator-5554",
+                           "state":  "device",
+                           "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                       }
+                   ],
+    "allOnlineDevices":  [
+                             {
+                                 "serial":  "emulator-5554",
+                                 "state":  "device",
+                                 "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                             }
+                         ],
+    "emulatorDevices":  [
+                            {
+                                "serial":  "emulator-5554",
+                                "state":  "device",
+                                "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                            }
+                        ],
+    "onlineDevices":  [
+                          {
+                              "serial":  "emulator-5554",
+                              "state":  "device",
+                              "detail":  "product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emu64xa transport_id:1"
+                          }
+                      ],
+    "ignoredPhysicalDevices":  [
+
+                               ],
+    "avds":  [
+                 "MTR_Galaxy_S25_Ultra_API_35",
+                 "MTR_Galaxy_S25_Ultra_Android_16",
+                 "MTR_Pixel_8_Pro_API_35"
+             ],
+    "qaReady":  true,
+    "blockers":  [
+
+                 ],
+    "preventions":  [
+                        "runtime-project-root-resolution",
+                        "android-sdk-local-properties-discovery",
+                        "bounded-probe-output-preview",
+                        "compact-console-summary-with-full-json-status-file",
+                        "entrypoint-router-captured-stdout-stderr",
+                        "emulator-only-qa-default-with-physical-device-ignore-log",
+                        "no-inline-powershell-pipeline-probes",
+                        "auto-start-avd-when-no-online-device"
+                    ],
+    "logs":  {
+                 "status":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\android-toolchain-status-20260701-102030.json",
+                 "jsonl":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\android-toolchain-20260701.jsonl",
+                 "entrypoint":  "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\logs\\entrypoint-router-20260701.jsonl"
+             }
+}

@@ -1,0 +1,574 @@
+{
+  "generated_at_local": "2026-06-30T10:39:56.926605+03:00",
+  "project_root": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator",
+  "evidence_dir": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch",
+  "main_project_git_status": {
+    "cmd": "git status --short --branch",
+    "cwd": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator",
+    "code": 128,
+    "stdout": "",
+    "stderr": "fatal: not a git repository (or any of the parent directories): .git"
+  },
+  "github_pages_repo": "C:\\Projects\\Monkey Work\\_github\\Martyskin-trud-runner",
+  "github_status": {
+    "cmd": "git status --short --branch",
+    "cwd": "C:\\Projects\\Monkey Work\\_github\\Martyskin-trud-runner",
+    "code": 0,
+    "stdout": "## main...origin/main",
+    "stderr": ""
+  },
+  "github_head": {
+    "cmd": "git rev-parse HEAD",
+    "cwd": "C:\\Projects\\Monkey Work\\_github\\Martyskin-trud-runner",
+    "code": 0,
+    "stdout": "5b3e1dbe858a58f377e7a316a3ace0211286e743",
+    "stderr": ""
+  },
+  "levels_count": 0,
+  "levels": [],
+  "backgrounds_count": 15,
+  "background_previews_count": 15,
+  "skin_root_exists": true,
+  "skin_png_count": 96,
+  "skin_counts": {
+    "_shared": {
+      "debug_contact_sheets": {
+        "png_count": 0,
+        "poses": []
+      },
+      "manifests": {
+        "png_count": 0,
+        "poses": []
+      }
+    },
+    "brigadir": {
+      "base": {
+        "png_count": 9,
+        "poses": [
+          "crouch_dash",
+          "fall",
+          "hit",
+          "idle",
+          "jump",
+          "jump_2",
+          "run_1",
+          "run_2",
+          "victory"
+        ]
+      },
+      "bonus": {
+        "png_count": 0,
+        "poses": []
+      },
+      "headshot": {
+        "png_count": 1,
+        "poses": [
+          "headshot"
+        ]
+      },
+      "preview": {
+        "png_count": 2,
+        "poses": [
+          "card",
+          "idle"
+        ]
+      }
+    },
+    "cyber_makaka": {
+      "base": {
+        "png_count": 9,
+        "poses": [
+          "crouch_dash",
+          "fall",
+          "hit",
+          "idle",
+          "jump",
+          "jump_2",
+          "run_1",
+          "run_2",
+          "victory"
+        ]
+      },
+      "bonus": {
+        "png_count": 0,
+        "poses": []
+      },
+      "headshot": {
+        "png_count": 1,
+        "poses": [
+          "headshot"
+        ]
+      },
+      "preview": {
+        "png_count": 2,
+        "poses": [
+          "card",
+          "idle"
+        ]
+      }
+    },
+    "depo_primate": {
+      "base": {
+        "png_count": 9,
+        "poses": [
+          "crouch_dash",
+          "fall",
+          "hit",
+          "idle",
+          "jump",
+          "jump_2",
+          "run_1",
+          "run_2",
+          "victory"
+        ]
+      },
+      "bonus": {
+        "png_count": 0,
+        "poses": []
+      },
+      "headshot": {
+        "png_count": 1,
+        "poses": [
+          "headshot"
+        ]
+      },
+      "preview": {
+        "png_count": 2,
+        "poses": [
+          "card",
+          "idle"
+        ]
+      }
+    },
+    "golden_brigadir": {
+      "base": {
+        "png_count": 9,
+        "poses": [
+          "crouch_dash",
+          "fall",
+          "hit",
+          "idle",
+          "jump",
+          "jump_2",
+          "run_1",
+          "run_2",
+          "victory"
+        ]
+      },
+      "bonus": {
+        "png_count": 0,
+        "poses": []
+      },
+      "headshot": {
+        "png_count": 1,
+        "poses": [
+          "headshot"
+        ]
+      },
+      "preview": {
+        "png_count": 2,
+        "poses": [
+          "card",
+          "idle"
+        ]
+      }
+    },
+    "lab_assistant_act": {
+      "base": {
+        "png_count": 9,
+        "poses": [
+          "crouch_dash",
+          "fall",
+          "hit",
+          "idle",
+          "jump",
+          "jump_2",
+          "run_1",
+          "run_2",
+          "victory"
+        ]
+      },
+      "bonus": {
+        "png_count": 0,
+        "poses": []
+      },
+      "headshot": {
+        "png_count": 1,
+        "poses": [
+          "headshot"
+        ]
+      },
+      "preview": {
+        "png_count": 2,
+        "poses": [
+          "card",
+          "idle"
+        ]
+      }
+    },
+    "mudrec": {
+      "base": {
+        "png_count": 9,
+        "poses": [
+          "crouch_dash",
+          "fall",
+          "hit",
+          "idle",
+          "jump",
+          "jump_2",
+          "run_1",
+          "run_2",
+          "victory"
+        ]
+      },
+      "bonus": {
+        "png_count": 0,
+        "poses": []
+      },
+      "headshot": {
+        "png_count": 1,
+        "poses": [
+          "headshot"
+        ]
+      },
+      "preview": {
+        "png_count": 2,
+        "poses": [
+          "card",
+          "idle"
+        ]
+      }
+    },
+    "orangutan_noir": {
+      "base": {
+        "png_count": 9,
+        "poses": [
+          "crouch_dash",
+          "fall",
+          "hit",
+          "idle",
+          "jump",
+          "jump_2",
+          "run_1",
+          "run_2",
+          "victory"
+        ]
+      },
+      "bonus": {
+        "png_count": 0,
+        "poses": []
+      },
+      "headshot": {
+        "png_count": 1,
+        "poses": [
+          "headshot"
+        ]
+      },
+      "preview": {
+        "png_count": 2,
+        "poses": [
+          "card",
+          "idle"
+        ]
+      }
+    },
+    "red_prorab": {
+      "base": {
+        "png_count": 9,
+        "poses": [
+          "crouch_dash",
+          "fall",
+          "hit",
+          "idle",
+          "jump",
+          "jump_2",
+          "run_1",
+          "run_2",
+          "victory"
+        ]
+      },
+      "bonus": {
+        "png_count": 0,
+        "poses": []
+      },
+      "headshot": {
+        "png_count": 1,
+        "poses": [
+          "headshot"
+        ]
+      },
+      "preview": {
+        "png_count": 2,
+        "poses": [
+          "card",
+          "idle"
+        ]
+      }
+    }
+  },
+  "player_skin_equipment_matrix_exists": true,
+  "player_skin_equipment_matrix_top_level": [
+    "version",
+    "poses",
+    "requestedBonusIds",
+    "variants",
+    "bakedVariants",
+    "resolverPriority",
+    "skins",
+    "canonicalModelMap",
+    "unbakedBonusFallbacks",
+    "runtimeVfxOnly",
+    "transition",
+    "fallbackPolicy"
+  ],
+  "last_iteration_manifest_exists": true,
+  "last_iteration_manifest_summary": {
+    "generatedAt": "str",
+    "sourceDir": "str",
+    "sourcePngCount": "int",
+    "mappedSheetCount": "int",
+    "entryCount": "int",
+    "warnings": 0,
+    "validation": 3,
+    "summary": 8,
+    "slots": 30,
+    "entries": 474
+  },
+  "resource_png_count": 1525,
+  "platform_candidate_png_count": 84,
+  "platform_candidate_examples": [
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_base_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_extended_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_extended_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_extended_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_extended_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_extended_platforms_005.png",
+    "assets/resources/objectives/themed/last_iteration/steampunk/platforms/mtr_last_steampunk_extended_platforms_006.png",
+    "assets/resources/objectives/themed/last_iteration/shared/platforms/mtr_last_shared_runner_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/shared/platforms/mtr_last_shared_runner_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/shared/platforms/mtr_last_shared_runner_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/shared/platforms/mtr_last_shared_runner_base_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/shared/platforms/mtr_last_shared_runner_base_platforms_005.png",
+    "assets/resources/objectives/themed/last_iteration/shared/platforms/mtr_last_shared_runner_extended_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/shared/platforms/mtr_last_shared_runner_extended_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/shared/platforms/mtr_last_shared_runner_extended_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/security/platforms/mtr_last_security_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/security/platforms/mtr_last_security_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/security/platforms/mtr_last_security_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/security/platforms/mtr_last_security_supplemental_platform_main_01.png",
+    "assets/resources/objectives/themed/last_iteration/security/platforms/mtr_last_security_supplemental_platform_main_02.png",
+    "assets/resources/objectives/themed/last_iteration/office/platforms/mtr_last_office_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/office/platforms/mtr_last_office_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/office/platforms/mtr_last_office_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/office/platforms/mtr_last_office_base_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/office/platforms/mtr_last_office_extended_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/office/platforms/mtr_last_office_extended_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_005.png",
+    "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_006.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_extended_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_extended_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_extended_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_extended_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_extended_platforms_005.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_extended_platforms_006.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_farm_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_farm_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_farm_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/jungle/platforms/mtr_last_jungle_farm_base_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/inspection/platforms/mtr_last_inspection_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/inspection/platforms/mtr_last_inspection_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/inspection/platforms/mtr_last_inspection_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/inspection/platforms/mtr_last_inspection_base_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/inspection/platforms/mtr_last_inspection_supplemental_platform_main_01.png",
+    "assets/resources/objectives/themed/last_iteration/inspection/platforms/mtr_last_inspection_supplemental_platform_main_02.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_industrial_supplemental_platform_main_01.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_industrial_supplemental_platform_main_02.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_base_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_extended_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_extended_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_extended_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/industrial/platforms/mtr_last_roadworks_extended_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/farm/platforms/mtr_last_farm_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/farm/platforms/mtr_last_farm_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/farm/platforms/mtr_last_farm_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/farm/platforms/mtr_last_farm_base_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_003.png",
+    "assets/resources/objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_004.png",
+    "assets/resources/objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_005.png",
+    "assets/resources/objectives/themed/last_iteration/archive/platforms/mtr_last_archive_extended_platforms_001.png",
+    "assets/resources/objectives/themed/last_iteration/archive/platforms/mtr_last_archive_extended_platforms_002.png",
+    "assets/resources/objectives/themed/last_iteration/archive/platforms/mtr_last_archive_extended_platforms_003.png"
+  ],
+  "build_config_candidates": [
+    "build-android-emulator.json",
+    "build-android.json",
+    "build-web-mobile.json",
+    "native/engine/android/app/build.gradle",
+    "native/engine/android/build.gradle",
+    "native/engine/android/instantapp/build.gradle",
+    "package.json",
+    "tools/Run-MtrCocosBuild.ps1",
+    "tools/Start-MtrWebServer.ps1",
+    "tools/Test-MtrEntrypoint.ps1",
+    "tools/mtr_cleanup_audit.py",
+    "tools/mtr_last_iteration_asset_pipeline.py",
+    "tools/prepare_portable_transfer.py",
+    "tools/repair-web-mobile-settings.ps1",
+    "tools/scan_and_fix_white_matte_edges.py",
+    "tools/validate-mtr-config.ps1",
+    "tools/web-cdp-smoke.ps1",
+    "tools/web-chrome-runtime-smoke.ps1",
+    "tsconfig.json"
+  ],
+  "docs_markdown": [
+    {
+      "path": "docs/AGENTS.md",
+      "bytes": 914,
+      "mtime": "2026-05-08T12:42:52"
+    },
+    {
+      "path": "docs/ANDROID_BUILD_INSTALL_INSTRUCTIONS.md",
+      "bytes": 423,
+      "mtime": "2026-05-08T12:42:56"
+    },
+    {
+      "path": "docs/BACKEND_RUNTIME_DEPENDENCY_AUDIT.md",
+      "bytes": 4213,
+      "mtime": "2026-06-19T21:06:38.952700"
+    },
+    {
+      "path": "docs/BUILD_AND_INSTALL.md",
+      "bytes": 5111,
+      "mtime": "2026-05-08T13:40:38"
+    },
+    {
+      "path": "docs/CLEANUP_INVENTORY.md",
+      "bytes": 1218,
+      "mtime": "2026-06-12T04:12:24"
+    },
+    {
+      "path": "docs/CLEANUP_PLAN.md",
+      "bytes": 1186,
+      "mtime": "2026-06-12T04:37:44"
+    },
+    {
+      "path": "docs/CLEANUP_REPORT.md",
+      "bytes": 2013,
+      "mtime": "2026-06-12T04:50:02"
+    },
+    {
+      "path": "docs/CODEX_ANDROID_UPDATE_MASTER_TASK.md",
+      "bytes": 3991,
+      "mtime": "2026-06-19T21:06:38.954216"
+    },
+    {
+      "path": "docs/CODEX_MARTYSKIN_POST_CLEANUP.md",
+      "bytes": 13670,
+      "mtime": "2026-06-12T04:12:24"
+    },
+    {
+      "path": "docs/CODEX_MARTYSKIN_PROMPT.md",
+      "bytes": 16640,
+      "mtime": "2026-06-11T19:47:42"
+    },
+    {
+      "path": "docs/CODEX_MARTYSKIN_VIDEO_REVIEW_PROMPT.md",
+      "bytes": 17945,
+      "mtime": "2026-06-11T19:47:42"
+    },
+    {
+      "path": "docs/CODEX_STATUS_20260619_HERMES_ANDROID_WEB_SKINS.md",
+      "bytes": 7521,
+      "mtime": "2026-06-19T13:29:18.094821"
+    },
+    {
+      "path": "docs/FINAL_CHANGED_FILES.md",
+      "bytes": 2471,
+      "mtime": "2026-06-12T04:35:04"
+    },
+    {
+      "path": "docs/FINAL_INSTALL_RUN_GIT_GUIDE_RU.md",
+      "bytes": 2085,
+      "mtime": "2026-06-12T04:55:00"
+    },
+    {
+      "path": "docs/FINAL_PROJECT_MANIFEST.md",
+      "bytes": 3360,
+      "mtime": "2026-06-19T21:06:38.955229"
+    },
+    {
+      "path": "docs/FINAL_QA_REPORT.md",
+      "bytes": 3213,
+      "mtime": "2026-06-12T04:55:00"
+    },
+    {
+      "path": "docs/MAIN_MENU_BACKGROUND_10_1_AUDIT.md",
+      "bytes": 2470,
+      "mtime": "2026-06-12T04:35:04"
+    },
+    {
+      "path": "docs/MARTYSKIN_WORLD.md",
+      "bytes": 30186,
+      "mtime": "2026-06-11T19:48:42"
+    },
+    {
+      "path": "docs/PERFORMANCE_AUDIT.md",
+      "bytes": 4440,
+      "mtime": "2026-05-08T13:41:36"
+    },
+    {
+      "path": "docs/PNG_ASSET_INTEGRATION_PIPELINE_RU.md",
+      "bytes": 5179,
+      "mtime": "2026-06-05T19:27:50"
+    },
+    {
+      "path": "docs/PORTABLE_TRANSFER_AUDIT_20260617.md",
+      "bytes": 2622,
+      "mtime": "2026-06-17T07:33:34"
+    },
+    {
+      "path": "docs/PORTABLE_TRANSFER_NEW_MACHINE_GUIDE_20260617.md",
+      "bytes": 1788,
+      "mtime": "2026-06-17T07:33:34"
+    },
+    {
+      "path": "docs/TEXTURE9_FINAL_AUDIT.md",
+      "bytes": 3951,
+      "mtime": "2026-06-11T21:45:24"
+    },
+    {
+      "path": "docs/UI_ALLOWED_ASSETS.md",
+      "bytes": 6052,
+      "mtime": "2026-06-19T20:40:39.060369"
+    },
+    {
+      "path": "docs/WEB_DEPLOY_GITHUB_PAGES.md",
+      "bytes": 503,
+      "mtime": "2026-06-12T04:55:00"
+    },
+    {
+      "path": "docs/WEB_GITHUB_PAGES_INSTRUCTIONS.md",
+      "bytes": 182,
+      "mtime": "2026-05-08T12:42:56"
+    }
+  ]
+}

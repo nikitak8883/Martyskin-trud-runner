@@ -1,0 +1,1165 @@
+{
+  "schemaVersion": 1,
+  "virtualResolution": {
+    "width": 1280,
+    "height": 720
+  },
+  "levels": [
+    {
+      "id": 1,
+      "theme": "construction_site",
+      "title": "Стройплощадка примата",
+      "subtitle": "Стройка, где план есть, смысл не завезли.",
+      "durationSec": 92,
+      "length": 4750,
+      "baseSpeed": 268,
+      "targetBananas": 50,
+      "hp": 3,
+      "difficultyBand": 1,
+      "background": {
+        "runtime": "backgrounds/level01",
+        "preview": "backgrounds_preview/level01",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/1",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "доски на лесах",
+        "кирпичные подпорки",
+        "ящики с инструментами",
+        "бетонные блоки",
+        "подвесные подмости"
+      ],
+      "obstaclePool": [
+        "падающие бананы",
+        "кирпич с душой",
+        "смета кусается",
+        "бетон с бананом",
+        "табличка «Не стой под грузом»"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR"
+      ],
+      "npc": {
+        "enabled": false,
+        "types": [],
+        "spawnRate": 0
+      },
+      "storyBanners": [
+        "вход на объект",
+        "центр стройки",
+        "большой баннер «Мартышкин труд»",
+        "зона хаоса с краном"
+      ],
+      "canonId": "level01_construction_site",
+      "visualKeywords": [
+        "краны",
+        "строительные леса",
+        "доски",
+        "трубы",
+        "бетономешалки",
+        "каски",
+        "конусы",
+        "таблички"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "каска",
+        "жилет",
+        "магнит"
+      ]
+    },
+    {
+      "id": 2,
+      "theme": "banana_logistics",
+      "title": "Банановая логистика",
+      "subtitle": "Склад, где бананы перемещают до тех пор, пока они не станут отчётом.",
+      "durationSec": 94,
+      "length": 5300,
+      "baseSpeed": 286,
+      "targetBananas": 55,
+      "hp": 3,
+      "difficultyBand": 1,
+      "background": {
+        "runtime": "backgrounds/level02",
+        "preview": "backgrounds_preview/level02",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/2",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "паллетные платформы",
+        "ящики BANANA LOGISTICS",
+        "погрузочные рампы",
+        "контейнерные настилы",
+        "тележки"
+      ],
+      "obstaclePool": [
+        "погрузчик без совести",
+        "ящик падает по плану",
+        "банановая куча скользит",
+        "лента конвейера спорит",
+        "складской акт"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR"
+      ],
+      "npc": {
+        "enabled": false,
+        "types": [],
+        "spawnRate": 0
+      },
+      "storyBanners": [
+        "приём бананов",
+        "упаковка",
+        "отгрузка",
+        "зона возврата «не туда отправили»"
+      ],
+      "canonId": "level02_banana_logistics",
+      "visualKeywords": [
+        "склады",
+        "ящики",
+        "паллеты",
+        "тележки",
+        "конвейеры",
+        "кран-балки",
+        "таблички отгрузки"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "магнит",
+        "чертёж",
+        "пропуск склада"
+      ]
+    },
+    {
+      "id": 3,
+      "theme": "useless_forms_department",
+      "title": "Отдел бессмысленных заявлений",
+      "subtitle": "Офис, где каждый прыжок требует заявление в двух экземплярах.",
+      "durationSec": 96,
+      "length": 5850,
+      "baseSpeed": 304,
+      "targetBananas": 60,
+      "hp": 3,
+      "difficultyBand": 1,
+      "background": {
+        "runtime": "backgrounds/level03",
+        "preview": "backgrounds_preview/level03",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/3",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "столы",
+        "архивные шкафы",
+        "стопки бумаг",
+        "канцелярские платформы",
+        "стойки регистрации"
+      ],
+      "obstaclePool": [
+        "форма 17-Б",
+        "заявление без смысла",
+        "стопка дел падает",
+        "папка кусается",
+        "штамп летит"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR"
+      ],
+      "npc": {
+        "enabled": false,
+        "types": [],
+        "spawnRate": 0
+      },
+      "storyBanners": [
+        "приёмная",
+        "окна заявлений",
+        "лабиринт столов",
+        "архивная дверь"
+      ],
+      "canonId": "level03_useless_forms_department",
+      "visualKeywords": [
+        "столы",
+        "шкафы",
+        "папки",
+        "печати",
+        "заявления",
+        "очереди",
+        "таблички отделов"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "печать",
+        "пропуск",
+        "кофе"
+      ]
+    },
+    {
+      "id": 4,
+      "theme": "primate_jungle",
+      "title": "Джунгли примата",
+      "subtitle": "Природная зона, где труд ещё не оформлен, но уже подозрителен.",
+      "durationSec": 98,
+      "length": 6400,
+      "baseSpeed": 322,
+      "targetBananas": 65,
+      "hp": 3,
+      "difficultyBand": 2,
+      "background": {
+        "runtime": "backgrounds/level04",
+        "preview": "backgrounds_preview/level04",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/4",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "ветви",
+        "камни",
+        "лианы",
+        "деревянные мостики",
+        "корни"
+      ],
+      "obstaclePool": [
+        "скользкий мох",
+        "лиана-обманка",
+        "камень с актом",
+        "куст согласований",
+        "банановая ловушка"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc"
+        ],
+        "spawnRate": 0.09
+      },
+      "storyBanners": [
+        "край джунглей",
+        "лиановый проход",
+        "водопад",
+        "старый объект труда в зарослях"
+      ],
+      "canonId": "level04_primate_jungle",
+      "visualKeywords": [
+        "лианы",
+        "джунгли",
+        "ветви",
+        "камни",
+        "водопад",
+        "старые таблички",
+        "природные платформы"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "магнит",
+        "щит"
+      ]
+    },
+    {
+      "id": 5,
+      "theme": "superplan_farm",
+      "title": "Ферма сверхплана",
+      "subtitle": "Сельхоз-абсурд: кокосы, куры и отчётность на одной грядке.",
+      "durationSec": 100,
+      "length": 6950,
+      "baseSpeed": 340,
+      "targetBananas": 70,
+      "hp": 3,
+      "difficultyBand": 2,
+      "background": {
+        "runtime": "backgrounds/level05",
+        "preview": "backgrounds_preview/level05",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/5",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "деревянные заборы",
+        "ящики с урожаем",
+        "тележки",
+        "амбарные настилы",
+        "стога"
+      ],
+      "obstaclePool": [
+        "курица-инспектор",
+        "пугало с печатью",
+        "ящик обиделся",
+        "тележка без тормозов",
+        "кокос не по ведомости"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc"
+        ],
+        "spawnRate": 0.1
+      },
+      "storyBanners": [
+        "вход на ферму",
+        "склад урожая",
+        "зона куриной проверки",
+        "амбар сверхплана"
+      ],
+      "canonId": "level05_superplan_farm",
+      "visualKeywords": [
+        "заборы",
+        "курицы",
+        "ящики",
+        "тележки",
+        "солома",
+        "таблички фермы",
+        "пугала"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "кофе",
+        "щит"
+      ]
+    },
+    {
+      "id": 6,
+      "theme": "peacock_inspector",
+      "title": "Павлин-инспектор",
+      "subtitle": "Проверка ради проверки. Хвост распустил — значит акт составлен.",
+      "durationSec": 102,
+      "length": 7500,
+      "baseSpeed": 358,
+      "targetBananas": 75,
+      "hp": 3,
+      "difficultyBand": 3,
+      "background": {
+        "runtime": "backgrounds/level06",
+        "preview": "backgrounds_preview/level06",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/6",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "инспекторские помосты",
+        "кабинеты проверки",
+        "столы актов",
+        "перила контроля",
+        "сцены для важности"
+      ],
+      "obstaclePool": [
+        "акт распустил хвост",
+        "павлин смотрит",
+        "печать сверху",
+        "коридор замечаний",
+        "табличка «не согласовано»"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc"
+        ],
+        "spawnRate": 0.11
+      },
+      "storyBanners": [
+        "зал ожидания проверки",
+        "коридор замечаний",
+        "главная трибуна инспектора",
+        "стена актов"
+      ],
+      "canonId": "level06_peacock_inspector",
+      "visualKeywords": [
+        "павлиньи эмблемы",
+        "штампы",
+        "акты",
+        "контрольные рамки",
+        "трибуны",
+        "таблички проверок"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "пропуск",
+        "щит",
+        "магнит"
+      ]
+    },
+    {
+      "id": 7,
+      "theme": "factory_of_eternal_labor",
+      "title": "Фабрика вечного труда",
+      "subtitle": "Трубы, пар, шестерни и конвейер, который производит усталость.",
+      "durationSec": 104,
+      "length": 8050,
+      "baseSpeed": 376,
+      "targetBananas": 80,
+      "hp": 3,
+      "difficultyBand": 3,
+      "background": {
+        "runtime": "backgrounds/level07",
+        "preview": "backgrounds_preview/level07",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/7",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "металлические настилы",
+        "конвейеры",
+        "трубы",
+        "котельные площадки",
+        "шестерённые мосты"
+      ],
+      "obstaclePool": [
+        "пар по регламенту",
+        "шестерня спорит",
+        "конвейер ускорился",
+        "рычаг без инструкции",
+        "труба дышит"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc"
+        ],
+        "spawnRate": 0.12
+      },
+      "storyBanners": [
+        "вход в цех",
+        "конвейерная линия",
+        "котельная",
+        "главный механизм"
+      ],
+      "canonId": "level07_factory_of_eternal_labor",
+      "visualKeywords": [
+        "трубы",
+        "пар",
+        "конвейеры",
+        "шестерни",
+        "котлы",
+        "рычаги",
+        "индустриальные платформы"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "магнит",
+        "кофе",
+        "чертёж"
+      ]
+    },
+    {
+      "id": 8,
+      "theme": "archive_of_importance",
+      "title": "Архив важности",
+      "subtitle": "Документы лежат так давно, что начали принимать решения сами.",
+      "durationSec": 106,
+      "length": 8600,
+      "baseSpeed": 394,
+      "targetBananas": 85,
+      "hp": 2,
+      "difficultyBand": 3,
+      "background": {
+        "runtime": "backgrounds/level08",
+        "preview": "backgrounds_preview/level08",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/8",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "картотеки",
+        "стопки дел",
+        "полки",
+        "архивные столы",
+        "лестницы"
+      ],
+      "obstaclePool": [
+        "дело упало",
+        "акт засекречен",
+        "пыльный штамп",
+        "шкаф открылся сам",
+        "полка важности"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc"
+        ],
+        "spawnRate": 0.13
+      },
+      "storyBanners": [
+        "первые стеллажи",
+        "глубокий архив",
+        "секретный сектор",
+        "дверь к реактору"
+      ],
+      "canonId": "level08_archive_of_importance",
+      "visualKeywords": [
+        "архивные шкафы",
+        "картотеки",
+        "стеллажи",
+        "папки",
+        "пыль",
+        "лампы",
+        "таблички важности"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "ключ",
+        "пропуск",
+        "магнит"
+      ]
+    },
+    {
+      "id": 9,
+      "theme": "banana_reactor",
+      "title": "Банановый реактор",
+      "subtitle": "Энергия банана поставлена на поток. Очень зря.",
+      "durationSec": 108,
+      "length": 9150,
+      "baseSpeed": 412,
+      "targetBananas": 90,
+      "hp": 2,
+      "difficultyBand": 4,
+      "background": {
+        "runtime": "backgrounds/level09",
+        "preview": "backgrounds_preview/level09",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/9",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "технические настилы",
+        "трубы",
+        "реакторные блоки",
+        "лабораторные платформы",
+        "кабельные мостики"
+      ],
+      "obstaclePool": [
+        "банан перегрелся",
+        "колба спорит",
+        "провод кусается",
+        "реактор просит акт",
+        "жёлтое свечение слишком умное"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc",
+          "peacock_npc"
+        ],
+        "spawnRate": 0.14
+      },
+      "storyBanners": [
+        "вход в лабораторию",
+        "трубный сектор",
+        "сердце реактора",
+        "перегрев плана"
+      ],
+      "canonId": "level09_banana_reactor",
+      "visualKeywords": [
+        "реактор",
+        "колбы",
+        "трубы",
+        "кабели",
+        "жёлто-зелёное свечение",
+        "датчики",
+        "лабораторные знаки"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "энерго-капсула",
+        "щит",
+        "магнит"
+      ]
+    },
+    {
+      "id": 10,
+      "theme": "audit_corridor",
+      "title": "Коридор проверок",
+      "subtitle": "Каждая дверь ведёт к новой проверке предыдущей проверки.",
+      "durationSec": 110,
+      "length": 9700,
+      "baseSpeed": 430,
+      "targetBananas": 95,
+      "hp": 2,
+      "difficultyBand": 4,
+      "background": {
+        "runtime": "backgrounds/level10",
+        "preview": "backgrounds_preview/level10",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/10",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "дверные пороги",
+        "столы проверяющих",
+        "коридорные настилы",
+        "шкафы с актами"
+      ],
+      "obstaclePool": [
+        "внезапный аудит",
+        "дверь без допуска",
+        "печать летит",
+        "акт распускается",
+        "пропуск не пропускает"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc",
+          "peacock_npc"
+        ],
+        "spawnRate": 0.15
+      },
+      "storyBanners": [
+        "начало коридора",
+        "зона аудита",
+        "архив проверок",
+        "дверь с табличкой «ещё раз»"
+      ],
+      "canonId": "level10_audit_corridor",
+      "visualKeywords": [
+        "длинные коридоры",
+        "проверочные двери",
+        "печати",
+        "лампы",
+        "журналы",
+        "пропуска"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "пропуск",
+        "печать",
+        "кофе"
+      ]
+    },
+    {
+      "id": 11,
+      "theme": "night_shift",
+      "title": "Ночная смена",
+      "subtitle": "Когда весь мир спит, план продолжает требовать видимость.",
+      "durationSec": 112,
+      "length": 10250,
+      "baseSpeed": 448,
+      "targetBananas": 100,
+      "hp": 2,
+      "difficultyBand": 4,
+      "background": {
+        "runtime": "backgrounds/level11",
+        "preview": "backgrounds_preview/level11",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/11",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "освещённые доски",
+        "ночные настилы",
+        "тёмные платформы с лампами",
+        "ящики смены"
+      ],
+      "obstaclePool": [
+        "сонный инспектор",
+        "фонарь слепит",
+        "кофе остыл",
+        "тень с актом",
+        "ночной конус"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc",
+          "peacock_npc"
+        ],
+        "spawnRate": 0.16
+      },
+      "storyBanners": [
+        "сумерки",
+        "полночь",
+        "зона фонарей",
+        "рассветный отчёт"
+      ],
+      "canonId": "level11_night_shift",
+      "visualKeywords": [
+        "фонари",
+        "луна",
+        "ночные краны",
+        "лампы",
+        "кофе",
+        "дымка",
+        "сонные приматы"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "кофе",
+        "щит",
+        "магнит"
+      ]
+    },
+    {
+      "id": 12,
+      "theme": "training_department",
+      "title": "Учебный отдел плана",
+      "subtitle": "Здесь учат прыгать по инструкции, которую никто не читал.",
+      "durationSec": 114,
+      "length": 10800,
+      "baseSpeed": 466,
+      "targetBananas": 105,
+      "hp": 2,
+      "difficultyBand": 5,
+      "background": {
+        "runtime": "backgrounds/level12",
+        "preview": "backgrounds_preview/level12",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/12",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "парта",
+        "доска",
+        "учебные блоки",
+        "стопки методичек",
+        "макеты платформ"
+      ],
+      "obstaclePool": [
+        "контрольная внезапна",
+        "методичка падает",
+        "мел спорит",
+        "указка тыкает",
+        "план Б"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc",
+          "peacock_npc"
+        ],
+        "spawnRate": 0.17
+      },
+      "storyBanners": [
+        "класс",
+        "полигон тренировки",
+        "экзаменационная зона",
+        "выход к башне согласований"
+      ],
+      "canonId": "level12_training_department",
+      "visualKeywords": [
+        "доски",
+        "плакаты",
+        "методички",
+        "учебные макеты",
+        "мел",
+        "парта",
+        "тренажёры"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "чертёж",
+        "кофе",
+        "щит"
+      ]
+    },
+    {
+      "id": 13,
+      "theme": "approval_tower",
+      "title": "Башня согласований",
+      "subtitle": "Вертикальная бюрократия. Чем выше этаж, тем ниже смысл.",
+      "durationSec": 116,
+      "length": 11350,
+      "baseSpeed": 484,
+      "targetBananas": 110,
+      "hp": 2,
+      "difficultyBand": 5,
+      "background": {
+        "runtime": "backgrounds/level13",
+        "preview": "backgrounds_preview/level13",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/13",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "лифтовые площадки",
+        "этажные настилы",
+        "столы подписей",
+        "балконы согласований"
+      ],
+      "obstaclePool": [
+        "лифт сомневается",
+        "подпись убегает",
+        "этаж не утверждён",
+        "лестница с актом",
+        "отдел закрыт"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc",
+          "peacock_npc"
+        ],
+        "spawnRate": 0.18
+      },
+      "storyBanners": [
+        "нижние этажи",
+        "середина башни",
+        "кабинет главного согласования",
+        "выход на министерство-фабрику"
+      ],
+      "canonId": "level13_approval_tower",
+      "visualKeywords": [
+        "башня",
+        "лифты",
+        "лестницы",
+        "кабинеты",
+        "таблички отделов",
+        "подписи"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "ключ",
+        "печать",
+        "магнит"
+      ]
+    },
+    {
+      "id": 14,
+      "theme": "factory_ministry",
+      "title": "Министерство фабричного труда",
+      "subtitle": "Фабрика, которая производит регламенты, и министерство, которое дымит.",
+      "durationSec": 118,
+      "length": 11900,
+      "baseSpeed": 502,
+      "targetBananas": 115,
+      "hp": 2,
+      "difficultyBand": 5,
+      "background": {
+        "runtime": "backgrounds/level14",
+        "preview": "backgrounds_preview/level14",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/14",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "штамповочные линии",
+        "трубные мостики",
+        "кабинетные настилы",
+        "конвейерные платформы"
+      ],
+      "obstaclePool": [
+        "штампует решение",
+        "пар по регламенту",
+        "бумага кипит",
+        "труба подписывает",
+        "совет одобрил"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc",
+          "peacock_npc"
+        ],
+        "spawnRate": 0.19
+      },
+      "storyBanners": [
+        "министерский вход",
+        "штамповочный цех",
+        "зал регламентов",
+        "ворота к сердцу труда"
+      ],
+      "canonId": "level14_factory_ministry",
+      "visualKeywords": [
+        "трубы",
+        "штампы",
+        "министерские колонны",
+        "конвейеры",
+        "пары",
+        "кабинеты",
+        "механические печати"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "пропуск",
+        "щит",
+        "энерго-капсула"
+      ]
+    },
+    {
+      "id": 15,
+      "theme": "martyshkin_core",
+      "title": "Сердце Мартышкиного труда",
+      "subtitle": "Финальный механизм, где все планы, бананы и акты крутятся без причины.",
+      "durationSec": 120,
+      "length": 12450,
+      "baseSpeed": 520,
+      "targetBananas": 120,
+      "hp": 2,
+      "difficultyBand": 5,
+      "background": {
+        "runtime": "backgrounds/level15",
+        "preview": "backgrounds_preview/level15",
+        "manifest": "config/background_manifest_texture10",
+        "sourceFolder": "nessesary/10/Levels/15",
+        "sourceSlot": 2,
+        "parallax": [
+          0.1,
+          0.22,
+          0.45,
+          1.0
+        ],
+        "policy": "texture10_single_scenic_bitmap_no_old_fallback"
+      },
+      "platformTypes": [
+        "ядровые платформы",
+        "шестерённые настилы",
+        "механические арки",
+        "финальные мосты"
+      ],
+      "obstaclePool": [
+        "финальный план",
+        "ядро перегрето",
+        "акт вращается",
+        "шестерня судьбы",
+        "банан в сердце"
+      ],
+      "bonusPool": [
+        "JUMP",
+        "DASH",
+        "ARMOR",
+        "MAGNET"
+      ],
+      "npc": {
+        "enabled": true,
+        "types": [
+          "worker_primate",
+          "chicken_npc",
+          "peacock_npc"
+        ],
+        "spawnRate": 0.2
+      },
+      "storyBanners": [
+        "внешнее кольцо",
+        "механизм",
+        "ядро",
+        "финальный баннер труда"
+      ],
+      "canonId": "level15_martyshkin_core",
+      "visualKeywords": [
+        "гигантские шестерни",
+        "банановое ядро",
+        "свет",
+        "трубы",
+        "акты",
+        "штампы",
+        "символы всех уровней"
+      ],
+      "collectibleTheme": [
+        "банан",
+        "фиговый лист",
+        "кокос",
+        "все ключевые бонусы",
+        "щит",
+        "магнит"
+      ]
+    }
+  ]
+}

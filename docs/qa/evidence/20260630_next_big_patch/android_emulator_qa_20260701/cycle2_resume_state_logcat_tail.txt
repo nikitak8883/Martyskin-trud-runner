@@ -1,0 +1,407 @@
+--------- beginning of main
+07-01 07:42:40.799  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.144ms,5.113ms total 26.530ms
+07-01 07:42:40.851  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.051ms,5.137ms total 34.725ms
+07-01 07:42:40.956  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2276KB/4552KB, paused 2.617ms,6.522ms total 39.993ms
+07-01 07:42:41.006  3929  3971 D EGL_emulation: app_time_stats: avg=52.10ms min=47.20ms max=61.84ms count=20
+07-01 07:42:41.216  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.179ms,5.419ms total 28.935ms
+07-01 07:42:41.322  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3368KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.706ms,5.442ms total 30.088ms
+07-01 07:42:41.456  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2820KB) LOS objects, 49% free, 2276KB/4552KB, paused 680us,10.258ms total 35.303ms
+07-01 07:42:41.653  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.524ms,5.200ms total 31.450ms
+07-01 07:42:41.754  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.083ms,5.045ms total 30.808ms
+07-01 07:42:41.802  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2444KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.732ms,5.370ms total 28.651ms
+07-01 07:42:41.855  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 3.298ms,5.518ms total 29.471ms
+07-01 07:42:42.011  3929  3971 D EGL_emulation: app_time_stats: avg=52.67ms min=45.34ms max=66.13ms count=19
+07-01 07:42:42.016  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 883us,5.632ms total 29.412ms
+07-01 07:42:42.072  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 9.167ms,4.798ms total 38.273ms
+07-01 07:42:42.129  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 48% free, 2428KB/4704KB, paused 1.350ms,5.031ms total 29.194ms
+07-01 07:42:42.182  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.420ms,6.346ms total 29.824ms
+07-01 07:42:42.458  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3124KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.535ms,5.794ms total 30.799ms
+07-01 07:42:42.503  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2820KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.427ms,5.651ms total 26.452ms
+07-01 07:42:42.746  3929  3992 V AudioMixerController: Mix a frame waste: 1.026000ms
+07-01 07:42:43.056  3929  3971 D EGL_emulation: app_time_stats: avg=52.12ms min=45.10ms max=64.85ms count=20
+07-01 07:42:43.225  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(1984KB) LOS objects, 49% free, 3104KB/6208KB, paused 5.119ms,8.891ms total 49.405ms
+07-01 07:42:43.329  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2576KB) LOS objects, 49% free, 2596KB/5192KB, paused 1.743ms,5.350ms total 27.514ms
+07-01 07:42:43.485  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.209ms,5.032ms total 30.233ms
+07-01 07:42:43.582  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3208KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.515ms,5.681ms total 29.181ms
+07-01 07:42:43.632  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.702ms,5.656ms total 33.872ms
+07-01 07:42:43.793  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(3272KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.399ms,6.108ms total 30.710ms
+07-01 07:42:43.847  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2880KB/5760KB, paused 693us,5.622ms total 33.221ms
+07-01 07:42:43.893  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3424KB) LOS objects, 49% free, 2352KB/4704KB, paused 640us,5.166ms total 29.823ms
+07-01 07:42:43.948  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(2672KB) LOS objects, 49% free, 2880KB/5760KB, paused 851us,5.012ms total 34.154ms
+07-01 07:42:44.049  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2444KB) LOS objects, 49% free, 2804KB/5608KB, paused 709us,9.506ms total 34.728ms
+07-01 07:42:44.107  3929  3971 D EGL_emulation: app_time_stats: avg=52.34ms min=47.42ms max=59.99ms count=20
+07-01 07:42:44.110  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 820us,6.474ms total 26.870ms
+07-01 07:42:44.364  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2888KB) LOS objects, 49% free, 2360KB/4720KB, paused 2.237ms,6.952ms total 32.819ms
+07-01 07:42:44.408  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(1984KB) LOS objects, 49% free, 3104KB/6208KB, paused 2.472ms,5.319ms total 30.579ms
+07-01 07:42:44.467  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3952KB) LOS objects, 49% free, 2520KB/5040KB, paused 1.221ms,5.366ms total 33.513ms
+07-01 07:42:44.518  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3368KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.161ms,5.367ms total 33.238ms
+07-01 07:42:44.740  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3208KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.162ms,5.942ms total 29.996ms
+07-01 07:42:44.989  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 2652KB/5304KB, paused 701us,15.059ms total 48.592ms
+07-01 07:42:45.040  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2972KB) LOS objects, 49% free, 3180KB/6360KB, paused 593us,5.693ms total 24.673ms
+07-01 07:42:45.109  3929  3971 D EGL_emulation: app_time_stats: avg=52.51ms min=45.15ms max=73.87ms count=19
+07-01 07:42:45.113  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(4188KB) LOS objects, 49% free, 2360KB/4720KB, paused 835us,6.351ms total 29.575ms
+07-01 07:42:45.265  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3520KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.179ms,5.142ms total 31.656ms
+07-01 07:42:45.420  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2520KB/5040KB, paused 820us,5.079ms total 29.169ms
+07-01 07:42:45.577   499   601 D AF::Track: interceptBuffer: took 513us to intercept 0 tracks
+07-01 07:42:45.583  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.339ms,5.220ms total 28.593ms
+07-01 07:42:45.739  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 34(3588KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.740ms,7.936ms total 34.999ms
+07-01 07:42:45.832  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.257ms,5.068ms total 30.292ms
+07-01 07:42:45.991  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 945us,5.266ms total 26.035ms
+07-01 07:42:46.147  3929  3971 D EGL_emulation: app_time_stats: avg=51.67ms min=44.86ms max=67.49ms count=20
+07-01 07:42:46.205  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.009ms,5.524ms total 31.048ms
+07-01 07:42:46.323  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2352KB/4704KB, paused 2.055ms,10.356ms total 40.273ms
+07-01 07:42:46.368  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2444KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.986ms,5.499ms total 28.570ms
+07-01 07:42:46.484   499   601 D AF::Track: interceptBuffer: took 1250us to intercept 0 tracks
+07-01 07:42:46.577  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 791us,5.733ms total 28.241ms
+07-01 07:42:46.666  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(1984KB) LOS objects, 49% free, 2652KB/5304KB, paused 1.323ms,5.378ms total 22.090ms
+07-01 07:42:46.768   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:42:46.940  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 754us,5.565ms total 25.612ms
+07-01 07:42:47.148  3929  3971 D EGL_emulation: app_time_stats: avg=52.53ms min=47.87ms max=61.20ms count=19
+07-01 07:42:47.512  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2736KB) LOS objects, 49% free, 2512KB/5024KB, paused 2.417ms,5.046ms total 28.108ms
+07-01 07:42:47.622  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2360KB/4720KB, paused 2.122ms,6.242ms total 31.676ms
+07-01 07:42:47.669  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(1984KB) LOS objects, 49% free, 2200KB/4400KB, paused 575us,7.189ms total 32.589ms
+07-01 07:42:47.808  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 20(2440KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.930ms,9.122ms total 29.612ms
+07-01 07:42:47.861  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 33(3052KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.536ms,5.150ms total 30.056ms
+--------- beginning of kernel
+07-01 07:42:47.883     0     0 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+07-01 07:42:47.970  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 22(2592KB) LOS objects, 49% free, 2352KB/4704KB, paused 754us,6.355ms total 29.143ms
+07-01 07:42:48.067  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(2756KB) LOS objects, 49% free, 2804KB/5608KB, paused 747us,5.873ms total 34.300ms
+07-01 07:42:48.174  3929  3971 D EGL_emulation: app_time_stats: avg=53.80ms min=48.04ms max=70.83ms count=19
+07-01 07:42:48.226  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2284KB) LOS objects, 49% free, 2964KB/5928KB, paused 1.227ms,5.149ms total 28.389ms
+07-01 07:42:48.508  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2728KB) LOS objects, 49% free, 2520KB/5040KB, paused 1.782ms,8.771ms total 30.746ms
+07-01 07:42:48.635  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3520KB) LOS objects, 49% free, 2352KB/4704KB, paused 7.960ms,4.703ms total 33.116ms
+07-01 07:42:48.680  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 613us,5.564ms total 28.643ms
+07-01 07:42:48.923  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 823us,5.175ms total 25.350ms
+07-01 07:42:48.984  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.230ms,9.346ms total 34.782ms
+07-01 07:42:49.089  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 2.867ms,11.862ms total 41.965ms
+07-01 07:42:49.137  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 26(2436KB) LOS objects, 49% free, 2964KB/5928KB, paused 1.758ms,5.362ms total 29.266ms
+07-01 07:42:49.180  3929  3971 D EGL_emulation: app_time_stats: avg=50.12ms min=44.75ms max=59.68ms count=20
+07-01 07:42:49.329  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3368KB) LOS objects, 49% free, 2200KB/4400KB, paused 751us,5.276ms total 24.994ms
+07-01 07:42:49.376  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2728KB) LOS objects, 49% free, 2520KB/5040KB, paused 1.353ms,7.497ms total 34.529ms
+07-01 07:42:49.499  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3820KB) LOS objects, 49% free, 2276KB/4552KB, paused 845us,5.831ms total 28.567ms
+07-01 07:42:49.693  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2972KB) LOS objects, 49% free, 2352KB/4704KB, paused 576us,5.219ms total 27.053ms
+07-01 07:42:49.744  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 820us,5.361ms total 29.309ms
+07-01 07:42:49.952  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(3264KB) LOS objects, 49% free, 2588KB/5176KB, paused 1.712ms,7.024ms total 34.334ms
+07-01 07:42:50.102  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2820KB) LOS objects, 48% free, 2428KB/4704KB, paused 1.284ms,5.013ms total 28.727ms
+07-01 07:42:50.154  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2728KB/5456KB, paused 1.572ms,5.491ms total 25.746ms
+07-01 07:42:50.202  3929  3971 D EGL_emulation: app_time_stats: avg=50.93ms min=43.50ms max=60.17ms count=20
+07-01 07:42:50.251  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2276KB) LOS objects, 49% free, 2972KB/5944KB, paused 877us,5.250ms total 26.655ms
+07-01 07:42:50.824  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(3348KB) LOS objects, 49% free, 2200KB/4400KB, paused 1.455ms,7.714ms total 42.893ms
+07-01 07:42:50.867  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 2652KB/5304KB, paused 1.617ms,11.703ms total 29.929ms
+07-01 07:42:51.084  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2284KB) LOS objects, 49% free, 2964KB/5928KB, paused 1.601ms,5.020ms total 30.794ms
+07-01 07:42:51.231  3929  3971 D EGL_emulation: app_time_stats: avg=51.23ms min=42.40ms max=76.27ms count=20
+07-01 07:42:51.232  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(2748KB) LOS objects, 49% free, 2804KB/5608KB, paused 877us,5.108ms total 26.836ms
+07-01 07:42:51.494   499   601 D AF::Track: interceptBuffer: took 519us to intercept 0 tracks
+07-01 07:42:51.550  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3276KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.134ms,6.099ms total 30.562ms
+07-01 07:42:51.597  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2820KB) LOS objects, 49% free, 2504KB/5008KB, paused 763us,5.189ms total 31.840ms
+07-01 07:42:51.651  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2728KB) LOS objects, 49% free, 2520KB/5040KB, paused 1.724ms,5.975ms total 27.386ms
+07-01 07:42:51.859  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2576KB) LOS objects, 49% free, 2520KB/5040KB, paused 760us,5.116ms total 27.816ms
+07-01 07:42:52.006  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3820KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.144ms,6.007ms total 30.124ms
+07-01 07:42:52.058  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2728KB) LOS objects, 49% free, 2672KB/5344KB, paused 1.690ms,5.010ms total 27.677ms
+07-01 07:42:52.270  3929  3971 D EGL_emulation: app_time_stats: avg=54.50ms min=45.26ms max=72.42ms count=19
+07-01 07:42:52.276  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.361ms,5.329ms total 28.889ms
+07-01 07:42:52.328  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.448ms,5.266ms total 29.232ms
+07-01 07:42:52.507  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 23(2124KB) LOS objects, 49% free, 2652KB/5304KB, paused 2.276ms,7.429ms total 37.635ms
+07-01 07:42:52.550  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 3104KB/6208KB, paused 1.557ms,9.950ms total 29.232ms
+07-01 07:42:52.665  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.341ms,5.874ms total 31.018ms
+07-01 07:42:52.722  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.542ms,7.476ms total 31.628ms
+07-01 07:42:52.769  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 37(4108KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.531ms,5.651ms total 31.329ms
+07-01 07:42:52.962  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.257ms,5.641ms total 29.557ms
+07-01 07:42:53.077  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3660KB) LOS objects, 49% free, 2352KB/4704KB, paused 2.934ms,5.214ms total 30.536ms
+07-01 07:42:53.128   499   601 D AF::Track: interceptBuffer: took 2806us to intercept 0 tracks
+07-01 07:42:53.140  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.108ms,6.258ms total 31.121ms
+07-01 07:42:53.288  3929  3971 D EGL_emulation: app_time_stats: avg=53.45ms min=45.24ms max=68.00ms count=19
+07-01 07:42:53.329   499   601 D AF::Track: interceptBuffer: took 502us to intercept 0 tracks
+07-01 07:42:53.338  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 3104KB/6208KB, paused 1.602ms,5.227ms total 33.128ms
+07-01 07:42:53.453  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.230ms,6.343ms total 32.258ms
+07-01 07:42:53.619  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.111ms,5.190ms total 29.124ms
+07-01 07:42:53.714  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2436KB) LOS objects, 49% free, 2888KB/5776KB, paused 1.386ms,5.434ms total 29.301ms
+07-01 07:42:53.865  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.079ms,5ms total 30.637ms
+07-01 07:42:54.197  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 29(3208KB) LOS objects, 49% free, 2276KB/4552KB, paused 3.492ms,5.741ms total 32.673ms
+07-01 07:42:54.294  3929  3971 D EGL_emulation: app_time_stats: avg=52.82ms min=43.29ms max=64.90ms count=19
+07-01 07:42:54.494  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 969us,5.364ms total 26.152ms
+07-01 07:42:54.547  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2352KB/4704KB, paused 851us,5.290ms total 29.418ms
+07-01 07:42:54.654  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2144KB) LOS objects, 49% free, 3104KB/6208KB, paused 865us,7.211ms total 23.961ms
+07-01 07:42:54.704   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:42:54.907  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(3180KB) LOS objects, 49% free, 2520KB/5040KB, paused 1.624ms,5.557ms total 26.789ms
+07-01 07:42:55.283  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.653ms,5.886ms total 32.833ms
+07-01 07:42:55.331  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 3104KB/6208KB, paused 1.004ms,5.718ms total 34.540ms
+07-01 07:42:55.336  3929  3971 D EGL_emulation: app_time_stats: avg=51.96ms min=44.34ms max=65.01ms count=20
+07-01 07:42:55.715  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3896KB) LOS objects, 49% free, 2276KB/4552KB, paused 777us,5.627ms total 29.477ms
+07-01 07:42:56.030  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(2824KB) LOS objects, 49% free, 2804KB/5608KB, paused 856us,5.486ms total 32.874ms
+07-01 07:42:56.313  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.267ms,6.285ms total 29.386ms
+07-01 07:42:56.368  3929  3971 D EGL_emulation: app_time_stats: avg=54.12ms min=45.82ms max=68.12ms count=19
+07-01 07:42:56.631  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3276KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.888ms,5.097ms total 28.901ms
+07-01 07:42:56.792  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3368KB) LOS objects, 48% free, 2352KB/4552KB, paused 1.404ms,6.969ms total 27.632ms
+07-01 07:42:57.101  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.991ms,5.028ms total 32.785ms
+07-01 07:42:57.201  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3360KB) LOS objects, 49% free, 2352KB/4704KB, paused 2.162ms,5.235ms total 27.235ms
+07-01 07:42:57.309  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(3272KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.249ms,5.002ms total 28.410ms
+07-01 07:42:57.400  3929  3971 D EGL_emulation: app_time_stats: avg=51.40ms min=44.50ms max=57.34ms count=20
+07-01 07:42:57.405  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3124KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.737ms,5.980ms total 29.656ms
+07-01 07:42:57.455  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2368KB) LOS objects, 49% free, 2804KB/5608KB, paused 769us,5.796ms total 32.761ms
+07-01 07:42:57.509  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2504KB/5008KB, paused 893us,8.465ms total 35.550ms
+07-01 07:42:57.702  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2144KB) LOS objects, 49% free, 2652KB/5304KB, paused 855us,5.824ms total 22.424ms
+07-01 07:42:57.744  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2652KB/5304KB, paused 1.633ms,5.801ms total 23.588ms
+07-01 07:42:57.789  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2652KB/5304KB, paused 1.450ms,5.098ms total 25.332ms
+07-01 07:42:57.954  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 23(2668KB) LOS objects, 49% free, 2352KB/4704KB, paused 3.177ms,5.273ms total 27.183ms
+07-01 07:42:58.198  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.801ms,5.598ms total 28.128ms
+07-01 07:42:58.443  3929  3971 D EGL_emulation: app_time_stats: avg=49.46ms min=42.77ms max=54.84ms count=21
+07-01 07:42:58.455  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 36(4116KB) LOS objects, 49% free, 2352KB/4704KB, paused 896us,5.489ms total 26.822ms
+07-01 07:42:58.602  3929  3992 V AudioMixerController: Mix a frame waste: 1.994000ms
+07-01 07:42:59.145  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2504KB/5008KB, paused 1.160ms,5.009ms total 31.343ms
+07-01 07:42:59.189  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.311ms,5.437ms total 25.899ms
+07-01 07:42:59.429  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3368KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.955ms,5.729ms total 42.486ms
+07-01 07:42:59.495  3929  3971 D EGL_emulation: app_time_stats: avg=52.46ms min=40.32ms max=74.81ms count=20
+07-01 07:42:59.498  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.491ms,6.111ms total 39.736ms
+07-01 07:42:59.555  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 28(3340KB) LOS objects, 49% free, 2512KB/5024KB, paused 2.209ms,5.563ms total 30.652ms
+07-01 07:42:59.700  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.552ms,5.898ms total 29.526ms
+07-01 07:42:59.805  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.808ms,5.105ms total 36.820ms
+07-01 07:42:59.905  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2744KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.195ms,5.467ms total 30.122ms
+07-01 07:42:59.956  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(2748KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.565ms,6.280ms total 29.285ms
+07-01 07:43:00.008  1399  1804 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+07-01 07:43:00.008  1399  1804 I AiAiEcho: EchoTargets: 
+07-01 07:43:00.008  1399  1804 I AiAiEcho: Filtered by AiAi flag check: 
+07-01 07:43:00.008  1399  1804 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+07-01 07:43:00.008  1399  1804 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+07-01 07:43:00.008  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(3348KB) LOS objects, 49% free, 2352KB/4704KB, paused 886us,5.212ms total 33.554ms
+07-01 07:43:00.009  1399  1804 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+07-01 07:43:00.009  1399  1804 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+07-01 07:43:00.009  1399  1804 I AiAiEcho: EchoTargets: 
+07-01 07:43:00.009  1399  1804 I AiAiEcho: Filtered by AiAi flag check: 
+07-01 07:43:00.009  1399  1804 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+07-01 07:43:00.009  1399  1804 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+07-01 07:43:00.010  1399  1804 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+07-01 07:43:00.010  1399  1804 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface lockscreen with targets# 0 (types=[])
+07-01 07:43:00.011  1399  1804 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+07-01 07:43:00.012  1189  1189 D SsBaseTemplateCard: No text view can be set up
+07-01 07:43:00.012  1189  1189 D SsBaseTemplateCard: Passed-in item info is null
+07-01 07:43:00.012  1189  1189 D SsBaseTemplateCard: Passed-in item info is null
+07-01 07:43:00.012  1189  1189 D SsBaseTemplateCard: Passed-in item info is null
+07-01 07:43:00.012  1189  1189 I SsBaseTemplateCard: Secondary card pane is null
+07-01 07:43:00.022   884   884 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+07-01 07:43:00.029   884  1015 D EGL_emulation: app_time_stats: avg=29994.27ms min=358.20ms max=59630.33ms count=2
+07-01 07:43:00.061  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(2748KB) LOS objects, 49% free, 2804KB/5608KB, paused 2.022ms,6.557ms total 27.981ms
+07-01 07:43:00.111  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.435ms,6.136ms total 27.024ms
+07-01 07:43:00.172  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2656KB/5312KB, paused 1.136ms,7.545ms total 37.286ms
+07-01 07:43:00.226  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2504KB/5008KB, paused 2.755ms,6.194ms total 33.507ms
+07-01 07:43:00.340  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(2916KB) LOS objects, 48% free, 2728KB/5304KB, paused 1.754ms,6.161ms total 26.047ms
+07-01 07:43:00.503  3929  3971 D EGL_emulation: app_time_stats: avg=52.77ms min=44.24ms max=62.68ms count=19
+07-01 07:43:00.508  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2504KB/5008KB, paused 1.375ms,6.147ms total 33.355ms
+07-01 07:43:00.588   499   601 D AF::Track: interceptBuffer: took 2196us to intercept 0 tracks
+07-01 07:43:00.616  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2352KB/4704KB, paused 850us,6.885ms total 36.258ms
+--------- beginning of system
+07-01 07:43:00.730   636   731 W CpuMonitorService: Current CPU frequency (3748635) is greater than maximum CPU frequency (2) for policy ID (0). Skipping CPU frequency policy
+07-01 07:43:00.730   636   731 W CpuMonitorService: Current CPU frequency (3319449) is greater than maximum CPU frequency (2) for policy ID (2). Skipping CPU frequency policy
+07-01 07:43:00.734   636   731 W CpuMonitorService: Current CPU frequency (3412494) is greater than maximum CPU frequency (2) for policy ID (3). Skipping CPU frequency policy
+07-01 07:43:00.736   636   731 W CpuMonitorService: Current CPU frequency (3252430) is greater than maximum CPU frequency (2) for policy ID (4). Skipping CPU frequency policy
+07-01 07:43:00.826  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 849us,5.214ms total 29.448ms
+07-01 07:43:01.033  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 33(3972KB) LOS objects, 49% free, 2276KB/4552KB, paused 829us,5.323ms total 28.706ms
+07-01 07:43:01.133  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.711ms,5.492ms total 28.534ms
+07-01 07:43:01.360  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3812KB) LOS objects, 49% free, 2428KB/4856KB, paused 2.531ms,6.118ms total 28.647ms
+07-01 07:43:01.513  3929  3971 D EGL_emulation: app_time_stats: avg=53.02ms min=45.15ms max=65.81ms count=19
+07-01 07:43:01.553   965  1725 D ApfFilter: (wlan0): Ignoring RA RA fe80::2 -> ff02::1 1800s fec0::/64 86400s/14400s DNS 1200000s fec0::3  which matches RA fe80::2 -> ff02::1 1800s fec0::/64 86400s/14400s DNS 1200000s fec0::3 
+07-01 07:43:01.570  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 29(3208KB) LOS objects, 49% free, 2276KB/4552KB, paused 921us,5.459ms total 31.721ms
+07-01 07:43:01.613  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 3104KB/6208KB, paused 898us,5.498ms total 22.933ms
+07-01 07:43:01.670  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3820KB) LOS objects, 49% free, 2804KB/5608KB, paused 2.007ms,5.540ms total 28.264ms
+07-01 07:43:01.718  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.224ms,5.176ms total 28.730ms
+07-01 07:43:01.761   499   601 D AF::Track: interceptBuffer: took 935us to intercept 0 tracks
+07-01 07:43:01.893  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2444KB) LOS objects, 49% free, 2728KB/5456KB, paused 2.227ms,5.604ms total 27.044ms
+07-01 07:43:01.941  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.246ms,5.297ms total 27.940ms
+07-01 07:43:01.996  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2576KB) LOS objects, 49% free, 2520KB/5040KB, paused 888us,5.510ms total 29.996ms
+07-01 07:43:02.140  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2444KB) LOS objects, 49% free, 2804KB/5608KB, paused 656us,6.145ms total 28.297ms
+07-01 07:43:02.249  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.874ms,5.539ms total 27.990ms
+07-01 07:43:02.425  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 21(2516KB) LOS objects, 49% free, 2504KB/5008KB, paused 1.463ms,6.137ms total 28.602ms
+07-01 07:43:02.519  3929  3971 D EGL_emulation: app_time_stats: avg=52.75ms min=43.01ms max=67.77ms count=19
+07-01 07:43:02.622  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2352KB/4704KB, paused 2.012ms,5.202ms total 32.479ms
+07-01 07:43:02.639   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:43:02.671  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.874ms,5.120ms total 29.188ms
+07-01 07:43:02.773  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 2.150ms,7.339ms total 31.948ms
+07-01 07:43:03.005  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2352KB/4704KB, paused 744us,5.050ms total 27.674ms
+07-01 07:43:03.058  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.211ms,5.025ms total 27.702ms
+07-01 07:43:03.168  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2660KB) LOS objects, 49% free, 2360KB/4720KB, paused 4.258ms,6.077ms total 33.726ms
+07-01 07:43:03.320  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(3348KB) LOS objects, 49% free, 2352KB/4704KB, paused 972us,5.394ms total 29.762ms
+07-01 07:43:03.383  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2576KB) LOS objects, 49% free, 2360KB/4720KB, paused 2.929ms,5.149ms total 32.405ms
+07-01 07:43:03.529  3929  3971 D EGL_emulation: app_time_stats: avg=53.02ms min=47.10ms max=66.63ms count=19
+07-01 07:43:03.585  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 927us,5.736ms total 32.352ms
+07-01 07:43:03.688  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.189ms,5.393ms total 30.459ms
+07-01 07:43:03.739  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2360KB) LOS objects, 49% free, 3040KB/6080KB, paused 834us,5.076ms total 28.665ms
+07-01 07:43:03.850  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2276KB/4552KB, paused 791us,5.930ms total 29.094ms
+07-01 07:43:03.976  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(4272KB) LOS objects, 49% free, 2504KB/5008KB, paused 1.616ms,5.119ms total 32.176ms
+07-01 07:43:04.028  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.829ms,5.166ms total 30.666ms
+07-01 07:43:04.076  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 633us,5.554ms total 28.421ms
+07-01 07:43:04.129  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.703ms,6.928ms total 32.169ms
+07-01 07:43:04.183  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(2672KB) LOS objects, 49% free, 2880KB/5760KB, paused 1.714ms,5.089ms total 30.203ms
+07-01 07:43:04.233  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 28(3424KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.130ms,5.745ms total 28.516ms
+07-01 07:43:04.283  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3124KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.930ms,6.439ms total 32.161ms
+07-01 07:43:04.545  3929  3971 D EGL_emulation: app_time_stats: avg=53.32ms min=47.47ms max=64.75ms count=19
+07-01 07:43:04.549  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2820KB) LOS objects, 49% free, 2428KB/4856KB, paused 2.060ms,5.617ms total 32.948ms
+07-01 07:43:04.750  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3820KB) LOS objects, 49% free, 2276KB/4552KB, paused 691us,6.103ms total 29.493ms
+07-01 07:43:04.787  3929  3992 V AudioMixerController: Mix a frame waste: 1.229000ms
+07-01 07:43:04.849  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2276KB) LOS objects, 49% free, 2972KB/5944KB, paused 1.929ms,7.087ms total 31.976ms
+07-01 07:43:05.086  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2428KB/4856KB, paused 5.671ms,4.822ms total 31.220ms
+07-01 07:43:05.139  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2436KB) LOS objects, 49% free, 2812KB/5624KB, paused 1.951ms,6.521ms total 32.035ms
+07-01 07:43:05.194  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2360KB/4720KB, paused 2.445ms,5.900ms total 29.465ms
+07-01 07:43:05.236  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(1984KB) LOS objects, 49% free, 2652KB/5304KB, paused 896us,9.437ms total 27.862ms
+07-01 07:43:05.284  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 3104KB/6208KB, paused 1.537ms,5.410ms total 26.881ms
+07-01 07:43:05.344  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 33(3972KB) LOS objects, 49% free, 2728KB/5456KB, paused 5.610ms,4.541ms total 35.112ms
+07-01 07:43:05.394  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(3348KB) LOS objects, 48% free, 2352KB/4552KB, paused 1.042ms,5.002ms total 26.839ms
+07-01 07:43:05.514  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2728KB) LOS objects, 49% free, 2360KB/4720KB, paused 1.901ms,6.846ms total 31.556ms
+07-01 07:43:05.566  3929  3971 D EGL_emulation: app_time_stats: avg=53.61ms min=46.53ms max=64.98ms count=19
+07-01 07:43:05.571  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3208KB) LOS objects, 49% free, 2360KB/4720KB, paused 2.443ms,6.391ms total 33.170ms
+07-01 07:43:05.610  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(1984KB) LOS objects, 49% free, 3104KB/6208KB, paused 2.054ms,5.154ms total 25.766ms
+07-01 07:43:05.768  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2352KB/4704KB, paused 2.823ms,5.119ms total 29.002ms
+07-01 07:43:05.868  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3340KB) LOS objects, 49% free, 2512KB/5024KB, paused 1.338ms,5.959ms total 32.382ms
+07-01 07:43:06.024   499   601 D AF::Track: interceptBuffer: took 502us to intercept 0 tracks
+07-01 07:43:06.099  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.008ms,5.284ms total 28.228ms
+07-01 07:43:06.153  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 26(2436KB) LOS objects, 49% free, 2964KB/5928KB, paused 1.071ms,6.146ms total 31.700ms
+07-01 07:43:06.358  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2200KB/4400KB, paused 2.685ms,6.062ms total 29.853ms
+07-01 07:43:06.400  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 3104KB/6208KB, paused 981us,6.035ms total 26.986ms
+07-01 07:43:06.463  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 33(4348KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.555ms,5.751ms total 31.669ms
+07-01 07:43:06.574  3929  3971 D EGL_emulation: app_time_stats: avg=52.85ms min=45.50ms max=76.85ms count=19
+07-01 07:43:06.589  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(2672KB) LOS objects, 49% free, 2728KB/5456KB, paused 852us,5.044ms total 24.272ms
+07-01 07:43:06.688  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2972KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.176ms,5.138ms total 33.279ms
+07-01 07:43:06.739  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2652KB) LOS objects, 49% free, 2520KB/5040KB, paused 1.244ms,5.088ms total 29.866ms
+07-01 07:43:06.982  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2200KB) LOS objects, 49% free, 2972KB/5944KB, paused 1.588ms,5.429ms total 32.750ms
+07-01 07:43:07.033  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3896KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.472ms,6.239ms total 31.151ms
+07-01 07:43:07.273  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2744KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.195ms,5.162ms total 29.926ms
+07-01 07:43:07.424  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2744KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.590ms,6.106ms total 29.557ms
+07-01 07:43:07.521  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3576KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.116ms,5.322ms total 27.486ms
+07-01 07:43:07.570  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2820KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.646ms,5.350ms total 29.788ms
+07-01 07:43:07.629  3929  3971 D EGL_emulation: app_time_stats: avg=52.59ms min=45.32ms max=68.57ms count=20
+07-01 07:43:07.897  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2728KB/5456KB, paused 877us,7.892ms total 34.088ms
+07-01 07:43:08.050  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.425ms,5.251ms total 29.369ms
+07-01 07:43:08.290  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 34(3504KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.285ms,8.258ms total 33.244ms
+07-01 07:43:08.528  3929  3992 V AudioMixerController: Mix a frame waste: 1.543000ms
+07-01 07:43:08.693  3929  3971 D EGL_emulation: app_time_stats: avg=53.02ms min=42.24ms max=69.61ms count=20
+07-01 07:43:08.743  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3728KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.710ms,5.026ms total 29.664ms
+07-01 07:43:08.881  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2284KB) LOS objects, 49% free, 2812KB/5624KB, paused 767us,5.874ms total 27.992ms
+07-01 07:43:08.930  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2888KB) LOS objects, 49% free, 2972KB/5944KB, paused 1.007ms,5.201ms total 30.486ms
+07-01 07:43:08.981  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 33(3972KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.749ms,5.146ms total 27.529ms
+07-01 07:43:09.238  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 3.340ms,5.333ms total 30.116ms
+07-01 07:43:09.289  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2888KB) LOS objects, 49% free, 2360KB/4720KB, paused 1.734ms,6.498ms total 30.636ms
+07-01 07:43:09.329  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(1984KB) LOS objects, 49% free, 3104KB/6208KB, paused 1.196ms,6.969ms total 25.405ms
+07-01 07:43:09.437  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 4.108ms,5.721ms total 31.455ms
+07-01 07:43:09.487  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 953us,6.545ms total 28.995ms
+07-01 07:43:09.594  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(2900KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.192ms,5.559ms total 33.576ms
+07-01 07:43:09.744  3929  3971 D EGL_emulation: app_time_stats: avg=49.93ms min=44.84ms max=59.97ms count=21
+07-01 07:43:09.746  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(2756KB) LOS objects, 49% free, 2728KB/5456KB, paused 1.317ms,5.092ms total 26.228ms
+07-01 07:43:10.016  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3368KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.017ms,5.208ms total 29.599ms
+07-01 07:43:10.231  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.084ms,5.558ms total 27.124ms
+07-01 07:43:10.669  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2428KB/4856KB, paused 651us,5.242ms total 28.739ms
+07-01 07:43:10.749  3929  3971 D EGL_emulation: app_time_stats: avg=47.69ms min=36.38ms max=58.23ms count=21
+07-01 07:43:10.831   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:43:10.992  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 34(3504KB) LOS objects, 49% free, 2428KB/4856KB, paused 1.326ms,5.335ms total 30.189ms
+07-01 07:43:11.386  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3896KB) LOS objects, 49% free, 2428KB/4856KB, paused 5.008ms,5.178ms total 29.101ms
+07-01 07:43:11.424  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3276KB) LOS objects, 49% free, 2428KB/4856KB, paused 5.025ms,2.253ms total 25.768ms
+07-01 07:43:11.674  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2276KB/4552KB, paused 2.225ms,5.636ms total 28.751ms
+07-01 07:43:11.756  3929  3971 D EGL_emulation: app_time_stats: avg=41.85ms min=36.31ms max=49.28ms count=24
+07-01 07:43:12.623  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 22(2424KB) LOS objects, 49% free, 2520KB/5040KB, paused 8.813ms,3.298ms total 28.965ms
+07-01 07:43:12.700  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 3104KB/6208KB, paused 1.129ms,5.004ms total 25.119ms
+07-01 07:43:12.794  3929  3971 D EGL_emulation: app_time_stats: avg=41.36ms min=33.76ms max=49.98ms count=25
+07-01 07:43:12.839  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2728KB) LOS objects, 49% free, 2520KB/5040KB, paused 1.436ms,6.037ms total 27.582ms
+07-01 07:43:12.893  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 27(2596KB) LOS objects, 49% free, 2972KB/5944KB, paused 5.184ms,1.851ms total 27.566ms
+07-01 07:43:13.055  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 23(2292KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.735ms,5.037ms total 26.882ms
+07-01 07:43:13.097  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3652KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.944ms,5.499ms total 24.351ms
+07-01 07:43:13.177  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 29(3208KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.383ms,5.526ms total 27.843ms
+07-01 07:43:13.262  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 29(3500KB) LOS objects, 49% free, 2352KB/4704KB, paused 661us,6.159ms total 22.434ms
+07-01 07:43:13.555  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 41(4956KB) LOS objects, 49% free, 2580KB/5160KB, paused 1.110ms,6.045ms total 26.558ms
+07-01 07:43:13.810  3929  3971 D EGL_emulation: app_time_stats: avg=42.19ms min=34.40ms max=49.97ms count=24
+07-01 07:43:13.938  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3812KB) LOS objects, 49% free, 2200KB/4400KB, paused 1.346ms,7.677ms total 27.486ms
+07-01 07:43:14.508  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3660KB) LOS objects, 49% free, 2352KB/4704KB, paused 632us,5.082ms total 24.735ms
+07-01 07:43:14.710  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 801us,9.461ms total 28.770ms
+07-01 07:43:14.820  3929  3971 D EGL_emulation: app_time_stats: avg=40.23ms min=33.40ms max=50.04ms count=25
+07-01 07:43:14.988  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 23(2500KB) LOS objects, 49% free, 2520KB/5040KB, paused 517us,6.840ms total 32.402ms
+07-01 07:43:15.424  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 3104KB/6208KB, paused 458us,5.245ms total 20.296ms
+07-01 07:43:15.856  3929  3971 D EGL_emulation: app_time_stats: avg=41.28ms min=34.93ms max=52.90ms count=25
+07-01 07:43:16.337  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2972KB) LOS objects, 49% free, 2352KB/4704KB, paused 606us,5.421ms total 24.309ms
+07-01 07:43:16.887  3929  3971 D EGL_emulation: app_time_stats: avg=42.85ms min=37.32ms max=49.88ms count=24
+07-01 07:43:17.832  1439  1667 I BistoHotwordHelper: (REDACTED) getHotwordActive::active query: %s, watch: %s, devices connected: %s
+07-01 07:43:17.917  3929  3971 D EGL_emulation: app_time_stats: avg=41.07ms min=33.78ms max=51.22ms count=25
+07-01 07:43:18.294  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 33(3804KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.158ms,5.291ms total 24.291ms
+07-01 07:43:18.453  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3276KB) LOS objects, 49% free, 2276KB/4552KB, paused 673us,5.182ms total 23.724ms
+07-01 07:43:18.487  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 22(2508KB) LOS objects, 49% free, 2436KB/4872KB, paused 627us,5.435ms total 20.214ms
+07-01 07:43:18.722  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(1984KB) LOS objects, 49% free, 3104KB/6208KB, paused 974us,6.878ms total 23.926ms
+07-01 07:43:18.769   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:43:18.933  3929  3971 D EGL_emulation: app_time_stats: avg=40.50ms min=35.04ms max=45.62ms count=25
+07-01 07:43:19.181  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 3104KB/6208KB, paused 898us,5.159ms total 20.178ms
+07-01 07:43:19.785  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3520KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.315ms,8.605ms total 26.936ms
+07-01 07:43:19.934  3929  3971 D EGL_emulation: app_time_stats: avg=39.93ms min=32.81ms max=49.82ms count=25
+07-01 07:43:20.822  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 3104KB/6208KB, paused 603us,8.716ms total 32.741ms
+07-01 07:43:20.944  3929  3971 D EGL_emulation: app_time_stats: avg=40.25ms min=32.48ms max=52.38ms count=25
+07-01 07:43:20.988  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2444KB) LOS objects, 49% free, 2804KB/5608KB, paused 568us,5.459ms total 22.975ms
+07-01 07:43:21.369   499   601 D AF::Track: interceptBuffer: took 742us to intercept 0 tracks
+07-01 07:43:21.856  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.329ms,6.294ms total 28.506ms
+07-01 07:43:21.968  3929  3971 D EGL_emulation: app_time_stats: avg=40.89ms min=33.55ms max=59.11ms count=25
+07-01 07:43:22.993  3929  3971 D EGL_emulation: app_time_stats: avg=39.31ms min=34.09ms max=49.77ms count=26
+07-01 07:43:23.993  3929  3971 D EGL_emulation: app_time_stats: avg=41.56ms min=34.27ms max=51.71ms count=24
+07-01 07:43:24.587  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2972KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.366ms,8.071ms total 26.450ms
+07-01 07:43:24.628  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(2972KB) LOS objects, 49% free, 2580KB/5160KB, paused 1.649ms,5.218ms total 23.623ms
+07-01 07:43:24.823  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2728KB) LOS objects, 49% free, 2520KB/5040KB, paused 874us,6.719ms total 27.335ms
+07-01 07:43:24.998  3929  3971 D EGL_emulation: app_time_stats: avg=40.04ms min=34.39ms max=45.90ms count=25
+07-01 07:43:25.276  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2820KB) LOS objects, 49% free, 2276KB/4552KB, paused 728us,10.092ms total 29.051ms
+07-01 07:43:25.380   499   601 D AudioFlinger: mixer(0x70de318098e0) throttle end: throttle time(1)
+07-01 07:43:25.944  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 27(3348KB) LOS objects, 49% free, 2352KB/4704KB, paused 706us,5.486ms total 31.691ms
+07-01 07:43:26.023  3929  3971 D EGL_emulation: app_time_stats: avg=39.32ms min=33.90ms max=48.57ms count=26
+07-01 07:43:26.657  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2744KB) LOS objects, 49% free, 2200KB/4400KB, paused 4.914ms,5.357ms total 35.901ms
+07-01 07:43:26.704   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:43:26.777  3929  3935 W skin.trudrunner: Suspending all threads took: 7.472ms
+07-01 07:43:26.788  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(2672KB) LOS objects, 49% free, 2880KB/5760KB, paused 8.775ms,2.522ms total 28.959ms
+07-01 07:43:27.032  3929  3971 D EGL_emulation: app_time_stats: avg=41.93ms min=35.75ms max=54.95ms count=24
+07-01 07:43:28.050  3929  3971 D EGL_emulation: app_time_stats: avg=42.30ms min=33.76ms max=55.14ms count=24
+07-01 07:43:28.225  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(2900KB) LOS objects, 49% free, 2880KB/5760KB, paused 1.298ms,5.166ms total 25.748ms
+07-01 07:43:29.085  3929  3971 D EGL_emulation: app_time_stats: avg=42.99ms min=36.74ms max=52.87ms count=24
+07-01 07:43:29.217  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2352KB/4704KB, paused 8.754ms,2.955ms total 40.990ms
+07-01 07:43:30.118  3929  3971 D EGL_emulation: app_time_stats: avg=41.21ms min=35.82ms max=49.63ms count=25
+07-01 07:43:30.204  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2660KB) LOS objects, 49% free, 2360KB/4720KB, paused 1.480ms,6.258ms total 27.236ms
+07-01 07:43:30.454  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2276KB/4552KB, paused 1.368ms,7.098ms total 38.583ms
+07-01 07:43:31.161  3929  3971 D EGL_emulation: app_time_stats: avg=41.61ms min=34.59ms max=52.20ms count=25
+07-01 07:43:31.227   499   601 D AudioFlinger: mixer(0x70de318098e0) throttle end: throttle time(1)
+07-01 07:43:31.330  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(2576KB) LOS objects, 49% free, 2200KB/4400KB, paused 3.545ms,5.898ms total 26.132ms
+07-01 07:43:32.024   499   601 D AF::Track: interceptBuffer: took 1418us to intercept 0 tracks
+07-01 07:43:32.122  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 2200KB/4400KB, paused 1.069ms,15.753ms total 28.895ms
+07-01 07:43:32.172  3929  3971 D EGL_emulation: app_time_stats: avg=40.32ms min=32.44ms max=51.58ms count=25
+07-01 07:43:33.173  3929  3971 D EGL_emulation: app_time_stats: avg=41.60ms min=35.66ms max=56.46ms count=24
+07-01 07:43:34.028  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3660KB) LOS objects, 49% free, 2512KB/5024KB, paused 1.103ms,5.521ms total 28.371ms
+07-01 07:43:34.203  3929  3971 D EGL_emulation: app_time_stats: avg=41.05ms min=34.09ms max=51.55ms count=25
+07-01 07:43:34.639   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:43:34.790  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2504KB/5008KB, paused 10.160ms,3.111ms total 28.897ms
+07-01 07:43:34.962  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2896KB) LOS objects, 49% free, 2352KB/4704KB, paused 17.024ms,3.857ms total 35.200ms
+07-01 07:43:35.231  3929  3971 D EGL_emulation: app_time_stats: avg=42.68ms min=36.43ms max=52.05ms count=24
+07-01 07:43:35.709  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3352KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.573ms,5.003ms total 28.889ms
+07-01 07:43:35.789  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 31(3276KB) LOS objects, 49% free, 2352KB/4704KB, paused 9.901ms,4.676ms total 30.914ms
+07-01 07:43:36.071  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 30(3200KB) LOS objects, 49% free, 2428KB/4856KB, paused 762us,6.976ms total 28.927ms
+07-01 07:43:36.235  3929  3971 D EGL_emulation: app_time_stats: avg=43.55ms min=38.98ms max=54.22ms count=23
+07-01 07:43:37.242  3929  3971 D EGL_emulation: app_time_stats: avg=41.87ms min=31.74ms max=53.74ms count=24
+07-01 07:43:37.320  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3352KB) LOS objects, 49% free, 2352KB/4704KB, paused 699us,5.102ms total 26.327ms
+07-01 07:43:37.393  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 24(1824KB) LOS objects, 49% free, 3104KB/6208KB, paused 894us,6.523ms total 27.161ms
+07-01 07:43:38.247  3929  3971 D EGL_emulation: app_time_stats: avg=40.06ms min=36.09ms max=48.91ms count=25
+07-01 07:43:39.167  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 29(3124KB) LOS objects, 49% free, 2276KB/4552KB, paused 770us,7.650ms total 28.627ms
+07-01 07:43:39.256  3929  3971 D EGL_emulation: app_time_stats: avg=40.26ms min=34.44ms max=52.55ms count=25
+07-01 07:43:39.730  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2520KB) LOS objects, 49% free, 2804KB/5608KB, paused 1.490ms,5.343ms total 20.609ms
+07-01 07:43:40.288  3929  3971 D EGL_emulation: app_time_stats: avg=39.54ms min=34.60ms max=46.78ms count=26
+07-01 07:43:40.357  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(1984KB) LOS objects, 49% free, 3104KB/6208KB, paused 508us,5.437ms total 18.766ms
+07-01 07:43:40.405   884  1015 D EGL_emulation: app_time_stats: avg=40376.31ms min=40376.31ms max=40376.31ms count=1
+07-01 07:43:40.993  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3340KB) LOS objects, 49% free, 2512KB/5024KB, paused 1.706ms,5.301ms total 21.290ms
+07-01 07:43:41.306  3929  3971 D EGL_emulation: app_time_stats: avg=39.03ms min=33.66ms max=50.26ms count=26
+07-01 07:43:42.346  3929  3971 D EGL_emulation: app_time_stats: avg=39.92ms min=35.56ms max=48.27ms count=26
+07-01 07:43:42.466  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3340KB) LOS objects, 49% free, 2512KB/5024KB, paused 1.282ms,5.015ms total 24.976ms
+07-01 07:43:42.819  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 22(2592KB) LOS objects, 49% free, 2200KB/4400KB, paused 1.026ms,9.990ms total 29.112ms
+07-01 07:43:42.832   870   870 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+07-01 07:43:42.914  4343  4343 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+07-01 07:43:42.914  4343  4343 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+07-01 07:43:42.925   204   204 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+07-01 07:43:42.925  4343  4344 I Gralloc4: mapper 4.x is not supported
+07-01 07:43:42.893     0     0 I servicemanager: Caller(pid=4343,uid=2000,sid=u:r:shell:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+07-01 07:43:42.963  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 26(2728KB) LOS objects, 49% free, 2520KB/5040KB, paused 1.694ms,5.555ms total 24.495ms
+07-01 07:43:43.322  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 32(3352KB) LOS objects, 49% free, 2276KB/4552KB, paused 3.144ms,9.839ms total 38.637ms
+07-01 07:43:43.357   499   601 D AF::Track: interceptBuffer: took 1165us to intercept 0 tracks
+07-01 07:43:43.362  3929  3971 D EGL_emulation: app_time_stats: avg=48.20ms min=37.26ms max=61.18ms count=21
+07-01 07:43:43.439  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 45(4884KB) LOS objects, 49% free, 2352KB/4704KB, paused 1.867ms,8.876ms total 34.878ms
+07-01 07:43:43.525  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 96KB AllocSpace bytes, 28(3048KB) LOS objects, 49% free, 2352KB/4704KB, paused 5.416ms,2.745ms total 26.655ms
+07-01 07:43:43.834   499   601 D AF::Track: interceptBuffer: took 3827us to intercept 0 tracks
+07-01 07:43:44.090  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 25(2444KB) LOS objects, 49% free, 2956KB/5912KB, paused 523us,6.559ms total 26.127ms
+07-01 07:43:44.177  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 21(2432KB) LOS objects, 49% free, 2512KB/5024KB, paused 1.136ms,6.380ms total 25.112ms
+07-01 07:43:44.257  3929  3945 I skin.trudrunner: Waiting for a blocking GC ProfileSaver
+07-01 07:43:44.277  3929  3935 I skin.trudrunner: Background concurrent mark compact GC freed 64KB AllocSpace bytes, 21(2516KB) LOS objects, 49% free, 2352KB/4704KB, paused 7.964ms,5.082ms total 37.283ms
+07-01 07:43:44.280  3929  3945 I skin.trudrunner: WaitForGcToComplete blocked ProfileSaver on Background for 22.627ms
+07-01 07:43:44.371  3929  3971 D EGL_emulation: app_time_stats: avg=47.87ms min=36.45ms max=63.55ms count=21

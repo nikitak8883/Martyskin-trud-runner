@@ -1,0 +1,94 @@
+{
+  "generatedAt": "2026-06-30T09:27:27.772Z",
+  "checks": [
+    {
+      "level": 8,
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_bonus_screens\\level_08_patch2_bonus.png",
+      "lastGameState": "MTR_GAMESTATE reason=reset mode=RUNNING level=8 speed=491 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=73/66/145/13",
+      "assetSummary": "MTR_ASSET_USAGE_SUMMARY level=8 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=brigadir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2",
+      "newBonusLoads": [
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_jump_spring_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_dash_bolt_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=8 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=8 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=8 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_jump_spring_01 level=8 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_dash_bolt_01 level=8 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=8 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=8 spawned=1 reason=player_equipment_aura_anchor",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=8 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=8 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=8 spawned=1 reason=bonus_visual_near_player_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_extra_life_01 level=8 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=8 spawned=1 reason=bonus_visual_near_player_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=8 spawned=1 reason=bonus_visual_near_player_no_badge"
+      ]
+    },
+    {
+      "level": 12,
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_bonus_screens\\level_12_patch2_bonus.png",
+      "lastGameState": "MTR_GAMESTATE reason=reset mode=RUNNING level=12 speed=528 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=98/88/164/14",
+      "assetSummary": "MTR_ASSET_USAGE_SUMMARY level=12 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=brigadir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_2 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_2",
+      "newBonusLoads": [
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_jump_spring_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_dash_bolt_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=12 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=12 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=12 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_jump_spring_01 level=12 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_dash_bolt_01 level=12 spawned=1 reason=level_registry",
+        "MTR_OBJECT_SPRITE_QUEUE_PROMOTE key=objectives/bonuses/bonus_jump_spring_01 from=idle to=visible queued=28 active=4",
+        "MTR_OBJECT_SPRITE_QUEUE_PROMOTE key=objectives/bonuses/bonus_dash_bolt_01 from=idle to=visible queued=28 active=4",
+        "MTR_OBJECT_SPRITE_QUEUE_PROMOTE key=objectives/bonuses/bonus_shield_01 from=idle to=visible queued=28 active=4",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=12 spawned=1 reason=player_equipment_aura_anchor",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=12 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=12 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=12 spawned=1 reason=bonus_visual_no_badge"
+      ]
+    },
+    {
+      "level": 15,
+      "screenshot": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\docs\\qa\\evidence\\20260630_next_big_patch\\web_patch2_bonus_screens\\level_15_patch2_bonus.png",
+      "lastGameState": "MTR_GAMESTATE reason=reset mode=RUNNING level=15 speed=538 distance=0 score=0 hp=3 bananas=0 bonus=0 pools=98/110/195/18",
+      "assetSummary": "MTR_ASSET_USAGE_SUMMARY level=15 categories=platforms,hazards,collectibles,bonuses,npc_decor,ui_achievements,labels_signage,active_labels,foreground_decor,background_decor,player_body,equipment",
+      "pose": "MTR_SKIN_VARIANT_ACTIVE skin=brigadir variant=helmet_vest_boots model=bonus/helmet_vest_boots pose=run_1 key=characters/player_skins/brigadir/bonus/helmet_vest_boots/run_1",
+      "newBonusLoads": [
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_jump_spring_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_dash_bolt_01 level=1 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=15 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=15 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=15 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_jump_spring_01 level=15 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=equipment id=bonus_dash_bolt_01 level=15 spawned=1 reason=level_registry",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=15 spawned=1 reason=player_equipment_aura_anchor",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=15 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=15 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=15 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_jump_spring_01 level=15 spawned=1 reason=bonus_visual_near_player_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_extra_life_01 level=15 spawned=1 reason=bonus_visual_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_dash_bolt_01 level=15 spawned=1 reason=bonus_visual_near_player_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_shield_01 level=15 spawned=1 reason=bonus_visual_near_player_no_badge",
+        "MTR_ASSET_USAGE category=bonuses id=bonus_extra_life_01 level=15 spawned=1 reason=bonus_visual_near_player_no_badge"
+      ]
+    }
+  ],
+  "flaggedCount": 1,
+  "flagged": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)",
+      "level": 8
+    }
+  ]
+}

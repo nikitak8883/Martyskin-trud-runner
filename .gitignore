@@ -1,0 +1,82 @@
+
+#///////////////////////////
+# Cocos Creator Project
+#///////////////////////////
+
+/library/
+/temp/
+/local/
+/build/
+/profiles/
+/native/engine/android/**/*/assets
+
+# Cocos/Android generated state
+/.idea/
+**/.gradle/
+**/.cxx/
+**/.externalNativeBuild/
+**/intermediates/
+**/outputs/
+**/obj/
+**/bin/
+**/out/
+**/dist/
+
+#//////////////////////////
+# NPM
+#//////////////////////////
+node_modules/
+
+#//////////////////////////
+# Python tools
+#//////////////////////////
+__pycache__/
+*.pyc
+*.pyo
+
+#//////////////////////////
+# VSCode
+#//////////////////////////
+.vscode/
+
+#//////////////////////////
+# WebStorm
+#//////////////////////////
+.idea/
+
+#//////////////////////////
+# Local transfer / backup artifacts
+#//////////////////////////
+/portable_transfer/
+/transfer/
+/backup/
+/_backup/
+/_archive/
+*.bundle
+*.zip
+*.7z
+*.rar
+
+#//////////////////////////
+# Build outputs and logs
+#//////////////////////////
+*.apk
+*.aab
+*.apks
+*.xapk
+*.ipa
+*.log
+*.err.log
+*.out.log
+*.tmp
+*.bak
+*.old
+*.orig
+
+# Final binary releases are included in the local portable archive, not Git.
+/releases/android/
+/releases/web/
+/releases/checksums/
+
+# QA evidence is useful locally but not part of the source backup commit.
+/qa/

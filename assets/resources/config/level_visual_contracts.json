@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "virtualResolution": {
+    "width": 1280,
+    "height": 720
+  },
+  "visualPriority": [
+    "player",
+    "hazard",
+    "bonus",
+    "platform",
+    "active_label",
+    "npc_decor",
+    "background_joke",
+    "far_background"
+  ],
+  "globalRules": {
+    "debugCollidersDefault": false,
+    "playerMustRemainReadable": true,
+    "maxActiveLabelsOnScreen": 5,
+    "bananasCannotOutrankPlayer": true,
+    "backgroundMustNotLookLikePoster": true
+  },
+  "levels": [
+    {
+      "level": 1,
+      "title": "Стройплощадка примата",
+      "backgroundTreatment": "dim_busy_poster_into_layered_scene",
+      "gameplayBand": {
+        "y": 314,
+        "height": 166,
+        "minimumContrastBoost": 0.18
+      },
+      "requiredForegroundReadability": [
+        "player_halo",
+        "player_ground_matte",
+        "reduced_platform_opacity_near_player"
+      ],
+      "labelRules": {
+        "maxBackgroundBillboards": 3,
+        "avoidRepeating": "КАСКА ЕСТЬ / ПЛАНА НЕТ"
+      }
+    }
+  ]
+}
