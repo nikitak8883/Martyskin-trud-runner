@@ -92,13 +92,13 @@ modules:
         outputs: [docs/global_modernization/v3/M01/schema_compatibility_matrix.md, docs/global_modernization/v3/M01/M01_2_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_2_CODE_REVIEW_REPORT.md, docs/global_modernization/v3/library/schemas, docs/global_modernization/v3/library/adapters, docs/global_modernization/v3/library/fixtures/quality_evidence, docs/global_modernization/v3/library/tests/validate_m01_2_contracts.py]
         gates: [D4]
       - id: M01.3
-        status: ready
+        status: complete
         objective: Implement typed fail-closed runner with executable/argument arrays, process-tree timeout, path containment and atomic JSON reports.
         targets: [tools/codex/quality-gate]
-        outputs: [docs/global_modernization/v3/M01/runner_self_test_report.md]
+        outputs: [docs/global_modernization/v3/M01/runner_self_test_report.md, docs/global_modernization/v3/M01/M01_3_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_3_CODE_REVIEW_REPORT.md]
         gates: [P4]
       - id: M01.4
-        status: pending
+        status: ready
         objective: Encode D4, P4, M2_PLUS, QA7 and RC2 profiles with stale-evidence detection and mandatory/not-applicable semantics.
         outputs: [docs/global_modernization/v3/M01/quality_gate.config.json]
         gates: [D4, P4]
@@ -600,5 +600,5 @@ modules:
 
 next_safe_action:
   module: M01
-  work_package: M01.3
-  action: Implement the typed fail-closed runner with an isolated pinned Draft 2020-12 validator; do not patch game runtime code.
+  work_package: M01.4
+  action: Compose D4, P4, M2_PLUS, QA7 and RC2 typed profiles on the accepted M01.3 runner; preserve emulator-only Android defaults and do not claim release readiness.

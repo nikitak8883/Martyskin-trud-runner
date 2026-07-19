@@ -1,0 +1,83 @@
+{
+  "schema": "mtr.m01_3_validation_summary.v1",
+  "generated_at": "2026-07-19T14:56:19+03:00",
+  "status": "PASS",
+  "work_package": "M01.3",
+  "branch": "codex/mtr-source-freeze-v3",
+  "source_commit_before": "c6434c9bdbcc09842cc24d66f41763122743bb51",
+  "scope": {
+    "typed_runner": true,
+    "canonical_runner_schemas": true,
+    "isolated_schema_engine": true,
+    "adapter_activation": true,
+    "runtime_changed": false,
+    "build_executed": false,
+    "web_runtime_executed": false,
+    "android_emulator_executed": false,
+    "physical_device_used": false,
+    "pages_changed": false
+  },
+  "schema_engine": {
+    "name": "jsonschema",
+    "version": "4.26.0",
+    "draft": "2020-12",
+    "offline_registry": true,
+    "isolated": true,
+    "global_python_mutated": false,
+    "lock_sha256": "B22864F672907A3E850FFAF916CF2A2E0C1185A0C024738D755DFCF16DC47D7C",
+    "environment": "%LOCALAPPDATA%/MTR/quality-gate/venv-py313-b22864f67290"
+  },
+  "runner_self_tests": {
+    "discovered": 27,
+    "passed": 25,
+    "failed": 0,
+    "skipped": 2,
+    "skips": [
+      "POSIX execute-bit branch is not executable on the Windows host",
+      "os.symlink lacked Windows privilege; equivalent junction containment smoke passed"
+    ],
+    "windows_process_tree_timeout": "PASS",
+    "windows_junction_escape": "PASS_PATH_OUTSIDE_PROJECT"
+  },
+  "entrypoint": {
+    "development_dirty_override": {"status": "PASS", "exit_code": 0, "stable_during_run": true},
+    "dirty_without_override": {"status": "BLOCKED", "exit_code": 2, "finding": "DIRTY_SOURCE_NOT_AUTHORIZED"},
+    "unapproved_bootstrap_module": {"status": "BLOCKED", "exit_code": 3, "code": "UNAPPROVED_BOOTSTRAP_MODULE"}
+  },
+  "bootstrap_concurrency": {
+    "cold_start_processes": 2,
+    "exit_codes": [0, 0],
+    "environment_count": 1,
+    "marker_count": 1,
+    "remaining_lock_count": 0,
+    "status": "PASS"
+  },
+  "m01_2_regression": {
+    "status": "PASS",
+    "canonical_schema_count": 5,
+    "positive_fixtures": 11,
+    "negative_fixtures": 20,
+    "deterministic_reruns": 25,
+    "runtime_guard_mutations": 3,
+    "representative_report_shapes": 9
+  },
+  "static_regression": {
+    "project_config": "PASS_15_LEVELS_15_BACKGROUNDS",
+    "cocos_typescript_no_emit": "PASS",
+    "assets_strict": "PASS_1528_PNG_0_BLOCKERS_0_WHITE_MATTE",
+    "skin_bonus_matrix_strict": "PASS_576_OF_576_0_WARNINGS",
+    "ui_ir": "PASS_14_OF_14_0_PROBLEMS_0_WARNINGS",
+    "level_select_icons_verify_only": "PASS_15_PNG_15_META",
+    "git_topology": "PASS_PARENT_GITLINK_EQUALS_CLEAN_PAGES_HEAD"
+  },
+  "review": {
+    "local_worker_bootstrap_finding": "FIXED_AND_RETESTED",
+    "codex_source_input_toctou_finding": "FIXED_AND_RETESTED",
+    "heavy_review": "TIMED_OUT_NO_EVIDENCE_NOT_COUNTED",
+    "coderabbit_cli": "UNAVAILABLE",
+    "final_verdict": "PASS"
+  },
+  "open_findings": [],
+  "release_status": "BLOCKED_UNCHANGED",
+  "next_safe_action": "Implement M01.4 typed D4/P4/M2_PLUS/QA7/RC2 profiles on the accepted M01.3 runner."
+}

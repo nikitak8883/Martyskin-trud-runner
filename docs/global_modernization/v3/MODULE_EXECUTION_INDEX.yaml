@@ -4,7 +4,7 @@ source_head: 12670452ae4580ef5c685ff986476daf91522978
 source_state: frozen_tagged_bundled_restored
 modules:
   M00: {status: complete, completed: [M00.1, M00.2, M00.3, M00.4, M00.5, M00.6], next: null, report: docs/global_modernization/v3/M00/source_freeze_report.md}
-  M01: {status: partial, completed: [M01.1, M01.2], next: M01.3, report: docs/global_modernization/v3/M01/schema_compatibility_matrix.md}
+  M01: {status: partial, completed: [M01.1, M01.2, M01.3], next: M01.4, report: docs/global_modernization/v3/M01/runner_self_test_report.md}
   M02: {status: blocked, completed: [], next: M02.1, report: null}
   M03: {status: pending, completed: [], next: M03.1, report: null}
   M04: {status: revalidate_then_extend, completed: [], next: M04.1, report: docs/global_modernization/graphics_inventory.md}
@@ -22,4 +22,4 @@ release_blockers:
   - no current arm64 artifact from accepted source
   - no production signing decision
   - no embedded content version
-next_safe_action: M01.3 typed fail-closed runner with isolated pinned Draft 2020-12 validation
+next_safe_action: M01.4 typed D4/P4/M2_PLUS/QA7/RC2 profile composition on the accepted M01.3 runner

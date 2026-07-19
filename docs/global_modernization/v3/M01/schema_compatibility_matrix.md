@@ -1,8 +1,8 @@
 # M01.2 — schema compatibility matrix
 
 Дата: 2026-07-19  
-Статус: `PASS / M01.2 COMPLETE / M01.3 READY`  
-Область: только contracts, adapters, fixtures и tests; runtime, builds, Pages и Android-устройства не изменялись.
+Статус: `PASS / M01.2 COMPLETE / M01.3 COMPLETE / M01.4 READY`  
+Область: contracts, adapters, fixtures, tests и project-local typed runner; game runtime, builds, Pages и Android-устройства не изменялись.
 
 ## Решение
 
@@ -33,6 +33,8 @@ https://schemas.mtr.local/quality/v1/
 | `quality_fixture_suite.schema.json` | `.../quality-fixture-suite.schema.json` | positive/negative fixture contract |
 
 Все три используют JSON Schema Draft 2020-12, имеют уникальный canonical `$id` и запрещают неизвестные top-level поля.
+
+M01.3 добавляет два canonical runner contracts: `quality_gate_config.schema.json` для executable/argument arrays и `quality_gate_report.schema.json` для atomic source-bound результата. Итого canonical quality schemas: `5`.
 
 ## Активная compatibility matrix
 
@@ -91,9 +93,18 @@ Registry содержит ровно `18` классифицированных s
 
 Representative report smoke доказывает только совместимость shape. Он не переименовывает старые reports в свежий QA текущего HEAD.
 
+## M01.3 activation overlay
+
+- `tools/codex/quality-gate/runner.py` исполняет только typed arrays с `shell=False` и отдельными stdout/stderr captures;
+- timeout завершает полное дерево процессов; Windows child-survival fixture подтверждает отсутствие остаточного процесса;
+- config/cwd/output/evidence/artifact paths остаются под project root, UNC/ADS/device/traversal/symlink escape и output collisions блокируются;
+- source HEAD/dirty state и hashes protected config/schema/adapter/registry/tool inputs повторно проверяются после шагов;
+- stale/missing/malformed/mandatory-skipped/unauthorized-device evidence не может получить `PASS`;
+- report валидируется pinned isolated Draft 2020-12 engine до atomic replacement.
+
 ## Dependency boundary
 
-Глобальный Python не содержит `jsonschema`; среда не изменялась и пакет не устанавливался. M01.2 использует dependency-free runtime guard, совпадающий с canonical envelope invariants. Изолированный pinned Draft 2020-12 engine является обязательной частью M01.3 runner и должен стать blocking до принятия runner PASS.
+Глобальный Python не изменялся. M01.3 создаёт hash-addressed user-cache venv из exact `requirements.lock`; принят `jsonschema==4.26.0` с Draft 2020-12 и offline registry. Два конкурентных cold starts создают ровно одну валидную среду и не оставляют lock. Dependency M01.3 закрыт; profile policy принадлежит M01.4.
 
 ## Rollback
 

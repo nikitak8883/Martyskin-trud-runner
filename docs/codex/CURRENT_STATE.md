@@ -7,7 +7,7 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_2_complete / release_blocked`
+Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_3_complete / release_blocked`
 
 ## 2026-07-19 v3 revalidation overlay
 
@@ -19,8 +19,9 @@ The sections below preserve the detailed Tasks/4 implementation history, but the
 - M00.1–M00.6 are complete: source commit `12670452ae4580ef5c685ff986476daf91522978`, tree `9faa768c9b81f94b7745c917b6d7d49b7cef884c`, annotated tag `mtr-source-freeze-v3-20260719`, verified source/Pages bundles and offline restore rehearsal PASS.
 - Pages is now an explicit submodule pinned to `d7a7cc1b0f75cd7aed7ac831e86f79421014e96f`; the primary parent repository still has no remote.
 - M01.1 is complete: `32/32` tracked tool surfaces are classified with commands, side effects, timeout and evidence contracts; static D4 checks passed without build/runtime execution.
-- M01.2 is complete: 3 canonical schemas, 18 classified source families, 11 active fail-closed adapters, 11 positive and 20 negative fixtures, 25 deterministic reruns and 9 current report-shape smokes pass. The adapters remain project-library-only and do not issue release PASS.
-- Current next action: execute `M01.3` typed fail-closed runner with process-tree timeout, containment, atomic reports and an isolated pinned Draft 2020-12 validator; do not patch game runtime code in that bounded work package.
+- M01.2 is complete: 3 canonical evidence schemas, 18 classified source families, 11 active fail-closed adapters, 11 positive and 20 negative fixtures, 25 deterministic reruns and 9 current report-shape smokes pass.
+- M01.3 is complete: 2 runner schemas and `tools/codex/quality-gate/` provide typed shell-free execution, complete process-tree timeout, path/output containment, atomic reports, adapter activation, source/protected-input revalidation and an isolated pinned Draft 2020-12 validator. No game-runtime file changed.
+- Current next action: execute `M01.4` typed D4/P4/M2_PLUS/QA7/RC2 profile composition; release recovery and runtime patches remain dependency-blocked.
 - Current release status: blocked by Web/Pages drift, absence of a current arm64 artifact from the accepted source, unresolved production signing and missing embedded content version.
 
 The latest known game runtime line is Android/Web capable and has a validated live Web build. The current task line is the Tasks/4 global modernization rollout. Module 0/10 scaffold is in place, Module 1 non-mutating asset/reference validation passes, Module 3 static skin/bonus matrix, contact sheet evidence, and selected Android emulator QA pass, and Module 2 now has `name`, `menu`, `levels`, `playing_hud`, `devgate`, `sound`, `skins`, `devpanel`, `achievements`, `records`, and `paused` UI IR pilots with Web runtime evidence plus Android emulator runtime evidence.
@@ -124,18 +125,19 @@ adb -s R5CY933XP7P install --user 0 -r "<release-apk>"
 
 ## Latest local checkpoint log
 
-- `docs\qa\CONTROL_LOG_CHECKPOINT_20260719_M01_1_QUALITY_GATE_INVENTORY.md`
+- `docs\qa\CONTROL_LOG_CHECKPOINT_20260719_M01_3_TYPED_RUNNER.md`
 - status: `pass`
-- next safe action: execute `M01.3` typed fail-closed runner and self-tests
+- next safe action: execute `M01.4` typed profile composition on the accepted runner
 
 ## Required next implementation order
 
 1. M01.1 complete: preserve the `32/32` inventory and its explicit false-green/timeout/side-effect findings.
 2. M01.2 complete: preserve canonical schema namespace, adapter allowlist and positive/negative fixtures.
-3. Execute M01.3: implement and self-test the typed fail-closed runner with isolated pinned schema validation.
-4. Complete the minimum M01 quality/evidence gate before M02 release recovery; remote CI remains conditional on a primary source remote.
-4. Execute M02 technical release recovery from the frozen source before any external release claim.
-5. Resume M03+ runtime modernization only through the dependency-gated work-package index.
+3. M01.3 complete: preserve the typed runner, isolated lock and fail-closed self-test evidence.
+4. Execute M01.4: compose typed D4/P4/M2_PLUS/QA7/RC2 profiles with mandatory/not-applicable semantics.
+5. Complete the minimum M01 quality/evidence gate before M02 release recovery; remote CI remains conditional on a primary source remote.
+6. Execute M02 technical release recovery from the frozen source before any external release claim.
+7. Resume M03+ runtime modernization only through the dependency-gated work-package index.
 
 ## Hard rules
 

@@ -1,6 +1,6 @@
 # Integrated MTR implementation plan v3
 
-Статус: `m00_complete_m01_2_complete_m01_3_next`, runtime implementation не начат.
+Статус: `m00_complete_m01_3_complete_m01_4_next`, runtime implementation не начат.
 
 ## Цель
 
@@ -21,7 +21,7 @@
 ```text
 R0.A live inventory [DONE]
   → R0.B reviewed source freeze [DONE]
-    → F0 project-native quality gate [M01.1 + M01.2 DONE; NEXT: M01.3]
+    → F0 project-native quality gate [M01.1 + M01.2 + M01.3 DONE; NEXT: M01.4]
       → R1 reproducible Web + emulator + current arm64 release recovery
         → A0 GameRoot seams after technical M02.2–M02.5 baseline
           → A1 M04 assets → M06 skins → M05 UI
@@ -39,7 +39,7 @@ M11 PCG/DDA starts after M07+M09+M10 and remains optional/non-blocking for R2.
 | Module | Live status | Что сохраняется | Что ещё требуется |
 | --- | --- | --- | --- |
 | M00 | complete | classification, topology ADR, source commit/tag, source/Pages bundles, manifest, evidence anchor, offline restore PASS | none; preserve immutable source anchor |
-| M01 | M01.1 + M01.2 complete | полный инвентарь 32/32, canonical quality schemas, 18-source registry, 11 active adapters, positive/negative fixtures, validators и Web/Android QA harnesses | typed fail-closed runner, profiles, retention, CI/local parity |
+| M01 | M01.1 + M01.2 + M01.3 complete | полный инвентарь 32/32, canonical quality schemas, 18-source registry, 11 active adapters, positive/negative fixtures и typed fail-closed runner с isolated validator | profiles, retention, CI/local parity, release summary |
 | M02 | release blocked | Web/emulator artifacts и старый arm APK | immutable source/content version, current arm64, Pages parity, signing decision, conditional AAB |
 | M03 | not started | существующая рабочая логика | state/input/collision/power-up seams и bounded log |
 | M04 | revalidate then extend | asset validators, draft atlas, selected contact sheets | final ownership/atlas/bundle contracts и metrics |
@@ -72,8 +72,10 @@ M00.A и M00.B завершены 19 июля 2026 года:
 Сначала M01 minimum viable gate, затем M02:
 
 - M01.1 завершён: все 32 tool surfaces классифицированы, рабочие команды сохранены, false-green и side-effect risks не замаскированы;
+- M01.2 завершён: canonical evidence contracts, registry, adapters и fixture matrix приняты;
+- M01.3 завершён: shell-free typed runner, process-tree timeout, source/protected-input revalidation и atomic Draft 2020-12 reports приняты без runtime patch;
 - сохранить существующие рабочие validators вместо замены внешними упрощёнными скриптами;
-- typed runner с timeout/fail-closed JSON;
+- M01.4 должен собрать typed gate profiles без строковых shell-команд;
 - общий logical content version;
 - Web, emulator x86_64 и current arm64 из одного checkpoint;
 - Pages artifact parity;

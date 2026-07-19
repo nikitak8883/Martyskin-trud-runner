@@ -1,0 +1,77 @@
+#!/usr/bin/env python3
+"""M01.3 isolated bootstrap unit tests."""
+
+from __future__ import annotations
+
+import json
+import os
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from unittest import mock
+
+
+QUALITY_GATE_ROOT = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(QUALITY_GATE_ROOT))
+
+import bootstrap  # noqa: E402
+
+
+class QualityGateBootstrapTests(unittest.TestCase):
+    def test_lock_contains_only_exact_versions(self) -> None:
+        packages = bootstrap._locked_packages()
+        self.assertEqual(
+            packages,
+            {
+                "attrs": "26.1.0",
+                "jsonschema": "4.26.0",
+                "jsonschema-specifications": "2025.9.1",
+                "referencing": "0.37.0",
+                "rpds-py": "2026.6.3",
+            },
+        )
+
+    def test_atomic_json_replaces_document_without_temp_tail(self) -> None:
+        temp_root = PROJECT_ROOT / "temp"
+        temp_root.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix="m01_3_bootstrap_atomic_", dir=temp_root) as raw_directory:
+            directory = Path(raw_directory)
+            output = directory / "marker.json"
+            output.write_text('{"old": true}\n', encoding="utf-8")
+            bootstrap._atomic_json(output, {"status": "PASS", "value": 2})
+            self.assertEqual(json.loads(output.read_text(encoding="utf-8")), {"status": "PASS", "value": 2})
+            self.assertEqual(list(directory.glob(".marker.json.*.tmp")), [])
+
+    @unittest.skipUnless(os.name == "nt", "Windows UNC guard")
+    def test_cache_override_rejects_unc_path(self) -> None:
+        with mock.patch.dict(os.environ, {"MTR_QUALITY_GATE_CACHE": r"\\server\share\quality-gate"}, clear=False):
+            with self.assertRaisesRegex(RuntimeError, "local path"):
+                bootstrap._cache_root()
+
+    def test_waiter_times_out_without_deleting_foreign_lock(self) -> None:
+        temp_root = PROJECT_ROOT / "temp"
+        temp_root.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix="m01_3_bootstrap_lock_", dir=temp_root) as raw_directory:
+            cache = Path(raw_directory)
+            lock_sha = bootstrap._sha256(bootstrap.LOCK_PATH)
+            environment = cache / f"venv-py{sys.version_info.major}{sys.version_info.minor}-{lock_sha[:12].lower()}"
+            lock_directory = cache / f".{environment.name}.bootstrap.lock"
+            lock_directory.mkdir()
+            with (
+                mock.patch.object(bootstrap, "_cache_root", return_value=cache),
+                mock.patch.object(bootstrap, "_probe", return_value=False),
+                mock.patch.object(
+                    bootstrap.time,
+                    "monotonic",
+                    side_effect=[0.0, bootstrap.BOOTSTRAP_LOCK_WAIT_SECONDS + 1.0],
+                ),
+            ):
+                with self.assertRaisesRegex(RuntimeError, "Timed out waiting for bootstrap lock"):
+                    bootstrap.ensure_environment()
+            self.assertTrue(lock_directory.is_dir(), "a waiter must not delete another process's lock")
+
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)

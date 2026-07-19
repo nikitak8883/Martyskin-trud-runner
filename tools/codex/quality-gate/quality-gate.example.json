@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.quality_gate_config",
+  "gate_id": "mtr.m01_3.contract-smoke",
+  "artifact_directory": "temp/quality-gate-m01-3-smoke",
+  "steps": [
+    {
+      "id": "m01_2_contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "docs/global_modernization/v3/library/tests/validate_m01_2_contracts.py"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 120,
+      "expected_exit_codes": [
+        0
+      ]
+    }
+  ]
+}

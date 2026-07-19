@@ -1,6 +1,6 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m00_complete_m01_2_complete_m01_3_next_runtime_not_started`  
+Статус: `m00_complete_m01_3_complete_m01_4_next_runtime_not_started`  
 Дата интеграции: 2026-07-19  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
@@ -49,8 +49,9 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - Architecture/assets/UI/gameplay patches: в рамках M00 не начинались.
 - M01.1: завершён полный инвентарь `32/32` tracked validators/harnesses/producers; статический D4-срез прошёл, runtime/build QA не запускался.
 - Принятые инструменты и обнаруженные false-green/timeout/schema/path/port риски закреплены в `M01/quality_gate_inventory.md` и `.json`.
-- M01.2: завершены canonical quality schemas, 18-source registry, 11 active adapters, 11 positive/20 negative fixtures и deterministic self-test; runtime/runner по-прежнему не активирован.
+- M01.2: завершены canonical evidence schemas, 18-source registry, 11 active adapters, 11 positive/20 negative fixtures и deterministic self-test.
+- M01.3: завершён project-local typed runner с shell-free argument arrays, process-tree timeout, containment/output-collision guards, atomic reports, source/protected-input revalidation и isolated pinned Draft 2020-12 engine. Game runtime не менялся.
 
 ## Следующее безопасное действие
 
-Выполнить `M01.3`: реализовать typed fail-closed runner с process-tree timeout, containment, atomic JSON и isolated pinned Draft 2020-12 validator. На этом bounded-шаге game runtime-код не менять.
+Выполнить `M01.4`: составить typed-профили D4, P4, M2_PLUS, QA7 и RC2 на принятом M01.3 runner, сохранив mandatory/not-applicable, stale-evidence и emulator-only Android policy. Release остаётся blocked.

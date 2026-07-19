@@ -8,7 +8,9 @@
 
 M00.1–M00.6 выполнены и независимо перепроверены. Принятый source baseline закреплён commit `12670452ae4580ef5c685ff986476daf91522978` и annotated tag `mtr-source-freeze-v3-20260719`; source/Pages bundles прошли `git bundle verify`, offline restore и повторные статические gates. Утверждения ниже о ещё не созданном commit/tag отражают состояние первоначального аудита до выполнения M00 и сохранены как историческая трассировка.
 
-Обновлённый план остаётся непротиворечивым: M00 закрывает входной dependency M01, M01.1 inventory и M01.2 schema/adapter seam завершены, а release остаётся fail-closed. Следующая операция — `M01.3` typed runner без game-runtime patch.
+Обновлённый план остаётся непротиворечивым: M00 закрывает входной dependency M01, M01.1 inventory, M01.2 schema/adapter seam и M01.3 typed runner завершены, а release остаётся fail-closed. Следующая операция — `M01.4` profile composition без game-runtime patch.
+
+M01.3 прошёл четыре независимых контрольных слоя: schema/unit tests, executable wrapper/bootstrap negative tests, M01.2 + project static regression и independent review/hygiene. Изолированный `jsonschema==4.26.0` Draft 2020-12 engine теперь воспроизводим и не изменяет global Python. Runtime/build/Web/Android/Pages не запускались, потому что пакет меняет только quality tooling.
 
 ## Audit pass 1 — полнота входных данных
 
@@ -111,7 +113,7 @@ Current audit indexes:
 | direct APK / Play / both | пользователь | M02.1, conditional M02.6 |
 | signing identity/backup | пользователь | production release |
 | physical-device run | только явная команда пользователя | M10.3/final device evidence |
-| pinned JSON Schema validator | M01 implementation | canonical schema activation |
+| typed quality profiles and promotion policy | M01.4 | D4/P4/M2_PLUS/QA7/RC2 composition on the accepted runner |
 
 ## Риски, которые остаются под контролем gate
 
@@ -125,4 +127,4 @@ Current audit indexes:
 
 ## Финальный вердикт
 
-Декомпозиция полна, внутренне непротиворечива и покрывает upstream findings. M00 завершён; следующая исполнимая операция — `M01.1`: инвентаризировать validators/harnesses и закрепить их реальные контракты. Build/publish/runtime refactor остаются запрещены до соответствующих dependency gates.
+Декомпозиция полна, внутренне непротиворечива и покрывает upstream findings. M00 и M01.1–M01.3 завершены; следующая исполнимая операция — `M01.4`: составить typed quality profiles на принятом runner. Build/publish/runtime refactor остаются запрещены до соответствующих dependency gates.
