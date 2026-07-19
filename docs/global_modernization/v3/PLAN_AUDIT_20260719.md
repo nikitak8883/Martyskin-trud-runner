@@ -8,7 +8,7 @@
 
 M00.1–M00.6 выполнены и независимо перепроверены. Принятый source baseline закреплён commit `12670452ae4580ef5c685ff986476daf91522978` и annotated tag `mtr-source-freeze-v3-20260719`; source/Pages bundles прошли `git bundle verify`, offline restore и повторные статические gates. Утверждения ниже о ещё не созданном commit/tag отражают состояние первоначального аудита до выполнения M00 и сохранены как историческая трассировка.
 
-Обновлённый план остаётся непротиворечивым: M00 закрывает входной dependency M01, а release остаётся fail-closed. Следующая операция — `M01.1` validator/harness inventory без runtime patch.
+Обновлённый план остаётся непротиворечивым: M00 закрывает входной dependency M01, M01.1 inventory и M01.2 schema/adapter seam завершены, а release остаётся fail-closed. Следующая операция — `M01.3` typed runner без game-runtime patch.
 
 ## Audit pass 1 — полнота входных данных
 

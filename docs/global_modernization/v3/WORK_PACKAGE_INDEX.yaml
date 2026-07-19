@@ -78,7 +78,7 @@ modules:
   M01:
     name: unified_quality_gate_ci_code_review_and_evidence
     priority: P0
-    current_status: m01_1_complete_schema_next
+    current_status: m01_2_complete_runner_next
     depends_on: [M00]
     work_packages:
       - id: M01.1
@@ -87,12 +87,12 @@ modules:
         outputs: [docs/global_modernization/v3/M01/quality_gate_inventory.md, docs/global_modernization/v3/M01/quality_gate_inventory.json, docs/global_modernization/v3/M01/M01_1_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_1_CODE_REVIEW_REPORT.md]
         gates: [D4]
       - id: M01.2
-        status: ready
+        status: complete
         objective: Namespace and reconcile v2/current/v3 schemas; add migration/adapters, positive fixtures and negative fixtures.
-        outputs: [docs/global_modernization/v3/M01/schema_compatibility_matrix.md, docs/global_modernization/v3/library/schemas]
+        outputs: [docs/global_modernization/v3/M01/schema_compatibility_matrix.md, docs/global_modernization/v3/M01/M01_2_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_2_CODE_REVIEW_REPORT.md, docs/global_modernization/v3/library/schemas, docs/global_modernization/v3/library/adapters, docs/global_modernization/v3/library/fixtures/quality_evidence, docs/global_modernization/v3/library/tests/validate_m01_2_contracts.py]
         gates: [D4]
       - id: M01.3
-        status: pending
+        status: ready
         objective: Implement typed fail-closed runner with executable/argument arrays, process-tree timeout, path containment and atomic JSON reports.
         targets: [tools/codex/quality-gate]
         outputs: [docs/global_modernization/v3/M01/runner_self_test_report.md]
@@ -600,5 +600,5 @@ modules:
 
 next_safe_action:
   module: M01
-  work_package: M01.2
-  action: Reconcile existing report schemas, add compatibility adapters and positive/negative fixtures; do not patch runtime code.
+  work_package: M01.3
+  action: Implement the typed fail-closed runner with an isolated pinned Draft 2020-12 validator; do not patch game runtime code.

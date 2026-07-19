@@ -1,0 +1,107 @@
+{
+  "schema": "mtr.m01_2_validation_summary.v1",
+  "generated_at": "2026-07-19T13:23:39+03:00",
+  "status": "PASS",
+  "work_package": "M01.2",
+  "source_commit_before": "06a613b8a85ff739d4ed63186d9b89143e99189d",
+  "branch": "codex/mtr-source-freeze-v3",
+  "scope": {
+    "contracts": true,
+    "adapters": true,
+    "fixtures": true,
+    "tests": true,
+    "runtime_changed": false,
+    "build_executed": false,
+    "web_runtime_executed": false,
+    "android_emulator_executed": false,
+    "physical_device_used": false,
+    "pages_changed": false
+  },
+  "canonical_schemas": {
+    "count": 3,
+    "draft": "2020-12",
+    "namespace": "https://schemas.mtr.local/quality/v1/",
+    "json_parse": "PASS",
+    "metadata_runtime_guard": "PASS",
+    "powershell_test_json": {
+      "registry": "PASS",
+      "positive_fixture_suite": "PASS",
+      "negative_fixture_suite": "PASS",
+      "representative_envelope": "PASS"
+    }
+  },
+  "registry": {
+    "entry_count": 18,
+    "active": 11,
+    "historical_only": 5,
+    "data_not_quality_evidence": 2,
+    "registry_handler_parity": "PASS"
+  },
+  "fixtures": {
+    "positive": {
+      "count": 11,
+      "passed": 11
+    },
+    "negative": {
+      "count": 20,
+      "passed": 20
+    },
+    "deterministic_envelope_reruns": {
+      "count": 25,
+      "passed": 25
+    },
+    "runtime_guard_mutations": {
+      "count": 3,
+      "rejected": 3
+    }
+  },
+  "representative_report_shape_smoke": {
+    "count": 9,
+    "passed": 9,
+    "claim_scope": "shape_compatibility_only_not_freshness_or_current_product_qa"
+  },
+  "code_validation": {
+    "python_compile": "PASS",
+    "git_diff_check": "PASS",
+    "local_worker_adapter_review_second_pass": "ACCEPT",
+    "external_coderabbit_review": "UNAVAILABLE_CLI_AND_NO_SH_BASH_WSL",
+    "external_coderabbit_blocking_for_m01_2": false
+  },
+  "static_regression": {
+    "project_config": "PASS_15_LEVELS_15_BACKGROUNDS",
+    "cocos_typescript_no_emit": "PASS",
+    "assets_strict": "PASS_1528_PNG_0_BLOCKERS",
+    "skin_bonus_matrix_strict": "PASS_576_OF_576_0_WARNINGS",
+    "ui_ir": "PASS_14_OF_14_0_PROBLEMS_0_WARNINGS",
+    "level_select_icons_verify_only": "PASS_15_PNG_15_META",
+    "git_topology": "PASS_PARENT_GITLINK_EQUALS_CLEAN_PAGES_HEAD"
+  },
+  "dependency_policy": {
+    "global_python_mutated": false,
+    "python_jsonschema_available": false,
+    "powershell_test_json_used": true,
+    "pinned_isolated_python_jsonschema_engine": "REQUIRED_IN_M01_3"
+  },
+  "commands": [
+    "python .\\docs\\global_modernization\\v3\\library\\tests\\validate_m01_2_contracts.py",
+    "python -c <compile quality_evidence_adapter.py and validate_m01_2_contracts.py in memory>",
+    "Get-Content <registry/fixtures/envelope> | Test-Json -SchemaFile <canonical schema>",
+    "powershell -NoProfile -ExecutionPolicy Bypass -File .\\tools\\validate-mtr-config.ps1 -ProjectRoot .",
+    "node <Cocos TypeScript compiler> -p tsconfig.json --noEmit --skipLibCheck --lib es2020,dom --isolatedModules false",
+    "python .\\tools\\validate-assets.py --project-root . --fail-on-white-matte",
+    "python .\\tools\\validate-skin-bonus-matrix.py --project-root . --fail-on-warnings",
+    "python .\\tools\\validate-ui-ir.py --project-root .",
+    "python .\\tools\\ui\\generate_level_select_theme_icons.py --verify-only",
+    "powershell -NoProfile -ExecutionPolicy Bypass -File .\\tools\\codex\\Test-MtrGitTopology.ps1 <canonical arguments>",
+    "git diff --check"
+  ],
+  "open_findings": [
+    {
+      "id": "M01_3_PINNED_SCHEMA_ENGINE",
+      "blocking_now": false,
+      "blocking_before_m01_3_pass": true,
+      "detail": "The typed runner must own an isolated pinned Draft 2020-12 validator; no global package installation is allowed."
+    }
+  ],
+  "next_safe_action": "Implement M01.3 typed fail-closed runner without changing game runtime."
+}

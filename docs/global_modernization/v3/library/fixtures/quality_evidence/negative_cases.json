@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.quality_fixture_suite",
+  "suite_kind": "negative",
+  "defaults": {
+    "evidence_id": "fixture.default",
+    "source_report": {
+      "relative_path": "docs/qa/evidence/fixture.json",
+      "sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    },
+    "source": {
+      "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "content_version": "mtr-v3-fixture-a"
+    },
+    "expected_source_commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "target": {
+      "platform": "static",
+      "identity": "project-source",
+      "profile": "D4"
+    },
+    "tool": {
+      "relative_path": "tools/fixture-validator.py",
+      "sha256": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+      "command_id": "fixture.validator",
+      "strict": true,
+      "flags": []
+    },
+    "timing": {
+      "started_at": "2026-07-19T08:00:00Z",
+      "finished_at": "2026-07-19T08:01:00Z"
+    },
+    "mandatory": true,
+    "applicable": true,
+    "fresh": true,
+    "physical_device_authorized": false
+  },
+  "cases": [
+    {
+      "case_id": "negative.asset_blocker",
+      "description": "A strict asset report with a blocker must fail.",
+      "input": {
+        "schema": "mtr.asset_validation.v1",
+        "policy": {
+          "failOnWhiteMatte": true,
+          "skipReferenceChecks": false
+        },
+        "summary": {
+          "pngCount": 10,
+          "blockerCount": 1,
+          "whiteMatteSuspectCount": 0
+        },
+        "referenceChecks": {
+          "blockerCount": 0
+        }
+      },
+      "context": {
+        "tool": {
+          "relative_path": "tools/validate-assets.py",
+          "command_id": "validate.assets.strict",
+          "flags": [
+            "--fail-on-white-matte"
+          ]
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "FAIL",
+        "finding_codes": [
+          "ASSET_BLOCKERS_PRESENT"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.asset_not_strict",
+      "description": "An otherwise green asset report without strict invocation must be blocked.",
+      "input": {
+        "schema": "mtr.asset_validation.v1",
+        "policy": {
+          "failOnWhiteMatte": true,
+          "skipReferenceChecks": false
+        },
+        "summary": {
+          "pngCount": 10,
+          "blockerCount": 0,
+          "whiteMatteSuspectCount": 0
+        },
+        "referenceChecks": {
+          "blockerCount": 0
+        }
+      },
+      "context": {
+        "tool": {
+          "relative_path": "tools/validate-assets.py",
+          "command_id": "validate.assets.loose",
+          "strict": false,
+          "flags": []
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "BLOCKED",
+        "finding_codes": [
+          "STRICT_INVOCATION_REQUIRED",
+          "STRICT_FLAG_MISSING"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.skin_warning",
+      "description": "A warning in the strict skin matrix must fail.",
+      "input": {
+        "schema": "mtr.skin_bonus_matrix_validation.v1",
+        "policy": {
+          "failOnWarnings": true
+        },
+        "summary": {
+          "blockerCount": 0,
+          "warningCount": 1,
+          "expectedFrameCount": 576,
+          "checkedFrameCount": 576
+        }
+      },
+      "context": {
+        "tool": {
+          "relative_path": "tools/validate-skin-bonus-matrix.py",
+          "command_id": "validate.skins.strict",
+          "flags": [
+            "--fail-on-warnings"
+          ]
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "FAIL",
+        "finding_codes": [
+          "SKIN_MATRIX_NOT_CLEAN"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.ui_ir_problem",
+      "description": "A UI IR problem must fail even when screen coverage is complete.",
+      "input": {
+        "schema": "mtr.ui_ir_validation.v1",
+        "summary": {
+          "problemCount": 1,
+          "warningCount": 0,
+          "screenCount": 14,
+          "expectedScreenCount": 14
+        }
+      },
+      "context": {
+        "tool": {
+          "relative_path": "tools/validate-ui-ir.py",
+          "command_id": "validate.ui-ir"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "FAIL",
+        "finding_codes": [
+          "UI_IR_PROBLEMS_PRESENT"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.android_toolchain_not_ready",
+      "description": "A strict Android toolchain report that is not ready must fail.",
+      "input": {
+        "statusSchemaVersion": 2,
+        "qaReady": false,
+        "androidQaTargetPolicy": "emulator-only-default",
+        "blockers": [
+          "No online emulator"
+        ]
+      },
+      "context": {
+        "target": {
+          "platform": "android-emulator",
+          "identity": "emulator-5554",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/Test-MtrAndroidToolchain.ps1",
+          "command_id": "android.toolchain.strict",
+          "flags": [
+            "-FailOnNotReady"
+          ]
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "FAIL",
+        "finding_codes": [
+          "ANDROID_TOOLCHAIN_NOT_READY"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.android_toolchain_false_green",
+      "description": "A green Android toolchain payload without -FailOnNotReady must be blocked.",
+      "input": {
+        "statusSchemaVersion": 2,
+        "qaReady": true,
+        "androidQaTargetPolicy": "emulator-only-default",
+        "blockers": []
+      },
+      "context": {
+        "target": {
+          "platform": "android-emulator",
+          "identity": "emulator-5554",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/Test-MtrAndroidToolchain.ps1",
+          "command_id": "android.toolchain.loose",
+          "strict": false,
+          "flags": []
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "BLOCKED",
+        "finding_codes": [
+          "STRICT_INVOCATION_REQUIRED",
+          "STRICT_FLAG_MISSING"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.android_matrix_physical_target",
+      "description": "A physical serial cannot be accepted by the emulator matrix adapter.",
+      "input": {
+        "schema": "mtr.android_emulator_matrix.v1",
+        "serial": "R5CY933XP7P",
+        "status": "pass",
+        "case_count": 1,
+        "pass_count": 1,
+        "fail_count": 0,
+        "cases": [
+          {
+            "name": "menu",
+            "status": "pass"
+          }
+        ]
+      },
+      "context": {
+        "target": {
+          "platform": "android-emulator",
+          "identity": "R5CY933XP7P",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/Run-MtrAndroidEmulatorMatrixQa.ps1",
+          "command_id": "android.matrix"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "BLOCKED",
+        "finding_codes": [
+          "TARGET_POLICY_VIOLATION"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.android_interaction_guard",
+      "description": "A disabled emulator-only guard blocks interaction evidence.",
+      "input": {
+        "schema": "mtr.android_emulator_interaction.v1",
+        "serial": "emulator-5554",
+        "emulator_only_guard": false,
+        "status": "pass",
+        "touch_flow": {
+          "status": "pass"
+        },
+        "name_entry": {
+          "status": "pass"
+        },
+        "restart_loop": {
+          "status": "pass",
+          "requested_iterations": 10,
+          "pass_count": 10,
+          "fail_count": 0
+        },
+        "soak": {
+          "status": "pass",
+          "requested_seconds": 300,
+          "actual_seconds": 300.5,
+          "process_losses": 0
+        }
+      },
+      "context": {
+        "target": {
+          "platform": "android-emulator",
+          "identity": "emulator-5554",
+          "profile": "QA7"
+        },
+        "tool": {
+          "relative_path": "tools/codex/Run-MtrAndroidEmulatorInteractionQa.ps1",
+          "command_id": "android.interaction"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "BLOCKED",
+        "finding_codes": [
+          "TARGET_POLICY_VIOLATION"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.web_matrix_count_drift",
+      "description": "Aggregate Web matrix count drift must fail.",
+      "input": {
+        "schema": "mtr.web_matrix_interaction.v1",
+        "status": "pass",
+        "caseCount": 34,
+        "passCount": 33,
+        "failCount": 0,
+        "interaction": {
+          "status": "pass"
+        },
+        "restartLoop": {
+          "requestedIterations": 10,
+          "passCount": 10,
+          "failCount": 0
+        }
+      },
+      "context": {
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/web_matrix_playwright_function.js",
+          "command_id": "web.matrix"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "FAIL",
+        "finding_codes": [
+          "WEB_MATRIX_FAILED"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.web_soak_incomplete",
+      "description": "Short soak with a console warning must fail.",
+      "input": {
+        "schema": "mtr.web_soak.v1",
+        "complete": false,
+        "targetDurationSeconds": 300,
+        "elapsedMs": 120000,
+        "inputBursts": 10,
+        "consoleErrors": [],
+        "consoleWarnings": [
+          "unexpected warning"
+        ]
+      },
+      "context": {
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "M2_PLUS"
+        },
+        "tool": {
+          "relative_path": "tools/codex/web_soak_playwright_function.js",
+          "command_id": "web.soak"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "FAIL",
+        "finding_codes": [
+          "WEB_SOAK_FAILED"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.web_probe_false_green",
+      "description": "Legacy probe exit-zero payload with runtimeReady=false must fail.",
+      "input": {
+        "runtimeReady": false,
+        "waitForLogPattern": "MTR_MENU_UI_GATE_READY",
+        "waitForLogPatternReady": false
+      },
+      "context": {
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/web-cdp-smoke.ps1",
+          "command_id": "web.runtime-probe"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "FAIL",
+        "finding_codes": [
+          "WEB_RUNTIME_NOT_READY"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.stale_evidence",
+      "description": "A semantically green report marked stale must be blocked.",
+      "input": {
+        "runtimeReady": true,
+        "waitForLogPattern": "",
+        "waitForLogPatternReady": true
+      },
+      "context": {
+        "fresh": false,
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/web-cdp-smoke.ps1",
+          "command_id": "web.runtime-probe"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "BLOCKED",
+        "finding_codes": [
+          "STALE_EVIDENCE"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.source_manifest_identity",
+      "description": "A source manifest from another commit/content version must be blocked.",
+      "input": {
+        "schema_version": 1,
+        "manifest_kind": "mtr_source_content_fingerprint",
+        "source_commit": "dddddddddddddddddddddddddddddddddddddddd",
+        "content_version": "mtr-v3-other",
+        "aggregate_sha256": "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
+        "file_count": 4170
+      },
+      "context": {
+        "target": {
+          "platform": "source",
+          "identity": "source-tree",
+          "profile": "D4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/build_source_content_manifest.py",
+          "command_id": "source.fingerprint"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "BLOCKED",
+        "finding_codes": [
+          "SOURCE_IDENTITY_MISMATCH"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.global_commit_mismatch",
+      "description": "Context whose commit differs from the accepted checkpoint must be blocked.",
+      "input": {
+        "runtimeReady": true,
+        "waitForLogPattern": "",
+        "waitForLogPatternReady": true
+      },
+      "context": {
+        "expected_source_commit": "dddddddddddddddddddddddddddddddddddddddd",
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/web-cdp-smoke.ps1",
+          "command_id": "web.runtime-probe"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "BLOCKED",
+        "finding_codes": [
+          "SOURCE_COMMIT_MISMATCH"
+        ]
+      }
+    },
+    {
+      "case_id": "negative.unknown_schema",
+      "description": "Unknown schemas are rejected until an audited adapter exists.",
+      "input": {
+        "schema": "mtr.future_unknown.v9",
+        "status": "pass"
+      },
+      "expected": {
+        "outcome": "error",
+        "error_code": "UNSUPPORTED_SCHEMA"
+      }
+    },
+    {
+      "case_id": "negative.path_traversal",
+      "description": "Evidence paths cannot escape the project boundary.",
+      "input": {
+        "runtimeReady": true
+      },
+      "context": {
+        "source_report": {
+          "relative_path": "../outside/report.json"
+        },
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/web-cdp-smoke.ps1",
+          "command_id": "web.runtime-probe"
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_code": "PATH_OUTSIDE_SCOPE"
+      }
+    },
+    {
+      "case_id": "negative.malformed_source",
+      "description": "A recognized asset schema missing its summary is rejected as malformed.",
+      "input": {
+        "schema": "mtr.asset_validation.v1",
+        "policy": {
+          "failOnWhiteMatte": true,
+          "skipReferenceChecks": false
+        }
+      },
+      "context": {
+        "tool": {
+          "relative_path": "tools/validate-assets.py",
+          "command_id": "validate.assets.strict",
+          "flags": [
+            "--fail-on-white-matte"
+          ]
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_code": "MALFORMED_SOURCE"
+      }
+    },
+    {
+      "case_id": "negative.wrong_source_type",
+      "description": "A recognized report with a string blocker count is rejected rather than coerced to green.",
+      "input": {
+        "schema": "mtr.asset_validation.v1",
+        "policy": {
+          "failOnWhiteMatte": true,
+          "skipReferenceChecks": false
+        },
+        "summary": {
+          "pngCount": 10,
+          "blockerCount": "0",
+          "whiteMatteSuspectCount": 0
+        },
+        "referenceChecks": {
+          "blockerCount": 0
+        }
+      },
+      "context": {
+        "tool": {
+          "relative_path": "tools/validate-assets.py",
+          "command_id": "validate.assets.strict",
+          "flags": [
+            "--fail-on-white-matte"
+          ]
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_code": "MALFORMED_SOURCE"
+      }
+    },
+    {
+      "case_id": "negative.missing_context_report",
+      "description": "Missing trusted source-report context is rejected explicitly before adapter dispatch.",
+      "input": {
+        "runtimeReady": true
+      },
+      "context": {
+        "source_report": null,
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/web-cdp-smoke.ps1",
+          "command_id": "web.runtime-probe"
+        }
+      },
+      "expected": {
+        "outcome": "error",
+        "error_code": "INVALID_CONTEXT"
+      }
+    },
+    {
+      "case_id": "negative.historical_source",
+      "description": "Historical wrapper schemas cannot be promoted to current PASS evidence.",
+      "input": {
+        "schema": "mtr.qa.web_cycle.v1",
+        "status": "pass"
+      },
+      "expected": {
+        "outcome": "error",
+        "error_code": "NON_ACTIVE_SOURCE"
+      }
+    }
+  ]
+}

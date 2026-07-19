@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.quality_adapter_registry",
+  "namespace": "https://schemas.mtr.local/quality/v1/",
+  "registry_version": "1.0.0",
+  "adapters": [
+    {
+      "id": "mtr.quality_adapter.asset_validation",
+      "version": "1.0.0",
+      "source_schema": "mtr.asset_validation.v1",
+      "source_version": "1",
+      "support": "active",
+      "target_platform": "static",
+      "handler": "adapt_asset_validation",
+      "detection": "input.schema equals mtr.asset_validation.v1",
+      "strict_requirements": [
+        "tool.strict=true",
+        "--fail-on-white-matte",
+        "policy.failOnWhiteMatte=true",
+        "policy.skipReferenceChecks=false"
+      ],
+      "migration_rule": "Preserve the native report and derive status from strict policy plus blocker counts.",
+      "owner": "tools/validate-assets.py"
+    },
+    {
+      "id": "mtr.quality_adapter.skin_bonus_matrix",
+      "version": "1.0.0",
+      "source_schema": "mtr.skin_bonus_matrix_validation.v1",
+      "source_version": "1",
+      "support": "active",
+      "target_platform": "static",
+      "handler": "adapt_skin_bonus_matrix",
+      "detection": "input.schema equals mtr.skin_bonus_matrix_validation.v1",
+      "strict_requirements": [
+        "tool.strict=true",
+        "--fail-on-warnings",
+        "policy.failOnWarnings=true"
+      ],
+      "migration_rule": "Preserve the native matrix and fail when blockers or strict warnings are present.",
+      "owner": "tools/validate-skin-bonus-matrix.py"
+    },
+    {
+      "id": "mtr.quality_adapter.ui_ir_validation",
+      "version": "1.0.0",
+      "source_schema": "mtr.ui_ir_validation.v1",
+      "source_version": "1",
+      "support": "active",
+      "target_platform": "static",
+      "handler": "adapt_ui_ir_validation",
+      "detection": "input.schema equals mtr.ui_ir_validation.v1",
+      "strict_requirements": [
+        "problemCount=0 for PASS"
+      ],
+      "migration_rule": "Problems fail; warnings remain visible and non-blocking until a profile explicitly promotes them.",
+      "owner": "tools/validate-ui-ir.py"
+    },
+    {
+      "id": "mtr.quality_adapter.android_toolchain_status",
+      "version": "1.0.0",
+      "source_schema": "mtr.android_toolchain_status.v2",
+      "source_version": "2",
+      "support": "active",
+      "target_platform": "android-emulator",
+      "handler": "adapt_android_toolchain_status",
+      "detection": "input.statusSchemaVersion equals 2 and input.qaReady is present",
+      "strict_requirements": [
+        "tool.strict=true",
+        "-FailOnNotReady",
+        "androidQaTargetPolicy=emulator-only-default"
+      ],
+      "migration_rule": "Synthesize a namespaced source schema; missing strict invocation blocks rather than passing.",
+      "owner": "tools/codex/Test-MtrAndroidToolchain.ps1"
+    },
+    {
+      "id": "mtr.quality_adapter.android_emulator_matrix",
+      "version": "1.0.0",
+      "source_schema": "mtr.android_emulator_matrix.v1",
+      "source_version": "1",
+      "support": "active",
+      "target_platform": "android-emulator",
+      "handler": "adapt_android_emulator_matrix",
+      "detection": "input.schema equals mtr.android_emulator_matrix.v1",
+      "strict_requirements": [
+        "serial begins emulator-",
+        "pass_count equals case_count",
+        "fail_count=0"
+      ],
+      "migration_rule": "Normalize snake_case counters and reject any physical-device target under emulator policy.",
+      "owner": "tools/codex/Run-MtrAndroidEmulatorMatrixQa.ps1"
+    },
+    {
+      "id": "mtr.quality_adapter.android_emulator_interaction",
+      "version": "1.0.0",
+      "source_schema": "mtr.android_emulator_interaction.v1",
+      "source_version": "1",
+      "support": "active",
+      "target_platform": "android-emulator",
+      "handler": "adapt_android_emulator_interaction",
+      "detection": "input.schema equals mtr.android_emulator_interaction.v1",
+      "strict_requirements": [
+        "serial begins emulator-",
+        "emulator_only_guard=true",
+        "touch/name/restart/soak statuses pass"
+      ],
+      "migration_rule": "Retain the detailed native report and collapse all required subflows into one deterministic status.",
+      "owner": "tools/codex/Run-MtrAndroidEmulatorInteractionQa.ps1"
+    },
+    {
+      "id": "mtr.quality_adapter.web_matrix_interaction",
+      "version": "1.0.0",
+      "source_schema": "mtr.web_matrix_interaction.v1",
+      "source_version": "1",
+      "support": "active",
+      "target_platform": "web",
+      "handler": "adapt_web_matrix_interaction",
+      "detection": "input.schema equals mtr.web_matrix_interaction.v1",
+      "strict_requirements": [
+        "passCount equals caseCount",
+        "failCount=0",
+        "interaction.status=pass",
+        "restartLoop.failCount=0"
+      ],
+      "migration_rule": "Preserve the Playwright matrix and require aggregate and interaction/restart parity.",
+      "owner": "tools/codex/web_matrix_playwright_function.js"
+    },
+    {
+      "id": "mtr.quality_adapter.web_soak",
+      "version": "1.0.0",
+      "source_schema": "mtr.web_soak.v1",
+      "source_version": "1",
+      "support": "active",
+      "target_platform": "web",
+      "handler": "adapt_web_soak",
+      "detection": "input.schema equals mtr.web_soak.v1",
+      "strict_requirements": [
+        "complete=true",
+        "elapsedMs reaches targetDurationSeconds",
+        "inputBursts>0",
+        "consoleErrors and consoleWarnings empty"
+      ],
+      "migration_rule": "Derive explicit PASS/FAIL because the native report has no status field.",
+      "owner": "tools/codex/web_soak_playwright_function.js"
+    },
+    {
+      "id": "mtr.quality_adapter.git_topology",
+      "version": "1.0.0",
+      "source_schema": "mtr.git_topology.v1",
+      "source_version": "1",
+      "support": "active",
+      "target_platform": "source",
+      "handler": "adapt_git_topology",
+      "detection": "input.schema_version equals 1 and input contains pass, parent and pages",
+      "strict_requirements": [
+        "pass=true",
+        "pages.clean=true",
+        "parent.gitlink equals pages.head",
+        "parent.head equals evidence source commit"
+      ],
+      "migration_rule": "Assign the mtr.git_topology.v1 name without modifying the existing PowerShell output.",
+      "owner": "tools/codex/Test-MtrGitTopology.ps1"
+    },
+    {
+      "id": "mtr.quality_adapter.source_content_fingerprint",
+      "version": "1.0.0",
+      "source_schema": "mtr.source_content_fingerprint.v1",
+      "source_version": "1",
+      "support": "active",
+      "target_platform": "source",
+      "handler": "adapt_source_content_fingerprint",
+      "detection": "input.manifest_kind equals mtr_source_content_fingerprint and input.schema_version equals 1",
+      "strict_requirements": [
+        "source_commit equals evidence source commit",
+        "content_version equals evidence content version",
+        "aggregate_sha256 is valid"
+      ],
+      "migration_rule": "Assign a dotted canonical name while preserving the deterministic source manifest unchanged.",
+      "owner": "tools/codex/build_source_content_manifest.py"
+    },
+    {
+      "id": "mtr.quality_adapter.web_runtime_probe_legacy",
+      "version": "1.0.0",
+      "source_schema": "mtr.web_runtime_probe.legacy",
+      "source_version": "legacy",
+      "support": "active",
+      "target_platform": "web",
+      "handler": "adapt_web_runtime_probe_legacy",
+      "detection": "schema-less input contains boolean runtimeReady",
+      "strict_requirements": [
+        "runtimeReady=true",
+        "requested marker must be ready"
+      ],
+      "migration_rule": "Wrap schema-less CDP output and convert false-ready exit-zero reports into FAIL.",
+      "owner": "tools/web-cdp-smoke.ps1; tools/web-chrome-runtime-smoke.ps1"
+    },
+    {
+      "id": "mtr.quality_adapter.module3_emulator_skin_bonus",
+      "version": "1.0.0",
+      "source_schema": "mtr.module3_emulator_skin_bonus_qa.v1",
+      "source_version": "1",
+      "support": "historical_only",
+      "target_platform": "android-emulator",
+      "detection": "input.schema equals mtr.module3_emulator_skin_bonus_qa.v1",
+      "migration_rule": "Retain as historical evidence; superseded by the Android matrix and interaction adapters.",
+      "owner": "docs/qa/evidence historical reports"
+    },
+    {
+      "id": "mtr.quality_adapter.web_playwright_qa",
+      "version": "1.0.0",
+      "source_schema": "mtr.web_playwright_qa.v1",
+      "source_version": "1",
+      "support": "historical_only",
+      "target_platform": "web",
+      "detection": "input.schema equals mtr.web_playwright_qa.v1",
+      "migration_rule": "Retain as historical evidence; current matrix and soak reports are authoritative.",
+      "owner": "docs/qa/evidence historical reports"
+    },
+    {
+      "id": "mtr.quality_adapter.qa_web_cycle",
+      "version": "1.0.0",
+      "source_schema": "mtr.qa.web_cycle.v1",
+      "source_version": "1",
+      "support": "historical_only",
+      "target_platform": "web",
+      "detection": "input.schema equals mtr.qa.web_cycle.v1",
+      "migration_rule": "Treat as a historical wrapper, never as a current standalone PASS.",
+      "owner": "docs/qa/evidence historical reports"
+    },
+    {
+      "id": "mtr.quality_adapter.qa_pause_checkpoint",
+      "version": "1.0.0",
+      "source_schema": "mtr.qa.pause_checkpoint.v1",
+      "source_version": "1",
+      "support": "historical_only",
+      "target_platform": "mixed",
+      "detection": "input.schema equals mtr.qa.pause_checkpoint.v1",
+      "migration_rule": "Checkpoint metadata is not executable QA evidence.",
+      "owner": "docs/qa/evidence historical reports"
+    },
+    {
+      "id": "mtr.quality_adapter.skin_contact_sheets",
+      "version": "1.0.0",
+      "source_schema": "mtr.skin_contact_sheets.v1",
+      "source_version": "1",
+      "support": "historical_only",
+      "target_platform": "static",
+      "detection": "input.schema equals mtr.skin_contact_sheets.v1",
+      "migration_rule": "Contact sheets remain indexed visual evidence and require an independent reviewed verdict.",
+      "owner": "tools/render-skin-contact-sheets.py"
+    },
+    {
+      "id": "mtr.quality_adapter.player_skins_manifest",
+      "version": "1.0.0",
+      "source_schema": "mtr.player_skins.v1",
+      "source_version": "1",
+      "support": "data_not_quality_evidence",
+      "target_platform": "mixed",
+      "detection": "input.schema equals mtr.player_skins.v1",
+      "migration_rule": "Runtime data is validated by quality evidence but cannot itself claim PASS.",
+      "owner": "docs/skins_integration/manifests/player_skins_manifest.json"
+    },
+    {
+      "id": "mtr.quality_adapter.ui_ir_screen",
+      "version": "1.0.0",
+      "source_schema": "mtr.ui_ir.screen.v1",
+      "source_version": "1",
+      "support": "data_not_quality_evidence",
+      "target_platform": "mixed",
+      "detection": "input.schema equals mtr.ui_ir.screen.v1",
+      "migration_rule": "UI IR data requires the mtr.ui_ir_validation.v1 adapter result.",
+      "owner": "docs/global_modernization/ui-ir"
+    }
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.quality_fixture_suite",
+  "suite_kind": "positive",
+  "defaults": {
+    "evidence_id": "fixture.default",
+    "source_report": {
+      "relative_path": "docs/qa/evidence/fixture.json",
+      "sha256": "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
+    },
+    "source": {
+      "commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "content_version": "mtr-v3-fixture-a"
+    },
+    "expected_source_commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "target": {
+      "platform": "static",
+      "identity": "project-source",
+      "profile": "D4"
+    },
+    "tool": {
+      "relative_path": "tools/fixture-validator.py",
+      "sha256": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+      "command_id": "fixture.validator",
+      "strict": true,
+      "flags": []
+    },
+    "timing": {
+      "started_at": "2026-07-19T08:00:00Z",
+      "finished_at": "2026-07-19T08:01:00Z"
+    },
+    "mandatory": true,
+    "applicable": true,
+    "fresh": true,
+    "physical_device_authorized": false
+  },
+  "cases": [
+    {
+      "case_id": "positive.asset_validation",
+      "description": "Strict asset report with no blockers or matte suspects.",
+      "input": {
+        "schema": "mtr.asset_validation.v1",
+        "policy": {
+          "failOnWhiteMatte": true,
+          "skipReferenceChecks": false
+        },
+        "summary": {
+          "pngCount": 1528,
+          "blockerCount": 0,
+          "whiteMatteSuspectCount": 0
+        },
+        "referenceChecks": {
+          "blockerCount": 0
+        }
+      },
+      "context": {
+        "tool": {
+          "relative_path": "tools/validate-assets.py",
+          "command_id": "validate.assets.strict",
+          "flags": [
+            "--fail-on-white-matte"
+          ]
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.skin_bonus_matrix",
+      "description": "Strict 576-frame skin matrix with no blockers or warnings.",
+      "input": {
+        "schema": "mtr.skin_bonus_matrix_validation.v1",
+        "policy": {
+          "failOnWarnings": true
+        },
+        "summary": {
+          "blockerCount": 0,
+          "warningCount": 0,
+          "expectedFrameCount": 576,
+          "checkedFrameCount": 576
+        }
+      },
+      "context": {
+        "tool": {
+          "relative_path": "tools/validate-skin-bonus-matrix.py",
+          "command_id": "validate.skins.strict",
+          "flags": [
+            "--fail-on-warnings"
+          ]
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.ui_ir_validation",
+      "description": "All 14 UI IR screens validate without problems.",
+      "input": {
+        "schema": "mtr.ui_ir_validation.v1",
+        "summary": {
+          "problemCount": 0,
+          "warningCount": 0,
+          "screenCount": 14,
+          "expectedScreenCount": 14
+        }
+      },
+      "context": {
+        "tool": {
+          "relative_path": "tools/validate-ui-ir.py",
+          "command_id": "validate.ui-ir"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.android_toolchain",
+      "description": "Emulator-only Android toolchain is ready under the mandatory strict flag.",
+      "input": {
+        "statusSchemaVersion": 2,
+        "qaReady": true,
+        "androidQaTargetPolicy": "emulator-only-default",
+        "blockers": []
+      },
+      "context": {
+        "target": {
+          "platform": "android-emulator",
+          "identity": "emulator-5554",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/Test-MtrAndroidToolchain.ps1",
+          "command_id": "android.toolchain.strict",
+          "flags": [
+            "-FailOnNotReady"
+          ]
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.android_emulator_matrix",
+      "description": "One representative emulator matrix case passes with count parity.",
+      "input": {
+        "schema": "mtr.android_emulator_matrix.v1",
+        "serial": "emulator-5554",
+        "status": "pass",
+        "case_count": 1,
+        "pass_count": 1,
+        "fail_count": 0,
+        "cases": [
+          {
+            "name": "menu",
+            "status": "pass"
+          }
+        ]
+      },
+      "context": {
+        "target": {
+          "platform": "android-emulator",
+          "identity": "emulator-5554",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/Run-MtrAndroidEmulatorMatrixQa.ps1",
+          "command_id": "android.matrix"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.android_emulator_interaction",
+      "description": "Touch, name, restart, and soak subflows all pass on an emulator.",
+      "input": {
+        "schema": "mtr.android_emulator_interaction.v1",
+        "serial": "emulator-5554",
+        "emulator_only_guard": true,
+        "status": "pass",
+        "touch_flow": {
+          "status": "pass"
+        },
+        "name_entry": {
+          "status": "pass"
+        },
+        "restart_loop": {
+          "status": "pass",
+          "requested_iterations": 10,
+          "pass_count": 10,
+          "fail_count": 0
+        },
+        "soak": {
+          "status": "pass",
+          "requested_seconds": 300,
+          "actual_seconds": 300.5,
+          "process_losses": 0
+        }
+      },
+      "context": {
+        "target": {
+          "platform": "android-emulator",
+          "identity": "emulator-5554",
+          "profile": "QA7"
+        },
+        "tool": {
+          "relative_path": "tools/codex/Run-MtrAndroidEmulatorInteractionQa.ps1",
+          "command_id": "android.interaction"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.web_matrix",
+      "description": "Web cases, direct interaction, and restart loop all pass.",
+      "input": {
+        "schema": "mtr.web_matrix_interaction.v1",
+        "status": "pass",
+        "caseCount": 34,
+        "passCount": 34,
+        "failCount": 0,
+        "interaction": {
+          "status": "pass"
+        },
+        "restartLoop": {
+          "requestedIterations": 10,
+          "passCount": 10,
+          "failCount": 0
+        }
+      },
+      "context": {
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/web_matrix_playwright_function.js",
+          "command_id": "web.matrix"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.web_soak",
+      "description": "Five-minute Web soak reaches duration with input and clean console.",
+      "input": {
+        "schema": "mtr.web_soak.v1",
+        "complete": true,
+        "targetDurationSeconds": 300,
+        "elapsedMs": 300407,
+        "inputBursts": 39,
+        "consoleErrors": [],
+        "consoleWarnings": []
+      },
+      "context": {
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "M2_PLUS"
+        },
+        "tool": {
+          "relative_path": "tools/codex/web_soak_playwright_function.js",
+          "command_id": "web.soak"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.git_topology",
+      "description": "Parent source, gitlink, and clean Pages HEAD agree.",
+      "input": {
+        "schema_version": 1,
+        "pass": true,
+        "parent": {
+          "head": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "gitlink": "dddddddddddddddddddddddddddddddddddddddd"
+        },
+        "pages": {
+          "head": "dddddddddddddddddddddddddddddddddddddddd",
+          "clean": true
+        },
+        "failures": []
+      },
+      "context": {
+        "target": {
+          "platform": "source",
+          "identity": "parent-pages-topology",
+          "profile": "D4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/Test-MtrGitTopology.ps1",
+          "command_id": "git.topology"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.source_fingerprint",
+      "description": "Deterministic source manifest matches commit and logical content version.",
+      "input": {
+        "schema_version": 1,
+        "manifest_kind": "mtr_source_content_fingerprint",
+        "source_commit": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "content_version": "mtr-v3-fixture-a",
+        "aggregate_sha256": "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE",
+        "file_count": 4170
+      },
+      "context": {
+        "target": {
+          "platform": "source",
+          "identity": "source-tree",
+          "profile": "D4"
+        },
+        "tool": {
+          "relative_path": "tools/codex/build_source_content_manifest.py",
+          "command_id": "source.fingerprint"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    },
+    {
+      "case_id": "positive.web_runtime_legacy",
+      "description": "Schema-less legacy Web probe explicitly reports runtime and requested marker readiness.",
+      "input": {
+        "runtimeReady": true,
+        "waitForLogPattern": "MTR_MENU_UI_GATE_READY",
+        "waitForLogPatternReady": true
+      },
+      "context": {
+        "target": {
+          "platform": "web",
+          "identity": "http://127.0.0.1:9491",
+          "profile": "P4"
+        },
+        "tool": {
+          "relative_path": "tools/web-cdp-smoke.ps1",
+          "command_id": "web.runtime-probe"
+        }
+      },
+      "expected": {
+        "outcome": "envelope",
+        "status": "PASS",
+        "finding_codes": []
+      }
+    }
+  ]
+}
