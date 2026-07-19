@@ -7,7 +7,7 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_1_complete / release_blocked`
+Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_2_complete / release_blocked`
 
 ## 2026-07-19 v3 revalidation overlay
 
