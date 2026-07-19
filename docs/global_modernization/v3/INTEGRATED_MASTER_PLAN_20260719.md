@@ -1,6 +1,6 @@
 # Integrated MTR implementation plan v3
 
-Статус: `m00_complete_m01_next`, runtime implementation не начат.
+Статус: `m00_complete_m01_1_complete_m01_2_next`, runtime implementation не начат.
 
 ## Цель
 
@@ -21,7 +21,7 @@
 ```text
 R0.A live inventory [DONE]
   → R0.B reviewed source freeze [DONE]
-    → F0 project-native quality gate [NEXT: M01.1]
+    → F0 project-native quality gate [M01.1 DONE; NEXT: M01.2]
       → R1 reproducible Web + emulator + current arm64 release recovery
         → A0 GameRoot seams after technical M02.2–M02.5 baseline
           → A1 M04 assets → M06 skins → M05 UI
@@ -39,7 +39,7 @@ M11 PCG/DDA starts after M07+M09+M10 and remains optional/non-blocking for R2.
 | Module | Live status | Что сохраняется | Что ещё требуется |
 | --- | --- | --- | --- |
 | M00 | complete | classification, topology ADR, source commit/tag, source/Pages bundles, manifest, evidence anchor, offline restore PASS | none; preserve immutable source anchor |
-| M01 | partial | v2 checklists, validators, Web/Android QA harnesses | единый fail-closed runner, schemas, retention, CI/local parity |
+| M01 | M01.1 complete | полный инвентарь 32/32, v2 checklists, validators, Web/Android QA harnesses | schema adapters/fixtures, единый fail-closed runner, retention, CI/local parity |
 | M02 | release blocked | Web/emulator artifacts и старый arm APK | immutable source/content version, current arm64, Pages parity, signing decision, conditional AAB |
 | M03 | not started | существующая рабочая логика | state/input/collision/power-up seams и bounded log |
 | M04 | revalidate then extend | asset validators, draft atlas, selected contact sheets | final ownership/atlas/bundle contracts и metrics |
@@ -71,6 +71,7 @@ M00.A и M00.B завершены 19 июля 2026 года:
 
 Сначала M01 minimum viable gate, затем M02:
 
+- M01.1 завершён: все 32 tool surfaces классифицированы, рабочие команды сохранены, false-green и side-effect risks не замаскированы;
 - сохранить существующие рабочие validators вместо замены внешними упрощёнными скриптами;
 - typed runner с timeout/fail-closed JSON;
 - общий logical content version;

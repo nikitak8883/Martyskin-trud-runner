@@ -1,6 +1,6 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m00_complete_m01_next_runtime_not_started`  
+Статус: `m00_complete_m01_1_complete_m01_2_next_runtime_not_started`  
 Дата интеграции: 2026-07-19  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
@@ -47,7 +47,9 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - Restore rehearsal: PASS после обязательного `core.longpaths=true` и восстановления игнорируемых Cocos generated declarations.
 - Build/runtime/emulator/Pages publish/signing: в рамках M00 не запускались и не изменялись.
 - Architecture/assets/UI/gameplay patches: в рамках M00 не начинались.
+- M01.1: завершён полный инвентарь `32/32` tracked validators/harnesses/producers; статический D4-срез прошёл, runtime/build QA не запускался.
+- Принятые инструменты и обнаруженные false-green/timeout/schema/path/port риски закреплены в `M01/quality_gate_inventory.md` и `.json`.
 
 ## Следующее безопасное действие
 
-Выполнить `M01.1`: инвентаризировать все существующие validators/harnesses, их входы, побочные эффекты, timeout-политику, outputs и принимаемые evidence contracts. На этом bounded-шаге runtime-код не менять.
+Выполнить `M01.2`: согласовать существующие schemas, добавить compatibility adapters и positive/negative fixtures. На этом bounded-шаге runtime-код не менять.

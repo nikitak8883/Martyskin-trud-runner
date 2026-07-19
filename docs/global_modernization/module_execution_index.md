@@ -13,7 +13,7 @@ This file remains the historical Tasks/4/v2 execution record. Current dependency
 - `docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml`
 - `docs/current_audit/revalidation_summary.md`
 
-Completed v2 UI/skin/graphics work is preserved as `revalidate_then_extend`. M00 source freeze is complete; the immediate bounded action is M01.1 validator/harness inventory, not another UI pilot.
+Completed v2 UI/skin/graphics work is preserved as `revalidate_then_extend`. M00 source freeze and M01.1 validator/harness inventory are complete; the immediate bounded action is M01.2 schema compatibility/adapters/fixtures, not another UI pilot.
 
 ## Execution policy
 
@@ -204,4 +204,4 @@ No module may claim success from documentation alone when runtime behavior is in
 
 ## Current next safe action
 
-Execute M01.1: inventory the existing validators and harnesses, including their inputs, side effects, timeout behavior, outputs and evidence contracts. Do not mutate runtime in this work package. Android runtime QA remains emulator-only unless the user explicitly authorizes a physical device.
+Execute M01.2: reconcile existing report schemas, add compatibility adapters and positive/negative fixtures. Do not mutate runtime in this work package. Android runtime QA remains emulator-only unless the user explicitly authorizes a physical device.

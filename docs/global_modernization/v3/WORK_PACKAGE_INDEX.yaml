@@ -78,16 +78,16 @@ modules:
   M01:
     name: unified_quality_gate_ci_code_review_and_evidence
     priority: P0
-    current_status: partial_existing_tools
+    current_status: m01_1_complete_schema_next
     depends_on: [M00]
     work_packages:
       - id: M01.1
-        status: ready
+        status: complete
         objective: Inventory every existing validator/harness, its inputs, side effects, timeout, outputs and accepted evidence; preserve working commands.
-        outputs: [docs/global_modernization/v3/M01/quality_gate_inventory.md]
+        outputs: [docs/global_modernization/v3/M01/quality_gate_inventory.md, docs/global_modernization/v3/M01/quality_gate_inventory.json, docs/global_modernization/v3/M01/M01_1_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_1_CODE_REVIEW_REPORT.md]
         gates: [D4]
       - id: M01.2
-        status: pending
+        status: ready
         objective: Namespace and reconcile v2/current/v3 schemas; add migration/adapters, positive fixtures and negative fixtures.
         outputs: [docs/global_modernization/v3/M01/schema_compatibility_matrix.md, docs/global_modernization/v3/library/schemas]
         gates: [D4]
@@ -600,5 +600,5 @@ modules:
 
 next_safe_action:
   module: M01
-  work_package: M01.1
-  action: Inventory existing validators and harnesses, including inputs, side effects, timeouts and evidence contracts; do not patch runtime code.
+  work_package: M01.2
+  action: Reconcile existing report schemas, add compatibility adapters and positive/negative fixtures; do not patch runtime code.

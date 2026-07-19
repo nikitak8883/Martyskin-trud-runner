@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "work_package": "M01.1",
+  "date": "2026-07-19",
+  "status": "pass",
+  "source_commit": "e60ab6f489793f8b66de5f32601122723aba82aa",
+  "frozen_source_commit": "12670452ae4580ef5c685ff986476daf91522978",
+  "scope": {
+    "runtime_modified": false,
+    "build_run": false,
+    "web_runtime_run": false,
+    "android_emulator_run": false,
+    "physical_device_run": false
+  },
+  "checks": [
+    {"id": "inventory-json", "status": "pass", "detail": "JSON parsed successfully"},
+    {"id": "inventory-coverage", "status": "pass", "detail": "32 tracked executable tool files, 32 listed, 32 unique, zero missing or extra"},
+    {"id": "inventory-sha", "status": "pass", "detail": "32/32 recorded SHA-256 values match live tool bytes"},
+    {"id": "inventory-required-fields", "status": "pass", "detail": "all entries contain inputs, side effects, timeout, outputs, evidence, exit semantics, dependencies, command and findings"},
+    {"id": "project-config", "status": "pass", "detail": "15 levels/backgrounds and required runtime/config/query contracts present"},
+    {"id": "typescript", "status": "pass", "detail": "Cocos Creator 3.8.8 TypeScript compiler completed with --noEmit"},
+    {"id": "assets-strict", "status": "pass", "metrics": {"png_count": 1528, "decode_errors": 0, "missing_meta": 0, "oversize": 0, "white_matte_suspects": 0, "blockers": 0}},
+    {"id": "skin-bonus-matrix-strict", "status": "pass", "metrics": {"expected_frames": 576, "checked_frames": 576, "blockers": 0, "warnings": 0}},
+    {"id": "ui-ir", "status": "pass", "metrics": {"expected_screens": 14, "checked_screens": 14, "problems": 0, "warnings": 0}},
+    {"id": "level-select-icons-verify-only", "status": "pass", "metrics": {"png_count": 15, "meta_count": 15, "format": "128x128 RGBA8"}},
+    {"id": "entrypoint-quoting", "status": "pass", "detail": "typed arguments and spaces self-test passed"},
+    {"id": "git-topology", "status": "pass", "detail": "canonical forward-slash child path passed; parent gitlink equals clean Pages HEAD d7a7cc1b0f75cd7aed7ac831e86f79421014e96f"},
+    {"id": "python-syntax", "status": "pass", "metrics": {"files": 15, "errors": 0}},
+    {"id": "powershell-syntax", "status": "pass", "metrics": {"files": 14, "errors": 0}},
+    {"id": "javascript-syntax", "status": "pass", "metrics": {"files": 3, "errors": 0}},
+    {"id": "plan-index-audit", "status": "pass", "metrics": {"modules": 13, "work_packages": 95, "unique_work_packages": 95, "dependency_cycles": 0, "invalid_statuses": 0, "next_ready": "M01.2"}},
+    {"id": "hygiene-gate", "status": "pass", "detail": "zero touched-scope temp/debug/TODO leftovers, zero active stale M01.1 next-action references, task-owned query cache and temp log removed"},
+    {"id": "post-clean-regression", "status": "pass", "detail": "config, TypeScript, assets, skin matrix, UI IR, icons, topology, inventory/plan contract and diff check all passed after cleanup"}
+  ],
+  "documented_retries": [
+    {
+      "id": "inventory-helper-root-resolution",
+      "impact": "none",
+      "detail": "An initial read-only helper used unresolved Path('.') parent arithmetic and raised IndexError; the corrected helper resolves the root first."
+    },
+    {
+      "id": "git-topology-path-separator",
+      "impact": "none",
+      "detail": "The first invocation used a backslash ChildRelative and exposed textual path comparison; the canonical forward-slash invocation passed."
+    },
+    {
+      "id": "syntax-orchestration-quoting",
+      "impact": "none",
+      "detail": "One orchestration script was rejected before shell execution due to a JavaScript template quoting error; corrected commands then passed all syntax parsers."
+    },
+    {
+      "id": "hygiene-cleanup-policy-retry",
+      "impact": "none",
+      "detail": "PowerShell cleanup was rejected before execution by command policy and one read-only metadata probe had a parser error; exact-file apply_patch cleanup then removed only the task-owned query cache and temp log."
+    }
+  ],
+  "artifacts": [
+    "docs/global_modernization/v3/M01/quality_gate_inventory.md",
+    "docs/global_modernization/v3/M01/quality_gate_inventory.json",
+    "docs/global_modernization/v3/M01/M01_1_CODE_REVIEW_REPORT.md",
+    "docs/qa/CONTROL_LOG_CHECKPOINT_20260719_M01_1_QUALITY_GATE_INVENTORY.md"
+  ],
+  "next_safe_action": "M01.2 schema compatibility matrix, adapters, and positive/negative fixtures; no runtime patch"
+}

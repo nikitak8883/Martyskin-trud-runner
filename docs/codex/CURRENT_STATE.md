@@ -7,7 +7,7 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_reported_green / source_frozen / m00_complete / release_blocked`
+Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_1_complete / release_blocked`
 
 ## 2026-07-19 v3 revalidation overlay
 
@@ -18,7 +18,8 @@ The sections below preserve the detailed Tasks/4 implementation history, but the
 - The integrated M00-M12 plan is under `docs/global_modernization/v3/`.
 - M00.1–M00.6 are complete: source commit `12670452ae4580ef5c685ff986476daf91522978`, tree `9faa768c9b81f94b7745c917b6d7d49b7cef884c`, annotated tag `mtr-source-freeze-v3-20260719`, verified source/Pages bundles and offline restore rehearsal PASS.
 - Pages is now an explicit submodule pinned to `d7a7cc1b0f75cd7aed7ac831e86f79421014e96f`; the primary parent repository still has no remote.
-- Current next action: execute `M01.1` validator/harness inventory; do not patch runtime code in that bounded work package.
+- M01.1 is complete: `32/32` tracked tool surfaces are classified with commands, side effects, timeout and evidence contracts; static D4 checks passed without build/runtime execution.
+- Current next action: execute `M01.2` schema compatibility matrix, adapters and positive/negative fixtures; do not patch runtime code in that bounded work package.
 - Current release status: blocked by Web/Pages drift, absence of a current arm64 artifact from the accepted source, unresolved production signing and missing embedded content version.
 
 The latest known game runtime line is Android/Web capable and has a validated live Web build. The current task line is the Tasks/4 global modernization rollout. Module 0/10 scaffold is in place, Module 1 non-mutating asset/reference validation passes, Module 3 static skin/bonus matrix, contact sheet evidence, and selected Android emulator QA pass, and Module 2 now has `name`, `menu`, `levels`, `playing_hud`, `devgate`, `sound`, `skins`, `devpanel`, `achievements`, `records`, and `paused` UI IR pilots with Web runtime evidence plus Android emulator runtime evidence.
@@ -122,14 +123,14 @@ adb -s R5CY933XP7P install --user 0 -r "<release-apk>"
 
 ## Latest local checkpoint log
 
-- `docs\qa\CONTROL_LOG_CHECKPOINT_20260719_M00_SOURCE_FREEZE_COMPLETE.md`
+- `docs\qa\CONTROL_LOG_CHECKPOINT_20260719_M01_1_QUALITY_GATE_INVENTORY.md`
 - status: `pass`
-- next safe action: execute `M01.1` validator and harness inventory
+- next safe action: execute `M01.2` schema compatibility matrix, adapters and fixtures
 
 ## Required next implementation order
 
-1. Execute `M01.1`: inventory and classify existing validators/harnesses without runtime mutation.
-2. Reconcile schemas in `M01.2`, then implement and self-test the typed fail-closed runner in `M01.3`.
+1. M01.1 complete: preserve the `32/32` inventory and its explicit false-green/timeout/side-effect findings.
+2. Execute `M01.2`: reconcile schemas and add adapters plus positive/negative fixtures; then implement and self-test the typed fail-closed runner in `M01.3`.
 3. Complete the minimum M01 quality/evidence gate before M02 release recovery; remote CI remains conditional on a primary source remote.
 4. Execute M02 technical release recovery from the frozen source before any external release claim.
 5. Resume M03+ runtime modernization only through the dependency-gated work-package index.
