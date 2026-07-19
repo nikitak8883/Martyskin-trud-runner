@@ -1,0 +1,2 @@
+# Markdown audit logs use two trailing spaces for explicit CommonMark line breaks.
+*.md whitespace=-trailing-space

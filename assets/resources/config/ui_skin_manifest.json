@@ -1,9 +1,33 @@
 {
   "schemaVersion": 1,
   "policy": {
-    "interactiveText": "runtime-label-only",
-    "bakedTextAllowed": "decorative-non-interactive-only",
-    "legacyUiRuntimeAllowed": false
+    "interactiveText": "runtime-label-preferred",
+    "bakedTextAllowed": "documented-atomic-interactive-exceptions",
+    "legacyUiRuntimeAllowed": false,
+    "atomicBakedInteractiveExceptions": [
+      {
+        "screen": "menu",
+        "reason": "Main menu buttons are single atomic PNG buttons with baked Russian labels; GameRoot returns before drawing a runtime label to prevent ghost under-text.",
+        "labels": [
+          "НАЧАТЬ ИГРУ",
+          "ВПЕРЁД, ПРИМАТЫ!",
+          "ВЫБЕРИ СВОЕГО ПРИМАТА",
+          "ЗВУК И НАСТРОЙКИ",
+          "МАРТЫШКИНЫ РЕКОРДЫ",
+          "ВЫБОР УРОВНЯ",
+          "РЕЖИМ РАЗРАБОТЧИКА"
+        ]
+      },
+      {
+        "screen": "name",
+        "reason": "Start name submenu uses a unified PNG button pack. Runtime EditBox text is hidden and mirrored by Cocos labels to avoid duplicate DOM and Cocos labels.",
+        "labels": [
+          "СОХРАНИТЬ ИМЯ",
+          "ВПЕРЁД, ПРИМАТЫ!",
+          "В МЕНЮ"
+        ]
+      }
+    ]
   },
   "shared": {
     "titleBanner": "ui/shared/banners/title_banner_blank",

@@ -1,0 +1,122 @@
+{
+  "$schema": "mtr.atlas_manifest.schema.v1",
+  "schemaVersion": 1,
+  "status": "draft_no_runtime_effect",
+  "generatedAt": "2026-07-02T15:52:00+03:00",
+  "sourceRoot": "assets/resources",
+  "summary": {
+    "pngCount": 1529,
+    "totalBytes": 107264037,
+    "alphaPngCount": 1528,
+    "nonAlphaPngCount": 1,
+    "oversizeCount": 0,
+    "missingMetaCount": 0
+  },
+  "atlases": [
+    {
+      "atlasId": "ui_shared_core",
+      "usageScope": "hud|menu",
+      "sourceCandidates": [
+        "ui/shared"
+      ],
+      "bundleId": "resources",
+      "maxTextureSize": 2048,
+      "padding": 2,
+      "compression": "platform_specific",
+      "dynamicAtlasAllowed": false,
+      "owner": "ui_ux_design_system",
+      "fallbackPolicy": "block_release"
+    },
+    {
+      "atlasId": "main_menu_background",
+      "usageScope": "background",
+      "sourceCandidates": [
+        "ui/main_menu_background/main_menu_bg_far.png"
+      ],
+      "bundleId": "resources",
+      "maxTextureSize": 2048,
+      "padding": 0,
+      "compression": "platform_specific",
+      "dynamicAtlasAllowed": false,
+      "owner": "ui_ux_design_system",
+      "fallbackPolicy": "block_release"
+    },
+    {
+      "atlasId": "player_skins_selected",
+      "usageScope": "skin",
+      "sourceCandidates": [
+        "characters/player_skins"
+      ],
+      "bundleId": "resources",
+      "maxTextureSize": 2048,
+      "padding": 2,
+      "compression": "platform_specific",
+      "dynamicAtlasAllowed": false,
+      "owner": "character_skin_bonus_animation_pipeline",
+      "fallbackPolicy": "block_release"
+    },
+    {
+      "atlasId": "bonus_items",
+      "usageScope": "bonus",
+      "sourceCandidates": [
+        "objectives/bonuses",
+        "objectives/equipment"
+      ],
+      "bundleId": "resources",
+      "maxTextureSize": 2048,
+      "padding": 2,
+      "compression": "platform_specific",
+      "dynamicAtlasAllowed": false,
+      "owner": "character_skin_bonus_animation_pipeline",
+      "fallbackPolicy": "block_release"
+    },
+    {
+      "atlasId": "runner_collectibles",
+      "usageScope": "runner_core",
+      "sourceCandidates": [
+        "objectives/collectibles"
+      ],
+      "bundleId": "resources",
+      "maxTextureSize": 2048,
+      "padding": 2,
+      "compression": "platform_specific",
+      "dynamicAtlasAllowed": false,
+      "owner": "gameplay_core_mechanics",
+      "fallbackPolicy": "block_release"
+    },
+    {
+      "atlasId": "level_theme_pack_draft",
+      "usageScope": "obstacle|background",
+      "sourceCandidates": [
+        "objectives/themed"
+      ],
+      "bundleId": "resources",
+      "maxTextureSize": 2048,
+      "padding": 2,
+      "compression": "platform_specific",
+      "dynamicAtlasAllowed": false,
+      "owner": "levels_backgrounds_content_pipeline",
+      "fallbackPolicy": "warn"
+    },
+    {
+      "atlasId": "achievement_ui",
+      "usageScope": "hud|menu",
+      "sourceCandidates": [
+        "objectives/ui"
+      ],
+      "bundleId": "resources",
+      "maxTextureSize": 2048,
+      "padding": 2,
+      "compression": "platform_specific",
+      "dynamicAtlasAllowed": false,
+      "owner": "save_achievements_telemetry",
+      "fallbackPolicy": "block_release"
+    }
+  ],
+  "validation": [
+    "usage_scope_matches_runtime_co_visibility",
+    "no_high_frequency_sprite_outside_static_atlas",
+    "empty_space_reported",
+    "no_runtime_effect_until_promoted_from_draft"
+  ]
+}

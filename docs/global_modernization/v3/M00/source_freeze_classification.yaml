@@ -1,0 +1,130 @@
+schema_version: 1
+classification_id: mtr-m00-source-freeze-20260719
+policy: minimal_reproducible_source_checkpoint
+generated_at: '2026-07-19T09:19:54.0551708+03:00'
+
+scope:
+  git_root: 'C:\Projects\Monkey Work'
+  project_root: 'C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator'
+  project_relative: MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator
+  source_head_before: 76bac6c2e9f5e112489aa8a922dce48c3fd9970b
+  source_branch_before: main
+  outside_project_scope:
+    - Tasks/
+    - project-library/
+    - _github/Martyskin-trud-runner/
+  outside_scope_policy: never_stage_from_the_project_source_pathspec
+
+snapshot:
+  inventory: docs/global_modernization/v3/M00/dirty_tree_inventory.pre_freeze.json
+  inventory_sha256: 642C94DFE669561E54A2068ACDE09F1CA0322533F2DE2DC7284A59214A76CB95
+  entries: 633
+  existing_bytes: 628544246
+  complete_partition: true
+  manual_review_entries: 0
+
+partition:
+  include_in_checkpoint:
+    entries: 114
+    existing_bytes: 1592411
+    categories:
+      source_runtime:
+        entries: 7
+        existing_bytes: 503792
+        rules:
+          - assets/**
+          - native/**
+        note: Includes two intentional tracked deletions already accepted by the active manifest and static validator.
+      source_tooling:
+        entries: 12
+        existing_bytes: 177220
+        rules:
+          - tools/**
+      compact_docs_index:
+        entries: 95
+        existing_bytes: 911399
+        rules:
+          - docs/codex/**
+          - docs/current_audit/**
+          - docs/global_modernization/**
+          - docs/qa/*.md
+    generated_after_snapshot:
+      - .gitattributes
+      - .gitignore
+      - docs/global_modernization/v3/M00/**
+  exclude_from_checkpoint:
+    entries: 519
+    existing_bytes: 626951835
+    categories:
+      raw_evidence_local_only:
+        entries: 379
+        existing_bytes: 490103896
+        rules:
+          - docs/qa/evidence/**
+        retention: preserve_locally_and_reference_through_live_evidence_index
+      generated_output_local_only:
+        entries: 140
+        existing_bytes: 136847939
+        rules:
+          - output/**
+        retention: reproducible_output_not_source
+    enforced_ignore_rules:
+      - /docs/qa/*
+      - '!/docs/qa/*.md'
+      - /docs/restore/
+      - /docs/skins_integration/qa/
+      - /docs/skins_integration/skin_pack_contact_sheet.png
+      - /output/
+  remove_preexisting_tracked_evidence_from_index:
+    entries: 402
+    existing_bytes: 545794907
+    filesystem_action: none
+    git_action: remove_from_index_only_and_preserve_locally
+    rules:
+      - docs/qa/** except immediate *.md checkpoint summaries; nested evidence notes remain local-only
+      - docs/restore/**
+      - docs/skins_integration/qa/**
+      - docs/skins_integration/skin_pack_contact_sheet.png
+    reason: The first full-tree manifest exposed evidence already tracked before M00; retaining it would violate the source-only acceptance gate.
+
+tracked_runtime_and_tool_changes:
+  include_modified:
+    - assets/resources/config/ui_skin_manifest.json
+    - assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_001.png
+    - assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003.png
+    - assets/scripts/GameRoot.ts
+    - native/engine/android/app/src/com/cocos/game/AppActivity.java
+    - tools/scan_and_fix_white_matte_edges.py
+    - tools/validate-mtr-config.ps1
+    - tools/web-chrome-runtime-smoke.ps1
+  include_deleted:
+    - assets/resources/objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_enter_name_01.png
+    - assets/resources/objectives/themed/last_iteration/ui/start_menu/mtr_start_menu_button_enter_name_01.png.meta
+  include_untracked_tools:
+    - tools/codex/Run-MtrAndroidEmulatorInteractionQa.ps1
+    - tools/codex/Run-MtrAndroidEmulatorMatrixQa.ps1
+    - tools/codex/run_web_playwright_function.js
+    - tools/codex/web_matrix_playwright_function.js
+    - tools/codex/web_soak_playwright_function.js
+    - tools/render-skin-contact-sheets.py
+    - tools/validate-assets.py
+    - tools/validate-skin-bonus-matrix.py
+    - tools/validate-ui-ir.py
+
+pre_commit_gates:
+  - no_path_outside_explicit_source_pathspec
+  - no_build_or_raw_evidence_blob
+  - no_secret_or_signing_material
+  - git_diff_check
+  - project_static_validators
+  - nested_repository_topology_check
+
+approval_record:
+  user_instruction: 'Отлично, приступай к реализации'
+  interpretation: approve_execution_of_the_reviewed_M00_plan_with_bounded_staging_and_no_runtime_edits
+  runtime_behavior_change_authorized: false
+  publish_authorized: false
+  physical_device_authorized: false
+
+decision: approved_for_M00_topology_and_checkpoint_preparation
+next_safe_action: document_and_verify_the_Pages_topology_before_any_staging

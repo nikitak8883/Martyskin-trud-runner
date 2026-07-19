@@ -12,11 +12,11 @@
     input,
     KeyCode,
     Label,
-    LabelOutline,
     Node,
     profiler,
     ResolutionPolicy,
     resources,
+    screen,
     Sprite,
     SpriteFrame,
     sys,
@@ -223,6 +223,7 @@ const LEVEL_SELECT_THEME_ICON_KEYS = [
 const THEMED_GAMEPLAY_RUNTIME_KEYS = THEMED_ALL_RUNTIME_KEYS.filter((key) => !key.includes('/ui/'));
 
 type State = 'menu' | 'playing' | 'paused' | 'clear' | 'over' | 'finished' | 'skins' | 'levels' | 'sound' | 'records' | 'achievements' | 'name' | 'devgate' | 'devpanel';
+type EndState = 'clear' | 'over' | 'finished';
 type FsmMode = 'MENU' | 'CHARACTER_SELECT' | 'LEVEL_SELECT' | 'RUNNING' | 'PAUSED' | 'GAME_OVER' | 'ACHIEVEMENTS' | 'DEV_MODE';
 type CollectibleKind = 'banana' | 'coconut' | 'figLeaf';
 
@@ -240,7 +241,7 @@ type PlayerSkinPose = 'idle' | 'run1' | 'run2' | 'jump' | 'jump2' | 'fall' | 'cr
 interface ObstacleSpec { w: number; h: number; label?: string; joke: string; }
 interface ObstacleVisualProfile { assetWScale: number; assetHScale: number; assetBottomOffset: number; labelLift: number; assetOpacity: number; }
 interface RecordEntry { name: string; score: number; level: number; bananas: number; }
-interface PooledLabel { node: Node; ui: UITransform; label: Label; outline: LabelOutline; }
+interface PooledLabel { node: Node; ui: UITransform; label: Label; }
 interface PooledSprite { node: Node; ui: UITransform; sprite: Sprite; key: string; }
 interface BackgroundSegment { node: Node; ui: UITransform; sprite: Sprite; }
 interface BackgroundLayout {
@@ -557,6 +558,7 @@ function playerSkinPreviewAssetKey(skinIndex: number): string {
 }
 
 const PLAYER_SKIN_V2_BASE_ASSET_KEYS = PLAYER_SKIN_IDS.flatMap((_, index) => playerSkinCriticalAssetKeysForSkin(index));
+const PLAYER_SKIN_PREVIEW_ASSET_KEYS = PLAYER_SKIN_IDS.map((_, index) => playerSkinPreviewAssetKey(index));
 const BANANA_COLLECTIBLE_ASSET_KEYS = [
     'objectives/collectibles/collectible_banana_single_new',
     'objectives/collectibles/collectible_banana_large_new',
@@ -864,6 +866,10 @@ const ACHIEVEMENTS: AchievementDef[] = [
     { id: 'no_damage_clear', title: 'Не переиграй себя', caption: 'Прошёл без потери здоровья.', category: 'progress', rarity: 'legendary', triggerType: 'no_damage', target: 1, iconAsset: 'objectives/ui/ui_achievement_trophy_01', hint: 'Пройди уровень без урона.' },
     { id: 'bonus_bananas', title: 'Сверхплановый примат', caption: 'Бананы сверх нормы тоже отчёт.', category: 'bananas', rarity: 'bureaucratic', triggerType: 'bananas', target: 1, iconAsset: 'objectives/collectibles/collectible_banana_bunch_01', hint: 'Собери бананы сверх цели уровня.' },
 ];
+const ACHIEVEMENT_MENU_ICON_ASSET_KEYS = Array.from(new Set<string>([
+    ...ACHIEVEMENTS.map((def) => def.iconAsset),
+    'objectives/ui/ui_level_lock_01',
+]));
 
 const PLATFORM_NAMES = ['ЛЕСА', 'ПЛИТА', 'ДОСКИ', 'РЕЛЬСЫ', 'ВАГОНЕТКА', 'ПОДДОН', 'ТРУБЫ', 'ЩИТ', 'ФЕРМА', 'КАБЕЛЬ', 'ТАЧКА', 'КОНТЕЙНЕР'];
 const DEATH_FALLBACKS = [
@@ -984,12 +990,12 @@ export class GameRoot extends Component {
     private playerSkinVariantPreloadLogged: Record<string, boolean> = {};
     private levelThemeWarmupScheduled: Record<number, boolean> = {};
     private utilityWarmupScheduled = false;
-    private menuUiCriticalPreloadStarted = false;
+    private menuUiCriticalPreloadLoggedBySurface: Record<string, boolean> = {};
     private mainMenuBackgroundPreloadStarted = false;
     private mainMenuDeferredButtonsPreloadStarted = false;
     private secondaryMenuUiPreloadStarted = false;
-    private menuUiGateWaitLogged = false;
-    private menuUiReadyLogged = false;
+    private menuUiGateWaitLoggedBySurface: Record<string, boolean> = {};
+    private menuUiReadyLoggedBySurface: Record<string, boolean> = {};
     private clips: Record<string, AudioClip> = {};
     private audioPreloadScheduled = false;
     private audioCoreLoadStarted = false;
@@ -1015,6 +1021,7 @@ export class GameRoot extends Component {
     private debugReadability = false;
     private showTouchZones = false;
     private pendingQaPauseAfterStart = false;
+    private pendingQaPauseShowTouchZones = false;
     private showPerfOverlay = false;
     private devStatusText = '';
     private lastPauseToggleMs = 0;
@@ -1099,10 +1106,36 @@ export class GameRoot extends Component {
     private pendingSkinSelection = 0;
     private qaForcedSkinVariant: PlayerSkinVariant | null = null;
     private qaForcedPlayerPose: PlayerSkinPose | null = null;
+    private resolutionPolicyMode: 'show_all' | 'fixed_height' | null = null;
+
+    private applyResponsiveResolutionPolicy(): void {
+        const frame = screen.windowSize;
+        const viewportWidth = Number.isFinite(frame.width) && frame.width > 0 ? frame.width : W;
+        const viewportHeight = Number.isFinite(frame.height) && frame.height > 0 ? frame.height : H;
+        const isNarrowerThanDesign = viewportWidth / viewportHeight < W / H;
+        const nextMode: 'show_all' | 'fixed_height' = !sys.isNative && isNarrowerThanDesign
+            ? 'show_all'
+            : 'fixed_height';
+        if (this.resolutionPolicyMode === nextMode) return;
+
+        this.resolutionPolicyMode = nextMode;
+        const policy = nextMode === 'show_all' ? ResolutionPolicy.SHOW_ALL : ResolutionPolicy.FIXED_HEIGHT;
+        view.setDesignResolutionSize(W, H, policy);
+        console.log(
+            `MTR_RESOLUTION_POLICY platform=${sys.isNative ? 'native' : 'web'}`
+            + ` orientation=${viewportWidth < viewportHeight ? 'portrait' : 'landscape'}`
+            + ` policy=${nextMode} viewport=${Math.round(viewportWidth)}x${Math.round(viewportHeight)}`,
+        );
+    }
+
+    private onCanvasResize(): void {
+        this.applyResponsiveResolutionPolicy();
+    }
 
     onLoad(): void {
         profiler.hideStats();
-        view.setDesignResolutionSize(W, H, ResolutionPolicy.FIXED_HEIGHT);
+        this.applyResponsiveResolutionPolicy();
+        view.on('canvas-resize', this.onCanvasResize, this);
         this.node.getComponent(UITransform)?.setContentSize(W, H);
         const uiLayer = this.node.layer;
         console.log(`MTR_BITMAP_RUNTIME_READY owner=GameRoot platform=${sys.isNative ? 'native' : 'web'} backgrounds=resources/backgrounds objects=latest_themed_assets`);
@@ -1157,7 +1190,6 @@ export class GameRoot extends Component {
         this.devPasswordNode.addComponent(UITransform).setContentSize(420, 58);
         this.devPasswordNode.setPosition(this.cx(640), this.cy(318));
         this.devPasswordEdit = this.devPasswordNode.addComponent(EditBox);
-        this.devPasswordEdit.fontSize = 24;
         this.devPasswordEdit.maxLength = 32;
         this.devPasswordEdit.placeholder = '';
         this.devPasswordEdit.string = '';
@@ -1172,9 +1204,6 @@ export class GameRoot extends Component {
         this.playerNameEditNode.addComponent(UITransform).setContentSize(520, 58);
         this.playerNameEditNode.setPosition(this.cx(640), this.cy(318));
         this.playerNameEdit = this.playerNameEditNode.addComponent(EditBox);
-        this.playerNameEdit.fontSize = 28;
-        this.playerNameEdit.fontColor = rgb(255, 255, 255, 0);
-        this.playerNameEdit.placeholderFontColor = rgb(255, 255, 255, 0);
         this.playerNameEdit.maxLength = PLAYER_NAME_MAX_LENGTH;
         this.playerNameEdit.placeholder = DEFAULT_PLAYER_NAME;
         this.playerNameEdit.string = this.playerName;
@@ -1217,6 +1246,7 @@ export class GameRoot extends Component {
         input.off(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
         input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
+        view.off('canvas-resize', this.onCanvasResize, this);
         if (this.pauseTouchZone) this.pauseTouchZone.off(Input.EventType.TOUCH_END, this.onPauseTouchZoneTap, this);
     }
 
@@ -1575,36 +1605,50 @@ export class GameRoot extends Component {
         console.log(`MTR_CRITICAL_LEVEL_ASSET_PRELOAD_REQUESTED reason=${reason} level=${levelIndex + 1} count=${keys.length} policy=visible-plus-limited-startup`);
     }
 
-    private criticalMenuUiSpriteKeys(surface = MAIN_MENU_UI_SURFACE): string[] {
+    private menuUiGateId(surface: string, state: State): string {
+        return `${surface}:${state}`;
+    }
+
+    private criticalMenuUiSpriteKeys(surface = MAIN_MENU_UI_SURFACE, state: State = this.state): string[] {
         const keys: string[] = [];
-        if (surface === MAIN_MENU_UI_SURFACE) {
+        if (surface === MAIN_MENU_UI_SURFACE && state === 'menu') {
             keys.push(...MAIN_MENU_INITIAL_READY_KEYS);
         } else {
             keys.push(...UI_SHARED_ASSET_KEYS);
         }
+        if (state === 'name') {
+            keys.push(...START_MENU_UI_KEYS);
+        }
         if (surface === 'level_select') {
             keys.push(...LEVEL_SELECT_THEME_ICON_KEYS);
+        }
+        if (surface === 'skin_select') {
+            keys.push(...PLAYER_SKIN_PREVIEW_ASSET_KEYS);
+        }
+        if (surface === 'achievements') {
+            keys.push(...ACHIEVEMENT_MENU_ICON_ASSET_KEYS);
         }
         return Array.from(new Set(keys));
     }
 
-    private preloadCriticalMenuUiSprites(reason: string, surface = MAIN_MENU_UI_SURFACE): void {
-        const keys = this.criticalMenuUiSpriteKeys(surface);
-        this.enqueueObjectSprites(keys, `menu-ui-critical:${reason}:${surface}`, 'critical');
-        if (surface === MAIN_MENU_UI_SURFACE) this.preloadMainMenuDeferredButtonSprites(reason);
-        if (!this.menuUiCriticalPreloadStarted) {
-            this.menuUiCriticalPreloadStarted = true;
-            console.log(`MTR_MENU_UI_CRITICAL_PRELOAD_REQUESTED reason=${reason} surface=${surface} count=${keys.length}`);
+    private preloadCriticalMenuUiSprites(reason: string, surface = MAIN_MENU_UI_SURFACE, state: State = this.state): void {
+        const gateId = this.menuUiGateId(surface, state);
+        const keys = this.criticalMenuUiSpriteKeys(surface, state);
+        this.enqueueObjectSprites(keys, `menu-ui-critical:${reason}:${gateId}`, 'critical');
+        if (surface === MAIN_MENU_UI_SURFACE && state === 'menu') this.preloadMainMenuDeferredButtonSprites(reason);
+        if (!this.menuUiCriticalPreloadLoggedBySurface[gateId]) {
+            this.menuUiCriticalPreloadLoggedBySurface[gateId] = true;
+            console.log(`MTR_MENU_UI_CRITICAL_PRELOAD_REQUESTED reason=${reason} surface=${surface} screen=${state} count=${keys.length}`);
         }
     }
 
-    private areCriticalMenuUiSpritesReady(surface = MAIN_MENU_UI_SURFACE): boolean {
-        const keys = this.criticalMenuUiSpriteKeys(surface);
+    private areCriticalMenuUiSpritesReady(surface = MAIN_MENU_UI_SURFACE, state: State = this.state): boolean {
+        const keys = this.criticalMenuUiSpriteKeys(surface, state);
         return keys.length === 0 || keys.every((key) => !!this.objectSpriteFrames[key]);
     }
 
-    private missingCriticalMenuUiSprites(surface = MAIN_MENU_UI_SURFACE): string[] {
-        return this.criticalMenuUiSpriteKeys(surface).filter((key) => !this.objectSpriteFrames[key]);
+    private missingCriticalMenuUiSprites(surface = MAIN_MENU_UI_SURFACE, state: State = this.state): string[] {
+        return this.criticalMenuUiSpriteKeys(surface, state).filter((key) => !this.objectSpriteFrames[key]);
     }
 
     private preloadMainMenuBackgroundSprites(reason: string): void {
@@ -2131,6 +2175,24 @@ export class GameRoot extends Component {
         }
     }
 
+    private seedRecordsForQa(): void {
+        const seeded: RecordEntry[] = [
+            { name: 'Прораб Макакинсон', score: 15420, level: 15, bananas: 312 },
+            { name: 'Безымянный примат', score: 12980, level: 14, bananas: 288 },
+            { name: 'Инженер Банановой Сметы', score: 11110, level: 12, bananas: 251 },
+            { name: 'Лаборантка Лиана', score: 9870, level: 10, bananas: 209 },
+            { name: 'Кибер-Макака', score: 8760, level: 9, bananas: 198 },
+            { name: 'Бригадир Золотой Каски', score: 7450, level: 7, bananas: 166 },
+            { name: 'Очень длинное имя примата для проверки ведомости', score: 6120, level: 6, bananas: 144 },
+        ];
+        try {
+            sys.localStorage.setItem('mtr_records', JSON.stringify(seeded));
+            console.log(`MTR_RECORDS_QA_SEEDED count=${seeded.length}`);
+        } catch {
+            console.warn('MTR_RECORDS_QA_SEED_FAILED');
+        }
+    }
+
     private achievementEntries(): AchievementEntry[] {
         try {
             const raw = sys.localStorage.getItem('mtr_achievements') || '[]';
@@ -2293,10 +2355,15 @@ export class GameRoot extends Component {
         if (this.pendingQaPauseAfterStart) {
             this.pendingQaPauseAfterStart = false;
             this.scheduleOnce(() => {
-                if (this.state !== 'playing') return;
-                this.showTouchZones = true;
+                if (this.state !== 'playing') {
+                    this.pendingQaPauseShowTouchZones = false;
+                    return;
+                }
+                if (this.pendingQaPauseShowTouchZones) this.showTouchZones = true;
+                this.pendingQaPauseShowTouchZones = false;
                 this.togglePauseFromInput();
                 console.log(`MTR_QA_STARTUP_PAUSE_APPLIED level=${this.levelIndex + 1}`);
+                console.log('MTR_QA_SCREEN_READY screen=paused');
             }, 0.18);
         }
     }
@@ -2311,6 +2378,26 @@ export class GameRoot extends Component {
         const locationLike = (globalThis as unknown as { location?: Location }).location;
         if (!locationLike?.href) return null;
         return parseStartupQueryParams(extractQueryFromHref(locationLike.href));
+    }
+
+    private seedEndStateForQa(state: EndState, target: number): void {
+        this.levelIndex = clamp(target, 0, LEVELS.length - 1);
+        this.unlockedLevel = Math.max(this.unlockedLevel, this.levelIndex);
+        this.reset();
+        const level = LEVELS[this.levelIndex];
+        this.progress = level.length;
+        this.bananasCollected = state === 'over'
+            ? Math.max(0, level.target - 1)
+            : level.target + Math.max(1, Math.floor(level.target * 0.1));
+        this.score = 12000 + this.levelIndex * 875 + this.bananasCollected * 100;
+        this.reason = state === 'over' ? 'Бананов не хватило. Норма есть норма.' : '';
+        this.ensureBackgroundPreviewFrame(this.levelIndex, `qa-end-state-${state}`);
+        this.ensureBackgroundFrame(this.levelIndex, `qa-end-state-${state}`);
+        this.preloadCriticalHazardSprites(`qa-end-state-${state}`, this.levelIndex);
+        this.preloadCriticalPlayerSkinSprites(`qa-end-state-${state}`);
+        this.transitionTo(state, 'startup_query_end_state');
+        this.syncGameState();
+        console.log(`MTR_QA_END_STATE_SEEDED screen=${state} level=${this.levelIndex + 1} score=${this.score} bananas=${this.bananasCollected} progress=${Math.round(this.progress)}`);
     }
 
     private applyStartupQuery(): void {
@@ -2348,12 +2435,53 @@ export class GameRoot extends Component {
             this.debugReadability = true;
             this.saveSettings();
         }
+        if (params.get('mtr_seed_records') === '1') this.seedRecordsForQa();
         if (params.get('mtr_unlock_achievements') === '1') this.unlockAllAchievementsForQa();
         const qaState = params.get('mtr_state') || params.get('mtr_screen');
-        if (qaState === 'pause' || qaState === 'paused' || params.get('mtr_pause') === '1') this.pendingQaPauseAfterStart = true;
+        if (qaState === 'pause' || qaState === 'paused' || params.get('mtr_pause') === '1') {
+            this.pendingQaPauseAfterStart = true;
+            this.pendingQaPauseShowTouchZones = params.get('mtr_show_touch_zones') === '1';
+        }
         if (params.get('mtr_show_touch_zones') === '1') this.showTouchZones = true;
-        if (qaState === 'achievements') {
-            this.transitionTo('achievements', 'startup_query');
+        const qaScreenAliases: Record<string, State> = {
+            menu: 'menu',
+            main_menu: 'menu',
+            start: 'name',
+            name: 'name',
+            name_entry: 'name',
+            levels: 'levels',
+            level_select: 'levels',
+            skins: 'skins',
+            skin_select: 'skins',
+            sound: 'sound',
+            settings: 'sound',
+            records: 'records',
+            achievements: 'achievements',
+            devgate: 'devgate',
+            developer_gate: 'devgate',
+            devpanel: 'devpanel',
+            developer: 'devpanel',
+            clear: 'clear',
+            level_clear: 'clear',
+            over: 'over',
+            game_over: 'over',
+            death: 'over',
+            failed: 'over',
+            finished: 'finished',
+            game_finished: 'finished',
+            completion: 'finished',
+        };
+        const qaScreen = qaState ? qaScreenAliases[qaState] : undefined;
+        if (qaScreen && qaState !== 'pause' && qaState !== 'paused') {
+            if (qaScreen === 'clear' || qaScreen === 'over' || qaScreen === 'finished') {
+                const fallbackLevel = qaScreen === 'finished' ? LEVELS.length : 1;
+                const requested = Math.round(Number(params.get('mtr_level') || `${fallbackLevel}`)) - 1;
+                const target = clamp(Number.isFinite(requested) ? requested : fallbackLevel - 1, 0, LEVELS.length - 1);
+                this.seedEndStateForQa(qaScreen, target);
+            } else {
+                this.transitionTo(qaScreen, 'startup_query');
+            }
+            console.log(`MTR_QA_SCREEN_READY screen=${qaScreen}`);
             return;
         }
         if (params.get('mtr_autostart') !== '1') return;
@@ -2361,6 +2489,13 @@ export class GameRoot extends Component {
         const target = clamp(Number.isFinite(requested) ? requested : 0, 0, LEVELS.length - 1);
         this.unlockedLevel = Math.max(this.unlockedLevel, target);
         this.startLevel(target);
+        if (params.get('mtr_qa_obstacles') === '1' || params.get('mtr_spawn_obstacles') === '1') {
+            this.pendingQaObstacleSpawn = true;
+            if (this.state === 'playing') {
+                this.pendingQaObstacleSpawn = false;
+                this.spawnAllObstacleFamiliesForQa();
+            }
+        }
         if (params.get('mtr_qa_bonuses') === '1' || params.get('mtr_spawn_bonuses') === '1') {
             this.pendingQaBonusSpawn = true;
             if (this.state === 'playing') {
@@ -2435,7 +2570,7 @@ export class GameRoot extends Component {
         if (this.state !== 'playing') {
             this.pendingQaObstacleSpawn = true;
             this.startLevel(this.pendingStartLevel >= 0 ? this.pendingStartLevel : this.levelIndex);
-            if (this.state !== 'playing') {
+            if ((this.state as State) !== 'playing') {
                 this.bannerText = 'Готовим препятствия без заглушек';
                 this.bannerTimer = TOAST_DURATION_SEC;
                 return;
@@ -3930,10 +4065,11 @@ textarea, input {
         const centerY = bottom - spriteH * 0.5 + 7;
         this.requestObjectSprite(key, 'visible');
         if (!this.objectSpriteFrames[key]) {
-            const missKey = `${key}:not_ready`;
-            if (!this.skinVariantMissingLogged[missKey]) {
+            const requestedFailure = this.objectSpriteLoadFailures[key];
+            const missKey = `${key}:load_failed`;
+            if (requestedFailure && !this.skinVariantMissingLogged[missKey]) {
                 this.skinVariantMissingLogged[missKey] = true;
-                console.warn(`MTR_POSE_MISSING skin=${playerSkinId(this.selectedSkin)} variant=${variant} pose=${PLAYER_SKIN_POSE_RESOURCE[pose]} fallback=skin_base_safe`);
+                console.warn(`MTR_POSE_MISSING skin=${playerSkinId(this.selectedSkin)} variant=${variant} pose=${PLAYER_SKIN_POSE_RESOURCE[pose]} fallback=skin_base_safe err=${requestedFailure}`);
             }
             const safeFallbacks = [
                 playerSkinV2AssetKey(this.selectedSkin, 'base', pose),
@@ -3953,7 +4089,9 @@ textarea, input {
                 }
             }
             const missingLogKey = `${key}:safe_missing`;
-            if (!this.skinVariantMissingLogged[missingLogKey]) {
+            const allSafeFallbacksFailed = safeFallbacks.length > 0
+                && safeFallbacks.every((fallbackKey) => !!this.objectSpriteLoadFailures[fallbackKey]);
+            if (requestedFailure && allSafeFallbacksFailed && !this.skinVariantMissingLogged[missingLogKey]) {
                 this.skinVariantMissingLogged[missingLogKey] = true;
                 console.warn(`MTR_PLAYER_SKIN_SAFE_FALLBACK_MISSING requested=${key} retiredFallbackForbidden=true`);
             }
@@ -4124,14 +4262,14 @@ textarea, input {
         this.text(`СЧЁТ ${this.score}   ОБЪЕКТ ${progressPct}%`, 1082, 65, 13, rgb(240, 230, 188), 'right', 310);
         if (this.developerMode && (this.showTouchZones || this.showPerfOverlay || this.debugColliders || this.debugReadability)) this.text('РАЗР', 1246, 72, 12, rgb(255, 236, 94), 'right');
         const pauseZone = this.pauseTouchRect();
-        this.button(pauseZone.x + 18, 90, 150, 50, 'ПАУЗА', () => this.togglePauseFromInput(), rgb(255, 218, 126, 190), rgb(48, 36, 24, 154), rgb(255, 240, 180));
+        this.button(pauseZone.x + 18, 83, 150, 64, 'ПАУЗА', () => this.togglePauseFromInput(), rgb(255, 218, 126, 190), rgb(48, 36, 24, 154), rgb(255, 240, 180));
         if (this.developerMode && this.showTouchZones) {
             const zone = this.pauseTouchRect();
             this.strokeRect(zone.x, zone.y, zone.w, zone.h, rgb(120, 255, 180, 210));
             this.text('ЗОНА ПАУЗЫ', zone.x + zone.w * 0.5, zone.y + zone.h + 16, 10, rgb(160, 255, 190));
         }
-        this.button(48, 626, 350, 50, 'ПРЫЖОК / ПЛАН', () => this.jump(), rgb(180, 226, 172, 112), rgb(38, 70, 42, 70), rgb(218, 255, 216));
-        this.button(930, 626, 270, 50, 'РЫВОК', () => this.dash(), rgb(255, 225, 100, 126), rgb(92, 78, 35, 72), rgb(255, 237, 132));
+        this.button(48, 619, 350, 64, 'ПРЫЖОК / ПЛАН', () => this.jump(), rgb(180, 226, 172, 112), rgb(38, 70, 42, 70), rgb(218, 255, 216));
+        this.button(930, 619, 270, 64, 'РЫВОК', () => this.dash(), rgb(255, 225, 100, 126), rgb(92, 78, 35, 72), rgb(255, 237, 132));
     }
 
     private drawOverlay(): void {
@@ -4223,22 +4361,26 @@ textarea, input {
         const surface = this.themedMenuSurface();
         this.drawMenuBackdrop(surface);
 
+        const criticalSurface = this.state === 'menu' ? MAIN_MENU_UI_SURFACE : surface;
+        const criticalState = this.state;
+        const gateId = this.menuUiGateId(criticalSurface, criticalState);
+        this.preloadCriticalMenuUiSprites('menu-frame', criticalSurface, criticalState);
+        const menuUiReady = this.areCriticalMenuUiSpritesReady(criticalSurface, criticalState);
+        if (!menuUiReady) {
+            if (!this.menuUiGateWaitLoggedBySurface[gateId]) {
+                this.menuUiGateWaitLoggedBySurface[gateId] = true;
+                const missing = this.missingCriticalMenuUiSprites(criticalSurface, criticalState);
+                const sample = missing.slice(0, 4).join('|');
+                console.log(`MTR_MENU_UI_GATE_WAIT surface=${criticalSurface} screen=${criticalState} missing=${missing.length}${sample ? ` sample=${sample}` : ''}`);
+            }
+            this.drawMenuLoadingGate();
+            return;
+        }
+        if (!this.menuUiReadyLoggedBySurface[gateId]) {
+            this.menuUiReadyLoggedBySurface[gateId] = true;
+            console.log(`MTR_MENU_UI_GATE_READY surface=${criticalSurface} screen=${criticalState}`);
+        }
         if (this.state === 'menu') {
-            this.preloadCriticalMenuUiSprites('menu-frame');
-            const menuUiReady = this.areCriticalMenuUiSpritesReady(MAIN_MENU_UI_SURFACE);
-            if (!menuUiReady) {
-                if (!this.menuUiGateWaitLogged) {
-                    this.menuUiGateWaitLogged = true;
-                    const sample = this.missingCriticalMenuUiSprites(MAIN_MENU_UI_SURFACE).slice(0, 4).join('|');
-                    console.log(`MTR_MENU_UI_GATE_WAIT surface=${MAIN_MENU_UI_SURFACE} missing=${this.missingCriticalMenuUiSprites(MAIN_MENU_UI_SURFACE).length}${sample ? ` sample=${sample}` : ''}`);
-                }
-                this.drawMenuLoadingGate();
-                return;
-            }
-            if (menuUiReady && !this.menuUiReadyLogged) {
-                this.menuUiReadyLogged = true;
-                console.log(`MTR_MENU_UI_GATE_READY surface=${MAIN_MENU_UI_SURFACE}`);
-            }
             this.preloadSecondaryMenuUiSprites('after-main-menu-ready');
         }
 
@@ -4264,22 +4406,24 @@ textarea, input {
             this.drawAssetSprite(UI_SKIN.assets.panelChip, 640, 318, 460, 72, 245, 'ui_achievements', 'dev_password_field_back');
             if (!(this.devPasswordEdit?.string || '').trim()) this.text('Пароль разработчика', 640, 318, 22, rgb(255, 230, 142), 'center', 360);
             if (this.devStatusText) this.drawStatusChip(this.devStatusText, 370, this.devStatusText.includes('открыт') ? rgb(170, 255, 160) : rgb(255, 168, 128));
-            this.button(390, 420, 240, 52, 'ПРОВЕРИТЬ', () => this.tryOpenDeveloperMode(), rgb(255, 224, 118), dark, light);
-            this.button(650, 420, 240, 52, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(390, 414, 240, 64, 'ПРОВЕРИТЬ', () => this.tryOpenDeveloperMode(), rgb(255, 224, 118), dark, light);
+            this.button(650, 414, 240, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
         } else if (this.state === 'devpanel') {
             this.drawStatusChip(`КОЛЛАЙДЕРЫ ${this.debugColliders ? 'ВКЛ' : 'ВЫКЛ'} · ТАПЫ ${this.showTouchZones ? 'ВКЛ' : 'ВЫКЛ'} · PERF ${this.showPerfOverlay ? 'ВКЛ' : 'ВЫКЛ'}`, 142, rgb(255, 245, 190));
-            this.button(145, 190, 300, 46, 'КОЛЛАЙДЕРЫ', () => { this.debugColliders = !this.debugColliders; this.saveSettings(); }, rgb(255, 224, 118), dark, light);
-            this.button(490, 190, 300, 46, 'ЗОНЫ ТАПА', () => { this.showTouchZones = !this.showTouchZones; this.saveSettings(); }, rgb(120, 255, 180), dark, light);
-            this.button(835, 190, 300, 46, 'FPS / УЗЛЫ', () => { this.showPerfOverlay = !this.showPerfOverlay; this.saveSettings(); }, rgb(140, 210, 255), dark, light);
-            this.button(145, 254, 300, 46, 'ВСЕ ПРЕПЯТСТВИЯ', () => this.spawnAllObstacleFamiliesForQa(), primary, dark, light);
-            this.button(490, 254, 300, 46, 'ВСЕ БОНУСЫ', () => this.spawnAllBonusStatesForQa(), primary, dark, light);
-            this.button(835, 254, 300, 46, 'ОТКРЫТЬ ДОСТИЖЕНИЯ', () => this.unlockAllAchievementsForQa(), primary, dark, light);
-            this.button(145, 318, 300, 46, 'ЗАКРЫТЬ ДОСТИЖЕНИЯ', () => this.lockAchievementsForQa(), rgb(255, 150, 120), dark, light);
-            this.button(490, 318, 300, 46, 'УРОВЕНЬ 1', () => this.startLevel(0), primary, dark, light);
-            this.button(835, 318, 300, 46, 'УРОВЕНЬ 15', () => this.startLevel(14), primary, dark, light);
-            this.button(145, 382, 300, 46, 'ПРОВЕРКА ПАУЗЫ', () => { this.startLevel(this.levelIndex); this.showTouchZones = true; this.saveSettings(); }, rgb(120, 255, 180), dark, light);
-            this.button(490, 382, 300, 46, 'СКРИН: ADB / WEB', () => { this.bannerText = 'Снимок делает внешний QA-инструмент'; this.bannerTimer = TOAST_DURATION_SEC; }, primary, dark, light);
-            this.button(835, 382, 300, 46, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
+            const rowY = [178, 252, 326, 400];
+            const devButtonH = 64;
+            this.button(145, rowY[0], 300, devButtonH, 'КОЛЛАЙДЕРЫ', () => { this.debugColliders = !this.debugColliders; this.saveSettings(); }, rgb(255, 224, 118), dark, light);
+            this.button(490, rowY[0], 300, devButtonH, 'ЗОНЫ ТАПА', () => { this.showTouchZones = !this.showTouchZones; this.saveSettings(); }, rgb(120, 255, 180), dark, light);
+            this.button(835, rowY[0], 300, devButtonH, 'FPS / УЗЛЫ', () => { this.showPerfOverlay = !this.showPerfOverlay; this.saveSettings(); }, rgb(140, 210, 255), dark, light);
+            this.button(145, rowY[1], 300, devButtonH, 'ВСЕ ПРЕПЯТСТВИЯ', () => this.spawnAllObstacleFamiliesForQa(), primary, dark, light);
+            this.button(490, rowY[1], 300, devButtonH, 'ВСЕ БОНУСЫ', () => this.spawnAllBonusStatesForQa(), primary, dark, light);
+            this.button(835, rowY[1], 300, devButtonH, 'ОТКРЫТЬ ДОСТИЖЕНИЯ', () => this.unlockAllAchievementsForQa(), primary, dark, light);
+            this.button(145, rowY[2], 300, devButtonH, 'ЗАКРЫТЬ ДОСТИЖЕНИЯ', () => this.lockAchievementsForQa(), rgb(255, 150, 120), dark, light);
+            this.button(490, rowY[2], 300, devButtonH, 'УРОВЕНЬ 1', () => this.startLevel(0), primary, dark, light);
+            this.button(835, rowY[2], 300, devButtonH, 'УРОВЕНЬ 15', () => this.startLevel(14), primary, dark, light);
+            this.button(145, rowY[3], 300, devButtonH, 'ПРОВЕРКА ПАУЗЫ', () => { this.startLevel(this.levelIndex); this.showTouchZones = true; this.saveSettings(); }, rgb(120, 255, 180), dark, light);
+            this.button(490, rowY[3], 300, devButtonH, 'СКРИН: ADB / WEB', () => { this.bannerText = 'Снимок делает внешний QA-инструмент'; this.bannerTimer = TOAST_DURATION_SEC; }, primary, dark, light);
+            this.button(835, rowY[3], 300, devButtonH, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
         } else if (this.state === 'name') {
             const name = this.normalizedPlayerName();
             const typedName = this.sanitizePlayerName(this.playerNameEdit?.string || name);
@@ -4291,7 +4435,7 @@ textarea, input {
                 this.commitPlayerNameFromInput(false);
                 this.startLevel(this.levelIndex);
             }, primary, dark, light);
-            this.button(419, 562, 442, 58, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
+            this.button(419, 562, 442, 64, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
         } else if (this.state === 'sound') {
             this.drawAudioSettingsRow('МУЗЫКА', 154, this.musicEnabled, this.musicVolume, () => {
                 this.musicEnabled = !this.musicEnabled;
@@ -4303,9 +4447,9 @@ textarea, input {
             this.drawAudioSettingsRow('ГОЛОС ПРИМАТА', 386, this.voiceEnabled, this.voiceVolume, () => {
                 this.voiceEnabled = !this.voiceEnabled;
             }, () => { this.voiceVolume = clamp(this.voiceVolume - 0.1, 0, 1); }, () => { this.voiceVolume = clamp(this.voiceVolume + 0.1, 0, 1); this.playVoice('jump', 1); });
-            this.button(250, 558, 240, 46, 'ПО УМОЛЧАНИЮ', () => this.resetAudioDefaults(), primary, dark, light);
-            this.button(520, 558, 240, 46, 'ПРИМЕНИТЬ', () => this.applyAudioSettings(), primary, dark, light);
-            this.button(790, 558, 240, 46, 'НАЗАД', () => { this.saveSettings(); this.transitionTo('menu', 'ui_back'); }, primary, dark, light);
+            this.button(250, 549, 240, 64, 'ПО УМОЛЧАНИЮ', () => this.resetAudioDefaults(), primary, dark, light);
+            this.button(520, 549, 240, 64, 'ПРИМЕНИТЬ', () => this.applyAudioSettings(), primary, dark, light);
+            this.button(790, 549, 240, 64, 'НАЗАД', () => { this.saveSettings(); this.transitionTo('menu', 'ui_back'); }, primary, dark, light);
         } else if (this.state === 'records') {
             const records = this.records().slice(0, 7);
             if (!records.length) {
@@ -4316,20 +4460,25 @@ textarea, input {
                 for (let i = 0; i < records.length; i++) {
                     const r = records[i];
                     this.drawAssetSprite(UI_SKIN.assets.panelChip, 640, 176 + i * 55, 840, 48, 236, 'ui_achievements', 'records_row');
-                    this.text(`${i + 1}. ${r.name}  ·  СЧЁТ ${r.score}  ·  УРОВЕНЬ ${r.level}  ·  БАНАНЫ ${r.bananas}`, 640, 182 + i * 55, 17, i === 0 ? rgb(255, 240, 138) : rgb(255, 255, 255), 'center', 780);
+                    const rowY = 182 + i * 55;
+                    const rowColor = i === 0 ? rgb(255, 240, 138) : rgb(255, 255, 255);
+                    this.text(`${i + 1}. ${this.fitText(r.name, 27)}`, 292, rowY, 16, rowColor, 'left', 330);
+                    this.text(`СЧЁТ ${r.score}`, 640, rowY, 15, rowColor, 'center', 155);
+                    this.text(`УРОВЕНЬ ${r.level}`, 800, rowY, 15, rowColor, 'center', 130);
+                    this.text(`БАНАНЫ ${r.bananas}`, 960, rowY, 15, rowColor, 'center', 140);
                 }
             }
-            this.button(324, 616, 300, 48, 'ДОСТИЖЕНИЯ', () => this.transitionTo('achievements', 'ui_achievements'), primary, dark, light);
-            this.button(656, 616, 300, 48, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(324, 616, 300, 64, 'ДОСТИЖЕНИЯ', () => this.transitionTo('achievements', 'ui_achievements'), primary, dark, light);
+            this.button(656, 616, 300, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
         } else if (this.state === 'achievements') {
             const name = this.normalizedPlayerName();
             this.drawStatusChip(`ПРОФИЛЬ: ${name}`, 126, rgb(255, 240, 138));
             const cardW = 544;
-            const cardH = 80;
+            const cardH = 86;
             const startX = 70;
-            const startY = 146;
+            const startY = 142;
             const gapX = 52;
-            const gapY = 4;
+            const gapY = 6;
             for (let i = 0; i < ACHIEVEMENTS.length; i++) {
                 const def = ACHIEVEMENTS[i];
                 const col = i % 2;
@@ -4358,26 +4507,27 @@ textarea, input {
                 if (open && entry) this.text(this.formatAchievementDate(entry.timestamp), metaX, y + 52, 10, rgb(230, 226, 190), 'left', 112);
                 this.text(open ? 'ПОЛУЧЕНО' : `${Math.floor(progress * def.target)}/${def.target}`, metaX, y + 74, 11, rgb(255, 238, 180), 'left', 112);
             }
-            this.button(324, 632, 300, 45, 'РЕКОРДЫ', () => this.transitionTo('records', 'ui_records'), primary, dark, light);
-            this.button(656, 632, 300, 45, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(324, 616, 300, 64, 'РЕКОРДЫ', () => this.transitionTo('records', 'ui_records'), primary, dark, light);
+            this.button(656, 616, 300, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
         } else if (this.state === 'paused') {
-            this.button(430, 280, 420, 56, 'ПРОДОЛЖИТЬ', () => this.transitionTo('playing', 'ui_resume'), primary, dark, light);
-            this.button(430, 350, 420, 56, 'ЗВУК И НАСТРОЙКИ', () => this.transitionTo('sound', 'ui_sound'), primary, dark, light);
-            this.button(430, 420, 420, 56, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
+            this.button(430, 276, 420, 64, 'ПРОДОЛЖИТЬ', () => this.transitionTo('playing', 'ui_resume'), primary, dark, light);
+            this.button(430, 346, 420, 64, 'ЗВУК И НАСТРОЙКИ', () => this.transitionTo('sound', 'ui_sound'), primary, dark, light);
+            this.button(430, 416, 420, 64, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
         } else if (this.state === 'clear') {
             this.text(`СЧЁТ ${this.score}   ·   БАНАНЫ ${this.bananasCollected}`, 640, 290, 22, rgb(255, 240, 138));
-            this.button(430, 380, 420, 56, 'СЛЕДУЮЩИЙ УРОВЕНЬ', () => this.startLevel(this.levelIndex + 1), primary, dark, light);
-            this.button(430, 450, 420, 50, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
+            this.button(430, 376, 420, 64, 'СЛЕДУЮЩИЙ УРОВЕНЬ', () => this.startLevel(this.levelIndex + 1), primary, dark, light);
+            this.button(430, 443, 420, 64, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
         } else if (this.state === 'over') {
             this.drawAssetSprite(UI_SKIN.assets.emptyStateCard, 640, 310, 700, 160, 245, 'ui_achievements', 'death_summary');
             this.text(this.reason || 'Объект победил.', 640, 286, 20, rgb(255, 255, 255));
             this.text(`СЧЁТ ${this.score} · БАНАНЫ ${this.bananasCollected} · ПРОГРЕСС ${Math.min(100, Math.floor(this.progress / LEVELS[this.levelIndex].length * 100))}%`, 640, 334, 17, rgb(255, 238, 150));
-            this.button(430, 420, 420, 56, 'ПОВТОРИТЬ', () => { this.playVoice('ui', 0.8); this.startLevel(this.levelIndex); }, primary, dark, light);
-            this.button(430, 490, 420, 56, 'В МЕНЮ', () => { this.transitionTo('menu', 'ui_menu'); this.playVoice('ui', 0.5); }, primary, dark, light);
+            this.button(430, 416, 420, 64, 'ПОВТОРИТЬ', () => { this.playVoice('ui', 0.8); this.startLevel(this.levelIndex); }, primary, dark, light);
+            this.button(430, 486, 420, 64, 'В МЕНЮ', () => { this.transitionTo('menu', 'ui_menu'); this.playVoice('ui', 0.5); }, primary, dark, light);
         } else if (this.state === 'finished') {
             this.text('Дом построен. Возможно, это коровник.', 640, 300, 22, rgb(255, 255, 255));
-            this.button(430, 390, 420, 56, 'ЗАНОВО', () => this.startLevel(0), primary, dark, light);
-            this.button(430, 460, 420, 50, 'РЕКОРДЫ', () => this.transitionTo('records', 'ui_records'), primary, dark, light);
+            this.text(`ИТОГОВЫЙ СЧЁТ ${this.score}   ·   БАНАНЫ ${this.bananasCollected}`, 640, 344, 18, rgb(255, 240, 138));
+            this.button(430, 386, 420, 64, 'ЗАНОВО', () => this.startLevel(0), primary, dark, light);
+            this.button(430, 453, 420, 64, 'РЕКОРДЫ', () => this.transitionTo('records', 'ui_records'), primary, dark, light);
         } else if (this.state === 'skins') {
             const cardW = 252;
             const cardH = 172;
@@ -4403,8 +4553,8 @@ textarea, input {
                     this.text('✓ ВЫБРАН', x + cardW - 58, y + 27, 10, rgb(255, 235, 128), 'center', 96);
                 }
             }
-            this.button(330, 624, 300, 48, 'ВЫБРАТЬ', () => this.confirmSkinSelection(), primary, dark, light);
-            this.button(650, 624, 300, 48, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(330, 616, 300, 64, 'ВЫБРАТЬ', () => this.confirmSkinSelection(), primary, dark, light);
+            this.button(650, 616, 300, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
         } else if (this.state === 'levels') {
             for (let i = 0; i < LEVELS.length; i++) {
                 const row = Math.floor(i / 5);
@@ -4417,7 +4567,7 @@ textarea, input {
                 const y = 152 + row * 142;
                 this.drawUnifiedLevelCard(i, x, y, 210, 116, open, action);
             }
-            this.button(430, 634, 420, 46, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(430, 625, 420, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
         }
     }
 
@@ -4428,7 +4578,7 @@ textarea, input {
             if (!titleDrawn) this.text(title, 640, 132, title.length > 26 ? 30 : 35, this.uiColor(UI_SKIN.typography.title.color), 'center', 590);
             return;
         }
-        const listState = this.state === 'levels' || this.state === 'skins' || this.state === 'achievements' || this.state === 'devpanel';
+        const listState = this.state === 'levels' || this.state === 'skins' || this.state === 'records' || this.state === 'achievements' || this.state === 'devpanel';
         const compactState = this.state === 'paused' || this.state === 'clear' || this.state === 'over' || this.state === 'finished' || this.state === 'name' || this.state === 'devgate';
         const panelKey = listState ? UI_SKIN.assets.panelList : compactState ? UI_SKIN.assets.panelDialog : UI_SKIN.assets.panelMain;
         const panelW = listState ? 1210 : compactState ? 780 : 1000;
@@ -4458,10 +4608,12 @@ textarea, input {
         const toggleH = 48;
         const toggleX = 438;
         const toggleTop = y + 22;
+        const toggleTouchH = 64;
+        const toggleTouchTop = y + 14;
         this.fillRect(toggleX - toggleW * 0.5, toggleTop, toggleW, toggleH, enabled ? rgb(50, 118, 54, 218) : rgb(70, 60, 50, 218));
         this.strokeRect(toggleX - toggleW * 0.5, toggleTop, toggleW, toggleH, enabled ? rgb(200, 255, 154, 225) : rgb(210, 188, 150, 190));
         this.circle(enabled ? toggleX + 35 : toggleX - 35, y + 46, 18, enabled ? rgb(228, 255, 190, 245) : rgb(210, 198, 178, 238));
-        this.registerImageButton(toggleX - toggleW * 0.5, toggleTop, toggleW, toggleH, toggleAction);
+        this.registerImageButton(toggleX - toggleW * 0.5, toggleTouchTop, toggleW, toggleTouchH, toggleAction);
         this.text(enabled ? 'ВКЛ' : 'ВЫКЛ', toggleX, y + 51, 12, enabled ? rgb(224, 255, 190) : rgb(220, 210, 196), 'center', 112);
         const sliderX = 560;
         const sliderW = 318;
@@ -4470,8 +4622,8 @@ textarea, input {
         if (clamped > 0.01) this.drawAssetSprite(UI_SKIN.assets.sliderFill, sliderX + sliderW * clamped * 0.5, y + 46, sliderW * clamped, 22, 245, 'ui_achievements', 'sound_slider_fill');
         this.drawAssetSprite(UI_SKIN.assets.sliderKnob, sliderX + sliderW * clamped, y + 46, 38, 38, 245, 'ui_achievements', 'sound_slider_knob');
         this.text(`${Math.round(clamped * 100)}%`, 928, y + 51, 15, rgb(255, 240, 178), 'center', 72);
-        this.button(982, y + 23, 58, 46, '−', quieterAction, rgb(255, 224, 118), rgb(42, 31, 18, 190), rgb(255, 240, 184));
-        this.button(1050, y + 23, 58, 46, '+', louderAction, rgb(255, 224, 118), rgb(42, 31, 18, 190), rgb(255, 240, 184));
+        this.button(979, y + 14, 64, 64, '−', quieterAction, rgb(255, 224, 118), rgb(42, 31, 18, 190), rgb(255, 240, 184));
+        this.button(1047, y + 14, 64, 64, '+', louderAction, rgb(255, 224, 118), rgb(42, 31, 18, 190), rgb(255, 240, 184));
     }
 
     private resetAudioDefaults(): void {
@@ -4493,11 +4645,21 @@ textarea, input {
     }
 
     private formatAchievementDate(timestamp: number): string {
-        return new Intl.DateTimeFormat('ru-RU', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-        }).format(new Date(timestamp));
+        const date = new Date(timestamp);
+        const intl = (globalThis as unknown as { Intl?: typeof Intl }).Intl;
+        if (intl?.DateTimeFormat) {
+            try {
+                return new intl.DateTimeFormat('ru-RU', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                }).format(date);
+            } catch {
+                // Fall through to the native-safe formatter below.
+            }
+        }
+        const pad = (value: number) => String(value).padStart(2, '0');
+        return `${pad(date.getDate())}.${pad(date.getMonth() + 1)}.${date.getFullYear()}`;
     }
 
     private confirmSkinSelection(): void {
@@ -4597,90 +4759,6 @@ textarea, input {
             default:
                 return 'main_menu';
         }
-    }
-
-    private drawThemedUiAsset(
-        surface: string,
-        role: ThemedUiAssetRole,
-        x: number,
-        y: number,
-        w: number,
-        h: number,
-        opacity = 255,
-        preferredIndex = 0,
-        reason = 'themed_ui',
-    ): boolean {
-        const keys = themedUiAssetKeysForSurface(surface, role);
-        if (!keys.length) return false;
-        const index = clamp(preferredIndex, 0, keys.length - 1);
-        return this.drawAssetSprite(keys[index], x, y, w, h, opacity, 'ui_achievements', reason);
-    }
-
-    private drawThemedMenuChrome(surface = this.themedMenuSurface()): void {
-        if (surface === 'main_menu') {
-            this.drawThemedUiAsset(surface, 'title', 640, 108, 740, 150, 214, 0, 'main_menu_latest_title');
-            this.drawThemedUiAsset(surface, 'prop', 640, 212, 520, 64, 170, 0, 'main_menu_latest_object_plate');
-            this.drawThemedUiAsset(surface, 'icon', 1060, 160, 96, 96, 170, 0, 'main_menu_latest_icon');
-            return;
-        }
-
-        const titleY = surface === 'level_select' || surface === 'skin_select' ? 90 : 108;
-        const titleW = surface === 'pause' ? 470 : surface === 'death' ? 680 : 760;
-        const titleH = surface === 'pause' ? 112 : surface === 'death' ? 122 : 104;
-        this.drawThemedUiAsset(surface, 'title', 640, titleY, titleW, titleH, 220, 0, `${surface}_latest_title`);
-
-        const hasLargeLists = surface === 'records' || surface === 'achievements' || surface === 'level_select' || surface === 'skin_select' || surface === 'sound_settings';
-        if (!hasLargeLists) {
-            if (surface !== 'pause') {
-                this.drawThemedUiAsset(surface, 'card', 640, 365, 760, 350, 74, 0, `${surface}_latest_card_back`);
-            } else {
-                this.fillRect(358, 252, 564, 302, rgb(58, 37, 18, 118));
-                this.strokeRect(358, 252, 564, 302, rgb(255, 211, 96, 118));
-            }
-        }
-
-        this.drawThemedUiAsset(surface, 'icon', 1025, surface === 'death' ? 292 : 186, 118, 118, 170, 0, `${surface}_latest_icon`);
-        this.drawThemedUiAsset(surface, 'prop', 235, surface === 'pause' ? 360 : 570, 170, 126, 150, 0, `${surface}_latest_prop`);
-    }
-
-    private themedButtonIndexForLabel(surface: string, label: string, count: number): number {
-        if (count <= 0) return 0;
-        const upper = label.toLocaleUpperCase('ru-RU');
-        if (surface === 'main_menu') {
-            const menuOrder: Array<[string[], number]> = [
-                [['ВПЕРЁД', 'ВПЕРЕД', 'СТРОЙКУ'], 0],
-                [['РЕКОРД'], 1],
-                [['ВЫБЕРИ', 'СКИН', 'ПРИМАТА'], 2],
-                [['УРОВ'], 3],
-                [['ЗВУК'], 4],
-                [['РАЗРАБ', 'DEV'], 5],
-                [['НАЗАД', 'МЕНЮ'], 6],
-            ];
-            for (const [tokens, index] of menuOrder) {
-                if (tokens.some((token) => upper.includes(token))) return clamp(index, 0, count - 1);
-            }
-        }
-        if (surface === 'death') {
-            const deathOrder: Array<[string[], number]> = [
-                [['ПОВТОР', 'ЕЩЁ', 'ЕЩЕ', 'ЗАНОВО'], 0],
-                [['МЕНЮ', 'НАЗАД'], 1],
-                [['ПОДСКАЗ'], 2],
-            ];
-            for (const [tokens, index] of deathOrder) {
-                if (tokens.some((token) => upper.includes(token))) return clamp(index, 0, count - 1);
-            }
-        }
-        if (surface === 'pause') {
-            const pauseOrder: Array<[string[], number]> = [
-                [['ПРОДОЛЖ'], 0],
-                [['ЗВУК'], 1],
-                [['МЕНЮ', 'НАЗАД'], 2],
-            ];
-            for (const [tokens, index] of pauseOrder) {
-                if (tokens.some((token) => upper.includes(token))) return clamp(index, 0, count - 1);
-            }
-        }
-        return Array.from(label).reduce((sum, ch) => sum + ch.charCodeAt(0), 0) % count;
     }
 
     private drawThemedLevelCard(levelIndex: number, x: number, y: number, w: number, h: number, open: boolean, action: () => void): boolean {
@@ -5255,9 +5333,8 @@ textarea, input {
                 node.layer = layer.layer;
                 const ui = node.addComponent(UITransform);
                 const label = node.addComponent(Label);
-                const outline = node.addComponent(LabelOutline);
                 layer.addChild(node);
-                item = { node, ui, label, outline };
+                item = { node, ui, label };
                 pool.push(item);
             }
             item.node.active = true;
@@ -5268,8 +5345,9 @@ textarea, input {
             label.fontSize = size;
             label.lineHeight = size * 1.1;
             label.color = color;
-            item.outline.color = size >= 28 ? rgb(48, 28, 12, Math.min(255, color.a)) : rgb(25, 18, 12, Math.min(235, color.a));
-            item.outline.width = size >= 32 ? 3 : size >= 17 ? 2 : 1;
+            label.enableOutline = true;
+            label.outlineColor = size >= 28 ? rgb(48, 28, 12, Math.min(255, color.a)) : rgb(25, 18, 12, Math.min(235, color.a));
+            label.outlineWidth = size >= 32 ? 3 : size >= 17 ? 2 : 1;
             label.horizontalAlign = align === 'left' ? Label.HorizontalAlign.LEFT : align === 'right' ? Label.HorizontalAlign.RIGHT : Label.HorizontalAlign.CENTER;
             label.verticalAlign = Label.VerticalAlign.CENTER;
             const overflowClamp = (Label as unknown as { Overflow?: { CLAMP?: number } }).Overflow?.CLAMP;

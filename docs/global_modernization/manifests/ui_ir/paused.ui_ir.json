@@ -1,0 +1,112 @@
+{
+  "schema": "mtr.ui_ir.screen.v1",
+  "source": {
+    "runtimeFile": "assets/scripts/GameRoot.ts",
+    "runtimeLines": "1018-1026, 2318-2329, 2382-2410, 4422-4426, 4483-4499, 4801-4805",
+    "themeFile": "assets/scripts/ui/UITheme.ts",
+    "manifest": "assets/resources/config/ui_skin_manifest.json"
+  },
+  "screen": {
+    "id": "paused",
+    "route": "state:paused via mtr_screen=paused&mtr_autostart=1&mtr_level=1",
+    "root_safe_area": true,
+    "canvas_fit_mode": "auto",
+    "theme_id": "martyshkin_trud_ui_skin_v1",
+    "surface": "pause",
+    "background": {
+      "layer_stack_id": "gameplay_world_plus_shared_menu_backdrop",
+      "dim_overlay": true
+    },
+    "nodes": [
+      {
+        "id": "pause_panel",
+        "type": "panel",
+        "asset_key": "ui/shared/panels/panel_dialog",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 250, "y": 155, "w": 780, "h": 470 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "pause_title_banner",
+        "type": "sprite",
+        "asset_key": "ui/shared/banners/title_banner_blank",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "primary_title",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "ПЕРЕРЫВ НА БАНАН",
+        "bounds": { "x": 280, "y": 19, "w": 720, "h": 106 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "pause_context_note",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "Пауза поверх живого игрового поля без debug touch-zone слоя по умолчанию.",
+        "bounds": { "x": 300, "y": 214, "w": 680, "h": 40 },
+        "z_layer": "HUD",
+        "visible_when": "qa/documentation"
+      },
+      {
+        "id": "resume_button",
+        "type": "button",
+        "label": "ПРОДОЛЖИТЬ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 430, "y": 276, "w": 420, "h": 64 },
+        "runtimeActualBounds": { "x": 430, "y": 276, "w": 420, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "sound_settings_button",
+        "type": "button",
+        "label": "ЗВУК И НАСТРОЙКИ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 430, "y": 346, "w": 420, "h": 64 },
+        "runtimeActualBounds": { "x": 430, "y": 346, "w": 420, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "back_to_menu_button",
+        "type": "button",
+        "label": "В МЕНЮ",
+        "asset_key": "ui/shared/buttons/button_back_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 430, "y": 416, "w": 420, "h": 64 },
+        "runtimeActualBounds": { "x": 430, "y": 416, "w": 420, "h": 64 },
+        "z_layer": "HUD"
+      }
+    ]
+  },
+  "validation": {
+    "require_no_baked_text_on_buttons": true,
+    "require_baked_text_exception_record": false,
+    "require_no_ghost_legacy_layers": true,
+    "require_safe_area_for_hud": true,
+    "require_touch_target_min_px": 64,
+    "qa_route_requires_autostart": true,
+    "qa_expected_markers": [
+      "MTR_GAMEPLAY_START_GATE_READY level=1",
+      "MTR_QA_STARTUP_PAUSE_APPLIED level=1",
+      "MTR_QA_SCREEN_READY screen=paused",
+      "MTR_MENU_UI_GATE_READY surface=pause"
+    ]
+  }
+}

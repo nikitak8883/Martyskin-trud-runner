@@ -1,0 +1,40 @@
+{
+  "$schema": "mtr.skin_manifest.schema.v1",
+  "required": [
+    "version",
+    "skins"
+  ],
+  "skin": {
+    "skinId": "brigadir|mudrec|cyber_makaka|red_prorab|depo_primate|orangutan_noir|lab_assistant_act|golden_brigadir",
+    "displayName": "string",
+    "rarity": "common|rare|epic|legendary|debug",
+    "bundleId": "string",
+    "basePath": "string",
+    "bonusPath": "string",
+    "previewPath": "string",
+    "animations": {
+      "idle": [
+        "frameKey"
+      ]
+    },
+    "bonusAnimations": {
+      "helmet": {
+        "idle": [
+          "frameKey"
+        ]
+      }
+    },
+    "fallbackPolicy": "log_and_use_base|block_release|placeholder_disabled",
+    "pivotPolicy": {
+      "baselineY": "number",
+      "pivotX": "number",
+      "pivotY": "number"
+    }
+  },
+  "validation": [
+    "no_missing_frames",
+    "no_checkerboard_pixels",
+    "no_runtime_clothing_without_anchor",
+    "all_bonus_ids_mapped"
+  ]
+}

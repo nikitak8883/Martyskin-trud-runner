@@ -1,0 +1,19 @@
+{
+  "$schema": "mtr.atlas_manifest.schema.v1",
+  "atlas": {
+    "atlasId": "string",
+    "usageScope": "hud|menu|runner_core|skin|bonus|obstacle|background|vfx",
+    "bundleId": "string",
+    "maxTextureSize": 2048,
+    "padding": 2,
+    "compression": "platform_specific",
+    "dynamicAtlasAllowed": false,
+    "owner": "string",
+    "fallbackPolicy": "block_release|warn|fallback"
+  },
+  "validation": [
+    "usage_scope_matches_runtime_co_visibility",
+    "no_high_frequency_sprite_outside_static_atlas",
+    "empty_space_reported"
+  ]
+}

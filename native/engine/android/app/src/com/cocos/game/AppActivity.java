@@ -39,6 +39,8 @@ public class AppActivity extends CocosActivity {
         "mtr_level",
         "mtr_pause",
         "mtr_show_touch_zones",
+        "mtr_qa_obstacles",
+        "mtr_spawn_obstacles",
         "mtr_qa_bonuses",
         "mtr_spawn_bonuses",
         "mtr_skin",
@@ -52,7 +54,8 @@ public class AppActivity extends CocosActivity {
         "debugColliders",
         "mtr_debug_readability",
         "mtr_readability_debug",
-        "mtr_unlock_achievements"
+        "mtr_unlock_achievements",
+        "mtr_seed_records"
     };
 
     private static String startupQuery = "";

@@ -80,3 +80,9 @@ __pycache__/
 
 # QA evidence is useful locally but not part of the source backup commit.
 /qa/
+/docs/qa/*
+!/docs/qa/*.md
+/docs/restore/
+/docs/skins_integration/qa/
+/docs/skins_integration/skin_pack_contact_sheet.png
+/output/

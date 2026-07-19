@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-19T08:43:44.5583920+03:00",
+  "auditMode": "read-only-revalidation",
+  "source": {
+    "head": "76bac6c2e9f5e112489aa8a922dce48c3fd9970b",
+    "workingTreeDirty": true,
+    "embeddedContentVersionDetected": false
+  },
+  "engine": {
+    "declaredVersion": "3.8.8",
+    "executable": "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.8\\CocosCreator.exe",
+    "executableExists": true
+  },
+  "web": {
+    "currentBuild": {
+      "root": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\web-mobile",
+      "exists": true,
+      "fileCount": 4814,
+      "totalBytes": 120420561,
+      "fingerprintSha256": "8015ED277C39E6C254AB2B85AD7A63A984AD65BEF2C2DFAFC6BFA8B460A161F8"
+    },
+    "pagesSource": {
+      "root": "C:\\Projects\\Monkey Work\\_github\\Martyskin-trud-runner",
+      "exists": true,
+      "fileCount": 4818,
+      "totalBytes": 120535777,
+      "fingerprintSha256": "107B8C18AED55911C8D06F2163CA45901B90DA021D891988B62D9A5F87FA50BE",
+      "head": "d7a7cc1b0f75cd7aed7ac831e86f79421014e96f"
+    },
+    "parity": {
+      "matches": false,
+      "leftOnly": [
+        "assets/resources/import/0d/0d7b0804e.json"
+      ],
+      "rightOnly": [
+        ".nojekyll",
+        "assets/resources/import/07/07f160c7d.json",
+        "assets/resources/import/6c/6c1af826-6cbc-4441-80b8-dee4baad6bda.json",
+        "assets/resources/import/6c/6c1af826-6cbc-4441-80b8-dee4baad6bda@f9941.json",
+        "assets/resources/native/6c/6c1af826-6cbc-4441-80b8-dee4baad6bda.png"
+      ],
+      "changed": [
+        "assets/main/index.js",
+        "assets/resources/config.json",
+        "assets/resources/import/8f/8f0eff8d-0dca-4ff5-86c2-4c00d5986f75.json",
+        "assets/resources/native/10/10af269e-b969-4441-a751-2f8457ee34c8.png",
+        "assets/resources/native/bd/bd3f7950-3e52-4545-93df-a4d0f632d436.png"
+      ]
+    }
+  },
+  "android": {
+    "currentEmulatorArtifact": {
+      "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android-emulator\\proj\\build\\CocosGame\\outputs\\apk\\debug\\CocosGame-debug.apk",
+      "exists": true,
+      "bytes": 142881559,
+      "modifiedAt": "2026-07-14T17:06:53.4122279+03:00",
+      "sha256": "D2DB02FA9ED21D8628D7B3DE2D8A98E69954F8854156D3CFA6A81CE3D872655F",
+      "packageName": "com.martyskin.trudrunner",
+      "versionCode": "1",
+      "versionName": "1.0",
+      "minSdk": "21",
+      "targetSdk": "35",
+      "abis": [
+        "x86_64"
+      ],
+      "apksignerExitCode": 0,
+      "signatureVerified": true,
+      "signerDn": "C=US, O=Android, CN=Android Debug",
+      "signerCertificateSha256": "139926D41F6BA30D3B442CC3D3EE1DB53A23E20677BD53D3F79C041D216E7D7C"
+    },
+    "latestArmBuildArtifact": {
+      "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\build\\CocosGame\\outputs\\apk\\release\\CocosGame-release.apk",
+      "exists": true,
+      "bytes": 137968594,
+      "modifiedAt": "2026-07-01T11:39:45.8777418+03:00",
+      "sha256": "5BA586CAA604AF01C8BAA1B75FB616C0D0CD2BA8FEA06AF7116785569F97E3E9",
+      "packageName": "com.martyskin.trudrunner",
+      "versionCode": "1",
+      "versionName": "1.0",
+      "minSdk": "21",
+      "targetSdk": "35",
+      "abis": [
+        "arm64-v8a",
+        "armeabi-v7a"
+      ],
+      "apksignerExitCode": 0,
+      "signatureVerified": true,
+      "signerDn": "CN=CocosCreator, OU=cocos2d, O=cocos2d, L=xiamen, ST=fujian, C=cn",
+      "signerCertificateSha256": "447E4D410BE3217A29DAF923CAD102B99E43F697E35E80257C1ACDC935075B83"
+    },
+    "aabCount": 0,
+    "allDiscoveredBuildAndReleaseArtifacts": [
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\build\\CocosGame\\outputs\\apk\\release\\CocosGame-release.apk",
+        "kind": "apk",
+        "bytes": 137968594,
+        "modifiedAt": "2026-07-01T11:39:45.8777418+03:00",
+        "sha256": "5BA586CAA604AF01C8BAA1B75FB616C0D0CD2BA8FEA06AF7116785569F97E3E9"
+      },
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android\\proj\\build\\CocosGame\\outputs\\native-debug-symbols\\release\\native-debug-symbols.zip",
+        "kind": "zip",
+        "bytes": 23954299,
+        "modifiedAt": "2026-07-01T11:37:48.8018033+03:00",
+        "sha256": "7D426B79B343C6CDF547A6C654F2A8B60338AB520E7866BB4C56584110621B9E"
+      },
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\build\\android-emulator\\proj\\build\\CocosGame\\outputs\\apk\\debug\\CocosGame-debug.apk",
+        "kind": "apk",
+        "bytes": 142881559,
+        "modifiedAt": "2026-07-14T17:06:53.4122279+03:00",
+        "sha256": "D2DB02FA9ED21D8628D7B3DE2D8A98E69954F8854156D3CFA6A81CE3D872655F"
+      },
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\releases\\mtr-main-menu-bg-generated-20260619-emulator-debug.apk",
+        "kind": "apk",
+        "bytes": 117115586,
+        "modifiedAt": "2026-06-19T20:47:26.5380325+03:00",
+        "sha256": "585340137583800F4EFCA6E4984D2575C2CA54DEDA3C061963157910631CB5F7"
+      },
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\releases\\android\\Martyshkin-Trud-texture10-clean-20260612-release.apk",
+        "kind": "apk",
+        "bytes": 130638198,
+        "modifiedAt": "2026-06-12T04:48:20.0000000+03:00",
+        "sha256": "56C9496A31BEA98D4BE362B2BD212665845C598E7004228A02EA957313B2C1E8"
+      },
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\releases\\android\\mtr-20260619-skins-bg-release-arm64-device.apk",
+        "kind": "apk",
+        "bytes": 112128388,
+        "modifiedAt": "2026-06-19T22:21:39.6593590+03:00",
+        "sha256": "304E496EF5F56849696DF7BA99927B46E8A0B84AD9500421140C62330135EDCD"
+      },
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\releases\\android\\mtr-20260619-skins-bg-release-emulator-x86_64.apk",
+        "kind": "apk",
+        "bytes": 104493757,
+        "modifiedAt": "2026-06-19T21:20:22.3218766+03:00",
+        "sha256": "0C09F701E0FFBAFA24BB862ACFA86F49431C4B9E161AAB08F1812AF05A9EF9A8"
+      },
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\releases\\android\\mtr-20260619-skins-bg-release.apk",
+        "kind": "apk",
+        "bytes": 112128388,
+        "modifiedAt": "2026-06-19T22:21:39.6593590+03:00",
+        "sha256": "304E496EF5F56849696DF7BA99927B46E8A0B84AD9500421140C62330135EDCD"
+      },
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\releases\\android\\mtr-20260622-runtime-qa-skins-release-arm64.apk",
+        "kind": "apk",
+        "bytes": 137795501,
+        "modifiedAt": "2026-06-22T21:00:41.7681396+03:00",
+        "sha256": "D899514C20F1BF896270D22014EFF0FDF21CF2C680BEABD89931F7283093DFD3"
+      },
+      {
+        "path": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator\\releases\\android\\mtr-20260701-next-big-patch-release.apk",
+        "kind": "apk",
+        "bytes": 137968594,
+        "modifiedAt": "2026-07-01T11:39:45.8777418+03:00",
+        "sha256": "5BA586CAA604AF01C8BAA1B75FB616C0D0CD2BA8FEA06AF7116785569F97E3E9"
+      }
+    ]
+  },
+  "limitations": [
+    "No build or runtime test was executed by this read-only revalidation.",
+    "Artifacts were produced from a dirty worktree and do not embed an auditable content version.",
+    "The 2026-07-01 arm build is older than the 2026-07-14 accepted emulator/Web build.",
+    "Production signing identity is not configured."
+  ]
+}

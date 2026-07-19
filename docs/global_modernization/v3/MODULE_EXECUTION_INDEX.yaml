@@ -1,0 +1,27 @@
+schema_version: 1
+updated_at: "2026-07-19"
+source_head: 76bac6c2e9f5e112489aa8a922dce48c3fd9970b
+source_state: dirty_unfrozen
+modules:
+  M00: {status: partial, completed: [M00.1], next: M00.2, report: docs/current_audit/revalidation_summary.md}
+  M01: {status: partial, completed: [], next: M01.1, report: null}
+  M02: {status: blocked, completed: [], next: M02.1, report: null}
+  M03: {status: pending, completed: [], next: M03.1, report: null}
+  M04: {status: revalidate_then_extend, completed: [], next: M04.1, report: docs/global_modernization/graphics_inventory.md}
+  M05: {status: revalidate_then_extend, completed: [], next: M05.1, report: docs/global_modernization/ui_ir_migration_report.md}
+  M06: {status: revalidate_then_extend, completed: [], next: M06.1, report: docs/global_modernization/skin_bonus_contract_report.md}
+  M07: {status: pending, completed: [], next: M07.1, report: null}
+  M08: {status: pending, completed: [], next: M08.1, report: null}
+  M09: {status: pending, completed: [], next: M09.1, report: null}
+  M10: {status: partial_stale_baseline, completed: [], next: M10.1, report: null}
+  M11: {status: conditional, completed: [], next: M11.1, report: null}
+  M12: {status: pending, completed: [], next: M12.1, report: null}
+release_status: blocked
+release_blockers:
+  - no immutable source checkpoint
+  - invalid Pages gitlink topology
+  - Web/Pages parity mismatch
+  - no current arm64 artifact from accepted source
+  - no production signing decision
+  - no embedded content version
+next_safe_action: M00.2 source-freeze classification review

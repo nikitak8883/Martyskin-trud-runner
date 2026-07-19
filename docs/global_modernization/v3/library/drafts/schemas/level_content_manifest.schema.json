@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MTR Level Content Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "levels"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "levels": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "required": [
+          "levelId",
+          "displayName",
+          "bundleId",
+          "background",
+          "platformPool",
+          "obstaclePool",
+          "collectibleDensity"
+        ],
+        "properties": {
+          "levelId": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 15
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "bundleId": {
+            "type": "string"
+          },
+          "background": {
+            "type": "object",
+            "required": [
+              "far",
+              "mid",
+              "near",
+              "track",
+              "fog"
+            ],
+            "properties": {
+              "far": {
+                "type": "string"
+              },
+              "mid": {
+                "type": "string"
+              },
+              "near": {
+                "type": "string"
+              },
+              "track": {
+                "type": "string"
+              },
+              "fog": {
+                "type": "string"
+              },
+              "progressionProps": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "platformPool": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "obstaclePool": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          },
+          "collectibleDensity": {
+            "type": "object",
+            "required": [
+              "banana",
+              "leaf",
+              "coconut"
+            ],
+            "properties": {
+              "banana": {
+                "type": "number",
+                "minimum": 0
+              },
+              "leaf": {
+                "type": "number",
+                "minimum": 0
+              },
+              "coconut": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "readabilityBudget": {
+            "type": "object"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

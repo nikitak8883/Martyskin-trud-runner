@@ -1,0 +1,606 @@
+schema_version: 1
+updated_at: "2026-07-19"
+project: martyshkin_trud_runner
+execution_model: dependency_gated_bounded_patch
+runtime_started: false
+
+status_values:
+  - complete
+  - ready
+  - pending
+  - blocked
+  - conditional
+
+validation_profiles:
+  D4: four-gate documentation, contract and planning validation
+  P4: static, Web targeted, Android-emulator targeted, regression/review
+  M2_PLUS: functional pass, optimization/regression pass, focused recovery when high-risk
+  QA7: seven-domain Tasks/4 matrix
+  RC2: two independent release-candidate cycles plus artifact parity
+
+common_patch_contract:
+  inputs_required:
+    - immutable source checkpoint after M00
+    - active AGENTS and lore
+    - current module report and relevant manifests only
+  outputs_required:
+    - mini-plan
+    - exact diff and rollback mapping
+    - machine-readable QA result
+    - module report and code-review report
+    - updated execution index
+  stop_on:
+    - unknown failure
+    - checkpoint drift
+    - missing rollback
+    - fatal runtime log
+    - content parity mismatch
+    - unapproved destructive or physical-device action
+
+modules:
+  M00:
+    name: repository_baseline_source_freeze_and_git_topology
+    priority: P0
+    current_status: read_only_inventory_complete
+    depends_on: []
+    work_packages:
+      - id: M00.1
+        status: complete
+        objective: Verify Tasks/5 integrity and capture live repository, build and evidence indexes.
+        outputs: [docs/current_audit/repository_inventory.md, docs/current_audit/live_git_state.json, docs/current_audit/live_build_artifact_index.json, docs/current_audit/live_evidence_index.json]
+        gates: [D4]
+      - id: M00.2
+        status: ready
+        objective: Classify all project-scoped tracked, deleted and untracked entries as source, compact docs/index, generated output, raw evidence or manual review.
+        outputs: [docs/global_modernization/v3/M00/source_freeze_classification.yaml]
+        gates: [D4]
+      - id: M00.3
+        status: blocked
+        objective: Decide Pages topology and primary source remote without staging the nested deployment tree.
+        outputs: [docs/global_modernization/v3/M00/git_topology_decision.md]
+        gates: [D4]
+        blocker: user approval of topology and remote policy
+      - id: M00.4
+        status: blocked
+        objective: Create reviewed source commit, annotated tag and Git bundle containing no builds, secrets, raw evidence or Tasks archives.
+        outputs: [docs/global_modernization/v3/M00/source_freeze_report.md]
+        gates: [D4]
+        blocker: M00.2 and M00.3 approval
+      - id: M00.5
+        status: pending
+        objective: Generate canonical source/content fingerprint and protected evidence anchor linked to commit and tag.
+        outputs: [docs/global_modernization/v3/M00/source_content_manifest.json, docs/global_modernization/v3/M00/evidence_anchor.json]
+        gates: [D4]
+      - id: M00.6
+        status: pending
+        objective: Restore Git bundle into a temporary directory and reproduce static configuration/type/asset gates.
+        outputs: [docs/global_modernization/v3/M00/restore_rehearsal_report.md, docs/codex/CURRENT_STATE.md]
+        gates: [D4]
+
+  M01:
+    name: unified_quality_gate_ci_code_review_and_evidence
+    priority: P0
+    current_status: partial_existing_tools
+    depends_on: [M00]
+    work_packages:
+      - id: M01.1
+        status: ready
+        objective: Inventory every existing validator/harness, its inputs, side effects, timeout, outputs and accepted evidence; preserve working commands.
+        outputs: [docs/global_modernization/v3/M01/quality_gate_inventory.md]
+        gates: [D4]
+      - id: M01.2
+        status: pending
+        objective: Namespace and reconcile v2/current/v3 schemas; add migration/adapters, positive fixtures and negative fixtures.
+        outputs: [docs/global_modernization/v3/M01/schema_compatibility_matrix.md, docs/global_modernization/v3/library/schemas]
+        gates: [D4]
+      - id: M01.3
+        status: pending
+        objective: Implement typed fail-closed runner with executable/argument arrays, process-tree timeout, path containment and atomic JSON reports.
+        targets: [tools/codex/quality-gate]
+        outputs: [docs/global_modernization/v3/M01/runner_self_test_report.md]
+        gates: [P4]
+      - id: M01.4
+        status: pending
+        objective: Encode D4, P4, M2_PLUS, QA7 and RC2 profiles with stale-evidence detection and mandatory/not-applicable semantics.
+        outputs: [docs/global_modernization/v3/M01/quality_gate.config.json]
+        gates: [D4, P4]
+      - id: M01.5
+        status: pending
+        objective: Classify evidence as protected, retained_recent or rotatable and implement index-first dry-run retention with path guards.
+        outputs: [docs/global_modernization/v3/M01/evidence_retention_policy.md, docs/global_modernization/v3/M01/evidence_retention_dry_run.json]
+        gates: [D4]
+      - id: M01.6
+        status: blocked
+        objective: Add CI or documented mandatory local equivalent using exactly the same platform-independent commands.
+        outputs: [.github/workflows/mtr-static-gates.yml, docs/global_modernization/v3/M01/ci_local_parity_report.md]
+        gates: [P4]
+        blocker: source remote and reproducible local runner
+      - id: M01.7
+        status: pending
+        objective: Produce a release-blocking summary that rejects failed, missing, skipped or stale mandatory evidence.
+        outputs: [docs/global_modernization/final_qa_report.md, docs/global_modernization/v3/M01/code_review_report.md]
+        gates: [M2_PLUS]
+
+  M02:
+    name: web_android_release_delivery_signing_and_artifact_parity
+    priority: P0
+    current_status: blocked_no_source_anchor
+    depends_on: [M00, M01]
+    work_packages:
+      - id: M02.1
+        status: blocked
+        objective: Record distribution target, signing ownership, upgrade-compatibility constraints and secret backup policy.
+        outputs: [docs/global_modernization/v3/M02/distribution_and_signing_adr.md]
+        gates: [D4]
+        blocker: user decision for direct APK versus Play and signing identity
+      - id: M02.2
+        status: pending
+        objective: Embed one logical content version/source commit in Web and Android reports while keeping platform artifact manifests separate.
+        outputs: [assets/resources/config/content_identity.json, docs/global_modernization/v3/M02/content_parity_contract.md]
+        gates: [P4]
+      - id: M02.3
+        status: pending
+        objective: Rebuild Web Mobile from checkpoint and verify file count, aliases, runtime payload, matrix, restart and soak.
+        outputs: [docs/global_modernization/v3/M02/web_build_report.md]
+        gates: [P4, QA7]
+      - id: M02.4
+        status: pending
+        objective: Rebuild x86_64 emulator debug from the same checkpoint and run install, launch, logcat, matrix, restart and soak.
+        outputs: [docs/global_modernization/v3/M02/android_emulator_report.md]
+        gates: [P4, QA7]
+      - id: M02.5
+        status: pending
+        objective: Build current arm64-v8a device-valid APK and verify package, version, ABI, signature and source/content identity without physical install.
+        outputs: [docs/global_modernization/v3/M02/android_arm64_artifact_report.md]
+        gates: [P4]
+      - id: M02.6
+        status: conditional
+        objective: Build and verify signed AAB with bundletool when Google Play is approved.
+        outputs: [docs/global_modernization/v3/M02/android_aab_report.md]
+        gates: [P4]
+        condition: google_play_target_approved
+      - id: M02.7
+        status: blocked
+        objective: Deploy immutable Web artifact through approved topology, then compare manifest and smoke the live URL.
+        outputs: [docs/global_modernization/v3/M02/web_deployment_report.md]
+        gates: [P4]
+        blocker: M00.3 topology decision
+      - id: M02.8
+        status: pending
+        objective: Run RC2 and write hashes, versions, ABIs, certificate fingerprints and limitations in release summary.
+        outputs: [docs/global_modernization/v3/M02/release_summary.md]
+        gates: [RC2]
+
+  M03:
+    name: gameroot_decomposition_and_gameplay_routing_seams
+    priority: P0
+    current_status: pending
+    depends_on: [M00, M01]
+    entry_gate_work_packages: [M02.2, M02.3, M02.4, M02.5]
+    work_packages:
+      - id: M03.1
+        status: pending
+        objective: Generate responsibility, call, event, timer/listener and scene-binding inventory for GameRoot without changing behavior.
+        outputs: [docs/global_modernization/v3/M03/game_root_inventory.md]
+        gates: [D4]
+      - id: M03.2
+        status: pending
+        objective: Define GameSessionState/player transition contracts and reject invalid transitions deterministically.
+        targets: [assets/scripts/gameplay/state]
+        outputs: [docs/global_modernization/v3/M03/gameplay_state_report.md]
+        gates: [P4, M2_PLUS]
+      - id: M03.3
+        status: pending
+        objective: Add bounded deterministic dev event log with no release spam and reset ownership.
+        targets: [assets/scripts/qa, assets/scripts/gameplay/state]
+        gates: [P4]
+      - id: M03.4
+        status: pending
+        objective: Route jump, glide, dash and pause through one input adapter while preventing duplicate handlers.
+        targets: [assets/scripts/gameplay/input]
+        gates: [P4, M2_PLUS]
+      - id: M03.5
+        status: pending
+        objective: Route pickup, obstacle, platform, trigger and finish callbacks through typed collision events preserving order.
+        targets: [assets/scripts/gameplay/collision]
+        gates: [P4, M2_PLUS]
+      - id: M03.6
+        status: pending
+        objective: Extract spawn, collect, activate, tick, expire and cleanup into PowerUpLifecycle with injected clock/tests.
+        targets: [assets/scripts/gameplay/powerups]
+        outputs: [docs/global_modernization/v3/M03/powerup_lifecycle_report.md]
+        gates: [P4, M2_PLUS]
+      - id: M03.7
+        status: pending
+        objective: Remove UI/skin mutation of physics and prove timer/listener/state cleanup across death, retry, pause and transition before deleting old paths.
+        gates: [QA7, M2_PLUS]
+
+  M04:
+    name: graphics_atlas_bundle_and_asset_governance
+    priority: P0
+    current_status: revalidate_then_extend
+    depends_on: [M01, M03]
+    work_packages:
+      - id: M04.1
+        status: pending
+        objective: Revalidate existing asset inventory, meta/reference ownership and accepted validators against current source checkpoint.
+        outputs: [docs/global_modernization/v3/M04/graphics_inventory.md]
+        gates: [P4]
+      - id: M04.2
+        status: pending
+        objective: Promote atlas draft to canonical schema with owner, scope, bundle, compression, padding, provenance and fallback.
+        outputs: [assets/resources/config/atlas_manifest.json, docs/global_modernization/v3/M04/atlas_policy_report.md]
+        gates: [D4, P4]
+      - id: M04.3
+        status: pending
+        objective: Extend pre-import validator for naming, trim, pivot, provenance, quarantine, bundle placement, alpha/matte and hidden references.
+        targets: [tools/validate-assets.py]
+        gates: [P4]
+      - id: M04.4
+        status: pending
+        objective: Generate contact sheets for HUD, menu, runner, bonuses, obstacles, backgrounds and VFX with manifest links.
+        outputs: [docs/global_modernization/v3/M04/contact_sheet_index.json]
+        gates: [P4]
+      - id: M04.5
+        status: pending
+        objective: Migrate one measured co-visible static atlas group at a time; preserve pivots/trim and rollback mapping.
+        gates: [P4, M2_PLUS]
+      - id: M04.6
+        status: pending
+        objective: Constrain dynamic atlas to measured documented families; disable where native memory cost exceeds benefit.
+        outputs: [docs/global_modernization/v3/M04/dynamic_atlas_decision.md]
+        gates: [M2_PLUS]
+      - id: M04.7
+        status: pending
+        objective: Define bundle load, preload, release and content-version ownership without loading optional packs at startup.
+        outputs: [docs/global_modernization/v3/M04/bundle_policy.md]
+        gates: [P4]
+      - id: M04.8
+        status: pending
+        objective: Capture draw calls, atlas waste, load time, memory and build size before/after each accepted change.
+        outputs: [docs/global_modernization/v3/M04/asset_performance_report.md]
+        gates: [M2_PLUS]
+
+  M05:
+    name: ui_ux_design_system_and_responsive_runtime
+    priority: P0
+    current_status: revalidate_then_extend
+    depends_on: [M03, M04, M06]
+    work_packages:
+      - id: M05.1
+        status: pending
+        objective: Extract canonical color, font, button, panel, icon, spacing and state tokens from the accepted 14-screen UI.
+        outputs: [assets/resources/config/ui_theme_tokens.json]
+        gates: [D4, P4]
+      - id: M05.2
+        status: pending
+        objective: Introduce SafeArea ownership for interactive HUD/menu while decorative PNG backgrounds may extend outside.
+        gates: [P4]
+      - id: M05.3
+        status: pending
+        objective: Replace stable manual card grids with Layout containers while preserving touch order and visual rhythm.
+        gates: [P4]
+      - id: M05.4
+        status: pending
+        objective: Define 9-slice allowlist for scalable frames and forbid it for decorative elements that distort.
+        outputs: [docs/global_modernization/v3/M05/nine_slice_policy.md]
+        gates: [P4]
+      - id: M05.5
+        status: pending
+        objective: Build shared components or declarative renderer that consumes existing UI IR without duplicate active layers.
+        targets: [assets/scripts/ui]
+        gates: [P4, M2_PLUS]
+      - id: M05.6
+        status: pending
+        objective: Migrate low-risk screens one at a time and remove screen-specific styling only after parity.
+        gates: [P4, QA7]
+      - id: M05.7
+        status: pending
+        objective: Migrate gameplay HUD last and pass 14 screens across five viewport profiles, Cyrillic, taps, masks and overdraw.
+        outputs: [docs/global_modernization/v3/M05/ui_snapshot_report.md]
+        gates: [QA7, M2_PLUS]
+
+  M06:
+    name: skin_bonus_and_animation_runtime_pipeline
+    priority: P0
+    current_status: revalidate_then_extend
+    depends_on: [M03, M04]
+    work_packages:
+      - id: M06.1
+        status: pending
+        objective: Reconcile existing skin manifest/static matrix with a canonical SkinRegistry contract and stable IDs.
+        outputs: [assets/resources/config/skin_runtime_manifest.json, docs/global_modernization/v3/M06/skin_registry_report.md]
+        gates: [D4, P4]
+      - id: M06.2
+        status: pending
+        objective: Implement BonusVisualResolver with explicit baked-primary and documented VFX attachment policy.
+        targets: [assets/scripts/visual]
+        outputs: [docs/global_modernization/v3/M06/bonus_resolver_report.md]
+        gates: [P4, M2_PLUS]
+      - id: M06.3
+        status: pending
+        objective: Route every base, pose, equipment and bonus frame through registry/resolver and expose missing frames as QA failures.
+        gates: [P4]
+      - id: M06.4
+        status: pending
+        objective: Execute full skin by pose by bonus runtime matrix on Web and Android emulator, not static mapping only.
+        outputs: [docs/global_modernization/v3/M06/skin_runtime_matrix_report.md]
+        gates: [QA7]
+      - id: M06.5
+        status: pending
+        objective: Run ten switch/expire loops plus death, retry and level-transition cleanup for every family.
+        gates: [QA7, M2_PLUS]
+      - id: M06.6
+        status: pending
+        objective: Load only selected bundle, release unused references and prove stable memory over repeated cycles.
+        gates: [M2_PLUS]
+      - id: M06.7
+        status: pending
+        objective: Remove old visual stack only after full parity, hidden-reference scan and approved cleanup dry-run.
+        gates: [P4, QA7]
+
+  M07:
+    name: level_background_and_content_ownership_pipeline
+    priority: P1
+    current_status: product_green_ownership_pending
+    depends_on: [M03, M04, M05, M06]
+    work_packages:
+      - id: M07.1
+        status: pending
+        objective: Define canonical level-content schema and populate stable IDs for all 15 levels.
+        outputs: [assets/resources/config/level_content_manifest.json]
+        gates: [D4, P4]
+      - id: M07.2
+        status: pending
+        objective: Bind far, mid, near, track, fog and start/mid/end props without hardcoded gameplay paths.
+        gates: [P4]
+      - id: M07.3
+        status: pending
+        objective: Bind platform variants, obstacle pools, grades, collectible density and progression markers.
+        gates: [P4]
+      - id: M07.4
+        status: pending
+        objective: Define active-lane readability budget and validate backgrounds/props against lore and gameplay contrast.
+        outputs: [docs/global_modernization/v3/M07/visual_readability_report.md]
+        gates: [P4]
+      - id: M07.5
+        status: pending
+        objective: Pilot levels 1, 8 and 15 including transition/restart and no old/new texture seam.
+        gates: [P4, M2_PLUS]
+      - id: M07.6
+        status: pending
+        objective: Migrate remaining levels in batches 2-5, 6-10 and 11-15 with per-batch rollback.
+        outputs: [docs/global_modernization/v3/M07/level_manifest_report.md]
+        gates: [P4, QA7]
+      - id: M07.7
+        status: pending
+        objective: Implement current/next preload and previous release policy; measure memory, load, overdraw and artifact size.
+        outputs: [docs/global_modernization/v3/M07/level_streaming_report.md]
+        gates: [M2_PLUS]
+
+  M08:
+    name: audio_vfx_and_feedback_routing
+    priority: P1
+    current_status: product_present_routing_pending
+    depends_on: [M03, M07]
+    work_packages:
+      - id: M08.1
+        status: pending
+        objective: Inventory direct audio/VFX calls, assets, settings, lifetimes and current Web unlock behavior.
+        outputs: [docs/global_modernization/v3/M08/audio_vfx_inventory.md]
+        gates: [D4]
+      - id: M08.2
+        status: pending
+        objective: Define audio/vfx event maps and UI, SFX, MonkeyVoice, Ambience and Music buses.
+        outputs: [assets/resources/config/audio_event_map.json, assets/resources/config/vfx_event_map.json]
+        gates: [D4, P4]
+      - id: M08.3
+        status: pending
+        objective: Implement cooldown, priority, per-event/bus simultaneous limits and injected clock tests.
+        targets: [assets/scripts/feedback]
+        gates: [P4, M2_PLUS]
+      - id: M08.4
+        status: pending
+        objective: Route current calls through adapters one family at a time and detect duplicate playback.
+        gates: [P4]
+      - id: M08.5
+        status: pending
+        objective: Define feedback budgets for magnet, shield, hit, dash and collect without hiding player/controls.
+        outputs: [docs/global_modernization/v3/M08/feedback_budget.md]
+        gates: [P4]
+      - id: M08.6
+        status: pending
+        objective: Pool VFX, bound particles/lifetimes and clean all effects on reset/transition.
+        gates: [P4, M2_PLUS]
+      - id: M08.7
+        status: pending
+        objective: Verify Web first-tap unlock, settings persistence, soak spam/leaks and subjective mix/readability.
+        outputs: [docs/global_modernization/v3/M08/feedback_qa_report.md]
+        gates: [QA7]
+
+  M09:
+    name: save_profiles_achievements_records_and_local_telemetry
+    priority: P1
+    current_status: product_present_durability_pending
+    depends_on: [M01, M03, M08]
+    work_packages:
+      - id: M09.1
+        status: pending
+        objective: Inventory every storage key, shape, writer, reader, profile/name path and corruption fallback.
+        outputs: [docs/global_modernization/v3/M09/save_inventory.md]
+        gates: [D4]
+      - id: M09.2
+        status: pending
+        objective: Define versioned save envelope, stable profile_id, nickname scoping, checksum and unknown-version behavior.
+        outputs: [assets/resources/config/save_contract.json]
+        gates: [D4, P4]
+      - id: M09.3
+        status: pending
+        objective: Define achievement and record manifests with stable IDs and profile ownership.
+        outputs: [assets/resources/config/achievement_manifest.json, assets/resources/config/record_manifest.json]
+        gates: [D4, P4]
+      - id: M09.4
+        status: pending
+        objective: Implement idempotent old-save migration with raw backup, atomic write and explicit failure report.
+        targets: [assets/scripts/persistence]
+        outputs: [docs/global_modernization/v3/M09/save_migration_report.md]
+        gates: [P4, M2_PLUS]
+      - id: M09.5
+        status: pending
+        objective: Test corrupt, truncated, partial, checksum-failed and unknown-version recovery without silent data loss.
+        gates: [P4, M2_PLUS]
+      - id: M09.6
+        status: pending
+        objective: Separate persistence/data services from UI rendering and prevent cross-profile records.
+        gates: [P4]
+      - id: M09.7
+        status: pending
+        objective: Add bounded anonymized local QA telemetry, export and rotation; no network upload by default.
+        outputs: [docs/global_modernization/v3/M09/telemetry_policy.md]
+        gates: [P4]
+      - id: M09.8
+        status: pending
+        objective: Run golden migration fixtures, cold starts, profile switches, achievements/records and telemetry rotation.
+        outputs: [docs/global_modernization/v3/M09/achievements_records_report.md]
+        gates: [QA7, M2_PLUS]
+
+  M10:
+    name: performance_memory_loading_and_optimization
+    priority: P1
+    current_status: partial_stale_baseline
+    depends_on: [M04, M05, M06, M07, M08, M09]
+    work_packages:
+      - id: M10.1
+        status: pending
+        objective: Define Web/emulator/device tiers, resolution/render settings and budgets for startup, frame time, memory, draw calls, overdraw, load and size.
+        outputs: [docs/global_modernization/v3/M10/performance_budgets.md]
+        gates: [D4]
+      - id: M10.2
+        status: pending
+        objective: Capture reproducible Web and Android-emulator baseline with p50/p95/p99 where tooling permits.
+        outputs: [docs/global_modernization/v3/M10/performance_baseline.md]
+        gates: [P4, QA7]
+      - id: M10.3
+        status: conditional
+        objective: Capture arm64 physical-device cold start, frame time, PSS, thermal and background/resume only after explicit authorization.
+        outputs: [docs/global_modernization/v3/M10/physical_device_baseline.md]
+        gates: [QA7]
+        condition: explicit_physical_device_authorization
+      - id: M10.4
+        status: pending
+        objective: Profile allocations, hot update loops, pools, texture residency and bundle lifecycle; rank measured bottlenecks.
+        outputs: [docs/global_modernization/v3/M10/bottleneck_register.yaml]
+        gates: [M2_PLUS]
+      - id: M10.5
+        status: pending
+        objective: Apply one optimization family per bounded patch with rollback and no silent quality loss.
+        gates: [P4, M2_PLUS]
+      - id: M10.6
+        status: pending
+        objective: Compare before/after against budgets and reject changes without material benefit or with visual/gameplay regression.
+        outputs: [docs/global_modernization/v3/M10/optimization_change_report.md]
+        gates: [M2_PLUS]
+      - id: M10.7
+        status: pending
+        objective: Run second module regression, restart loops and release soak; document any physical-device evidence gap honestly.
+        outputs: [docs/global_modernization/v3/M10/performance_regression_report.md]
+        gates: [QA7, M2_PLUS]
+
+  M11:
+    name: pcg_and_difficulty_validation
+    priority: P2
+    current_status: conditional_not_started
+    depends_on: [M03, M07, M09, M10]
+    release_blocking: false
+    work_packages:
+      - id: M11.1
+        status: conditional
+        objective: Define deterministic segment schema for lanes, gaps, obstacles, pickups, timing windows and required actions.
+        outputs: [assets/resources/config/segment.schema.json]
+        gates: [D4]
+      - id: M11.2
+        status: conditional
+        objective: Implement offline reachability/fairness validator independent of frame update.
+        targets: [tools/pcg]
+        gates: [P4]
+      - id: M11.3
+        status: conditional
+        objective: Validate existing handcrafted segments and categorize every false positive/negative.
+        outputs: [docs/global_modernization/v3/M11/handcrafted_validation_report.md]
+        gates: [M2_PLUS]
+      - id: M11.4
+        status: conditional
+        objective: Log seed and config for every generated/test run and provide exact replay.
+        gates: [P4]
+      - id: M11.5
+        status: conditional
+        objective: Block invalid segments before they enter the live queue and fail visibly in QA.
+        gates: [P4]
+      - id: M11.6
+        status: conditional
+        objective: Run 1000-seed fuzz and maintain seed failure corpus.
+        outputs: [docs/global_modernization/v3/M11/seed_failure_corpus.json, docs/global_modernization/v3/M11/pcg_validation_report.md]
+        gates: [M2_PLUS]
+      - id: M11.7
+        status: conditional
+        objective: Add DDA experiment_id and feature flag only after telemetry baseline; keep off by default.
+        gates: [P4]
+      - id: M11.8
+        status: conditional
+        objective: Compare generated and handcrafted five-minute telemetry without invisible core-rule changes.
+        outputs: [docs/global_modernization/v3/M11/difficulty_telemetry_report.md]
+        gates: [QA7]
+
+  M12:
+    name: final_release_migration_cleanup_and_evidence_retention
+    priority: P0
+    current_status: pending
+    depends_on: [M01, M02, M10]
+    optional_dependencies: [M11]
+    work_packages:
+      - id: M12.1
+        status: pending
+        objective: Freeze RC commit/tag/content version and verify no scope drift.
+        outputs: [docs/global_modernization/v3/M12/rc_freeze_report.md]
+        gates: [P4]
+      - id: M12.2
+        status: pending
+        objective: Run independent RC cycle 1 across all applicable QA7 domains.
+        outputs: [docs/global_modernization/v3/M12/rc_cycle_1_report.md]
+        gates: [QA7, RC2]
+      - id: M12.3
+        status: pending
+        objective: Fix findings and run independent RC cycle 2 without reusing stale evidence.
+        outputs: [docs/global_modernization/v3/M12/rc_cycle_2_report.md]
+        gates: [QA7, RC2]
+      - id: M12.4
+        status: pending
+        objective: Build and verify Web, current arm64 APK and conditional AAB; deploy approved Web artifact and smoke live URL.
+        outputs: [docs/global_modernization/v3/M12/final_release_build_report.md]
+        gates: [RC2]
+      - id: M12.5
+        status: pending
+        objective: Generate artifact/evidence index with source, content, hashes, ABI, signing and deployment identity.
+        outputs: [docs/global_modernization/v3/M12/final_artifact_index.json]
+        gates: [D4]
+      - id: M12.6
+        status: pending
+        objective: Produce cleanup dry-run with protected/recent/rotatable classes, hidden-reference scan and rollback map.
+        outputs: [docs/global_modernization/v3/M12/cleanup_dry_run.json]
+        gates: [D4]
+      - id: M12.7
+        status: blocked
+        objective: Apply only approved cleanup batches, then rebuild and rerun targeted plus full gates.
+        outputs: [docs/global_modernization/v3/M12/cleanup_report.md]
+        gates: [P4, QA7]
+        blocker: explicit cleanup approval after accepted final build
+      - id: M12.8
+        status: pending
+        objective: Archive protected anchors and publish final code-review, QA and release summaries with known limitations.
+        outputs: [docs/global_modernization/v3/M12/final_code_review_report.md, docs/global_modernization/v3/M12/final_qa_report.md, docs/global_modernization/v3/M12/final_release_summary.md]
+        gates: [RC2]
+
+next_safe_action:
+  module: M00
+  work_package: M00.2
+  action: Review source-freeze classification and Git topology proposal; do not create a commit until approved.

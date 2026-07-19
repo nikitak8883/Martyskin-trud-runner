@@ -1,0 +1,221 @@
+{
+  "schema": "mtr.ui_ir.screen.v1",
+  "source": {
+    "runtimeFile": "assets/scripts/GameRoot.ts",
+    "runtimeLines": "2398-2448, 4295-4308, 4450-4469, 5156-5268",
+    "themeFile": "assets/scripts/ui/UITheme.ts",
+    "manifest": "assets/resources/config/ui_skin_manifest.json"
+  },
+  "screen": {
+    "id": "devpanel",
+    "route": "state:devpanel via mtr_screen=devpanel&mtr_dev=1",
+    "root_safe_area": true,
+    "canvas_fit_mode": "auto",
+    "theme_id": "martyshkin_trud_ui_skin_v1",
+    "surface": "developer",
+    "background": {
+      "layer_stack_id": "shared_menu_backdrop",
+      "dim_overlay": true
+    },
+    "nodes": [
+      {
+        "id": "developer_panel",
+        "type": "panel",
+        "asset_key": "ui/shared/panels/panel_list",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 35, "y": 110, "w": 1210, "h": 560 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "developer_panel_title_banner",
+        "type": "sprite",
+        "asset_key": "ui/shared/banners/title_banner_blank",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "primary_title",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "МАРТЫШКИН ПУЛЬТ",
+        "bounds": { "x": 260, "y": 19, "w": 760, "h": 106 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "developer_status_chip",
+        "type": "badge",
+        "asset_key": "ui/shared/cards/status_chip",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "КОЛЛАЙДЕРЫ · ТАПЫ · PERF",
+        "bounds": { "x": 315, "y": 115, "w": 650, "h": 54 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "toggle_colliders_button",
+        "type": "button",
+        "label": "КОЛЛАЙДЕРЫ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 145, "y": 178, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 145, "y": 178, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "toggle_touch_zones_button",
+        "type": "button",
+        "label": "ЗОНЫ ТАПА",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 490, "y": 178, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 490, "y": 178, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "toggle_perf_button",
+        "type": "button",
+        "label": "FPS / УЗЛЫ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 835, "y": 178, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 835, "y": 178, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "spawn_obstacles_button",
+        "type": "button",
+        "label": "ВСЕ ПРЕПЯТСТВИЯ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 145, "y": 252, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 145, "y": 252, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "spawn_bonuses_button",
+        "type": "button",
+        "label": "ВСЕ БОНУСЫ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 490, "y": 252, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 490, "y": 252, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "unlock_achievements_button",
+        "type": "button",
+        "label": "ОТКРЫТЬ ДОСТИЖЕНИЯ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 835, "y": 252, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 835, "y": 252, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "lock_achievements_button",
+        "type": "button",
+        "label": "ЗАКРЫТЬ ДОСТИЖЕНИЯ",
+        "asset_key": "ui/shared/buttons/button_danger_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 145, "y": 326, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 145, "y": 326, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "start_level_1_button",
+        "type": "button",
+        "label": "УРОВЕНЬ 1",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 490, "y": 326, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 490, "y": 326, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "start_level_15_button",
+        "type": "button",
+        "label": "УРОВЕНЬ 15",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 835, "y": 326, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 835, "y": 326, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "pause_check_button",
+        "type": "button",
+        "label": "ПРОВЕРКА ПАУЗЫ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 145, "y": 400, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 145, "y": 400, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "screenshot_hint_button",
+        "type": "button",
+        "label": "СКРИН: ADB / WEB",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 490, "y": 400, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 490, "y": 400, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "back_to_menu_button",
+        "type": "button",
+        "label": "В МЕНЮ",
+        "asset_key": "ui/shared/buttons/button_back_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "footer_navigation",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 835, "y": 400, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 835, "y": 400, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      }
+    ]
+  },
+  "validation": {
+    "require_no_baked_text_on_buttons": true,
+    "require_baked_text_exception_record": false,
+    "require_no_ghost_legacy_layers": true,
+    "require_safe_area_for_hud": true,
+    "require_touch_target_min_px": 64
+  }
+}

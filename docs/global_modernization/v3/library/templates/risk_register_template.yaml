@@ -1,0 +1,10 @@
+risks:
+  - id: R-001
+    area:
+    probability: low|medium|high
+    impact: low|medium|high|critical
+    trigger:
+    mitigation:
+    contingency:
+    owner:
+    status: open

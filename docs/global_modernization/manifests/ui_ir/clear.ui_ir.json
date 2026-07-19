@@ -1,0 +1,96 @@
+{
+  "schema": "mtr.ui_ir.screen.v1",
+  "source": {
+    "runtimeFile": "assets/scripts/GameRoot.ts",
+    "runtimeLines": "2360-2462, 4435-4438, 4492-4506",
+    "themeFile": "assets/scripts/ui/UITheme.ts",
+    "manifest": "assets/resources/config/ui_skin_manifest.json"
+  },
+  "screen": {
+    "id": "clear",
+    "route": "state:clear via mtr_screen=clear&mtr_level=1",
+    "root_safe_area": true,
+    "canvas_fit_mode": "auto",
+    "theme_id": "martyshkin_trud_ui_skin_v1",
+    "surface": "main_menu",
+    "background": {
+      "layer_stack_id": "gameplay_world_plus_shared_menu_backdrop",
+      "dim_overlay": true
+    },
+    "nodes": [
+      {
+        "id": "clear_panel",
+        "type": "panel",
+        "asset_key": "ui/shared/panels/panel_dialog",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 250, "y": 155, "w": 780, "h": 470 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "clear_title_banner",
+        "type": "sprite",
+        "asset_key": "ui/shared/banners/title_banner_blank",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "primary_title",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "УРОВЕНЬ ПРОЙДЕН",
+        "bounds": { "x": 280, "y": 19, "w": 720, "h": 106 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "clear_score_summary",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "СЧЁТ / БАНАНЫ",
+        "bounds": { "x": 320, "y": 264, "w": 640, "h": 52 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "next_level_button",
+        "type": "button",
+        "label": "СЛЕДУЮЩИЙ УРОВЕНЬ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 430, "y": 376, "w": 420, "h": 64 },
+        "runtimeActualBounds": { "x": 430, "y": 376, "w": 420, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "clear_back_to_menu_button",
+        "type": "button",
+        "label": "В МЕНЮ",
+        "asset_key": "ui/shared/buttons/button_back_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 430, "y": 443, "w": 420, "h": 64 },
+        "runtimeActualBounds": { "x": 430, "y": 443, "w": 420, "h": 64 },
+        "z_layer": "HUD"
+      }
+    ]
+  },
+  "validation": {
+    "require_no_baked_text_on_buttons": true,
+    "require_baked_text_exception_record": false,
+    "require_no_ghost_legacy_layers": true,
+    "require_safe_area_for_hud": true,
+    "require_touch_target_min_px": 64,
+    "qa_expected_markers": [
+      "MTR_QA_END_STATE_SEEDED screen=clear level=1",
+      "MTR_QA_SCREEN_READY screen=clear",
+      "MTR_MENU_UI_GATE_READY surface=main_menu screen=clear"
+    ]
+  }
+}

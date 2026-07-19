@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mtr.local/schemas/content_manifest.schema.json",
+  "title": "MTR Content Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "generatedAt",
+    "sourceCommit",
+    "platform",
+    "files"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "contentVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generatedAt": {
+      "type": "string"
+    },
+    "sourceCommit": {
+      "type": "string",
+      "minLength": 7
+    },
+    "platform": {
+      "enum": [
+        "source",
+        "web-mobile",
+        "android-emulator",
+        "android-arm64",
+        "android-aab",
+        "pages"
+      ]
+    },
+    "root": {
+      "type": "string"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "size",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[A-Fa-f0-9]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MTR Player State Machine",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "initialState",
+    "states",
+    "transitions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "initialState": {
+      "type": "string"
+    },
+    "states": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "event",
+          "to"
+        ],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "event": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "guard": {
+            "type": "string"
+          },
+          "actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

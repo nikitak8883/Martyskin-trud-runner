@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MTR Module Status",
+  "type": "object",
+  "required": [
+    "moduleId",
+    "status",
+    "sourceCommitBefore",
+    "filesCreated",
+    "filesModified",
+    "commandsExecuted",
+    "qaResults",
+    "openFindings",
+    "nextSafeAction"
+  ],
+  "properties": {
+    "moduleId": {
+      "pattern": "^M[0-9]{2}$",
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "PARTIAL",
+        "FAILED",
+        "BLOCKED"
+      ]
+    },
+    "sourceCommitBefore": {
+      "type": "string"
+    },
+    "sourceCommitAfter": {
+      "type": "string"
+    },
+    "contentManifestVersion": {
+      "type": "string"
+    },
+    "filesCreated": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "filesModified": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "commandsExecuted": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "qaResults": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "openFindings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rollbackAvailable": {
+      "type": "boolean"
+    },
+    "nextSafeAction": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

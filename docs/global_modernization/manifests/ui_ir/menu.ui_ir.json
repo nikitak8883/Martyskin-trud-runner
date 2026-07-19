@@ -1,0 +1,130 @@
+{
+  "schema": "mtr.ui_ir.screen.v1",
+  "source": {
+    "runtimeFile": "assets/scripts/GameRoot.ts",
+    "runtimeLines": "4240-4277, 4439-4451, 5144-5171",
+    "themeFile": "assets/scripts/ui/UITheme.ts",
+    "manifest": "assets/resources/config/ui_skin_manifest.json"
+  },
+  "screen": {
+    "id": "menu",
+    "route": "state:menu",
+    "root_safe_area": true,
+    "canvas_fit_mode": "auto",
+    "theme_id": "martyshkin_trud_ui_skin_v1",
+    "surface": "main_menu",
+    "background": {
+      "layer_stack_id": "main_menu_single_backdrop",
+      "dim_overlay": false
+    },
+    "nodes": [
+      {
+        "id": "main_menu_backdrop",
+        "type": "sprite",
+        "asset_key": "ui/main_menu_background/main_menu_bg_far",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "full_canvas_background",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 0, "y": 0, "w": 1280, "h": 720 },
+        "z_layer": "BACKGROUND"
+      },
+      {
+        "id": "main_menu_title",
+        "type": "sprite",
+        "asset_key": "objectives/themed/last_iteration/ui/main_menu/title/mtr_last_main_menu_ui_main_menu_main_title_01",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "primary_title",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 355, "y": 21, "w": 570, "h": 190 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "start_game_button",
+        "type": "button",
+        "label": "НАЧАТЬ ИГРУ",
+        "asset_key": "objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_start_08",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "main_menu_grid",
+        "nine_slice": false,
+        "text_strategy": "baked_png_atomic",
+        "runtime_label_drawn": false,
+        "bounds": { "x": 238, "y": 220, "w": 382, "h": 124 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "skins_button",
+        "type": "button",
+        "label": "ВЫБЕРИ СВОЕГО ПРИМАТА",
+        "asset_key": "objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_skins_03",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "main_menu_grid",
+        "nine_slice": false,
+        "text_strategy": "baked_png_atomic",
+        "runtime_label_drawn": false,
+        "bounds": { "x": 660, "y": 220, "w": 382, "h": 124 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "records_button",
+        "type": "button",
+        "label": "МАРТЫШКИНЫ РЕКОРДЫ",
+        "asset_key": "objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_records_02",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "main_menu_grid",
+        "nine_slice": false,
+        "text_strategy": "baked_png_atomic",
+        "runtime_label_drawn": false,
+        "bounds": { "x": 238, "y": 350, "w": 382, "h": 124 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "levels_button",
+        "type": "button",
+        "label": "ВЫБОР УРОВНЯ",
+        "asset_key": "objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_levels_04",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "main_menu_grid",
+        "nine_slice": false,
+        "text_strategy": "baked_png_atomic",
+        "runtime_label_drawn": false,
+        "bounds": { "x": 660, "y": 350, "w": 382, "h": 124 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "sound_button",
+        "type": "button",
+        "label": "ЗВУК И НАСТРОЙКИ",
+        "asset_key": "objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_sound_05",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "main_menu_grid",
+        "nine_slice": false,
+        "text_strategy": "baked_png_atomic",
+        "runtime_label_drawn": false,
+        "bounds": { "x": 238, "y": 480, "w": 382, "h": 124 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "developer_button",
+        "type": "button",
+        "label": "РЕЖИМ РАЗРАБОТЧИКА",
+        "asset_key": "objectives/themed/last_iteration/ui/main_menu/button/mtr_last_main_menu_ui_main_menu_button_developer_06",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "main_menu_grid",
+        "nine_slice": false,
+        "text_strategy": "baked_png_atomic",
+        "runtime_label_drawn": false,
+        "bounds": { "x": 660, "y": 480, "w": 382, "h": 124 },
+        "z_layer": "HUD"
+      }
+    ]
+  },
+  "validation": {
+    "require_no_baked_text_on_buttons": false,
+    "require_baked_text_exception_record": true,
+    "require_no_ghost_legacy_layers": true,
+    "require_safe_area_for_hud": true,
+    "require_touch_target_min_px": 64
+  }
+}

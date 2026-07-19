@@ -1,0 +1,108 @@
+{
+  "schema": "mtr.ui_ir.screen.v1",
+  "source": {
+    "runtimeFile": "assets/scripts/GameRoot.ts",
+    "runtimeLines": "2360-2462, 4445-4449, 4492-4506",
+    "themeFile": "assets/scripts/ui/UITheme.ts",
+    "manifest": "assets/resources/config/ui_skin_manifest.json"
+  },
+  "screen": {
+    "id": "finished",
+    "route": "state:finished via mtr_screen=finished&mtr_level=15",
+    "root_safe_area": true,
+    "canvas_fit_mode": "auto",
+    "theme_id": "martyshkin_trud_ui_skin_v1",
+    "surface": "main_menu",
+    "background": {
+      "layer_stack_id": "gameplay_world_plus_shared_menu_backdrop",
+      "dim_overlay": true
+    },
+    "nodes": [
+      {
+        "id": "finished_panel",
+        "type": "panel",
+        "asset_key": "ui/shared/panels/panel_dialog",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 250, "y": 155, "w": 780, "h": 470 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "finished_title_banner",
+        "type": "sprite",
+        "asset_key": "ui/shared/banners/title_banner_blank",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "primary_title",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "ПРОЕКТ УСПЕШЕН",
+        "bounds": { "x": 280, "y": 19, "w": 720, "h": 106 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "finished_summary",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "Дом построен. Возможно, это коровник.",
+        "bounds": { "x": 300, "y": 278, "w": 680, "h": 44 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "finished_score_summary",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "ИТОГОВЫЙ СЧЁТ / БАНАНЫ",
+        "bounds": { "x": 310, "y": 324, "w": 660, "h": 40 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "restart_game_button",
+        "type": "button",
+        "label": "ЗАНОВО",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 430, "y": 386, "w": 420, "h": 64 },
+        "runtimeActualBounds": { "x": 430, "y": 386, "w": 420, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "finished_records_button",
+        "type": "button",
+        "label": "РЕКОРДЫ",
+        "asset_key": "ui/shared/buttons/button_back_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 430, "y": 453, "w": 420, "h": 64 },
+        "runtimeActualBounds": { "x": 430, "y": 453, "w": 420, "h": 64 },
+        "z_layer": "HUD"
+      }
+    ]
+  },
+  "validation": {
+    "require_no_baked_text_on_buttons": true,
+    "require_baked_text_exception_record": false,
+    "require_no_ghost_legacy_layers": true,
+    "require_safe_area_for_hud": true,
+    "require_touch_target_min_px": 64,
+    "qa_expected_markers": [
+      "MTR_QA_END_STATE_SEEDED screen=finished level=15",
+      "MTR_QA_SCREEN_READY screen=finished",
+      "MTR_MENU_UI_GATE_READY surface=main_menu screen=finished"
+    ]
+  }
+}

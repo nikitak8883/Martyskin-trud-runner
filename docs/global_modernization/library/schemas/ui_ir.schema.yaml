@@ -1,0 +1,35 @@
+$schema: mtr.ui_ir.schema.v1
+screen:
+  id: string
+  route: string
+  root_safe_area: boolean
+  canvas_fit_mode:
+    enum: [fit_width, fit_height, fixed_height, fixed_width, auto]
+  theme_id: string
+  background:
+    layer_stack_id: string
+    dim_overlay: boolean
+  nodes:
+    - id: string
+      type:
+        enum: [panel, sprite, label, button, list, grid, progress, badge, icon_slot, slider, toggle, modal, spacer]
+      prefab_ref: string|null
+      asset_key: string|null
+      atlas_id: string|null
+      anchor_policy:
+        enum: [widget, layout, absolute_locked, relative]
+      safe_area_role:
+        enum: [none, top_hud, bottom_controls, modal_content, full_screen_background]
+      nine_slice: boolean
+      text_key: string|null
+      states:
+        - idle
+        - selected
+        - pressed
+        - disabled
+      children: []
+validation:
+  require_no_baked_text_on_buttons: true
+  require_no_ghost_legacy_layers: true
+  require_safe_area_for_hud: true
+  require_touch_target_min_px: 64

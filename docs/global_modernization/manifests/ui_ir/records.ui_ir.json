@@ -1,0 +1,198 @@
+{
+  "schema": "mtr.ui_ir.screen.v1",
+  "source": {
+    "runtimeFile": "assets/scripts/GameRoot.ts",
+    "runtimeLines": "157, 2130-2149, 2363-2388, 4344-4359, 4459-4474",
+    "themeFile": "assets/scripts/ui/UITheme.ts",
+    "manifest": "assets/resources/config/ui_skin_manifest.json"
+  },
+  "screen": {
+    "id": "records",
+    "route": "state:records via mtr_screen=records&mtr_seed_records=1",
+    "root_safe_area": true,
+    "canvas_fit_mode": "auto",
+    "theme_id": "martyshkin_trud_ui_skin_v1",
+    "surface": "records",
+    "background": {
+      "layer_stack_id": "shared_menu_backdrop",
+      "dim_overlay": true
+    },
+    "nodes": [
+      {
+        "id": "records_panel",
+        "type": "panel",
+        "asset_key": "ui/shared/panels/panel_list",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "list_content",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 35, "y": 110, "w": 1210, "h": 560 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "records_title_banner",
+        "type": "sprite",
+        "asset_key": "ui/shared/banners/title_banner_blank",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "primary_title",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "МАРТЫШКИНЫ РЕКОРДЫ",
+        "bounds": { "x": 260, "y": 19, "w": 760, "h": 106 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "records_list",
+        "type": "list",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "records_list",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 220, "y": 152, "w": 840, "h": 378 },
+        "list": { "max_rows": 7, "row_w": 840, "row_h": 48, "gap_y": 7 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "records_empty_state_card",
+        "type": "sprite",
+        "asset_key": "ui/shared/cards/empty_state_card",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "empty_state",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "ОТЧЁТ ЕЩЁ НЕ ДОЕХАЛ / Пока никто не донёс ведомость до финиша.",
+        "bounds": { "x": 290, "y": 252, "w": 700, "h": 180 },
+        "z_layer": "HUD",
+        "visibility": "records.length === 0"
+      },
+      {
+        "id": "record_row_01",
+        "type": "sprite",
+        "asset_key": "ui/shared/panels/panel_chip",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "records_list",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "{rank}. {name} | СЧЁТ {score} | УРОВЕНЬ {level} | БАНАНЫ {bananas}",
+        "bounds": { "x": 220, "y": 152, "w": 840, "h": 48 },
+        "z_layer": "HUD",
+        "visibility": "records.length >= 1"
+      },
+      {
+        "id": "record_row_02",
+        "type": "sprite",
+        "asset_key": "ui/shared/panels/panel_chip",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "records_list",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "{rank}. {name} | СЧЁТ {score} | УРОВЕНЬ {level} | БАНАНЫ {bananas}",
+        "bounds": { "x": 220, "y": 207, "w": 840, "h": 48 },
+        "z_layer": "HUD",
+        "visibility": "records.length >= 2"
+      },
+      {
+        "id": "record_row_03",
+        "type": "sprite",
+        "asset_key": "ui/shared/panels/panel_chip",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "records_list",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "{rank}. {name} | СЧЁТ {score} | УРОВЕНЬ {level} | БАНАНЫ {bananas}",
+        "bounds": { "x": 220, "y": 262, "w": 840, "h": 48 },
+        "z_layer": "HUD",
+        "visibility": "records.length >= 3"
+      },
+      {
+        "id": "record_row_04",
+        "type": "sprite",
+        "asset_key": "ui/shared/panels/panel_chip",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "records_list",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "{rank}. {name} | СЧЁТ {score} | УРОВЕНЬ {level} | БАНАНЫ {bananas}",
+        "bounds": { "x": 220, "y": 317, "w": 840, "h": 48 },
+        "z_layer": "HUD",
+        "visibility": "records.length >= 4"
+      },
+      {
+        "id": "record_row_05",
+        "type": "sprite",
+        "asset_key": "ui/shared/panels/panel_chip",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "records_list",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "{rank}. {name} | СЧЁТ {score} | УРОВЕНЬ {level} | БАНАНЫ {bananas}",
+        "bounds": { "x": 220, "y": 372, "w": 840, "h": 48 },
+        "z_layer": "HUD",
+        "visibility": "records.length >= 5"
+      },
+      {
+        "id": "record_row_06",
+        "type": "sprite",
+        "asset_key": "ui/shared/panels/panel_chip",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "records_list",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "{rank}. {name} | СЧЁТ {score} | УРОВЕНЬ {level} | БАНАНЫ {bananas}",
+        "bounds": { "x": 220, "y": 427, "w": 840, "h": 48 },
+        "z_layer": "HUD",
+        "visibility": "records.length >= 6"
+      },
+      {
+        "id": "record_row_07",
+        "type": "sprite",
+        "asset_key": "ui/shared/panels/panel_chip",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "records_list",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "{rank}. {name} | СЧЁТ {score} | УРОВЕНЬ {level} | БАНАНЫ {bananas}",
+        "bounds": { "x": 220, "y": 482, "w": 840, "h": 48 },
+        "z_layer": "HUD",
+        "visibility": "records.length >= 7"
+      },
+      {
+        "id": "achievements_button",
+        "type": "button",
+        "label": "ДОСТИЖЕНИЯ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "footer_navigation",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 324, "y": 616, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 324, "y": 616, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "back_to_menu_button",
+        "type": "button",
+        "label": "НАЗАД",
+        "asset_key": "ui/shared/buttons/button_back_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "footer_navigation",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 656, "y": 616, "w": 300, "h": 64 },
+        "runtimeActualBounds": { "x": 656, "y": 616, "w": 300, "h": 64 },
+        "z_layer": "HUD"
+      }
+    ]
+  },
+  "validation": {
+    "require_no_baked_text_on_buttons": true,
+    "require_baked_text_exception_record": false,
+    "require_no_ghost_legacy_layers": true,
+    "require_safe_area_for_hud": true,
+    "require_touch_target_min_px": 64,
+    "require_row_text_fit_px": 780,
+    "require_table_columns": ["name", "score", "level", "bananas"],
+    "qa_seed_param": "mtr_seed_records=1"
+  }
+}

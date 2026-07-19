@@ -1,0 +1,75 @@
+schema_version: 1
+generated_at: 2026-07-19
+library_id: mtr_current_state_audit_modernization_v3_20260715
+source_zip_sha256: 85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2
+source_integrity:
+  zip_checksum: pass
+  safe_extraction: pass
+  manifest_entries: 91
+  manifest_entries_verified: 91
+  checksum_entries: 92
+  checksum_entries_verified: 92
+
+dispositions:
+  - group: root_audit_and_roadmap
+    files: [README_START_HERE.md, README_RU.md, 00_AUDIT_SCOPE_AND_CONFIDENCE.md, 01_CURRENT_STATE_AUDIT.md, 02_FINDINGS_REGISTER.yaml, 03_MASTER_ROADMAP.yaml, 04_DEPENDENCY_GRAPH.md, 05_EXECUTION_POLICY.md, 06_SOURCE_AND_RELEASE_RECOVERY.md, 07_TOOLCHAIN_INSTALLATION.md, 08_SOURCE_REFERENCES.md]
+    disposition: adapt
+    project_target: docs/global_modernization/v3
+    note: Live facts and stricter project rules override upstream wording.
+  - group: modules_M00_M12
+    files_glob: modules/*.md
+    disposition: adapt
+    project_target: docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml
+    note: Decomposed into project-specific bounded work packages; completed v2 work is preserved.
+  - group: prompts
+    files_glob: prompts/*.md
+    disposition: reference_only
+    note: Do not execute verbatim; live AGENTS and current task scope remain authoritative.
+  - group: cycles_and_checklists
+    files_glob: [cycles/*.md, checklists/*.md]
+    disposition: merge
+    project_target: docs/global_modernization/v3/VALIDATION_CYCLE_MATRIX.md
+    note: Merged with four-cycle minimum, v2 QA7, emulator-only default and release RC2.
+  - group: schemas
+    files_glob: schemas/*.json
+    disposition: draft_only
+    copied_count: 9
+    project_target: docs/global_modernization/v3/library/drafts/schemas
+    activation_gate: M01.2
+  - group: typescript_reference_code
+    files_glob: reference_code/typescript/*.ts
+    disposition: draft_only
+    copied_count: 8
+    project_target: docs/global_modernization/v3/library/drafts/reference_code/typescript
+    activation_gate: M03/M06/M08/M09 contract tests
+  - group: templates
+    files_glob: templates/*
+    disposition: adopted_as_templates
+    copied_count: 6
+    project_target: docs/global_modernization/v3/library/templates
+  - group: python_tools
+    files_glob: tools/python/*.py
+    disposition: reference_then_reimplement_or_patch
+    activation_gate: M01 tool self-tests
+    note: Existing project validators remain primary.
+  - group: powershell_tools
+    files_glob: tools/powershell/*.ps1
+    disposition: reject_as_is
+    activation_gate: M01 fail-closed redesign
+    note: Timeout, native exit-code, path and worktree handling are incomplete.
+  - group: workflows
+    files_glob: workflows/*
+    disposition: reject_as_is
+    activation_gate: source remote plus reproducible local command parity
+  - group: configs
+    files_glob: configs/*
+    disposition: reference_only
+    note: npm/path assumptions do not match the live project.
+  - group: source_material
+    files_glob: source/*
+    disposition: provenance_only
+    note: Live canonical docs and original report hash take priority; do not duplicate into runtime.
+  - group: agents_template
+    files: [AGENTS.template.md]
+    disposition: do_not_overwrite
+    note: Missing lore, Android/Web and QA rules from live AGENTS.

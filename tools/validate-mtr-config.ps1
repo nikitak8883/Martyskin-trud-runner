@@ -350,6 +350,35 @@ if ($src -notmatch 'private\s+debugReadability\s*=\s*false' -or $src -notmatch '
     Add-Error "Нужен debugReadability=false по умолчанию и query/localStorage флаг mtr_debug_readability."
 }
 
+$androidActivityPath = Join-Path $ProjectRoot 'native\engine\android\app\src\com\cocos\game\AppActivity.java'
+if (-not (Test-Path -LiteralPath $androidActivityPath)) {
+    Add-Error "Нет Android startup-query bridge: $androidActivityPath"
+} else {
+    $androidActivity = Get-Content -Raw -Encoding UTF8 -LiteralPath $androidActivityPath
+    $runtimeQueryKeys = [regex]::Matches($src, "params\.get\('([^']+)'\)") |
+        ForEach-Object { $_.Groups[1].Value } |
+        Sort-Object -Unique
+    $nativeQueryBody = [regex]::Match($androidActivity, 'QA_QUERY_KEYS\s*=\s*\{(?<body>[\s\S]*?)\};').Groups['body'].Value
+    $nativeQueryKeys = [regex]::Matches($nativeQueryBody, '"([^"]+)"') |
+        ForEach-Object { $_.Groups[1].Value } |
+        Sort-Object -Unique
+    foreach ($key in $runtimeQueryKeys) {
+        if ($nativeQueryKeys -notcontains $key) {
+            Add-Error "Android startup-query bridge не пропускает runtime key: $key"
+        }
+    }
+    foreach ($key in $nativeQueryKeys) {
+        if ($runtimeQueryKeys -notcontains $key) {
+            Add-Error "Android startup-query bridge содержит неиспользуемый key: $key"
+        }
+    }
+    foreach ($key in @('mtr_qa_obstacles', 'mtr_spawn_obstacles', 'mtr_qa_bonuses', 'mtr_spawn_bonuses')) {
+        if ($runtimeQueryKeys -notcontains $key -or $nativeQueryKeys -notcontains $key) {
+            Add-Error "QA startup-query key должен быть симметричен для Web и Android: $key"
+        }
+    }
+}
+
 for ($i = 1; $i -le 15; $i++) {
     $fileName = 'level{0:D2}.jpg' -f $i
     $backgroundPath = Join-Path $backgroundDir $fileName
@@ -369,5 +398,5 @@ if ($errors.Count -gt 0) {
     exit 1
 }
 
-Write-Host "MTR config OK: 15 levels, 15 bitmap backgrounds, story themes, current objective sprites, achievements and Russian labels present."
+Write-Host "MTR config OK: 15 levels, 15 bitmap backgrounds, story themes, current objective sprites, achievements, Russian labels and Android/Web QA query parity present."
 

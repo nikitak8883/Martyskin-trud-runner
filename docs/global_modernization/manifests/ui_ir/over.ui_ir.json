@@ -1,0 +1,119 @@
+{
+  "schema": "mtr.ui_ir.screen.v1",
+  "source": {
+    "runtimeFile": "assets/scripts/GameRoot.ts",
+    "runtimeLines": "2360-2462, 4439-4444, 4492-4506",
+    "themeFile": "assets/scripts/ui/UITheme.ts",
+    "manifest": "assets/resources/config/ui_skin_manifest.json"
+  },
+  "screen": {
+    "id": "over",
+    "route": "state:over via mtr_screen=over&mtr_level=1",
+    "root_safe_area": true,
+    "canvas_fit_mode": "auto",
+    "theme_id": "martyshkin_trud_ui_skin_v1",
+    "surface": "death",
+    "background": {
+      "layer_stack_id": "gameplay_world_plus_shared_menu_backdrop",
+      "dim_overlay": true
+    },
+    "nodes": [
+      {
+        "id": "over_panel",
+        "type": "panel",
+        "asset_key": "ui/shared/panels/panel_dialog",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 250, "y": 155, "w": 780, "h": 470 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "over_title_banner",
+        "type": "sprite",
+        "asset_key": "ui/shared/banners/title_banner_blank",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "primary_title",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "МАРТЫШКА УПАЛА",
+        "bounds": { "x": 280, "y": 19, "w": 720, "h": 106 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "over_summary_card",
+        "type": "panel",
+        "asset_key": "ui/shared/cards/empty_state_card",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 290, "y": 230, "w": 700, "h": 160 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "over_reason",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "reason",
+        "bounds": { "x": 330, "y": 264, "w": 620, "h": 44 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "over_score_summary",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "СЧЁТ / БАНАНЫ / ПРОГРЕСС",
+        "bounds": { "x": 310, "y": 314, "w": 660, "h": 40 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "retry_button",
+        "type": "button",
+        "label": "ПОВТОРИТЬ",
+        "asset_key": "ui/shared/buttons/button_primary_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 430, "y": 416, "w": 420, "h": 64 },
+        "runtimeActualBounds": { "x": 430, "y": 416, "w": 420, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "over_back_to_menu_button",
+        "type": "button",
+        "label": "В МЕНЮ",
+        "asset_key": "ui/shared/buttons/button_back_idle",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "modal_content",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 430, "y": 486, "w": 420, "h": 64 },
+        "runtimeActualBounds": { "x": 430, "y": 486, "w": 420, "h": 64 },
+        "z_layer": "HUD"
+      }
+    ]
+  },
+  "validation": {
+    "require_no_baked_text_on_buttons": true,
+    "require_baked_text_exception_record": false,
+    "require_no_ghost_legacy_layers": true,
+    "require_safe_area_for_hud": true,
+    "require_touch_target_min_px": 64,
+    "qa_expected_markers": [
+      "MTR_QA_END_STATE_SEEDED screen=over level=1",
+      "MTR_QA_SCREEN_READY screen=over",
+      "MTR_MENU_UI_GATE_READY surface=death screen=over"
+    ]
+  }
+}

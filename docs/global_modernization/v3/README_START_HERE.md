@@ -1,0 +1,51 @@
+# MTR global modernization v3 — project entry point
+
+Статус: `planning_complete_runtime_not_started`  
+Дата интеграции: 2026-07-19  
+Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
+SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
+
+## Назначение
+
+Эта папка — каноническая проектная адаптация внешнего аудита v3. Она не заменяет Tasks/4/v2 и не является готовым runtime patch. Её задача:
+
+1. закрепить живые факты 19 июля;
+2. устранить конфликты внешнего плана с текущим проектом;
+3. разложить M00–M12 на исполнимые bounded work packages;
+4. подготовить схемы, reference seams, templates и QA-профили;
+5. не допустить начала модернизации до source freeze.
+
+## Приоритет источников
+
+```text
+живой source + AGENTS/lore
+→ docs/current_audit/*
+→ принятый Tasks/4/v2 evidence
+→ этот интегрированный v3 plan
+→ внешний Tasks/5 пакет как upstream reference
+```
+
+При расхождении внешний пакет никогда не перезаписывает рабочую механику, lore, Android/Web parity rules или принятый QA baseline.
+
+## Читать в таком порядке
+
+1. `../../current_audit/revalidation_summary.md`
+2. `COMPATIBILITY_AND_CONFLICT_REPORT_20260719.md`
+3. `INTEGRATED_MASTER_PLAN_20260719.md`
+4. `WORK_PACKAGE_INDEX.yaml`
+5. `VALIDATION_CYCLE_MATRIX.md`
+6. `TOOL_AND_CODE_ADAPTATION_BACKLOG.md`
+7. `PLAN_AUDIT_20260719.md`
+8. `library/README.md`
+
+## Текущее разрешённое состояние
+
+- M00.A read-only inventory: завершён.
+- M00.B checkpoint classification/review: ожидает подтверждения.
+- Commit/tag/bundle: не создавались.
+- Build/runtime/emulator/Pages/signing: не запускались и не изменялись.
+- Architecture/assets/UI/gameplay patches: не начинались.
+
+## Следующее безопасное действие
+
+Проверить предложенный состав source checkpoint и выбрать Git/Pages topology. Только после этого можно выполнить M00.B: reviewed commit + annotated tag + Git bundle + restore rehearsal.

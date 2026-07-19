@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MTR Skin Runtime Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "skins"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "skins": {
+      "type": "array",
+      "minItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "skinId",
+          "displayName",
+          "bundleId",
+          "animations",
+          "bonusVariants"
+        ],
+        "properties": {
+          "skinId": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "bundleId": {
+            "type": "string"
+          },
+          "animations": {
+            "type": "object"
+          },
+          "bonusVariants": {
+            "type": "object"
+          },
+          "preview": {
+            "type": "string"
+          },
+          "fallbackPolicy": {
+            "enum": [
+              "fail_visible_in_dev",
+              "base_frame_with_warning",
+              "forbidden"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

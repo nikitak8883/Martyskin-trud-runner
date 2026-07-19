@@ -1,0 +1,10 @@
+{
+  "$schema": "mtr.qa_result.schema.v1",
+  "cycleId": "build_smoke|visual_ui|gameplay_physics|skin_bonus|audio_vfx|performance_device|release_regression",
+  "status": "pass|partial|fail|blocked",
+  "commands": [],
+  "artifacts": [],
+  "failures": [],
+  "fixesApplied": [],
+  "requiresUserApproval": []
+}

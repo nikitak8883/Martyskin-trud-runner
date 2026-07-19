@@ -1,0 +1,221 @@
+{
+  "schema": "mtr.ui_ir.screen.v1",
+  "source": {
+    "runtimeFile": "assets/scripts/GameRoot.ts",
+    "runtimeLines": "2970-2980, 2985-2993, 4132-4156, 5149-5196",
+    "themeFile": "assets/scripts/ui/UITheme.ts",
+    "manifest": "assets/resources/config/ui_skin_manifest.json"
+  },
+  "screen": {
+    "id": "playing_hud",
+    "route": "state:playing via mtr_autostart=1",
+    "root_safe_area": true,
+    "canvas_fit_mode": "auto",
+    "theme_id": "martyshkin_trud_ui_skin_v1",
+    "surface": "gameplay_hud",
+    "background": {
+      "layer_stack_id": "gameplay_world_runtime",
+      "dim_overlay": false
+    },
+    "nodes": [
+      {
+        "id": "gameplay_world_reserved_area",
+        "type": "spacer",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "gameplay_field",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 0, "y": 96, "w": 1280, "h": 512 },
+        "z_layer": "BG_MID"
+      },
+      {
+        "id": "hud_left_panel",
+        "type": "panel",
+        "asset_key": "ui/shared/cards/hud_panel",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 16, "y": 8, "w": 720, "h": 84 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "level_name_label",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "LEVELS[levelIndex].name",
+        "bounds": { "x": 42, "y": 26, "w": 650, "h": 24 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "level_subtitle_label",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "LEVELS[levelIndex].subtitle",
+        "bounds": { "x": 42, "y": 51, "w": 650, "h": 18 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "hud_right_panel",
+        "type": "panel",
+        "asset_key": "ui/shared/cards/hud_panel",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 750, "y": 8, "w": 360, "h": 84 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "plan_hp_label",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "PLAN / HP",
+        "bounds": { "x": 772, "y": 26, "w": 310, "h": 22 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "score_progress_label",
+        "type": "label",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "SCORE / OBJECT_PROGRESS",
+        "bounds": { "x": 772, "y": 52, "w": 310, "h": 18 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "pause_touch_zone",
+        "type": "button",
+        "label": "",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 950, "y": 58, "w": 190, "h": 104 },
+        "runtimeActualBounds": { "x": 950, "y": 58, "w": 190, "h": 104 },
+        "z_layer": "HUD_NATIVE_TOUCH"
+      },
+      {
+        "id": "pause_button_label_plate",
+        "type": "sprite",
+        "asset_key": "objectives/ui/ui_label_plate_01",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 968, "y": 83, "w": 150, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "pause_button",
+        "type": "button",
+        "label": "ПАУЗА",
+        "asset_key": "ui/shared/cards/hud_control",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 968, "y": 83, "w": 150, "h": 64 },
+        "runtimeActualBounds": { "x": 968, "y": 83, "w": 150, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "jump_button_label_plate",
+        "type": "sprite",
+        "asset_key": "objectives/ui/ui_label_plate_01",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "bottom_controls",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 48, "y": 619, "w": 350, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "jump_plan_button",
+        "type": "button",
+        "label": "ПРЫЖОК / ПЛАН",
+        "asset_key": "ui/shared/cards/hud_control",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "bottom_controls",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 48, "y": 619, "w": 350, "h": 64 },
+        "runtimeActualBounds": { "x": 48, "y": 619, "w": 350, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "dash_button_label_plate",
+        "type": "sprite",
+        "asset_key": "objectives/ui/ui_label_plate_01",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "bottom_controls",
+        "nine_slice": false,
+        "text_strategy": "decorative_none",
+        "bounds": { "x": 930, "y": 619, "w": 270, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "dash_button",
+        "type": "button",
+        "label": "РЫВОК",
+        "asset_key": "ui/shared/cards/hud_control",
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "bottom_controls",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "bounds": { "x": 930, "y": 619, "w": 270, "h": 64 },
+        "runtimeActualBounds": { "x": 930, "y": 619, "w": 270, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "toast_overlay_area",
+        "type": "badge",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "bannerText / achievementToast",
+        "bounds": { "x": 320, "y": 104, "w": 640, "h": 64 },
+        "z_layer": "HUD"
+      },
+      {
+        "id": "developer_mode_badge",
+        "type": "badge",
+        "asset_key": null,
+        "anchor_policy": "absolute_locked",
+        "safe_area_role": "top_hud",
+        "nine_slice": false,
+        "text_strategy": "runtime_label",
+        "text_key": "РАЗР",
+        "bounds": { "x": 1212, "y": 60, "w": 44, "h": 24 },
+        "z_layer": "HUD",
+        "visible_when": "developerMode && (showTouchZones || showPerfOverlay || debugColliders || debugReadability)"
+      }
+    ]
+  },
+  "validation": {
+    "require_no_baked_text_on_buttons": true,
+    "require_baked_text_exception_record": false,
+    "require_no_ghost_legacy_layers": true,
+    "require_safe_area_for_hud": true,
+    "require_touch_target_min_px": 64
+  }
+}

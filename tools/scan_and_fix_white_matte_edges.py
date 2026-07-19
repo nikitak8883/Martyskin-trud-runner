@@ -22,6 +22,10 @@ GAMEPLAY_DIRS = [
 
 EDGE_CONNECTED_WHITE_SUSPECT_MIN_PIXELS = 12
 ALPHA_EDGE_WHITE_HALO_SUSPECT_MIN_PIXELS = 320
+ENCLOSED_NEUTRAL_COMPONENT_MIN_PIXELS = 250
+ENCLOSED_NEUTRAL_WHITE_SEED_MIN_PIXELS = 100
+ENCLOSED_NEUTRAL_MIN_CHANNEL = 155
+ENCLOSED_NEUTRAL_MAX_CHROMA = 32
 
 
 def near_white(pixel: tuple[int, int, int, int], threshold: int = 238) -> bool:
@@ -114,6 +118,84 @@ def clean_connected_white(img: Image.Image) -> tuple[Image.Image, int]:
     return trim_transparent(rgba), len(mask) + low_alpha_removed
 
 
+def enclosed_neutral_white_components(img: Image.Image) -> list[set[tuple[int, int]]]:
+    """Find large, enclosed neutral-white mattes without guessing across all art.
+
+    This detector is intentionally opt-in per file. It targets white/checker
+    remnants trapped inside holes (rope nets, pallets) that cannot be reached
+    by the conservative edge flood, while avoiding broad automatic edits to
+    legitimate paper, signs, highlights, and text elsewhere in the pack.
+    """
+    rgba = img.convert("RGBA")
+    w, h = rgba.size
+    pixels = rgba.load()
+    visited: set[tuple[int, int]] = set()
+    matches: list[set[tuple[int, int]]] = []
+
+    def is_candidate(x: int, y: int) -> bool:
+        r, g, b, a = pixels[x, y]
+        return (
+            a >= 160
+            and min(r, g, b) >= ENCLOSED_NEUTRAL_MIN_CHANNEL
+            and max(r, g, b) - min(r, g, b) <= ENCLOSED_NEUTRAL_MAX_CHROMA
+        )
+
+    for y in range(h):
+        for x in range(w):
+            if (x, y) in visited or not is_candidate(x, y):
+                continue
+            component: set[tuple[int, int]] = set()
+            q: deque[tuple[int, int]] = deque([(x, y)])
+            visited.add((x, y))
+            white_seed_count = 0
+            touches_border = False
+            while q:
+                cx, cy = q.popleft()
+                component.add((cx, cy))
+                r, g, b, a = pixels[cx, cy]
+                if a >= 220 and min(r, g, b) >= 235:
+                    white_seed_count += 1
+                if cx == 0 or cy == 0 or cx == w - 1 or cy == h - 1:
+                    touches_border = True
+                for nx, ny in ((cx - 1, cy), (cx + 1, cy), (cx, cy - 1), (cx, cy + 1)):
+                    if not (0 <= nx < w and 0 <= ny < h) or (nx, ny) in visited:
+                        continue
+                    if is_candidate(nx, ny):
+                        visited.add((nx, ny))
+                        q.append((nx, ny))
+            if (
+                not touches_border
+                and len(component) >= ENCLOSED_NEUTRAL_COMPONENT_MIN_PIXELS
+                and white_seed_count >= ENCLOSED_NEUTRAL_WHITE_SEED_MIN_PIXELS
+            ):
+                matches.append(component)
+    return matches
+
+
+def clean_enclosed_neutral_white(img: Image.Image) -> tuple[Image.Image, int, int]:
+    rgba = img.convert("RGBA")
+    components = enclosed_neutral_white_components(rgba)
+    pixels = rgba.load()
+    removed = 0
+    for component in components:
+        for x, y in component:
+            pixels[x, y] = (0, 0, 0, 0)
+            removed += 1
+    return trim_transparent(rgba), removed, len(components)
+
+
+def enclosed_neutral_summary(path: Path) -> dict:
+    img = Image.open(path).convert("RGBA")
+    components = enclosed_neutral_white_components(img)
+    return {
+        "file": str(path),
+        "size": [img.width, img.height],
+        "componentCount": len(components),
+        "candidatePixels": sum(len(component) for component in components),
+        "componentPixels": sorted((len(component) for component in components), reverse=True),
+    }
+
+
 def analyze(path: Path) -> dict:
     img = Image.open(path).convert("RGBA")
     alpha = img.getchannel("A")
@@ -182,11 +264,20 @@ def main() -> None:
     parser.add_argument("--fix", action="store_true")
     parser.add_argument("--report", default="qa/20260528_asset_cutout_scan_strict.json")
     parser.add_argument("--contact-sheet", default="qa/20260528_cutout_suspects_contact_sheet.png")
+    parser.add_argument(
+        "--enclosed-hole-path",
+        action="append",
+        default=[],
+        help="Opt-in PNG path (absolute, project-relative, or relative to --root) for enclosed white-matte detection.",
+    )
+    parser.add_argument("--fix-enclosed-holes", action="store_true")
     args = parser.parse_args()
 
     root = Path(args.root)
     checked: list[dict] = []
     fixed: list[dict] = []
+    enclosed_checked: list[dict] = []
+    enclosed_fixed: list[dict] = []
 
     for rel in GAMEPLAY_DIRS:
         folder = root / rel
@@ -205,6 +296,27 @@ def main() -> None:
                     info_after = analyze(path)
                     fixed.append({"file": str(path), "removedPixels": removed, "after": info_after})
 
+    for raw_path in args.enclosed_hole_path:
+        path = Path(raw_path)
+        if not path.exists():
+            path = root / raw_path
+        if not path.exists():
+            enclosed_checked.append({"file": str(path), "status": "missing"})
+            continue
+        before = enclosed_neutral_summary(path)
+        before["status"] = "suspect" if before["componentCount"] else "ok"
+        enclosed_checked.append(before)
+        if args.fix_enclosed_holes and before["componentCount"]:
+            original = Image.open(path).convert("RGBA")
+            cleaned, removed, component_count = clean_enclosed_neutral_white(original)
+            cleaned.save(path)
+            enclosed_fixed.append({
+                "file": str(path),
+                "removedPixels": removed,
+                "componentCount": component_count,
+                "after": enclosed_neutral_summary(path),
+            })
+
     suspects = [Path(item["file"]) for item in checked if item.get("status") == "suspect" and "file" in item]
     report = {
         "checkedCount": sum(1 for item in checked if "file" in item),
@@ -216,13 +328,26 @@ def main() -> None:
         },
         "suspects": [item for item in checked if item.get("status") == "suspect"],
         "fixed": fixed,
+        "enclosedHolePolicy": {
+            "optInOnly": True,
+            "componentMinPixels": ENCLOSED_NEUTRAL_COMPONENT_MIN_PIXELS,
+            "whiteSeedMinPixels": ENCLOSED_NEUTRAL_WHITE_SEED_MIN_PIXELS,
+            "neutralMinChannel": ENCLOSED_NEUTRAL_MIN_CHANNEL,
+            "neutralMaxChroma": ENCLOSED_NEUTRAL_MAX_CHROMA,
+        },
+        "enclosedHoleChecked": enclosed_checked,
+        "enclosedHoleFixed": enclosed_fixed,
         "checked": checked,
     }
     out = Path(args.report)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     contact_sheet(suspects[:64], Path(args.contact_sheet))
-    print(json.dumps({k: report[k] for k in ("checkedCount", "suspectCount", "fixedCount")}, ensure_ascii=False))
+    print(json.dumps({
+        **{k: report[k] for k in ("checkedCount", "suspectCount", "fixedCount")},
+        "enclosedHoleCheckedCount": len(enclosed_checked),
+        "enclosedHoleFixedCount": len(enclosed_fixed),
+    }, ensure_ascii=False))
 
 
 if __name__ == "__main__":
