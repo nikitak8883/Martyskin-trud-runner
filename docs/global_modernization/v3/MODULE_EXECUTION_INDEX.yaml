@@ -1,9 +1,9 @@
 schema_version: 1
 updated_at: "2026-07-19"
-source_head: 76bac6c2e9f5e112489aa8a922dce48c3fd9970b
-source_state: dirty_unfrozen
+source_head: 12670452ae4580ef5c685ff986476daf91522978
+source_state: frozen_tagged_bundled_restored
 modules:
-  M00: {status: partial, completed: [M00.1], next: M00.2, report: docs/current_audit/revalidation_summary.md}
+  M00: {status: complete, completed: [M00.1, M00.2, M00.3, M00.4, M00.5, M00.6], next: null, report: docs/global_modernization/v3/M00/source_freeze_report.md}
   M01: {status: partial, completed: [], next: M01.1, report: null}
   M02: {status: blocked, completed: [], next: M02.1, report: null}
   M03: {status: pending, completed: [], next: M03.1, report: null}
@@ -18,10 +18,8 @@ modules:
   M12: {status: pending, completed: [], next: M12.1, report: null}
 release_status: blocked
 release_blockers:
-  - no immutable source checkpoint
-  - invalid Pages gitlink topology
   - Web/Pages parity mismatch
   - no current arm64 artifact from accepted source
   - no production signing decision
   - no embedded content version
-next_safe_action: M00.2 source-freeze classification review
+next_safe_action: M01.1 validator and harness inventory

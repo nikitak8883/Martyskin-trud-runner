@@ -1,14 +1,14 @@
 # Integrated MTR implementation plan v3
 
-Статус: `ready_for_checkpoint_review`, runtime implementation не начат.
+Статус: `m00_complete_m01_next`, runtime implementation не начат.
 
 ## Цель
 
 Сохранить принятую рабочую игру, восстановить воспроизводимый source/release baseline и затем постепенно завершить архитектуру, assets/UI/skins, levels/audio/save, performance и optional PCG без big-bang rewrite.
 
-## Не-цели текущей фазы
+## Не-цели следующего bounded-шага
 
-- не создавать commit/tag/branch без review состава;
+- не изменять и не перезаписывать принятый source-freeze commit/tag;
 - не собирать и не устанавливать приложение;
 - не синхронизировать и не публиковать Pages;
 - не менять signing;
@@ -20,8 +20,8 @@
 
 ```text
 R0.A live inventory [DONE]
-  → R0.B reviewed source freeze [NEXT, approval]
-    → F0 project-native quality gate
+  → R0.B reviewed source freeze [DONE]
+    → F0 project-native quality gate [NEXT: M01.1]
       → R1 reproducible Web + emulator + current arm64 release recovery
         → A0 GameRoot seams after technical M02.2–M02.5 baseline
           → A1 M04 assets → M06 skins → M05 UI
@@ -38,7 +38,7 @@ M11 PCG/DDA starts after M07+M09+M10 and remains optional/non-blocking for R2.
 
 | Module | Live status | Что сохраняется | Что ещё требуется |
 | --- | --- | --- | --- |
-| M00 | inventory complete / freeze blocked | текущие docs, tools, evidence, Git facts | classification, topology ADR, commit/tag/bundle/restore |
+| M00 | complete | classification, topology ADR, source commit/tag, source/Pages bundles, manifest, evidence anchor, offline restore PASS | none; preserve immutable source anchor |
 | M01 | partial | v2 checklists, validators, Web/Android QA harnesses | единый fail-closed runner, schemas, retention, CI/local parity |
 | M02 | release blocked | Web/emulator artifacts и старый arm APK | immutable source/content version, current arm64, Pages parity, signing decision, conditional AAB |
 | M03 | not started | существующая рабочая логика | state/input/collision/power-up seams и bounded log |
@@ -56,7 +56,7 @@ M11 PCG/DDA starts after M07+M09+M10 and remains optional/non-blocking for R2.
 
 ### Phase 0 — Source truth
 
-M00.A уже создал live indexes. M00.B начинается только после review:
+M00.A и M00.B завершены 19 июля 2026 года:
 
 1. классифицировать tracked/untracked source, docs, evidence и generated output;
 2. решить Pages topology;
@@ -65,7 +65,7 @@ M00.A уже создал live indexes. M00.B начинается только 
 5. восстановить bundle в temp и повторить static gates;
 6. актуализировать CURRENT_STATE и module index.
 
-Exit: один восстанавливаемый источник принятой игры, без builds/secrets/raw corpus.
+Результат: source commit `12670452ae4580ef5c685ff986476daf91522978`, annotated tag `mtr-source-freeze-v3-20260719`, отдельные verified source/Pages bundles и offline restore PASS. Exit достигнут: принятую игру можно восстановить без builds/secrets/raw corpus; клонирование на Windows требует `core.longpaths=true`.
 
 ### Phase 1 — Quality system and release recovery
 

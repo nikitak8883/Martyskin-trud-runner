@@ -41,7 +41,7 @@ modules:
   M00:
     name: repository_baseline_source_freeze_and_git_topology
     priority: P0
-    current_status: read_only_inventory_complete
+    current_status: complete
     depends_on: []
     work_packages:
       - id: M00.1
@@ -50,29 +50,27 @@ modules:
         outputs: [docs/current_audit/repository_inventory.md, docs/current_audit/live_git_state.json, docs/current_audit/live_build_artifact_index.json, docs/current_audit/live_evidence_index.json]
         gates: [D4]
       - id: M00.2
-        status: ready
+        status: complete
         objective: Classify all project-scoped tracked, deleted and untracked entries as source, compact docs/index, generated output, raw evidence or manual review.
         outputs: [docs/global_modernization/v3/M00/source_freeze_classification.yaml]
         gates: [D4]
       - id: M00.3
-        status: blocked
+        status: complete
         objective: Decide Pages topology and primary source remote without staging the nested deployment tree.
         outputs: [docs/global_modernization/v3/M00/git_topology_decision.md]
         gates: [D4]
-        blocker: user approval of topology and remote policy
       - id: M00.4
-        status: blocked
+        status: complete
         objective: Create reviewed source commit, annotated tag and Git bundle containing no builds, secrets, raw evidence or Tasks archives.
         outputs: [docs/global_modernization/v3/M00/source_freeze_report.md]
         gates: [D4]
-        blocker: M00.2 and M00.3 approval
       - id: M00.5
-        status: pending
+        status: complete
         objective: Generate canonical source/content fingerprint and protected evidence anchor linked to commit and tag.
         outputs: [docs/global_modernization/v3/M00/source_content_manifest.json, docs/global_modernization/v3/M00/evidence_anchor.json]
         gates: [D4]
       - id: M00.6
-        status: pending
+        status: complete
         objective: Restore Git bundle into a temporary directory and reproduce static configuration/type/asset gates.
         outputs: [docs/global_modernization/v3/M00/restore_rehearsal_report.md, docs/codex/CURRENT_STATE.md]
         gates: [D4]
@@ -124,7 +122,7 @@ modules:
   M02:
     name: web_android_release_delivery_signing_and_artifact_parity
     priority: P0
-    current_status: blocked_no_source_anchor
+    current_status: blocked_quality_gate_and_release_decisions
     depends_on: [M00, M01]
     work_packages:
       - id: M02.1
@@ -601,6 +599,6 @@ modules:
         gates: [RC2]
 
 next_safe_action:
-  module: M00
-  work_package: M00.2
-  action: Review source-freeze classification and Git topology proposal; do not create a commit until approved.
+  module: M01
+  work_package: M01.1
+  action: Inventory existing validators and harnesses, including inputs, side effects, timeouts and evidence contracts; do not patch runtime code.

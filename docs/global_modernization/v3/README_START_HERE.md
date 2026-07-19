@@ -1,6 +1,6 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `planning_complete_runtime_not_started`  
+Статус: `m00_complete_m01_next_runtime_not_started`  
 Дата интеграции: 2026-07-19  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
@@ -13,7 +13,7 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 2. устранить конфликты внешнего плана с текущим проектом;
 3. разложить M00–M12 на исполнимые bounded work packages;
 4. подготовить схемы, reference seams, templates и QA-профили;
-5. не допустить начала модернизации до source freeze.
+5. не допустить начала runtime-модернизации до завершения source freeze.
 
 ## Приоритет источников
 
@@ -40,12 +40,14 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 
 ## Текущее разрешённое состояние
 
-- M00.A read-only inventory: завершён.
-- M00.B checkpoint classification/review: ожидает подтверждения.
-- Commit/tag/bundle: не создавались.
-- Build/runtime/emulator/Pages/signing: не запускались и не изменялись.
-- Architecture/assets/UI/gameplay patches: не начинались.
+- M00.1–M00.6: завершены.
+- Immutable source commit: `12670452ae4580ef5c685ff986476daf91522978`.
+- Annotated tag: `mtr-source-freeze-v3-20260719`.
+- Source и Pages Git bundles: созданы, проверены и восстановлены без сети.
+- Restore rehearsal: PASS после обязательного `core.longpaths=true` и восстановления игнорируемых Cocos generated declarations.
+- Build/runtime/emulator/Pages publish/signing: в рамках M00 не запускались и не изменялись.
+- Architecture/assets/UI/gameplay patches: в рамках M00 не начинались.
 
 ## Следующее безопасное действие
 
-Проверить предложенный состав source checkpoint и выбрать Git/Pages topology. Только после этого можно выполнить M00.B: reviewed commit + annotated tag + Git bundle + restore rehearsal.
+Выполнить `M01.1`: инвентаризировать все существующие validators/harnesses, их входы, побочные эффекты, timeout-политику, outputs и принимаемые evidence contracts. На этом bounded-шаге runtime-код не менять.

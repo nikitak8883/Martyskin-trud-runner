@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-19T09:50:30+03:00",
+  "status": "pass_after_bounded_recovery",
+  "source": {
+    "branch": "codex/mtr-source-freeze-v3",
+    "commit": "12670452ae4580ef5c685ff986476daf91522978",
+    "tree": "9faa768c9b81f94b7745c917b6d7d49b7cef884c",
+    "tag": "mtr-source-freeze-v3-20260719",
+    "tagObject": "d7042a1ff424259f11e958592daab7af20dfc610"
+  },
+  "bundles": {
+    "source": {
+      "path": "C:\\Projects\\Monkey Work\\Tasks\\5\\checkpoints\\MTR_SOURCE_FREEZE_V3_20260719_1267045.bundle",
+      "bytes": 2154907036,
+      "sha256": "58E779128EE80729495B2312B4539FF7346C76B993C3A6DA44620676814CC79C",
+      "completeHistory": true
+    },
+    "pages": {
+      "path": "C:\\Projects\\Monkey Work\\Tasks\\5\\checkpoints\\MTR_PAGES_MAIN_20260719_D7A7CC1.bundle",
+      "bytes": 264319951,
+      "sha256": "39F85CD16171CB322849C91AA5221C520D3CD6C2A28338BCB5B16EDC69774CFF",
+      "commit": "d7a7cc1b0f75cd7aed7ac831e86f79421014e96f",
+      "completeHistory": true
+    }
+  },
+  "attempts": [
+    {
+      "id": 1,
+      "status": "failed",
+      "stage": "source_bundle_checkout",
+      "root": "C:\\Users\\nikit\\AppData\\Local\\Temp\\mtr-m00-restore-20260719-1267045",
+      "error": "Filename too long for 17 Cocos asset/meta paths",
+      "recovery": "Verified and removed the failed temp clone; switched to a short restore root with core.longpaths=true."
+    },
+    {
+      "id": 2,
+      "status": "partial",
+      "stage": "typescript_gate",
+      "root": "C:\\mtr-r\\1267045",
+      "error": "Generated Cocos declarations were absent from the source bundle",
+      "recovery": "Copied the ignored local Cocos 3.8.8 temp/tsconfig.cocos.json and temp/declarations seed, then repeated the same gate."
+    },
+    {
+      "id": 3,
+      "status": "pass",
+      "stage": "full_static_restore_cycle",
+      "root": "C:\\mtr-r\\1267045",
+      "cleanup": "restore and result directories removed after compact evidence capture"
+    }
+  ],
+  "windowsRestoreContract": {
+    "shortRootRequired": true,
+    "gitCoreLongpaths": true,
+    "sourceCloneCommand": "git -c core.longpaths=true clone --branch codex/mtr-source-freeze-v3 --single-branch <source.bundle> <short-root>",
+    "pagesCloneCommand": "git -c core.longpaths=true clone --branch main --single-branch <pages.bundle> <short-root>/_github/Martyskin-trud-runner"
+  },
+  "generatedCocosTypeSeed": {
+    "source": "local Cocos Creator 3.8.8 generated temp state",
+    "files": 5,
+    "bytes": 4063,
+    "aggregateSha256": "0225D18517E7FA95F0B690F9097B01A972AD5351F43D8078F03F717E400582B5",
+    "ignoredByGit": true
+  },
+  "checks": {
+    "head": {
+      "pass": true,
+      "actual": "12670452ae4580ef5c685ff986476daf91522978"
+    },
+    "tree": {
+      "pass": true,
+      "actual": "9faa768c9b81f94b7745c917b6d7d49b7cef884c"
+    },
+    "tagCommit": {
+      "pass": true,
+      "actual": "12670452ae4580ef5c685ff986476daf91522978"
+    },
+    "gitTopology": {
+      "pass": true,
+      "pagesCommit": "d7a7cc1b0f75cd7aed7ac831e86f79421014e96f",
+      "temporaryRawReportSha256": "F115D39A2751664F9DA126C53A83E12BE59B1E035F9DD8EE94FB2B9FBA41E663"
+    },
+    "sourceManifest": {
+      "pass": true,
+      "byteIdentical": true,
+      "fileCount": 4170,
+      "totalBytes": 925653734,
+      "aggregateSha256": "E3C72CE3D41BAA9EA54D9941A6A91312DFD38A94112C99ADC02D935915A8EDFD",
+      "manifestSha256": "AD57113833A77E1FCD4E1DE8CE718C7F8204F54AD52E06D7F89F9CB002A7CC71"
+    },
+    "config": {
+      "pass": true,
+      "levels": 15,
+      "bitmapBackgrounds": 15,
+      "androidWebQaQueryParity": true
+    },
+    "typescript": {
+      "pass": true,
+      "commandProfile": "cocos_project_only_skip_engine_lib_check"
+    },
+    "assets": {
+      "pass": true,
+      "pngCount": 1528,
+      "missingMetaCount": 0,
+      "whiteMatteSuspectCount": 0,
+      "blockerCount": 0,
+      "temporaryRawReportSha256": "AA17F4F930568F23B964F07AFC9AE102994D9D15DCAECB1F8C722B36691E1D32"
+    },
+    "skinBonus": {
+      "pass": true,
+      "expectedFrameCount": 576,
+      "checkedFrameCount": 576,
+      "warningCount": 0,
+      "blockerCount": 0,
+      "temporaryRawReportSha256": "F1AE6DD61F82512A3E5F974F10C148B87DED7CB67094A924967353F47F971281"
+    },
+    "uiIr": {
+      "pass": true,
+      "screenCount": 14,
+      "okCount": 14,
+      "problemCount": 0,
+      "warningCount": 0,
+      "temporaryRawReportSha256": "0ECC87097DD62D5496E76D4FFF8FB1C085665AA78839B444F6520E83D1B56DB0"
+    },
+    "restoredGitStatus": {
+      "pass": true,
+      "parentClean": true,
+      "pagesClean": true
+    }
+  },
+  "runtimeActions": {
+    "build": false,
+    "webRuntime": false,
+    "androidEmulator": false,
+    "physicalDevice": false,
+    "publish": false
+  }
+}

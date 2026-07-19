@@ -1,2 +1,7 @@
 # Markdown audit logs use two trailing spaces for explicit CommonMark line breaks.
 *.md whitespace=-trailing-space
+
+# Checkpoint and audit records with recorded byte hashes must be checkout-stable.
+/docs/global_modernization/v3/M00/** text eol=lf
+/docs/current_audit/*.json text eol=lf
+/tools/codex/build_source_content_manifest.py text eol=lf

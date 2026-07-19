@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "anchorId": "mtr-m00-source-freeze-20260719",
+  "generatedAt": "2026-07-19T09:50:30+03:00",
+  "hashSemantics": {
+    "sha256": "SHA-256 of canonical repository bytes unless a field explicitly names workingTree",
+    "workingTreeSha256AtFreeze": "SHA-256 of the local Windows working-tree bytes captured during M00"
+  },
+  "source": {
+    "commit": "12670452ae4580ef5c685ff986476daf91522978",
+    "tree": "9faa768c9b81f94b7745c917b6d7d49b7cef884c",
+    "branch": "codex/mtr-source-freeze-v3",
+    "tag": "mtr-source-freeze-v3-20260719",
+    "tagObject": "d7042a1ff424259f11e958592daab7af20dfc610",
+    "primaryRemote": null
+  },
+  "pages": {
+    "commit": "d7a7cc1b0f75cd7aed7ac831e86f79421014e96f",
+    "remote": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
+    "topology": "formal_submodule",
+    "publishedByM00": false
+  },
+  "protectedArtifacts": [
+    {
+      "kind": "source_bundle",
+      "path": "C:\\Projects\\Monkey Work\\Tasks\\5\\checkpoints\\MTR_SOURCE_FREEZE_V3_20260719_1267045.bundle",
+      "bytes": 2154907036,
+      "sha256": "58E779128EE80729495B2312B4539FF7346C76B993C3A6DA44620676814CC79C"
+    },
+    {
+      "kind": "pages_bundle",
+      "path": "C:\\Projects\\Monkey Work\\Tasks\\5\\checkpoints\\MTR_PAGES_MAIN_20260719_D7A7CC1.bundle",
+      "bytes": 264319951,
+      "sha256": "39F85CD16171CB322849C91AA5221C520D3CD6C2A28338BCB5B16EDC69774CFF"
+    }
+  ],
+  "sourceFingerprint": {
+    "path": "docs/global_modernization/v3/M00/source_content_manifest.json",
+    "fileCount": 4170,
+    "totalBytes": 925653734,
+    "aggregateSha256": "E3C72CE3D41BAA9EA54D9941A6A91312DFD38A94112C99ADC02D935915A8EDFD",
+    "sha256": "AD57113833A77E1FCD4E1DE8CE718C7F8204F54AD52E06D7F89F9CB002A7CC71"
+  },
+  "planningAndClassification": [
+    {
+      "path": "docs/global_modernization/v3/M00/dirty_tree_inventory.pre_freeze.json",
+      "sha256": "642C94DFE669561E54A2068ACDE09F1CA0322533F2DE2DC7284A59214A76CB95"
+    },
+    {
+      "path": "docs/global_modernization/v3/M00/source_freeze_classification.yaml",
+      "sha256": "CD14D1BDA664E238C06E96C71D95DB3D1EB325E5EAD6B85AD301C0B92ADDF95D"
+    },
+    {
+      "path": "docs/global_modernization/v3/M00/git_topology_decision.md",
+      "sha256": "A7AFCE118A03583E8613C924655AF011C1818209FC52F296F5949CF328EA05B1"
+    }
+  ],
+  "localEvidenceCorpus": {
+    "index": "docs/current_audit/live_evidence_index.json",
+    "indexSha256": "35B664167FB16D55FF5B2059FCB276F157E91C790BF12843E19C0CB383C1B49A",
+    "workingTreeSha256AtFreeze": "03B8F150B06FC004EC055147A834A5473CC365049A16A8CBB51A1D53F7306E96",
+    "fileCount": 801,
+    "totalBytes": 1051135677,
+    "retention": "preserved_locally_not_in_source_commit"
+  },
+  "buildArtifactIndex": {
+    "path": "docs/current_audit/live_build_artifact_index.json",
+    "sha256": "1AE6C262561872BBD459A169E9B8F3B99C9EE6780528CD00B4B25F2D3AAED9EE",
+    "workingTreeSha256AtFreeze": "16FDD0BAE45EC90099C573C380CF612D470D4EF5416A8E9813031B309C27620D"
+  },
+  "restoreValidation": {
+    "path": "docs/global_modernization/v3/M00/restore_validation_summary.json",
+    "status": "pass_after_bounded_recovery"
+  },
+  "releaseClaim": false,
+  "openReleaseBlockers": [
+    "Web build and Pages content parity not recovered from the frozen source",
+    "current arm64 release artifact not rebuilt from the frozen source",
+    "production signing and distribution target not approved",
+    "content version is not yet embedded into runtime artifacts"
+  ]
+}

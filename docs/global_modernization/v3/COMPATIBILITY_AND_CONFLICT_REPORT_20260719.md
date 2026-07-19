@@ -2,6 +2,10 @@
 
 Вердикт: `compatible_after_adaptation`; прямое копирование toolchain/runtime запрещено.
 
+## M00 resolution overlay — 2026-07-19
+
+Конфликты C-005 и C-006 закрыты reviewed source freeze. C-007 частично закрыт: Pages оформлен как явный submodule и закреплён на `d7a7cc1b0f75cd7aed7ac831e86f79421014e96f`, но у parent source repository по-прежнему нет remote, поэтому remote CI остаётся blocked, а локальный mandatory equivalent может проектироваться в M01.
+
 ## Подтверждённая совместимость
 
 - ожидаемый Cocos Creator 3.8 LTS совпадает с живым 3.8.8;
@@ -19,9 +23,9 @@
 | C-002 | v3 допускает 1–2 risk-based цикла, AGENTS требует минимум 4, v2 содержит 7-domain QA | ложное сокращение QA | четыре инженерных gate обязательны для каждого patch; для module/release дополнительно сохраняются v2 QA7 и v3 two-pass/RC2 |
 | C-003 | M10/чеклисты предполагают physical-device run | нарушение глобального emulator-only default | physical QA остаётся отдельным optional gate только по явной команде пользователя |
 | C-004 | `AGENTS.template.md` неполон относительно live AGENTS/lore | потеря канона и Android/Web правил | template не копируется поверх AGENTS; полезные пункты включены только в этот план |
-| C-005 | Рекомендуемая branch policy предполагает чистый baseline | потеря/смешение 592 project changes | branch/commit запрещены до diff classification и одобрения checkpoint contents |
-| C-006 | M00 требует commit/tag/bundle в первой фазе | несанкционированная мутация | текущая фаза завершена на read-only inventory; freeze выделен в M00.B |
-| C-007 | Actions Pages deployment предполагает source remote | основной remote отсутствует | сначала topology/remote ADR; существующий nested repo временно только независимый deployment source |
+| C-005 | Рекомендуемая branch policy предполагает чистый baseline | потеря/смешение project changes | RESOLVED: полный dirty inventory классифицирован до reviewed source commit |
+| C-006 | M00 требует commit/tag/bundle в первой фазе | несанкционированная мутация | RESOLVED: freeze выполнен отдельным reviewed M00.B и подтверждён restore rehearsal |
+| C-007 | Actions Pages deployment предполагает source remote | основной remote отсутствует | PARTIAL: Pages формализован как pinned submodule; parent remote/remote CI остаются отдельным решением |
 | C-008 | CI example использует `npm ci`, `npx tsc` и неверные working directories; прямой bundled `tsc -p` также падает на engine declarations/старом lib target | workflow гарантированно красный или проверяет не то | workflow принят только как reference; сохранить принятую project-only команду с `--skipLibCheck --lib es2020,dom --isolatedModules false` и протестировать wrapper |
 | C-009 | Pages workflow содержит намеренный placeholder/failure | случайное включение блокирует deploy | не устанавливать; заменить только после воспроизводимого Cocos build command и artifact manifest |
 | C-010 | `run-mtr-quality-gate.ps1` исполняет trusted command strings через `cmd.exe`, не обеспечивает заявленный timeout и ненадёжно пишет report paths | injection/false-green/hang | перепроектировать как typed step registry + `Start-Process` timeout + normalized absolute paths + structured stdout/stderr |
@@ -43,7 +47,7 @@
 
 ## Блокирующие решения пользователя перед release engineering
 
-1. Git/Pages topology и remote основного source.
+1. Remote основного source; Git/Pages topology уже закреплён в M00.
 2. Distribution: direct APK, Google Play или оба.
 3. Signing identity и backup ownership.
 4. Разрешение на future physical-device QA, если оно понадобится; по умолчанию его нет.

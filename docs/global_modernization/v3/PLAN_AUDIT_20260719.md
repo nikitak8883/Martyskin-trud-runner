@@ -4,6 +4,12 @@
 
 План пригоден для последовательной реализации после M00 source freeze. Он не разрешает немедленный release, cleanup или архитектурный patch.
 
+## Post-execution overlay — 2026-07-19
+
+M00.1–M00.6 выполнены и независимо перепроверены. Принятый source baseline закреплён commit `12670452ae4580ef5c685ff986476daf91522978` и annotated tag `mtr-source-freeze-v3-20260719`; source/Pages bundles прошли `git bundle verify`, offline restore и повторные статические gates. Утверждения ниже о ещё не созданном commit/tag отражают состояние первоначального аудита до выполнения M00 и сохранены как историческая трассировка.
+
+Обновлённый план остаётся непротиворечивым: M00 закрывает входной dependency M01, а release остаётся fail-closed. Следующая операция — `M01.1` validator/harness inventory без runtime patch.
+
 ## Audit pass 1 — полнота входных данных
 
 - ZIP checksum: PASS.
@@ -101,8 +107,7 @@ Current audit indexes:
 
 | Blocker | Владелец решения | Что разрешает |
 | --- | --- | --- |
-| source checkpoint contents | пользователь + Codex diff review | M00.4 |
-| Pages topology и source remote | пользователь | M00.3, M01.6, M02.7 |
+| primary source remote | пользователь | remote CI in M01.6; local mandatory equivalent remains available |
 | direct APK / Play / both | пользователь | M02.1, conditional M02.6 |
 | signing identity/backup | пользователь | production release |
 | physical-device run | только явная команда пользователя | M10.3/final device evidence |
@@ -110,16 +115,14 @@ Current audit indexes:
 
 ## Риски, которые остаются под контролем gate
 
-- 592 project-scoped dirty entries до текущих planning artifacts;
-- 1.05 GB raw evidence без активной retention classification;
+- 1.05 GB local raw evidence защищены индексом, но ещё не имеют полной M01 retention classification;
 - stale runtime evidence после 14 июля;
 - монолитный GameRoot;
 - current arm artifact старее принятой линии;
-- invalid Pages gitlink mapping;
 - отсутствие main source remote.
 
 Ни один из этих рисков не замаскирован статусом green.
 
 ## Финальный вердикт
 
-Декомпозиция полна, внутренне непротиворечива и покрывает upstream findings. Следующая исполнимая операция — `M00.2`: сформировать и показать source-freeze classification. До её одобрения commit/tag/build/publish/refactor запрещены.
+Декомпозиция полна, внутренне непротиворечива и покрывает upstream findings. M00 завершён; следующая исполнимая операция — `M01.1`: инвентаризировать validators/harnesses и закрепить их реальные контракты. Build/publish/runtime refactor остаются запрещены до соответствующих dependency gates.
