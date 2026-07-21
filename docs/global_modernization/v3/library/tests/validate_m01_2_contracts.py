@@ -198,7 +198,7 @@ def validate_representative_reports() -> dict[str, Any]:
     anchor_path = PROJECT_ROOT / "docs/global_modernization/v3/M00/source_content_manifest.json"
     anchor = load_json(anchor_path)
     source = {"commit": anchor["source_commit"], "content_version": anchor["content_version"]}
-    samples = [
+    local_evidence_samples = [
         ("assets", "docs/qa/evidence/20260714_two_cycle_resume/final_gate_static/assets.json", "tools/validate-assets.py", "static", "project-source", ["--fail-on-white-matte"]),
         ("skins", "docs/qa/evidence/20260714_two_cycle_resume/final_gate_static/skin_bonus_matrix.json", "tools/validate-skin-bonus-matrix.py", "static", "project-source", ["--fail-on-warnings"]),
         ("ui-ir", "docs/qa/evidence/20260714_two_cycle_resume/final_gate_static/ui_ir.json", "tools/validate-ui-ir.py", "static", "project-source", []),
@@ -207,8 +207,20 @@ def validate_representative_reports() -> dict[str, Any]:
         ("android-interaction", "docs/qa/evidence/20260714_two_cycle_resume/cycle2_android_interaction_soak/android_interaction_cycle2_summary.json", "tools/codex/Run-MtrAndroidEmulatorInteractionQa.ps1", "android-emulator", "emulator-5554", []),
         ("web-matrix", "docs/qa/evidence/20260714_two_cycle_resume/cycle2_web/web_matrix_cycle2_summary.json", "tools/codex/web_matrix_playwright_function.js", "web", "http://127.0.0.1:9491", []),
         ("web-soak", "docs/qa/evidence/20260714_two_cycle_resume/cycle2_web/web_soak_cycle2_summary.json", "tools/codex/web_soak_playwright_function.js", "web", "http://127.0.0.1:9491", []),
+    ]
+    source_samples = [
         ("source-fingerprint", "docs/global_modernization/v3/M00/source_content_manifest.json", "tools/codex/build_source_content_manifest.py", "source", "source-tree", []),
     ]
+    local_presence = [
+        (PROJECT_ROOT / report_rel).is_file()
+        for _, report_rel, _, _, _, _ in local_evidence_samples
+    ]
+    require(
+        all(local_presence) or not any(local_presence),
+        "Local-only representative evidence is partially present; restore the complete accepted set or remove the partial checkout.",
+    )
+    local_evidence_available = all(local_presence)
+    samples = source_samples + (local_evidence_samples if local_evidence_available else [])
     results: list[dict[str, Any]] = []
     for sample_id, report_rel, tool_rel, platform, identity, flags in samples:
         report_path = PROJECT_ROOT / report_rel
@@ -234,6 +246,8 @@ def validate_representative_reports() -> dict[str, Any]:
     return {
         "status": "PASS",
         "sample_count": len(results),
+        "local_evidence_mode": "validated" if local_evidence_available else "intentionally_absent_from_source_checkout",
+        "deferred_local_sample_count": 0 if local_evidence_available else len(local_evidence_samples),
         "claim_scope": "shape_compatibility_only_not_freshness_or_current_product_qa",
         "results": results,
     }
