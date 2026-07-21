@@ -1,0 +1,543 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.quality_profile_config",
+  "catalog_id": "mtr.v3.quality-profiles",
+  "policy": {
+    "source_binding": "exact_commit_and_content_version",
+    "freshness": "generated_at_not_before_scope_start",
+    "stale_evidence_action": "BLOCKED",
+    "missing_mandatory_action": "BLOCKED",
+    "skipped_mandatory_action": "BLOCKED",
+    "unknown_schema_action": "BLOCKED",
+    "android_default": "emulator-only",
+    "physical_device_requires_explicit_authorization": true,
+    "max_run_age_seconds": 604800,
+    "future_clock_skew_seconds": 300
+  },
+  "profiles": [
+    {
+      "id": "D4",
+      "description": "Four independent documentation, schema and planning gates; no build or runtime evidence is implied.",
+      "cycle_order": [
+        "d4"
+      ],
+      "slots": [
+        {
+          "id": "d4.integrity",
+          "gate_id": "mtr.d4.integrity",
+          "cycle_id": "d4",
+          "domain": "integrity",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        },
+        {
+          "id": "d4.syntax_contract",
+          "gate_id": "mtr.d4.syntax-contract",
+          "cycle_id": "d4",
+          "domain": "syntax-contract",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        },
+        {
+          "id": "d4.compatibility",
+          "gate_id": "mtr.d4.compatibility",
+          "cycle_id": "d4",
+          "domain": "compatibility",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        },
+        {
+          "id": "d4.independent_review",
+          "gate_id": "mtr.d4.independent-review",
+          "cycle_id": "d4",
+          "domain": "independent-review",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "description": "One bounded runtime patch: static contract, targeted Web, targeted Android emulator, then regression and review.",
+      "cycle_order": [
+        "p4"
+      ],
+      "slots": [
+        {
+          "id": "p4.static_contract",
+          "gate_id": "mtr.p4.static-contract",
+          "cycle_id": "p4",
+          "domain": "static-contract",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "static"
+          ]
+        },
+        {
+          "id": "p4.web_targeted",
+          "gate_id": "mtr.p4.web-targeted",
+          "cycle_id": "p4",
+          "domain": "web-targeted",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web"
+          ]
+        },
+        {
+          "id": "p4.android_emulator_targeted",
+          "gate_id": "mtr.p4.android-emulator-targeted",
+          "cycle_id": "p4",
+          "domain": "android-emulator-targeted",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "p4.regression_review",
+          "gate_id": "mtr.p4.regression-review",
+          "cycle_id": "p4",
+          "domain": "regression-review",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        }
+      ]
+    },
+    {
+      "id": "M2_PLUS",
+      "description": "Two complete P4-equivalent module passes plus an explicit focused recovery pass when high-risk scope requires it.",
+      "cycle_order": [
+        "pass_a",
+        "pass_b",
+        "focused_recovery"
+      ],
+      "slots": [
+        {
+          "id": "m2.pass_a.static_contract",
+          "gate_id": "mtr.m2.pass-a.static-contract",
+          "cycle_id": "pass_a",
+          "domain": "static-contract",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "static"
+          ]
+        },
+        {
+          "id": "m2.pass_a.web_targeted",
+          "gate_id": "mtr.m2.pass-a.web-targeted",
+          "cycle_id": "pass_a",
+          "domain": "web-targeted",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web"
+          ]
+        },
+        {
+          "id": "m2.pass_a.android_emulator_targeted",
+          "gate_id": "mtr.m2.pass-a.android-emulator-targeted",
+          "cycle_id": "pass_a",
+          "domain": "android-emulator-targeted",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "m2.pass_a.regression_review",
+          "gate_id": "mtr.m2.pass-a.regression-review",
+          "cycle_id": "pass_a",
+          "domain": "regression-review",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        },
+        {
+          "id": "m2.pass_b.static_contract",
+          "gate_id": "mtr.m2.pass-b.static-contract",
+          "cycle_id": "pass_b",
+          "domain": "static-contract",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "static"
+          ]
+        },
+        {
+          "id": "m2.pass_b.web_targeted",
+          "gate_id": "mtr.m2.pass-b.web-targeted",
+          "cycle_id": "pass_b",
+          "domain": "web-targeted",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web"
+          ]
+        },
+        {
+          "id": "m2.pass_b.android_emulator_targeted",
+          "gate_id": "mtr.m2.pass-b.android-emulator-targeted",
+          "cycle_id": "pass_b",
+          "domain": "android-emulator-targeted",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "m2.pass_b.regression_review",
+          "gate_id": "mtr.m2.pass-b.regression-review",
+          "cycle_id": "pass_b",
+          "domain": "regression-review",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        },
+        {
+          "id": "m2.focused_recovery.static_contract",
+          "gate_id": "mtr.m2.focused-recovery.static-contract",
+          "cycle_id": "focused_recovery",
+          "domain": "static-contract",
+          "requirement": "conditional",
+          "condition_id": "high_risk_recovery",
+          "required_target_platforms": [
+            "static"
+          ]
+        },
+        {
+          "id": "m2.focused_recovery.web_targeted",
+          "gate_id": "mtr.m2.focused-recovery.web-targeted",
+          "cycle_id": "focused_recovery",
+          "domain": "web-targeted",
+          "requirement": "conditional",
+          "condition_id": "high_risk_recovery",
+          "required_target_platforms": [
+            "web"
+          ]
+        },
+        {
+          "id": "m2.focused_recovery.android_emulator_targeted",
+          "gate_id": "mtr.m2.focused-recovery.android-emulator-targeted",
+          "cycle_id": "focused_recovery",
+          "domain": "android-emulator-targeted",
+          "requirement": "conditional",
+          "condition_id": "high_risk_recovery",
+          "required_target_platforms": [
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "m2.focused_recovery.regression_review",
+          "gate_id": "mtr.m2.focused-recovery.regression-review",
+          "cycle_id": "focused_recovery",
+          "domain": "regression-review",
+          "requirement": "conditional",
+          "condition_id": "high_risk_recovery",
+          "required_target_platforms": []
+        }
+      ]
+    },
+    {
+      "id": "QA7",
+      "description": "Seven-domain Tasks/4 acceptance matrix with Web and Android-emulator parity where runtime evidence is required.",
+      "cycle_order": [
+        "qa7"
+      ],
+      "slots": [
+        {
+          "id": "qa7.build_static_smoke",
+          "gate_id": "mtr.qa7.build-static-smoke",
+          "cycle_id": "qa7",
+          "domain": "build-static-smoke",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "static",
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "qa7.visual_ui",
+          "gate_id": "mtr.qa7.visual-ui",
+          "cycle_id": "qa7",
+          "domain": "visual-ui",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "qa7.gameplay_physics",
+          "gate_id": "mtr.qa7.gameplay-physics",
+          "cycle_id": "qa7",
+          "domain": "gameplay-physics",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "qa7.skins_bonuses",
+          "gate_id": "mtr.qa7.skins-bonuses",
+          "cycle_id": "qa7",
+          "domain": "skins-bonuses",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "qa7.audio_vfx",
+          "gate_id": "mtr.qa7.audio-vfx",
+          "cycle_id": "qa7",
+          "domain": "audio-vfx",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "qa7.performance",
+          "gate_id": "mtr.qa7.performance",
+          "cycle_id": "qa7",
+          "domain": "performance",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "qa7.release_cleanup",
+          "gate_id": "mtr.qa7.release-cleanup",
+          "cycle_id": "qa7",
+          "domain": "release-cleanup",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        }
+      ]
+    },
+    {
+      "id": "RC2",
+      "description": "Two independent full QA7 release-candidate cycles followed by source/Web/Android/deployment parity; AAB and physical-device evidence remain explicit conditions.",
+      "cycle_order": [
+        "rc1",
+        "rc2",
+        "parity"
+      ],
+      "slots": [
+        {
+          "id": "rc2.rc1.build_static_smoke",
+          "gate_id": "mtr.rc2.rc1.build-static-smoke",
+          "cycle_id": "rc1",
+          "domain": "build-static-smoke",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "static",
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc1.visual_ui",
+          "gate_id": "mtr.rc2.rc1.visual-ui",
+          "cycle_id": "rc1",
+          "domain": "visual-ui",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc1.gameplay_physics",
+          "gate_id": "mtr.rc2.rc1.gameplay-physics",
+          "cycle_id": "rc1",
+          "domain": "gameplay-physics",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc1.skins_bonuses",
+          "gate_id": "mtr.rc2.rc1.skins-bonuses",
+          "cycle_id": "rc1",
+          "domain": "skins-bonuses",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc1.audio_vfx",
+          "gate_id": "mtr.rc2.rc1.audio-vfx",
+          "cycle_id": "rc1",
+          "domain": "audio-vfx",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc1.performance",
+          "gate_id": "mtr.rc2.rc1.performance",
+          "cycle_id": "rc1",
+          "domain": "performance",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc1.release_cleanup",
+          "gate_id": "mtr.rc2.rc1.release-cleanup",
+          "cycle_id": "rc1",
+          "domain": "release-cleanup",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        },
+        {
+          "id": "rc2.rc2.build_static_smoke",
+          "gate_id": "mtr.rc2.rc2.build-static-smoke",
+          "cycle_id": "rc2",
+          "domain": "build-static-smoke",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "static",
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc2.visual_ui",
+          "gate_id": "mtr.rc2.rc2.visual-ui",
+          "cycle_id": "rc2",
+          "domain": "visual-ui",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc2.gameplay_physics",
+          "gate_id": "mtr.rc2.rc2.gameplay-physics",
+          "cycle_id": "rc2",
+          "domain": "gameplay-physics",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc2.skins_bonuses",
+          "gate_id": "mtr.rc2.rc2.skins-bonuses",
+          "cycle_id": "rc2",
+          "domain": "skins-bonuses",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc2.audio_vfx",
+          "gate_id": "mtr.rc2.rc2.audio-vfx",
+          "cycle_id": "rc2",
+          "domain": "audio-vfx",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc2.performance",
+          "gate_id": "mtr.rc2.rc2.performance",
+          "cycle_id": "rc2",
+          "domain": "performance",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web",
+            "android-emulator"
+          ]
+        },
+        {
+          "id": "rc2.rc2.release_cleanup",
+          "gate_id": "mtr.rc2.rc2.release-cleanup",
+          "cycle_id": "rc2",
+          "domain": "release-cleanup",
+          "requirement": "mandatory",
+          "required_target_platforms": []
+        },
+        {
+          "id": "rc2.parity.source_content",
+          "gate_id": "mtr.rc2.parity.source-content",
+          "cycle_id": "parity",
+          "domain": "source-content",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "source"
+          ]
+        },
+        {
+          "id": "rc2.parity.web_artifact",
+          "gate_id": "mtr.rc2.parity.web-artifact",
+          "cycle_id": "parity",
+          "domain": "web-artifact",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web"
+          ]
+        },
+        {
+          "id": "rc2.parity.android_artifact",
+          "gate_id": "mtr.rc2.parity.android-artifact",
+          "cycle_id": "parity",
+          "domain": "android-artifact",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "static"
+          ]
+        },
+        {
+          "id": "rc2.parity.deployment",
+          "gate_id": "mtr.rc2.parity.deployment",
+          "cycle_id": "parity",
+          "domain": "deployment",
+          "requirement": "mandatory",
+          "required_target_platforms": [
+            "web"
+          ]
+        },
+        {
+          "id": "rc2.parity.aab",
+          "gate_id": "mtr.rc2.parity.aab",
+          "cycle_id": "parity",
+          "domain": "aab",
+          "requirement": "conditional",
+          "condition_id": "play_store_target",
+          "required_target_platforms": [
+            "static"
+          ]
+        },
+        {
+          "id": "rc2.parity.physical_device",
+          "gate_id": "mtr.rc2.parity.physical-device",
+          "cycle_id": "parity",
+          "domain": "physical-device",
+          "requirement": "conditional",
+          "condition_id": "physical_device_authorized",
+          "required_target_platforms": [
+            "android-device"
+          ]
+        }
+      ]
+    }
+  ]
+}

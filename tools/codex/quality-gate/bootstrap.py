@@ -20,6 +20,7 @@ from typing import Any
 TOOL_ROOT = Path(__file__).resolve().parent
 LOCK_PATH = TOOL_ROOT / "requirements.lock"
 RUNNER_PATH = TOOL_ROOT / "runner.py"
+PROFILE_RUNNER_PATH = TOOL_ROOT / "profile_runner.py"
 MINIMUM_PYTHON = (3, 10)
 PROBE_TIMEOUT_SECONDS = 30
 PIP_INSTALL_TIMEOUT_SECONDS = 600
@@ -61,6 +62,18 @@ def _venv_python(environment: Path) -> Path:
     return environment / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
 
 
+def _base_python() -> Path:
+    return Path(getattr(sys, "_base_executable", None) or sys.executable).resolve()
+
+
+def _current_interpreter_inside(environment: Path) -> bool:
+    try:
+        Path(sys.executable).resolve().relative_to(environment.resolve())
+    except ValueError:
+        return False
+    return True
+
+
 def _locked_packages() -> dict[str, str]:
     result: dict[str, str] = {}
     for raw_line in LOCK_PATH.read_text(encoding="utf-8").splitlines():
@@ -83,7 +96,7 @@ def _probe(environment: Path, lock_sha: str) -> bool:
         marker = json.loads(marker_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return False
-    if marker.get("lock_sha256") != lock_sha or marker.get("base_python") != str(Path(sys.executable).resolve()):
+    if marker.get("lock_sha256") != lock_sha or marker.get("base_python") != str(_base_python()):
         return False
     expected_packages = _locked_packages()
     probe_code = (
@@ -164,7 +177,7 @@ def _install(environment: Path, lock_sha: str) -> None:
         {
             "schema_version": 1,
             "lock_sha256": lock_sha,
-            "base_python": str(Path(sys.executable).resolve()),
+            "base_python": str(_base_python()),
             "python_version": ".".join(str(value) for value in sys.version_info[:3]),
             "packages": actual,
         },
@@ -180,6 +193,11 @@ def ensure_environment() -> tuple[Path, str]:
     environment = cache_root / f"venv-py{sys.version_info.major}{sys.version_info.minor}-{lock_sha[:12].lower()}"
     if _probe(environment, lock_sha):
         return environment, lock_sha
+    if _current_interpreter_inside(environment):
+        raise RuntimeError(
+            "ACTIVE_VALIDATOR_ENVIRONMENT_INVALID: refusing to rebuild the environment used by the current "
+            f"interpreter ({Path(sys.executable).resolve()}); invoke bootstrap.py with {_base_python()}"
+        )
 
     lock_directory = cache_root / f".{environment.name}.bootstrap.lock"
     deadline = time.monotonic() + BOOTSTRAP_LOCK_WAIT_SECONDS
@@ -215,7 +233,13 @@ def ensure_environment() -> tuple[Path, str]:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--bootstrap-only", action="store_true")
-    parser.add_argument("--module", help="Run a Python module in the isolated environment instead of runner.py")
+    parser.add_argument("--module", help="Run an allowlisted Python module in the isolated environment instead of a runner")
+    parser.add_argument(
+        "--entrypoint",
+        choices=("gate", "profile"),
+        default="gate",
+        help="Select the accepted M01.3 gate runner or M01.4 profile evaluator.",
+    )
     parser.add_argument("runner_arguments", nargs=argparse.REMAINDER)
     args = parser.parse_args(argv)
     try:
@@ -247,7 +271,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.module and args.module not in {"unittest"}:
         print(json.dumps({"status": "BLOCKED", "code": "UNAPPROVED_BOOTSTRAP_MODULE", "detail": args.module}), file=sys.stderr)
         return 3
-    command = [str(python_path), "-m", args.module, *runner_arguments] if args.module else [str(python_path), str(RUNNER_PATH), *runner_arguments]
+    if args.module:
+        command = [str(python_path), "-m", args.module, *runner_arguments]
+    else:
+        entrypoint = PROFILE_RUNNER_PATH if args.entrypoint == "profile" else RUNNER_PATH
+        command = [str(python_path), str(entrypoint), *runner_arguments]
     completed = subprocess.run(
         command,
         check=False,

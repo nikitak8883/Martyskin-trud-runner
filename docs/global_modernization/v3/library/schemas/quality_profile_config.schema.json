@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.mtr.local/quality/v1/quality-profile-config.schema.json",
+  "title": "MTR quality profile catalog",
+  "description": "Typed composition policy over source-bound M01.3 quality-gate reports.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract",
+    "catalog_id",
+    "policy",
+    "profiles"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "contract": {
+      "const": "mtr.quality_profile_config"
+    },
+    "catalog_id": {
+      "$ref": "#/$defs/safe_id"
+    },
+    "policy": {
+      "$ref": "#/$defs/policy"
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/$defs/profile"
+      }
+    }
+  },
+  "$defs": {
+    "safe_id": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "profile_id": {
+      "enum": [
+        "D4",
+        "P4",
+        "M2_PLUS",
+        "QA7",
+        "RC2"
+      ]
+    },
+    "target_platform": {
+      "enum": [
+        "source",
+        "static",
+        "web",
+        "android-emulator",
+        "android-device"
+      ]
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_binding",
+        "freshness",
+        "stale_evidence_action",
+        "missing_mandatory_action",
+        "skipped_mandatory_action",
+        "unknown_schema_action",
+        "android_default",
+        "physical_device_requires_explicit_authorization",
+        "max_run_age_seconds",
+        "future_clock_skew_seconds"
+      ],
+      "properties": {
+        "source_binding": {
+          "const": "exact_commit_and_content_version"
+        },
+        "freshness": {
+          "const": "generated_at_not_before_scope_start"
+        },
+        "stale_evidence_action": {
+          "const": "BLOCKED"
+        },
+        "missing_mandatory_action": {
+          "const": "BLOCKED"
+        },
+        "skipped_mandatory_action": {
+          "const": "BLOCKED"
+        },
+        "unknown_schema_action": {
+          "const": "BLOCKED"
+        },
+        "android_default": {
+          "const": "emulator-only"
+        },
+        "physical_device_requires_explicit_authorization": {
+          "const": true
+        },
+        "max_run_age_seconds": {
+          "type": "integer",
+          "minimum": 60,
+          "maximum": 604800
+        },
+        "future_clock_skew_seconds": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 300
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "cycle_order",
+        "slots"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/profile_id"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        },
+        "cycle_order": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/safe_id"
+          }
+        },
+        "slots": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 128,
+          "items": {
+            "$ref": "#/$defs/slot"
+          }
+        }
+      }
+    },
+    "slot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "gate_id",
+        "cycle_id",
+        "domain",
+        "requirement",
+        "required_target_platforms"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "gate_id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "cycle_id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "domain": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "requirement": {
+          "enum": [
+            "mandatory",
+            "optional",
+            "conditional"
+          ]
+        },
+        "condition_id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "required_target_platforms": {
+          "type": "array",
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/target_platform"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "requirement": {
+                "const": "conditional"
+              }
+            },
+            "required": [
+              "requirement"
+            ]
+          },
+          "then": {
+            "required": [
+              "condition_id"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "condition_id"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,670 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.mtr.local/quality/v1/quality-profile-report.schema.json",
+  "title": "MTR quality profile aggregate report",
+  "description": "Atomic fail-closed decision over fresh, source-bound M01.3 gate reports.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract",
+    "run_id",
+    "generated_at",
+    "status",
+    "source",
+    "profile",
+    "schema_engine",
+    "duration_ms",
+    "slots",
+    "artifacts",
+    "findings",
+    "decision_reasons"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "contract": {
+      "const": "mtr.quality_profile_report"
+    },
+    "run_id": {
+      "$ref": "#/$defs/safe_id"
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 64
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED"
+      ]
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "profile": {
+      "$ref": "#/$defs/profile_identity"
+    },
+    "schema_engine": {
+      "$ref": "#/$defs/schema_engine"
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "slots": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 128,
+      "items": {
+        "$ref": "#/$defs/slot_result"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "decision_reasons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "PASS"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source": {
+            "properties": {
+              "matches_scope": {
+                "const": true
+              },
+              "stable_during_run": {
+                "const": true
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "dirty": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "dirty"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "dirty_authorized": {
+                      "const": true
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "slots": {
+            "items": {
+              "if": {
+                "properties": {
+                  "effective_mandatory": {
+                    "const": true
+                  }
+                },
+                "required": [
+                  "effective_mandatory"
+                ]
+              },
+              "then": {
+                "properties": {
+                  "status": {
+                    "const": "PASS"
+                  }
+                }
+              }
+            }
+          },
+          "findings": {
+            "items": {
+              "properties": {
+                "blocking": {
+                  "const": false
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "FAIL",
+              "BLOCKED"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "findings": {
+            "contains": {
+              "properties": {
+                "blocking": {
+                  "const": true
+                }
+              },
+              "required": [
+                "blocking"
+              ]
+            },
+            "minContains": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "safe_id": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{64}$"
+    },
+    "project_relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^(?![A-Za-z]:)(?![/\\\\])(?!.*(?:^|[/\\\\])\\.\\.(?:[/\\\\]|$))(?!.*:).+$"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "commit",
+        "content_version",
+        "matches_scope",
+        "dirty",
+        "dirty_authorized",
+        "stable_during_run"
+      ],
+      "properties": {
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "content_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "matches_scope": {
+          "type": "boolean"
+        },
+        "dirty": {
+          "type": "boolean"
+        },
+        "dirty_authorized": {
+          "type": "boolean"
+        },
+        "stable_during_run": {
+          "type": "boolean"
+        }
+      }
+    },
+    "profile_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "catalog_id",
+        "config_relative_path",
+        "config_sha256",
+        "scope_relative_path",
+        "scope_sha256",
+        "started_at",
+        "cycle_order"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "D4",
+            "P4",
+            "M2_PLUS",
+            "QA7",
+            "RC2"
+          ]
+        },
+        "catalog_id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "config_relative_path": {
+          "$ref": "#/$defs/project_relative_path"
+        },
+        "config_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "scope_relative_path": {
+          "$ref": "#/$defs/project_relative_path"
+        },
+        "scope_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "started_at": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 64
+        },
+        "cycle_order": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/safe_id"
+          }
+        }
+      }
+    },
+    "schema_engine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "draft",
+        "isolated",
+        "lock_sha256",
+        "python_version"
+      ],
+      "properties": {
+        "name": {
+          "const": "jsonschema"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "draft": {
+          "const": "2020-12"
+        },
+        "isolated": {
+          "const": true
+        },
+        "lock_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "python_version": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "applicability": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "const": "applicable"
+            },
+            "condition_id": {
+              "$ref": "#/$defs/safe_id"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "condition_id",
+            "reason_code",
+            "reason"
+          ],
+          "properties": {
+            "status": {
+              "const": "not_applicable"
+            },
+            "condition_id": {
+              "$ref": "#/$defs/safe_id"
+            },
+            "reason_code": {
+              "$ref": "#/$defs/safe_id"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
+          }
+        }
+      ]
+    },
+    "evidence_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relative_path",
+        "sha256",
+        "run_id",
+        "gate_id",
+        "generated_at",
+        "status",
+        "config_relative_path",
+        "config_sha256",
+        "target_platforms"
+      ],
+      "properties": {
+        "relative_path": {
+          "$ref": "#/$defs/project_relative_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "run_id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "gate_id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "generated_at": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 64
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED"
+          ]
+        },
+        "config_relative_path": {
+          "$ref": "#/$defs/project_relative_path"
+        },
+        "config_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "target_platforms": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "source",
+              "static",
+              "web",
+              "android-emulator",
+              "android-device"
+            ]
+          }
+        }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "relative_path",
+        "sha256",
+        "bytes",
+        "slot_id"
+      ],
+      "properties": {
+        "kind": {
+          "const": "quality_gate_report"
+        },
+        "relative_path": {
+          "$ref": "#/$defs/project_relative_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "slot_id": {
+          "$ref": "#/$defs/safe_id"
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "severity",
+        "blocking",
+        "slot_id",
+        "path",
+        "field",
+        "expected",
+        "actual",
+        "suggested_fix"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z0-9_]{3,128}$"
+        },
+        "severity": {
+          "enum": [
+            "INFO",
+            "WARNING",
+            "ERROR",
+            "BLOCKER"
+          ]
+        },
+        "blocking": {
+          "type": "boolean"
+        },
+        "slot_id": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/safe_id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "path": {
+          "type": "string"
+        },
+        "field": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected": true,
+        "actual": true,
+        "suggested_fix": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "slot_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "gate_id",
+        "cycle_id",
+        "domain",
+        "requirement",
+        "effective_mandatory",
+        "applicability",
+        "status",
+        "evidence",
+        "findings",
+        "decision_reasons"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "gate_id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "cycle_id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "domain": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "requirement": {
+          "enum": [
+            "mandatory",
+            "optional",
+            "conditional"
+          ]
+        },
+        "effective_mandatory": {
+          "type": "boolean"
+        },
+        "applicability": {
+          "$ref": "#/$defs/applicability"
+        },
+        "status": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "BLOCKED",
+            "SKIPPED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "evidence": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/evidence_identity"
+            }
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/finding"
+          }
+        },
+        "decision_reasons": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "NOT_APPLICABLE"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requirement": {
+                "const": "conditional"
+              },
+              "effective_mandatory": {
+                "const": false
+              },
+              "applicability": {
+                "properties": {
+                  "status": {
+                    "const": "not_applicable"
+                  }
+                }
+              },
+              "evidence": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "enum": [
+                  "FAIL",
+                  "BLOCKED"
+                ]
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "findings": {
+                "contains": {
+                  "properties": {
+                    "blocking": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "blocking"
+                  ]
+                },
+                "minContains": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

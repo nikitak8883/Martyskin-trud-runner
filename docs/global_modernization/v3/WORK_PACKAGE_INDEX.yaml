@@ -1,5 +1,5 @@
 schema_version: 1
-updated_at: "2026-07-19"
+updated_at: "2026-07-21"
 project: martyshkin_trud_runner
 execution_model: dependency_gated_bounded_patch
 runtime_started: false
@@ -78,7 +78,7 @@ modules:
   M01:
     name: unified_quality_gate_ci_code_review_and_evidence
     priority: P0
-    current_status: m01_2_complete_runner_next
+    current_status: m01_4_complete_retention_next
     depends_on: [M00]
     work_packages:
       - id: M01.1
@@ -98,12 +98,12 @@ modules:
         outputs: [docs/global_modernization/v3/M01/runner_self_test_report.md, docs/global_modernization/v3/M01/M01_3_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_3_CODE_REVIEW_REPORT.md]
         gates: [P4]
       - id: M01.4
-        status: ready
+        status: complete
         objective: Encode D4, P4, M2_PLUS, QA7 and RC2 profiles with stale-evidence detection and mandatory/not-applicable semantics.
-        outputs: [docs/global_modernization/v3/M01/quality_gate.config.json]
+        outputs: [docs/global_modernization/v3/M01/quality_gate.config.json, docs/global_modernization/v3/M01/M01_4_PROFILE_COMPOSITION_REPORT.md, docs/global_modernization/v3/M01/M01_4_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_4_CODE_REVIEW_REPORT.md]
         gates: [D4, P4]
       - id: M01.5
-        status: pending
+        status: ready
         objective: Classify evidence as protected, retained_recent or rotatable and implement index-first dry-run retention with path guards.
         outputs: [docs/global_modernization/v3/M01/evidence_retention_policy.md, docs/global_modernization/v3/M01/evidence_retention_dry_run.json]
         gates: [D4]
@@ -112,7 +112,7 @@ modules:
         objective: Add CI or documented mandatory local equivalent using exactly the same platform-independent commands.
         outputs: [.github/workflows/mtr-static-gates.yml, docs/global_modernization/v3/M01/ci_local_parity_report.md]
         gates: [P4]
-        blocker: source remote and reproducible local runner
+        blocker: primary source remote decision
       - id: M01.7
         status: pending
         objective: Produce a release-blocking summary that rejects failed, missing, skipped or stale mandatory evidence.

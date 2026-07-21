@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.mtr.local/quality/v1/quality-profile-scope.schema.json",
+  "title": "MTR quality profile invocation scope",
+  "description": "Immutable source identity, explicit conditional decisions and child-report bindings for one profile evaluation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract",
+    "profile_id",
+    "run_id",
+    "started_at",
+    "source_commit",
+    "content_version",
+    "profile_config_sha256",
+    "condition_decisions",
+    "evidence_bindings"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "contract": {
+      "const": "mtr.quality_profile_scope"
+    },
+    "profile_id": {
+      "enum": [
+        "D4",
+        "P4",
+        "M2_PLUS",
+        "QA7",
+        "RC2"
+      ]
+    },
+    "run_id": {
+      "$ref": "#/$defs/safe_id"
+    },
+    "started_at": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 64
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "content_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "profile_config_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "condition_decisions": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "$ref": "#/$defs/condition_decision"
+      }
+    },
+    "evidence_bindings": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "$ref": "#/$defs/evidence_binding"
+      }
+    }
+  },
+  "$defs": {
+    "safe_id": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9A-F]{64}$"
+    },
+    "project_relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^(?![A-Za-z]:)(?![/\\\\])(?!.*(?:^|[/\\\\])\\.\\.(?:[/\\\\]|$))(?!.*:).+$"
+    },
+    "condition_decision": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "condition_id",
+            "applicable"
+          ],
+          "properties": {
+            "condition_id": {
+              "$ref": "#/$defs/safe_id"
+            },
+            "applicable": {
+              "const": true
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "condition_id",
+            "applicable",
+            "reason_code",
+            "reason"
+          ],
+          "properties": {
+            "condition_id": {
+              "$ref": "#/$defs/safe_id"
+            },
+            "applicable": {
+              "const": false
+            },
+            "reason_code": {
+              "$ref": "#/$defs/safe_id"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024
+            }
+          }
+        }
+      ]
+    },
+    "evidence_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slot_id",
+        "report_path"
+      ],
+      "properties": {
+        "slot_id": {
+          "$ref": "#/$defs/safe_id"
+        },
+        "report_path": {
+          "$ref": "#/$defs/project_relative_path"
+        }
+      }
+    }
+  }
+}

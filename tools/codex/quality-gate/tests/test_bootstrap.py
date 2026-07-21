@@ -20,6 +20,10 @@ import bootstrap  # noqa: E402
 
 
 class QualityGateBootstrapTests(unittest.TestCase):
+    def test_base_python_falls_back_when_interpreter_does_not_expose_base(self) -> None:
+        with mock.patch.object(bootstrap.sys, "_base_executable", None, create=True):
+            self.assertEqual(bootstrap._base_python(), Path(sys.executable).resolve())
+
     def test_lock_contains_only_exact_versions(self) -> None:
         packages = bootstrap._locked_packages()
         self.assertEqual(
@@ -71,6 +75,34 @@ class QualityGateBootstrapTests(unittest.TestCase):
                 with self.assertRaisesRegex(RuntimeError, "Timed out waiting for bootstrap lock"):
                     bootstrap.ensure_environment()
             self.assertTrue(lock_directory.is_dir(), "a waiter must not delete another process's lock")
+
+    def test_active_invalid_environment_is_never_rebuilt_in_place(self) -> None:
+        temp_root = PROJECT_ROOT / "temp"
+        temp_root.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix="m01_3_bootstrap_self_guard_", dir=temp_root) as raw_directory:
+            cache = Path(raw_directory)
+            with (
+                mock.patch.object(bootstrap, "_cache_root", return_value=cache),
+                mock.patch.object(bootstrap, "_probe", return_value=False),
+                mock.patch.object(bootstrap, "_current_interpreter_inside", return_value=True),
+                mock.patch.object(bootstrap, "_install") as install,
+            ):
+                with self.assertRaisesRegex(RuntimeError, "ACTIVE_VALIDATOR_ENVIRONMENT_INVALID"):
+                    bootstrap.ensure_environment()
+            install.assert_not_called()
+
+    def test_profile_entrypoint_routes_to_allowlisted_profile_runner(self) -> None:
+        fake_environment = PROJECT_ROOT / "temp/fake-profile-bootstrap"
+        completed = mock.Mock(returncode=0)
+        with (
+            mock.patch.object(bootstrap, "ensure_environment", return_value=(fake_environment, "A" * 64)),
+            mock.patch.object(bootstrap.subprocess, "run", return_value=completed) as run,
+        ):
+            result = bootstrap.main(["--entrypoint", "profile", "--", "--scope", "scope.json"])
+        self.assertEqual(result, 0)
+        command = run.call_args.args[0]
+        self.assertEqual(Path(command[1]), bootstrap.PROFILE_RUNNER_PATH)
+        self.assertEqual(command[2:], ["--scope", "scope.json"])
 
 
 if __name__ == "__main__":

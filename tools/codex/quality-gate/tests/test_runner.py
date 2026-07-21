@@ -368,6 +368,7 @@ class QualityGateRunnerTests(unittest.TestCase):
         source_mismatch_pass["source"]["matches_expected"] = False
         mutations.append(source_mismatch_pass)
         dirty_unauthorized_pass = copy.deepcopy(report)
+        dirty_unauthorized_pass["source"]["dirty"] = True
         dirty_unauthorized_pass["source"]["dirty_authorized"] = False
         mutations.append(dirty_unauthorized_pass)
         unstable_source_pass = copy.deepcopy(report)

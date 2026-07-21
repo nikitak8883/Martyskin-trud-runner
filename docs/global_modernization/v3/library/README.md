@@ -22,12 +22,12 @@
 
 ## Проверено
 
-- 9 JSON schema files parse как JSON;
-- 5 canonical quality schemas проходят pinned Draft 2020-12 validation; M01.3 runner self-test и fail-closed mutations проходят;
+- 17 JSON schema files (canonical plus drafts) parse как JSON;
+- 8 canonical quality schemas проходят pinned Draft 2020-12 validation; M01.3/M01.4 runner/profile self-tests и fail-closed mutations проходят;
 - 8 TypeScript files проходят Cocos-bundled TypeScript `--noEmit --strict --target ES2020`;
 - 6 templates скопированы без изменения;
 - исходные SHA-256 подтверждены внутренним manifest пакета.
 
 ## Следующий слой
 
-Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M01.4 составляет typed profiles на принятом runner; draft/runtime seams по-прежнему не активируются без своих dependency gates, adapters и parity tests.
+Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M01.4 typed profiles приняты; следующий bounded package — M01.5 evidence retention dry-run. Draft/runtime seams по-прежнему не активируются без своих dependency gates, adapters и parity tests.

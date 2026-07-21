@@ -61,6 +61,9 @@ def validate_schema_documents() -> dict[str, Any]:
         "quality_fixture_suite.schema.json": "https://schemas.mtr.local/quality/v1/quality-fixture-suite.schema.json",
         "quality_gate_config.schema.json": "https://schemas.mtr.local/quality/v1/quality-gate-config.schema.json",
         "quality_gate_report.schema.json": "https://schemas.mtr.local/quality/v1/quality-gate-report.schema.json",
+        "quality_profile_config.schema.json": "https://schemas.mtr.local/quality/v1/quality-profile-config.schema.json",
+        "quality_profile_scope.schema.json": "https://schemas.mtr.local/quality/v1/quality-profile-scope.schema.json",
+        "quality_profile_report.schema.json": "https://schemas.mtr.local/quality/v1/quality-profile-report.schema.json",
     }
     found = {path.name: load_json(path) for path in sorted(SCHEMAS_DIR.glob("*.schema.json"))}
     require(set(found) == set(expected), f"Canonical schema set drift: {sorted(found)}")

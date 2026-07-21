@@ -1,0 +1,83 @@
+{
+  "schema": "mtr.m01_4_validation_summary.v1",
+  "generated_at": "2026-07-21T08:02:51+03:00",
+  "status": "PASS",
+  "work_package": "M01.4",
+  "branch": "codex/mtr-source-freeze-v3",
+  "source_commit_before": "6d3e0636b00e581ce4ceabf450f14562ce0a4ae4",
+  "scope": {
+    "typed_profile_catalog": true,
+    "typed_profile_schemas": true,
+    "aggregate_evaluator": true,
+    "profile_wrapper": true,
+    "runtime_changed": false,
+    "build_executed": false,
+    "web_runtime_executed": false,
+    "android_emulator_executed": false,
+    "physical_device_used": false,
+    "pages_changed": false
+  },
+  "catalog": {
+    "id": "mtr.v3.quality-profiles",
+    "sha256": "B82025891085FEC4F0E207EAD89C3F6DD479C77730307AF26820D0297DB40EB3",
+    "profile_count": 5,
+    "profiles": {
+      "D4": {"cycles": 1, "slots": 4, "mandatory": 4, "conditional": 0},
+      "P4": {"cycles": 1, "slots": 4, "mandatory": 4, "conditional": 0},
+      "M2_PLUS": {"cycles": 3, "slots": 12, "mandatory": 8, "conditional": 4},
+      "QA7": {"cycles": 1, "slots": 7, "mandatory": 7, "conditional": 0},
+      "RC2": {"cycles": 3, "slots": 20, "mandatory": 18, "conditional": 2}
+    },
+    "physical_device_slots": 1,
+    "android_default": "emulator-only"
+  },
+  "schema_engine": {
+    "name": "jsonschema",
+    "version": "4.26.0",
+    "draft": "2020-12",
+    "offline_registry": true,
+    "isolated": true,
+    "global_python_mutated": false,
+    "lock_sha256": "B22864F672907A3E850FFAF916CF2A2E0C1185A0C024738D755DFCF16DC47D7C"
+  },
+  "d4_cycles": [
+    {"id": "D4.1-integrity", "status": "PASS", "evidence": "5 exact profiles, 8 canonical schemas and exact topology validation"},
+    {"id": "D4.2-syntax-contract", "status": "PASS", "evidence": "46 discovered, 44 passed, 0 failed, 2 expected platform skips; Python compile and PowerShell AST PASS"},
+    {"id": "D4.3-compatibility", "status": "PASS", "evidence": "M01.2 direct and M01.3-runner regressions PASS; wrapper forwarding/exit integration PASS"},
+    {"id": "D4.4-independent-review", "status": "PASS", "evidence": "three narrowed local-worker reviews plus Codex line review; confirmed findings fixed and rerun"}
+  ],
+  "runner_self_tests": {
+    "discovered": 46,
+    "passed": 44,
+    "failed": 0,
+    "skipped": 2,
+    "skips": [
+      "POSIX execute-bit branch is not executable on the Windows host",
+      "Windows symlink creation is unavailable without the required privilege"
+    ],
+    "powershell_wrapper_integration": "PASS",
+    "bootstrap_active_environment_guard": "PASS",
+    "same_byte_json_snapshot_guard": "PASS",
+    "post_commit_clean_source": "PASS_NO_DIRTY_OVERRIDE"
+  },
+  "m01_2_regression": {
+    "status": "PASS",
+    "canonical_schema_count": 8,
+    "positive_fixtures": 11,
+    "negative_fixtures": 20,
+    "deterministic_reruns": 25,
+    "runtime_guard_mutations": 3,
+    "representative_report_shapes": 9
+  },
+  "review": {
+    "json_snapshot_toctou": "FIXED_AND_RETESTED",
+    "canonical_hash_case": "FIXED_AND_RETESTED",
+    "bootstrap_self_service": "FIXED_AND_RETESTED",
+    "wrapper_forwarding_concern": "NOT_REPRODUCED_AND_INTEGRATION_TESTED",
+    "clean_source_false_green_fixture": "FIXED_AND_RETESTED",
+    "final_verdict": "PASS"
+  },
+  "open_findings": [],
+  "release_status": "BLOCKED_UNCHANGED",
+  "next_safe_action": "Implement M01.5 evidence classification and index-first retention dry-run with path guards."
+}
