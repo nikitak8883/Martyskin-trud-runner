@@ -1,6 +1,6 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m00_complete_m01_5_complete_m01_6_decision_next_runtime_not_started`  
+Статус: `m00_complete_m01_6_complete_m01_7_next_runtime_not_started`  
 Дата интеграции: 2026-07-21  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
@@ -53,7 +53,8 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M01.3: завершён project-local typed runner с shell-free argument arrays, process-tree timeout, containment/output-collision guards, atomic reports, source/protected-input revalidation и isolated pinned Draft 2020-12 engine. Game runtime не менялся.
 - M01.4: завершены typed-профили D4/P4/M2_PLUS/QA7/RC2, explicit mandatory/conditional/not-applicable semantics, stale/reuse/source guards, profile wrapper и 46-test isolated suite. Game runtime не менялся.
 - M01.5: завершён delete-incapable index-first retention dry-run; 801/801 evidence files прошли path/size/mtime reconciliation и получили protected/retained_recent/rotatable review-only classification. Удаление не выполнялось, game runtime не менялся.
+- M01.6: source branch `mtr-source-v3` опубликована в единственный утверждённый GitHub repository; один typed static command используется локально и в Windows/Linux Actions matrix. Чистый локальный прогон — 7/7 PASS; runtime/build/device не запускались.
 
 ## Следующее безопасное действие
 
-Разрешить решение о primary source remote, затем выполнить `M01.6`: добавить CI или documented mandatory local equivalent с точным совпадением принятых platform-independent команд. Release остаётся blocked.
+Выполнить `M01.7`: сформировать M2_PLUS release-blocking summary, который не принимает missing, failed, skipped или stale mandatory evidence. Release остаётся blocked.

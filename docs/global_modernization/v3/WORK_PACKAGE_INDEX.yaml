@@ -78,7 +78,7 @@ modules:
   M01:
     name: unified_quality_gate_ci_code_review_and_evidence
     priority: P0
-    current_status: m01_5_complete_ci_decision_next
+    current_status: m01_6_complete_release_summary_next
     depends_on: [M00]
     work_packages:
       - id: M01.1
@@ -108,11 +108,10 @@ modules:
         outputs: [docs/global_modernization/v3/M01/evidence_retention_policy.md, docs/global_modernization/v3/M01/evidence_retention_dry_run.json, docs/global_modernization/v3/M01/M01_5_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_5_CODE_REVIEW_REPORT.md]
         gates: [D4]
       - id: M01.6
-        status: blocked
+        status: complete
         objective: Add CI or documented mandatory local equivalent using exactly the same platform-independent commands.
-        outputs: [.github/workflows/mtr-static-gates.yml, docs/global_modernization/v3/M01/ci_local_parity_report.md]
+        outputs: [.github/workflows/mtr-static-gates.yml, tools/codex/quality-gate/static-gates.json, docs/global_modernization/v3/M01/ci_local_parity_report.md, docs/global_modernization/v3/M01/M01_6_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_6_CODE_REVIEW_REPORT.md]
         gates: [P4]
-        blocker: primary source remote decision
       - id: M01.7
         status: pending
         objective: Produce a release-blocking summary that rejects failed, missing, skipped or stale mandatory evidence.
@@ -600,5 +599,5 @@ modules:
 
 next_safe_action:
   module: M01
-  work_package: M01.6
-  action: Resolve the primary source remote decision, then add CI or the documented mandatory local equivalent using exactly the accepted platform-independent commands; preserve release blocking.
+  work_package: M01.7
+  action: Produce the fail-closed M2_PLUS release summary; missing, failed, skipped or stale mandatory evidence must remain release-blocking.

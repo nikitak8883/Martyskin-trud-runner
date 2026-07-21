@@ -42,9 +42,9 @@ Disposition: `rewrite_before_use`
 ## T04 — Pages sync/deploy
 
 Upstream: `sync-pages-dry-run.ps1`, workflow example  
-Disposition: `blocked_by_topology_decision`
+Disposition: `blocked_by_reproducible_build_and_parity`
 
-До Apply обязательны resolved-path guards, запрет destination внутри source, manifest diff, protected `.git/.nojekyll`, approval token и post-copy parity. Artifact-based Actions возможен только после source remote и воспроизводимой build command.
+Source remote одобрен: `mtr-source-v3` и Pages `main` используют один URL, но разные ветки. До Apply обязательны reproducible build command, resolved-path guards, запрет destination внутри source, manifest diff, protected `.git/.nojekyll`, approval token и post-copy parity.
 
 ## T05 — Content manifests
 

@@ -17,13 +17,14 @@ The sections below preserve the detailed Tasks/4 implementation history, but the
 - Read-only Git/Web/Android/evidence revalidation is complete under `docs/current_audit/`.
 - The integrated M00-M12 plan is under `docs/global_modernization/v3/`.
 - M00.1–M00.6 are complete: source commit `12670452ae4580ef5c685ff986476daf91522978`, tree `9faa768c9b81f94b7745c917b6d7d49b7cef884c`, annotated tag `mtr-source-freeze-v3-20260719`, verified source/Pages bundles and offline restore rehearsal PASS.
-- Pages is now an explicit submodule pinned to `d7a7cc1b0f75cd7aed7ac831e86f79421014e96f`; the primary parent repository still has no remote.
+- Pages remains pinned to `d7a7cc1b0f75cd7aed7ac831e86f79421014e96f`; the sole approved GitHub URL now hosts Pages on `main` and the clean source subtree on `mtr-source-v3`.
 - M01.1 is complete: `32/32` tracked tool surfaces are classified with commands, side effects, timeout and evidence contracts; static D4 checks passed without build/runtime execution.
 - M01.2 is complete: 3 canonical evidence schemas, 18 classified source families, 11 active fail-closed adapters, 11 positive and 20 negative fixtures, 25 deterministic reruns and 9 current report-shape smokes pass.
 - M01.3 is complete: 2 runner schemas and `tools/codex/quality-gate/` provide typed shell-free execution, complete process-tree timeout, path/output containment, atomic reports, adapter activation, source/protected-input revalidation and an isolated pinned Draft 2020-12 validator. No game-runtime file changed.
 - M01.4 is complete: 3 profile schemas plus a canonical D4/P4/M2_PLUS/QA7/RC2 catalog, explicit applicability semantics and a fail-closed aggregate evaluator now compose fresh M01.3 reports. The isolated unit/integration suite passes 44/44 executable tests with 2 expected platform skips. No game-runtime file changed.
 - M01.5 is complete: a delete-incapable index-first classifier reconciles 801/801 evidence files, verifies accepted anchors and records 68 protected, 207 retained_recent and 526 rotatable review-only entries. No evidence or game-runtime file was deleted, moved or rewritten.
-- Current next action: resolve the primary source remote decision, then execute `M01.6` CI or documented mandatory local command parity; release recovery and runtime patches remain dependency-blocked.
+- M01.6 is complete: one typed static command is shared by local execution and the Windows/Linux GitHub Actions matrix; the clean local run passed 7/7 mandatory steps without build/runtime/device execution.
+- Current next action: execute `M01.7` fail-closed M2_PLUS release summary; release recovery and runtime patches remain dependency-blocked.
 - Current release status: blocked by Web/Pages drift, absence of a current arm64 artifact from the accepted source, unresolved production signing and missing embedded content version.
 
 The latest known game runtime line is Android/Web capable and has a validated live Web build. The current task line is the Tasks/4 global modernization rollout. Module 0/10 scaffold is in place, Module 1 non-mutating asset/reference validation passes, Module 3 static skin/bonus matrix, contact sheet evidence, and selected Android emulator QA pass, and Module 2 now has `name`, `menu`, `levels`, `playing_hud`, `devgate`, `sound`, `skins`, `devpanel`, `achievements`, `records`, and `paused` UI IR pilots with Web runtime evidence plus Android emulator runtime evidence.
@@ -127,9 +128,9 @@ adb -s R5CY933XP7P install --user 0 -r "<release-apk>"
 
 ## Latest local checkpoint log
 
-- `docs\qa\CONTROL_LOG_CHECKPOINT_20260721_M01_5_EVIDENCE_RETENTION.md`
+- `docs\global_modernization\v3\M01\M01_6_VALIDATION_SUMMARY.json`
 - status: `pass`
-- next safe action: resolve the primary source remote decision, then execute `M01.6` CI/local parity
+- next safe action: execute `M01.7` fail-closed M2_PLUS release summary
 
 ## Required next implementation order
 
@@ -138,10 +139,10 @@ adb -s R5CY933XP7P install --user 0 -r "<release-apk>"
 3. M01.3 complete: preserve the typed runner, isolated lock and fail-closed self-test evidence.
 4. M01.4 complete: preserve typed D4/P4/M2_PLUS/QA7/RC2 profiles, explicit applicability and stale/reuse/source protections.
 5. M01.5 complete: preserve the delete-incapable 801-file retention dry-run, exact output allowlist and protected/recent/rotatable classification.
-6. Resolve the primary source remote decision and execute M01.6 CI or documented mandatory local parity.
+6. M01.6 complete: preserve the single typed local/CI command, immutable Action pins and static-only evidence boundary.
 7. Execute M01.7 release-blocking summary after M01.6 parity is accepted.
 8. Execute M02 technical release recovery from the frozen source before any external release claim.
-8. Resume M03+ runtime modernization only through the dependency-gated work-package index.
+9. Resume M03+ runtime modernization only through the dependency-gated work-package index.
 
 ## Hard rules
 

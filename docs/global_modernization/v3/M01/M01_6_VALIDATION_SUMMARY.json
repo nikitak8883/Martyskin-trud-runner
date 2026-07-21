@@ -1,0 +1,50 @@
+{
+  "schema": "mtr.m01_6_validation_summary.v1",
+  "generated_at": "2026-07-21T14:38:53+03:00",
+  "status": "PASS",
+  "work_package": "M01.6",
+  "source_commit": "a2b213c41ee896f90f8c70857b25fd20ab712428",
+  "source_branch": "mtr-source-v3",
+  "source_remote": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
+  "implementation": {
+    "workflow": ".github/workflows/mtr-static-gates.yml",
+    "workflow_sha256": "F7BD88E2779518D7C30AD4F1C77CC5B98D84B5562B81740229E4312D085229C9",
+    "config": "tools/codex/quality-gate/static-gates.json",
+    "config_sha256": "BE7EF372C6A082B6E957B064382D593F3BE0287AC744B16B042E7CFCFB4A04F0",
+    "exact_command_count": 1,
+    "matrix": ["ubuntu-latest", "windows-latest"],
+    "global_python_mutated": false,
+    "runtime_changed": false,
+    "build_executed": false,
+    "web_runtime_executed": false,
+    "android_emulator_executed": false,
+    "physical_device_used": false,
+    "pages_changed": false
+  },
+  "accepted_local_equivalent": {
+    "status": "PASS",
+    "run_id": "qg.20260721113853.be7ef372c6a0",
+    "report_sha256": "902693EF81F78B3786A971E58B3D20E79F572D8ED41CB8F9D1D86F97C25D9D04",
+    "duration_ms": 28212,
+    "mandatory_steps": 7,
+    "passed_steps": 7,
+    "failed_steps": 0,
+    "blocked_steps": 0,
+    "skipped_mandatory_steps": 0,
+    "findings": 0,
+    "source_clean": true,
+    "dirty_override": false,
+    "source_stable_during_run": true
+  },
+  "nested_tests": {
+    "quality_gate": {"discovered": 46, "passed": 44, "failed": 0, "skipped": 2},
+    "evidence_retention": {"discovered": 13, "passed": 12, "failed": 0, "skipped": 1}
+  },
+  "remote_ci": {
+    "status": "PENDING_FIRST_SOURCE_PUSH",
+    "blocking_if_failed": true,
+    "required_jobs": ["static-gates (ubuntu-latest)", "static-gates (windows-latest)"]
+  },
+  "release_status": "BLOCKED_UNCHANGED",
+  "next_safe_action": "Execute M01.7 and emit a fail-closed M2_PLUS release summary before opening M02 technical recovery."
+}

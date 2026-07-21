@@ -21,7 +21,7 @@
 ```text
 R0.A live inventory [DONE]
   → R0.B reviewed source freeze [DONE]
-    → F0 project-native quality gate [M01.1–M01.5 DONE; NEXT: M01.6]
+    → F0 project-native quality gate [M01.1–M01.6 DONE; NEXT: M01.7]
       → R1 reproducible Web + emulator + current arm64 release recovery
         → A0 GameRoot seams after technical M02.2–M02.5 baseline
           → A1 M04 assets → M06 skins → M05 UI
@@ -39,7 +39,7 @@ M11 PCG/DDA starts after M07+M09+M10 and remains optional/non-blocking for R2.
 | Module | Live status | Что сохраняется | Что ещё требуется |
 | --- | --- | --- | --- |
 | M00 | complete | classification, topology ADR, source commit/tag, source/Pages bundles, manifest, evidence anchor, offline restore PASS | none; preserve immutable source anchor |
-| M01 | M01.1–M01.5 complete | полный инвентарь 32/32, canonical quality schemas, 18-source registry, 11 active adapters, positive/negative fixtures, typed fail-closed runner, D4/P4/M2_PLUS/QA7/RC2 profiles и delete-incapable retention dry-run для 801/801 evidence files | CI/local parity, release summary |
+| M01 | M01.1–M01.6 complete | полный инвентарь 32/32, canonical quality schemas, 18-source registry, 11 active adapters, positive/negative fixtures, typed fail-closed runner, D4/P4/M2_PLUS/QA7/RC2 profiles, delete-incapable retention dry-run для 801/801 evidence files и один Windows/Linux CI/local static command | release-blocking summary |
 | M02 | release blocked | Web/emulator artifacts и старый arm APK | immutable source/content version, current arm64, Pages parity, signing decision, conditional AAB |
 | M03 | not started | существующая рабочая логика | state/input/collision/power-up seams и bounded log |
 | M04 | revalidate then extend | asset validators, draft atlas, selected contact sheets | final ownership/atlas/bundle contracts и metrics |
@@ -77,8 +77,8 @@ M00.A и M00.B завершены 19 июля 2026 года:
 - сохранить существующие рабочие validators вместо замены внешними упрощёнными скриптами;
 - M01.4 завершён: typed gate profiles композируют свежие M01.3 reports без второго произвольного command runner;
 - M01.5 завершён: 801/801 evidence files классифицированы как protected/retained_recent/rotatable review-only; exact output, reparse/path/drift guards и pre-write revalidation приняты без delete capability;
-- M01.6 следующий после primary source remote decision: CI или documented mandatory local equivalent с exact command parity;
-- M01.7 после принятой parity создаёт release-blocking summary и только затем открывает M02;
+- M01.6 завершён: source branch опубликована, exact local command проходит 7/7 и тот же command установлен в Windows/Linux CI;
+- M01.7 следующий: release-blocking summary и только затем технический baseline M02.2–M02.5;
 - общий logical content version;
 - Web, emulator x86_64 и current arm64 из одного checkpoint;
 - Pages artifact parity;
