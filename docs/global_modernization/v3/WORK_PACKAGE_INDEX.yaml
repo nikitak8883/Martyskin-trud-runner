@@ -78,7 +78,7 @@ modules:
   M01:
     name: unified_quality_gate_ci_code_review_and_evidence
     priority: P0
-    current_status: m01_4_complete_retention_next
+    current_status: m01_5_complete_ci_decision_next
     depends_on: [M00]
     work_packages:
       - id: M01.1
@@ -103,9 +103,9 @@ modules:
         outputs: [docs/global_modernization/v3/M01/quality_gate.config.json, docs/global_modernization/v3/M01/M01_4_PROFILE_COMPOSITION_REPORT.md, docs/global_modernization/v3/M01/M01_4_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_4_CODE_REVIEW_REPORT.md]
         gates: [D4, P4]
       - id: M01.5
-        status: ready
+        status: complete
         objective: Classify evidence as protected, retained_recent or rotatable and implement index-first dry-run retention with path guards.
-        outputs: [docs/global_modernization/v3/M01/evidence_retention_policy.md, docs/global_modernization/v3/M01/evidence_retention_dry_run.json]
+        outputs: [docs/global_modernization/v3/M01/evidence_retention_policy.md, docs/global_modernization/v3/M01/evidence_retention_dry_run.json, docs/global_modernization/v3/M01/M01_5_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_5_CODE_REVIEW_REPORT.md]
         gates: [D4]
       - id: M01.6
         status: blocked
@@ -600,5 +600,5 @@ modules:
 
 next_safe_action:
   module: M01
-  work_package: M01.4
-  action: Compose D4, P4, M2_PLUS, QA7 and RC2 typed profiles on the accepted M01.3 runner; preserve emulator-only Android defaults and do not claim release readiness.
+  work_package: M01.6
+  action: Resolve the primary source remote decision, then add CI or the documented mandatory local equivalent using exactly the accepted platform-independent commands; preserve release blocking.

@@ -63,9 +63,9 @@ Fingerprint не должен зависеть от absolute root/generatedAt. C
 ## T06 — Evidence index/retention
 
 Upstream: `index_evidence.py`, `cleanup_dry_run.py`  
-Disposition: `adapt`
+Disposition: `adapted_m01_5_complete`
 
-Текущий полный SHA index уже создан. Следующая версия добавляет protected/recent/rotatable, source/content version, accepted-run links и path-guarded dry-run. Никакого delete до отдельного approval.
+Полный M00 SHA index сохранён неизменным. M01.5 добавил protected/retained_recent/rotatable classification, current/index source identity, честный `UNAVAILABLE_UNTIL_M02_2` content status, три verified accepted-run links и delete-incapable path-guarded dry-run. Никакого delete до отдельного approval и backup/rollback manifest.
 
 ## T07 — PNG/asset validator
 

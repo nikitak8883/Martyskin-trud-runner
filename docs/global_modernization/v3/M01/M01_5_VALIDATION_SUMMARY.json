@@ -1,0 +1,117 @@
+{
+  "schema": "mtr.m01_5_validation_summary.v1",
+  "generated_at": "2026-07-21T14:01:54+03:00",
+  "status": "PASS",
+  "work_package": "M01.5",
+  "branch": "codex/mtr-source-freeze-v3",
+  "source_commit_before": "2a7d3311bb5dad602ce0e6af56113e421220ba12",
+  "scope": {
+    "evidence_retention_policy": true,
+    "index_first_classifier": true,
+    "full_corpus_dry_run": true,
+    "delete_or_move_executed": false,
+    "evidence_delete_capability_implemented": false,
+    "temporary_report_cleanup_only": true,
+    "runtime_changed": false,
+    "build_executed": false,
+    "web_runtime_executed": false,
+    "android_emulator_executed": false,
+    "physical_device_used": false,
+    "pages_changed": false
+  },
+  "implementation": {
+    "tool": "tools/codex/evidence-retention/retention.py",
+    "tool_sha256": "354D6828D142D9A28EB97B711AAD58505530A4BE618000BD489DC44DCC15EEF8",
+    "policy_config": "tools/codex/evidence-retention/retention.config.json",
+    "policy_config_sha256": "B12D56FC550E376F371C427A3AB1D181BEB84A0AFC636453EFEA4EF4D470D8EE",
+    "policy_document": "docs/global_modernization/v3/M01/evidence_retention_policy.md",
+    "policy_document_sha256": "0A4A8338E61B7701701346D5DAD6300EAC50CF3D61003C36C0132FAFC5A39241",
+    "test_sha256": "1FDF7396CEF10217E35D21A8538B885358EBA2F28EFC62D5D5B0D247FB5909CF"
+  },
+  "dry_run": {
+    "report": "docs/global_modernization/v3/M01/evidence_retention_dry_run.json",
+    "sha256": "F8F7C0A58E571F2B46E285C9C2967E88D9151AAABE06725C8F97C0918BE047D4",
+    "status": "PASS_DRY_RUN_ONLY",
+    "indexed_files": 801,
+    "indexed_bytes": 1051135677,
+    "discovered_files": 801,
+    "missing_files": 0,
+    "size_drift_files": 0,
+    "modification_time_drift_files": 0,
+    "unindexed_files": 0,
+    "classification": {
+      "protected": {"files": 68, "bytes": 43470213},
+      "retained_recent": {"files": 207, "bytes": 393576403},
+      "rotatable_review_only": {"files": 526, "bytes": 614089061}
+    },
+    "recent_groups": [
+      "20260714_two_cycle_resume",
+      "20260713_two_cycle_audit"
+    ],
+    "accepted_run_links_verified": 3,
+    "content_identity": "UNAVAILABLE_UNTIL_M02_2",
+    "deletion_performed": false
+  },
+  "safety": {
+    "single_read_policy_and_index_hashes": true,
+    "canonical_relative_paths": true,
+    "windows_ads_invalid_and_reserved_names_rejected": true,
+    "symlink_and_reparse_points_rejected": true,
+    "resolved_project_and_evidence_containment": true,
+    "exact_output_allowlist": "docs/global_modernization/v3/M01/evidence_retention_dry_run.json",
+    "output_outside_evidence": true,
+    "protected_inputs_revalidated_before_atomic_write": true,
+    "git_head_revalidated_before_atomic_write": true,
+    "corpus_metadata_revalidated_before_atomic_write": true,
+    "atomic_fsync_replace": true,
+    "full_content_rehash": false,
+    "full_content_rehash_reason": "M00 SHA-256 index remains canonical after two path, size and modification-time reconciliation passes"
+  },
+  "tests": {
+    "m01_5_unit_suite": {
+      "discovered": 13,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 1,
+      "skip_reason": "Windows symlink creation requires an unavailable privilege; reparse detection remains active and non-privileged guards pass"
+    },
+    "canonical_dry_run": "PASS_801_OF_801",
+    "byte_identical_fixed_identity_rerun": "PASS",
+    "m01_3_m01_4_isolated_regression": {
+      "discovered": 46,
+      "passed": 44,
+      "failed": 0,
+      "skipped": 2
+    },
+    "m01_2_direct_contract_regression": {
+      "status": "PASS",
+      "canonical_schemas": 8,
+      "positive_fixtures": 11,
+      "negative_fixtures": 20,
+      "deterministic_reruns": 25,
+      "runtime_guard_mutations": 3,
+      "representative_report_shapes": 9
+    }
+  },
+  "review": {
+    "first_local_worker_review": "NEEDS_CHANGES_THEN_FIXED",
+    "confirmed_fixes": [
+      "CLI output is now bound to one reviewed report path instead of any project file",
+      "policy, index, accepted-run links, Git HEAD and corpus metadata are revalidated immediately before atomic replacement",
+      "Windows reparse, invalid-character and reserved-name guards were strengthened"
+    ],
+    "classification_audit_fix": "rollback backups and replay/harness scripts promoted from rotatable review to protected",
+    "broad_heavy_review": "UNAVAILABLE_NO_VALIDATED_FINAL_CONTENT",
+    "coderabbit_review": "UNAVAILABLE_OFFICIAL_INSTALLER_REJECTED_WINDOWS_AND_WSL_IS_NOT_INSTALLED",
+    "codex_line_review": "PASS_NO_BLOCKING_DEFECT",
+    "final_verdict": "PASS_FOR_BOUNDED_M01_5"
+  },
+  "qa_command_corrections": [
+    "Dynamic Python 3.13 test import was registered in sys.modules before dataclass processing",
+    "PowerShell ConvertFrom-Json timestamp coercion was removed from the determinism harness",
+    "M01.3-M01.4 regression was rerun through the required isolated bootstrap instead of system Python"
+  ],
+  "open_findings": [],
+  "release_status": "BLOCKED_UNCHANGED",
+  "next_safe_action": "Resolve the primary source remote decision, then implement M01.6 CI or the documented mandatory local equivalent with exact command parity."
+}

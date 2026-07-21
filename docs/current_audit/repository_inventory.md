@@ -67,7 +67,7 @@ v3 интегрируется как слой source truth, release recovery, qu
 - 801 файл;
 - 1 051 135 677 байт;
 - каждый файл проиндексирован по относительному пути, размеру, времени и SHA-256;
-- retention policy ещё не применена.
+- M01.5 retention policy применена только как delete-incapable dry-run: 68 protected, 207 retained_recent и 526 rotatable review-only; raw evidence не удалялся и не перемещался.
 
 Полный индекс находится в `live_evidence_index.json`. Большой evidence не должен включаться целиком в будущий source commit: коммиту нужны индексы, итоговые отчёты и защищённые release-якоря.
 
@@ -96,7 +96,7 @@ v3 интегрируется как слой source truth, release recovery, qu
 ### Требует ручного решения
 
 - Git-топология Pages: корректный submodule, независимый sibling repo либо artifact deployment из будущего source remote;
-- конкретный набор protected evidence;
+- будущий approved cleanup batch и его backup/rollback manifest; текущий M01.5 protected set уже зафиксирован и удаление не разрешает;
 - direct APK versus Google Play/AAB target;
 - signing identity и сохранение upgrade compatibility установленного приложения;
 - назначение remote для основного source repo.

@@ -7,7 +7,7 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_4_complete / release_blocked`
+Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_5_complete / release_blocked`
 
 ## 2026-07-19 v3 revalidation overlay
 
@@ -22,7 +22,8 @@ The sections below preserve the detailed Tasks/4 implementation history, but the
 - M01.2 is complete: 3 canonical evidence schemas, 18 classified source families, 11 active fail-closed adapters, 11 positive and 20 negative fixtures, 25 deterministic reruns and 9 current report-shape smokes pass.
 - M01.3 is complete: 2 runner schemas and `tools/codex/quality-gate/` provide typed shell-free execution, complete process-tree timeout, path/output containment, atomic reports, adapter activation, source/protected-input revalidation and an isolated pinned Draft 2020-12 validator. No game-runtime file changed.
 - M01.4 is complete: 3 profile schemas plus a canonical D4/P4/M2_PLUS/QA7/RC2 catalog, explicit applicability semantics and a fail-closed aggregate evaluator now compose fresh M01.3 reports. The isolated unit/integration suite passes 44/44 executable tests with 2 expected platform skips. No game-runtime file changed.
-- Current next action: execute `M01.5` evidence classification and index-first retention dry-run; release recovery and runtime patches remain dependency-blocked.
+- M01.5 is complete: a delete-incapable index-first classifier reconciles 801/801 evidence files, verifies accepted anchors and records 68 protected, 207 retained_recent and 526 rotatable review-only entries. No evidence or game-runtime file was deleted, moved or rewritten.
+- Current next action: resolve the primary source remote decision, then execute `M01.6` CI or documented mandatory local command parity; release recovery and runtime patches remain dependency-blocked.
 - Current release status: blocked by Web/Pages drift, absence of a current arm64 artifact from the accepted source, unresolved production signing and missing embedded content version.
 
 The latest known game runtime line is Android/Web capable and has a validated live Web build. The current task line is the Tasks/4 global modernization rollout. Module 0/10 scaffold is in place, Module 1 non-mutating asset/reference validation passes, Module 3 static skin/bonus matrix, contact sheet evidence, and selected Android emulator QA pass, and Module 2 now has `name`, `menu`, `levels`, `playing_hud`, `devgate`, `sound`, `skins`, `devpanel`, `achievements`, `records`, and `paused` UI IR pilots with Web runtime evidence plus Android emulator runtime evidence.
@@ -126,9 +127,9 @@ adb -s R5CY933XP7P install --user 0 -r "<release-apk>"
 
 ## Latest local checkpoint log
 
-- `docs\qa\CONTROL_LOG_CHECKPOINT_20260721_M01_4_TYPED_PROFILES.md`
+- `docs\qa\CONTROL_LOG_CHECKPOINT_20260721_M01_5_EVIDENCE_RETENTION.md`
 - status: `pass`
-- next safe action: execute `M01.5` evidence classification and index-first retention dry-run
+- next safe action: resolve the primary source remote decision, then execute `M01.6` CI/local parity
 
 ## Required next implementation order
 
@@ -136,9 +137,10 @@ adb -s R5CY933XP7P install --user 0 -r "<release-apk>"
 2. M01.2 complete: preserve canonical schema namespace, adapter allowlist and positive/negative fixtures.
 3. M01.3 complete: preserve the typed runner, isolated lock and fail-closed self-test evidence.
 4. M01.4 complete: preserve typed D4/P4/M2_PLUS/QA7/RC2 profiles, explicit applicability and stale/reuse/source protections.
-5. Execute M01.5 evidence classification and index-first retention dry-run.
-6. Complete the minimum M01 quality/evidence gate before M02 release recovery; remote CI remains conditional on a primary source remote.
-7. Execute M02 technical release recovery from the frozen source before any external release claim.
+5. M01.5 complete: preserve the delete-incapable 801-file retention dry-run, exact output allowlist and protected/recent/rotatable classification.
+6. Resolve the primary source remote decision and execute M01.6 CI or documented mandatory local parity.
+7. Execute M01.7 release-blocking summary after M01.6 parity is accepted.
+8. Execute M02 technical release recovery from the frozen source before any external release claim.
 8. Resume M03+ runtime modernization only through the dependency-gated work-package index.
 
 ## Hard rules

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "contract": "mtr.evidence_retention_policy",
+  "policyId": "mtr.v3.m01.5",
+  "evidenceRoot": "docs/qa/evidence",
+  "indexPath": "docs/current_audit/live_evidence_index.json",
+  "outputPath": "docs/global_modernization/v3/M01/evidence_retention_dry_run.json",
+  "recentGroupCount": 2,
+  "recentGroupPattern": "^[0-9]{8}_.+$",
+  "protectedPathGlobs": [
+    "*/final_gate_static/*.json"
+  ],
+  "protectedNameGlobs": [
+    "*.md",
+    "*manifest*.json",
+    "*summary*.json",
+    "*report*.json",
+    "*result*.json",
+    "*final*.json",
+    "*index*.json",
+    "*backup*",
+    "*fingerprint*",
+    "*certificate*",
+    "*signing*",
+    "*.sha256",
+    "*.sha256.txt",
+    "*.ps1",
+    "*.py",
+    "*.js",
+    "*.cjs",
+    "*.mjs",
+    "*.html"
+  ],
+  "retainedNameGlobs": [
+    "*failure_corpus*"
+  ],
+  "rotatableRawSuffixes": [
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".webp",
+    ".log",
+    ".txt",
+    ".xml",
+    ".html",
+    ".meta",
+    ".zip",
+    ".apk",
+    ".aab",
+    ".json",
+    ".bin",
+    ".tmp"
+  ],
+  "acceptedRunLinks": [
+    {
+      "id": "m00-evidence-anchor",
+      "kind": "protected_source_and_evidence_anchor",
+      "path": "docs/global_modernization/v3/M00/evidence_anchor.json"
+    },
+    {
+      "id": "m01-4-validation",
+      "kind": "accepted_quality_gate_validation",
+      "path": "docs/global_modernization/v3/M01/M01_4_VALIDATION_SUMMARY.json"
+    },
+    {
+      "id": "two-cycle-runtime-checkpoint",
+      "kind": "accepted_web_android_qa_checkpoint",
+      "path": "docs/qa/CONTROL_LOG_CHECKPOINT_20260714_TWO_CYCLE_AUDIT_COMPLETE.md"
+    }
+  ],
+  "contentIdentity": {
+    "status": "UNAVAILABLE_UNTIL_M02_2",
+    "version": null
+  }
+}
