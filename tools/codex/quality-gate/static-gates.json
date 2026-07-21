@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.quality_gate_config",
+  "gate_id": "mtr.m01-6.static-gates",
+  "artifact_directory": "temp/quality-gate-m01-6/artifacts",
+  "steps": [
+    {
+      "id": "m01-2-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "docs/global_modernization/v3/library/tests/validate_m01_2_contracts.py"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 180,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "quality-gate-self-tests",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "tools/codex/quality-gate/bootstrap.py",
+        "--module",
+        "unittest",
+        "--",
+        "discover",
+        "-s",
+        "tools/codex/quality-gate/tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 600,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "evidence-retention-self-tests",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/codex/evidence-retention/tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 180,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "asset-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "tools/validate-assets.py",
+        "--project-root",
+        ".",
+        "--fail-on-white-matte"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 300,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "skin-bonus-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "tools/validate-skin-bonus-matrix.py",
+        "--project-root",
+        ".",
+        "--fail-on-warnings"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 300,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "ui-ir-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "tools/validate-ui-ir.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 180,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "level-select-icons",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "tools/ui/generate_level_select_theme_icons.py",
+        "--verify-only"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 120,
+      "expected_exit_codes": [0]
+    }
+  ]
+}

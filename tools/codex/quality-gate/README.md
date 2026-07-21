@@ -126,3 +126,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\codex\quality-gate\r
 ```
 
 The wrapper returns `0` for `PASS`, `1` for validated product/QA `FAIL`, `2` for a valid fail-closed `BLOCKED` aggregate, and `3` for malformed catalog/scope/bootstrap/internal configuration. `-AllowDirtySource` is development-only and is always rejected by RC2. A release claim must use a clean immutable source and fresh child evidence; profile composition by itself does not make the current release ready.
+
+## M01.6 canonical static gate
+
+CI and local execution use this exact platform-independent command from the project root:
+
+```text
+python tools/codex/quality-gate/bootstrap.py -- --project-root . --config tools/codex/quality-gate/static-gates.json --output temp/quality-gate-m01-6/report.json --content-version mtr-static-gates-v1
+```
+
+The source workflow runs it on `ubuntu-latest` and `windows-latest`. The command reuses this typed runner and executes only non-mutating contract checks. It does not build Cocos, start Web runtime, start an Android emulator, deploy Pages, or authorize a physical device. Those remain mandatory separate evidence in P4/M2_PLUS/QA7/RC2.

@@ -63,3 +63,19 @@ Revert the bounded M00 checkpoint. This restores the previous gitlink and remove
 ## Deferred decision
 
 The preferred long-term Actions artifact deployment remains blocked until a primary source remote and its publication policy are explicitly approved.
+
+## 2026-07-21 source-publication amendment
+
+The previously deferred source remote is now approved with one repository URL only:
+
+```text
+https://github.com/nikitak8883/Martyskin-trud-runner.git
+```
+
+Branch ownership is intentionally separated inside that repository:
+
+- `main` remains the published Web/Pages artifact line;
+- `mtr-source-v3` is the canonical source and engineering line;
+- the historical `codex` branch is left untouched.
+
+The local parent repository contains a legacy tracked backup bundle larger than GitHub's per-file limit. It is not project source and must never be pushed. Source publication therefore uses the history-preserving `MTRCocosCreator` subtree, where the project becomes repository root. This also places `.github/workflows/` at the valid GitHub Actions entry point. No force push, remote history rewrite, Pages mutation, or backup deletion is authorized by this amendment.
