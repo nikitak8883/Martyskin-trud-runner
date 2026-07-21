@@ -56,4 +56,3 @@ jobs:
           path: temp/quality-gate-m01-6
           if-no-files-found: error
           retention-days: 14
-
