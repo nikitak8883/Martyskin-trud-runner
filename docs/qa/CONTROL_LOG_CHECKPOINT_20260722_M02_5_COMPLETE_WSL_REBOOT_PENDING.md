@@ -7,12 +7,14 @@ Status: `M02.5 PASS / M03.1 NEXT / WSL REBOOT REQUIRED / RELEASE BLOCKED`
 
 - Parent branch: `codex/mtr-source-freeze-v3`.
 - Last clean M02.4 checkpoint commit: `0f57322`.
+- Accepted M02.5 implementation/evidence commit: `fee3c8026fed2c4b1b6144b59ecd1d8769b14a85`.
 - Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`.
 - Shared identity: `mtr-v3-source-a5c4bdbb2fca`.
 - Arm APK: `157,054,042` bytes; SHA-256 `761FE83F4DE11AD5502A8FE18E3ED4123C2A86118EC2A8DC1AD259C0D5B69279`.
 - ABI proof: arm64 ELF64/AArch64 `0x00B7`; armv7 ELF32/ARM `0x0028`.
 - Package/signature/payload: PASS; physical install not performed.
 - Development static gate: `qg.20260722082348.cb31e1f5e6da`, `8/8 PASS`, zero findings, source stable.
+- Clean-source static gate on `fee3c8026fed2c4b1b6144b59ecd1d8769b14a85`: `qg.20260722082553.cb31e1f5e6da`, `8/8 PASS`, zero findings, source clean/stable; report SHA-256 `D82A591C8374F82DAF8354D1C28442D1A6544411766CE5E585B2DCD9E2D33F1E`.
 
 ## WSL / CodeRabbit state
 
