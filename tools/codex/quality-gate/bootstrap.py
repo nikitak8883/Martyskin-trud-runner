@@ -266,6 +266,13 @@ def main(argv: list[str] | None = None) -> int:
     if runner_arguments and runner_arguments[0] == "--":
         runner_arguments.pop(0)
     environment_variables = os.environ.copy()
+    runtime_directory = str(python_path.parent)
+    inherited_path = environment_variables.get("PATH", "")
+    environment_variables["PATH"] = (
+        runtime_directory if not inherited_path else os.pathsep.join((runtime_directory, inherited_path))
+    )
+    environment_variables["VIRTUAL_ENV"] = str(environment)
+    environment_variables.pop("PYTHONHOME", None)
     environment_variables["MTR_QUALITY_GATE_ISOLATED"] = "1"
     environment_variables["MTR_QUALITY_GATE_LOCK_SHA256"] = lock_sha
     if args.module and args.module not in {"unittest"}:

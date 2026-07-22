@@ -19,7 +19,7 @@ This directory owns the active project-local command runner. It does not import 
 
 ## Isolated validator
 
-`bootstrap.py` creates a hash-addressed venv in the user cache, installs only exact versions from `requirements.lock` (schema validation plus the Pillow runtime required by PNG contract checks), verifies them, and exports the lock identity to the runner. It never installs into global Python. Concurrent first starts are serialized by a cache-local lock directory. Waiters allow the exact-package install timeout plus a bounded setup margin and never delete another process's lock. The environment marker is bound to the base interpreter; bootstrap refuses to rebuild the environment used by its current interpreter and instructs the operator to invoke the base Python instead.
+`bootstrap.py` creates a hash-addressed venv in the user cache, installs only exact versions from `requirements.lock` (schema validation plus the Pillow runtime required by PNG contract checks), verifies them, and exports the lock identity to the runner. It prepends that venv to child-process `PATH`, sets `VIRTUAL_ENV`, and removes inherited `PYTHONHOME`, so every configured `python` step uses the same pinned runtime instead of a runner-global interpreter. It never installs into global Python. Concurrent first starts are serialized by a cache-local lock directory. Waiters allow the exact-package install timeout plus a bounded setup margin and never delete another process's lock. The environment marker is bound to the base interpreter; bootstrap refuses to rebuild the environment used by its current interpreter and instructs the operator to invoke the base Python instead.
 
 Bootstrap only:
 

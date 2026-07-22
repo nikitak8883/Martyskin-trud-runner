@@ -102,8 +102,13 @@ class QualityGateBootstrapTests(unittest.TestCase):
             result = bootstrap.main(["--entrypoint", "profile", "--", "--scope", "scope.json"])
         self.assertEqual(result, 0)
         command = run.call_args.args[0]
+        runtime_environment = run.call_args.kwargs["env"]
         self.assertEqual(Path(command[1]), bootstrap.PROFILE_RUNNER_PATH)
         self.assertEqual(command[2:], ["--scope", "scope.json"])
+        self.assertEqual(runtime_environment["PATH"].split(os.pathsep)[0], str(Path(command[0]).parent))
+        self.assertEqual(runtime_environment["VIRTUAL_ENV"], str(fake_environment))
+        self.assertEqual(runtime_environment["MTR_QUALITY_GATE_ISOLATED"], "1")
+        self.assertNotIn("PYTHONHOME", runtime_environment)
 
 
 if __name__ == "__main__":
