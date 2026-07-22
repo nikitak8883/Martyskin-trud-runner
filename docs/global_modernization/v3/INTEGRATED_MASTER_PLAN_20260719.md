@@ -40,7 +40,7 @@ M11 PCG/DDA starts after M07+M09+M10 and remains optional/non-blocking for R2.
 | --- | --- | --- | --- |
 | M00 | complete | classification, topology ADR, source commit/tag, source/Pages bundles, manifest, evidence anchor, offline restore PASS | none; preserve immutable source anchor |
 | M01 | complete / release blocked | полный инвентарь 32/32, canonical quality schemas, 18-source registry, 11 active adapters, positive/negative fixtures, typed fail-closed runner, D4/P4/M2_PLUS/QA7/RC2 profiles, delete-incapable retention dry-run для 801/801 evidence files, один Windows/Linux CI/local static command и fail-closed release summary | preserve; не ослаблять mandatory evidence |
-| M02 | release blocked | Web/emulator artifacts и старый arm APK | immutable source/content version, current arm64, Pages parity, signing decision, conditional AAB |
+| M02 | M02.2 complete / release blocked | shared immutable source/content identity, Web/emulator historical artifacts и старый arm APK | fresh Web/emulator, current arm64, Pages parity, signing decision, conditional AAB |
 | M03 | not started | существующая рабочая логика | state/input/collision/power-up seams и bounded log |
 | M04 | revalidate then extend | asset validators, draft atlas, selected contact sheets | final ownership/atlas/bundle contracts и metrics |
 | M05 | revalidate then extend | 14 UI IR, выбранные runtime pilots | shared tokens/components/SafeArea/Layout/9-slice, full regression |
@@ -79,7 +79,7 @@ M00.A и M00.B завершены 19 июля 2026 года:
 - M01.5 завершён: 801/801 evidence files классифицированы как protected/retained_recent/rotatable review-only; exact output, reparse/path/drift guards и pre-write revalidation приняты без delete capability;
 - M01.6 завершён: source branch опубликована, exact local command проходит 7/7 и тот же command установлен в Windows/Linux CI;
 - M01.7 завершён: release-blocking summary корректно отвергает 8 отсутствующих mandatory evidence slots; следующий bounded package — M02.2;
-- общий logical content version;
+- M02.2 завершён: общий logical content version/source baseline встроен в Web/Android reports, platform artifact manifests разделены;
 - Web, emulator x86_64 и current arm64 из одного checkpoint;
 - Pages artifact parity;
 - signing/distribution ADR;

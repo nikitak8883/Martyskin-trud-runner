@@ -1,7 +1,7 @@
 # M02.2 code-review report
 
 Date: 2026-07-22  
-Verdict: `PASS FOR BOUNDED IMPLEMENTATION / HOSTED ACCEPTANCE PENDING`
+Verdict: `PASS FOR BOUNDED M02.2`
 
 ## Diff boundary
 
@@ -41,4 +41,11 @@ No gameplay source, scene, texture, UI, save data, build config, generated build
 - Development full static gate `qg.20260722062427.cb31e1f5e6da`: `8/8 PASS`, 0 findings, source stable; 52 tests ran with 3 expected platform/privilege skips. Dirty-source authorization was explicit and is not final acceptance.
 - Development gate report SHA-256: `EDDC1D87C896050C8B7A7D36D9FFEC6D97A454D69B80B34C494E0FD1B07A5CEA`.
 
-The clean-source gate and Windows/Linux hosted matrix are required after commit before M02.2 can be marked complete.
+## Accepted clean and hosted evidence
+
+- Clean local gate `qg.20260722063249.cb31e1f5e6da`: `8/8 PASS`, 0 findings, source clean and stable, report SHA-256 `0D9FC16002EE28A4846B052ECD669B18DEDBFEA2157DD940F6380E5E2D64C38A`.
+- Hosted run `29897120642` on published source `707ab97ad30bbfe7014c421c96c52ecfec5feaf7`: Ubuntu and Windows both `8/8 PASS`, 0 findings.
+- Both hosted validators produced the same identity SHA-256 and metadata SHA-256, and each executed 3/3 Web/Android no-build preflights.
+- Both hosted suites ran 52 tests with 2 expected platform skips and no failures.
+
+M02.2 establishes report identity only. M02.3–M02.5 still own actual Web, emulator and arm artifact/runtime evidence, and the overall release remains blocked.

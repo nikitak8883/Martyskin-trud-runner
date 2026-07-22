@@ -1,0 +1,90 @@
+{
+  "schema": "mtr.m02_2_validation_summary.v1",
+  "generated_at": "2026-07-22T09:36:00+03:00",
+  "status": "PASS",
+  "work_package": "M02.2",
+  "release_status": "BLOCKED",
+  "logical_content_identity": {
+    "contract": "mtr.content_identity",
+    "schema_version": 1,
+    "logical_content_version": "mtr-v3-source-a5c4bdbb2fca",
+    "source_repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
+    "source_branch": "mtr-source-v3",
+    "baseline_commit": "a5c4bdbb2fca479ad918ea7f3fa4fdd40bdffce2",
+    "identity_sha256": "F8362EC17295FD646E335C501B40A24871E3B40C1CBA22B6A4C0F36AD9313395",
+    "identity_meta_sha256": "135824A44562019CB1C2A1FA7783552303813A3C0882EF1A8BA90CD755E43C3C",
+    "freeze_content_version": "mtr-v3-freeze-12670452ae45",
+    "freeze_aggregate_sha256": "E3C72CE3D41BAA9EA54D9941A6A91312DFD38A94112C99ADC02D935915A8EDFD"
+  },
+  "implementation": {
+    "parent_source_commit": "b669672ca264358096aa97934d4fc44fe5f671d4",
+    "published_source_commit": "707ab97ad30bbfe7014c421c96c52ecfec5feaf7",
+    "static_gate_config_sha256": "CB31E1F5E6DA3AED8272C1CC48DC5D41D0A774DC6C2EA65948A106FDEFBB5F03",
+    "requirements_lock_sha256": "C8515C52B56E335827EB3D4B38C0996C59EF751DBB171B6FABFED81571CA5B74",
+    "workflow_sha256": "F228269B93AA775EF61A64AF1809F08F0EF5B5ED832EA237E8D8E5390C11E425",
+    "build_config_count": 3,
+    "shared_preflight_count": 3,
+    "artifact_manifest_scope": "per-platform",
+    "runtime_changed": false,
+    "build_executed": false,
+    "web_runtime_executed": false,
+    "android_emulator_executed": false,
+    "physical_device_used": false,
+    "pages_changed": false,
+    "signing_changed": false
+  },
+  "local_clean_gate": {
+    "status": "PASS",
+    "run_id": "qg.20260722063249.cb31e1f5e6da",
+    "source_commit": "b669672ca264358096aa97934d4fc44fe5f671d4",
+    "report_sha256": "0D9FC16002EE28A4846B052ECD669B18DEDBFEA2157DD940F6380E5E2D64C38A",
+    "duration_ms": 30310,
+    "source_clean": true,
+    "source_stable_during_run": true,
+    "mandatory_steps": 8,
+    "passed_steps": 8,
+    "findings": 0
+  },
+  "hosted_gate": {
+    "status": "PASS",
+    "run_id": 29897120642,
+    "run_url": "https://github.com/nikitak8883/Martyskin-trud-runner/actions/runs/29897120642",
+    "source_commit": "707ab97ad30bbfe7014c421c96c52ecfec5feaf7",
+    "windows": {
+      "job_id": 88849535506,
+      "gate_run_id": "qg.20260722063446.cb31e1f5e6da",
+      "duration_ms": 43778,
+      "report_sha256": "DFA886BF1E8A8FA22FEE2144AFD6AFB8D12A73E6F83DCC7132AB5402DB700BA7",
+      "artifact_id": 8520425208,
+      "artifact_digest": "sha256:a594a991c0dacfcb789841e8be55bd7495a45e07ea7431923f5c36710cc905c9",
+      "mandatory_steps": 8,
+      "passed_steps": 8,
+      "tests_run": 52,
+      "tests_skipped": 2,
+      "findings": 0,
+      "preflights": 3
+    },
+    "ubuntu": {
+      "job_id": 88849535484,
+      "gate_run_id": "qg.20260722063435.cb31e1f5e6da",
+      "duration_ms": 37744,
+      "report_sha256": "C9E9E61DEA4A0227ADA5A7FB67C442CA593DFA6D194299B3433EB6BE0DFF005E",
+      "artifact_id": 8520421659,
+      "artifact_digest": "sha256:9c0ba5ae451162e9b7a87f9962475e75435db05752f426d6dbfd8eb068567d03",
+      "mandatory_steps": 8,
+      "passed_steps": 8,
+      "tests_run": 52,
+      "tests_skipped": 2,
+      "findings": 0,
+      "preflights": 3
+    }
+  },
+  "fail_closed_correction": {
+    "failed_run_id": 29896755871,
+    "failed_source_commit": "e52ad02060184f7bbd17a5005400172422416f2a",
+    "failure": "Both hosted jobs rejected an unavailable baseline commit in a tip-only shallow checkout.",
+    "correction": "Workflow checkout now fetches full source history so ancestry is proven instead of waived.",
+    "mandatory_step_disabled": false
+  },
+  "next_safe_action": "Execute M02.3 reproducible Web build and runtime evidence from the accepted shared identity; release remains blocked."
+}

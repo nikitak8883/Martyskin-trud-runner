@@ -121,7 +121,7 @@ modules:
   M02:
     name: web_android_release_delivery_signing_and_artifact_parity
     priority: P0
-    current_status: m02_2_ready_signing_and_distribution_blocked
+    current_status: m02_2_complete_m02_3_next_signing_and_distribution_blocked
     depends_on: [M00, M01]
     work_packages:
       - id: M02.1
@@ -131,7 +131,7 @@ modules:
         gates: [D4]
         blocker: user decision for direct APK versus Play and signing identity
       - id: M02.2
-        status: pending
+        status: complete
         objective: Embed one logical content version/source commit in Web and Android reports while keeping platform artifact manifests separate.
         outputs: [assets/resources/config/content_identity.json, docs/global_modernization/v3/M02/content_parity_contract.md]
         gates: [P4]

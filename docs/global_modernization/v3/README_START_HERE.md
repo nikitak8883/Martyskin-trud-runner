@@ -55,7 +55,8 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M01.5: завершён delete-incapable index-first retention dry-run; 801/801 evidence files прошли path/size/mtime reconciliation и получили protected/retained_recent/rotatable review-only classification. Удаление не выполнялось, game runtime не менялся.
 - M01.6: source branch `mtr-source-v3` опубликована в единственный утверждённый GitHub repository; один typed static command используется локально и в Windows/Linux Actions matrix. Чистый локальный прогон — 7/7 PASS; runtime/build/device не запускались.
 - M01.7: fail-closed `M2_PLUS` summary завершён; текущий release корректно `BLOCKED` из-за 8 отсутствующих mandatory Web/Android/static/review evidence slots двух циклов.
+- M02.2: одна immutable logical content identity встроена в Web/Android build preflight/report; 3/3 target preflights и локальная/Windows/Linux матрица проходят 8/8. Platform artifact manifests остаются раздельными; build/runtime не запускались.
 
 ## Следующее безопасное действие
 
-Выполнить `M02.2`: встроить одну логическую content identity в Web/Android build reports, сохранив отдельные platform artifact manifests. Release остаётся blocked.
+Выполнить `M02.3`: собрать Web из принятой shared identity и получить свежие file/hash/runtime/matrix/restart/soak evidence. Release остаётся blocked.
