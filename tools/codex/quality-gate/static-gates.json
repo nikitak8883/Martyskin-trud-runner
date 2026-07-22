@@ -113,6 +113,20 @@
       "working_directory": ".",
       "timeout_seconds": 120,
       "expected_exit_codes": [0]
+    },
+    {
+      "id": "content-identity-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "tools/validate-content-identity.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 180,
+      "expected_exit_codes": [0]
     }
   ]
 }

@@ -12,3 +12,8 @@
 /docs/global_modernization/v3/library/** text eol=lf
 /tools/codex/evidence-retention/** text eol=lf
 /tools/codex/quality-gate/** text eol=lf
+
+# Shared release identity must hash identically in Web and Android reports.
+/assets/resources/config/content_identity.json text eol=lf
+/assets/resources/config/content_identity.json.meta text eol=lf
+/tools/validate-content-identity.py text eol=lf

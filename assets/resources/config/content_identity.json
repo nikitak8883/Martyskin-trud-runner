@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.content_identity",
+  "logical_content_version": "mtr-v3-source-a5c4bdbb2fca",
+  "source": {
+    "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
+    "branch": "mtr-source-v3",
+    "baseline_commit": "a5c4bdbb2fca479ad918ea7f3fa4fdd40bdffce2",
+    "baseline_kind": "published_source_before_identity_metadata"
+  },
+  "freeze_provenance": {
+    "manifest": "docs/global_modernization/v3/M00/source_content_manifest.json",
+    "source_commit": "12670452ae4580ef5c685ff986476daf91522978",
+    "source_tree": "9faa768c9b81f94b7745c917b6d7d49b7cef884c",
+    "content_version": "mtr-v3-freeze-12670452ae45",
+    "aggregate_sha256": "E3C72CE3D41BAA9EA54D9941A6A91312DFD38A94112C99ADC02D935915A8EDFD",
+    "file_count": 4170,
+    "total_bytes": 925653734
+  },
+  "platform_contract": {
+    "targets": ["web-mobile", "android"],
+    "shared_report_field": "contentIdentity",
+    "artifact_manifest_field": "platformArtifactManifest",
+    "artifact_manifest_scope": "per-platform"
+  },
+  "bump_policy": {
+    "baseline_precedes_identity_metadata": true,
+    "required_when": ["runtime_code", "runtime_asset", "content_config", "scene", "shared_build_behavior"],
+    "not_required_when": ["audit_documentation", "rotating_qa_evidence", "ci_only_tooling"]
+  }
+}

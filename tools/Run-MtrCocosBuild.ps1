@@ -2,8 +2,10 @@ param(
     [string]$ProjectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path,
     [string]$CocosExe = 'C:\ProgramData\cocos\editors\Creator\3.8.8\CocosCreator.exe',
     [string]$ConfigPath = 'build-web-mobile.json',
+    [string]$ContentIdentityPath = 'assets/resources/config/content_identity.json',
     [string]$LogDest = ("creator-web-ui-icons-{0}.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss')),
     [int]$TimeoutSeconds = 900,
+    [switch]$ValidateContentIdentityOnly,
     [string]$EntrypointLogPath = (Join-Path $ProjectRoot ("logs\entrypoint-router-{0}.jsonl" -f (Get-Date -Format 'yyyyMMdd'))),
     [string]$StdoutPath = (Join-Path $ProjectRoot ("logs\creator-web-ui-icons-wrapper-{0}.out.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss'))),
     [string]$StderrPath = (Join-Path $ProjectRoot ("logs\creator-web-ui-icons-wrapper-{0}.err.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss')))
@@ -11,6 +13,153 @@ param(
 
 $ErrorActionPreference = 'Stop'
 Import-Module (Join-Path $PSScriptRoot 'codex\MtrEntrypoint.psm1') -Force
+
+function Get-MtrContentIdentityRecord {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$ProjectRoot,
+        [Parameter(Mandatory=$true)][string]$IdentityPath,
+        [Parameter(Mandatory=$true)][ValidateSet('web-mobile', 'android')][string]$TargetPlatform
+    )
+
+    $candidate = if ([System.IO.Path]::IsPathRooted($IdentityPath)) {
+        $IdentityPath
+    } else {
+        Join-Path $ProjectRoot $IdentityPath
+    }
+    if (-not (Test-Path -LiteralPath $candidate -PathType Leaf)) {
+        throw "Content identity not found: $candidate"
+    }
+
+    $resolved = (Resolve-Path -LiteralPath $candidate).Path
+    $rootResolved = (Resolve-Path -LiteralPath $ProjectRoot).Path.TrimEnd(
+        [System.IO.Path]::DirectorySeparatorChar,
+        [System.IO.Path]::AltDirectorySeparatorChar
+    )
+    $rootPrefix = $rootResolved + [System.IO.Path]::DirectorySeparatorChar
+    if (-not $resolved.StartsWith($rootPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "Content identity escapes project root: $resolved"
+    }
+    $canonicalIdentity = [System.IO.Path]::GetFullPath((Join-Path $rootResolved 'assets/resources/config/content_identity.json'))
+    if (-not $resolved.Equals($canonicalIdentity, [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "Only the canonical project content identity is accepted: $canonicalIdentity"
+    }
+
+    try {
+        $identity = Get-Content -LiteralPath $resolved -Raw -Encoding UTF8 | ConvertFrom-Json
+    } catch {
+        throw "Content identity is not valid JSON: $($_.Exception.Message)"
+    }
+
+    $metaResolved = "$resolved.meta"
+    if (-not (Test-Path -LiteralPath $metaResolved -PathType Leaf)) {
+        throw "Content identity Cocos metadata not found: $metaResolved"
+    }
+    try {
+        $identityMeta = Get-Content -LiteralPath $metaResolved -Raw -Encoding UTF8 | ConvertFrom-Json
+    } catch {
+        throw "Content identity Cocos metadata is not valid JSON: $($_.Exception.Message)"
+    }
+    $metaFiles = @($identityMeta.files)
+    if ([string]$identityMeta.ver -ne '2.0.1' -or
+        [string]$identityMeta.importer -ne 'json' -or
+        -not ($identityMeta.imported -is [bool]) -or
+        [bool]$identityMeta.imported -ne $true -or
+        $metaFiles.Count -ne 1 -or
+        [string]$metaFiles[0] -ne '.json' -or
+        [string]$identityMeta.uuid -notmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' -or
+        $null -eq $identityMeta.subMetas -or
+        $null -eq $identityMeta.userData -or
+        @($identityMeta.subMetas.PSObject.Properties).Count -ne 0 -or
+        @($identityMeta.userData.PSObject.Properties).Count -ne 0) {
+        throw 'Content identity Cocos metadata contract is invalid.'
+    }
+
+    $schemaVersionIsInteger = ($identity.schema_version -is [int] -or $identity.schema_version -is [long])
+    if (-not $schemaVersionIsInteger -or [long]$identity.schema_version -ne 1 -or [string]$identity.contract -ne 'mtr.content_identity') {
+        throw 'Unsupported content identity contract.'
+    }
+    $sourceCommit = [string]$identity.source.baseline_commit
+    $logicalVersion = [string]$identity.logical_content_version
+    if ($sourceCommit -notmatch '^[0-9a-f]{40}$') {
+        throw 'Content identity baseline commit must be lowercase 40-hex.'
+    }
+    if ($logicalVersion -ne ("mtr-v3-source-{0}" -f $sourceCommit.Substring(0, 12))) {
+        throw 'Logical content version does not match the baseline commit.'
+    }
+    if ([string]$identity.source.repository -ne 'https://github.com/nikitak8883/Martyskin-trud-runner.git' -or
+        [string]$identity.source.branch -ne 'mtr-source-v3' -or
+        [string]$identity.source.baseline_kind -ne 'published_source_before_identity_metadata') {
+        throw 'Content identity source contract is invalid.'
+    }
+    if (@($identity.platform_contract.targets) -notcontains $TargetPlatform -or
+        [string]$identity.platform_contract.shared_report_field -ne 'contentIdentity' -or
+        [string]$identity.platform_contract.artifact_manifest_field -ne 'platformArtifactManifest' -or
+        [string]$identity.platform_contract.artifact_manifest_scope -ne 'per-platform') {
+        throw "Content identity does not support target platform '$TargetPlatform'."
+    }
+
+    $manifestRelative = [string]$identity.freeze_provenance.manifest
+    if ($manifestRelative -ne 'docs/global_modernization/v3/M00/source_content_manifest.json') {
+        throw 'Content identity freeze manifest path is not canonical.'
+    }
+    $manifestCandidate = Join-Path $rootResolved ($manifestRelative -replace '/', [System.IO.Path]::DirectorySeparatorChar)
+    if (-not (Test-Path -LiteralPath $manifestCandidate -PathType Leaf)) {
+        throw "Content identity freeze manifest not found: $manifestCandidate"
+    }
+    try {
+        $manifest = Get-Content -LiteralPath $manifestCandidate -Raw -Encoding UTF8 | ConvertFrom-Json
+    } catch {
+        throw "Source content manifest is not valid JSON: $($_.Exception.Message)"
+    }
+
+    $matchesFreeze = (
+        [string]$identity.freeze_provenance.source_commit -eq [string]$manifest.source_commit -and
+        [string]$identity.freeze_provenance.source_tree -eq [string]$manifest.source_tree -and
+        [string]$identity.freeze_provenance.content_version -eq [string]$manifest.content_version -and
+        [string]$identity.freeze_provenance.aggregate_sha256 -eq [string]$manifest.aggregate_sha256 -and
+        [long]$identity.freeze_provenance.file_count -eq [long]$manifest.file_count -and
+        [long]$identity.freeze_provenance.total_bytes -eq [long]$manifest.total_bytes
+    )
+    if (-not $matchesFreeze) {
+        throw 'Content identity freeze provenance does not match the canonical M00 manifest.'
+    }
+
+    $identityRelative = $resolved.Substring($rootPrefix.Length).Replace('\', '/')
+    return [pscustomobject][ordered]@{
+        contract = [string]$identity.contract
+        schemaVersion = [int]$identity.schema_version
+        logicalContentVersion = $logicalVersion
+        sourceRepository = [string]$identity.source.repository
+        sourceBranch = [string]$identity.source.branch
+        sourceCommit = $sourceCommit
+        sourceBaselineKind = [string]$identity.source.baseline_kind
+        freezeContentVersion = [string]$identity.freeze_provenance.content_version
+        freezeAggregateSha256 = [string]$identity.freeze_provenance.aggregate_sha256
+        identityPath = $identityRelative
+        identityFileSha256 = (Get-FileHash -LiteralPath $resolved -Algorithm SHA256).Hash
+        identityMetaFileSha256 = (Get-FileHash -LiteralPath $metaResolved -Algorithm SHA256).Hash
+    }
+}
+
+function New-MtrPlatformArtifactManifest {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][ValidateSet('web-mobile', 'android')][string]$Platform,
+        [Parameter(Mandatory=$true)][string]$OutputName,
+        [Parameter(Mandatory=$true)][string]$ProjectRoot
+    )
+
+    return [ordered]@{
+        contract = 'mtr.platform_artifact_manifest'
+        schemaVersion = 1
+        scope = 'per-platform'
+        platform = $Platform
+        outputName = $OutputName
+        outputRoot = (Join-Path $ProjectRoot (Join-Path 'build' $OutputName))
+        state = 'NOT_BUILT'
+    }
+}
 
 function Test-MtrAndroidApkPayload {
     [CmdletBinding()]
@@ -125,6 +274,10 @@ $projectRootResolved = (Resolve-Path -LiteralPath $ProjectRoot).Path.TrimEnd([Sy
 $configResolved = (Resolve-Path -LiteralPath $configCandidate).Path
 $configJson = Get-Content -LiteralPath $configResolved -Raw | ConvertFrom-Json
 $isAndroidBuild = ([string]$configJson.platform) -eq 'android'
+$targetPlatform = [string]$configJson.platform
+if ($targetPlatform -notin @('web-mobile', 'android')) {
+    throw "Unsupported Cocos target platform: $targetPlatform"
+}
 $outputName = [string]$configJson.outputName
 if ([string]::IsNullOrWhiteSpace($outputName)) {
     $outputName = if ($isAndroidBuild) { 'android' } else { '' }
@@ -133,6 +286,28 @@ $configArgPath = $configResolved
 $projectPrefix = $projectRootResolved + [System.IO.Path]::DirectorySeparatorChar
 if ($configResolved.StartsWith($projectPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
     $configArgPath = $configResolved.Substring($projectPrefix.Length)
+}
+
+$contentIdentity = Get-MtrContentIdentityRecord `
+    -ProjectRoot $projectRootResolved `
+    -IdentityPath $ContentIdentityPath `
+    -TargetPlatform $targetPlatform
+$platformArtifactManifest = New-MtrPlatformArtifactManifest `
+    -Platform $targetPlatform `
+    -OutputName $outputName `
+    -ProjectRoot $projectRootResolved
+
+if ($ValidateContentIdentityOnly) {
+    [pscustomobject][ordered]@{
+        contract = 'mtr.build_identity_preflight'
+        schemaVersion = 1
+        status = 'PASS'
+        targetPlatform = $targetPlatform
+        configPath = $configArgPath.Replace('\', '/')
+        contentIdentity = $contentIdentity
+        platformArtifactManifest = [pscustomobject]$platformArtifactManifest
+    } | ConvertTo-Json -Depth 8
+    exit 0
 }
 
 $buildArg = "configPath=$configArgPath;logDest=$LogDest"
@@ -276,7 +451,16 @@ if ($finished -and $isAndroidBuild) {
     }
 }
 $reportedExitCode = if ($finished) { 0 } else { $run.logicalExitCode }
+$platformArtifactManifest['state'] = if ($finished) { 'BUILT' } else { 'FAILED' }
+if ($isAndroidBuild) {
+    $platformArtifactManifest['androidPostPackage'] = $androidPostPackage
+} else {
+    $platformArtifactManifest['webPostProcess'] = $webPostProcess
+}
 $result = [pscustomobject]@{
+    contract = 'mtr.cocos_build_report'
+    schemaVersion = 1
+    targetPlatform = $targetPlatform
     configPath = $configArgPath
     configPathResolved = $configResolved
     buildArg = $buildArg
@@ -290,6 +474,8 @@ $result = [pscustomobject]@{
     autocorrections = $run.autocorrections
     completedBySuccessPattern = $run.completedBySuccessPattern
     successMatch = $run.successMatch
+    contentIdentity = $contentIdentity
+    platformArtifactManifest = [pscustomobject]$platformArtifactManifest
     webPostProcess = $webPostProcess
     androidPostPackage = $androidPostPackage
 }
