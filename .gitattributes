@@ -1,7 +1,14 @@
 # Markdown audit logs use two trailing spaces for explicit CommonMark line breaks.
 *.md whitespace=-trailing-space
+/.gitattributes text eol=lf
 
 # Checkpoint and audit records with recorded byte hashes must be checkout-stable.
 /docs/global_modernization/v3/M00/** text eol=lf
 /docs/current_audit/*.json text eol=lf
 /tools/codex/build_source_content_manifest.py text eol=lf
+
+# Cross-platform quality evidence must keep one byte identity on every runner.
+/.github/workflows/** text eol=lf
+/docs/global_modernization/v3/library/** text eol=lf
+/tools/codex/evidence-retention/** text eol=lf
+/tools/codex/quality-gate/** text eol=lf
