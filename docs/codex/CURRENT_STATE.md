@@ -1,13 +1,13 @@
 # CURRENT_STATE — Martyshkin Trud Runner
 
 Generated: 2026-07-02 15:44 +03:00  
-Updated: 2026-07-21  
+Updated: 2026-07-22  
 Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`  
 Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_5_complete / release_blocked`
+Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_6_complete / release_blocked`
 
 ## 2026-07-19 v3 revalidation overlay
 
@@ -23,7 +23,7 @@ The sections below preserve the detailed Tasks/4 implementation history, but the
 - M01.3 is complete: 2 runner schemas and `tools/codex/quality-gate/` provide typed shell-free execution, complete process-tree timeout, path/output containment, atomic reports, adapter activation, source/protected-input revalidation and an isolated pinned Draft 2020-12 validator. No game-runtime file changed.
 - M01.4 is complete: 3 profile schemas plus a canonical D4/P4/M2_PLUS/QA7/RC2 catalog, explicit applicability semantics and a fail-closed aggregate evaluator now compose fresh M01.3 reports. The isolated unit/integration suite passes 44/44 executable tests with 2 expected platform skips. No game-runtime file changed.
 - M01.5 is complete: a delete-incapable index-first classifier reconciles 801/801 evidence files, verifies accepted anchors and records 68 protected, 207 retained_recent and 526 rotatable review-only entries. No evidence or game-runtime file was deleted, moved or rewritten.
-- M01.6 is complete: one typed static command is shared by local execution and the Windows/Linux GitHub Actions matrix; the clean local run passed 7/7 mandatory steps without build/runtime/device execution.
+- M01.6 is complete: one typed static command is shared by local execution and the Windows/Linux GitHub Actions matrix; clean local and hosted run `29895079941` passed 7/7 mandatory steps on source `34dd70086a98c11a41a73e17460ed78426456be5` with identical config/lock identities and without build/runtime/device execution.
 - Current next action: execute `M01.7` fail-closed M2_PLUS release summary; release recovery and runtime patches remain dependency-blocked.
 - Current release status: blocked by Web/Pages drift, absence of a current arm64 artifact from the accepted source, unresolved production signing and missing embedded content version.
 

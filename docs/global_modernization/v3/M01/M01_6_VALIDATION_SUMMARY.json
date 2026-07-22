@@ -1,18 +1,23 @@
 {
   "schema": "mtr.m01_6_validation_summary.v1",
-  "generated_at": "2026-07-21T14:38:53+03:00",
+  "generated_at": "2026-07-22T08:56:43+03:00",
   "status": "PASS",
   "work_package": "M01.6",
-  "source_commit": "a2b213c41ee896f90f8c70857b25fd20ab712428",
+  "source_commit": "34dd70086a98c11a41a73e17460ed78426456be5",
+  "parent_source_commit": "792ddaaf5ce8fa7254ae17da9ab79c6fa21b3d80",
   "source_branch": "mtr-source-v3",
   "source_remote": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
   "implementation": {
     "workflow": ".github/workflows/mtr-static-gates.yml",
     "workflow_sha256": "F7BD88E2779518D7C30AD4F1C77CC5B98D84B5562B81740229E4312D085229C9",
+    "attributes_sha256": "21B32BC44E2D2A387979B746B6A4E3836A2F9567D26F6FF4898B7F0A84B39752",
     "config": "tools/codex/quality-gate/static-gates.json",
     "config_sha256": "BE7EF372C6A082B6E957B064382D593F3BE0287AC744B16B042E7CFCFB4A04F0",
+    "requirements_lock_sha256": "C8515C52B56E335827EB3D4B38C0996C59EF751DBB171B6FABFED81571CA5B74",
     "exact_command_count": 1,
     "matrix": ["ubuntu-latest", "windows-latest"],
+    "isolated_child_runtime": true,
+    "checkout_stable_line_endings": true,
     "global_python_mutated": false,
     "runtime_changed": false,
     "build_executed": false,
@@ -23,9 +28,10 @@
   },
   "accepted_local_equivalent": {
     "status": "PASS",
-    "run_id": "qg.20260721113853.be7ef372c6a0",
-    "report_sha256": "902693EF81F78B3786A971E58B3D20E79F572D8ED41CB8F9D1D86F97C25D9D04",
-    "duration_ms": 28212,
+    "run_id": "qg.20260722055738.be7ef372c6a0",
+    "report_sha256": "5FD2F89F9A6DFA1F551BDED03A3EA44115303E3C3801852BE8B5145C5160C0BB",
+    "duration_ms": 32350,
+    "source_commit": "792ddaaf5ce8fa7254ae17da9ab79c6fa21b3d80",
     "mandatory_steps": 7,
     "passed_steps": 7,
     "failed_steps": 0,
@@ -37,13 +43,38 @@
     "source_stable_during_run": true
   },
   "nested_tests": {
-    "quality_gate": {"discovered": 46, "passed": 44, "failed": 0, "skipped": 2},
-    "evidence_retention": {"discovered": 13, "passed": 12, "failed": 0, "skipped": 1}
+    "quality_gate": {"discovered": 47, "passed": 45, "failed": 0, "skipped": 2, "both_hosted_operating_systems": true},
+    "evidence_retention": {"discovered": 13, "passed": 13, "failed": 0, "skipped": 0, "both_hosted_operating_systems": true}
   },
   "remote_ci": {
-    "status": "PENDING_FIRST_SOURCE_PUSH",
+    "status": "PASS",
     "blocking_if_failed": true,
-    "required_jobs": ["static-gates (ubuntu-latest)", "static-gates (windows-latest)"]
+    "run_id": 29895079941,
+    "run_url": "https://github.com/nikitak8883/Martyskin-trud-runner/actions/runs/29895079941",
+    "head_sha": "34dd70086a98c11a41a73e17460ed78426456be5",
+    "shared_config_sha256": "BE7EF372C6A082B6E957B064382D593F3BE0287AC744B16B042E7CFCFB4A04F0",
+    "shared_requirements_lock_sha256": "C8515C52B56E335827EB3D4B38C0996C59EF751DBB171B6FABFED81571CA5B74",
+    "jobs": {
+      "ubuntu": {
+        "job_id": 88843412945,
+        "status": "PASS",
+        "gate_run_id": "qg.20260722055444.be7ef372c6a0",
+        "duration_ms": 29952,
+        "report_sha256": "DD65FE5C153C407C565899EF07B2AF773E520B422E6C88D239BEC5C9DB2E7836",
+        "artifact_id": 8519672433,
+        "artifact_digest": "sha256:0667cabb1b3d5d79136da4acd2c0ba5bf6fe5166c7b75757f0341ce6c88a9db9"
+      },
+      "windows": {
+        "job_id": 88843412954,
+        "status": "PASS",
+        "gate_run_id": "qg.20260722055521.be7ef372c6a0",
+        "duration_ms": 39211,
+        "report_sha256": "7F9FC662C9EA30CEA425538EF625CFA76C0A11F6F097927BF2C3D196CC989EF2",
+        "artifact_id": 8519683283,
+        "artifact_digest": "sha256:5a96fd75ab8458955f508dbc2c559d252b4811a35d50203fbfca6eeaad3e81ed"
+      }
+    },
+    "diagnostic_runs": [29827179111, 29827757787, 29894663744, 29894899276]
   },
   "release_status": "BLOCKED_UNCHANGED",
   "next_safe_action": "Execute M01.7 and emit a fail-closed M2_PLUS release summary before opening M02 technical recovery."

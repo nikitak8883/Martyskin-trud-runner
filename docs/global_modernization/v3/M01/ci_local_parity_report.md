@@ -1,7 +1,7 @@
 # M01.6 CI / local command parity
 
-Date: 2026-07-21  
-Status: `PASS / DOCUMENTED LOCAL EQUIVALENT ACTIVE / CI INSTALLED`
+Date: 2026-07-22  
+Status: `PASS / LOCAL AND WINDOWS-LINUX CI ACCEPTED`
 
 ## Decision
 
@@ -47,25 +47,36 @@ All seven steps are mandatory and are executed by the accepted M01.3 typed runne
 
 ## Accepted local-equivalent run
 
-- Source commit: `a2b213c41ee896f90f8c70857b25fd20ab712428`
+- Parent source commit: `792ddaaf5ce8fa7254ae17da9ab79c6fa21b3d80`
 - Source clean: `true`
 - Dirty override: `false`
 - Source stable during run: `true`
 - Gate status: `PASS`
 - Mandatory steps: `7/7 PASS`
 - Findings: `0`
-- Duration: `28212 ms`
+- Duration: `32350 ms`
 - Schema engine: pinned isolated `jsonschema 4.26.0`, Draft 2020-12
 - Gate config SHA-256: `BE7EF372C6A082B6E957B064382D593F3BE0287AC744B16B042E7CFCFB4A04F0`
-- Local report SHA-256: `902693EF81F78B3786A971E58B3D20E79F572D8ED41CB8F9D1D86F97C25D9D04`
+- Requirements lock SHA-256: `C8515C52B56E335827EB3D4B38C0996C59EF751DBB171B6FABFED81571CA5B74`
+- Local report SHA-256: `5FD2F89F9A6DFA1F551BDED03A3EA44115303E3C3801852BE8B5145C5160C0BB`
 
-Nested suites reported 46 discovered / 44 passed / 2 expected platform skips for the quality runner and 13 discovered / 12 passed / 1 expected Windows symlink-privilege skip for evidence retention. Every mandatory typed-runner step itself is `PASS`; no mandatory gate is skipped.
+The final hosted suites reported 47 discovered / 45 passed / 2 expected platform skips for the quality runner and 13/13 passes for evidence retention on both operating systems. Every mandatory typed-runner step itself is `PASS`; no mandatory gate is skipped.
 
-## CI evidence boundary
+## Accepted hosted CI evidence
 
-The source workflow is installed and its YAML parses locally. Remote matrix results become authoritative only after the corresponding source commit is pushed and both jobs complete. A future CI failure does not invalidate the local command contract; it blocks the source branch until the same command passes on the failing runner.
+- Workflow run: `29895079941`
+- Source branch: `mtr-source-v3`
+- Source commit: `34dd70086a98c11a41a73e17460ed78426456be5`
+- Ubuntu job `88843412945`: `PASS`, 7/7, 0 findings, gate run `qg.20260722055444.be7ef372c6a0`, `29952 ms`.
+- Windows job `88843412954`: `PASS`, 7/7, 0 findings, gate run `qg.20260722055521.be7ef372c6a0`, `39211 ms`.
+- Both jobs record the same config SHA-256 and requirements-lock SHA-256 shown above.
+- Both jobs resolve every configured `python` step from the bootstrap-owned pinned virtual environment.
+- Workflow artifacts preserve each JSON report and separate stdout/stderr captures for 14 days.
+
+The debugging sequence failed closed and was not weakened: clean source-checkout evidence assumptions, POSIX path classification, the missing Pillow lock, child-process runtime inheritance and checkout EOL drift were corrected in source. No mandatory step was disabled or made optional.
+
+A future CI failure blocks the source branch until the same command passes on the failing runner; this static PASS is not a runtime or release PASS.
 
 ## Rollback
 
-Revert the M01.6 workflow/config commit. This removes CI orchestration only; it does not modify or remove M01.2–M01.5 tools, runtime assets, builds, evidence, Pages, or release files.
-
+Revert the bounded M01.6 workflow/config/bootstrap/attributes commits. This removes CI orchestration and its isolated-runtime portability hardening only; it does not modify or remove game runtime assets, builds, evidence, Pages, or release files.
