@@ -103,6 +103,8 @@ Accepted soak:
 - Post-fix matrix rerun: `34/34`, restart `10/10`, `PASS`.
 - Development static gate `qg.20260722073124.cb31e1f5e6da`: `8/8 PASS`, zero findings, source stable; dirty-source authorization was explicit and is not the final clean acceptance.
 - Gate report SHA-256: `D16302BCB05060DA538FABBB9D25E317E40A996AF528E167A99FBF34D0E03AE4`.
+- Clean-source gate after commit `aef19b0a0f5e11237fafbb2e457b21be6951380e`: run `qg.20260722073434.cb31e1f5e6da`, `8/8 PASS`, zero findings, source clean/stable, no override.
+- Clean report SHA-256: `A849306A7DEFAB0EBA6AFFCF183B6744E07015EE058D706E1922B25051EB6D29`.
 
 ## Limitations and next gate
 

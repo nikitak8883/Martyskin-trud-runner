@@ -40,4 +40,4 @@ No gameplay source, scene, runtime asset, Cocos build config, Android project, s
 - 300-second soak: complete, zero console warnings/errors.
 - development static gate: `8/8 PASS`, zero findings.
 
-Final clean-source and hosted acceptance will be recorded after the bounded M02.3 commit is published. Release remains blocked.
+Clean-source gate after bounded commit `aef19b0a0f5e11237fafbb2e457b21be6951380e`: `8/8 PASS`, zero findings, source clean and stable. Hosted acceptance will be recorded when the accumulated source branch is published. Release remains blocked.

@@ -59,6 +59,17 @@
     "dirty_source_authorized": true,
     "report_sha256": "D16302BCB05060DA538FABBB9D25E317E40A996AF528E167A99FBF34D0E03AE4"
   },
+  "clean_static_gate": {
+    "source_commit": "aef19b0a0f5e11237fafbb2e457b21be6951380e",
+    "run_id": "qg.20260722073434.cb31e1f5e6da",
+    "status": "PASS",
+    "passed": 8,
+    "failed": 0,
+    "findings": 0,
+    "source_dirty": false,
+    "source_stable": true,
+    "report_sha256": "A849306A7DEFAB0EBA6AFFCF183B6744E07015EE058D706E1922B25051EB6D29"
+  },
   "open_blockers": [
     "M02.1 distribution and production signing decision",
     "M02.4 fresh Android emulator evidence",
