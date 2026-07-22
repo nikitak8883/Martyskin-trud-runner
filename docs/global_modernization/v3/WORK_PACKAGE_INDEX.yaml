@@ -141,7 +141,7 @@ modules:
         outputs: [docs/global_modernization/v3/M02/web_build_report.md]
         gates: [P4, QA7]
       - id: M02.4
-        status: pending
+        status: complete
         objective: Rebuild x86_64 emulator debug from the same checkpoint and run install, launch, logcat, matrix, restart and soak.
         outputs: [docs/global_modernization/v3/M02/android_emulator_report.md]
         gates: [P4, QA7]

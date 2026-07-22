@@ -1,6 +1,6 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m00_complete_m01_6_complete_m01_7_next_runtime_not_started`  
+Статус: `m02_4_complete_m02_5_next_release_blocked`  
 Дата интеграции: 2026-07-21  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
@@ -57,7 +57,8 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M01.7: fail-closed `M2_PLUS` summary завершён; текущий release корректно `BLOCKED` из-за 8 отсутствующих mandatory Web/Android/static/review evidence slots двух циклов.
 - M02.2: одна immutable logical content identity встроена в Web/Android build preflight/report; 3/3 target preflights и локальная/Windows/Linux матрица проходят 8/8. Platform artifact manifests остаются раздельными; build/runtime не запускались.
 - M02.3: свежая Web Mobile сборка из shared identity содержит 4 815 файлов / 120 421 881 байт; aliases/payload проходят. Browser matrix 34/34, interaction PASS, restart 10/10 и soak 300.561 s без console warnings/errors проходят на pinned `playwright-core@1.61.1`.
+- M02.4: свежий x86_64 debug APK установлен только на `emulator-5554`; Android matrix 28/28, interaction/name persistence, restart 10/10 и soak 300.623 s проходят без unexpected diagnostics. Репрезентативная визуальная выборка чистая.
 
 ## Следующее безопасное действие
 
-Выполнить `M02.4`: собрать x86_64 Android emulator artifact из той же shared identity и получить свежие install/launch/logcat/matrix/restart/soak evidence. Физическое устройство не использовать. Release остаётся blocked.
+Выполнить `M02.5`: собрать arm64-v8a device-valid APK из той же shared identity и статически проверить package/version/ABI/signature/content identity. На физическое устройство не устанавливать. Release остаётся blocked.

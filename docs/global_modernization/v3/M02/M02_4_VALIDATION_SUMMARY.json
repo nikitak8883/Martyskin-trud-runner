@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "work_package": "M02.4",
+  "status": "pass",
+  "release_status": "blocked",
+  "content_identity": {
+    "logical_content_version": "mtr-v3-source-a5c4bdbb2fca",
+    "source_baseline": "a5c4bdbb2fca479ad918ea7f3fa4fdd40bdffce2",
+    "identity_sha256": "F8362EC17295FD646E335C501B40A24871E3B40C1CBA22B6A4C0F36AD9313395"
+  },
+  "toolchain": {
+    "status": "pass",
+    "qa_ready": true,
+    "policy": "emulator-only-default",
+    "avd": "MTR_Pixel_8_Pro_API_35",
+    "serial": "emulator-5554",
+    "qemu_guard": true,
+    "boot_completed": true,
+    "ignored_physical_devices": 0,
+    "raw_sha256": "F5AD59C04A5369C98BF215B50A98808CBB2228FD5C0913EA203541943660A1F0"
+  },
+  "build": {
+    "target": "android-emulator",
+    "cocos_creator": "3.8.8",
+    "abi": ["x86_64"],
+    "cocos_finished_marker": true,
+    "gradle_status": "pass",
+    "payload_contract_pass": true,
+    "apk_bytes": 142882685,
+    "apk_sha256": "EA6A79D4DB30FFAD240AF58CA7D8890EDD197A20DFA8FE23921FC6530E78835D"
+  },
+  "package": {
+    "application_id": "com.martyskin.trudrunner",
+    "version_code": 1,
+    "version_name": "1.0",
+    "min_sdk": 21,
+    "target_sdk": 35,
+    "installed_primary_abi": "x86_64",
+    "install_status": "pass",
+    "launch_status": "pass",
+    "signature_v1": true,
+    "signature_v2": true,
+    "certificate_type": "android-debug",
+    "certificate_sha256": "139926D41F6BA30D3B442CC3D3EE1DB53A23E20677BD53D3F79C041D216E7D7C"
+  },
+  "runtime": {
+    "matrix": {
+      "status": "pass",
+      "cases": 28,
+      "passed": 28,
+      "failed": 0,
+      "ui_cases": 13,
+      "level_cases": 15,
+      "raw_bytes": 33257,
+      "raw_sha256": "555629203E44570AB8801C0E68598A84E8CABEF6AA900E331C6EE5A3E5A489EA"
+    },
+    "interaction": {
+      "status": "pass",
+      "touch_flow": "pass",
+      "name_entry": "pass",
+      "persisted_name": "QAPrimateC1",
+      "restart_passed": 10,
+      "restart_failed": 0,
+      "soak_status": "pass",
+      "soak_actual_seconds": 300.623,
+      "process_losses": 0,
+      "raw_bytes": 9944,
+      "raw_sha256": "7BCE5F9B71AC64B3718B7C52AD461CF76A58D7069778969D21DD57A77FFFFF1B"
+    },
+    "visual_review": {
+      "status": "pass",
+      "raw_file_count": 81,
+      "raw_total_bytes": 189629869,
+      "png_count": 43,
+      "logcat_count": 32,
+      "representative_frames_reviewed": 9
+    }
+  },
+  "static_gate": {
+    "run_id": "qg.20260722080310.cb31e1f5e6da",
+    "status": "PASS",
+    "passed": 8,
+    "failed": 0,
+    "findings": 0,
+    "dirty_source_authorized": true,
+    "source_stable": true,
+    "report_sha256": "F7390695D2D196F9490AEC52750613F93D13B41FF7978C78A4DD3FE3FFE7F8E1"
+  },
+  "open_blockers": [
+    "M02.1 distribution and production signing decision",
+    "M02.5 current arm64 artifact evidence",
+    "M02.7 approved Pages topology and deployment parity"
+  ],
+  "next_safe_action": "Execute M02.5 current arm64-v8a artifact build and static inspection without physical installation."
+}

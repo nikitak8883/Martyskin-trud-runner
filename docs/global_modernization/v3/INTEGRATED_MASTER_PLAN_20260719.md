@@ -81,6 +81,7 @@ M00.A и M00.B завершены 19 июля 2026 года:
 - M01.7 завершён: release-blocking summary корректно отвергает 8 отсутствующих mandatory evidence slots; следующий bounded package — M02.2;
 - M02.2 завершён: общий logical content version/source baseline встроен в Web/Android reports, platform artifact manifests разделены;
 - M02.3 завершён: Web Mobile rebuilt; 4 815 files/hash/aliases/payload verified; matrix 34/34, interaction, 10 restarts и 300 s soak проходят на pinned browser runner;
+- M02.4 завершён: fresh x86_64 APK установлен на emulator-only target; Android matrix 28/28, interaction/name persistence, 10 restarts и 300 s soak проходят;
 - Web, emulator x86_64 и current arm64 из одного checkpoint;
 - Pages artifact parity;
 - signing/distribution ADR;
