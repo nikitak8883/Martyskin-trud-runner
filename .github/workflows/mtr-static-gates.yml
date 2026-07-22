@@ -32,7 +32,10 @@ jobs:
       - name: Check out source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 1
+          # M02.2 verifies that the declared immutable content baseline is an
+          # ancestor of the current source. A shallow tip-only checkout cannot
+          # prove that relationship and must fail closed.
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Set up Python

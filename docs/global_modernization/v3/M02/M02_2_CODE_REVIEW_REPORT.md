@@ -28,6 +28,7 @@ No gameplay source, scene, texture, UI, save data, build config, generated build
 | Validator output could overwrite an arbitrary path | Prevented by project containment and atomic temporary-file replacement. |
 | Preflight could invoke Cocos or mutate builds | Prevented: `-ValidateContentIdentityOnly` returns before the build entrypoint; all artifact states are `NOT_BUILT`. |
 | Legacy consumers could break | Prevented: existing `webPostProcess` and `androidPostPackage` output fields are retained. |
+| Hosted shallow checkout could not prove baseline ancestry | Observed fail-closed on both OS in run `29896755871`; corrected to full source history instead of weakening the validator. |
 
 ## Local evidence before commit
 
