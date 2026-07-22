@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "work_package": "M02.3",
+  "status": "pass",
+  "release_status": "blocked",
+  "content_identity": {
+    "logical_content_version": "mtr-v3-source-a5c4bdbb2fca",
+    "source_baseline": "a5c4bdbb2fca479ad918ea7f3fa4fdd40bdffce2",
+    "identity_sha256": "F8362EC17295FD646E335C501B40A24871E3B40C1CBA22B6A4C0F36AD9313395"
+  },
+  "build": {
+    "target": "web-mobile",
+    "cocos_creator": "3.8.8",
+    "finished": true,
+    "artifact_state": "BUILT",
+    "file_count": 4815,
+    "total_bytes": 120421881,
+    "aggregate_sha256": "7C8917130192B155D9F72C9BE5D1927CDFD1BE952598BEB91B4AD59C0209361C",
+    "alias_count": 5,
+    "alias_pass_count": 5,
+    "payload_contract_pass": true
+  },
+  "runtime": {
+    "matrix": {
+      "status": "pass",
+      "cases": 34,
+      "passed": 34,
+      "failed": 0,
+      "interaction": "pass",
+      "portrait": "pass",
+      "restart_passed": 10,
+      "restart_failed": 0,
+      "raw_sha256": "2175AFFF1A4F1E04AA5EFF5AA0246B33870F894E3311DBBB9B584966C06C588E"
+    },
+    "soak": {
+      "status": "pass",
+      "target_seconds": 300,
+      "actual_seconds": 300.561,
+      "console_errors": 0,
+      "console_warnings": 0,
+      "fps_min": 60.08,
+      "fps_average": 60.52,
+      "raw_sha256": "84C666899C83182E2DBBA03842D69DC0CFD4D8D3F53A9F932B21FD33C8B9CC09"
+    }
+  },
+  "runner": {
+    "package": "playwright-core",
+    "version": "1.61.1",
+    "lock_sha256": "249350C1D0C195BEEEC50EDFAE25AA226E46D6427936A5F4FBCE1EA7CFE5232C",
+    "browser_version": "149.0.7827.55",
+    "node_version": "v24.16.0"
+  },
+  "static_gate": {
+    "run_id": "qg.20260722073124.cb31e1f5e6da",
+    "status": "PASS",
+    "passed": 8,
+    "failed": 0,
+    "findings": 0,
+    "dirty_source_authorized": true,
+    "report_sha256": "D16302BCB05060DA538FABBB9D25E317E40A996AF528E167A99FBF34D0E03AE4"
+  },
+  "open_blockers": [
+    "M02.1 distribution and production signing decision",
+    "M02.4 fresh Android emulator evidence",
+    "M02.5 current arm64 artifact evidence",
+    "M02.7 approved Pages topology and deployment parity"
+  ],
+  "next_safe_action": "Execute M02.4 x86_64 Android emulator build and runtime QA from the accepted shared identity."
+}

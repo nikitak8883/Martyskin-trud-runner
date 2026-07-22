@@ -5,5 +5,8 @@
   "creator": {
     "version": "3.8.8"
   },
-  "uuid": "c1388105-2ed5-4a8e-859c-72fccfc177e8"
+  "uuid": "c1388105-2ed5-4a8e-859c-72fccfc177e8",
+  "devDependencies": {
+    "playwright-core": "1.61.1"
+  }
 }

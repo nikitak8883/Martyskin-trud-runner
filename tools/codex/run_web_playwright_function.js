@@ -2,7 +2,54 @@
 
 const fs = require('fs');
 const path = require('path');
-const { chromium } = require('playwright');
+const { chromium } = require('playwright-core');
+const playwrightVersion = require('playwright-core/package.json').version;
+
+function resolveBrowserExecutable() {
+    let managedExecutable = null;
+    try {
+        managedExecutable = chromium.executablePath();
+    } catch {
+        // Fall through to an explicitly configured or system browser.
+    }
+
+    const under = (base, ...parts) => base ? path.join(base, ...parts) : null;
+    const candidates = [
+        process.env.MTR_PLAYWRIGHT_BROWSER_EXECUTABLE,
+        managedExecutable,
+    ];
+
+    if (process.platform === 'win32') {
+        candidates.push(
+            under(process.env.PROGRAMFILES, 'Google', 'Chrome', 'Application', 'chrome.exe'),
+            under(process.env['PROGRAMFILES(X86)'], 'Microsoft', 'Edge', 'Application', 'msedge.exe'),
+            under(process.env.LOCALAPPDATA, 'Google', 'Chrome', 'Application', 'chrome.exe'),
+        );
+    } else if (process.platform === 'darwin') {
+        candidates.push(
+            '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+            '/Applications/Chromium.app/Contents/MacOS/Chromium',
+        );
+    } else {
+        candidates.push(
+            '/usr/bin/google-chrome',
+            '/usr/bin/google-chrome-stable',
+            '/usr/bin/chromium',
+            '/usr/bin/chromium-browser',
+        );
+    }
+
+    const executable = candidates.find(
+        (candidate) => candidate && path.isAbsolute(candidate) && fs.existsSync(candidate),
+    );
+    if (!executable) {
+        throw new Error(
+            'No Chromium-family browser found. Set MTR_PLAYWRIGHT_BROWSER_EXECUTABLE '
+            + 'or run `npx playwright-core install chromium`.',
+        );
+    }
+    return path.resolve(executable);
+}
 
 function evaluateResult(summary) {
     if (summary?.schema === 'mtr.web_soak.v1') {
@@ -61,8 +108,10 @@ async function main() {
     fs.mkdirSync(path.resolve('output/playwright/cycle2'), { recursive: true });
     fs.mkdirSync(path.dirname(path.resolve(summaryPath)), { recursive: true });
 
+    const browserExecutable = resolveBrowserExecutable();
     const browser = await chromium.launch({
         headless: true,
+        executablePath: browserExecutable,
         args: [
             '--disable-background-timer-throttling',
             '--disable-renderer-backgrounding',
@@ -76,6 +125,13 @@ async function main() {
         const page = await context.newPage();
         await page.goto(url, { waitUntil: 'load', timeout: 30000 });
         const summary = await run(page);
+        summary.runner = {
+            package: 'playwright-core',
+            packageVersion: playwrightVersion,
+            browserExecutable,
+            browserVersion: browser.version(),
+            nodeVersion: process.version,
+        };
         const passed = evaluateResult(summary);
         fs.writeFileSync(path.resolve(summaryPath), `${JSON.stringify(summary, null, 2)}\n`, 'utf8');
         process.stdout.write(`${JSON.stringify(compactResult(summary, summaryPath, passed))}\n`);

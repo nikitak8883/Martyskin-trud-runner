@@ -34,4 +34,4 @@
 
 ## Следующий слой
 
-Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M02.2 завершён; следующий bounded package — M02.3 reproducible Web build/runtime evidence. Draft/runtime seams по-прежнему не активируются без своих dependency gates, adapters и parity tests.
+Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M02.3 завершён; следующий bounded package — M02.4 x86_64 Android emulator build/runtime evidence. Draft/runtime seams по-прежнему не активируются без своих dependency gates, adapters и parity tests.

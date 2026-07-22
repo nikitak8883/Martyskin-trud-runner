@@ -80,6 +80,7 @@ M00.A и M00.B завершены 19 июля 2026 года:
 - M01.6 завершён: source branch опубликована, exact local command проходит 7/7 и тот же command установлен в Windows/Linux CI;
 - M01.7 завершён: release-blocking summary корректно отвергает 8 отсутствующих mandatory evidence slots; следующий bounded package — M02.2;
 - M02.2 завершён: общий logical content version/source baseline встроен в Web/Android reports, platform artifact manifests разделены;
+- M02.3 завершён: Web Mobile rebuilt; 4 815 files/hash/aliases/payload verified; matrix 34/34, interaction, 10 restarts и 300 s soak проходят на pinned browser runner;
 - Web, emulator x86_64 и current arm64 из одного checkpoint;
 - Pages artifact parity;
 - signing/distribution ADR;

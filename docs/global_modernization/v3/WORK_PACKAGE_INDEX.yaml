@@ -121,7 +121,7 @@ modules:
   M02:
     name: web_android_release_delivery_signing_and_artifact_parity
     priority: P0
-    current_status: m02_2_complete_m02_3_next_signing_and_distribution_blocked
+    current_status: m02_3_complete_m02_4_next_signing_and_distribution_blocked
     depends_on: [M00, M01]
     work_packages:
       - id: M02.1
@@ -136,7 +136,7 @@ modules:
         outputs: [assets/resources/config/content_identity.json, docs/global_modernization/v3/M02/content_parity_contract.md]
         gates: [P4]
       - id: M02.3
-        status: pending
+        status: complete
         objective: Rebuild Web Mobile from checkpoint and verify file count, aliases, runtime payload, matrix, restart and soak.
         outputs: [docs/global_modernization/v3/M02/web_build_report.md]
         gates: [P4, QA7]
