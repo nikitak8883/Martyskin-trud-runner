@@ -7,6 +7,7 @@ Status: `M02.4 PASS / M02.5 NEXT / RELEASE BLOCKED`
 
 - Parent branch: `codex/mtr-source-freeze-v3`.
 - Parent HEAD before this checkpoint patch: `430338aae0e0af938362202433f81156cb5c2902`.
+- Accepted M02.4 implementation/evidence commit: `233e1cb03c0be213752c469eee74625d49de2bd1`.
 - Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`.
 - Sole remote: `https://github.com/nikitak8883/Martyskin-trud-runner.git`.
 - Shared identity remains `mtr-v3-source-a5c4bdbb2fca`; M02.4 changed evidence/docs only.
@@ -24,6 +25,7 @@ Status: `M02.4 PASS / M02.5 NEXT / RELEASE BLOCKED`
 - Visual sample: 9 representative frames reviewed; no white matte, missing-platform or stale-under-text defect found.
 - Raw evidence: 81 files / 189,629,869 bytes under ignored `docs/qa/20260722_m02_4_android/`.
 - Final pre-commit static gate: `qg.20260722080456.cb31e1f5e6da`, `8/8 PASS`, zero findings, source stable; report SHA-256 `D728704C6DF29743CD0A98FFA6370230E6628739E43AB1FFD5144CFA686AC697`.
+- Clean-source static gate on `233e1cb03c0be213752c469eee74625d49de2bd1`: `qg.20260722080624.cb31e1f5e6da`, `8/8 PASS`, zero findings, source clean/stable; report SHA-256 `F41F737C294C87E3ECBD58E9000D42362F74F9148EC969C6DD40EB52A28E0A95`.
 
 ## Canonical reports
 
