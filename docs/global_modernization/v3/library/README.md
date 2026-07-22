@@ -34,4 +34,4 @@
 
 ## Следующий слой
 
-Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M02.4 завершён; следующий bounded package — M02.5 current arm64-v8a artifact evidence без физической установки. Draft/runtime seams по-прежнему не активируются без своих dependency gates, adapters и parity tests.
+Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. Технический baseline M02.2–M02.5 завершён; следующий bounded package — M03.1 read-only GameRoot inventory. Runtime seams активируются только после inventory, adapters и parity gates.

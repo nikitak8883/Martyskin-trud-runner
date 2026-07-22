@@ -146,7 +146,7 @@ modules:
         outputs: [docs/global_modernization/v3/M02/android_emulator_report.md]
         gates: [P4, QA7]
       - id: M02.5
-        status: pending
+        status: complete
         objective: Build current arm64-v8a device-valid APK and verify package, version, ABI, signature and source/content identity without physical install.
         outputs: [docs/global_modernization/v3/M02/android_arm64_artifact_report.md]
         gates: [P4]

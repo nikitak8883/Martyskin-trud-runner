@@ -1,6 +1,6 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m02_4_complete_m02_5_next_release_blocked`  
+Статус: `m02_5_technical_baseline_complete_m03_1_next_release_blocked`  
 Дата интеграции: 2026-07-21  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
@@ -58,7 +58,8 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M02.2: одна immutable logical content identity встроена в Web/Android build preflight/report; 3/3 target preflights и локальная/Windows/Linux матрица проходят 8/8. Platform artifact manifests остаются раздельными; build/runtime не запускались.
 - M02.3: свежая Web Mobile сборка из shared identity содержит 4 815 файлов / 120 421 881 байт; aliases/payload проходят. Browser matrix 34/34, interaction PASS, restart 10/10 и soak 300.561 s без console warnings/errors проходят на pinned `playwright-core@1.61.1`.
 - M02.4: свежий x86_64 debug APK установлен только на `emulator-5554`; Android matrix 28/28, interaction/name persistence, restart 10/10 и soak 300.623 s проходят без unexpected diagnostics. Репрезентативная визуальная выборка чистая.
+- M02.5: свежий device-valid APK содержит проверенные ELF64/AArch64 и ELF32/ARM payloads, валидные package/version и v1/v2 debug signature; физическая установка не выполнялась. Технический entry gate M02.2–M02.5 для M03 закрыт.
 
 ## Следующее безопасное действие
 
-Выполнить `M02.5`: собрать arm64-v8a device-valid APK из той же shared identity и статически проверить package/version/ABI/signature/content identity. На физическое устройство не устанавливать. Release остаётся blocked.
+Выполнить `M03.1`: read-only инвентарь ответственностей, calls, events, timers/listeners и scene bindings `GameRoot`, без изменения runtime. Release остаётся blocked.
