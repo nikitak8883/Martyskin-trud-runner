@@ -58,7 +58,7 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M02.2: одна immutable logical content identity встроена в Web/Android build preflight/report; 3/3 target preflights и локальная/Windows/Linux матрица проходят 8/8. Platform artifact manifests остаются раздельными; build/runtime не запускались.
 - M02.3: свежая Web Mobile сборка из shared identity содержит 4 815 файлов / 120 421 881 байт; aliases/payload проходят. Browser matrix 34/34, interaction PASS, restart 10/10 и soak 300.561 s без console warnings/errors проходят на pinned `playwright-core@1.61.1`.
 - M02.4: свежий x86_64 debug APK установлен только на `emulator-5554`; Android matrix 28/28, interaction/name persistence, restart 10/10 и soak 300.623 s проходят без unexpected diagnostics. Репрезентативная визуальная выборка чистая.
-- M02.5: свежий device-valid APK содержит проверенные ELF64/AArch64 и ELF32/ARM payloads, валидные package/version и v1/v2 debug signature; физическая установка не выполнялась. Технический entry gate M02.2–M02.5 для M03 закрыт.
+- M02.5: свежий ABI-valid APK содержит проверенные ELF64/AArch64 и ELF32/ARM payloads, валидные package/version и v1/v2 debug signature; это статическое evidence совместимости, физическая установка не выполнялась. Технический entry gate M02.2–M02.5 для M03 закрыт.
 
 ## Следующее безопасное действие
 

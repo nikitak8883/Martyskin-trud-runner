@@ -123,7 +123,7 @@ M12 замораживает RC, выполняет QA7 + RC2, создаёт We
 
 - Android/Web используют один logical content source; platform manifests не обязаны быть byte-identical.
 - Runtime QA Android по умолчанию только на эмуляторе.
-- Финальный Android artifact обязан быть device-valid arm64, даже если physical install не разрешён.
+- Финальный Android artifact обязан быть ABI-valid arm64; без physical install это только статическое evidence совместимости, а не device-validation.
 - Ни один warning/failure не скрывается fallback-ом как PASS.
 - Ни один old path не удаляется в том же patch, где впервые вводится replacement.
 - Все timers/listeners/assets/native resources имеют cleanup ownership.
@@ -143,7 +143,7 @@ M12 замораживает RC, выполняет QA7 + RC2, создаёт We
 
 1. clean, restorable, tagged source и документированная Git topology;
 2. единый fail-closed quality/release gate;
-3. Web и current device-valid Android из одного source/content anchor;
+3. Web и current ABI-valid Android из одного source/content anchor;
 4. завершённые M03–M10 contracts и отсутствие активных bypass/legacy paths;
 5. full QA7 + RC2 без stale evidence;
 6. signing/distribution состояние честно указано;

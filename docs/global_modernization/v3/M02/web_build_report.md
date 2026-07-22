@@ -48,7 +48,7 @@ The verification enumerated every regular file in normalized relative-path order
 | Native QA startup bridge | present |
 | Styled name flow | present |
 | New bonus PNG pack | present |
-| Developer password `primatal` | present |
+| Developer unlock flow | verified; value redacted from evidence |
 | Browser `prompt(...)` call | absent |
 
 Key entry hashes:
@@ -113,4 +113,4 @@ Accepted soak:
 - No Android artifact or runtime claim is made here.
 - Next safe package: M02.4 x86_64 emulator build/install/launch/matrix/restart/soak from the same shared identity.
 
-Rollback: revert `package.json`, `package-lock.json`, `tools/codex/run_web_playwright_function.js`, this report/summary and the M02.3 index updates together. Build outputs and ignored raw QA evidence are disposable and can be regenerated.
+Rollback: revert `package.json`, `package-lock.json`, `tools/codex/run_web_playwright_function.js`, `web_build_report.md`, `M02_3_CODE_REVIEW_REPORT.md`, `M02_3_VALIDATION_SUMMARY.json`, `CONTROL_LOG_CHECKPOINT_20260722_M02_3_COMPLETE.md`, and the M02.3 index updates together. Build outputs and ignored raw QA evidence are disposable and can be regenerated.

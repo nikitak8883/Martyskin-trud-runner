@@ -121,7 +121,7 @@ modules:
   M02:
     name: web_android_release_delivery_signing_and_artifact_parity
     priority: P0
-    current_status: m02_3_complete_m02_4_next_signing_and_distribution_blocked
+    current_status: m02_5_technical_baseline_complete_m03_1_next_release_blocked
     depends_on: [M00, M01]
     work_packages:
       - id: M02.1
@@ -147,7 +147,7 @@ modules:
         gates: [P4, QA7]
       - id: M02.5
         status: complete
-        objective: Build current arm64-v8a device-valid APK and verify package, version, ABI, signature and source/content identity without physical install.
+        objective: Build the current ABI-valid arm64-v8a APK and verify package, version, ABI, signature and source/content identity without claiming physical-device validation.
         outputs: [docs/global_modernization/v3/M02/android_arm64_artifact_report.md]
         gates: [P4]
       - id: M02.6

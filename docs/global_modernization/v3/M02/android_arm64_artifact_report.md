@@ -1,7 +1,7 @@
 # M02.5 current ARM Android artifact report
 
 Date: 2026-07-22  
-Status: `PASS FOR M02.5 / DEVICE-VALID DEBUG-SIGNED APK / RELEASE STILL BLOCKED`
+Status: `PASS FOR M02.5 / ABI-VALID DEBUG-SIGNED APK / RELEASE STILL BLOCKED`
 
 ## Accepted boundary
 
@@ -30,7 +30,7 @@ Results:
 - clean post-package Gradle `assembleDebug`: `BUILD SUCCESSFUL in 6m 26s`, 98 actionable tasks;
 - Cocos log SHA-256 `DFE7BBB2DED03B795D80077DDF2ECE8BAAD03D9066C2908E968F6A3512854968`;
 - Gradle stdout SHA-256 `34B76D94251CC063B260E8C57C613EAEBB6F2112FC903B2C8E29F1F7117A3064`;
-- payload guard: current runtime menu, native QA route, styled name flow, bonus PNG pack and `primatal` present; obsolete menu layer and `prompt(...)` absent.
+- payload guard: current runtime menu, native QA route, styled name flow, bonus PNG pack and the developer unlock contract present; the unlock value is redacted from evidence; obsolete menu layer and `prompt(...)` absent.
 
 The first launch was interrupted at 14 seconds by an incorrectly short outer shell timeout while the owned Cocos child continued. Its exact process tree was verified and terminated before retry. The accepted retry used the intended 1800-second shell timeout and a new log name. The partial attempt is not evidence and no concurrent Cocos/Gradle process was permitted.
 
@@ -56,7 +56,7 @@ Native payload was checked independently of names:
 - `lib/arm64-v8a/libcocos.so`: `72,434,000` bytes, ELF class 2, little-endian, machine `0x00B7` (`AArch64`) — PASS;
 - `lib/armeabi-v7a/libcocos.so`: `47,873,636` bytes, ELF class 1, little-endian, machine `0x0028` (`ARM`) — PASS.
 
-The artifact is therefore arm64 device-valid and also contains a 32-bit ARM fallback. It is debug-signed because the project config has `useDebugKeystore=true` and the project wrapper intentionally performs `assembleDebug` to prevent stale packaged assets. This satisfies M02.5 artifact/ABI integrity only; it is not a production release APK.
+The artifact is therefore ABI-valid for arm64 and also contains a 32-bit ARM fallback. This is static compatibility evidence only: no physical-device install or launch was performed. It is debug-signed because the project config has `useDebugKeystore=true` and the project wrapper intentionally performs `assembleDebug` to prevent stale packaged assets. This satisfies M02.5 artifact/ABI integrity only; it is not a production release APK.
 
 ## Limitations and next gate
 

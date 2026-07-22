@@ -38,7 +38,7 @@ Results:
 - clean Gradle `assembleDebug`: `BUILD SUCCESSFUL in 2m 27s`, 96 actionable tasks;
 - Cocos log SHA-256 `756726D2A8CD564E10B0FA7E898855FB7AD34F6D7543CF8ED1845DF4652F328B`;
 - Gradle stdout SHA-256 `429BE54DD79333CC542F8F24EA97AD60680C6D1F371FDD50DED1050008781281`;
-- payload guard: current menu route, native QA bridge, styled name flow, new bonus PNG pack and `primatal` present; obsolete main-menu layer and browser `prompt(...)` absent.
+- payload guard: current menu route, native QA bridge, styled name flow, new bonus PNG pack and the developer unlock contract present; the unlock value is redacted from evidence; obsolete main-menu layer and browser `prompt(...)` absent.
 
 ## APK and install evidence
 
@@ -86,13 +86,14 @@ The ignored raw evidence set contains 81 files / 189,629,869 bytes, including 43
 
 ## Review and limitations
 
-- Development static gate `qg.20260722080310.cb31e1f5e6da`: `8/8 PASS`, zero findings, source stable; dirty-source authorization was explicit for this pre-commit evidence pass. Report SHA-256 `F7390695D2D196F9490AEC52750613F93D13B41FF7978C78A4DD3FE3FFE7F8E1`.
+- Preliminary development static gate `qg.20260722080310.cb31e1f5e6da`: `8/8 PASS`, zero findings, source stable; dirty-source authorization was explicit for this pre-commit evidence pass. Report SHA-256 `F7390695D2D196F9490AEC52750613F93D13B41FF7978C78A4DD3FE3FFE7F8E1`.
+- Accepted clean-source static gate on `233e1cb03c0be213752c469eee74625d49de2bd1`: `qg.20260722080624.cb31e1f5e6da`, `8/8 PASS`, zero findings, source clean/stable and dirty authorization disabled. Report SHA-256 `F41F737C294C87E3ECBD58E9000D42362F74F9148EC969C6DD40EB52A28E0A95`.
 - Build config, package metadata, signature, installed package state, all raw summaries and representative frames were inspected independently of the QA scripts' top-level PASS.
 - The live emulator process keeps its empty startup stdout/stderr handles open; those two process-owned files are not canonical evidence and were not falsely hash-claimed.
 - Cocos emitted known engine-cache/module fallback warnings; Gradle emitted existing deprecation notices. Neither produced a product warning in matrix/interaction diagnostics.
 - No gameplay source, scene, runtime asset, signing material or physical-device state changed in M02.4.
 - No production-signing, device-arm64, AAB, Pages or release-ready claim is made.
 
-Next safe package: M02.5, a fresh arm64-v8a device-valid APK inspected for package/version/ABI/signature/content identity without installation on a physical device.
+Next safe package: M02.5, a fresh ABI-valid arm64-v8a APK inspected for package/version/ABI/signature/content identity without claiming physical-device validation.
 
 Rollback: delete the ignored emulator build/raw evidence and revert this report, summary and M02.4 index updates. No runtime rollback is required.

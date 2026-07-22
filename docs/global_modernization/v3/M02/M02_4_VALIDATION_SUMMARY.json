@@ -77,14 +77,14 @@
     }
   },
   "static_gate": {
-    "run_id": "qg.20260722080310.cb31e1f5e6da",
+    "run_id": "qg.20260722080624.cb31e1f5e6da",
     "status": "PASS",
     "passed": 8,
     "failed": 0,
     "findings": 0,
-    "dirty_source_authorized": true,
+    "dirty_source_authorized": false,
     "source_stable": true,
-    "report_sha256": "F7390695D2D196F9490AEC52750613F93D13B41FF7978C78A4DD3FE3FFE7F8E1"
+    "report_sha256": "F41F737C294C87E3ECBD58E9000D42362F74F9148EC969C6DD40EB52A28E0A95"
   },
   "open_blockers": [
     "M02.1 distribution and production signing decision",

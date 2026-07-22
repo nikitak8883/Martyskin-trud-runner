@@ -12,7 +12,7 @@ Verdict: `PASS FOR BOUNDED M02.5`
 | Package/version may differ from emulator/Web baseline | `aapt2` reports the expected application ID and `1.0 (1)`; wrapper binds the accepted shared identity and payload guard. |
 | APK may contain stale runtime assets | Clean `assembleDebug` ran after Cocos; payload guard passes all current/obsolete route checks. |
 | Signature may be invalid | `apksigner` verifies v1 and v2. Certificate fingerprint is recorded. |
-| Debug signature may be presented as production | Explicitly rejected: this is device-valid debug-signed evidence; production signing remains blocked. |
+| Debug signature may be presented as production | Explicitly rejected: this is ABI-valid debug-signed static compatibility evidence; production signing remains blocked. |
 | A physical phone could be modified | No physical serial was present and no install/launch command ran. |
 
 ## Verdict
