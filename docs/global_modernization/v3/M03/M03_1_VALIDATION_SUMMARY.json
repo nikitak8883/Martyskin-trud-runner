@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "work_package": "M03.1",
+  "status": "pass",
+  "runtime_changed": false,
+  "release_status": "blocked",
+  "source": {
+    "path": "assets/scripts/GameRoot.ts",
+    "bytes": 294102,
+    "lines": 5428,
+    "sha256": "22941AA58AF4A27DF103C5339D77D6E1D82028EE932740484CF7002B0EF507A2",
+    "parse_diagnostics": 0
+  },
+  "inventory": {
+    "class_fields": 170,
+    "mutable_fields": 169,
+    "methods": 267,
+    "internal_call_occurrences": 1046,
+    "unique_internal_call_edges": 613,
+    "listener_registrations": 8,
+    "listener_unregistrations": 8,
+    "scheduled_callbacks": 15,
+    "explicit_unschedule_calls": 0,
+    "storage_operations": 37,
+    "storage_keys": 18,
+    "resource_load_sites": 4,
+    "serialized_properties": 0,
+    "dynamic_node_patterns": 10,
+    "scene_operations": 34
+  },
+  "generated_evidence": {
+    "path": "docs/global_modernization/v3/M03/game_root_inventory.generated.json",
+    "sha256": "20F1930860C00D5BB6727A32847340ED1506112E3B229504A132B639D7E3DB01",
+    "deterministic_rerun": true,
+    "generator": "tools/codex/analyze-game-root.js",
+    "generator_sha256": "94A92B05632BD1F4D2FEC3BAAF0F46872DB732002D68B8C04F3C93EC07FC4915",
+    "typescript_version": "5.8.2"
+  },
+  "findings": {
+    "major": 5,
+    "moderate": 3,
+    "fixed_in_this_package": 0,
+    "deferred_by_design": 8
+  },
+  "qa": {
+    "runtime_qa_required": false,
+    "reason": "inventory and analysis tooling only; gameplay source, scene, assets and content identity are unchanged",
+    "static_gate": {
+      "run_id": "qg.20260722094323.cb31e1f5e6da",
+      "status": "PASS",
+      "passed": 8,
+      "failed": 0,
+      "findings": 0,
+      "source_commit": "25df6ea968613445d05d490030e75a3778eb0c60",
+      "dirty_source_authorized": true,
+      "source_stable": true,
+      "report_sha256": "55517CBA1D6E48AF4353BD6169D36AC7217D5CCDA0DC2CFBA231F1AA1BECF463"
+    },
+    "local_advisory": {
+      "heavy_review": "rejected_no_validated_final_finish_reason_length_after_bounded_retry",
+      "heavy_model_unloaded_verified": true,
+      "quick_review": "pass_zero_findings",
+      "quick_model_unloaded_verified": true
+    },
+    "coderabbit": {
+      "reviewed_new_files_after_staging": true,
+      "findings": 1,
+      "fixed": 1,
+      "finding": "constructor_and_accessor_declarations_missing_from_analyzer",
+      "regression_fixture": "pass",
+      "final_re_review_findings": 0,
+      "final_re_review_files": 9
+    }
+  },
+  "next_safe_action": "Execute M03.2 typed GameSessionState transition contract as one bounded adapter patch."
+}

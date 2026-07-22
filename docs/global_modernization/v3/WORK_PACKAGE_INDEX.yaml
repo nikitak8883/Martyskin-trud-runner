@@ -171,14 +171,14 @@ modules:
   M03:
     name: gameroot_decomposition_and_gameplay_routing_seams
     priority: P0
-    current_status: pending
+    current_status: m03_1_complete_m03_2_next
     depends_on: [M00, M01]
     entry_gate_work_packages: [M02.2, M02.3, M02.4, M02.5]
     work_packages:
       - id: M03.1
-        status: pending
+        status: complete
         objective: Generate responsibility, call, event, timer/listener and scene-binding inventory for GameRoot without changing behavior.
-        outputs: [docs/global_modernization/v3/M03/game_root_inventory.md]
+        outputs: [tools/codex/analyze-game-root.js, docs/global_modernization/v3/M03/game_root_inventory.generated.json, docs/global_modernization/v3/M03/game_root_inventory.md, docs/global_modernization/v3/M03/M03_1_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_1_CODE_REVIEW_REPORT.md]
         gates: [D4]
       - id: M03.2
         status: pending

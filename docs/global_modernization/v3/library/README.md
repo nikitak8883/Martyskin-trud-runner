@@ -34,4 +34,4 @@
 
 ## Следующий слой
 
-Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. Технический baseline M02.2–M02.5 завершён; следующий bounded package — M03.1 read-only GameRoot inventory. Runtime seams активируются только после inventory, adapters и parity gates.
+Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M03.1 read-only GameRoot inventory завершён; следующий bounded package — M03.2 typed session-transition adapter. Остальные runtime seams активируются только по одному после adapter parity gates.

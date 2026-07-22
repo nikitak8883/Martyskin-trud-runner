@@ -1,6 +1,6 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m02_5_technical_baseline_complete_m03_1_next_release_blocked`  
+Статус: `m03_1_inventory_complete_m03_2_next_release_blocked`  
 Дата интеграции: 2026-07-21  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
@@ -59,7 +59,8 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M02.3: свежая Web Mobile сборка из shared identity содержит 4 815 файлов / 120 421 881 байт; aliases/payload проходят. Browser matrix 34/34, interaction PASS, restart 10/10 и soak 300.561 s без console warnings/errors проходят на pinned `playwright-core@1.61.1`.
 - M02.4: свежий x86_64 debug APK установлен только на `emulator-5554`; Android matrix 28/28, interaction/name persistence, restart 10/10 и soak 300.623 s проходят без unexpected diagnostics. Репрезентативная визуальная выборка чистая.
 - M02.5: свежий ABI-valid APK содержит проверенные ELF64/AArch64 и ELF32/ARM payloads, валидные package/version и v1/v2 debug signature; это статическое evidence совместимости, физическая установка не выполнялась. Технический entry gate M02.2–M02.5 для M03 закрыт.
+- M03.1: воспроизводимый TypeScript AST inventory зафиксировал 170 полей, 267 методов, 613 уникальных internal call edges, 8/8 listener register/unregister, 15 `scheduleOnce`, 37 storage operations и 10 dynamic-node patterns. Runtime не менялся; восемь coupling findings разнесены по M03.2–M03.7.
 
 ## Следующее безопасное действие
 
-Выполнить `M03.1`: read-only инвентарь ответственностей, calls, events, timers/listeners и scene bindings `GameRoot`, без изменения runtime. Release остаётся blocked.
+Выполнить `M03.2`: ввести typed `GameSessionState` transition contract вокруг единственного текущего writer `transitionTo`, сохранив все валидные переходы и не перемещая UI/physics. Release остаётся blocked.
