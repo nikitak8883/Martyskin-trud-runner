@@ -178,6 +178,15 @@ class QualityGateRunnerTests(unittest.TestCase):
                 runner.resolve_project_path(PROJECT_ROOT, value, "test.path")
             self.assertEqual(caught.exception.code, code)
 
+    @unittest.skipIf(os.name == "nt", "POSIX absolute-path regression")
+    def test_posix_absolute_executable_is_not_a_windows_device_path(self) -> None:
+        executable = str(Path(sys.executable).resolve(strict=True))
+        self.assertEqual(
+            runner._validate_path_text(executable, "step.executable", relative_only=False),
+            executable,
+        )
+        self.assertEqual(runner._resolve_executable(PROJECT_ROOT, executable), Path(executable))
+
     def test_symlink_escape_is_rejected_after_resolution(self) -> None:
         with tempfile.TemporaryDirectory(prefix="m01_3_outside_") as raw_outside:
             link = self.directory / "outside-link"

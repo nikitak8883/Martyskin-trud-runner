@@ -127,7 +127,7 @@ def _is_unc(value: str) -> bool:
 def _is_windows_root_or_device_path(value: str) -> bool:
     normalized = value.replace("/", "\\").casefold()
     return normalized.startswith("\\??\\") or normalized.startswith("\\device\\") or (
-        normalized.startswith("\\") and not normalized.startswith("\\\\")
+        value.startswith("\\") and not value.startswith("\\\\")
     )
 
 
