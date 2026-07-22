@@ -24,7 +24,8 @@ The sections below preserve the detailed Tasks/4 implementation history, but the
 - M01.4 is complete: 3 profile schemas plus a canonical D4/P4/M2_PLUS/QA7/RC2 catalog, explicit applicability semantics and a fail-closed aggregate evaluator now compose fresh M01.3 reports. The isolated unit/integration suite passes 44/44 executable tests with 2 expected platform skips. No game-runtime file changed.
 - M01.5 is complete: a delete-incapable index-first classifier reconciles 801/801 evidence files, verifies accepted anchors and records 68 protected, 207 retained_recent and 526 rotatable review-only entries. No evidence or game-runtime file was deleted, moved or rewritten.
 - M01.6 is complete: one typed static command is shared by local execution and the Windows/Linux GitHub Actions matrix; clean local and hosted run `29895079941` passed 7/7 mandatory steps on source `34dd70086a98c11a41a73e17460ed78426456be5` with identical config/lock identities and without build/runtime/device execution.
-- Current next action: execute `M01.7` fail-closed M2_PLUS release summary; release recovery and runtime patches remain dependency-blocked.
+- M01.7 is complete: the canonical `M2_PLUS` evaluation correctly returns `BLOCKED` for 8 missing mandatory evidence slots; all 4 focused-recovery slots are explicitly not applicable for this audit-only package.
+- Current next action: execute `M02.2` shared logical Web/Android content identity; release recovery remains fail-closed.
 - Current release status: blocked by Web/Pages drift, absence of a current arm64 artifact from the accepted source, unresolved production signing and missing embedded content version.
 
 The latest known game runtime line is Android/Web capable and has a validated live Web build. The current task line is the Tasks/4 global modernization rollout. Module 0/10 scaffold is in place, Module 1 non-mutating asset/reference validation passes, Module 3 static skin/bonus matrix, contact sheet evidence, and selected Android emulator QA pass, and Module 2 now has `name`, `menu`, `levels`, `playing_hud`, `devgate`, `sound`, `skins`, `devpanel`, `achievements`, `records`, and `paused` UI IR pilots with Web runtime evidence plus Android emulator runtime evidence.
@@ -128,9 +129,9 @@ adb -s R5CY933XP7P install --user 0 -r "<release-apk>"
 
 ## Latest local checkpoint log
 
-- `docs\global_modernization\v3\M01\M01_6_VALIDATION_SUMMARY.json`
-- status: `pass`
-- next safe action: execute `M01.7` fail-closed M2_PLUS release summary
+- `docs\global_modernization\v3\M01\M01_7_VALIDATION_SUMMARY.json`
+- implementation status: `pass`; release status: `blocked`
+- next safe action: execute `M02.2` shared logical Web/Android content identity
 
 ## Required next implementation order
 
@@ -140,8 +141,8 @@ adb -s R5CY933XP7P install --user 0 -r "<release-apk>"
 4. M01.4 complete: preserve typed D4/P4/M2_PLUS/QA7/RC2 profiles, explicit applicability and stale/reuse/source protections.
 5. M01.5 complete: preserve the delete-incapable 801-file retention dry-run, exact output allowlist and protected/recent/rotatable classification.
 6. M01.6 complete: preserve the single typed local/CI command, immutable Action pins and static-only evidence boundary.
-7. Execute M01.7 release-blocking summary after M01.6 parity is accepted.
-8. Execute M02 technical release recovery from the frozen source before any external release claim.
+7. M01.7 complete: preserve the fail-closed release summary and its 8 explicit missing mandatory evidence findings.
+8. Execute M02.2–M02.5 technical release recovery from the frozen source before any external release claim.
 9. Resume M03+ runtime modernization only through the dependency-gated work-package index.
 
 ## Hard rules

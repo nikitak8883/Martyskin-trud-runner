@@ -1,5 +1,5 @@
 schema_version: 1
-updated_at: "2026-07-21"
+updated_at: "2026-07-22"
 project: martyshkin_trud_runner
 execution_model: dependency_gated_bounded_patch
 runtime_started: false
@@ -78,7 +78,7 @@ modules:
   M01:
     name: unified_quality_gate_ci_code_review_and_evidence
     priority: P0
-    current_status: m01_6_complete_release_summary_next
+    current_status: complete_release_blocked
     depends_on: [M00]
     work_packages:
       - id: M01.1
@@ -113,7 +113,7 @@ modules:
         outputs: [.github/workflows/mtr-static-gates.yml, tools/codex/quality-gate/static-gates.json, docs/global_modernization/v3/M01/ci_local_parity_report.md, docs/global_modernization/v3/M01/M01_6_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M01/M01_6_CODE_REVIEW_REPORT.md]
         gates: [P4]
       - id: M01.7
-        status: pending
+        status: complete
         objective: Produce a release-blocking summary that rejects failed, missing, skipped or stale mandatory evidence.
         outputs: [docs/global_modernization/final_qa_report.md, docs/global_modernization/v3/M01/code_review_report.md]
         gates: [M2_PLUS]
@@ -121,7 +121,7 @@ modules:
   M02:
     name: web_android_release_delivery_signing_and_artifact_parity
     priority: P0
-    current_status: blocked_quality_gate_and_release_decisions
+    current_status: m02_2_ready_signing_and_distribution_blocked
     depends_on: [M00, M01]
     work_packages:
       - id: M02.1

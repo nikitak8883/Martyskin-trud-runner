@@ -26,10 +26,11 @@
 - 8 canonical quality schemas проходят pinned Draft 2020-12 validation; M01.3/M01.4 runner/profile self-tests и fail-closed mutations проходят;
 - M01.5 retention tool классифицирует 801/801 indexed evidence files без delete capability; path/drift guards и 13-test suite проходят;
 - M01.6 один typed static command проходит локально 7/7 и используется без расхождений в Windows/Linux Actions matrix;
+- M01.7 fail-closed summary корректно блокирует release при 8 отсутствующих mandatory evidence slots;
 - 8 TypeScript files проходят Cocos-bundled TypeScript `--noEmit --strict --target ES2020`;
 - 6 templates скопированы без изменения;
 - исходные SHA-256 подтверждены внутренним manifest пакета.
 
 ## Следующий слой
 
-Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M01.6 CI/local parity принят; следующий bounded package — M01.7 release-blocking summary. Draft/runtime seams по-прежнему не активируются без своих dependency gates, adapters и parity tests.
+Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M01.7 завершён с release verdict `BLOCKED`; следующий bounded package — M02.2 shared Web/Android content identity. Draft/runtime seams по-прежнему не активируются без своих dependency gates, adapters и parity tests.

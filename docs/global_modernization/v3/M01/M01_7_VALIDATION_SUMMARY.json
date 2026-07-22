@@ -1,0 +1,49 @@
+{
+  "schema": "mtr.m01_7_validation_summary.v1",
+  "generated_at": "2026-07-22T09:08:00+03:00",
+  "work_package": "M01.7",
+  "implementation_status": "PASS",
+  "release_status": "BLOCKED",
+  "source_commit": "c0d79e197833ed46ac9758586f9b96756462876b",
+  "content_version": "mtr-m01-7-release-gate-20260722",
+  "profile": {
+    "id": "M2_PLUS",
+    "run_id": "profile.m01-7.release-blocking-summary",
+    "status": "BLOCKED",
+    "generated_at": "2026-07-22T06:01:58.456Z",
+    "duration_ms": 82,
+    "config_sha256": "B82025891085FEC4F0E207EAD89C3F6DD479C77730307AF26820D0297DB40EB3",
+    "scope_sha256": "EE9589DC6EFA765B9D5BBA8F6D931939D29018968F3E19CE29B88235DE3FB44D",
+    "report_sha256": "F46A10E9F1477856B82F1C7BE9E667245FBBE0F2FE148B0BF88812921C33DF4A",
+    "source_clean": true,
+    "source_matches_scope": true,
+    "source_stable_during_run": true,
+    "mandatory_slots": 8,
+    "blocked_mandatory_slots": 8,
+    "conditional_slots": 4,
+    "not_applicable_conditional_slots": 4,
+    "blocking_findings": 8,
+    "finding_codes": ["MANDATORY_EVIDENCE_MISSING"]
+  },
+  "missing_mandatory_evidence": {
+    "pass_a": ["static-contract", "web-targeted", "android-emulator-targeted", "regression-review"],
+    "pass_b": ["static-contract", "web-targeted", "android-emulator-targeted", "regression-review"]
+  },
+  "focused_recovery": {
+    "applicable": false,
+    "reason_code": "no_runtime_patch_in_scope"
+  },
+  "hosted_static_regression": {
+    "run_id": 29895369190,
+    "run_url": "https://github.com/nikitak8883/Martyskin-trud-runner/actions/runs/29895369190",
+    "windows": "PASS",
+    "ubuntu": "PASS"
+  },
+  "runtime_changed": false,
+  "build_executed": false,
+  "web_runtime_executed": false,
+  "android_emulator_executed": false,
+  "physical_device_used": false,
+  "pages_changed": false,
+  "next_safe_action": "Implement M02.2 shared logical Web/Android content identity, then produce fresh platform evidence before rerunning M2_PLUS."
+}

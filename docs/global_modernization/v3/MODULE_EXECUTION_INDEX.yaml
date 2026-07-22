@@ -1,11 +1,11 @@
 schema_version: 1
-updated_at: "2026-07-21"
+updated_at: "2026-07-22"
 source_head: 12670452ae4580ef5c685ff986476daf91522978
 source_state: frozen_tagged_bundled_restored
 modules:
   M00: {status: complete, completed: [M00.1, M00.2, M00.3, M00.4, M00.5, M00.6], next: null, report: docs/global_modernization/v3/M00/source_freeze_report.md}
-  M01: {status: partial, completed: [M01.1, M01.2, M01.3, M01.4, M01.5, M01.6], next: M01.7, report: docs/global_modernization/v3/M01/M01_6_VALIDATION_SUMMARY.json}
-  M02: {status: blocked, completed: [], next: M02.1, report: null}
+  M01: {status: complete_release_blocked, completed: [M01.1, M01.2, M01.3, M01.4, M01.5, M01.6, M01.7], next: null, report: docs/global_modernization/final_qa_report.md}
+  M02: {status: partial_blocked, completed: [], next: M02.2, report: null}
   M03: {status: pending, completed: [], next: M03.1, report: null}
   M04: {status: revalidate_then_extend, completed: [], next: M04.1, report: docs/global_modernization/graphics_inventory.md}
   M05: {status: revalidate_then_extend, completed: [], next: M05.1, report: docs/global_modernization/ui_ir_migration_report.md}
@@ -22,4 +22,4 @@ release_blockers:
   - no current arm64 artifact from accepted source
   - no production signing decision
   - no embedded content version
-next_safe_action: execute M01.7 fail-closed M2_PLUS release summary; do not claim release readiness from the static gate
+next_safe_action: execute M02.2 shared logical Web/Android content identity; keep release blocked until fresh platform, signing and deployment evidence passes
