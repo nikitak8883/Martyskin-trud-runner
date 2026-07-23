@@ -1,5 +1,5 @@
 schema_version: 1
-updated_at: "2026-07-22"
+updated_at: "2026-07-23"
 project: martyshkin_trud_runner
 execution_model: dependency_gated_bounded_patch
 runtime_started: false
@@ -171,7 +171,7 @@ modules:
   M03:
     name: gameroot_decomposition_and_gameplay_routing_seams
     priority: P0
-    current_status: m03_1_complete_m03_2_next
+    current_status: m03_2_complete_m03_3_next
     depends_on: [M00, M01]
     entry_gate_work_packages: [M02.2, M02.3, M02.4, M02.5]
     work_packages:
@@ -181,10 +181,10 @@ modules:
         outputs: [tools/codex/analyze-game-root.js, docs/global_modernization/v3/M03/game_root_inventory.generated.json, docs/global_modernization/v3/M03/game_root_inventory.md, docs/global_modernization/v3/M03/M03_1_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_1_CODE_REVIEW_REPORT.md]
         gates: [D4]
       - id: M03.2
-        status: pending
+        status: complete
         objective: Define GameSessionState/player transition contracts and reject invalid transitions deterministically.
         targets: [assets/scripts/gameplay/state]
-        outputs: [docs/global_modernization/v3/M03/gameplay_state_report.md]
+        outputs: [assets/scripts/gameplay/state/GameSessionState.ts, docs/global_modernization/v3/M03/player_state_machine.yaml, tools/codex/test-game-session-state.js, tools/codex/validate_game_session_state.py, docs/global_modernization/v3/M03/gameplay_state_report.md, docs/global_modernization/v3/M03/M03_2_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_2_CODE_REVIEW_REPORT.md]
         gates: [P4, M2_PLUS]
       - id: M03.3
         status: pending
@@ -598,6 +598,6 @@ modules:
         gates: [RC2]
 
 next_safe_action:
-  module: M01
-  work_package: M01.7
-  action: Produce the fail-closed M2_PLUS release summary; missing, failed, skipped or stale mandatory evidence must remain release-blocking.
+  module: M03
+  work_package: M03.3
+  action: Add one bounded deterministic development event log with reset ownership and no release spam; keep release blocked.

@@ -33,6 +33,12 @@ import {
     themedUiAssetKeysForSurface,
 } from './generated/ThemeAssetCatalog.generated';
 import type { ThemedUiAssetRole, ThemeRuntimeCategory } from './generated/ThemeAssetCatalog.generated';
+import { evaluateGameSessionTransition, gameSessionModeForState } from './gameplay/state/GameSessionState';
+import type {
+    GameSessionMode,
+    GameSessionState,
+    GameSessionTransitionResult,
+} from './gameplay/state/GameSessionState';
 import { UI_SCREEN_TITLES, UI_SHARED_ASSET_KEYS, UI_SKIN } from './ui/UITheme';
 import type { UiColorTuple } from './ui/UITheme';
 
@@ -222,9 +228,9 @@ const LEVEL_SELECT_THEME_ICON_KEYS = [
 ] as const;
 const THEMED_GAMEPLAY_RUNTIME_KEYS = THEMED_ALL_RUNTIME_KEYS.filter((key) => !key.includes('/ui/'));
 
-type State = 'menu' | 'playing' | 'paused' | 'clear' | 'over' | 'finished' | 'skins' | 'levels' | 'sound' | 'records' | 'achievements' | 'name' | 'devgate' | 'devpanel';
+type State = GameSessionState;
 type EndState = 'clear' | 'over' | 'finished';
-type FsmMode = 'MENU' | 'CHARACTER_SELECT' | 'LEVEL_SELECT' | 'RUNNING' | 'PAUSED' | 'GAME_OVER' | 'ACHIEVEMENTS' | 'DEV_MODE';
+type FsmMode = GameSessionMode;
 type CollectibleKind = 'banana' | 'coconut' | 'figLeaf';
 
 interface Rect { x: number; y: number; w: number; h: number; }
@@ -1298,14 +1304,7 @@ export class GameRoot extends Component {
     }
 
     private modeForState(state: State): FsmMode {
-        if (state === 'playing' || state === 'clear' || state === 'finished') return 'RUNNING';
-        if (state === 'paused' || state === 'sound') return 'PAUSED';
-        if (state === 'over') return 'GAME_OVER';
-        if (state === 'skins' || state === 'name') return 'CHARACTER_SELECT';
-        if (state === 'levels') return 'LEVEL_SELECT';
-        if (state === 'records' || state === 'achievements') return 'ACHIEVEMENTS';
-        if (state === 'devgate' || state === 'devpanel') return 'DEV_MODE';
-        return 'MENU';
+        return gameSessionModeForState(state);
     }
 
     private createGameState(): RunnerGameState {
@@ -1349,11 +1348,17 @@ export class GameRoot extends Component {
         this.gameState = this.createGameState();
     }
 
-    private transitionTo(next: State, reason = 'runtime'): void {
+    private transitionTo(next: State, reason = 'runtime'): GameSessionTransitionResult {
         const prev = this.state;
-        if (prev === next) {
+        const transition = evaluateGameSessionTransition(prev, next, reason);
+        if (transition.accepted === false) {
             this.syncGameState();
-            return;
+            console.warn(`MTR_FSM_REJECT code=${transition.code} state=${prev}->${next} reason=${reason}`);
+            return transition;
+        }
+        if (!transition.changed) {
+            this.syncGameState();
+            return transition;
         }
         if (prev === 'name' && next !== 'name') this.commitPlayerNameFromInput(false);
         const prevMode = this.modeForState(prev);
@@ -1363,6 +1368,7 @@ export class GameRoot extends Component {
         if (next === 'name') this.syncPlayerNameEditString();
         this.syncGameState();
         console.log(`MTR_FSM:${prevMode}->${nextMode} state=${prev}->${next} reason=${reason}`);
+        return transition;
     }
 
     private logGameStateSnapshot(reason: string): void {

@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "work_package": "M03.2",
+  "status": "pass",
+  "runtime_changed": true,
+  "release_status": "blocked",
+  "scope": {
+    "objective": "Define GameSessionState and player transition contracts and reject invalid session transitions deterministically.",
+    "runtime_owner": "assets/scripts/GameRoot.ts",
+    "contract": "assets/scripts/gameplay/state/GameSessionState.ts",
+    "player_schema": "docs/global_modernization/v3/M03/player_state_machine.yaml",
+    "deferred": [
+      "bounded development event log to M03.3",
+      "runtime player input routing to M03.4",
+      "collision routing to M03.5",
+      "power-up lifecycle extraction to M03.6"
+    ]
+  },
+  "source": {
+    "game_root": {
+      "bytes": 293997,
+      "lines": 5434,
+      "sha256": "BBD19424A1B1E13ABDC0A9FA689E234AD738E8DC687F267EE3624B7961BD28F1"
+    },
+    "session_contract": {
+      "bytes": 3961,
+      "lines": 129,
+      "sha256": "2867D8126196E05EE62B3B42900D1C32E8A1825FC10D6F3C5A8397C34C3034B6"
+    },
+    "player_schema": {
+      "bytes": 7301,
+      "lines": 309,
+      "sha256": "72223C7C9012C3DDBB186150CADBA85139896DCF04FF9D9D57700DD2DED1DC4B"
+    }
+  },
+  "contracts": {
+    "session_states": 14,
+    "changed_edges": 44,
+    "idempotent_self_edges": 14,
+    "accepted_pairs": 58,
+    "rejected_pairs": 138,
+    "mutable_session_state_writers": 1,
+    "player_states": 8,
+    "player_transitions": 44,
+    "player_schema_runtime_enforced": false
+  },
+  "static_qa": {
+    "node_contract_test": {
+      "command": "node tools/codex/test-game-session-state.js",
+      "status": "PASS",
+      "script_sha256": "70EE25DCDB1F4FCC264828D3BC7E0E78C25FA6F8EADD4F44F58D7A1A4E818B2E"
+    },
+    "structural_validator": {
+      "command": "python -B tools/codex/validate_game_session_state.py --project-root .",
+      "status": "PASS",
+      "script_sha256": "4ECD7DACA2B97D64279167A37D6A1275EB581FE604B8721FEB10CBCEC6E76724"
+    },
+    "pure_module_strict_typescript": "PASS",
+    "complete_project_typescript": "PASS",
+    "git_diff_check": "PASS",
+    "canonical_static_gate": {
+      "run_id": "qg.20260723060528.0f3e1728c410",
+      "status": "PASS",
+      "passed": 9,
+      "failed": 0,
+      "findings": 0,
+      "source_commit": "2bd86f67fb52a3af9d7e3420b500773812dbfe9a",
+      "dirty_source": true,
+      "dirty_source_authorized": true,
+      "expected_dirty_scope_match": true,
+      "source_stable": true,
+      "report": "temp/quality-gate-m03-2/report-final.json",
+      "report_sha256": "EE88C672603244A8C1F1ED67AA70EF0878E45133090EE7B61FD77F3B2B28BCB5"
+    }
+  },
+  "independent_review": {
+    "provider": "CodeRabbit CLI through guarded WSL wrapper",
+    "privacy_gate": "pass",
+    "untracked_files_included": false,
+    "initial_findings": 2,
+    "accepted_findings": 1,
+    "fixed_findings": 1,
+    "rejected_findings": 1,
+    "rejected_reason": "The finding assumed dependency files were absent, but they were present in the same staged review scope.",
+    "final_re_review_findings": 0
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "physical_device_used": false,
+    "emulator_serial": "emulator-5554",
+    "avd": "MTR_Pixel_8_Pro_API_35",
+    "toolchain_report": "logs/android-toolchain-status-20260723-082715.json",
+    "toolchain_report_sha256": "A0EAB1635E6E04D08ABA6480D2DF892E191115C1DEA1A8A6F9AB63A5F2E62AED",
+    "fresh_build": "PASS",
+    "apk": {
+      "path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk",
+      "bytes": 142883719,
+      "sha256": "0AA6363DBABA12F25ACDF01DCC6C34E1A2949D34EF8BA0AD9378E2F036E2E448",
+      "abi": "x86_64",
+      "signature_scope": "debug_emulator_qa_only"
+    },
+    "matrix": {
+      "passed": 28,
+      "total": 28,
+      "ui_routes": 13,
+      "levels": 15,
+      "summary": "docs/qa/20260723_m03_2_android/matrix/android_matrix_cycle1_summary.json",
+      "summary_sha256": "925F6B94D3420E3BD723DF83D05735BA6E5C222689067462975742758B8EC246"
+    },
+    "interaction": "PASS",
+    "name_persistence": "PASS",
+    "restart_passed": 10,
+    "restart_total": 10,
+    "soak_seconds": 300.369,
+    "soak_input_bursts": 323,
+    "soak_state_actions": 17,
+    "process_losses": 0,
+    "interaction_summary": "docs/qa/20260723_m03_2_android/interaction/android_interaction_cycle1_summary.json",
+    "interaction_summary_sha256": "BF007873029B89D5EF96D388B8ECB04C24659F70D0C315C2DD76B9B64876C349",
+    "unexpected_diagnostics": 0,
+    "fsm_rejections": 0
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_build": "PASS",
+    "published": false,
+    "matrix_passed": 34,
+    "matrix_total": 34,
+    "portrait": "PASS",
+    "interaction": "PASS",
+    "restart_passed": 10,
+    "restart_total": 10,
+    "matrix_summary": "docs/qa/20260723_m03_2_web/web_matrix_interaction.json",
+    "matrix_summary_sha256": "175A4E7D82174FACF05CF1C37BE70E287D397A4AD4B3E50C5C814D6935103ACB",
+    "soak_seconds": 300.525,
+    "soak_input_bursts": 39,
+    "soak_clear_actions": 3,
+    "console_errors": 0,
+    "console_warnings": 0,
+    "soak_summary": "docs/qa/20260723_m03_2_web/web_soak_300s.json",
+    "soak_summary_sha256": "79DADBC82C7AB90E2DFBC06A1442883B6D1A4AF9978AC001B57CCB0AEDE74645",
+    "fsm_rejections": 0
+  },
+  "next_safe_action": "Execute M03.3 as a bounded deterministic development event-log package; keep release blocked."
+}

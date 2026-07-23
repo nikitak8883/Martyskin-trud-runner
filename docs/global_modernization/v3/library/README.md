@@ -28,10 +28,11 @@
 - M01.6 один typed static command проходит локально 7/7 и используется без расхождений в Windows/Linux Actions matrix;
 - M01.7 fail-closed summary корректно блокирует release при 8 отсутствующих mandatory evidence slots;
 - M02.2 shared content identity проходит 3/3 Web/Android preflights и обязательный восьмой local/Windows/Linux static gate;
+- M03.2 typed session/player contracts проходят обязательный девятый static gate, exhaustive 14 × 14 transition test, CodeRabbit re-review и полные Android emulator/Web runtime матрицы;
 - 8 TypeScript files проходят Cocos-bundled TypeScript `--noEmit --strict --target ES2020`;
 - 6 templates скопированы без изменения;
 - исходные SHA-256 подтверждены внутренним manifest пакета.
 
 ## Следующий слой
 
-Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M03.1 read-only GameRoot inventory завершён; следующий bounded package — M03.2 typed session-transition adapter. Остальные runtime seams активируются только по одному после adapter parity gates.
+Следовать `../TOOL_AND_CODE_ADAPTATION_BACKLOG.md` и `../WORK_PACKAGE_INDEX.yaml`. M03.2 typed session-transition adapter завершён; следующий bounded package — M03.3 deterministic development event log. Остальные runtime seams активируются только по одному после adapter parity gates.

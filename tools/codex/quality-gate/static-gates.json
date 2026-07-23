@@ -17,6 +17,20 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "game-session-state-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "tools/codex/validate_game_session_state.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "quality-gate-self-tests",
       "mandatory": true,
       "enabled": true,

@@ -1,7 +1,7 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m03_1_inventory_complete_m03_2_next_release_blocked`  
-Дата интеграции: 2026-07-21  
+Статус: `m03_2_gameplay_state_contract_complete_m03_3_next_release_blocked`  
+Дата интеграции: 2026-07-23  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 
@@ -60,7 +60,8 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M02.4: свежий x86_64 debug APK установлен только на `emulator-5554`; Android matrix 28/28, interaction/name persistence, restart 10/10 и soak 300.623 s проходят без unexpected diagnostics. Репрезентативная визуальная выборка чистая.
 - M02.5: свежий ABI-valid APK содержит проверенные ELF64/AArch64 и ELF32/ARM payloads, валидные package/version и v1/v2 debug signature; это статическое evidence совместимости, физическая установка не выполнялась. Технический entry gate M02.2–M02.5 для M03 закрыт.
 - M03.1: воспроизводимый TypeScript AST inventory зафиксировал 170 полей, 267 методов, 613 уникальных internal call edges, 8/8 listener register/unregister, 15 `scheduleOnce`, 37 storage operations и 10 dynamic-node patterns. Runtime не менялся; восемь coupling findings разнесены по M03.2–M03.7.
+- M03.2: typed `GameSessionState` contract сохраняет 14 live states, 44 changed edges и 14 idempotent self-edges, а остальные 138 пар отклоняет детерминированно при единственном writer. Declarative player schema фиксирует 8 states/44 transitions без второго runtime owner. Static gate `9/9`, итоговый CodeRabbit — 0 findings, свежие Android emulator `28/28` и Web `34/34` матрицы с restart `10/10` и пятиминутными soak проходят.
 
 ## Следующее безопасное действие
 
-Выполнить `M03.2`: ввести typed `GameSessionState` transition contract вокруг единственного текущего writer `transitionTo`, сохранив все валидные переходы и не перемещая UI/physics. Release остаётся blocked.
+Выполнить `M03.3`: добавить bounded deterministic development event log с явным reset ownership и без release spam, не создавая второй gameplay-state owner. Release остаётся blocked.

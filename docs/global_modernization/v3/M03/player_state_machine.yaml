@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "initialState": "grounded",
+  "states": [
+    "grounded",
+    "jumping",
+    "double_jumping",
+    "falling",
+    "gliding",
+    "dashing",
+    "hit",
+    "victory"
+  ],
+  "transitions": [
+    {
+      "from": "grounded",
+      "event": "jump",
+      "to": "jumping",
+      "guard": "session=playing && onGround",
+      "actions": ["apply_primary_jump_impulse", "clear_glide"]
+    },
+    {
+      "from": "jumping",
+      "event": "jump",
+      "to": "double_jumping",
+      "guard": "session=playing && doubleJump",
+      "actions": ["apply_secondary_jump_impulse", "consume_double_jump", "clear_glide"]
+    },
+    {
+      "from": "falling",
+      "event": "jump",
+      "to": "double_jumping",
+      "guard": "session=playing && doubleJump",
+      "actions": ["apply_secondary_jump_impulse", "consume_double_jump", "clear_glide"]
+    },
+    {
+      "from": "gliding",
+      "event": "jump",
+      "to": "double_jumping",
+      "guard": "session=playing && doubleJump",
+      "actions": ["apply_secondary_jump_impulse", "consume_double_jump", "clear_glide"]
+    },
+    {
+      "from": "jumping",
+      "event": "jump_apex",
+      "to": "falling",
+      "guard": "vy>80",
+      "actions": []
+    },
+    {
+      "from": "double_jumping",
+      "event": "jump_apex",
+      "to": "falling",
+      "guard": "vy>80",
+      "actions": []
+    },
+    {
+      "from": "falling",
+      "event": "glide_start",
+      "to": "gliding",
+      "guard": "session=playing && !onGround && vy>0",
+      "actions": ["set_gliding"]
+    },
+    {
+      "from": "gliding",
+      "event": "glide_end",
+      "to": "falling",
+      "guard": "!gliding || onGround",
+      "actions": ["clear_gliding"]
+    },
+    {
+      "from": "grounded",
+      "event": "dash_start",
+      "to": "dashing",
+      "guard": "session=playing && dashTimer<=0",
+      "actions": ["start_dash_timer", "clear_glide"]
+    },
+    {
+      "from": "jumping",
+      "event": "dash_start",
+      "to": "dashing",
+      "guard": "session=playing && dashTimer<=0",
+      "actions": ["start_dash_timer", "clear_glide"]
+    },
+    {
+      "from": "double_jumping",
+      "event": "dash_start",
+      "to": "dashing",
+      "guard": "session=playing && dashTimer<=0",
+      "actions": ["start_dash_timer", "clear_glide"]
+    },
+    {
+      "from": "falling",
+      "event": "dash_start",
+      "to": "dashing",
+      "guard": "session=playing && dashTimer<=0",
+      "actions": ["start_dash_timer", "clear_glide"]
+    },
+    {
+      "from": "gliding",
+      "event": "dash_start",
+      "to": "dashing",
+      "guard": "session=playing && dashTimer<=0",
+      "actions": ["start_dash_timer", "clear_glide"]
+    },
+    {
+      "from": "dashing",
+      "event": "dash_end",
+      "to": "grounded",
+      "guard": "onGround",
+      "actions": []
+    },
+    {
+      "from": "dashing",
+      "event": "dash_end",
+      "to": "gliding",
+      "guard": "!onGround && gliding && vy>0",
+      "actions": []
+    },
+    {
+      "from": "dashing",
+      "event": "dash_end",
+      "to": "double_jumping",
+      "guard": "!onGround && secondJumpPoseTimer>0",
+      "actions": []
+    },
+    {
+      "from": "dashing",
+      "event": "dash_end",
+      "to": "falling",
+      "guard": "!onGround && vy>80",
+      "actions": []
+    },
+    {
+      "from": "dashing",
+      "event": "dash_end",
+      "to": "jumping",
+      "guard": "!onGround && vy<=80",
+      "actions": []
+    },
+    {
+      "from": "grounded",
+      "event": "damage",
+      "to": "hit",
+      "guard": "session=playing && invincible<=0",
+      "actions": ["start_hit_timer", "clear_dash", "force_airborne"]
+    },
+    {
+      "from": "jumping",
+      "event": "damage",
+      "to": "hit",
+      "guard": "session=playing && invincible<=0",
+      "actions": ["start_hit_timer", "clear_dash", "force_airborne"]
+    },
+    {
+      "from": "double_jumping",
+      "event": "damage",
+      "to": "hit",
+      "guard": "session=playing && invincible<=0",
+      "actions": ["start_hit_timer", "clear_dash", "force_airborne"]
+    },
+    {
+      "from": "falling",
+      "event": "damage",
+      "to": "hit",
+      "guard": "session=playing && invincible<=0",
+      "actions": ["start_hit_timer", "clear_dash", "force_airborne"]
+    },
+    {
+      "from": "gliding",
+      "event": "damage",
+      "to": "hit",
+      "guard": "session=playing && invincible<=0",
+      "actions": ["start_hit_timer", "clear_dash", "force_airborne"]
+    },
+    {
+      "from": "dashing",
+      "event": "damage",
+      "to": "hit",
+      "guard": "session=playing && invincible<=0",
+      "actions": ["start_hit_timer", "clear_dash", "force_airborne"]
+    },
+    {
+      "from": "hit",
+      "event": "recover",
+      "to": "grounded",
+      "guard": "hitPoseTimer<=0 && onGround",
+      "actions": []
+    },
+    {
+      "from": "hit",
+      "event": "recover",
+      "to": "gliding",
+      "guard": "hitPoseTimer<=0 && !onGround && gliding && vy>0",
+      "actions": []
+    },
+    {
+      "from": "hit",
+      "event": "recover",
+      "to": "double_jumping",
+      "guard": "hitPoseTimer<=0 && !onGround && secondJumpPoseTimer>0",
+      "actions": []
+    },
+    {
+      "from": "hit",
+      "event": "recover",
+      "to": "falling",
+      "guard": "hitPoseTimer<=0 && !onGround && vy>80",
+      "actions": []
+    },
+    {
+      "from": "hit",
+      "event": "recover",
+      "to": "jumping",
+      "guard": "hitPoseTimer<=0 && !onGround && vy<=80",
+      "actions": []
+    },
+    {
+      "from": "grounded",
+      "event": "session_complete",
+      "to": "victory",
+      "actions": []
+    },
+    {
+      "from": "jumping",
+      "event": "session_complete",
+      "to": "victory",
+      "actions": []
+    },
+    {
+      "from": "double_jumping",
+      "event": "session_complete",
+      "to": "victory",
+      "actions": []
+    },
+    {
+      "from": "falling",
+      "event": "session_complete",
+      "to": "victory",
+      "actions": []
+    },
+    {
+      "from": "gliding",
+      "event": "session_complete",
+      "to": "victory",
+      "actions": []
+    },
+    {
+      "from": "dashing",
+      "event": "session_complete",
+      "to": "victory",
+      "actions": []
+    },
+    {
+      "from": "hit",
+      "event": "session_complete",
+      "to": "victory",
+      "actions": []
+    },
+    {
+      "from": "grounded",
+      "event": "reset",
+      "to": "grounded",
+      "actions": ["reset_player_flags"]
+    },
+    {
+      "from": "jumping",
+      "event": "reset",
+      "to": "grounded",
+      "actions": ["reset_player_flags"]
+    },
+    {
+      "from": "double_jumping",
+      "event": "reset",
+      "to": "grounded",
+      "actions": ["reset_player_flags"]
+    },
+    {
+      "from": "falling",
+      "event": "reset",
+      "to": "grounded",
+      "actions": ["reset_player_flags"]
+    },
+    {
+      "from": "gliding",
+      "event": "reset",
+      "to": "grounded",
+      "actions": ["reset_player_flags"]
+    },
+    {
+      "from": "dashing",
+      "event": "reset",
+      "to": "grounded",
+      "actions": ["reset_player_flags"]
+    },
+    {
+      "from": "hit",
+      "event": "reset",
+      "to": "grounded",
+      "actions": ["reset_player_flags"]
+    },
+    {
+      "from": "victory",
+      "event": "reset",
+      "to": "grounded",
+      "actions": ["reset_player_flags"]
+    }
+  ]
+}
