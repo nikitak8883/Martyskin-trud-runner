@@ -31,6 +31,43 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "v4-execution-plan-contract",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_v4_execution_plan.py",
+        "--plan",
+        "docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json",
+        "--work-packages",
+        "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "v4-execution-plan-tests",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/codex/tests",
+        "-p",
+        "test_validate_v4_execution_plan.py",
+        "-v"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "quality-gate-self-tests",
       "mandatory": true,
       "enabled": true,

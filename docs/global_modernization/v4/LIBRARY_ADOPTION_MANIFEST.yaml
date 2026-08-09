@@ -1,0 +1,65 @@
+schema_version: 1
+library_version: 4.0.0-project-adapted
+upstream_sha256: E1863AB38C6B20FDB7A548CFC3029E2049BECA199D0C0F3DC74480253FC53F80
+policy: curated_merge_never_blind_overwrite
+
+accepted_concepts:
+  - bounded M03.3A/B/C decomposition
+  - D4/P4/M2_PLUS/QA7/RC2 routing
+  - evidence freshness and retention classes
+  - measured asset/atlas/bundle ownership
+  - source/package/content identity separation
+
+accepted_as_upstream_reference_only:
+  - modules/M00-M12 documents
+  - prompts and checklists
+  - generic workflows
+  - full external source copies and original audit ZIP
+
+merged_or_strengthened:
+  - id: dev_event_contract
+    outputs:
+      - docs/global_modernization/v4/library/reference/DevEventTypes.reference.ts
+      - docs/global_modernization/v4/library/reference/DevEventLog.reference.ts
+      - docs/global_modernization/v4/library/schemas/dev_event.schema.json
+      - docs/global_modernization/v4/library/schemas/dev_event_log_config.schema.json
+  - id: lifecycle_epoch
+    outputs:
+      - docs/global_modernization/v4/library/reference/LifecycleEpoch.reference.ts
+  - id: execution_roadmap
+    outputs:
+      - docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json
+      - tools/codex/validate_v4_execution_plan.py
+  - id: toolchain_contract
+    outputs:
+      - docs/global_modernization/v4/TOOLCHAIN_LOCK_20260809.json
+
+accepted_identical_no_copy:
+  - six report/ADR templates already under docs/global_modernization/v3/library/templates
+  - AudioEventRouter, BonusVisualResolver, SaveRepository and SkinRegistry drafts
+  - audio/content/level/player/save/skin schemas already present in v3 drafts
+
+do_not_adopt:
+  - id: fallback_quality_gate_schema_and_runner
+    reason: canonical M01.3/M01.4 contracts are stricter, pinned and already validated
+  - id: fallback_release_gate_result_schema
+    reason: incompatible and weaker than canonical quality profile/report contracts
+  - id: create-source-bundles.ps1
+    reason: WhatIf still writes output and repository leaf-name collisions are possible
+  - id: capture-environment.ps1
+    reason: misses the live ProgramData Cocos path and conflates ambient/build Java
+  - id: verify-android-artifact.ps1
+    reason: does not fail-closed on the full package/version/content/signing/ABI contract
+  - id: sync-pages-dry-run.ps1_apply_mode
+    reason: apply path needs canonical containment, approval token, protected-file and post-copy parity guards
+  - id: loose_optional_python_requirements
+    reason: use the existing exact isolated M01 requirements lock, never a second project venv
+  - id: AGENTS.template.md
+    reason: must not overwrite active global/project instructions
+
+activation_rules:
+  runtime_reference_code: adapt_after_live_owner_inspection_and_tests
+  workflow_examples: explicit_owner_approval_only
+  cleanup: dry_run_then_owner_selected_batches
+  physical_device: separate_user_command_only
+  external_review: advisory_no_auto_apply

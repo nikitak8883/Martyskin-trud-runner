@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "checkpoint_id": "mtr-v4-rdx-01-20260809",
+  "generated_at": "2026-08-09T08:40:09Z",
+  "status": "PASS_WITH_RELEASE_BLOCKED",
+  "scope": "external v4 ingest, live reconciliation, roadmap decomposition and preparation library only",
+  "source": {
+    "branch": "codex/mtr-source-freeze-v3",
+    "documentation_basis_commit": "95648b978117b8964469ad4fb236829d9540c239",
+    "runtime_checkpoint": "f99408151c98cf8806e269307fe5e552f5b185c9",
+    "external_zip_sha256": "E1863AB38C6B20FDB7A548CFC3029E2049BECA199D0C0F3DC74480253FC53F80"
+  },
+  "package_integrity": {
+    "zip_entries": 150,
+    "manifest_files": 148,
+    "manifest_files_valid": 148,
+    "unsafe_entries": 0,
+    "secret_pattern_hits": 0
+  },
+  "plan_contract": {
+    "source_packages_total": 95,
+    "source_packages_complete": 19,
+    "mandatory_source_remaining": 66,
+    "conditional_source_remaining": 10,
+    "execution_units_total": 72,
+    "mandatory_execution_units_total": 65,
+    "mandatory_execution_units_complete": 1,
+    "mandatory_execution_units_remaining": 64,
+    "conditional_execution_units": 7,
+    "mandatory_coverage": 66,
+    "conditional_coverage": 10,
+    "dependency_cycles": 0,
+    "validator_findings": 0
+  },
+  "validation": {
+    "upstream_python_helper_tests": "5/5 PASS",
+    "roadmap_negative_tests": "9/9 PASS",
+    "bootstrap_lock_tests": "7/7 PASS",
+    "v4_schema_meta_validation": "4/4 PASS",
+    "v4_bound_schema_instances": "3/3 PASS",
+    "reference_typescript_strict_no_emit": "PASS",
+    "pre_adaptation_clean_static_gate": {
+      "run_id": "qg.20260809080815.0f3e1728c410",
+      "result": "9/9 PASS",
+      "findings": 0,
+      "report_sha256": "59A6CB4A4B6E60525E1F6CBD96F3C1C94C7754536E2DB6AD4E310888DE7F8B5A"
+    },
+    "integrated_precommit_static_gate": {
+      "run_id": "qg.20260809083957.d3b1eea46ddc",
+      "result": "11/11 PASS",
+      "findings": 0,
+      "source_stable": true,
+      "dirty_source_authorized_for_development_only": true,
+      "report_sha256": "7C46D41FC66B284347DE721630B5BEA52D5563252928AC2D5ED161F6AA8C04DF",
+      "config_sha256": "D3B1EEA46DDC1A6FD479F5236362AB4C6F36406FD4DAAC1DFA2354757609D315",
+      "requirements_lock_sha256": "65FE220E1888C46D2841549A461D391AD1A57BA04832831910228835D351F9C1"
+    }
+  },
+  "scope_boundary": {
+    "runtime_changed": false,
+    "web_runtime_retested": false,
+    "android_emulator_retested": false,
+    "release_artifacts_built": false,
+    "physical_device_used": false,
+    "git_pushed": false,
+    "release_status": "BLOCKED"
+  },
+  "next": ["M03.3A", "TC-01"]
+}

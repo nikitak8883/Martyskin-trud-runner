@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.mtr.local/modernization/v4/dev-event-log-config.schema.json",
+  "title": "MTR development event-log policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "enabled_in_development", "enabled_in_release", "capacity",
+    "max_state_length", "max_reason_length", "max_string_length", "max_array_length",
+    "max_object_keys", "max_depth", "max_payload_nodes", "max_payload_bytes",
+    "max_export_bytes", "reset_policy",
+    "console_policy", "export_policy", "non_plain_object_policy"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "enabled_in_development": {"type": "boolean"},
+    "enabled_in_release": {"const": false},
+    "capacity": {"type": "integer", "minimum": 0, "maximum": 4096},
+    "max_state_length": {"type": "integer", "minimum": 0, "maximum": 256},
+    "max_reason_length": {"type": "integer", "minimum": 0, "maximum": 512},
+    "max_string_length": {"type": "integer", "minimum": 0, "maximum": 4096},
+    "max_array_length": {"type": "integer", "minimum": 0, "maximum": 256},
+    "max_object_keys": {"type": "integer", "minimum": 0, "maximum": 256},
+    "max_depth": {"type": "integer", "minimum": 0, "maximum": 16},
+    "max_payload_nodes": {"type": "integer", "minimum": 1, "maximum": 4096},
+    "max_payload_bytes": {"type": "integer", "minimum": 2, "maximum": 262144},
+    "max_export_bytes": {"type": "integer", "minimum": 2, "maximum": 1048576},
+    "reset_policy": {"const": "advance_epoch_keep_bounded_history"},
+    "console_policy": {"enum": ["off_by_default", "explicit_dev_only"]},
+    "export_policy": {"const": "explicit_dev_panel_only"},
+    "non_plain_object_policy": {"const": "replace_with_marker"}
+  }
+}

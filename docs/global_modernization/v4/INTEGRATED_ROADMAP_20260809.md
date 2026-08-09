@@ -1,0 +1,121 @@
+# Интегрированная дорожная карта v4
+
+## Текущее положение
+
+- Source ledger: `19/95 complete`; mandatory `19/85`, осталось `66`; conditional `10`.
+- V4 remaining-scope execution ledger: `1/65 complete`, осталось `64`; conditional units `7`.
+- Текущий milestone: `RDX-01 complete`.
+- Следующие units: `M03.3A` и параллельный `TC-01`.
+- Release: `BLOCKED`.
+
+## Phase 0 — contracts, toolchain и publication model
+
+### `RDX-01` — complete
+
+- безопасный ingest v4;
+- live drift/Git topology reconciliation;
+- исправление v3 indexes;
+- machine-readable v4 execution DAG;
+- library adoption/rejection manifest;
+- schema-first roadmap validator и отрицательные тесты;
+- 11-step static gate и повторный plan audit.
+
+### `TC-01` — next, 2–4 дня
+
+Техническое задание:
+
+1. заменить абсолютное version-patch закрепление JDK на валидируемый exact-major/exact-approved path contract;
+2. запретить молчаливый fallback на ambient JDK 21;
+3. различать ambient Java и Android build Java в toolchain report;
+4. проверить Cocos `3.8.8`, NDK `23.2.8568313`, API 35, Gradle wrapper `8.11.1`;
+5. выполнить no-build config/preflight, затем targeted fresh emulator build в первом Android-dependent runtime gate;
+6. не менять SDK/Cocos/Gradle версии в этом пакете.
+
+### `PUB-01` — встроен в M02.7/M12
+
+- воспроизводимый project-prefix tree projection;
+- baseline tree equality proof;
+- manifest diff и deny-list;
+- dry-run against `origin/mtr-source-v3`;
+- отдельный immutable Pages artifact deployment в `main`;
+- никаких merge/rebase unrelated histories.
+
+## Phase 1 — M03 ownership seams, 5–9 недель
+
+1. `M03.3A`: pure DevEvent types, validated bounded ring buffer, deterministic tests.
+2. `M03.3B`: pure lifecycle epoch + stale callback guards/tests.
+3. `M03.3C`: один GameRoot adapter, release-off policy, reset/transition integration, полный P4.
+4. `M03.4`: один input router; сохранить debounce/touch/keyboard order.
+5. `M03.5`: typed collision events без перестановки legacy order.
+6. `M03.6`: power-up lifecycle с injected tick/epoch и cleanup.
+7. `M03.7A`: ownership cleanup proof без удаления.
+8. `M03.7B`: удаление legacy paths только после M2_PLUS.
+
+## Phase 2 — M04 → M06 → M05, 10–17 недель
+
+### M04 assets
+
+- inventory + canonical ownership/provenance schema;
+- alpha/matte/meta/reference/quarantine validator;
+- contact sheets;
+- measured atlas pilots и family batches;
+- dynamic atlas allowlist;
+- bundle load/release ownership;
+- before/after draw-call, memory, load, waste и artifact-size evidence.
+
+### M06 skins/bonuses
+
+- stable SkinRegistry IDs;
+- baked-primary BonusVisualResolver;
+- full frame routing and fail-visible missing frame;
+- 8 skins × poses × bonuses Web/Android emulator matrix;
+- switch/expire/death/retry/transition loops;
+- selected bundle residency/release proof;
+- old visual stack removal last.
+
+### M05 UI
+
+- tokens + 9-slice policy;
+- SafeArea owner;
+- layout containers;
+- shared renderer/components;
+- low-risk screen batches;
+- gameplay HUD last;
+- 14 screens × 5 viewports, Cyrillic, touch, masks, overdraw, no ghost layers.
+
+## Phase 3 — M07 → M08 → M09, 8–14 недель
+
+- M07: schema for all 15 levels, level 1/8/15 pilot, three migration batches, preload/release policy.
+- M08: audio/VFX inventory and maps, buses/limits/cooldowns, adapters, pooling, Web unlock and soak.
+- M09: storage inventory, versioned save envelope, achievements/records, idempotent backup migration, corruption/unknown-version recovery, profile isolation, bounded local QA telemetry.
+
+## Phase 4 — M10, 4–7 недель
+
+- budgets + reproducible Web/emulator baseline;
+- measured bottleneck ranking;
+- one optimization family per patch;
+- reject no-benefit/quality-regressing changes;
+- final performance regression/soak.
+
+Physical device remains conditional and requires a separate command.
+
+## Phase 5 — M02/M12 release closure, 3–6 недель + owner wait
+
+1. signing/backup/upgrade ADR;
+2. RC source/tag/content freeze;
+3. independent QA7 RC1;
+4. bounded fixes and independent QA7 RC2;
+5. production-valid arm64 APK; AAB only if Play becomes approved;
+6. deterministic source projection and immutable Pages deployment;
+7. live manifest parity/smoke;
+8. artifact/evidence index;
+9. cleanup dry-run, owner-selected apply batches, rebuild/regression;
+10. protected archive and final limitations.
+
+## Conditional Phase 6 — M11, +8–14 недель
+
+PCG/DDA не блокирует базовый release. Запускается только после отдельного решения: deterministic schema, reachability validator, seeded replay, 1000-seed fuzz, optional feature-flagged DDA and comparative telemetry.
+
+## Правило продвижения
+
+Ни один unit не становится complete без свежего gate, bounded rollback и machine-readable report. Полный порядок и зависимости находятся в `EXECUTION_UNIT_INDEX.json`.

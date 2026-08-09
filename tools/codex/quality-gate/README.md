@@ -19,7 +19,7 @@ This directory owns the active project-local command runner. It does not import 
 
 ## Isolated validator
 
-`bootstrap.py` creates a hash-addressed venv in the user cache, installs only exact versions from `requirements.lock` (schema validation plus the Pillow runtime required by PNG contract checks), verifies them, and exports the lock identity to the runner. It prepends that venv to child-process `PATH`, sets `VIRTUAL_ENV`, and removes inherited `PYTHONHOME`, so every configured `python` step uses the same pinned runtime instead of a runner-global interpreter. It never installs into global Python. Concurrent first starts are serialized by a cache-local lock directory. Waiters allow the exact-package install timeout plus a bounded setup margin and never delete another process's lock. The environment marker is bound to the base interpreter; bootstrap refuses to rebuild the environment used by its current interpreter and instructs the operator to invoke the base Python instead.
+`bootstrap.py` creates a hash-addressed venv in the user cache, installs only exact versions from `requirements.lock` (JSON Schema validation, YAML roadmap contracts and the Pillow runtime required by PNG contract checks), verifies them, and exports the lock identity to the runner. It prepends that venv to child-process `PATH`, sets `VIRTUAL_ENV`, and removes inherited `PYTHONHOME`, so every configured `python` step uses the same pinned runtime instead of a runner-global interpreter. It never installs into global Python. Concurrent first starts are serialized by a cache-local lock directory. Waiters allow the exact-package install timeout plus a bounded setup margin and never delete another process's lock. The environment marker is bound to the base interpreter; bootstrap refuses to rebuild the environment used by its current interpreter and instructs the operator to invoke the base Python instead.
 
 Bootstrap only:
 
@@ -136,3 +136,10 @@ python tools/codex/quality-gate/bootstrap.py -- --project-root . --config tools/
 ```
 
 The source workflow runs it on `ubuntu-latest` and `windows-latest`. The command reuses this typed runner and executes only non-mutating contract checks. It does not build Cocos, start Web runtime, start an Android emulator, deploy Pages, or authorize a physical device. Those remain mandatory separate evidence in P4/M2_PLUS/QA7/RC2.
+
+The canonical set also fail-closes on the v4 execution contract: the live
+`EXECUTION_UNIT_INDEX.json` must cover every pending or blocked mandatory source
+package and every conditional source package exactly as classified, form an
+acyclic dependency graph, and pass the bounded negative-test suite. This keeps
+the roadmap denominator, dependencies and source-work-package ledger from
+drifting independently.

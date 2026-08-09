@@ -1,8 +1,9 @@
 schema_version: 1
-updated_at: "2026-07-23"
+updated_at: "2026-08-09"
 project: martyshkin_trud_runner
-execution_model: dependency_gated_bounded_patch
-runtime_started: false
+execution_model: dependency_gated_bounded_patch_with_v4_execution_units
+runtime_started: true
+v4_execution_plan: docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json
 
 status_values:
   - complete
@@ -129,7 +130,8 @@ modules:
         objective: Record distribution target, signing ownership, upgrade-compatibility constraints and secret backup policy.
         outputs: [docs/global_modernization/v3/M02/distribution_and_signing_adr.md]
         gates: [D4]
-        blocker: user decision for direct APK versus Play and signing identity
+        decision_state: direct APK is the required local delivery path; Google Play/AAB remains conditional and unapproved
+        blocker: production signing identity, backup ownership and upgrade-compatibility policy remain unapproved
       - id: M02.2
         status: complete
         objective: Embed one logical content version/source commit in Web and Android reports while keeping platform artifact manifests separate.
@@ -161,7 +163,7 @@ modules:
         objective: Deploy immutable Web artifact through approved topology, then compare manifest and smoke the live URL.
         outputs: [docs/global_modernization/v3/M02/web_deployment_report.md]
         gates: [P4]
-        blocker: M00.3 topology decision
+        blocker: owner approval of the immutable Pages deployment mechanism plus fresh artifact-to-live parity evidence
       - id: M02.8
         status: pending
         objective: Run RC2 and write hashes, versions, ABIs, certificate fingerprints and limitations in release summary.
@@ -190,6 +192,7 @@ modules:
         status: pending
         objective: Add bounded deterministic dev event log with no release spam and reset ownership.
         targets: [assets/scripts/qa, assets/scripts/gameplay/state]
+        execution_units: [M03.3A, M03.3B, M03.3C]
         gates: [P4]
       - id: M03.4
         status: pending
@@ -600,4 +603,6 @@ modules:
 next_safe_action:
   module: M03
   work_package: M03.3
-  action: Add one bounded deterministic development event log with reset ownership and no release spam; keep release blocked.
+  execution_unit: M03.3A
+  parallel_prerequisite: TC-01
+  action: Implement the pure bounded DevEvent contract while repairing the fail-closed Android JDK/toolchain contract before M03.3C; keep release blocked.

@@ -33,6 +33,7 @@ class QualityGateBootstrapTests(unittest.TestCase):
                 "jsonschema": "4.26.0",
                 "jsonschema-specifications": "2025.9.1",
                 "pillow": "12.3.0",
+                "pyyaml": "6.0.3",
                 "referencing": "0.37.0",
                 "rpds-py": "2026.6.3",
             },

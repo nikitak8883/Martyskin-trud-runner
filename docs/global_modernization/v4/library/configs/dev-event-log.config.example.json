@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "enabled_in_development": true,
+  "enabled_in_release": false,
+  "capacity": 256,
+  "max_state_length": 64,
+  "max_reason_length": 96,
+  "max_string_length": 256,
+  "max_array_length": 24,
+  "max_object_keys": 24,
+  "max_depth": 4,
+  "max_payload_nodes": 512,
+  "max_payload_bytes": 16384,
+  "max_export_bytes": 65536,
+  "reset_policy": "advance_epoch_keep_bounded_history",
+  "console_policy": "off_by_default",
+  "export_policy": "explicit_dev_panel_only",
+  "non_plain_object_policy": "replace_with_marker"
+}

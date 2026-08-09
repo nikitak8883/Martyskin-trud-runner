@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-08-09T08:40:09Z",
+  "status": "PASS_WITH_BLOCKING_DRIFT_FOR_NEXT_ANDROID_BUILD",
+  "project": {
+    "root": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator",
+    "branch": "codex/mtr-source-freeze-v3",
+    "documentation_basis_head": "95648b978117b8964469ad4fb236829d9540c239",
+    "runtime_checkpoint": "f99408151c98cf8806e269307fe5e552f5b185c9",
+    "cocos_creator_expected": "3.8.8"
+  },
+  "tools": {
+    "git": {"found": true, "version": "2.55.0.windows.3", "path": "C:\\Program Files\\Git\\cmd\\git.exe"},
+    "node": {"found": true, "version": "24.19.0", "path": "C:\\Program Files\\nodejs\\node.exe"},
+    "npm": {"found": true, "version": "11.17.0", "path": "C:\\Program Files\\nodejs\\npm.ps1"},
+    "python": {"found": true, "version": "3.13.14", "path": "C:\\Users\\nikit\\AppData\\Local\\Programs\\Python\\Python313\\python.exe"},
+    "quality_gate_python": {"found": true, "version": "3.13 isolated", "path": "C:\\Users\\nikit\\AppData\\Local\\MTR\\quality-gate\\venv-py313-65fe220e1888\\Scripts\\python.exe", "lock_sha256": "65FE220E1888C46D2841549A461D391AD1A57BA04832831910228835D351F9C1"},
+    "cocos_creator": {"found": true, "version": "3.8.8", "path": "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.8\\CocosCreator.exe", "version_basis": "project metadata plus exact versioned installation path"},
+    "cocos_typescript": {"found": true, "version": "5.8.2", "path": "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.8\\resources\\app.asar.unpacked\\node_modules\\typescript"},
+    "playwright_core": {"found": true, "version": "1.61.1", "path": "node_modules/playwright-core", "package_lock_sha256": "249350C1D0C195BEEEC50EDFAE25AA226E46D6427936A5F4FBCE1EA7CFE5232C"},
+    "ambient_java": {"found": true, "version": "21.0.12", "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.12.8-hotspot\\bin\\java.exe", "allowed_for_android_build": false},
+    "configured_android_java": {"found": false, "version": "17.0.19", "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot", "referenced_by": ["build-android.json", "build-android-emulator.json"]},
+    "approved_android_java_candidate": {"found": true, "version": "17.0.20", "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.20.8-hotspot", "activation_status": "pending_TC-01"},
+    "adb": {"found": true, "version": "37.0.1-15733141", "path": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe"},
+    "android_ndk": {"found": true, "version": "23.2.8568313", "path": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\ndk\\23.2.8568313"},
+    "android_platform": {"found": true, "version": "35", "path": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\platforms\\android-35"},
+    "android_build_tools": {"found": true, "versions": ["34.0.0", "35.0.0", "36.0.0", "36.1.0", "37.0.0"], "path": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\build-tools"},
+    "gradle_wrapper_emulator": {"found": true, "version": "8.11.1", "path": "build/android-emulator/proj/gradlew.bat", "generated_output": true},
+    "gradle_wrapper_arm": {"found": true, "version": "8.11.1", "path": "build/android/proj/gradlew.bat", "generated_output": true}
+  },
+  "input_hashes": {
+    "build-android.json": "C36EBDC30CD8417446EF504DF59C82641E8BC2E3D296616A7ACE20B0466A4320",
+    "build-android-emulator.json": "2CB102CF4DC9407E3C971612294DC7D6912BD2425E1AD3CC77C918A0DC5385A2"
+  },
+  "findings": [
+    {
+      "code": "ANDROID_JAVA_CONFIG_PATH_MISSING",
+      "severity": "BLOCKER_FOR_NEXT_ANDROID_BUILD",
+      "expected": "configured JDK 17 path exists and version is approved",
+      "actual": "17.0.19 path missing; 17.0.20 installed; ambient PATH resolves JDK 21",
+      "remediation": "TC-01 fail-closed discovery and config update before M03.3C"
+    }
+  ]
+}

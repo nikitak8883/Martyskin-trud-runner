@@ -1,12 +1,15 @@
 schema_version: 1
-updated_at: "2026-07-23"
-source_head: 12670452ae4580ef5c685ff986476daf91522978
-source_state: frozen_tagged_bundled_restored
+updated_at: "2026-08-09"
+source_head: f99408151c98cf8806e269307fe5e552f5b185c9
+source_state: accepted_m03_2_runtime_checkpoint
+source_head_semantics: last accepted runtime checkpoint; documentation-only descendants are allowed
+documentation_basis_head: 95648b978117b8964469ad4fb236829d9540c239
+v4_execution_plan: docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json
 modules:
   M00: {status: complete, completed: [M00.1, M00.2, M00.3, M00.4, M00.5, M00.6], next: null, report: docs/global_modernization/v3/M00/source_freeze_report.md}
   M01: {status: complete_release_blocked, completed: [M01.1, M01.2, M01.3, M01.4, M01.5, M01.6, M01.7], next: null, report: docs/global_modernization/final_qa_report.md}
   M02: {status: technical_baseline_complete_release_blocked, completed: [M02.2, M02.3, M02.4, M02.5], next: M02.1, report: docs/global_modernization/v3/M02/M02_5_VALIDATION_SUMMARY.json}
-  M03: {status: in_progress, completed: [M03.1, M03.2], next: M03.3, report: docs/global_modernization/v3/M03/gameplay_state_report.md}
+  M03: {status: in_progress, completed: [M03.1, M03.2], next: M03.3, next_execution_unit: M03.3A, report: docs/global_modernization/v3/M03/gameplay_state_report.md}
   M04: {status: revalidate_then_extend, completed: [], next: M04.1, report: docs/global_modernization/graphics_inventory.md}
   M05: {status: revalidate_then_extend, completed: [], next: M05.1, report: docs/global_modernization/ui_ir_migration_report.md}
   M06: {status: revalidate_then_extend, completed: [], next: M06.1, report: docs/global_modernization/skin_bonus_contract_report.md}
@@ -18,7 +21,7 @@ modules:
   M12: {status: pending, completed: [], next: M12.1, report: null}
 release_status: blocked
 release_blockers:
-  - Web/Pages parity mismatch
+  - immutable Web/Pages deployment mechanism and fresh live parity are not approved or executed
   - no production-signed arm64 artifact from accepted source
-  - no production signing decision
-next_safe_action: execute M03.3 bounded deterministic development event log with reset ownership and no release spam; keep release blocked until signing and deployment evidence passes
+  - production signing identity, backup ownership and upgrade-compatibility policy are unresolved
+next_safe_action: execute M03.3A pure bounded DevEvent contract; complete TC-01 before Android-dependent M03.3C; keep release blocked until signing and deployment evidence passes
