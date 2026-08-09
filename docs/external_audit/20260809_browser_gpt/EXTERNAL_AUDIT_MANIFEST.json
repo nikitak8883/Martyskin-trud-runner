@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "package_id": "mtr-browser-gpt-external-audit-20260809",
+  "created_at": "2026-08-09",
+  "purpose": "Privacy-safe external technical audit handoff for Martyshkin Trud Runner.",
+  "status": "partially_working_implementation_paused_release_blocked",
+  "live_git": {
+    "branch": "codex/mtr-source-freeze-v3",
+    "head": "f99408151c98cf8806e269307fe5e552f5b185c9",
+    "m03_2_implementation": "f1c717c0085fa05f3bfedba9220eaccdbecf9807",
+    "remote": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
+    "origin_main": "d7a7cc1b0f75cd7aed7ac831e86f79421014e96f",
+    "merge_base_with_origin_main": null,
+    "local_only_commit_count_vs_origin_main": 34,
+    "remote_only_commit_count_vs_head": 24,
+    "project_scope_clean": true
+  },
+  "roadmap": {
+    "total_work_packages": 95,
+    "completed": 19,
+    "mandatory_total": 85,
+    "mandatory_completed": 19,
+    "mandatory_remaining": 66,
+    "conditional_remaining": 10,
+    "blocked": 3,
+    "next_safe_action": "M03.3 bounded deterministic development event log"
+  },
+  "privacy": {
+    "contains_credentials": false,
+    "contains_full_source_tree": false,
+    "contains_raw_android_qa": false,
+    "contains_build_artifacts": false,
+    "contains_apk_or_aab": false,
+    "contains_user_untracked_files": false,
+    "allowed_source_excerpt": "GameSessionState.ts and GameRoot.transitionTo only"
+  },
+  "entries": [
+    {"archive_path":"00_README_FOR_BROWSER_GPT_RU.md","source_path":"docs/external_audit/20260809_browser_gpt/00_README_FOR_BROWSER_GPT_RU.md","bytes":5812,"sha256":"095DBD2E4CA5E635919384FF177A03190A52F4E3C9C313FAE85C6778FE2AF0B2","kind":"audit_guide"},
+    {"archive_path":"01_CURRENT_STATUS_AND_LOG.md","source_path":"docs/external_audit/20260809_browser_gpt/01_CURRENT_STATUS_AND_LOG.md","bytes":3857,"sha256":"9065E1488CFF856CC7B4BF272C08D66A939C165929A7DCD3169FD070B6AE2FE7","kind":"current_status"},
+    {"archive_path":"02_ROADMAP_STATUS_AND_FORECAST.md","source_path":"docs/external_audit/20260809_browser_gpt/02_ROADMAP_STATUS_AND_FORECAST.md","bytes":4940,"sha256":"99DDAC3D985EEF446922018A0A6A286871B6688E9FF35977710ECAFA58F345D2","kind":"roadmap"},
+    {"archive_path":"03_CODEBASE_AND_ARCHITECTURE_MAP.md","source_path":"docs/external_audit/20260809_browser_gpt/03_CODEBASE_AND_ARCHITECTURE_MAP.md","bytes":4153,"sha256":"94FE56E89F659AC3183070B4B3921E8A99AEBB0FFB3EC1C85F4E758C06776391","kind":"codebase_map"},
+    {"archive_path":"04_QA_CYCLES_AND_EVIDENCE.md","source_path":"docs/external_audit/20260809_browser_gpt/04_QA_CYCLES_AND_EVIDENCE.md","bytes":3457,"sha256":"475841505319869A2FC48FFAD853C26B3C420CB01DF5180B870913138199FD44","kind":"qa_summary"},
+    {"archive_path":"05_RISKS_BLOCKERS_AND_AUDIT_QUESTIONS.md","source_path":"docs/external_audit/20260809_browser_gpt/05_RISKS_BLOCKERS_AND_AUDIT_QUESTIONS.md","bytes":4103,"sha256":"C9A4FC3542C4D0D3DDF8C2D5F12629900D2B5D77994305C12728CE4EE69747BF","kind":"risk_register"},
+    {"archive_path":"06_KEY_SOURCE_EXCERPTS.md","source_path":"docs/external_audit/20260809_browser_gpt/06_KEY_SOURCE_EXCERPTS.md","bytes":5554,"sha256":"6846EBAC6A2CB435973FB64ADE8840CA6AE21ED1292FA722179C36C0495B0711","kind":"source_excerpt"},
+    {"archive_path":"07_EXTERNAL_AUDIT_PROMPT_RU.md","source_path":"docs/external_audit/20260809_browser_gpt/07_EXTERNAL_AUDIT_PROMPT_RU.md","bytes":2668,"sha256":"377A0C0F9949F74843AEB81DDA3CA126CC7BC860AFB4E3530BDB9FB002656917","kind":"audit_prompt"},
+    {"archive_path":"source_documents/package.json","source_path":"package.json","bytes":310,"sha256":"0BCB5989C293684E45D149343C605A5AC3C929FD1174AC51825674A3962277D2","kind":"project_metadata"},
+    {"archive_path":"source_documents/project_settings.json","source_path":"settings/v2/packages/project.json","bytes":169,"sha256":"9A74B70C5DBE24062941FC2D91B4586F43259BB29165E57883469F3C023C28E8","kind":"project_settings"},
+    {"archive_path":"source_documents/WORK_PACKAGE_INDEX.yaml","source_path":"docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml","bytes":29978,"sha256":"1351397BD0C123B2D32C4A675A805DF655D78E1B33583EBE67ED63B6F529939F","kind":"roadmap_primary"},
+    {"archive_path":"source_documents/MODULE_EXECUTION_INDEX.yaml","source_path":"docs/global_modernization/v3/MODULE_EXECUTION_INDEX.yaml","bytes":1963,"sha256":"A5A9921AB7215B2C38C682FCF28C92EC5E9AE1D7184D935EA40848B95A87970B","kind":"execution_index"},
+    {"archive_path":"source_documents/VALIDATION_CYCLE_MATRIX.md","source_path":"docs/global_modernization/v3/VALIDATION_CYCLE_MATRIX.md","bytes":4494,"sha256":"8B262A2A74B93F1D4A594158C74EA4F468B2B08A3B957B89F3335589CD3494D0","kind":"qa_policy"},
+    {"archive_path":"source_documents/game_root_inventory.md","source_path":"docs/global_modernization/v3/M03/game_root_inventory.md","bytes":12827,"sha256":"99B4609A77E6A7403129501D2A273BEB0DDCD096D2D2F2B24F9B077ACC0F10ED","kind":"architecture_evidence"},
+    {"archive_path":"source_documents/gameplay_state_report.md","source_path":"docs/global_modernization/v3/M03/gameplay_state_report.md","bytes":8883,"sha256":"4CA8BBEB8740CC95D4CC3A1E3B0725D4AD6C38BAED0FA3387643FCE4928B3AA1","kind":"state_contract_report"},
+    {"archive_path":"source_documents/M03_2_VALIDATION_SUMMARY.json","source_path":"docs/global_modernization/v3/M03/M03_2_VALIDATION_SUMMARY.json","bytes":5343,"sha256":"036C0222A18936E4E21C60D7C5AEE8BCD52380E169F2D07EB73679C50EB67346","kind":"m03_validation"},
+    {"archive_path":"source_documents/M03_2_CODE_REVIEW_REPORT.md","source_path":"docs/global_modernization/v3/M03/M03_2_CODE_REVIEW_REPORT.md","bytes":3629,"sha256":"BDBAA3DE03720B3AABD8612FC8273C89BD9F16E21235115D8693C6474E9AD5AF","kind":"m03_review"},
+    {"archive_path":"source_documents/final_qa_report.md","source_path":"docs/global_modernization/final_qa_report.md","bytes":5196,"sha256":"E048083F6E686F7B06029C81A9C9A030D570C71C857B5B93888F2D1F764B5714","kind":"release_gate_history"},
+    {"archive_path":"source_documents/static-gates.json","source_path":"tools/codex/quality-gate/static-gates.json","bytes":3498,"sha256":"0F3E1728C4105CA11788A33FBA37D76B5EF95A81A8BC426A917DDC40276F3B92","kind":"active_gate_config"}
+  ]
+}
