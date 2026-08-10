@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M03.3C",
+  "source_work_package": "M03.3",
+  "status": "pass",
+  "implementation_status": "complete",
+  "runtime_changed": true,
+  "release_status": "blocked",
+  "scope": {
+    "objective": "Wire one release-off GameRoot transition/reset/epoch adapter and prove Web/Android-emulator parity.",
+    "runtime_owner": "assets/scripts/GameRoot.ts",
+    "adapter": "assets/scripts/qa/GameRootDevEventAdapter.ts",
+    "deferred": [
+      "input ownership to M03.4",
+      "collision event routing to M03.5",
+      "power-up lifecycle ownership to M03.6",
+      "production signing and immutable Web deployment to their decision gates"
+    ]
+  },
+  "source": {
+    "game_root": {"bytes": 297433, "lines": 5499, "sha256": "D82B2547B8D376131BAD46FE7133714BF9463DF68F247B6622EEF413506E8B27"},
+    "adapter": {"bytes": 5344, "lines": 160, "sha256": "9E10D6E44E3937C80E6D36A6B6EDD827869178B2D1D4A84A3E6883E69C096F20"},
+    "entrypoint_router": {"bytes": 28694, "lines": 689, "sha256": "C37B89C28852051784D1E77D42ACB9AD7276FFDCA131997F3222E21130404A66"},
+    "build_wrapper": {"bytes": 26296, "lines": 593, "sha256": "E163BA3CFB6B59D865F22A360A0AF2D9C5CC80C697B9B61A5042E4A807602724"},
+    "adapter_test": {"bytes": 12276, "lines": 275, "sha256": "0EF21F4AD14306E06C6B7988444891D592ACE324E9EBF04B5E522B4CF3F332BA"},
+    "adapter_validator": {"bytes": 10684, "lines": 247, "sha256": "791FEE4A467E5E05015B9E0BC044329D59C4D40F150A32500B8F7F2A3A5B6E6A"}
+  },
+  "contracts": {
+    "mutable_session_state_writers": 1,
+    "adapter_instances": 1,
+    "event_capacity": 128,
+    "max_export_bytes": 32768,
+    "typed_reset_reasons": ["boot", "qa_end_state", "qa_reset_loop", "start_level"],
+    "guarded_session_callbacks": 4,
+    "release_events_enabled": false,
+    "qa_reset_loop_input": "canonical decimal 1..10"
+  },
+  "static_qa": {
+    "adapter_node_groups": 10,
+    "adapter_node_status": "PASS",
+    "adapter_python_status": "PASS",
+    "complete_project_typescript": "PASS",
+    "entrypoint_router_selftest": "PASS",
+    "android_toolchain_powershell_groups": 35,
+    "android_toolchain_python_status": "PASS",
+    "execution_plan_validator": "PASS",
+    "execution_plan_test_groups": 10,
+    "git_diff_check": "PASS",
+    "canonical_pre_commit_gate": {
+      "run_id": "qg.20260810123750.e72aea24a4c4",
+      "status": "PASS",
+      "passed": 15,
+      "failed": 0,
+      "findings": 0,
+      "source_commit": "cbeac9a5a7b26e4f3e61f31e8aea085df6f9167d",
+      "dirty_source_authorized": true,
+      "source_stable": true,
+      "report": "temp/quality-gate-m03-3c/report-final-dirty-v3.json",
+      "report_sha256": "9F4E3457B94DC2A2B3698BF4EDEBBD73EA01F303CE0D216076DE7A0EDB82C298"
+    },
+    "post_commit_clean_gate": {
+      "status": "required_after_commit",
+      "report": "temp/quality-gate-m03-3c/report-final-clean.json"
+    }
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_release_build": true,
+    "raw_cocos_exit": 36,
+    "allowlisted_exit_requires_current_terminal_marker": true,
+    "required_artifacts_valid": true,
+    "debug_event_count": 33,
+    "debug_unique_sequences": 33,
+    "release_event_count": 0,
+    "matrix_passed": 34,
+    "matrix_total": 34,
+    "portrait": "PASS",
+    "interaction": "PASS",
+    "restart_passed": 10,
+    "restart_total": 10,
+    "unexpected_diagnostics": 0
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "physical_device_used": false,
+    "serial": "emulator-5554",
+    "avd": "MTR_Pixel_8_Pro_API_35",
+    "abi": "x86_64",
+    "fresh_build": true,
+    "runtime_event_count": 33,
+    "runtime_unique_sequences": 33,
+    "matrix_passed": 28,
+    "matrix_total": 28,
+    "touch_flow": "PASS",
+    "custom_name_persistence": "PASS",
+    "restart_passed": 10,
+    "restart_total": 10,
+    "soak_seconds": 30.598,
+    "soak_input_bursts": 34,
+    "process_losses": 0,
+    "unexpected_diagnostics": 0,
+    "apk": {
+      "path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk",
+      "bytes": 142891427,
+      "sha256": "B2404E4A0DEAE5C8879576E87F39D34C692BBBA1E8BA191A991C4E998015C34C",
+      "signature_scope": "debug_emulator_qa_only"
+    }
+  },
+  "review": {
+    "local_review_diff_returned": true,
+    "initial_findings": 2,
+    "accepted_findings": 1,
+    "fixed_findings": 1,
+    "rejected_findings": 1,
+    "heavy_second_pass": "timed_out_without_result",
+    "heavy_model_unload_verified": true,
+    "execution_plan_validator_edge_case_fixed": true,
+    "codex_final_review": "PASS"
+  },
+  "roadmap": {
+    "execution_complete": 5,
+    "execution_total_current": 65,
+    "execution_remaining_current": 60,
+    "conditional_units": 7,
+    "source_complete": 20,
+    "source_total": 95,
+    "source_mandatory_remaining": 65,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M03.4"
+  }
+}

@@ -189,10 +189,11 @@ modules:
         outputs: [assets/scripts/gameplay/state/GameSessionState.ts, docs/global_modernization/v3/M03/player_state_machine.yaml, tools/codex/test-game-session-state.js, tools/codex/validate_game_session_state.py, docs/global_modernization/v3/M03/gameplay_state_report.md, docs/global_modernization/v3/M03/M03_2_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_2_CODE_REVIEW_REPORT.md]
         gates: [P4, M2_PLUS]
       - id: M03.3
-        status: pending
+        status: complete
         objective: Add bounded deterministic dev event log with no release spam and reset ownership.
         targets: [assets/scripts/qa, assets/scripts/gameplay/state]
         execution_units: [M03.3A, M03.3B, M03.3C]
+        outputs: [assets/scripts/qa/DevEventTypes.ts, assets/scripts/qa/DevEventLog.ts, assets/scripts/qa/LifecycleEpoch.ts, assets/scripts/qa/GameRootDevEventAdapter.ts, docs/global_modernization/v3/M03/M03_3_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_3_CODE_REVIEW_REPORT.md]
         gates: [P4]
       - id: M03.4
         status: pending
@@ -602,7 +603,7 @@ modules:
 
 next_safe_action:
   module: M03
-  work_package: M03.3
-  execution_unit: M03.3C
-  prerequisites_complete: [M03.3B, TC-01]
-  action: Wire the release-off GameRoot transition/reset adapter and execute full Web plus Android-emulator P4; keep release blocked.
+  work_package: M03.4
+  execution_unit: M03.4
+  prerequisites_complete: [M03.3C]
+  action: Route jump, glide, dash and pause through one input adapter with listener/debounce parity; execute Web plus Android-emulator P4 and keep release blocked.

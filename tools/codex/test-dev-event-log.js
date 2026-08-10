@@ -467,7 +467,9 @@ testGroup('source_boundary', () => {
     assert.doesNotMatch(source, /from\s+['"]cc['"]|require\s*\(\s*['"]cc['"]\s*\)/);
     assert.doesNotMatch(source, /\bconsole\s*\.|\bDate\s*\.|\bMath\.random\s*\(|\blocalStorage\b|\bfetch\s*\(/);
   }
-  assert.doesNotMatch(gameRootSource, /DevEvent(?:Log|Record|Input|Code)|scripts\/qa|\.\/qa\//);
+  assert.doesNotMatch(gameRootSource, /new\s+DevEventLog\b|new\s+LifecycleEpoch\b|\.\/qa\/(?:DevEventLog|DevEventTypes|LifecycleEpoch)/);
+  assert.strictEqual((gameRootSource.match(/new\s+GameRootDevEventAdapter\s*\(/g) || []).length, 1);
+  assert.match(gameRootSource, /eventsEnabled:\s*DEBUG\b/);
 });
 
 console.log(JSON.stringify({
@@ -479,5 +481,5 @@ console.log(JSON.stringify({
   compilerTarget: 'ES2015',
   compilerPath: typescriptPath,
   cocosIndependent: true,
-  gameRootWired: false,
+  gameRootWired: 'M03.3C_ADAPTER_ONLY',
 }));

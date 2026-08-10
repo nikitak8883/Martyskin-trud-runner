@@ -61,6 +61,21 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "game-root-dev-event-adapter-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_game_root_dev_event_adapter.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "android-build-toolchain-contracts",
       "mandatory": true,
       "enabled": true,

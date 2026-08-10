@@ -50,6 +50,11 @@ class V4ExecutionPlanTests(unittest.TestCase):
         next(unit for unit in plan["units"] if unit["id"] == "M02-AAB")["source_packages"] = ["M02.8"]
         self.assertIn("CONDITIONAL_UNIT_HAS_MANDATORY_SOURCE", self.codes(plan))
 
+    def test_complete_source_replanned_by_noncomplete_unit_fails(self) -> None:
+        plan = deepcopy(self.plan)
+        next(unit for unit in plan["units"] if unit["id"] == "M03.3C")["status"] = "ready"
+        self.assertIn("COMPLETE_SOURCE_REPLANNED", self.codes(plan))
+
     def test_dependency_cycle_fails(self) -> None:
         plan = deepcopy(self.plan)
         next(unit for unit in plan["units"] if unit["id"] == "RDX-01")["depends_on"] = ["TC-01"]

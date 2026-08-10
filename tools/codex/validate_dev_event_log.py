@@ -271,8 +271,16 @@ def validate(project_root: Path) -> dict[str, object]:
     for label, pattern in forbidden_patterns.items():
         if re.search(pattern, combined_source):
             errors.append(f"forbidden_runtime_dependency:{label}")
-    if re.search(r"DevEvent(?:Log|Record|Input|Code)|scripts/qa|\./qa/", game_root_source):
-        errors.append("game_root_runtime_wiring")
+    direct_wiring = re.search(
+        r"new\s+DevEventLog\b|new\s+LifecycleEpoch\b|\./qa/(?:DevEventLog|DevEventTypes|LifecycleEpoch)",
+        game_root_source,
+    )
+    if direct_wiring:
+        errors.append("game_root_direct_runtime_wiring")
+    if len(re.findall(r"new\s+GameRootDevEventAdapter\s*\(", game_root_source)) != 1:
+        errors.append("game_root_adapter_count")
+    if re.search(r"eventsEnabled:\s*DEBUG\b", game_root_source) is None:
+        errors.append("game_root_adapter_not_debug_bound")
 
     required_test_markers = (
         "strictTypeScript",
@@ -286,7 +294,7 @@ def validate(project_root: Path) -> dict[str, object]:
         "payload_utf8_byte_bound",
         "stable_serialization",
         "export_event_and_byte_bounds",
-        "gameRootWired: false",
+        "gameRootWired: 'M03.3C_ADAPTER_ONLY'",
     )
     for marker in required_test_markers:
         if marker not in test_source:
@@ -313,7 +321,7 @@ def validate(project_root: Path) -> dict[str, object]:
         "default_capacity": defaults.get("capacity"),
         "static_gate_steps": len(static_gate.get("steps", [])),
         "meta_contracts": meta_count,
-        "game_root_wired": False if "game_root_runtime_wiring" not in errors else True,
+        "game_root_wiring": "M03.3C_ADAPTER_ONLY" if not direct_wiring else "DIRECT_REJECTED",
         "errors": errors,
     }
 

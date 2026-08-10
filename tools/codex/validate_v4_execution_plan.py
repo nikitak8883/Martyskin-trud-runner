@@ -178,7 +178,10 @@ def validate(
                 continue
             coverage[package_id].append(unit_id)
             source_status = source.get("status")
-            if source_status == "complete":
+            # A completed unit retains its source package as immutable
+            # provenance after that package closes. Only a non-complete unit
+            # may not schedule work from an already completed source package.
+            if source_status == "complete" and status != "complete":
                 add_finding(findings, "COMPLETE_SOURCE_REPLANNED", f"units.{unit_id}.source_packages", "remaining package", package_id)
             if status == "conditional" and source_status != "conditional":
                 add_finding(findings, "CONDITIONAL_UNIT_HAS_MANDATORY_SOURCE", f"units.{unit_id}.source_packages", "conditional source", package_id)

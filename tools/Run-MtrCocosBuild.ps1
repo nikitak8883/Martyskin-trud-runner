@@ -386,6 +386,7 @@ $invokeCocos = {
         -TimeoutSeconds $TimeoutSeconds `
         -SuccessLogPath @($cocosLogPath) `
         -SuccessPattern @('build Task \(.*\) Finished', 'build task\(.*\) in \d+') `
+        -SuccessPatternAcceptedNonzeroExitCode @(36) `
         -SuccessPollIntervalMilliseconds 1000 `
         -PassThru
 }
@@ -405,6 +406,12 @@ if ($finished -and -not $isAndroidBuild) {
     $faviconSource = Join-Path $ProjectRoot 'assets\favicon.png'
     $faviconDest = Join-Path $webBuildRoot 'favicon.png'
     $indexPath = Join-Path $webBuildRoot 'index.html'
+    $requiredWebArtifacts = @(
+        (Join-Path $webBuildRoot 'index.html'),
+        (Join-Path $webBuildRoot 'index.js'),
+        (Join-Path $webBuildRoot 'application.js'),
+        (Join-Path $webBuildRoot 'src\settings.json')
+    )
     $webPostProcess = [ordered]@{
         reason = 'prevent-browser-favicon-404-noise-in-web-qa'
         webBuildRoot = $webBuildRoot
@@ -413,12 +420,20 @@ if ($finished -and -not $isAndroidBuild) {
         indexPath = $indexPath
         copiedFavicon = $false
         patchedIndex = $false
+        requiredArtifacts = $requiredWebArtifacts
+        requiredArtifactsValid = $false
         ok = $false
         error = $null
     }
 
     try {
-        if ((Test-Path -LiteralPath $webBuildRoot -PathType Container) -and
+        $invalidRequiredArtifacts = @($requiredWebArtifacts | Where-Object {
+            -not (Test-Path -LiteralPath $_ -PathType Leaf) -or
+            (Get-Item -LiteralPath $_).Length -le 0
+        })
+        $webPostProcess.requiredArtifactsValid = ($invalidRequiredArtifacts.Count -eq 0)
+        if ($webPostProcess.requiredArtifactsValid -and
+            (Test-Path -LiteralPath $webBuildRoot -PathType Container) -and
             (Test-Path -LiteralPath $faviconSource -PathType Leaf) -and
             (Test-Path -LiteralPath $indexPath -PathType Leaf)) {
             Copy-Item -LiteralPath $faviconSource -Destination $faviconDest -Force
@@ -432,12 +447,22 @@ if ($finished -and -not $isAndroidBuild) {
                 $webPostProcess.patchedIndex = $true
             }
 
-            $webPostProcess.ok = (Test-Path -LiteralPath $faviconDest -PathType Leaf)
+            $webPostProcess.ok = (
+                (Test-Path -LiteralPath $faviconDest -PathType Leaf) -and
+                (Get-Item -LiteralPath $faviconDest).Length -gt 0
+            )
         } else {
-            $webPostProcess.error = 'web-root-favicon-source-or-index-missing'
+            $webPostProcess.error = if ($invalidRequiredArtifacts.Count -gt 0) {
+                "required-web-artifacts-missing-or-empty: $($invalidRequiredArtifacts -join ', ')"
+            } else {
+                'web-root-favicon-source-or-index-missing'
+            }
         }
     } catch {
         $webPostProcess.error = $_.Exception.Message
+    }
+    if (-not $webPostProcess.ok) {
+        $finished = $false
     }
 }
 if ($finished -and $isAndroidBuild) {
@@ -554,6 +579,7 @@ $result = [pscustomobject]@{
     autocorrections = $run.autocorrections
     completedBySuccessPattern = $run.completedBySuccessPattern
     successMatch = $run.successMatch
+    successPatternAcceptedNonzeroExitCode = $run.successPatternAcceptedNonzeroExitCode
     contentIdentity = $contentIdentity
     androidToolchain = $androidToolchainPreflight
     platformArtifactManifest = [pscustomobject]$platformArtifactManifest
@@ -563,8 +589,5 @@ $result = [pscustomobject]@{
 
 $result | ConvertTo-Json -Depth 8
 if (-not $finished) {
-    if ($run.exitCode -ne 0) {
-        exit $run.exitCode
-    }
-    exit 1
+    exit $reportedExitCode
 }

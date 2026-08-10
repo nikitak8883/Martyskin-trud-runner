@@ -536,6 +536,9 @@ def main() -> int:
         ("Invoke-MtrAndroidBuildJavaScope `", "build_wrapper_gradle_java_scope"),
         ("Content-only validation remains host-independent", "content_only_boundary"),
         ("$run.completedBySuccessPattern", "build_wrapper_current_run_success_binding"),
+        ("-SuccessPatternAcceptedNonzeroExitCode @(36)", "build_wrapper_cocos_terminal_exit_binding"),
+        ("requiredArtifactsValid", "build_wrapper_web_artifact_fail_closed"),
+        ("exit $reportedExitCode", "build_wrapper_reported_exit_consistency"),
         ("[Guid]::NewGuid()", "build_wrapper_unique_log_names"),
         ("Build run log path already exists; choose a unique path", "build_wrapper_reused_log_rejected"),
     ):
@@ -546,10 +549,13 @@ def main() -> int:
         ("$successLogStates", "entrypoint_success_log_baseline"),
         ("$state.offset", "entrypoint_success_log_cursor"),
         ("$stream.Length", "entrypoint_bounded_length_snapshot"),
-        ("$exited -and $process.ExitCode -ne 0", "entrypoint_nonzero_precedence"),
+        ("$scanSuccessEvidence", "entrypoint_exit_aware_success_scan"),
+        ("$acceptedSuccessExitCodes -contains $process.ExitCode", "entrypoint_explicit_nonzero_allowlist"),
         ("staleSuccessRejected", "entrypoint_stale_success_test"),
         ("currentSuccessAccepted", "entrypoint_current_success_test"),
         ("nonzeroExitPrecedence", "entrypoint_nonzero_success_test"),
+        ("allowlistedNonzeroWithCurrentEvidenceAccepted", "entrypoint_allowlisted_nonzero_current_success_test"),
+        ("allowlistedNonzeroWithoutCurrentEvidenceRejected", "entrypoint_allowlisted_nonzero_missing_success_test"),
         ("boundedSuccessLogOverflowRejected", "entrypoint_bounded_overflow_test"),
     ):
         require_marker(entrypoint, marker, code, errors)

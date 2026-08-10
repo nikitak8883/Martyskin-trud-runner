@@ -24,6 +24,7 @@
     Vec3,
     view,
 } from 'cc';
+import { DEBUG } from 'cc/env';
 import {
     THEMED_ASSET_ENTRIES,
     THEMED_ALL_RUNTIME_KEYS,
@@ -39,10 +40,23 @@ import type {
     GameSessionState,
     GameSessionTransitionResult,
 } from './gameplay/state/GameSessionState';
+import {
+    GAME_ROOT_DEV_EVENT_CAPACITY,
+    GAME_ROOT_DEV_EVENT_MAX_EXPORT_BYTES,
+    GameRootDevEventAdapter,
+} from './qa/GameRootDevEventAdapter';
+import type { DevEventRecord, GameRootResetReason } from './qa/GameRootDevEventAdapter';
 import { UI_SCREEN_TITLES, UI_SHARED_ASSET_KEYS, UI_SKIN } from './ui/UITheme';
 import type { UiColorTuple } from './ui/UITheme';
 
 const { ccclass } = _decorator;
+
+function logGameRootDevEvent(event: DevEventRecord): void {
+    console.log(
+        `MTR_DEV_EVENT sequence=${event.sequence} epoch=${event.epoch} tick=${event.tick}`
+        + ` code=${event.code} state=${event.state || '-'} reason=${event.reason || '-'}`,
+    );
+}
 
 const W = 1280;
 const H = 720;
@@ -1008,6 +1022,10 @@ export class GameRoot extends Component {
     private audioDeferredLoadStarted = false;
     private currentMusic = '';
     private rngSeed = 1;
+    private readonly devEvents = new GameRootDevEventAdapter({
+        eventsEnabled: DEBUG,
+        onEvent: DEBUG ? logGameRootDevEvent : undefined,
+    });
 
     private state: State = 'menu';
     private levelIndex = 0;
@@ -1241,11 +1259,12 @@ export class GameRoot extends Component {
         input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
         input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
 
-        this.reset();
+        this.reset('boot');
         this.applyStartupQuery();
     }
 
     onDestroy(): void {
+        this.devEvents.invalidate(this.state, 'component_destroy', this.fixedStepCount);
         input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
         input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
         input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
@@ -1354,10 +1373,12 @@ export class GameRoot extends Component {
         if (transition.accepted === false) {
             this.syncGameState();
             console.warn(`MTR_FSM_REJECT code=${transition.code} state=${prev}->${next} reason=${reason}`);
+            this.devEvents.recordTransition(transition, this.fixedStepCount);
             return transition;
         }
         if (!transition.changed) {
             this.syncGameState();
+            this.devEvents.recordTransition(transition, this.fixedStepCount);
             return transition;
         }
         if (prev === 'name' && next !== 'name') this.commitPlayerNameFromInput(false);
@@ -1368,6 +1389,7 @@ export class GameRoot extends Component {
         if (next === 'name') this.syncPlayerNameEditString();
         this.syncGameState();
         console.log(`MTR_FSM:${prevMode}->${nextMode} state=${prev}->${next} reason=${reason}`);
+        this.devEvents.recordTransition(transition, this.fixedStepCount);
         return transition;
     }
 
@@ -2265,7 +2287,8 @@ export class GameRoot extends Component {
         this.bannerTimer = TOAST_DURATION_SEC;
     }
 
-    private reset(): void {
+    private reset(reason: GameRootResetReason): void {
+        const resetEpoch = this.devEvents.beginReset(this.state, reason, this.fixedStepCount);
         this.progress = 0;
         this.score = 0;
         this.hp = 3;
@@ -2325,6 +2348,7 @@ export class GameRoot extends Component {
         this.logObjectiveIntegrationForLevel();
         this.syncGameState();
         this.logGameStateSnapshot('reset');
+        this.devEvents.endReset(resetEpoch, this.state, reason, this.fixedStepCount);
     }
 
     private startLevel(i: number): void {
@@ -2347,20 +2371,20 @@ export class GameRoot extends Component {
         this.levelIndex = target;
         this.ensureBackgroundFrame(this.levelIndex, 'start-level');
         this.transitionTo('playing', 'start_level');
-        this.reset();
+        this.reset('start_level');
         this.restartLevelMusic();
         this.playVoice('ui', 0.45);
         if (this.pendingQaObstacleSpawn) {
             this.pendingQaObstacleSpawn = false;
-            this.scheduleOnce(() => this.spawnAllObstacleFamiliesForQa(), 0);
+            this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.spawnAllObstacleFamiliesForQa()), 0);
         }
         if (this.pendingQaBonusSpawn) {
             this.pendingQaBonusSpawn = false;
-            this.scheduleOnce(() => this.spawnAllBonusStatesForQa(), 0);
+            this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.spawnAllBonusStatesForQa()), 0);
         }
         if (this.pendingQaPauseAfterStart) {
             this.pendingQaPauseAfterStart = false;
-            this.scheduleOnce(() => {
+            this.scheduleOnce(this.devEvents.guardSessionCallback(() => {
                 if (this.state !== 'playing') {
                     this.pendingQaPauseShowTouchZones = false;
                     return;
@@ -2370,7 +2394,7 @@ export class GameRoot extends Component {
                 this.togglePauseFromInput();
                 console.log(`MTR_QA_STARTUP_PAUSE_APPLIED level=${this.levelIndex + 1}`);
                 console.log('MTR_QA_SCREEN_READY screen=paused');
-            }, 0.18);
+            }), 0.18);
         }
     }
 
@@ -2389,7 +2413,7 @@ export class GameRoot extends Component {
     private seedEndStateForQa(state: EndState, target: number): void {
         this.levelIndex = clamp(target, 0, LEVELS.length - 1);
         this.unlockedLevel = Math.max(this.unlockedLevel, this.levelIndex);
-        this.reset();
+        this.reset('qa_end_state');
         const level = LEVELS[this.levelIndex];
         this.progress = level.length;
         this.bananasCollected = state === 'over'
@@ -2410,6 +2434,7 @@ export class GameRoot extends Component {
         const params = this.startupQueryParams();
         if (!params) return;
         if (params.get('mtr_dev') === '1') this.enableDeveloperMode();
+        this.runDevEventResetLoopForQa(params);
         const skinParam = params.get('mtr_skin') || params.get('mtr_qa_skin');
         if (skinParam) {
             const skinIdIndex = PLAYER_SKIN_IDS.indexOf(skinParam as typeof PLAYER_SKIN_IDS[number]);
@@ -2509,6 +2534,46 @@ export class GameRoot extends Component {
                 this.spawnAllBonusStatesForQa();
             }
         }
+    }
+
+    private runDevEventResetLoopForQa(params: StartupQueryParams): void {
+        if (!DEBUG) return;
+        const rawLoops = params.get('mtr_qa_reset_loops');
+        if (rawLoops === null) return;
+        if (!/^(?:[1-9]|10)$/.test(rawLoops)) {
+            console.log('MTR_DEV_EVENT_QA_REJECTED reason=reset_loop_range');
+            return;
+        }
+        const loops = Number(rawLoops);
+        if (!Number.isSafeInteger(loops) || loops < 1 || loops > 10) {
+            console.log('MTR_DEV_EVENT_QA_REJECTED reason=reset_loop_range');
+            return;
+        }
+        for (let index = 0; index < loops; index += 1) this.reset('qa_reset_loop');
+
+        const events = this.devEvents.snapshot();
+        const sequences = new Set(events.map((event) => event.sequence));
+        const epochEvents = events.filter((event) => event.code === 'session.epoch.changed').length;
+        const resetBegins = events.filter((event) => event.code === 'session.reset.begin').length;
+        const resetEnds = events.filter((event) => event.code === 'session.reset.end').length;
+        const expectedResets = loops + 1;
+        const exportJson = this.devEvents.exportJson(
+            GAME_ROOT_DEV_EVENT_CAPACITY,
+            GAME_ROOT_DEV_EVENT_MAX_EXPORT_BYTES,
+        );
+        const passed = this.devEvents.currentEpoch() === expectedResets
+            && events.length === expectedResets * 3
+            && sequences.size === events.length
+            && epochEvents === expectedResets
+            && resetBegins === expectedResets
+            && resetEnds === expectedResets
+            && exportJson.length > 2;
+        console.log(
+            `MTR_DEV_EVENT_QA_${passed ? 'READY' : 'FAIL'} loops=${loops}`
+            + ` epoch=${this.devEvents.currentEpoch()} events=${events.length}`
+            + ` unique=${sequences.size} resetBegin=${resetBegins} resetEnd=${resetEnds}`
+            + ` exportBound=${GAME_ROOT_DEV_EVENT_MAX_EXPORT_BYTES}`,
+        );
     }
 
     private enableDeveloperMode(): void {
@@ -2612,7 +2677,7 @@ export class GameRoot extends Component {
             this.bannerText = 'Грузим все варианты экипировки...';
             this.bannerTimer = TOAST_DURATION_SEC;
             console.log(`MTR_QA_BONUS_PRELOAD_WAIT variants=${requiredVariants.length} missing=${missing.length}${sample ? ` sample=${sample}` : ''}`);
-            this.scheduleOnce(() => this.spawnAllBonusStatesForQa(), 0.35);
+            this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.spawnAllBonusStatesForQa()), 0.35);
             return;
         }
         if (this.state !== 'playing') {

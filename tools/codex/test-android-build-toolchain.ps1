@@ -515,6 +515,9 @@ try {
     Invoke-MtrToolchainTestGroup 'wrapper_log_paths_are_unique_and_reuse_fails_closed' {
         Assert-MtrToolchainTest ($wrapperSource -match '\[Guid\]::NewGuid\(\)') 'wrapper defaults do not contain per-run GUIDs'
         Assert-MtrToolchainTest ($wrapperSource -match 'Build run log path already exists; choose a unique path') 'wrapper does not reject reused run log paths'
+        Assert-MtrToolchainTest ($wrapperSource -match '-SuccessPatternAcceptedNonzeroExitCode\s+@\(36\)') 'wrapper does not bind the known Cocos terminal exit code to current-run success evidence'
+        Assert-MtrToolchainTest ($wrapperSource -match 'requiredArtifactsValid') 'wrapper does not fail closed on incomplete Web artifacts'
+        Assert-MtrToolchainTest ($wrapperSource -match 'exit \$reportedExitCode') 'wrapper process exit does not match its reported build result'
     }
 
     Invoke-MtrToolchainTestGroup 'caller_environment_is_unchanged' {

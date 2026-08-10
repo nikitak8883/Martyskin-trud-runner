@@ -262,6 +262,7 @@ function Invoke-MtrEntrypoint {
         [int]$TimeoutSeconds = 0,
         [string[]]$SuccessLogPath = @(),
         [string[]]$SuccessPattern = @(),
+        [int[]]$SuccessPatternAcceptedNonzeroExitCode = @(),
         [int]$SuccessPollIntervalMilliseconds = 1000,
         [ValidateRange(1024, 1048576)][int]$SuccessScanChunkLimitBytes = 1048576
     )
@@ -273,6 +274,12 @@ function Invoke-MtrEntrypoint {
     $resolvedWorkingDirectory = (Resolve-Path -LiteralPath $WorkingDirectory).Path
     $argumentString = ConvertTo-MtrArgumentString -ArgumentList $ArgumentList
     $redactedArguments = Get-MtrRedactedArguments -ArgumentList $ArgumentList
+    $acceptedSuccessExitCodes = @($SuccessPatternAcceptedNonzeroExitCode | Sort-Object -Unique)
+    foreach ($acceptedCode in $acceptedSuccessExitCodes) {
+        if ($acceptedCode -le 0) {
+            throw 'SuccessPatternAcceptedNonzeroExitCode accepts positive nonzero process exit codes only.'
+        }
+    }
 
     $autocorrections = [System.Collections.Generic.List[string]]::new()
     $autocorrections.Add('argument-array-to-safe-command-line')
@@ -315,6 +322,7 @@ function Invoke-MtrEntrypoint {
         timeoutSeconds = $TimeoutSeconds
         successLogPath = @($SuccessLogPath)
         successPatternCount = @($SuccessPattern).Count
+        successPatternAcceptedNonzeroExitCode = $acceptedSuccessExitCodes
     }
     Write-MtrEntrypointLog -LogPath $LogPath -Record $startRecord
 
@@ -384,8 +392,17 @@ function Invoke-MtrEntrypoint {
             $pollMs = [Math]::Max(250, $SuccessPollIntervalMilliseconds)
             do {
                 $exited = $process.WaitForExit($pollMs)
-                if ($exited -and $process.ExitCode -ne 0) { break }
-                if (@($SuccessPattern).Count -gt 0 -and @($SuccessLogPath).Count -gt 0) {
+                # Some GUI build tools write their terminal success record and
+                # exit between two polling ticks. Scan the final appended bytes
+                # only when the exit is zero or this caller explicitly
+                # allowlists that tool-specific nonzero exit code. The default
+                # remains fail-closed for every nonzero exit.
+                $scanSuccessEvidence = (
+                    -not $exited -or
+                    $process.ExitCode -eq 0 -or
+                    $acceptedSuccessExitCodes -contains $process.ExitCode
+                )
+                if ($scanSuccessEvidence -and @($SuccessPattern).Count -gt 0 -and @($SuccessLogPath).Count -gt 0) {
                     $match = Test-MtrSuccessPattern `
                         -Path $SuccessLogPath `
                         -Pattern $SuccessPattern `
@@ -419,6 +436,7 @@ function Invoke-MtrEntrypoint {
                             workingDirectory = $resolvedWorkingDirectory
                             processId = $process.Id
                             successMatch = $successMatch
+                            processExitCode = if ($exited) { $process.ExitCode } else { $null }
                             action = 'stop-process-tree-after-success-log'
                         }
                         if (-not $exited) {
@@ -467,6 +485,7 @@ function Invoke-MtrEntrypoint {
         completedBySuccessPattern = $completedBySuccessPattern
         successMatch = $successMatch
         successEvidenceOverflow = $successEvidenceOverflow
+        successPatternAcceptedNonzeroExitCode = $acceptedSuccessExitCodes
         logPath = $LogPath
         stdout = $RedirectStandardOutput
         stderr = $RedirectStandardError
@@ -486,6 +505,7 @@ function Invoke-MtrEntrypoint {
         completedBySuccessPattern = $completedBySuccessPattern
         successMatch = $successMatch
         successEvidenceOverflow = $successEvidenceOverflow
+        successPatternAcceptedNonzeroExitCode = $acceptedSuccessExitCodes
         stdout = $RedirectStandardOutput
         stderr = $RedirectStandardError
         autocorrections = @($autocorrections)
@@ -570,6 +590,33 @@ function Test-MtrEntrypointQuoting {
             -SuccessPollIntervalMilliseconds 100 `
             -PassThru
 
+        $acceptedNonzeroScript = "import pathlib, sys; pathlib.Path(sys.argv[1]).open('a', encoding='utf-8').write('MTR_CURRENT_SUCCESS\n'); raise SystemExit(36)"
+        $acceptedNonzeroRun = Invoke-MtrEntrypoint `
+            -FilePath $python.Source `
+            -ArgumentList @('-c', $acceptedNonzeroScript, $successLogPath) `
+            -WorkingDirectory (Get-Location).Path `
+            -LogPath $LogPath `
+            -Wait `
+            -TimeoutSeconds 5 `
+            -SuccessLogPath @($successLogPath) `
+            -SuccessPattern @('MTR_CURRENT_SUCCESS') `
+            -SuccessPatternAcceptedNonzeroExitCode @(36) `
+            -SuccessPollIntervalMilliseconds 100 `
+            -PassThru
+
+        $acceptedNonzeroWithoutEvidenceRun = Invoke-MtrEntrypoint `
+            -FilePath $python.Source `
+            -ArgumentList @('-c', 'raise SystemExit(36)') `
+            -WorkingDirectory (Get-Location).Path `
+            -LogPath $LogPath `
+            -Wait `
+            -TimeoutSeconds 5 `
+            -SuccessLogPath @($successLogPath) `
+            -SuccessPattern @('MTR_CURRENT_SUCCESS') `
+            -SuccessPatternAcceptedNonzeroExitCode @(36) `
+            -SuccessPollIntervalMilliseconds 100 `
+            -PassThru
+
         $overflowRejected = $false
         $overflowScript = "import pathlib, sys, time; pathlib.Path(sys.argv[1]).open('a', encoding='utf-8').write('X' * 2048); time.sleep(1)"
         try {
@@ -600,6 +647,11 @@ function Test-MtrEntrypointQuoting {
             -not $nonzeroAfterSuccessRun.completedBySuccessPattern -and
             $nonzeroAfterSuccessRun.exitCode -eq 7 -and
             $nonzeroAfterSuccessRun.logicalExitCode -eq 7 -and
+            $acceptedNonzeroRun.completedBySuccessPattern -and
+            $acceptedNonzeroRun.exitCode -eq 36 -and
+            $acceptedNonzeroRun.logicalExitCode -eq 0 -and
+            -not $acceptedNonzeroWithoutEvidenceRun.completedBySuccessPattern -and
+            $acceptedNonzeroWithoutEvidenceRun.logicalExitCode -eq 36 -and
             $overflowRejected
         )
         Write-MtrEntrypointLog -LogPath $LogPath -Record @{
@@ -612,6 +664,8 @@ function Test-MtrEntrypointQuoting {
             staleSuccessRejected = -not $staleOnlyRun.completedBySuccessPattern
             currentSuccessAccepted = [bool]$currentSuccessRun.completedBySuccessPattern
             nonzeroExitPrecedence = ($nonzeroAfterSuccessRun.logicalExitCode -eq 7)
+            allowlistedNonzeroWithCurrentEvidenceAccepted = ($acceptedNonzeroRun.logicalExitCode -eq 0)
+            allowlistedNonzeroWithoutCurrentEvidenceRejected = ($acceptedNonzeroWithoutEvidenceRun.logicalExitCode -eq 36)
             boundedSuccessLogOverflowRejected = $overflowRejected
         }
 
@@ -623,6 +677,8 @@ function Test-MtrEntrypointQuoting {
             staleSuccessRejected = -not $staleOnlyRun.completedBySuccessPattern
             currentSuccessAccepted = [bool]$currentSuccessRun.completedBySuccessPattern
             nonzeroExitPrecedence = ($nonzeroAfterSuccessRun.logicalExitCode -eq 7)
+            allowlistedNonzeroWithCurrentEvidenceAccepted = ($acceptedNonzeroRun.logicalExitCode -eq 0)
+            allowlistedNonzeroWithoutCurrentEvidenceRejected = ($acceptedNonzeroWithoutEvidenceRun.logicalExitCode -eq 36)
             boundedSuccessLogOverflowRejected = $overflowRejected
         }
     } finally {
