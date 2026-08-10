@@ -40,6 +40,8 @@ import type {
     GameSessionState,
     GameSessionTransitionResult,
 } from './gameplay/state/GameSessionState';
+import { GameplayInputAdapter } from './gameplay/input/GameplayInputAdapter';
+import type { GameplayPauseInputContext } from './gameplay/input/GameplayInputAdapter';
 import {
     GAME_ROOT_DEV_EVENT_CAPACITY,
     GAME_ROOT_DEV_EVENT_MAX_EXPORT_BYTES,
@@ -1028,6 +1030,14 @@ export class GameRoot extends Component {
     });
 
     private state: State = 'menu';
+    private readonly gameplayInput = new GameplayInputAdapter({
+        getSessionState: () => this.state,
+        nowMs: () => Date.now(),
+        onJump: () => this.applyJumpInput(),
+        onGlideChanged: (active) => { this.gliding = active; },
+        onDash: () => this.applyDashInput(),
+        onPause: (context) => this.applyPauseInput(context),
+    });
     private levelIndex = 0;
     private unlockedLevel = 0;
     private selectedSkin = 0;
@@ -1048,8 +1058,6 @@ export class GameRoot extends Component {
     private pendingQaPauseShowTouchZones = false;
     private showPerfOverlay = false;
     private devStatusText = '';
-    private lastPauseToggleMs = 0;
-    private pauseTapAccepted = 0;
     private assetUsageLogged: Record<string, boolean> = {};
     private equipmentAttachLogged: Record<string, boolean> = {};
     private equipmentMissingLogged: Record<string, boolean> = {};
@@ -2323,7 +2331,7 @@ export class GameRoot extends Component {
         this.backgroundWorldDistancePx = 0;
         this.lastBackgroundSyncLogKey = '';
         this.lastTrackBackdropSyncLogKey = '';
-        this.gliding = false;
+        this.gameplayInput.releaseGlide('session_reset');
         this.cameraShake = 0;
         this.logicAccumulator = 0;
         this.player = { x: 250, y: GROUND, vy: 0, onGround: true, doubleJump: true };
@@ -2391,7 +2399,7 @@ export class GameRoot extends Component {
                 }
                 if (this.pendingQaPauseShowTouchZones) this.showTouchZones = true;
                 this.pendingQaPauseShowTouchZones = false;
-                this.togglePauseFromInput();
+                this.gameplayInput.dispatch({ action: 'pause', phase: 'trigger', source: 'qa' });
                 console.log(`MTR_QA_STARTUP_PAUSE_APPLIED level=${this.levelIndex + 1}`);
                 console.log('MTR_QA_SCREEN_READY screen=paused');
             }), 0.18);
@@ -3024,7 +3032,7 @@ export class GameRoot extends Component {
         this.updateParticles(dt);
     }
 
-    private jump(): void {
+    private applyJumpInput(): void {
         if (this.state !== 'playing') return;
         if (this.player.onGround) {
             this.player.vy = -(this.jumpBoost > 0 || this.coffeeBoost > 0 ? 700 : 620);
@@ -3042,7 +3050,7 @@ export class GameRoot extends Component {
         }
     }
 
-    private dash(): void {
+    private applyDashInput(): void {
         if (this.state !== 'playing' || this.dashCooldown > 0) return;
         this.dashTimer = this.dashBoost > 0 || this.coffeeBoost > 0 ? 0.60 : 0.46;
         this.dashCooldown = this.dashBoost > 0 || this.coffeeBoost > 0 ? 0.55 : 0.95;
@@ -3254,12 +3262,8 @@ textarea, input {
         doc.head?.appendChild(style);
     }
 
-    private togglePauseFromInput(): void {
-        const now = Date.now();
-        if (now - this.lastPauseToggleMs < 220) return;
-        this.lastPauseToggleMs = now;
-        this.pauseTapAccepted++;
-        console.log(`MTR_INPUT_PAUSE_TAP accepted=${this.pauseTapAccepted} state=${this.state}`);
+    private applyPauseInput(context: GameplayPauseInputContext): void {
+        console.log(`MTR_INPUT_PAUSE_TAP accepted=${context.acceptedCount} state=${this.state} source=${context.source}`);
         if (this.state === 'playing') {
             this.transitionTo('paused', 'pause_input');
             this.playFirst(['pause', 'banner'], this.sfxVolume * 0.6);
@@ -3272,7 +3276,7 @@ textarea, input {
     private onPauseTouchZoneTap(event: EventTouch): void {
         (event as unknown as { propagationStopped?: boolean }).propagationStopped = true;
         this.unlockAudio();
-        this.togglePauseFromInput();
+        this.gameplayInput.dispatch({ action: 'pause', phase: 'trigger', source: 'pause_zone' });
     }
 
     private drawAssetSprite(key: string, x: number, y: number, w: number, h: number, opacity = 255, usageCategory?: ObjectiveCategory, usageReason = 'draw'): boolean {
@@ -4333,14 +4337,14 @@ textarea, input {
         this.text(`СЧЁТ ${this.score}   ОБЪЕКТ ${progressPct}%`, 1082, 65, 13, rgb(240, 230, 188), 'right', 310);
         if (this.developerMode && (this.showTouchZones || this.showPerfOverlay || this.debugColliders || this.debugReadability)) this.text('РАЗР', 1246, 72, 12, rgb(255, 236, 94), 'right');
         const pauseZone = this.pauseTouchRect();
-        this.button(pauseZone.x + 18, 83, 150, 64, 'ПАУЗА', () => this.togglePauseFromInput(), rgb(255, 218, 126, 190), rgb(48, 36, 24, 154), rgb(255, 240, 180));
+        this.button(pauseZone.x + 18, 83, 150, 64, 'ПАУЗА', () => this.gameplayInput.dispatch({ action: 'pause', phase: 'trigger', source: 'hud_button' }), rgb(255, 218, 126, 190), rgb(48, 36, 24, 154), rgb(255, 240, 180));
         if (this.developerMode && this.showTouchZones) {
             const zone = this.pauseTouchRect();
             this.strokeRect(zone.x, zone.y, zone.w, zone.h, rgb(120, 255, 180, 210));
             this.text('ЗОНА ПАУЗЫ', zone.x + zone.w * 0.5, zone.y + zone.h + 16, 10, rgb(160, 255, 190));
         }
-        this.button(48, 619, 350, 64, 'ПРЫЖОК / ПЛАН', () => this.jump(), rgb(180, 226, 172, 112), rgb(38, 70, 42, 70), rgb(218, 255, 216));
-        this.button(930, 619, 270, 64, 'РЫВОК', () => this.dash(), rgb(255, 225, 100, 126), rgb(92, 78, 35, 72), rgb(255, 237, 132));
+        this.button(48, 619, 350, 64, 'ПРЫЖОК / ПЛАН', () => this.gameplayInput.dispatch({ action: 'jump', phase: 'trigger', source: 'hud_button' }), rgb(180, 226, 172, 112), rgb(38, 70, 42, 70), rgb(218, 255, 216));
+        this.button(930, 619, 270, 64, 'РЫВОК', () => this.gameplayInput.dispatch({ action: 'dash', phase: 'trigger', source: 'hud_button' }), rgb(255, 225, 100, 126), rgb(92, 78, 35, 72), rgb(255, 237, 132));
     }
 
     private drawOverlay(): void {
@@ -4926,40 +4930,54 @@ textarea, input {
         this.unlockAudio();
         const p = this.touchPoint(event);
         const buttonHit = this.handleTouch(p.x, p.y);
-        if (!buttonHit && this.state === 'playing') this.gliding = p.x < W * 0.58;
+        if (!buttonHit && this.state === 'playing') {
+            this.gameplayInput.dispatch({
+                action: 'glide',
+                phase: p.x < W * 0.58 ? 'start' : 'stop',
+                source: 'global_touch',
+            });
+        }
     }
 
     private onTouchMove(event: EventTouch): void {
         if (this.state !== 'playing') return;
         const p = this.touchPoint(event);
-        this.gliding = p.x < W * 0.58;
+        this.gameplayInput.dispatch({
+            action: 'glide',
+            phase: p.x < W * 0.58 ? 'start' : 'stop',
+            source: 'global_touch',
+        });
     }
 
     private onTouchEnd(): void {
-        this.gliding = false;
+        this.gameplayInput.releaseGlide('global_touch');
     }
 
     private onKeyDown(event: EventKeyboard): void {
         this.unlockAudio();
         if (event.keyCode === KeyCode.KEY_P || event.keyCode === KeyCode.ESCAPE) {
-            this.togglePauseFromInput();
+            this.gameplayInput.dispatch({ action: 'pause', phase: 'trigger', source: 'keyboard' });
             return;
         }
         if (this.state !== 'playing') return;
         if (event.keyCode === KeyCode.SPACE || event.keyCode === KeyCode.ARROW_UP) {
-            this.gliding = true;
-            this.jump();
+            this.gameplayInput.dispatch({ action: 'glide', phase: 'start', source: 'keyboard' });
+            this.gameplayInput.dispatch({ action: 'jump', phase: 'trigger', source: 'keyboard' });
         }
-        if (event.keyCode === KeyCode.KEY_D || event.keyCode === KeyCode.ARROW_RIGHT) this.dash();
+        if (event.keyCode === KeyCode.KEY_D || event.keyCode === KeyCode.ARROW_RIGHT) {
+            this.gameplayInput.dispatch({ action: 'dash', phase: 'trigger', source: 'keyboard' });
+        }
     }
 
     private onKeyUp(event: EventKeyboard): void {
-        if (event.keyCode === KeyCode.SPACE || event.keyCode === KeyCode.ARROW_UP) this.gliding = false;
+        if (event.keyCode === KeyCode.SPACE || event.keyCode === KeyCode.ARROW_UP) {
+            this.gameplayInput.releaseGlide('keyboard');
+        }
     }
 
     private handleTouch(x: number, y: number): boolean {
         if (this.state === 'playing' && this.pointInRect(x, y, this.pauseTouchRect())) {
-            this.togglePauseFromInput();
+            this.gameplayInput.dispatch({ action: 'pause', phase: 'trigger', source: 'global_touch' });
             return true;
         }
         if (this.isDeveloperCornerTap(x, y)) {
@@ -4973,8 +4991,11 @@ textarea, input {
             }
         }
         if (this.state === 'playing') {
-            if (x < W * 0.58) this.jump();
-            else this.dash();
+            if (x < W * 0.58) {
+                this.gameplayInput.dispatch({ action: 'jump', phase: 'trigger', source: 'global_touch' });
+            } else {
+                this.gameplayInput.dispatch({ action: 'dash', phase: 'trigger', source: 'global_touch' });
+            }
         }
         return false;
     }

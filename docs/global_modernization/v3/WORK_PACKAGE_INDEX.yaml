@@ -196,9 +196,10 @@ modules:
         outputs: [assets/scripts/qa/DevEventTypes.ts, assets/scripts/qa/DevEventLog.ts, assets/scripts/qa/LifecycleEpoch.ts, assets/scripts/qa/GameRootDevEventAdapter.ts, docs/global_modernization/v3/M03/M03_3_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_3_CODE_REVIEW_REPORT.md]
         gates: [P4]
       - id: M03.4
-        status: pending
+        status: complete
         objective: Route jump, glide, dash and pause through one input adapter while preventing duplicate handlers.
         targets: [assets/scripts/gameplay/input]
+        outputs: [assets/scripts/gameplay/input/GameplayInputAdapter.ts, tools/codex/test-gameplay-input-adapter.js, tools/codex/validate_gameplay_input_adapter.py, tools/codex/Run-MtrWebMatrixQa.js, docs/global_modernization/v3/M03/gameplay_input_report.md, docs/global_modernization/v3/M03/M03_4_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_4_CODE_REVIEW_REPORT.md]
         gates: [P4, M2_PLUS]
       - id: M03.5
         status: pending
@@ -603,7 +604,7 @@ modules:
 
 next_safe_action:
   module: M03
-  work_package: M03.4
-  execution_unit: M03.4
-  prerequisites_complete: [M03.3C]
-  action: Route jump, glide, dash and pause through one input adapter with listener/debounce parity; execute Web plus Android-emulator P4 and keep release blocked.
+  work_package: M03.5
+  execution_unit: M03.5
+  prerequisites_complete: [M03.4]
+  action: Route pickup, obstacle, platform, trigger and finish callbacks through typed collision events without changing legacy side-effect order; execute Web plus Android-emulator P4 and keep release blocked.

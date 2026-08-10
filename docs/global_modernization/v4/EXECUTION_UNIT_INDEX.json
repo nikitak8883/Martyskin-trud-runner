@@ -11,20 +11,20 @@
   },
   "source_ledger": {
     "total": 95,
-    "complete": 20,
-    "pending": 62,
+    "complete": 21,
+    "pending": 61,
     "blocked": 3,
     "conditional": 10,
     "mandatory_total": 85,
-    "mandatory_remaining": 65
+    "mandatory_remaining": 64
   },
   "execution_ledger": {
     "mandatory_units_total": 65,
-    "complete": 5,
+    "complete": 6,
     "ready": 1,
-    "planned": 56,
+    "planned": 55,
     "blocked": 3,
-    "mandatory_remaining": 60,
+    "mandatory_remaining": 59,
     "conditional_units_total": 7
   },
   "status_values": ["complete", "ready", "planned", "blocked", "conditional"],
@@ -48,8 +48,8 @@
     {"id":"M03.3A","phase":"P1","status":"complete","source_packages":["M03.3"],"source_slice":"pure DevEvent contract and byte-bounded ring buffer","depends_on":["RDX-01"],"gates":["D4","P4_STATIC"],"objective":"Implement and test a Cocos-independent deterministic bounded development event log without runtime wiring."},
     {"id":"M03.3B","phase":"P1","status":"complete","source_packages":["M03.3"],"source_slice":"pure lifecycle epoch and stale-callback guard","depends_on":["M03.3A"],"gates":["D4","P4_STATIC"],"objective":"Implement lifecycle epoch primitives and deterministic stale-guard tests without changing gameplay ownership."},
     {"id":"M03.3C","phase":"P1","status":"complete","source_packages":["M03.3"],"source_slice":"GameRoot transition/reset adapter and runtime parity","depends_on":["M03.3B","TC-01"],"gates":["P4"],"objective":"Wire one release-off GameRoot adapter for transitions/reset/epoch and prove Web/Android-emulator parity."},
-    {"id":"M03.4","phase":"P1","status":"ready","source_packages":["M03.4"],"depends_on":["M03.3C"],"gates":["P4","M2_PLUS"],"objective":"Route jump, glide, dash and pause through one input adapter with no duplicate listeners or debounce drift."},
-    {"id":"M03.5","phase":"P1","status":"planned","source_packages":["M03.5"],"depends_on":["M03.4"],"gates":["P4","M2_PLUS"],"objective":"Wrap collision callbacks in typed events while preserving exact legacy side-effect order."},
+    {"id":"M03.4","phase":"P1","status":"complete","source_packages":["M03.4"],"depends_on":["M03.3C"],"gates":["P4","M2_PLUS"],"objective":"Route jump, glide, dash and pause through one input adapter with no duplicate listeners or debounce drift."},
+    {"id":"M03.5","phase":"P1","status":"ready","source_packages":["M03.5"],"depends_on":["M03.4"],"gates":["P4","M2_PLUS"],"objective":"Wrap collision callbacks in typed events while preserving exact legacy side-effect order."},
     {"id":"M03.6","phase":"P1","status":"planned","source_packages":["M03.6"],"depends_on":["M03.5"],"gates":["P4","M2_PLUS"],"objective":"Extract power-up spawn/activate/tick/expire/cleanup into an epoch-aware owner with injected tick."},
     {"id":"M03.7A","phase":"P1","status":"planned","source_packages":["M03.7"],"source_slice":"ownership and cleanup proof with legacy retained","depends_on":["M03.6"],"gates":["P4","M2_PLUS"],"objective":"Remove UI/skin mutation authority and prove timer/listener/state cleanup without deleting old paths."},
     {"id":"M03.7B","phase":"P1","status":"planned","source_packages":["M03.7"],"source_slice":"approved legacy path removal","depends_on":["M03.7A"],"gates":["QA7","M2_PLUS"],"objective":"Delete only superseded M03 paths after parity, hidden-reference scan and rollback proof."},

@@ -31,6 +31,34 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "gameplay-input-adapter-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_gameplay_input_adapter.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 120,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "web-matrix-cli-contract",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "node",
+      "arguments": [
+        "--check",
+        "tools/codex/Run-MtrWebMatrixQa.js"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 30,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "dev-event-log-contracts",
       "mandatory": true,
       "enabled": true,

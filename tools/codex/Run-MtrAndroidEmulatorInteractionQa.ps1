@@ -296,22 +296,22 @@ Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 Start-MtrActivity -Extras ([ordered]@{ mtr_dev = '1'; mtr_autostart = '1'; mtr_level = '1' }) | Out-Null
 $gameplayGate = Wait-MtrLogMarker -Pattern 'MTR_GAMEPLAY_START_GATE_READY level=1'
 if (-not $gameplayGate.Found) { throw 'Level 1 gameplay gate did not become ready.' }
-Start-Sleep -Milliseconds 700
+Start-Sleep -Milliseconds 250
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 
-Invoke-MtrTap -Point $points.jump
-$jumpWait = Wait-MtrLogMarker -Pattern 'MTR_PLAYER_POSE[^\r\n]*pose=jump(?:_2)?\b'
-if (-not $jumpWait.Found) { throw 'Jump touch did not produce a jump pose.' }
-$jumpScreenshot = Save-MtrScreenshot -Name 'touch_jump'
-$jumpLog = Read-MtrLogcat
-Start-Sleep -Milliseconds 850
-
-Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 Invoke-MtrTap -Point $points.dash
 $dashWait = Wait-MtrLogMarker -Pattern 'MTR_PLAYER_POSE[^\r\n]*pose=crouch_dash\b'
 if (-not $dashWait.Found) { throw 'Dash touch did not produce a crouch_dash pose.' }
 $dashScreenshot = Save-MtrScreenshot -Name 'touch_dash'
 $dashLog = Read-MtrLogcat
+Start-Sleep -Milliseconds 1100
+
+Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
+Invoke-MtrTap -Point $points.jump
+$jumpWait = Wait-MtrLogMarker -Pattern 'MTR_PLAYER_POSE[^\r\n]*pose=jump(?:_2)?\b'
+if (-not $jumpWait.Found) { throw 'Jump touch did not produce a jump pose.' }
+$jumpScreenshot = Save-MtrScreenshot -Name 'touch_jump'
+$jumpLog = Read-MtrLogcat
 Start-Sleep -Milliseconds 650
 
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
