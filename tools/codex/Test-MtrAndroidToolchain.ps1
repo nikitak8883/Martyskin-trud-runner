@@ -2,6 +2,8 @@
 param(
     [string]$ProjectRoot,
     [string]$GradleProjectRoot,
+    [string]$BuildConfigPath = 'build-android-emulator.json',
+    [string]$AndroidToolchainContractPath = 'tools/codex/android-build-toolchain.contract.json',
     [string]$PreferredAvdName = 'MTR_Pixel_8_Pro_API_35',
     [int]$BootTimeoutSeconds = 300,
     [switch]$EnsureEmulator,
@@ -31,6 +33,7 @@ $entrypointLogPath = Join-Path $logRoot ("entrypoint-router-{0}.jsonl" -f (Get-D
 $modulePath = Join-Path $scriptRoot 'MtrEntrypoint.psm1'
 
 Import-Module $modulePath -Force
+Import-Module (Join-Path $scriptRoot 'MtrAndroidBuildToolchain.psm1') -Force
 
 function New-MtrDirectory {
     param([Parameter(Mandatory=$true)][string]$Path)
@@ -318,6 +321,25 @@ function Select-MtrAndroidQaTargetDevices {
 
 New-MtrDirectory -Path $logRoot
 
+try {
+    $androidBuildToolchain = Test-MtrAndroidBuildToolchain `
+        -ProjectRoot $ProjectRoot `
+        -ConfigPath $BuildConfigPath `
+        -ContractPath $AndroidToolchainContractPath `
+        -CheckGeneratedExport `
+        -RequireGeneratedExport
+} catch {
+    $androidBuildToolchain = [pscustomobject]@{
+        contract = 'mtr.android_build_toolchain_preflight'
+        schemaVersion = 1
+        status = 'BLOCKED'
+        blockers = @('preflight-exception')
+        error = $_.Exception.Message
+        androidBuildJava = $null
+        ambientJava = $null
+    }
+}
+
 $sdkDir = Get-MtrAndroidSdkDir
 $adbCandidates = @()
 $emulatorCandidates = @()
@@ -326,16 +348,20 @@ if ($sdkDir) {
     $emulatorCandidates += (Join-Path $sdkDir 'emulator\emulator.exe')
 }
 
-$javaCandidates = @()
-if ($env:JAVA_HOME) {
-    $javaCandidates += (Join-Path $env:JAVA_HOME 'bin\java.exe')
-}
-
 $gradlewPath = Join-Path $GradleProjectRoot 'gradlew.bat'
+$configuredJava = $androidBuildToolchain.androidBuildJava
+$configuredJavaSource = if ($configuredJava) { [string]$configuredJava.executable } else { $null }
+$configuredJavaFound = (-not [string]::IsNullOrWhiteSpace($configuredJavaSource) -and
+    (Test-Path -LiteralPath $configuredJavaSource -PathType Leaf))
 $tools = [ordered]@{
     adb = Resolve-MtrToolCandidate -Name 'adb' -CandidatePaths $adbCandidates
     emulator = Resolve-MtrToolCandidate -Name 'emulator' -CandidatePaths $emulatorCandidates
-    java = Resolve-MtrToolCandidate -Name 'java' -CandidatePaths $javaCandidates
+    java = [pscustomobject]@{
+        name = 'java'
+        found = $configuredJavaFound
+        source = $(if ($configuredJavaFound) { (Resolve-Path -LiteralPath $configuredJavaSource).Path } else { $configuredJavaSource })
+        resolution = 'android-build-config-approved'
+    }
     gradlew = [pscustomobject]@{
         name = 'gradlew'
         found = (Test-Path -LiteralPath $gradlewPath -PathType Leaf)
@@ -465,6 +491,11 @@ $blockers = [System.Collections.Generic.List[string]]::new()
 if (-not $tools.adb.found) { $blockers.Add('adb-not-found') }
 if (-not $tools.java.found) { $blockers.Add('java-not-found') }
 if (-not $tools.gradlew.found) { $blockers.Add('gradlew-not-found') }
+if ($androidBuildToolchain.status -ne 'PASS') {
+    foreach ($toolchainBlocker in @($androidBuildToolchain.blockers)) {
+        $blockers.Add("android-build-toolchain:$toolchainBlocker")
+    }
+}
 if ($tools.adb.found -and @($onlineDevices).Count -eq 0) {
     $blockers.Add($(if ($AllowPhysicalDevice) { 'no-online-adb-device' } else { 'no-online-adb-emulator' }))
 }
@@ -478,6 +509,9 @@ $status = [pscustomobject]@{
     projectRoot = (Resolve-Path -LiteralPath $ProjectRoot).Path
     gradleProjectRoot = $GradleProjectRoot
     sdkDir = $sdkDir
+    androidBuildToolchain = $androidBuildToolchain
+    androidBuildJava = $androidBuildToolchain.androidBuildJava
+    ambientJava = $androidBuildToolchain.ambientJava
     tools = @($toolSummary)
     adbProbe = ConvertTo-MtrProbeSummary -Probe $adbRun
     emulatorProbe = ConvertTo-MtrProbeSummary -Probe $emulatorRun
@@ -498,6 +532,8 @@ $status = [pscustomobject]@{
     preventions = @(
         'runtime-project-root-resolution',
         'android-sdk-local-properties-discovery',
+        'configured-jdk17-only-no-ambient-fallback',
+        'ambient-and-build-java-reported-separately',
         'bounded-probe-output-preview',
         'compact-console-summary-with-full-json-status-file',
         'entrypoint-router-captured-stdout-stderr',
@@ -520,6 +556,7 @@ Write-MtrAndroidToolchainLog -Record @{
     projectRoot = $status.projectRoot
     gradleProjectRoot = $GradleProjectRoot
     sdkDir = $sdkDir
+    androidBuildToolchain = $androidBuildToolchain
     tools = @($toolSummary)
     adbDevices = @($adbDevices)
     allOnlineDeviceCount = @($allOnlineDevices).Count
@@ -546,6 +583,8 @@ $consoleSummary = [pscustomobject]@{
     selectedAvdName = $selectedAvdName
     bootCompletedSerial = $bootCompletedSerial
     ignoredPhysicalDeviceCount = @($ignoredPhysicalDevices).Count
+    androidBuildJavaMajor = $(if ($androidBuildToolchain.androidBuildJava) { $androidBuildToolchain.androidBuildJava.major } else { $null })
+    ambientJavaMajor = $(if ($androidBuildToolchain.ambientJava) { $androidBuildToolchain.ambientJava.major } else { $null })
     onlineDevices = @(
         foreach ($device in @($onlineDevices)) {
             [pscustomobject]@{

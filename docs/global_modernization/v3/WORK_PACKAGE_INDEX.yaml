@@ -173,7 +173,7 @@ modules:
   M03:
     name: gameroot_decomposition_and_gameplay_routing_seams
     priority: P0
-    current_status: m03_2_complete_m03_3_next
+    current_status: m03_3a_b_complete_m03_3c_next
     depends_on: [M00, M01]
     entry_gate_work_packages: [M02.2, M02.3, M02.4, M02.5]
     work_packages:
@@ -603,6 +603,6 @@ modules:
 next_safe_action:
   module: M03
   work_package: M03.3
-  execution_unit: M03.3A
-  parallel_prerequisite: TC-01
-  action: Implement the pure bounded DevEvent contract while repairing the fail-closed Android JDK/toolchain contract before M03.3C; keep release blocked.
+  execution_unit: M03.3C
+  prerequisites_complete: [M03.3B, TC-01]
+  action: Wire the release-off GameRoot transition/reset adapter and execute full Web plus Android-emulator P4; keep release blocked.

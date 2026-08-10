@@ -3,16 +3,19 @@ param(
     [string]$CocosExe = 'C:\ProgramData\cocos\editors\Creator\3.8.8\CocosCreator.exe',
     [string]$ConfigPath = 'build-web-mobile.json',
     [string]$ContentIdentityPath = 'assets/resources/config/content_identity.json',
-    [string]$LogDest = ("creator-web-ui-icons-{0}.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss')),
+    [string]$AndroidToolchainContractPath = 'tools/codex/android-build-toolchain.contract.json',
+    [string]$LogDest = ("creator-web-ui-icons-{0}-{1}.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss-fff'), ([Guid]::NewGuid().ToString('N').Substring(0, 8))),
     [int]$TimeoutSeconds = 900,
     [switch]$ValidateContentIdentityOnly,
+    [switch]$ValidateAndroidToolchainOnly,
     [string]$EntrypointLogPath = (Join-Path $ProjectRoot ("logs\entrypoint-router-{0}.jsonl" -f (Get-Date -Format 'yyyyMMdd'))),
-    [string]$StdoutPath = (Join-Path $ProjectRoot ("logs\creator-web-ui-icons-wrapper-{0}.out.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss'))),
-    [string]$StderrPath = (Join-Path $ProjectRoot ("logs\creator-web-ui-icons-wrapper-{0}.err.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss')))
+    [string]$StdoutPath = (Join-Path $ProjectRoot ("logs\creator-web-ui-icons-wrapper-{0}-{1}.out.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss-fff'), ([Guid]::NewGuid().ToString('N').Substring(0, 8)))),
+    [string]$StderrPath = (Join-Path $ProjectRoot ("logs\creator-web-ui-icons-wrapper-{0}-{1}.err.log" -f (Get-Date -Format 'yyyyMMdd-HHmmss-fff'), ([Guid]::NewGuid().ToString('N').Substring(0, 8))))
 )
 
 $ErrorActionPreference = 'Stop'
 Import-Module (Join-Path $PSScriptRoot 'codex\MtrEntrypoint.psm1') -Force
+Import-Module (Join-Path $PSScriptRoot 'codex\MtrAndroidBuildToolchain.psm1') -Force
 
 function Get-MtrContentIdentityRecord {
     [CmdletBinding()]
@@ -278,6 +281,9 @@ $targetPlatform = [string]$configJson.platform
 if ($targetPlatform -notin @('web-mobile', 'android')) {
     throw "Unsupported Cocos target platform: $targetPlatform"
 }
+if ($ValidateContentIdentityOnly -and $ValidateAndroidToolchainOnly) {
+    throw 'Content-identity-only and Android-toolchain-only modes are mutually exclusive.'
+}
 $outputName = [string]$configJson.outputName
 if ([string]::IsNullOrWhiteSpace($outputName)) {
     $outputName = if ($isAndroidBuild) { 'android' } else { '' }
@@ -286,6 +292,50 @@ $configArgPath = $configResolved
 $projectPrefix = $projectRootResolved + [System.IO.Path]::DirectorySeparatorChar
 if ($configResolved.StartsWith($projectPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
     $configArgPath = $configResolved.Substring($projectPrefix.Length)
+}
+
+$androidToolchainPreflight = $null
+if ($ValidateAndroidToolchainOnly) {
+    if (-not $isAndroidBuild) {
+        throw 'Android toolchain preflight requires an Android build config.'
+    }
+    $androidToolchainPreflight = Assert-MtrAndroidBuildToolchain `
+        -ProjectRoot $projectRootResolved `
+        -ConfigPath $configArgPath `
+        -ContractPath $AndroidToolchainContractPath `
+        -CheckGeneratedExport
+    $requestedCocosExe = [System.IO.Path]::GetFullPath($CocosExe)
+    $approvedCocosExe = [System.IO.Path]::GetFullPath([string]$androidToolchainPreflight.cocosCreator.executable)
+    if (-not $requestedCocosExe.Equals($approvedCocosExe, [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "Android build Cocos executable is not contract-approved: $requestedCocosExe"
+    }
+    [pscustomobject][ordered]@{
+        contract = 'mtr.cocos_android_toolchain_preflight'
+        schemaVersion = 1
+        status = 'PASS'
+        targetPlatform = $targetPlatform
+        configPath = $configArgPath.Replace('\', '/')
+        androidToolchain = $androidToolchainPreflight
+        generatedEvidenceScope = 'EXISTING_EXPORT_IF_PRESENT_NO_BUILD'
+        cocosStarted = $false
+        gradleStarted = $false
+    } | ConvertTo-Json -Depth 12
+    exit 0
+}
+
+# Content-only validation remains host-independent for cross-platform CI.
+# Every real Android build takes the strict host preflight before Cocos starts.
+if ($isAndroidBuild -and -not $ValidateContentIdentityOnly) {
+    $androidToolchainPreflight = Assert-MtrAndroidBuildToolchain `
+        -ProjectRoot $projectRootResolved `
+        -ConfigPath $configArgPath `
+        -ContractPath $AndroidToolchainContractPath `
+        -CheckGeneratedExport
+    $requestedCocosExe = [System.IO.Path]::GetFullPath($CocosExe)
+    $approvedCocosExe = [System.IO.Path]::GetFullPath([string]$androidToolchainPreflight.cocosCreator.executable)
+    if (-not $requestedCocosExe.Equals($approvedCocosExe, [System.StringComparison]::OrdinalIgnoreCase)) {
+        throw "Android build Cocos executable is not contract-approved: $requestedCocosExe"
+    }
 }
 
 $contentIdentity = Get-MtrContentIdentityRecord `
@@ -311,30 +361,43 @@ if ($ValidateContentIdentityOnly) {
 }
 
 $buildArg = "configPath=$configArgPath;logDest=$LogDest"
-$cocosLogPath = Join-Path $ProjectRoot $LogDest
-$run = Invoke-MtrEntrypoint `
-    -FilePath $CocosExe `
-    -ArgumentList @('--project', $ProjectRoot, '--build', $buildArg) `
-    -WorkingDirectory $ProjectRoot `
-    -LogPath $EntrypointLogPath `
-    -RedirectStandardOutput $StdoutPath `
-    -RedirectStandardError $StderrPath `
-    -Wait `
-    -TimeoutSeconds $TimeoutSeconds `
-    -SuccessLogPath @($cocosLogPath) `
-    -SuccessPattern @('build Task \(.*\) Finished', 'build task\(.*\) in \d+') `
-    -SuccessPollIntervalMilliseconds 1000 `
-    -PassThru
-
-$evidenceText = ''
-foreach ($path in @($StdoutPath, $StderrPath, $cocosLogPath)) {
-    if (Test-Path -LiteralPath $path) {
-        $evidenceText += "`n"
-        $evidenceText += Get-Content -LiteralPath $path -Raw -ErrorAction SilentlyContinue
+$cocosLogPath = if ([System.IO.Path]::IsPathRooted($LogDest)) {
+    [System.IO.Path]::GetFullPath($LogDest)
+} else {
+    [System.IO.Path]::GetFullPath((Join-Path $projectRootResolved $LogDest))
+}
+# Success evidence must belong to this invocation. Unique defaults prevent
+# same-second collisions; an explicitly reused path fails before Cocos starts.
+foreach ($reservedPath in @($cocosLogPath, $StdoutPath, $StderrPath)) {
+    if (Test-Path -LiteralPath $reservedPath) {
+        throw "Build run log path already exists; choose a unique path: $reservedPath"
     }
 }
+$run = $null
+$invokeCocos = {
+    Invoke-MtrEntrypoint `
+        -FilePath $CocosExe `
+        -ArgumentList @('--project', $ProjectRoot, '--build', $buildArg) `
+        -WorkingDirectory $ProjectRoot `
+        -LogPath $EntrypointLogPath `
+        -RedirectStandardOutput $StdoutPath `
+        -RedirectStandardError $StderrPath `
+        -Wait `
+        -TimeoutSeconds $TimeoutSeconds `
+        -SuccessLogPath @($cocosLogPath) `
+        -SuccessPattern @('build Task \(.*\) Finished', 'build task\(.*\) in \d+') `
+        -SuccessPollIntervalMilliseconds 1000 `
+        -PassThru
+}
+$run = if ($isAndroidBuild) {
+    Invoke-MtrAndroidBuildJavaScope -Toolchain $androidToolchainPreflight -ScriptBlock $invokeCocos
+} else {
+    & $invokeCocos
+}
 
-$finished = ($evidenceText -match 'build Task \(.*\) Finished' -or $evidenceText -match 'build task\(.*\) in \d+')
+# MtrEntrypoint matches success only in bytes appended after this process starts.
+# Never re-scan a pre-existing Cocos log when deciding the current build state.
+$finished = ($run.logicalExitCode -eq 0 -and [bool]$run.completedBySuccessPattern)
 $androidPostPackage = $null
 $webPostProcess = $null
 if ($finished -and -not $isAndroidBuild) {
@@ -378,8 +441,11 @@ if ($finished -and -not $isAndroidBuild) {
     }
 }
 if ($finished -and $isAndroidBuild) {
-    $androidBuildRoot = Join-Path $ProjectRoot (Join-Path 'build' $outputName)
-    $androidProjRoot = Join-Path $androidBuildRoot 'proj'
+    $androidProjRoot = [string]$androidToolchainPreflight.generatedExport.project
+    if ([string]::IsNullOrWhiteSpace($androidProjRoot)) {
+        throw 'Android toolchain preflight did not bind a generated project path.'
+    }
+    $androidBuildRoot = Split-Path -Parent $androidProjRoot
     $gradlew = Join-Path $androidProjRoot 'gradlew.bat'
     $apkPath = Join-Path $androidProjRoot 'build\CocosGame\outputs\apk\debug\CocosGame-debug.apk'
     $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
@@ -387,33 +453,42 @@ if ($finished -and $isAndroidBuild) {
     $gradleStderr = Join-Path $ProjectRoot ("logs\gradle-android-postpack-{0}.err.log" -f $stamp)
     $gradleRun = $null
     $verification = $null
-    $previousJavaHome = $env:JAVA_HOME
-    $previousPath = $env:Path
+    $postExportToolchain = $null
 
     try {
         if (-not (Test-Path -LiteralPath $gradlew -PathType Leaf)) {
             throw "Android Gradle wrapper not found: $gradlew"
         }
 
-        $javaHome = [string]$configJson.packages.android.javaHome
-        $javaPath = [string]$configJson.packages.android.javaPath
-        if (-not [string]::IsNullOrWhiteSpace($javaHome) -and (Test-Path -LiteralPath $javaHome -PathType Container)) {
-            $env:JAVA_HOME = $javaHome
+        $postExportToolchain = Assert-MtrAndroidBuildToolchain `
+            -ProjectRoot $projectRootResolved `
+            -ConfigPath $configArgPath `
+            -ContractPath $AndroidToolchainContractPath `
+            -CheckGeneratedExport `
+            -RequireGeneratedExport
+        $validatedPostExportRoot = [string]$postExportToolchain.generatedExport.project
+        if (-not [System.IO.Path]::GetFullPath($androidProjRoot).Equals(
+            [System.IO.Path]::GetFullPath($validatedPostExportRoot),
+            [System.StringComparison]::OrdinalIgnoreCase
+        )) {
+            throw 'Post-export Android project path differs from the pre-Cocos contract binding.'
         }
-        if (-not [string]::IsNullOrWhiteSpace($javaPath) -and (Test-Path -LiteralPath $javaPath -PathType Container)) {
-            $env:Path = "$javaPath$([System.IO.Path]::PathSeparator)$previousPath"
+        $javaHome = [string]$postExportToolchain.androidBuildJava.home
+        $invokeGradle = {
+            Invoke-MtrEntrypoint `
+                -FilePath $gradlew `
+                -ArgumentList @('--no-daemon', "-Dorg.gradle.java.home=$javaHome", 'clean', 'assembleDebug') `
+                -WorkingDirectory $androidProjRoot `
+                -LogPath $EntrypointLogPath `
+                -RedirectStandardOutput $gradleStdout `
+                -RedirectStandardError $gradleStderr `
+                -Wait `
+                -TimeoutSeconds $TimeoutSeconds `
+                -PassThru
         }
-
-        $gradleRun = Invoke-MtrEntrypoint `
-            -FilePath $gradlew `
-            -ArgumentList @('--no-daemon', 'clean', 'assembleDebug') `
-            -WorkingDirectory $androidProjRoot `
-            -LogPath $EntrypointLogPath `
-            -RedirectStandardOutput $gradleStdout `
-            -RedirectStandardError $gradleStderr `
-            -Wait `
-            -TimeoutSeconds $TimeoutSeconds `
-            -PassThru
+        $gradleRun = Invoke-MtrAndroidBuildJavaScope `
+            -Toolchain $postExportToolchain `
+            -ScriptBlock $invokeGradle
 
         $verification = Test-MtrAndroidApkPayload -ApkPath $apkPath
         $androidPostPackageOk = ($gradleRun.exitCode -eq 0 -and [bool]$verification.ok)
@@ -426,6 +501,7 @@ if ($finished -and $isAndroidBuild) {
             stdout = $gradleStdout
             stderr = $gradleStderr
             verification = $verification
+            toolchain = $postExportToolchain
             ok = $androidPostPackageOk
         }
         if (-not $androidPostPackageOk) {
@@ -442,15 +518,19 @@ if ($finished -and $isAndroidBuild) {
             stdout = $gradleStdout
             stderr = $gradleStderr
             verification = $verification
+            toolchain = $postExportToolchain
             ok = $false
             error = $_.Exception.Message
         }
-    } finally {
-        $env:JAVA_HOME = $previousJavaHome
-        $env:Path = $previousPath
     }
 }
-$reportedExitCode = if ($finished) { 0 } else { $run.logicalExitCode }
+$reportedExitCode = if ($finished) {
+    0
+} elseif ($run.logicalExitCode -ne 0) {
+    $run.logicalExitCode
+} else {
+    1
+}
 $platformArtifactManifest['state'] = if ($finished) { 'BUILT' } else { 'FAILED' }
 if ($isAndroidBuild) {
     $platformArtifactManifest['androidPostPackage'] = $androidPostPackage
@@ -475,6 +555,7 @@ $result = [pscustomobject]@{
     completedBySuccessPattern = $run.completedBySuccessPattern
     successMatch = $run.successMatch
     contentIdentity = $contentIdentity
+    androidToolchain = $androidToolchainPreflight
     platformArtifactManifest = [pscustomobject]$platformArtifactManifest
     webPostProcess = $webPostProcess
     androidPostPackage = $androidPostPackage

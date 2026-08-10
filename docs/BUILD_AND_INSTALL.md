@@ -1,13 +1,14 @@
 # Build and install: Android + Web
 
-Проект: `C:\Test\MTRCocosCreator`  
+Проект: корень текущего checkout (`MTRCocosCreator`)  
 Движок: Cocos Creator 3.8.8  
 Общая игровая логика Web и Android: `assets/scripts/GameRoot.ts`
 
 ## 1. Проверка перед сборкой
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "C:\Test\MTRCocosCreator\tools\validate-mtr-config.ps1" -ProjectRoot "C:\Test\MTRCocosCreator"
+$project = (Resolve-Path .).Path
+powershell -ExecutionPolicy Bypass -File "$project\tools\validate-mtr-config.ps1" -ProjectRoot $project
 ```
 
 Ожидаемый результат:
@@ -21,33 +22,26 @@ MTR config OK: 15 levels, 15 bitmap backgrounds, 15 story themes, Russian obstac
 Используй только если обновлялись исходные картинки или `background_sources.json`.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "C:\Test\MTRCocosCreator\tools\asset_generation\build-martyshkin-backgrounds.ps1" -ProjectRoot "C:\Test\MTRCocosCreator"
+powershell -ExecutionPolicy Bypass -File "$project\tools\asset_generation\build-martyshkin-backgrounds.ps1" -ProjectRoot $project
 ```
 
-Фоны лежат в `C:\Test\MTRCocosCreator\assets\resources\backgrounds`.
+Фоны лежат в `$project\assets\resources\backgrounds`.
 
 ## 3. Сборка Web
 
 ```powershell
-$project="C:\Test\MTRCocosCreator"
-$creator="C:\ProgramData\cocos\editors\Creator\3.8.8\CocosCreator.exe"
-$out="$project\creator-web-current.out.log"
-$err="$project\creator-web-current.err.log"
-
-Start-Process -FilePath $creator `
-  -ArgumentList @("--project",$project,"--build","configPath=build-web-mobile.json;logDest=creator-web-current.log") `
-  -RedirectStandardOutput $out `
-  -RedirectStandardError $err `
-  -WindowStyle Hidden `
-  -Wait
+$project = (Resolve-Path .).Path
+powershell -NoProfile -ExecutionPolicy Bypass -File "$project\tools\Run-MtrCocosBuild.ps1" `
+  -ProjectRoot $project `
+  -ConfigPath "build-web-mobile.json"
 ```
 
-Результат: `C:\Test\MTRCocosCreator\build\web-mobile`.
+Результат: `$project\build\web-mobile`.
 
 ## 4. Локальный запуск Web
 
 ```powershell
-cd "C:\Test\MTRCocosCreator\build\web-mobile"
+cd "$project\build\web-mobile"
 .\start-web.bat
 ```
 
@@ -57,38 +51,38 @@ cd "C:\Test\MTRCocosCreator\build\web-mobile"
 
 ## 5. Сборка Android APK
 
-Сначала сгенерируй Android-проект через Cocos Creator:
+Сначала выполни read-only fail-closed preflight. Он проверяет exact Adoptium
+`17.0.20`, SHA-256 JDK-файлов, Cocos `3.8.8`, SDK/API/NDK/CMake и существующий
+generated export, но не запускает Cocos, Gradle, adb или emulator:
 
 ```powershell
-$project="C:\Test\MTRCocosCreator"
-$creator="C:\ProgramData\cocos\editors\Creator\3.8.8\CocosCreator.exe"
-$out="$project\creator-android-current.out.log"
-$err="$project\creator-android-current.err.log"
-
-Start-Process -FilePath $creator `
-  -ArgumentList @("--project",$project,"--build","configPath=build-android.json;logDest=creator-android-current.log") `
-  -RedirectStandardOutput $out `
-  -RedirectStandardError $err `
-  -WindowStyle Hidden `
-  -Wait
+$project = (Resolve-Path .).Path
+powershell -NoProfile -ExecutionPolicy Bypass -File "$project\tools\Run-MtrCocosBuild.ps1" `
+  -ProjectRoot $project `
+  -ConfigPath "build-android.json" `
+  -ValidateAndroidToolchainOnly
 ```
 
-Потом собери APK:
+Для реальной сборки используй тот же wrapper. Он применяет validated JDK только
+к дочерним Cocos/Gradle processes, перед Cocos блокирует неполный или
+несовместимый существующий export и восстанавливает окружение в `finally`:
 
 ```powershell
-$env:JAVA_HOME="C:\Program Files (x86)\Android\openjdk\jdk-17.0.14"
-$env:Path="$env:JAVA_HOME\bin;$env:Path"
-cd "C:\Test\MTRCocosCreator\build\android\proj"
-.\gradlew.bat assembleDebug --no-daemon
+powershell -NoProfile -ExecutionPolicy Bypass -File "$project\tools\Run-MtrCocosBuild.ps1" `
+  -ProjectRoot $project `
+  -ConfigPath "build-android.json"
 ```
 
 APK:
 
 ```text
-C:\Test\MTRCocosCreator\build\android\proj\build\CocosGame\outputs\apk\debug\CocosGame-debug.apk
+$project\build\android\proj\build\CocosGame\outputs\apk\debug\CocosGame-debug.apk
 ```
 
 ## 6. Установка на телефон через ADB
+
+По умолчанию release/QA-приёмка выполняется только на emulator. Физическое
+устройство требует отдельного явного разрешения и не является частью TC-01.
 
 1. На телефоне открой `Настройки > О телефоне`.
 2. Нажми `Номер сборки` 7 раз.
@@ -100,19 +94,23 @@ C:\Test\MTRCocosCreator\build\android\proj\build\CocosGame\outputs\apk\debug\Coc
 8. Проверь устройство:
 
 ```powershell
-& "C:\Users\nikit_rbe4ai3\AppData\Local\Android\Sdk\platform-tools\adb.exe" devices -l
+$adb = "C:\Users\nikit\AppData\Local\Android\Sdk\platform-tools\adb.exe"
+$serial = "R5CY933XP7P"
+& $adb devices -l
+& $adb -s $serial get-state
+& $adb -s $serial shell pm list users
 ```
 
-9. Установи APK:
+9. Установи APK строго в основной профиль (`user 0`):
 
 ```powershell
-& "C:\Users\nikit_rbe4ai3\AppData\Local\Android\Sdk\platform-tools\adb.exe" install -r "C:\Test\MTRCocosCreator\build\android\proj\build\CocosGame\outputs\apk\debug\CocosGame-debug.apk"
+& $adb -s $serial install --user 0 -r "$project\build\android\proj\build\CocosGame\outputs\apk\debug\CocosGame-debug.apk"
 ```
 
 10. Запусти:
 
 ```powershell
-& "C:\Users\nikit_rbe4ai3\AppData\Local\Android\Sdk\platform-tools\adb.exe" shell monkey -p com.martyskin.trudrunner 1
+& $adb -s $serial shell am start --user 0 -n "com.martyskin.trudrunner/com.cocos.game.AppActivity"
 ```
 
 ## 7. Частые ошибки установки
@@ -120,8 +118,12 @@ C:\Test\MTRCocosCreator\build\android\proj\build\CocosGame\outputs\apk\debug\Coc
 - `INSTALL_FAILED_UPDATE_INCOMPATIBLE`: удали старую версию другой подписи:
 
 ```powershell
-& "C:\Users\nikit_rbe4ai3\AppData\Local\Android\Sdk\platform-tools\adb.exe" uninstall com.martyskin.trudrunner
+& $adb -s $serial shell pm uninstall --user 0 com.martyskin.trudrunner
 ```
+
+Если конфликт подписи сохраняется после удаления только из `user 0`, остановись:
+не удаляй пакет из рабочего профиля или для всех пользователей без отдельного
+явного разрешения.
 
 - `device unauthorized`: подтверди RSA-запрос на телефоне.
 - `INSTALL_FAILED_USER_RESTRICTED`: включи `Установка через USB`.

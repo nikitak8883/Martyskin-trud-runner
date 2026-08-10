@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "unit": "M03.3B",
+  "captured_at": "2026-08-09T15:41:15Z",
+  "status": "PASS",
+  "source_head": "737b0c4d06d57948148c0c6f460903e7f0c27d62",
+  "implementation": {
+    "source": "assets/scripts/qa/LifecycleEpoch.ts",
+    "source_sha256": "37E349B59EB3288D61C540AB4200C86E081A71F4A1A48C9F3B6806C9E396E776",
+    "meta_sha256": "F61EA2BD67315D8310D52A418D36B4EBC67B35A14EBDB1FAA6E762BD77656659",
+    "runtime_wired": false,
+    "guard_semantics": "SYNCHRONOUS_ENTRY_ONLY",
+    "numeric_token_policy": "CAPTURED_SNAPSHOTS_ONLY"
+  },
+  "validation": {
+    "node_groups": 16,
+    "typescript_version": "5.8.2",
+    "typescript_target": "ES2015",
+    "targeted_strict_no_emit": "PASS",
+    "accepted_full_source_no_emit": "PASS",
+    "python_structural": "PASS",
+    "static_gate_steps": 14,
+    "canonical_gate": {
+      "status": "PASS",
+      "steps_passed": 14,
+      "steps_total": 14,
+      "run_id": "qg.20260809154115.ee34f3f3acbc",
+      "report": "temp/quality-gate-m03-3b-tc01/report-runtime-pin-post-evidence-v2.json",
+      "report_sha256": "E8A7451A848426876E71187E4B94BCA195871BB1391BCCF0A75B14C6439F2C05",
+      "source_dirty_authorized": true
+    },
+    "m03_3a_regression_groups": 16,
+    "m03_2_regression": {
+      "states": 14,
+      "accepted": 58,
+      "rejected": 138,
+      "writers": 1
+    }
+  },
+  "protected_boundaries": {
+    "game_root_wired": false,
+    "game_root_sha256": "BBD19424A1B1E13ABDC0A9FA689E234AD738E8DC687F267EE3624B7961BD28F1",
+    "scene_changed": false,
+    "resources_changed": false,
+    "package_or_lock_changed": false,
+    "editor_or_import_started": false
+  },
+  "next": "M03.3C_FULL_P4"
+}

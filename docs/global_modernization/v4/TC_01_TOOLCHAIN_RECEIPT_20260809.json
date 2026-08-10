@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "receipt": "mtr.tc01.android_build_toolchain",
+  "captured_at": "2026-08-09T15:41:15Z",
+  "status": "PASS_NO_BUILD",
+  "successor_of": {
+    "path": "docs/global_modernization/v4/TOOLCHAIN_LOCK_20260809.json",
+    "sha256": "8D3CBFB963B8FA33BB547CD484177E37258D3540520DA79A0AC8D48DDCA87B3E",
+    "preserved_unchanged": true
+  },
+  "project": {
+    "branch": "codex/mtr-source-freeze-v3",
+    "source_head": "737b0c4d06d57948148c0c6f460903e7f0c27d62",
+    "root": "C:\\Projects\\Monkey Work\\MTRCocosCreator_portable_transfer_20260617\\MTRCocosCreator"
+  },
+  "contract": {
+    "path": "tools/codex/android-build-toolchain.contract.json",
+    "sha256": "3056FB37ABC912E627285F755774FF215D499F66C3CB09FA271F19302A4062CD",
+    "schema_sha256": "F5091B0F234064EC45ADFFFF98301AD11347D68AA7B5DE5403937B6859CC6E58"
+  },
+  "implementation": {
+    "module_sha256": "B1122493659C571E1274CF7A71F5159D91E7DF302CE3797CF0C6549354B3D89E",
+    "build_wrapper_sha256": "336C767F737CA0A871A272ACEA99D5C4EAF48AF0693FB310448ECAC89081AB6B",
+    "entrypoint_sha256": "4E6BFA5068913049574D32872B805A2665DA878BEE87DEC5195C825B194BA32A",
+    "behavioral_test_sha256": "99762D4E3F1DC4F4A703A928E5A85C7215800928107C51C7E725B6EB9FD155A4",
+    "structural_validator_sha256": "497CAA1464FD5F3152D98B5CDB21605DB47F995404D43339330071CEBE0B3ED7"
+  },
+  "android_build_java": {
+    "selected": true,
+    "resolution": "CONFIG_APPROVED_EXACT",
+    "home": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.20.8-hotspot",
+    "version": "17.0.20",
+    "major": 17,
+    "vendor": "Eclipse Adoptium",
+    "arch": "amd64",
+    "file_sha256": {
+      "bin\\java.exe": "5B463CAD4FCD8E4C655CC1C6F45A3B2EBB002ADAC94EBAD2FDAA4F43E2AEE211",
+      "bin\\javac.exe": "FA184CDE00F7E93CB55C10E961F1AE0829DFC5EC5A3460E2C7567C8EF8CEA607",
+      "bin\\jar.exe": "30990B330846D520DA99EFD0323EC0C9FD890E8136A3A6A2EF149CD87898A278",
+      "release": "8DAA64B69534C11C991450ABBDF7B0DDAB73BA0F91A9F79053A98F7020ECC4EA"
+    }
+  },
+  "ambient_java": {
+    "found": true,
+    "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.12.8-hotspot\\bin\\java.exe",
+    "major": 21,
+    "selected_for_build": false
+  },
+  "toolchain": {
+    "cocos_creator": {
+      "version": "3.8.8",
+      "sha256": "801334988540FA826A3016F21F8B7B039C855238E8F48BFA59B8BAE393C11CB5"
+    },
+    "sdk_path": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk",
+    "configured_api": 35,
+    "generated_compile_sdk": 36,
+    "build_tools": "36.0.0",
+    "ndk": "23.2.8568313",
+    "cmake": "3.22.1",
+    "gradle_wrapper": "8.11.1",
+    "gradle_distribution_url": "https://services.gradle.org/distributions/gradle-8.11.1-bin.zip",
+    "gradlew_bat_sha256": "C13C6E91B9A517783976DE213D46398C661EA9E17651376D7301E839EAEDCC62",
+    "gradle_wrapper_jar_sha256": "E2B82129AB64751FD40437007BD2F7F2AFB3C6E41A9198E628650B22D5824A14",
+    "gradle_daemon_jvm_criteria": "ABSENT_REQUIRED",
+    "android_gradle_plugin": "8.10.1"
+  },
+  "configs": {
+    "build-android.json": {
+      "sha256": "38F352FB89B5D0FF5009A4DFA738A3812A9F71BA1635B703AB5F26C14AEA4167",
+      "preflight": "PASS",
+      "generated_export": "PASS_HISTORICAL_EXISTING_NO_BUILD"
+    },
+    "build-android-emulator.json": {
+      "sha256": "B4EE1D6F89595F4FEE75F3E1081EDCDBE39980A0DD5D17BA892C951B39F62407",
+      "preflight": "PASS",
+      "generated_export": "PASS_HISTORICAL_EXISTING_NO_BUILD"
+    }
+  },
+  "cycles": {
+    "T1_discovery": "PASS",
+    "T2_fail_closed_negative_matrix": "PASS",
+    "T3_real_host_no_build_preflight": "PASS",
+    "T4_fresh_android_p4": "DEFERRED_TO_FIRST_ANDROID_P4",
+    "T5_independent_review": "PASS"
+  },
+  "canonical_gate": {
+    "status": "PASS",
+    "steps_passed": 14,
+    "steps_total": 14,
+    "run_id": "qg.20260809154115.ee34f3f3acbc",
+    "report": "temp/quality-gate-m03-3b-tc01/report-runtime-pin-post-evidence-v2.json",
+    "report_sha256": "E8A7451A848426876E71187E4B94BCA195871BB1391BCCF0A75B14C6439F2C05",
+    "source_dirty_authorized": true
+  },
+  "not_executed": [
+    "cocos_editor_or_cli_build",
+    "gradle",
+    "adb",
+    "emulator",
+    "asset_import_or_regeneration",
+    "global_environment_mutation"
+  ],
+  "cost": {
+    "new_paid_service": false,
+    "new_dependency": false,
+    "incremental_software_cost": "0"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "plan_id": "mtr-global-modernization-v4-20260809",
-  "generated_at": "2026-08-09T08:14:57Z",
+  "generated_at": "2026-08-09T12:05:40Z",
   "basis": {
     "branch": "codex/mtr-source-freeze-v3",
     "documentation_basis_head": "95648b978117b8964469ad4fb236829d9540c239",
@@ -20,11 +20,11 @@
   },
   "execution_ledger": {
     "mandatory_units_total": 65,
-    "complete": 1,
-    "ready": 2,
-    "planned": 59,
+    "complete": 4,
+    "ready": 1,
+    "planned": 57,
     "blocked": 3,
-    "mandatory_remaining": 64,
+    "mandatory_remaining": 61,
     "conditional_units_total": 7
   },
   "status_values": ["complete", "ready", "planned", "blocked", "conditional"],
@@ -39,15 +39,15 @@
   ],
   "units": [
     {"id":"RDX-01","phase":"P0","status":"complete","source_packages":[],"depends_on":[],"gates":["D4"],"objective":"Ingest v4, reconcile live indexes/topology/toolchain drift, create validated execution roadmap and adoption manifest."},
-    {"id":"TC-01","phase":"P0","status":"ready","source_packages":[],"depends_on":["RDX-01"],"gates":["D4","P4_STATIC","ANDROID_PREFLIGHT"],"objective":"Make Android JDK 17 discovery fail-closed, remove silent JDK 21 fallback and bind the current toolchain without upgrading it."},
+    {"id":"TC-01","phase":"P0","status":"complete","source_packages":[],"depends_on":["RDX-01"],"gates":["D4","P4_STATIC","ANDROID_PREFLIGHT"],"objective":"Make Android JDK 17 discovery fail-closed, remove silent JDK 21 fallback and bind the current toolchain without upgrading it."},
 
     {"id":"M02-DEC","phase":"P5","status":"blocked","source_packages":["M02.1"],"depends_on":["RDX-01"],"gates":["D4"],"blockers":["D-SIGN-01"],"objective":"Record production signing identity, backup ownership and upgrade compatibility; direct APK remains required and Play conditional."},
     {"id":"M02-WEB","phase":"P5","status":"blocked","source_packages":["M02.7"],"depends_on":["M12-D"],"gates":["P4","LIVE_PARITY"],"blockers":["D-WEB-01"],"objective":"Project the accepted source tree, deploy one immutable Pages artifact to main and prove live manifest parity."},
     {"id":"M02-RC","phase":"P5","status":"planned","source_packages":["M02.8"],"depends_on":["M02-WEB"],"gates":["RC2"],"objective":"Close M02 with source/content/artifact hashes, ABI, versions, certificate fingerprints and limitations."},
 
-    {"id":"M03.3A","phase":"P1","status":"ready","source_packages":["M03.3"],"source_slice":"pure DevEvent contract and byte-bounded ring buffer","depends_on":["RDX-01"],"gates":["D4","P4_STATIC"],"objective":"Implement and test a Cocos-independent deterministic bounded development event log without runtime wiring."},
-    {"id":"M03.3B","phase":"P1","status":"planned","source_packages":["M03.3"],"source_slice":"pure lifecycle epoch and stale-callback guard","depends_on":["M03.3A"],"gates":["D4","P4_STATIC"],"objective":"Implement lifecycle epoch primitives and deterministic stale-guard tests without changing gameplay ownership."},
-    {"id":"M03.3C","phase":"P1","status":"planned","source_packages":["M03.3"],"source_slice":"GameRoot transition/reset adapter and runtime parity","depends_on":["M03.3B","TC-01"],"gates":["P4"],"objective":"Wire one release-off GameRoot adapter for transitions/reset/epoch and prove Web/Android-emulator parity."},
+    {"id":"M03.3A","phase":"P1","status":"complete","source_packages":["M03.3"],"source_slice":"pure DevEvent contract and byte-bounded ring buffer","depends_on":["RDX-01"],"gates":["D4","P4_STATIC"],"objective":"Implement and test a Cocos-independent deterministic bounded development event log without runtime wiring."},
+    {"id":"M03.3B","phase":"P1","status":"complete","source_packages":["M03.3"],"source_slice":"pure lifecycle epoch and stale-callback guard","depends_on":["M03.3A"],"gates":["D4","P4_STATIC"],"objective":"Implement lifecycle epoch primitives and deterministic stale-guard tests without changing gameplay ownership."},
+    {"id":"M03.3C","phase":"P1","status":"ready","source_packages":["M03.3"],"source_slice":"GameRoot transition/reset adapter and runtime parity","depends_on":["M03.3B","TC-01"],"gates":["P4"],"objective":"Wire one release-off GameRoot adapter for transitions/reset/epoch and prove Web/Android-emulator parity."},
     {"id":"M03.4","phase":"P1","status":"planned","source_packages":["M03.4"],"depends_on":["M03.3C"],"gates":["P4","M2_PLUS"],"objective":"Route jump, glide, dash and pause through one input adapter with no duplicate listeners or debounce drift."},
     {"id":"M03.5","phase":"P1","status":"planned","source_packages":["M03.5"],"depends_on":["M03.4"],"gates":["P4","M2_PLUS"],"objective":"Wrap collision callbacks in typed events while preserving exact legacy side-effect order."},
     {"id":"M03.6","phase":"P1","status":"planned","source_packages":["M03.6"],"depends_on":["M03.5"],"gates":["P4","M2_PLUS"],"objective":"Extract power-up spawn/activate/tick/expire/cleanup into an epoch-aware owner with injected tick."},

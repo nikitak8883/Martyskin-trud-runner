@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.android_build_toolchain",
+  "java": {
+    "required_major": 17,
+    "required_version": "17.0.20",
+    "required_vendor": "Eclipse Adoptium",
+    "required_arch": "x86_64",
+    "approved_home": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.20.8-hotspot",
+    "required_files": [
+      "bin\\java.exe",
+      "bin\\javac.exe",
+      "bin\\jar.exe",
+      "release"
+    ],
+    "required_file_sha256": {
+      "bin\\java.exe": "5B463CAD4FCD8E4C655CC1C6F45A3B2EBB002ADAC94EBAD2FDAA4F43E2AEE211",
+      "bin\\javac.exe": "FA184CDE00F7E93CB55C10E961F1AE0829DFC5EC5A3460E2C7567C8EF8CEA607",
+      "bin\\jar.exe": "30990B330846D520DA99EFD0323EC0C9FD890E8136A3A6A2EF149CD87898A278",
+      "release": "8DAA64B69534C11C991450ABBDF7B0DDAB73BA0F91A9F79053A98F7020ECC4EA"
+    },
+    "forbidden_environment_overrides": [
+      "JAVA_TOOL_OPTIONS",
+      "JAVA_OPTS",
+      "JDK_JAVA_OPTIONS",
+      "_JAVA_OPTIONS",
+      "GRADLE_OPTS",
+      "ORG_GRADLE_PROJECT_org.gradle.java.home",
+      "GRADLE_USER_HOME"
+    ]
+  },
+  "cocos_creator": {
+    "version": "3.8.8",
+    "executable": "C:\\ProgramData\\cocos\\editors\\Creator\\3.8.8\\CocosCreator.exe",
+    "executable_sha256": "801334988540FA826A3016F21F8B7B039C855238E8F48BFA59B8BAE393C11CB5"
+  },
+  "android": {
+    "sdk_path": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk",
+    "configured_api_level": 35,
+    "generated_compile_sdk": 36,
+    "build_tools_version": "36.0.0",
+    "ndk_version": "23.2.8568313",
+    "cmake_version": "3.22.1",
+    "gradle_wrapper_version": "8.11.1",
+    "gradle_distribution_url": "https://services.gradle.org/distributions/gradle-8.11.1-bin.zip",
+    "gradlew_bat_sha256": "C13C6E91B9A517783976DE213D46398C661EA9E17651376D7301E839EAEDCC62",
+    "gradle_wrapper_jar_sha256": "E2B82129AB64751FD40437007BD2F7F2AFB3C6E41A9198E628650B22D5824A14",
+    "android_gradle_plugin_version": "8.10.1"
+  },
+  "build_configs": [
+    "build-android.json",
+    "build-android-emulator.json"
+  ],
+  "generated_exports": [
+    {
+      "config": "build-android.json",
+      "output_name": "android",
+      "project": "build/android/proj"
+    },
+    {
+      "config": "build-android-emulator.json",
+      "output_name": "android-emulator",
+      "project": "build/android-emulator/proj"
+    }
+  ],
+  "policy": {
+    "configured_java_only": true,
+    "ambient_fallback": false,
+    "global_environment_mutation": false,
+    "fresh_export_validation": "DEFERRED_TO_FIRST_ANDROID_P4"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "unit": "TC-01",
+  "captured_at": "2026-08-09T15:41:15Z",
+  "status": "PASS_NO_BUILD",
+  "source_head": "737b0c4d06d57948148c0c6f460903e7f0c27d62",
+  "validation": {
+    "powershell_behavioral_groups": 35,
+    "python_negative_cases": 15,
+    "python_schema_applied": true,
+    "entrypoint_self_test": {
+      "path_with_spaces": "PASS",
+      "stale_success_rejected": true,
+      "current_success_accepted": true,
+      "nonzero_exit_precedence": true,
+      "bounded_success_log_overflow_rejected": true
+    },
+    "direct_host_preflights": {"passed": 2, "total": 2},
+    "wrapper_no_build_preflights": {"passed": 2, "total": 2},
+    "content_identity_regressions": {"passed": 2, "total": 2, "state": "NOT_BUILT"},
+    "static_gate_steps": 14,
+    "canonical_gate": {
+      "status": "PASS",
+      "steps_passed": 14,
+      "steps_total": 14,
+      "run_id": "qg.20260809154115.ee34f3f3acbc",
+      "report": "temp/quality-gate-m03-3b-tc01/report-runtime-pin-post-evidence-v2.json",
+      "report_sha256": "E8A7451A848426876E71187E4B94BCA195871BB1391BCCF0A75B14C6439F2C05",
+      "source_dirty_authorized": true
+    }
+  },
+  "fail_closed_guards": [
+    "exact_jdk_patch_vendor_arch_home_and_hashes",
+    "runtime_contract_cannot_redefine_approved_toolchain_policy",
+    "no_ambient_java_fallback",
+    "java_and_gradle_environment_override_rejection",
+    "whitespace_override_and_sid_backed_user_profile_binding",
+    "process_only_java_binding_with_finally_restore",
+    "config_output_name_to_generated_project_binding",
+    "lexical_containment_and_reparse_point_rejection",
+    "partial_or_mismatched_existing_export_blocks_before_cocos",
+    "clean_checkout_reports_not_present_without_false_block",
+    "exact_gradle_distribution_launcher_and_wrapper_jar_hash_binding",
+    "gradle_daemon_jvm_criteria_rejection",
+    "java_properties_duplicate_separator_escape_continuation_and_lone_cr_rejection",
+    "unique_cocos_invocation_logs_and_reused_success_log_path_rejection",
+    "current_run_bounded_success_log_evidence",
+    "nonzero_machine_report_on_post_stage_failure"
+  ],
+  "fresh_build": "DEFERRED_TO_FIRST_ANDROID_P4",
+  "operations_not_run": ["cocos", "gradle", "adb", "emulator", "asset_import"],
+  "next": "M03.3C_FULL_P4"
+}

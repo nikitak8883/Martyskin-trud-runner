@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.mtr.local/codex/android-build-toolchain.contract.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "contract",
+    "java",
+    "cocos_creator",
+    "android",
+    "build_configs",
+    "generated_exports",
+    "policy"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "contract": { "const": "mtr.android_build_toolchain" },
+    "java": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_major",
+        "required_version",
+        "required_vendor",
+        "required_arch",
+        "approved_home",
+        "required_files",
+        "required_file_sha256",
+        "forbidden_environment_overrides"
+      ],
+      "properties": {
+        "required_major": { "const": 17 },
+        "required_version": { "const": "17.0.20" },
+        "required_vendor": { "type": "string", "minLength": 1 },
+        "required_arch": { "type": "string", "minLength": 1 },
+        "approved_home": { "type": "string", "minLength": 1 },
+        "required_files": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "required_file_sha256": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["bin\\java.exe", "bin\\javac.exe", "bin\\jar.exe", "release"],
+          "properties": {
+            "bin\\java.exe": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+            "bin\\javac.exe": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+            "bin\\jar.exe": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+            "release": { "type": "string", "pattern": "^[A-F0-9]{64}$" }
+          }
+        },
+        "forbidden_environment_overrides": {
+          "type": "array",
+          "minItems": 7,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "cocos_creator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "executable", "executable_sha256"],
+      "properties": {
+        "version": { "const": "3.8.8" },
+        "executable": { "type": "string", "minLength": 1 },
+        "executable_sha256": { "type": "string", "pattern": "^[A-F0-9]{64}$" }
+      }
+    },
+    "android": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sdk_path",
+        "configured_api_level",
+        "generated_compile_sdk",
+        "build_tools_version",
+        "ndk_version",
+        "cmake_version",
+        "gradle_wrapper_version",
+        "gradle_distribution_url",
+        "gradlew_bat_sha256",
+        "gradle_wrapper_jar_sha256",
+        "android_gradle_plugin_version"
+      ],
+      "properties": {
+        "sdk_path": { "type": "string", "minLength": 1 },
+        "configured_api_level": { "const": 35 },
+        "generated_compile_sdk": { "const": 36 },
+        "build_tools_version": { "const": "36.0.0" },
+        "ndk_version": { "const": "23.2.8568313" },
+        "cmake_version": { "const": "3.22.1" },
+        "gradle_wrapper_version": { "const": "8.11.1" },
+        "gradle_distribution_url": { "const": "https://services.gradle.org/distributions/gradle-8.11.1-bin.zip" },
+        "gradlew_bat_sha256": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+        "gradle_wrapper_jar_sha256": { "type": "string", "pattern": "^[A-F0-9]{64}$" },
+        "android_gradle_plugin_version": { "const": "8.10.1" }
+      }
+    },
+    "build_configs": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^build-android(?:-emulator)?\\.json$" }
+    },
+    "generated_exports": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["config", "output_name", "project"],
+        "properties": {
+          "config": { "type": "string", "pattern": "^build-android(?:-emulator)?\\.json$" },
+          "output_name": { "type": "string", "pattern": "^android(?:-emulator)?$" },
+          "project": { "type": "string", "pattern": "^build/android(?:-emulator)?/proj$" }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "configured_java_only",
+        "ambient_fallback",
+        "global_environment_mutation",
+        "fresh_export_validation"
+      ],
+      "properties": {
+        "configured_java_only": { "const": true },
+        "ambient_fallback": { "const": false },
+        "global_environment_mutation": { "const": false },
+        "fresh_export_validation": { "const": "DEFERRED_TO_FIRST_ANDROID_P4" }
+      }
+    }
+  }
+}

@@ -153,7 +153,10 @@ function Test-MtrSuccessPattern {
     [CmdletBinding()]
     param(
         [string[]]$Path = @(),
-        [string[]]$Pattern = @()
+        [string[]]$Pattern = @(),
+        [AllowNull()][System.Collections.IDictionary]$StateByPath,
+        [ValidateRange(1024, 1048576)][int]$MaxNewBytes = 1048576,
+        [ValidateRange(128, 8192)][int]$TailCharacters = 4096
     )
 
     foreach ($candidate in @($Path)) {
@@ -161,8 +164,58 @@ function Test-MtrSuccessPattern {
         if (-not (Test-Path -LiteralPath $candidate -PathType Leaf)) { continue }
 
         $text = ''
+        $state = if ($null -ne $StateByPath -and $StateByPath.Contains($candidate)) {
+            $StateByPath[$candidate]
+        } else {
+            [pscustomobject]@{ offset = 0L; tail = '' }
+        }
+        $startOffset = [int64]$state.offset
         try {
-            $text = (Get-Content -LiteralPath $candidate -Tail 320 -ErrorAction SilentlyContinue) -join "`n"
+            $stream = [System.IO.File]::Open(
+                $candidate,
+                [System.IO.FileMode]::Open,
+                [System.IO.FileAccess]::Read,
+                [System.IO.FileShare]::ReadWrite
+            )
+            try {
+                # Snapshot length after opening and read exactly that bounded
+                # byte range; concurrent appends remain for the next cursor.
+                $endOffset = [int64]$stream.Length
+                if ($endOffset -lt $startOffset) {
+                    # The producer replaced or truncated the log after launch.
+                    $startOffset = 0L
+                    $state.offset = 0L
+                    $state.tail = ''
+                }
+                if ($endOffset -le $startOffset) { continue }
+                $newByteCount = $endOffset - $startOffset
+                if ($newByteCount -gt $MaxNewBytes) {
+                    return [pscustomobject]@{
+                        matched = $false
+                        overflowed = $true
+                        path = $candidate
+                        pattern = $null
+                        startOffset = $startOffset
+                        endOffset = $endOffset
+                        maxNewBytes = $MaxNewBytes
+                    }
+                }
+                [void]$stream.Seek($startOffset, [System.IO.SeekOrigin]::Begin)
+                $buffer = [byte[]]::new([int]$newByteCount)
+                $bytesRead = 0
+                while ($bytesRead -lt $buffer.Length) {
+                    $read = $stream.Read($buffer, $bytesRead, $buffer.Length - $bytesRead)
+                    if ($read -le 0) { break }
+                    $bytesRead += $read
+                }
+                $text = [string]$state.tail + [Text.Encoding]::UTF8.GetString($buffer, 0, $bytesRead)
+            } finally {
+                $stream.Dispose()
+            }
+            $state.offset = $startOffset + $bytesRead
+            $state.tail = if ($text.Length -gt $TailCharacters) {
+                $text.Substring($text.Length - $TailCharacters)
+            } else { $text }
         } catch {
             $text = ''
         }
@@ -173,8 +226,11 @@ function Test-MtrSuccessPattern {
             if ($text -match $patternText) {
                 return [pscustomobject]@{
                     matched = $true
+                    overflowed = $false
                     path = $candidate
                     pattern = $patternText
+                    startOffset = $startOffset
+                    endOffset = $state.offset
                 }
             }
         }
@@ -182,8 +238,12 @@ function Test-MtrSuccessPattern {
 
     return [pscustomobject]@{
         matched = $false
+        overflowed = $false
         path = $null
         pattern = $null
+        startOffset = $null
+        endOffset = $null
+        maxNewBytes = $MaxNewBytes
     }
 }
 
@@ -202,7 +262,8 @@ function Invoke-MtrEntrypoint {
         [int]$TimeoutSeconds = 0,
         [string[]]$SuccessLogPath = @(),
         [string[]]$SuccessPattern = @(),
-        [int]$SuccessPollIntervalMilliseconds = 1000
+        [int]$SuccessPollIntervalMilliseconds = 1000,
+        [ValidateRange(1024, 1048576)][int]$SuccessScanChunkLimitBytes = 1048576
     )
 
     $resolvedFilePath = Resolve-MtrExecutable -FilePath $FilePath
@@ -217,6 +278,17 @@ function Invoke-MtrEntrypoint {
     $autocorrections.Add('argument-array-to-safe-command-line')
     if (@($ArgumentList | Where-Object { ([string]$_) -match '[\s"]' }).Count -gt 0) {
         $autocorrections.Add('quoted-whitespace-or-quote-arguments')
+    }
+    $successLogStates = [System.Collections.Hashtable]::new([System.StringComparer]::OrdinalIgnoreCase)
+    foreach ($candidate in @($SuccessLogPath)) {
+        if ([string]::IsNullOrWhiteSpace($candidate)) { continue }
+        $baselineLength = if (Test-Path -LiteralPath $candidate -PathType Leaf) {
+            [int64](Get-Item -LiteralPath $candidate).Length
+        } else { 0L }
+        $successLogStates[$candidate] = [pscustomobject]@{
+            offset = $baselineLength
+            tail = ''
+        }
     }
     if ($resolvedFilePath -ne $FilePath) {
         $autocorrections.Add('resolved-executable')
@@ -251,6 +323,7 @@ function Invoke-MtrEntrypoint {
     $stderrTask = $null
     $completedBySuccessPattern = $false
     $successMatch = $null
+    $successEvidenceOverflow = $false
     if ($Wait) {
         $processInfo = [System.Diagnostics.ProcessStartInfo]::new()
         $processInfo.FileName = $resolvedFilePath
@@ -311,10 +384,31 @@ function Invoke-MtrEntrypoint {
             $pollMs = [Math]::Max(250, $SuccessPollIntervalMilliseconds)
             do {
                 $exited = $process.WaitForExit($pollMs)
-                if ($exited) { break }
-
+                if ($exited -and $process.ExitCode -ne 0) { break }
                 if (@($SuccessPattern).Count -gt 0 -and @($SuccessLogPath).Count -gt 0) {
-                    $match = Test-MtrSuccessPattern -Path $SuccessLogPath -Pattern $SuccessPattern
+                    $match = Test-MtrSuccessPattern `
+                        -Path $SuccessLogPath `
+                        -Pattern $SuccessPattern `
+                        -StateByPath $successLogStates `
+                        -MaxNewBytes $SuccessScanChunkLimitBytes
+                    if ($match.overflowed) {
+                        $successEvidenceOverflow = $true
+                        $successMatch = $match
+                        Write-MtrEntrypointLog -LogPath $LogPath -Record @{
+                            event = 'entrypoint.success-log-overflow'
+                            tool = 'mtr-entrypoint-router'
+                            filePath = $resolvedFilePath
+                            workingDirectory = $resolvedWorkingDirectory
+                            processId = $process.Id
+                            successMatch = $successMatch
+                            action = 'stop-process-tree-fail-closed'
+                        }
+                        if (-not $exited) {
+                            Stop-MtrProcessTree -ProcessId $process.Id
+                            [void]$process.WaitForExit(10000)
+                        }
+                        break
+                    }
                     if ($match.matched) {
                         $completedBySuccessPattern = $true
                         $successMatch = $match
@@ -327,14 +421,17 @@ function Invoke-MtrEntrypoint {
                             successMatch = $successMatch
                             action = 'stop-process-tree-after-success-log'
                         }
-                        Stop-MtrProcessTree -ProcessId $process.Id
-                        [void]$process.WaitForExit(10000)
+                        if (-not $exited) {
+                            Stop-MtrProcessTree -ProcessId $process.Id
+                            [void]$process.WaitForExit(10000)
+                        }
                         break
                     }
                 }
+                if ($exited) { break }
             } while ((Get-Date) -lt $deadline)
 
-            if (-not $exited -and -not $completedBySuccessPattern) {
+            if (-not $exited -and -not $completedBySuccessPattern -and -not $successEvidenceOverflow) {
                 $process.Refresh()
                 $timedOut = $true
                 Stop-MtrProcessTree -ProcessId $process.Id
@@ -369,6 +466,7 @@ function Invoke-MtrEntrypoint {
         timedOut = $timedOut
         completedBySuccessPattern = $completedBySuccessPattern
         successMatch = $successMatch
+        successEvidenceOverflow = $successEvidenceOverflow
         logPath = $LogPath
         stdout = $RedirectStandardOutput
         stderr = $RedirectStandardError
@@ -387,6 +485,7 @@ function Invoke-MtrEntrypoint {
         timedOut = $timedOut
         completedBySuccessPattern = $completedBySuccessPattern
         successMatch = $successMatch
+        successEvidenceOverflow = $successEvidenceOverflow
         stdout = $RedirectStandardOutput
         stderr = $RedirectStandardError
         autocorrections = @($autocorrections)
@@ -394,6 +493,9 @@ function Invoke-MtrEntrypoint {
 
     if ($timedOut) {
         throw "Entrypoint timed out after $TimeoutSeconds seconds: $resolvedFilePath"
+    }
+    if ($successEvidenceOverflow) {
+        throw "Entrypoint success log exceeded the bounded scan chunk: $($successMatch.path)"
     }
 
     return $result
@@ -410,6 +512,7 @@ function Test-MtrEntrypointQuoting {
     $payloadPath = Join-Path $tempRoot 'payload path with spaces.txt'
     $stdoutPath = Join-Path $tempRoot 'stdout.txt'
     $stderrPath = Join-Path $tempRoot 'stderr.txt'
+    $successLogPath = Join-Path $tempRoot 'success.log'
     $python = Get-Command python -ErrorAction SilentlyContinue | Select-Object -First 1
     if (-not $python -or -not $python.Source) {
         throw 'Python executable is required for MTR entrypoint quoting self-test.'
@@ -428,8 +531,77 @@ function Test-MtrEntrypointQuoting {
             -TimeoutSeconds 30 `
             -PassThru
 
+        'MTR_CURRENT_SUCCESS' | Set-Content -LiteralPath $successLogPath -Encoding UTF8
+        $staleOnlyRun = Invoke-MtrEntrypoint `
+            -FilePath $python.Source `
+            -ArgumentList @('-c', 'import time; time.sleep(0.35)') `
+            -WorkingDirectory (Get-Location).Path `
+            -LogPath $LogPath `
+            -Wait `
+            -TimeoutSeconds 5 `
+            -SuccessLogPath @($successLogPath) `
+            -SuccessPattern @('MTR_CURRENT_SUCCESS') `
+            -SuccessPollIntervalMilliseconds 100 `
+            -PassThru
+
+        $appendSuccessScript = "import pathlib, sys, time; time.sleep(0.2); pathlib.Path(sys.argv[1]).open('a', encoding='utf-8').write('MTR_CURRENT_SUCCESS\n'); time.sleep(1)"
+        $currentSuccessRun = Invoke-MtrEntrypoint `
+            -FilePath $python.Source `
+            -ArgumentList @('-c', $appendSuccessScript, $successLogPath) `
+            -WorkingDirectory (Get-Location).Path `
+            -LogPath $LogPath `
+            -Wait `
+            -TimeoutSeconds 5 `
+            -SuccessLogPath @($successLogPath) `
+            -SuccessPattern @('MTR_CURRENT_SUCCESS') `
+            -SuccessPollIntervalMilliseconds 100 `
+            -PassThru
+
+        $appendThenFailScript = "import pathlib, sys; pathlib.Path(sys.argv[1]).open('a', encoding='utf-8').write('MTR_CURRENT_SUCCESS\n'); raise SystemExit(7)"
+        $nonzeroAfterSuccessRun = Invoke-MtrEntrypoint `
+            -FilePath $python.Source `
+            -ArgumentList @('-c', $appendThenFailScript, $successLogPath) `
+            -WorkingDirectory (Get-Location).Path `
+            -LogPath $LogPath `
+            -Wait `
+            -TimeoutSeconds 5 `
+            -SuccessLogPath @($successLogPath) `
+            -SuccessPattern @('MTR_CURRENT_SUCCESS') `
+            -SuccessPollIntervalMilliseconds 100 `
+            -PassThru
+
+        $overflowRejected = $false
+        $overflowScript = "import pathlib, sys, time; pathlib.Path(sys.argv[1]).open('a', encoding='utf-8').write('X' * 2048); time.sleep(1)"
+        try {
+            Invoke-MtrEntrypoint `
+                -FilePath $python.Source `
+                -ArgumentList @('-c', $overflowScript, $successLogPath) `
+                -WorkingDirectory (Get-Location).Path `
+                -LogPath $LogPath `
+                -Wait `
+                -TimeoutSeconds 5 `
+                -SuccessLogPath @($successLogPath) `
+                -SuccessPattern @('MTR_CURRENT_SUCCESS') `
+                -SuccessPollIntervalMilliseconds 100 `
+                -SuccessScanChunkLimitBytes 1024 `
+                -PassThru | Out-Null
+        } catch {
+            $overflowRejected = $_.Exception.Message -match 'bounded scan chunk'
+        }
+
         $content = if (Test-Path -LiteralPath $payloadPath) { Get-Content -LiteralPath $payloadPath -Raw } else { '' }
-        $passed = ($run.exitCode -eq 0 -and $content.Trim() -eq 'ok:path-with-spaces')
+        $passed = (
+            $run.exitCode -eq 0 -and
+            $content.Trim() -eq 'ok:path-with-spaces' -and
+            -not $staleOnlyRun.completedBySuccessPattern -and
+            $staleOnlyRun.logicalExitCode -eq 0 -and
+            $currentSuccessRun.completedBySuccessPattern -and
+            $currentSuccessRun.logicalExitCode -eq 0 -and
+            -not $nonzeroAfterSuccessRun.completedBySuccessPattern -and
+            $nonzeroAfterSuccessRun.exitCode -eq 7 -and
+            $nonzeroAfterSuccessRun.logicalExitCode -eq 7 -and
+            $overflowRejected
+        )
         Write-MtrEntrypointLog -LogPath $LogPath -Record @{
             event = 'entrypoint.selftest'
             tool = 'mtr-entrypoint-router'
@@ -437,6 +609,10 @@ function Test-MtrEntrypointQuoting {
             passed = $passed
             exitCode = $run.exitCode
             payloadPath = $payloadPath
+            staleSuccessRejected = -not $staleOnlyRun.completedBySuccessPattern
+            currentSuccessAccepted = [bool]$currentSuccessRun.completedBySuccessPattern
+            nonzeroExitPrecedence = ($nonzeroAfterSuccessRun.logicalExitCode -eq 7)
+            boundedSuccessLogOverflowRejected = $overflowRejected
         }
 
         return [pscustomobject]@{
@@ -444,6 +620,10 @@ function Test-MtrEntrypointQuoting {
             exitCode = $run.exitCode
             payloadPath = $payloadPath
             logPath = $LogPath
+            staleSuccessRejected = -not $staleOnlyRun.completedBySuccessPattern
+            currentSuccessAccepted = [bool]$currentSuccessRun.completedBySuccessPattern
+            nonzeroExitPrecedence = ($nonzeroAfterSuccessRun.logicalExitCode -eq 7)
+            boundedSuccessLogOverflowRejected = $overflowRejected
         }
     } finally {
         Remove-Item -LiteralPath $tempRoot -Recurse -Force -ErrorAction SilentlyContinue

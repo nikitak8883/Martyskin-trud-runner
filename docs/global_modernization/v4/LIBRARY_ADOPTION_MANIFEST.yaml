@@ -26,6 +26,9 @@ merged_or_strengthened:
   - id: lifecycle_epoch
     outputs:
       - docs/global_modernization/v4/library/reference/LifecycleEpoch.reference.ts
+      - assets/scripts/qa/LifecycleEpoch.ts
+      - tools/codex/test-lifecycle-epoch.js
+      - tools/codex/validate_lifecycle_epoch.py
   - id: execution_roadmap
     outputs:
       - docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json
@@ -33,6 +36,14 @@ merged_or_strengthened:
   - id: toolchain_contract
     outputs:
       - docs/global_modernization/v4/TOOLCHAIN_LOCK_20260809.json
+      - docs/global_modernization/v4/TC_01_TOOLCHAIN_RECEIPT_20260809.json
+      - tools/codex/android-build-toolchain.contract.json
+      - tools/codex/android-build-toolchain.contract.schema.json
+      - tools/codex/MtrAndroidBuildToolchain.psm1
+      - tools/codex/Test-MtrAndroidBuildToolchain.ps1
+      - tools/codex/validate_android_build_toolchain.py
+      - tools/Run-MtrCocosBuild.ps1
+      - tools/codex/MtrEntrypoint.psm1
 
 accepted_identical_no_copy:
   - six report/ADR templates already under docs/global_modernization/v3/library/templates

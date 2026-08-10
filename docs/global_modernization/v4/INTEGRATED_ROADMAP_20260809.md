@@ -3,9 +3,9 @@
 ## Текущее положение
 
 - Source ledger: `19/95 complete`; mandatory `19/85`, осталось `66`; conditional `10`.
-- V4 remaining-scope execution ledger: `1/65 complete`, осталось `64`; conditional units `7`.
-- Текущий milestone: `RDX-01 complete`.
-- Следующие units: `M03.3A` и параллельный `TC-01`.
+- V4 remaining-scope execution ledger: `4/65 complete`, осталось `61`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
+- Текущий milestone: `M03.3A`, `M03.3B` и `TC-01` complete; source package `M03.3` остаётся pending до C.
+- Следующий unit: `M03.3C` с полным P4.
 - Release: `BLOCKED`.
 
 ## Phase 0 — contracts, toolchain и publication model
@@ -18,17 +18,17 @@
 - machine-readable v4 execution DAG;
 - library adoption/rejection manifest;
 - schema-first roadmap validator и отрицательные тесты;
-- 11-step static gate и повторный plan audit.
+- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 14 steps.
 
-### `TC-01` — next, 2–4 дня
+### `TC-01` — complete
 
 Техническое задание:
 
-1. заменить абсолютное version-patch закрепление JDK на валидируемый exact-major/exact-approved path contract;
-2. запретить молчаливый fallback на ambient JDK 21;
+1. закрепить точный Adoptium JDK `17.0.20`, approved path и SHA-256 критичных JDK-файлов;
+2. запретить молчаливый fallback на любой ambient Java (текущая приемка наблюдает JDK 21, но ambient-версия не входит в build identity);
 3. различать ambient Java и Android build Java в toolchain report;
 4. проверить Cocos `3.8.8`, NDK `23.2.8568313`, API 35, Gradle wrapper `8.11.1`;
-5. выполнить no-build config/preflight, затем targeted fresh emulator build в первом Android-dependent runtime gate;
+5. выполнить no-build config/preflight; fresh export/build остаётся обязательным deferred postcondition первого Android-dependent P4 (`M03.3C`);
 6. не менять SDK/Cocos/Gradle версии в этом пакете.
 
 ### `PUB-01` — встроен в M02.7/M12
@@ -42,9 +42,9 @@
 
 ## Phase 1 — M03 ownership seams, 5–9 недель
 
-1. `M03.3A`: pure DevEvent types, validated bounded ring buffer, deterministic tests.
-2. `M03.3B`: pure lifecycle epoch + stale callback guards/tests.
-3. `M03.3C`: один GameRoot adapter, release-off policy, reset/transition integration, полный P4.
+1. `M03.3A` — complete: pure DevEvent types, validated bounded ring buffer, deterministic tests.
+2. `M03.3B` — complete: pure lifecycle epoch + synchronous-entry stale callback guards/tests.
+3. `M03.3C` — next: один GameRoot adapter, release-off policy, reset/transition integration, полный P4.
 4. `M03.4`: один input router; сохранить debounce/touch/keyboard order.
 5. `M03.5`: typed collision events без перестановки legacy order.
 6. `M03.6`: power-up lifecycle с injected tick/epoch и cleanup.

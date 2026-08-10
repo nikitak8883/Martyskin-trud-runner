@@ -31,6 +31,51 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "dev-event-log-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_dev_event_log.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "lifecycle-epoch-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_lifecycle_epoch.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "android-build-toolchain-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_android_build_toolchain.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "v4-execution-plan-contract",
       "mandatory": true,
       "enabled": true,

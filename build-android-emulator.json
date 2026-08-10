@@ -18,8 +18,8 @@
       "packageName": "com.martyskin.trudrunner",
       "sdkPath": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk",
       "ndkPath": "C:\\Users\\nikit\\AppData\\Local\\Android\\Sdk\\ndk\\23.2.8568313",
-      "javaHome": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot",
-      "javaPath": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin",
+      "javaHome": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.20.8-hotspot",
+      "javaPath": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.20.8-hotspot\\bin",
       "apiLevel": 35,
       "appABIs": [
         "x86_64"

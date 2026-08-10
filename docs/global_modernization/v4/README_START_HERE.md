@@ -1,6 +1,6 @@
 # MTR global modernization v4 — точка входа
 
-Статус: `RDX-01_COMPLETE / M03.3A_AND_TC-01_NEXT / RELEASE_BLOCKED`  
+Статус: `M03.3A_B_AND_TC-01_COMPLETE / M03.3C_READY / RELEASE_BLOCKED`  
 Дата аудита: `2026-08-09`  
 Живой runtime checkpoint: `f99408151c98cf8806e269307fe5e552f5b185c9`  
 Документационная база до RDX-01: `95648b978117b8964469ad4fb236829d9540c239`
@@ -23,7 +23,7 @@
 ## Два независимых счётчика
 
 - Требования проекта: `95` source work packages; `19` complete, `63` pending, `3` blocked, `10` conditional. Обязательный остаток: `66`.
-- Исполнение от текущей точки: `65` обязательных v4 execution units, включая `RDX-01` и `TC-01`; после этого аудита `1/65` завершён, `64` остаются. Ещё `7` units условные.
+- Исполнение от текущей точки: `65` обязательных v4 execution units, включая `RDX-01` и `TC-01`; `4/65` завершены, `61` остаётся. Ещё `7` units условные. Знаменатель provisional до инвентаризации child batches M04/M05/M10.
 
 Эти знаменатели нельзя смешивать: один считает требования, другой — инженерные rollback/QA-границы.
 
@@ -40,9 +40,9 @@
 
 ## Следующие безопасные действия
 
-1. `M03.3A`: чистый Cocos-independent контракт DevEvent и bounded ring buffer.
-2. Параллельно `TC-01`: убрать молчаливый fallback с отсутствующего JDK 17.0.19 на ambient JDK 21 и закрепить валидный JDK 17.0.20 fail-closed.
-3. Затем `M03.3B` и только после обоих prerequisites — runtime-пакет `M03.3C` с полным P4.
+1. `M03.3C`: один release-off GameRoot adapter для transition/reset/epoch.
+2. Выполнить полный P4: fresh Web + Android-emulator build/install/runtime parity.
+3. Не продвигать source package `M03.3` до завершения M03.3C.
 
 ## Запреты до соответствующих gates
 
@@ -51,4 +51,3 @@
 - не запускать physical-device QA без отдельной команды;
 - не публиковать Web, не push и не выпускать production artifact без соответствующего ADR/gate;
 - не удалять legacy paths в одном патче с введением нового owner.
-
