@@ -7,7 +7,17 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m03_5_complete / m03_6_next / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m03_5_complete / m03_6_partial / release_blocked`
+
+## 2026-08-11 M03.6 bounded-pause overlay
+
+- M03.6 source implementation is partial and must not be counted complete.
+- The latest atomicity-corrected source fingerprint is `F9042AFE4BB5E0899105ECF63AD179C9068007AFB3261E5DCF63177B5CBBF2A1`.
+- Post-fix unit/structural/config/GameRoot gates pass; fresh Web lifecycle passes and Web Pass A is `34/34 + interaction + restart 10/10`.
+- Earlier M03.6 Android/Web runtime evidence predates the final source correction and is diagnostic-only.
+- Current checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20260811_M03_6_PARTIAL_POST_ATOMIC_WEB_A.md`.
+- Machine resume receipt: `docs/global_modernization/v3/M03/M03_6_PAUSE_STATE.json`.
+- Resume inside M03.6 with Web Pass B, production Web, fresh Android-emulator build/two cycles, static `19/19`, M2_PLUS and final reporting. Do not start M03.7A yet.
 
 ## 2026-08-11 v4 execution overlay
 

@@ -61,6 +61,21 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "powerup-lifecycle-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_powerup_lifecycle.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 120,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "web-matrix-cli-contract",
       "mandatory": true,
       "enabled": true,

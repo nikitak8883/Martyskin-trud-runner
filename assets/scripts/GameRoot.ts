@@ -51,6 +51,12 @@ import type {
     GameplayCollisionEvent,
 } from './gameplay/collision/GameplayCollisionRouter';
 import {
+    POWER_UP_EFFECT_KEYS,
+    POWER_UP_KIND_COUNT,
+    PowerUpLifecycle,
+} from './gameplay/powerups/PowerUpLifecycle';
+import type { PowerUpLifecycleEvent } from './gameplay/powerups/PowerUpLifecycle';
+import {
     GAME_ROOT_DEV_EVENT_CAPACITY,
     GAME_ROOT_DEV_EVENT_MAX_EXPORT_BYTES,
     GameRootDevEventAdapter,
@@ -261,7 +267,7 @@ interface Rect { x: number; y: number; w: number; h: number; }
 interface Platform { x: number; y: number; w: number; type: number; state: number; }
 interface Banana { x: number; y: number; taken: boolean; value: number; cluster: number; kind: CollectibleKind; }
 interface Obstacle { x: number; y: number; type: number; dead: boolean; label: string; motion: number; }
-interface Bonus { x: number; y: number; type: number; taken: boolean; }
+interface Bonus { x: number; y: number; type: number; taken: boolean; lifecycleId: string; }
 interface Npc { anchor: number; range: number; speed: number; skin: number; t: number; dead: boolean; }
 interface Particle { x: number; y: number; vx: number; vy: number; life: number; size: number; color: Color; }
 interface Button { rect: Rect; text: string; action: () => void; stroke: Color; fill: Color; textColor: Color; }
@@ -726,8 +732,8 @@ const VOICE_BANK: Record<VoiceEvent, string[]> = {
     clear: ['level_clear', 'monkey_happy', 'monkey_chatter', 'voice_banana_05'],
 };
 
-const BONUS_LABELS = ['ПРЫГ', 'РЫВОК', 'ЩИТ', 'МАГНИТ', 'ЖИЛЕТ', 'КОФЕ', 'ЧЕРТЕЖ', 'ПРОПУСК', 'ЖИЗНЬ'];
-const BONUS_COUNT = BONUS_LABELS.length;
+const BONUS_LABELS = ['ПРЫГ', 'РЫВОК', 'ЩИТ', 'МАГНИТ', 'ЖИЛЕТ', 'КОФЕ', 'ЧЕРТЕЖ', 'ПРОПУСК', 'ЖИЗНЬ'] as const;
+const BONUS_COUNT: typeof POWER_UP_KIND_COUNT = BONUS_LABELS.length;
 const BONUS_COLORS = [
     rgb(108, 215, 255),
     rgb(255, 217, 75),
@@ -1037,6 +1043,15 @@ export class GameRoot extends Component {
         onEvent: DEBUG ? logGameRootDevEvent : undefined,
     });
     private collisionQaEvents: GameplayCollisionEvent[] | null = null;
+    private powerUpQaEvents: PowerUpLifecycleEvent[] | null = null;
+    private readonly powerUps = new PowerUpLifecycle({
+        getEpoch: () => this.devEvents.currentEpoch(),
+        getTick: () => this.fixedStepCount,
+        allowQaMutation: DEBUG,
+        onEvent: DEBUG ? (event) => {
+            if (this.powerUpQaEvents) this.powerUpQaEvents.push(event);
+        } : undefined,
+    });
 
     private state: State = 'menu';
     private readonly gameplayInput = new GameplayInputAdapter({
@@ -1106,18 +1121,18 @@ export class GameRoot extends Component {
     private secondJumpPoseTimer = 0;
     private dashTimer = 0;
     private dashCooldown = 0;
-    private jumpBoost = 0;
-    private dashBoost = 0;
-    private armor = 0;
-    private magnet = 0;
-    private vestBonus = 0;
-    private shieldBonus = 0;
-    private coffeeBoost = 0;
-    private blueprintBonus = 0;
-    private passBonus = 0;
-    private extraLifeAura = 0;
-    private runBonusCount = 0;
-    private runBonusSeen: boolean[] = [];
+    private get jumpBoost(): number { return this.powerUps.effectSeconds('jumpBoost'); }
+    private get dashBoost(): number { return this.powerUps.effectSeconds('dashBoost'); }
+    private get armor(): number { return this.powerUps.effectSeconds('armor'); }
+    private get magnet(): number { return this.powerUps.effectSeconds('magnet'); }
+    private get vestBonus(): number { return this.powerUps.effectSeconds('vestBonus'); }
+    private get shieldBonus(): number { return this.powerUps.effectSeconds('shieldBonus'); }
+    private get coffeeBoost(): number { return this.powerUps.effectSeconds('coffeeBoost'); }
+    private get blueprintBonus(): number { return this.powerUps.effectSeconds('blueprintBonus'); }
+    private get passBonus(): number { return this.powerUps.effectSeconds('passBonus'); }
+    private get extraLifeAura(): number { return this.powerUps.effectSeconds('extraLifeAura'); }
+    private get runBonusCount(): number { return this.powerUps.runBonusCount; }
+    private get runBonusSeen(): readonly boolean[] { return this.powerUps.seenKinds(); }
     private runDamageTaken = 0;
     private runStartClock = 0;
     private achievementToastTimer = 0;
@@ -1153,6 +1168,7 @@ export class GameRoot extends Component {
     private pendingQaObstacleSpawn = false;
     private pendingQaBonusSpawn = false;
     private pendingQaCollisionMatrix = false;
+    private pendingQaPowerUpLifecycle = false;
     private pendingSkinSelection = 0;
     private qaForcedSkinVariant: PlayerSkinVariant | null = null;
     private qaForcedPlayerPose: PlayerSkinPose | null = null;
@@ -1290,7 +1306,8 @@ export class GameRoot extends Component {
     }
 
     onDestroy(): void {
-        this.devEvents.invalidate(this.state, 'component_destroy', this.fixedStepCount);
+        const invalidatedEpoch = this.devEvents.invalidate(this.state, 'component_destroy', this.fixedStepCount);
+        this.powerUps.invalidate(invalidatedEpoch, 'component_destroy');
         input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
         input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
         input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
@@ -1411,12 +1428,20 @@ export class GameRoot extends Component {
         const prevMode = this.modeForState(prev);
         const nextMode = this.modeForState(next);
         if (next === 'skins') this.pendingSkinSelection = this.selectedSkin;
+        if (this.shouldCleanupPowerUpsForTransition(prev, next)) {
+            this.powerUps.cleanupSession(`transition:${prev}->${next}:${reason}`);
+        }
         this.state = next;
         if (next === 'name') this.syncPlayerNameEditString();
         this.syncGameState();
         console.log(`MTR_FSM:${prevMode}->${nextMode} state=${prev}->${next} reason=${reason}`);
         this.devEvents.recordTransition(transition, this.fixedStepCount);
         return transition;
+    }
+
+    private shouldCleanupPowerUpsForTransition(prev: State, next: State): boolean {
+        if (next === 'clear' || next === 'over' || next === 'finished') return true;
+        return prev === 'paused' && (next === 'sound' || next === 'menu');
     }
 
     private logGameStateSnapshot(reason: string): void {
@@ -2312,6 +2337,7 @@ export class GameRoot extends Component {
 
     private reset(reason: GameRootResetReason): void {
         const resetEpoch = this.devEvents.beginReset(this.state, reason, this.fixedStepCount);
+        this.powerUps.beginEpoch(resetEpoch, reason);
         this.progress = 0;
         this.score = 0;
         this.hp = 3;
@@ -2321,18 +2347,6 @@ export class GameRoot extends Component {
         this.secondJumpPoseTimer = 0;
         this.dashTimer = 0;
         this.dashCooldown = 0;
-        this.jumpBoost = 0;
-        this.dashBoost = 0;
-        this.armor = 0;
-        this.magnet = 0;
-        this.vestBonus = 0;
-        this.shieldBonus = 0;
-        this.coffeeBoost = 0;
-        this.blueprintBonus = 0;
-        this.passBonus = 0;
-        this.extraLifeAura = 0;
-        this.runBonusCount = 0;
-        this.runBonusSeen = new Array(BONUS_COUNT).fill(false);
         this.runDamageTaken = 0;
         this.runStartClock = this.clock;
         this.achievementToastTimer = 0;
@@ -2411,6 +2425,9 @@ export class GameRoot extends Component {
         }
         if (this.pendingQaCollisionMatrix) {
             this.scheduleCollisionRouterMatrixForQa();
+        }
+        if (this.pendingQaPowerUpLifecycle) {
+            this.schedulePowerUpLifecycleMatrixForQa();
         }
         if (this.pendingQaPauseAfterStart) {
             this.pendingQaPauseAfterStart = false;
@@ -2570,6 +2587,12 @@ export class GameRoot extends Component {
                 this.scheduleCollisionRouterMatrixForQa();
             }
         }
+        if (params.get('mtr_qa_powerups') === '1') {
+            this.pendingQaPowerUpLifecycle = true;
+            if (this.state === 'playing') {
+                this.schedulePowerUpLifecycleMatrixForQa();
+            }
+        }
     }
 
     private runDevEventResetLoopForQa(params: StartupQueryParams): void {
@@ -2683,12 +2706,13 @@ export class GameRoot extends Component {
             effectChecks.collectible_pickup = this.bananas[collectibleIndex].taken
                 && this.bananasCollected === bananasBeforeCollectible + 2;
 
-            const bonusIndex = this.bonuses.push({
-                x: this.progress + this.player.x,
-                y: GROUND - 48,
-                type: 0,
-                taken: false,
-            }) - 1;
+            const bonusIndex = this.bonuses.length;
+            this.bonuses.push(this.createBonus(
+                this.progress + this.player.x,
+                GROUND - 48,
+                0,
+                `qa-collision:${expectedEpoch}:${bonusIndex}`,
+            ));
             const bonusCountBefore = this.runBonusCount;
             this.gameplayCollisions.route({
                 kind: 'bonus_pickup',
@@ -2793,6 +2817,153 @@ export class GameRoot extends Component {
             + ` kinds=${kinds} sequence=${contiguousSequence ? 'contiguous' : 'invalid'}`
             + ` epoch=${expectedEpoch} tick=${expectedTick}`
             + ` effects=${effectPassCount}/${GAMEPLAY_COLLISION_KINDS.length}`
+            + ` state=${this.state}${passed ? '' : ` reason=${failureReason}`}`,
+        );
+    }
+
+    private schedulePowerUpLifecycleMatrixForQa(): void {
+        this.pendingQaPowerUpLifecycle = false;
+        this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.runPowerUpLifecycleMatrixForQa()), 0.05);
+    }
+
+    private runPowerUpLifecycleMatrixForQa(): void {
+        if (!DEBUG || !this.developerMode || this.state !== 'playing') {
+            console.log('MTR_POWERUP_QA_FAIL reason=invalid_runtime_state');
+            return;
+        }
+
+        const checks: Record<string, boolean> = {};
+        let captured: PowerUpLifecycleEvent[] = [];
+        let failureReason = 'contract';
+        let primaryId = '';
+        this.powerUpQaEvents = [];
+
+        try {
+            const firstEpoch = this.devEvents.currentEpoch();
+            const primaryIndex = this.bonuses.length;
+            primaryId = `qa-powerup:${firstEpoch}:${primaryIndex}`;
+            this.bonuses.push(this.createBonus(
+                this.progress + this.player.x,
+                GROUND - 48,
+                5,
+                primaryId,
+            ));
+            const countBefore = this.runBonusCount;
+            this.dashCooldown = 1;
+            this.gameplayCollisions.route({
+                kind: 'bonus_pickup',
+                entityId: primaryId,
+                otherId: 'player',
+                payload: {
+                    bonusIndex: primaryIndex,
+                    bonusType: 5,
+                    screenX: this.player.x,
+                    worldY: GROUND - 48,
+                },
+            });
+            checks.activation = this.bonuses[primaryIndex].taken
+                && this.runBonusCount === countBefore + 1
+                && this.coffeeBoost === 10
+                && this.jumpBoost >= 8
+                && this.dashBoost >= 6
+                && this.dashCooldown === 0;
+
+            const beforePause = this.powerUps.snapshot();
+            this.transitionTo('paused', 'qa_powerup_pause');
+            const duringPause = this.powerUps.snapshot();
+            this.transitionTo('playing', 'qa_powerup_resume');
+            checks.pauseResume = duringPause.sessionOpen
+                && duringPause.effects.coffeeBoost === beforePause.effects.coffeeBoost
+                && duringPause.effects.jumpBoost === beforePause.effects.jumpBoost
+                && duringPause.effects.dashBoost === beforePause.effects.dashBoost;
+
+            this.powerUps.tick(10);
+            checks.expiry = this.coffeeBoost === 0
+                && this.jumpBoost <= 0
+                && this.dashBoost <= 0
+                && this.powerUps.instance(primaryId) === null;
+
+            const staleIndex = this.bonuses.length;
+            const staleId = `qa-powerup-stale:${firstEpoch}:${staleIndex}`;
+            this.bonuses.push(this.createBonus(
+                this.progress + this.player.x + 120,
+                GROUND - 48,
+                3,
+                staleId,
+            ));
+            this.reset('qa_reset_loop');
+            const resetEpoch = this.devEvents.currentEpoch();
+            const afterReset = this.powerUps.snapshot();
+            const staleCollect = this.powerUps.collect(staleId, firstEpoch);
+            checks.reset = resetEpoch === firstEpoch + 1
+                && afterReset.sessionOpen
+                && afterReset.runBonusCount === 0
+                && afterReset.runBonusSeen.every((seen) => !seen)
+                && POWER_UP_EFFECT_KEYS.every((key) => afterReset.effects[key] === 0);
+            checks.staleEpoch = staleCollect.accepted === false && staleCollect.reason === 'stale_epoch';
+
+            const terminalIndex = this.bonuses.length;
+            const terminalId = `qa-powerup-terminal:${resetEpoch}:${terminalIndex}`;
+            this.bonuses.push(this.createBonus(
+                this.progress + this.player.x,
+                GROUND - 48,
+                3,
+                terminalId,
+            ));
+            this.gameplayCollisions.route({
+                kind: 'bonus_pickup',
+                entityId: terminalId,
+                otherId: 'player',
+                payload: {
+                    bonusIndex: terminalIndex,
+                    bonusType: 3,
+                    screenX: this.player.x,
+                    worldY: GROUND - 48,
+                },
+            });
+            const terminalEffectActive = this.magnet === 14;
+            this.transitionTo('over', 'qa_powerup_terminal');
+            const afterTerminal = this.powerUps.snapshot();
+            checks.terminalCleanup = terminalEffectActive
+                && !afterTerminal.sessionOpen
+                && afterTerminal.instanceCount === 0
+                && POWER_UP_EFFECT_KEYS.every((key) => afterTerminal.effects[key] === 0);
+
+            this.transitionTo('playing', 'qa_powerup_retry');
+            this.reset('qa_reset_loop');
+            const afterRetry = this.powerUps.snapshot();
+            checks.retry = this.state === 'playing'
+                && afterRetry.epoch === resetEpoch + 1
+                && afterRetry.sessionOpen
+                && afterRetry.runBonusCount === 0
+                && POWER_UP_EFFECT_KEYS.every((key) => afterRetry.effects[key] === 0);
+            captured = this.powerUpQaEvents ? [...this.powerUpQaEvents] : [];
+        } catch (error) {
+            failureReason = (error instanceof Error ? error.message : String(error))
+                .replace(/\s+/g, '_')
+                .slice(0, 96);
+            captured = this.powerUpQaEvents ? [...this.powerUpQaEvents] : [];
+        } finally {
+            this.powerUpQaEvents = null;
+        }
+
+        const phaseOrder = captured
+            .filter((event) => event.instance?.id === primaryId)
+            .map((event) => event.action);
+        const expectedPhaseOrder = ['spawned', 'collected', 'activated', 'expired', 'cleaned'];
+        checks.phaseOrder = phaseOrder.length === expectedPhaseOrder.length
+            && expectedPhaseOrder.every((action, index) => phaseOrder[index] === action);
+        let passCount = 0;
+        let checkCount = 0;
+        for (const key in checks) {
+            checkCount += 1;
+            if (checks[key]) passCount += 1;
+        }
+        const passed = passCount === checkCount && checkCount === 8;
+        console.log(
+            `MTR_POWERUP_QA_${passed ? 'READY' : 'FAIL'} checks=${passCount}/${checkCount}`
+            + ` phases=${phaseOrder.join('>') || 'none'} stale=rejected`
+            + ` epoch=${this.devEvents.currentEpoch()} events=${captured.length}`
             + ` state=${this.state}${passed ? '' : ` reason=${failureReason}`}`,
         );
     }
@@ -2908,12 +3079,28 @@ export class GameRoot extends Component {
         }
         this.pendingQaBonusSpawn = false;
         const start = this.progress + 460;
+        this.powerUps.cleanupWorldInstances('qa_bonus_matrix_replace');
         this.bonuses = [];
-        for (let i = 0; i < BONUS_COUNT; i++) this.bonuses.push({ x: start + i * 112, y: 420 - (i % 3) * 38, type: i, taken: false });
+        for (let i = 0; i < BONUS_COUNT; i++) {
+            this.bonuses.push(this.createBonus(
+                start + i * 112,
+                420 - (i % 3) * 38,
+                i,
+                `qa-matrix:${this.devEvents.currentEpoch()}:${i}`,
+            ));
+        }
         const qaBonusDurationSec = 24;
-        this.jumpBoost = this.dashBoost = this.armor = this.magnet = this.vestBonus = this.shieldBonus = this.coffeeBoost = this.blueprintBonus = this.passBonus = this.extraLifeAura = qaBonusDurationSec;
+        this.powerUps.seedAllEffectsForQa(qaBonusDurationSec, this.devEvents.currentEpoch());
         this.bannerText = 'Все бонусы и экипировка показаны';
         this.bannerTimer = TOAST_DURATION_SEC;
+    }
+
+    private createBonus(x: number, y: number, type: number, lifecycleId: string): Bonus {
+        const spawned = this.powerUps.spawn(lifecycleId, type);
+        if (spawned.accepted === false) {
+            throw new Error(`Power-up spawn rejected: id=${lifecycleId} reason=${spawned.reason}`);
+        }
+        return { x, y, type, taken: false, lifecycleId };
     }
 
     private generateLevel(): void {
@@ -3065,7 +3252,14 @@ export class GameRoot extends Component {
 
         for (let x = 1450; x < level.length - 800; x += 2450 + this.random() * 900) {
             const p = this.nearbyPlatform(x);
-            this.bonuses.push({ x, y: p ? p.y - 42 : GROUND - (120 + this.random() * 60), type: this.randint(BONUS_COUNT), taken: false });
+            const bonusIndex = this.bonuses.length;
+            const type = this.randint(BONUS_COUNT);
+            this.bonuses.push(this.createBonus(
+                x,
+                p ? p.y - 42 : GROUND - (120 + this.random() * 60),
+                type,
+                `level:${this.levelIndex}:bonus:${bonusIndex}`,
+            ));
         }
     }
 
@@ -3078,16 +3272,7 @@ export class GameRoot extends Component {
         this.secondJumpPoseTimer -= dt;
         this.dashTimer -= dt;
         this.dashCooldown -= dt;
-        this.jumpBoost -= dt;
-        this.dashBoost -= dt;
-        this.armor -= dt;
-        this.magnet -= dt;
-        this.vestBonus -= dt;
-        this.shieldBonus -= dt;
-        this.coffeeBoost -= dt;
-        this.blueprintBonus -= dt;
-        this.passBonus -= dt;
-        this.extraLifeAura -= dt;
+        this.powerUps.tick(dt);
         this.bannerTimer -= dt;
         this.cameraShake -= dt;
         this.playerVisualBlendTimer -= dt;
@@ -3282,8 +3467,19 @@ export class GameRoot extends Component {
             }
             case 'bonus_pickup': {
                 const bonus = this.bonuses[event.payload.bonusIndex];
+                if (bonus.type !== event.payload.bonusType) {
+                    throw new Error(`Power-up collision type mismatch: entity=${bonus.type} event=${event.payload.bonusType}`);
+                }
+                const collected = this.powerUps.collect(bonus.lifecycleId, event.epoch);
+                if (collected.accepted === false) {
+                    console.warn(
+                        `MTR_POWERUP_COLLECT_REJECT id=${bonus.lifecycleId}`
+                        + ` epoch=${event.epoch} reason=${collected.reason}`,
+                    );
+                    return;
+                }
                 bonus.taken = true;
-                this.activateBonus(event.payload.bonusType);
+                this.activateBonus(bonus.lifecycleId, event.payload.bonusType, event.epoch);
                 this.emit(event.payload.screenX, event.payload.worldY, rgb(183, 255, 138), 24);
                 this.playFirst(['bonus', 'clear'], this.sfxVolume * 0.55);
                 return;
@@ -3373,47 +3569,17 @@ export class GameRoot extends Component {
         this.playVoice('dash', 0.82);
     }
 
-    private activateBonus(type: number): void {
-        const kind = type % BONUS_COUNT;
-        this.runBonusCount++;
-        this.runBonusSeen[kind] = true;
-        switch (kind) {
-            case 0:
-                this.jumpBoost = 14;
-                this.blueprintBonus = Math.max(this.blueprintBonus, 5);
-                break;
-            case 1:
-                this.dashBoost = 12;
-                this.dashCooldown = 0;
-                break;
-            case 2:
-                this.shieldBonus = 18;
-                break;
-            case 3:
-                this.magnet = 14;
-                break;
-            case 4:
-                this.vestBonus = 16;
-                break;
-            case 5:
-                this.coffeeBoost = 10;
-                this.jumpBoost = Math.max(this.jumpBoost, 8);
-                this.dashBoost = Math.max(this.dashBoost, 6);
-                this.dashCooldown = 0;
-                break;
-            case 6:
-                this.blueprintBonus = 16;
-                this.score += 50;
-                break;
-            case 7:
-                this.passBonus = 16;
-                this.invincible = Math.max(this.invincible, 0.75);
-                break;
-            default:
-                this.extraLifeAura = 10;
-                this.hp = Math.min(3, this.hp + 1);
-                this.score += 100;
-                break;
+    private activateBonus(lifecycleId: string, type: number, epoch: number): void {
+        const activation = this.powerUps.activate(lifecycleId, type, epoch);
+        if (activation.accepted === false) {
+            throw new Error(`Power-up activation rejected: id=${lifecycleId} reason=${activation.reason}`);
+        }
+        const { kind, oneShot } = activation;
+        if (oneShot.resetDashCooldown) this.dashCooldown = 0;
+        if (oneShot.healAmount > 0) this.hp = Math.min(3, this.hp + oneShot.healAmount);
+        if (oneShot.scoreDelta !== 0) this.score += oneShot.scoreDelta;
+        if (oneShot.invincibilityFloor > 0) {
+            this.invincible = Math.max(this.invincible, oneShot.invincibilityFloor);
         }
         this.bannerText = `БОНУС: ${BONUS_LABELS[kind]}`;
         this.bannerTimer = Math.max(this.bannerTimer, 1.25);
@@ -3443,7 +3609,9 @@ export class GameRoot extends Component {
             return;
         }
         if (this.armor > 0) {
-            this.armor = 0;
+            if (!this.powerUps.consumeArmor(this.devEvents.currentEpoch())) {
+                throw new Error('Power-up armor was visible but could not be consumed');
+            }
             this.emit(sx, y, rgb(156, 255, 138), 22);
             return;
         }

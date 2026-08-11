@@ -1,0 +1,109 @@
+{
+  "schema": "mtr.m03_6_pause_state.v1",
+  "created_at": "2026-08-11T17:18:26.5865917+03:00",
+  "status": "partial",
+  "reason": "owner_requested_bounded_pause_after_post_fix_web_pass_a",
+  "project_root": "C:/Projects/Monkey Work/MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator",
+  "branch": "codex/mtr-source-freeze-v3",
+  "parent_head": "bef8470f04dc7f9dd30a7280b88572b951c3704f",
+  "physical_device_used": false,
+  "active_execution_unit": "M03.6",
+  "roadmap_counts_unchanged": {
+    "execution_complete": 7,
+    "execution_total": 65,
+    "mandatory_remaining": 58,
+    "conditional_remaining": 7,
+    "source_complete": 22,
+    "source_total": 95,
+    "source_mandatory_remaining": 63,
+    "source_conditional_remaining": 10
+  },
+  "source_fingerprint": {
+    "algorithm": "sha256(path<TAB>sha256<LF>, entries in listed order)",
+    "aggregate_sha256": "F9042AFE4BB5E0899105ECF63AD179C9068007AFB3261E5DCF63177B5CBBF2A1",
+    "entries": [
+      {"path":"assets/scripts/gameplay/powerups.meta","sha256":"13303FE16C5A769DB3BE72B0CDE2C23968E8709B8326DBBE25FBC392BFCDBCB9"},
+      {"path":"assets/scripts/gameplay/powerups/PowerUpLifecycle.ts","sha256":"293BE590E3CA335FEE15BE4989725513E411A3ADCD110729CE81FE6E5CFDE724"},
+      {"path":"assets/scripts/gameplay/powerups/PowerUpLifecycle.ts.meta","sha256":"A6C72C0DB697A5E124D5B04FE843822D37F6A49AADA00334DC3DD82051ECE8BE"},
+      {"path":"assets/scripts/GameRoot.ts","sha256":"A4D6BB0F211D12FF94072279420F8F3098B6C77BF42F7D489320945CE7A390EE"},
+      {"path":"docs/global_modernization/v3/M03/game_root_inventory.generated.json","sha256":"173E31FAF3F85CA6A026817C4CD14673D872370E904E254BC9916EC2EB7F0C6C"},
+      {"path":"native/engine/android/app/src/com/cocos/game/AppActivity.java","sha256":"4795D7B8612B67A826DFE732A7901F0C8B00CEC9C376290C8EB20513D894AD6D"},
+      {"path":"tools/codex/quality-gate/static-gates.json","sha256":"210862549DEB0849E7DCF38A1B056715C2A7FB494D4F54AD3EB426EAE1D26E8B"},
+      {"path":"tools/codex/Run-MtrAndroidPowerUpLifecycleQa.ps1","sha256":"EB1013DECE94FE002EE842D67B69C97D592A63F528E03DAD150AD2FC79CCFE15"},
+      {"path":"tools/codex/test-gameplay-collision-router.js","sha256":"10F8480C4FF02ACD5ED3F33173152AFC54862392373D90A397F5905560503EB5"},
+      {"path":"tools/codex/test-powerup-lifecycle.js","sha256":"0240DCFB9472241AE7D16AA05679208B9C114075379AB9B31342FE80961BF4F1"},
+      {"path":"tools/codex/validate_gameplay_collision_router.py","sha256":"36E6A4EA8909ACC5A1D4E36ABCABA0C11E108A5FC04936E747C41BD7D8DBD315"},
+      {"path":"tools/codex/validate_powerup_lifecycle.py","sha256":"336630CBA8A9DB2F82040BBAA2BA24566F967482D958F389B07A290AA4C470A9"},
+      {"path":"tools/codex/web_powerup_lifecycle_runtime_function.js","sha256":"FEA9E543425DD6EEF256832A3E28805ACFB830F91C32FA6369F95A153CA01128"},
+      {"path":"tools/validate-mtr-config.ps1","sha256":"99C5ADF088CB9EE4E131AC5956E7004725F97741DBF2D99F57AF060307AEDDA5"}
+    ]
+  },
+  "post_fix_accepted_evidence": [
+    {
+      "path": "temp/m03-6-final-web/powerup-lifecycle-cycle1.json",
+      "sha256": "9DC09F55B79C27B62A2FC7D2C929EF2776489E3D33EF58DBE7D601AE1C7D5575",
+      "result": "PASS exact lifecycle marker, 8/8, zero diagnostics"
+    },
+    {
+      "path": "temp/m03-6-final-web/matrix-cycle1.json",
+      "sha256": "F3C1B46B22EA8AB2E44937CAA40D08A134AED8A459400FECCC0468ADF52D4354",
+      "result": "PASS 34/34, interaction PASS, restart 10/10"
+    },
+    {
+      "path": "creator-web-ui-icons-20260811-170759-870-06d40c9b.log",
+      "sha256": "7D5FEE4E56B5C7D36FDCF3DFCF25A3B6DA135E29C8E546009EBDE45D81BB1C3C",
+      "result": "fresh web-mobile-qa Cocos build finished"
+    }
+  ],
+  "post_fix_static_results": {
+    "powerup_unit": "PASS 14 groups, 9 kinds, 10 effects",
+    "powerup_contract": "PASS",
+    "collision_unit": "PASS 10 groups, 8 kinds",
+    "collision_contract": "PASS",
+    "config_parity": "PASS 15 levels and Android/Web query parity",
+    "game_root_analysis": "PASS 6001 lines, zero parse diagnostics",
+    "diff_check": "PASS"
+  },
+  "superseded_evidence": {
+    "reason": "PowerUpLifecycle atomicity and compile-time label-count source changed after these runs",
+    "paths": [
+      "temp/m03-6-web/",
+      "temp/m03-6-android/",
+      "temp/m03-6-android-build/",
+      "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk"
+    ],
+    "allowed_use": "diagnostic history only; forbidden as final M03.6 acceptance"
+  },
+  "tooling_incidents": [
+    {
+      "component": "local_worker heavy_review",
+      "result": "timeout_after_300s",
+      "resolution": "Qwen3.6-35B-A3B-GGUF confirmed unloaded; Lemonade healthy with embedding model only",
+      "acceptance_value": "none"
+    },
+    {
+      "component": "Run-MtrAndroidPowerUpLifecycleQa.ps1 invocation",
+      "result": "unsupported Cycle parameter rejected before ADB",
+      "resolution": "entrypoint contract inspected and valid invocation passed before later source edit",
+      "acceptance_value": "none"
+    }
+  ],
+  "remaining_before_m03_6_completion": [
+    "Run fresh post-fix Web Pass B and production web-mobile build.",
+    "Build and install a fresh Android-emulator APK from this exact source.",
+    "Run post-fix Android lifecycle A/B, matrix A/B and interaction A/B; emulator only.",
+    "Run canonical 19-step static quality gate and fresh M2_PLUS.",
+    "Complete Codex final review, hygiene, M03.6 reports and roadmap updates.",
+    "Commit M03.6 completion and run the clean post-commit gate."
+  ],
+  "exact_resume_sequence": [
+    "Verify branch, checkpoint commit/parent and source_fingerprint.aggregate_sha256.",
+    "Confirm no unrelated workspace files are staged or modified by M03.6 work.",
+    "Start isolated localhost Web QA server for build/web-mobile-qa and run Web lifecycle plus full Pass B.",
+    "Build production web-mobile from the same source.",
+    "Build Android emulator target with pinned JDK 17/Cocos 3.8.8/NDK 23.2, install only on emulator-5554 and clear only com.martyskin.trudrunner.",
+    "Execute two fresh Android lifecycle/matrix/interaction cycles and repair any reproducible defect.",
+    "Run static 19/19, M2_PLUS, final review/hygiene, documentation, completion commit and clean gate."
+  ],
+  "release_blockers_unchanged": ["M02.1", "M02.7", "M12.7"]
+}

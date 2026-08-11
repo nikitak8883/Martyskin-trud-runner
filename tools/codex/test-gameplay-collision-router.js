@@ -198,11 +198,16 @@ testGroup('game_root_routes_detection_in_legacy_order', () => {
   const update = source.slice(source.indexOf('private updateGame'), source.indexOf('private applyCollisionEvent'));
   const qaMatrix = source.slice(
     source.indexOf('private runCollisionRouterMatrixForQa'),
+    source.indexOf('private schedulePowerUpLifecycleMatrixForQa'),
+  );
+  const powerUpQaMatrix = source.slice(
+    source.indexOf('private runPowerUpLifecycleMatrixForQa'),
     source.indexOf('private enableDeveloperMode'),
   );
   assert.strictEqual((update.match(/this\.gameplayCollisions\.route\s*\(/g) || []).length, 8);
   assert.strictEqual((qaMatrix.match(/this\.gameplayCollisions\.route\s*\(/g) || []).length, 8);
-  assert.strictEqual((source.match(/this\.gameplayCollisions\.route\s*\(/g) || []).length, 16);
+  assert.strictEqual((powerUpQaMatrix.match(/this\.gameplayCollisions\.route\s*\(/g) || []).length, 2);
+  assert.strictEqual((source.match(/this\.gameplayCollisions\.route\s*\(/g) || []).length, 18);
   assert.ok(qaMatrix.includes("if (!DEBUG || !this.developerMode || this.state !== 'playing')"));
   assert.ok(qaMatrix.includes('MTR_COLLISION_QA_'));
   const markers = [

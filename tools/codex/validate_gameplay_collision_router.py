@@ -158,12 +158,24 @@ def main() -> int:
     update = game_root[update_start:callback_start] if update_start >= 0 and callback_start > update_start else ""
     callback = game_root[callback_start:callback_end] if callback_start >= 0 and callback_end > callback_start else ""
     qa_start = game_root.find("private runCollisionRouterMatrixForQa(): void")
-    qa_end = game_root.find("private enableDeveloperMode(): void", qa_start)
+    qa_end = game_root.find("private schedulePowerUpLifecycleMatrixForQa(): void", qa_start)
     qa_matrix = game_root[qa_start:qa_end] if qa_start >= 0 and qa_end > qa_start else ""
+    powerup_qa_start = game_root.find("private runPowerUpLifecycleMatrixForQa(): void")
+    powerup_qa_end = game_root.find("private enableDeveloperMode(): void", powerup_qa_start)
+    powerup_qa_matrix = (
+        game_root[powerup_qa_start:powerup_qa_end]
+        if powerup_qa_start >= 0 and powerup_qa_end > powerup_qa_start
+        else ""
+    )
     require(update.count("this.gameplayCollisions.route(") == len(COLLISION_KINDS), "production_route_count", errors)
     require(qa_matrix.count("this.gameplayCollisions.route(") == len(COLLISION_KINDS), "qa_route_count", errors)
     require(
-        game_root.count("this.gameplayCollisions.route(") == len(COLLISION_KINDS) * 2,
+        powerup_qa_matrix.count("this.gameplayCollisions.route(") == 2,
+        "powerup_qa_route_count",
+        errors,
+    )
+    require(
+        game_root.count("this.gameplayCollisions.route(") == len(COLLISION_KINDS) * 2 + 2,
         "total_route_count",
         errors,
     )
@@ -206,8 +218,9 @@ def main() -> int:
             "this.checkAchievementProgress(",
         ),
         "bonus_pickup": (
+            "this.powerUps.collect(bonus.lifecycleId, event.epoch)",
             "bonus.taken = true",
-            "this.activateBonus(event.payload.bonusType)",
+            "this.activateBonus(bonus.lifecycleId, event.payload.bonusType, event.epoch)",
             "this.emit(event.payload.screenX",
             "this.playFirst(['bonus', 'clear']",
         ),
