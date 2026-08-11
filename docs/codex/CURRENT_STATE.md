@@ -1,13 +1,28 @@
 # CURRENT_STATE — Martyshkin Trud Runner
 
 Generated: 2026-07-02 15:44 +03:00  
-Updated: 2026-07-22  
+Updated: 2026-08-11  
 Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`  
 Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_reported_green / source_frozen / m00_complete / m01_6_complete / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m03_5_complete / m03_6_next / release_blocked`
+
+## 2026-08-11 v4 execution overlay
+
+The detailed Tasks/4 and early-v3 history below remains evidence, but every older "current next action" is superseded by this overlay and the canonical v4 execution index.
+
+- Branch: `codex/mtr-source-freeze-v3`; accepted base before M03.5: `43816119b04c04ce95ef03e8e49c72085f4bce08`.
+- M03.5 is complete: one synchronous typed collision router covers eight ordered platform/ground/pickup/bonus/obstacle/NPC/finish outcomes while detection and side effects remain in `GameRoot`.
+- Static gate: `18/18 PASS`; Web Pass A/Pass B/recovery: each `34/34` plus interaction and restart `10/10`; Android-emulator Pass A/Pass B: each `28/28` plus interaction/name/restart/soak.
+- Focused Android recovery after `pm clear`: PASS with explicit `input touchscreen -d 0 tap`, restart `10/10`, soak `30.378 s`, zero process loss and no unexpected diagnostics.
+- Canonical M2_PLUS: `12/12 PASS`, zero findings. Physical device used: `NO`.
+- Roadmap: execution `7/65 complete`, `58` mandatory remaining plus `7` conditional; source `22/95 complete`, `63` mandatory remaining plus `10` conditional.
+- Current checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20260811_M03_5_COMPLETE.md`.
+- Current validation report: `docs/global_modernization/v3/M03/M03_5_VALIDATION_SUMMARY.json`.
+- Next safe unit: M03.6 epoch-aware power-up lifecycle with injected time and no balance drift.
+- Release remains blocked by production signing/distribution, immutable Web deployment/live parity and owner-approved final cleanup.
 
 ## 2026-07-19 v3 revalidation overlay
 

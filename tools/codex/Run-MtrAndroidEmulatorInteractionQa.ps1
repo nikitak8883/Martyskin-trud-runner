@@ -25,6 +25,8 @@ $packageName = 'com.martyskin.trudrunner'
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 $resolvedOutputDir = [System.IO.Path]::GetFullPath((Join-Path (Get-Location) $OutputDir))
 [System.IO.Directory]::CreateDirectory($resolvedOutputDir) | Out-Null
+$runStartedAt = Get-Date
+$currentQaPhase = 'bootstrap'
 
 function Invoke-MtrAdb {
     param(
@@ -162,7 +164,10 @@ function Invoke-MtrTap {
         [Parameter(Mandatory = $true)]
         [object]$Point
     )
-    Invoke-MtrAdb -Arguments @('shell', 'input', 'tap', [string]$Point.X, [string]$Point.Y) | Out-Null
+    Invoke-MtrAdb -Arguments @(
+        'shell', 'input', 'touchscreen', '-d', '0', 'tap',
+        [string]$Point.X, [string]$Point.Y
+    ) | Out-Null
 }
 
 function Get-MtrCurrentFocus {
@@ -170,6 +175,46 @@ function Get-MtrCurrentFocus {
     $match = [regex]::Match($windowDump, 'mCurrentFocus=[^\r\n]+')
     if ($match.Success) { return $match.Value }
     return ''
+}
+
+function Wait-MtrAppInputReady {
+    $started = Get-Date
+    $deadline = $started.AddSeconds($MarkerTimeoutSeconds)
+    $stableSamples = 0
+    $lastFocus = ''
+    $componentPattern = [regex]::Escape($component)
+
+    do {
+        $lastFocus = Get-MtrCurrentFocus
+        $inputDump = Invoke-MtrAdb -Arguments @('shell', 'dumpsys', 'input') -AllowFailure
+        $focused = $lastFocus -match $componentPattern
+        $responsiveChannel = [regex]::IsMatch(
+            $inputDump,
+            "channelName='[^']*$componentPattern \(server\)', status=NORMAL[^\r\n]*responsive=true",
+            [Text.RegularExpressions.RegexOptions]::IgnoreCase
+        )
+        if ($focused -and $responsiveChannel) {
+            $stableSamples += 1
+            if ($stableSamples -ge 2) {
+                return [pscustomobject]@{
+                    Found = $true
+                    WaitMs = [int]((Get-Date) - $started).TotalMilliseconds
+                    Focus = $lastFocus
+                    StableSamples = $stableSamples
+                }
+            }
+        } else {
+            $stableSamples = 0
+        }
+        Start-Sleep -Milliseconds 200
+    } while ((Get-Date) -lt $deadline)
+
+    return [pscustomobject]@{
+        Found = $false
+        WaitMs = [int]((Get-Date) - $started).TotalMilliseconds
+        Focus = $lastFocus
+        StableSamples = $stableSamples
+    }
 }
 
 function Close-MtrNativeEditor {
@@ -270,6 +315,61 @@ function Get-MtrDiagnostics {
     }
 }
 
+function Write-MtrFailureEvidence {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Message
+    )
+
+    $safePhase = $currentQaPhase -replace '[^A-Za-z0-9_.-]', '_'
+    $prefix = "failure_cycle${Cycle}_${safePhase}"
+    $logcatPath = Join-Path $resolvedOutputDir "${prefix}.logcat.txt"
+    $inputPath = Join-Path $resolvedOutputDir "${prefix}.dumpsys-input.txt"
+    $windowPath = Join-Path $resolvedOutputDir "${prefix}.dumpsys-window.txt"
+    $summaryPath = Join-Path $resolvedOutputDir "${prefix}.json"
+    $screenshotPath = $null
+
+    try { $logcat = Read-MtrLogcat } catch { $logcat = "capture_failed: $($_.Exception.Message)" }
+    try { $inputDump = Invoke-MtrAdb -Arguments @('shell', 'dumpsys', 'input') -AllowFailure } catch { $inputDump = "capture_failed: $($_.Exception.Message)" }
+    try { $windowDump = Invoke-MtrAdb -Arguments @('shell', 'dumpsys', 'window') -AllowFailure } catch { $windowDump = "capture_failed: $($_.Exception.Message)" }
+    try { $screenshotPath = Save-MtrScreenshot -Name $prefix } catch { $screenshotPath = $null }
+
+    Write-MtrUtf8 -Path $logcatPath -Text $logcat
+    Write-MtrUtf8 -Path $inputPath -Text $inputDump
+    Write-MtrUtf8 -Path $windowPath -Text $windowDump
+    $failure = [ordered]@{
+        schema = 'mtr.android_emulator_interaction_failure.v1'
+        status = 'fail'
+        cycle = $Cycle
+        serial = $Serial
+        emulator_only_guard = $Serial -match '^emulator-\d+$'
+        phase = $currentQaPhase
+        error = $Message
+        started_at = $runStartedAt.ToString('o')
+        failed_at = (Get-Date).ToString('o')
+        app_process_id = (Invoke-MtrAdb -Arguments @('shell', 'pidof', '-s', $packageName) -AllowFailure).Trim()
+        current_focus = Get-MtrCurrentFocus
+        logcat = $logcatPath
+        dumpsys_input = $inputPath
+        dumpsys_window = $windowPath
+        screenshot = $screenshotPath
+    }
+    Write-MtrUtf8 -Path $summaryPath -Text ($failure | ConvertTo-Json -Depth 8)
+    return $summaryPath
+}
+
+trap {
+    $failureMessage = $_.Exception.Message
+    $failurePath = $null
+    try { $failurePath = Write-MtrFailureEvidence -Message $failureMessage } catch {
+        [Console]::Error.WriteLine("Unable to persist Android interaction failure evidence: $($_.Exception.Message)")
+    }
+    [Console]::Error.WriteLine("Android emulator interaction QA failed in phase '$currentQaPhase': $failureMessage")
+    if ($failurePath) { [Console]::Error.WriteLine("Failure evidence: $failurePath") }
+    exit 1
+}
+
+$currentQaPhase = 'emulator_guard'
 $deviceState = (Invoke-MtrAdb -Arguments @('get-state')).Trim()
 $isEmulator = (Invoke-MtrAdb -Arguments @('shell', 'getprop', 'ro.kernel.qemu')).Trim() -eq '1'
 if ($deviceState -ne 'device' -or -not $isEmulator) {
@@ -289,16 +389,21 @@ $points = [ordered]@{
     finished_restart = Convert-MtrPoint -DesignX 640 -DesignY 418 -WindowSize $windowSize
 }
 
-$runStartedAt = Get-Date
-
+$currentQaPhase = 'touch_startup'
 Write-Host '[MTR Android interaction QA] calibrated touch/FSM flow'
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 Start-MtrActivity -Extras ([ordered]@{ mtr_dev = '1'; mtr_autostart = '1'; mtr_level = '1' }) | Out-Null
 $gameplayGate = Wait-MtrLogMarker -Pattern 'MTR_GAMEPLAY_START_GATE_READY level=1'
 if (-not $gameplayGate.Found) { throw 'Level 1 gameplay gate did not become ready.' }
+$currentQaPhase = 'input_channel_ready'
+$inputReady = Wait-MtrAppInputReady
+if (-not $inputReady.Found) {
+    throw "App input channel did not become focused and responsive: $($inputReady.Focus)"
+}
 Start-Sleep -Milliseconds 250
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 
+$currentQaPhase = 'touch_dash'
 Invoke-MtrTap -Point $points.dash
 $dashWait = Wait-MtrLogMarker -Pattern 'MTR_PLAYER_POSE[^\r\n]*pose=crouch_dash\b'
 if (-not $dashWait.Found) { throw 'Dash touch did not produce a crouch_dash pose.' }
@@ -306,6 +411,7 @@ $dashScreenshot = Save-MtrScreenshot -Name 'touch_dash'
 $dashLog = Read-MtrLogcat
 Start-Sleep -Milliseconds 1100
 
+$currentQaPhase = 'touch_jump'
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 Invoke-MtrTap -Point $points.jump
 $jumpWait = Wait-MtrLogMarker -Pattern 'MTR_PLAYER_POSE[^\r\n]*pose=jump(?:_2)?\b'
@@ -314,6 +420,7 @@ $jumpScreenshot = Save-MtrScreenshot -Name 'touch_jump'
 $jumpLog = Read-MtrLogcat
 Start-Sleep -Milliseconds 650
 
+$currentQaPhase = 'touch_pause_resume'
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 Invoke-MtrTap -Point $points.pause
 $pauseWait = Wait-MtrLogMarker -Pattern 'MTR_FSM:RUNNING->PAUSED[^\r\n]*state=playing->paused'
@@ -331,6 +438,7 @@ $interactionLog = "===== jump =====`n$jumpLog`n===== dash =====`n$dashLog`n=====
 Write-MtrUtf8 -Path (Join-Path $resolvedOutputDir 'touch_interaction.logcat.txt') -Text $interactionLog
 $interactionDiagnostics = Get-MtrDiagnostics -Log $interactionLog
 
+$currentQaPhase = 'name_entry'
 Write-Host '[MTR Android interaction QA] native name entry and cold persistence'
 $qaName = "QAPrimateC$Cycle"
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
@@ -379,6 +487,7 @@ $nameLog = "===== entry_and_save =====`n$nameEntryLog`n===== cold_restart =====`
 Write-MtrUtf8 -Path (Join-Path $resolvedOutputDir 'name_entry_persistence.logcat.txt') -Text $nameLog
 $nameDiagnostics = Get-MtrDiagnostics -Log $nameLog
 
+$currentQaPhase = 'restart_loop'
 Write-Host "[MTR Android interaction QA] restart loop ($RestartIterations iterations)"
 $restartResults = [System.Collections.Generic.List[object]]::new()
 $restartLogBuilder = New-Object System.Text.StringBuilder
@@ -417,6 +526,7 @@ for ($iteration = 1; $iteration -le $RestartIterations; $iteration++) {
 }
 Write-MtrUtf8 -Path (Join-Path $resolvedOutputDir 'restart_loop.logcat.txt') -Text $restartLogBuilder.ToString()
 
+$currentQaPhase = 'gameplay_soak'
 Write-Host "[MTR Android interaction QA] ${SoakSeconds}s live gameplay soak"
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 Start-MtrActivity -Extras ([ordered]@{ mtr_dev = '1'; mtr_autostart = '1'; mtr_level = '1' }) | Out-Null
@@ -519,9 +629,16 @@ $summary = [ordered]@{
     started_at = $runStartedAt.ToString('o')
     finished_at = (Get-Date).ToString('o')
     window = [ordered]@{ width = $windowSize.Width; height = $windowSize.Height }
+    touch_injection = [ordered]@{
+        source = 'touchscreen'
+        display_id = 0
+        coordinate_space = 'current_logical_display'
+    }
     touch_coordinates = $points
     touch_flow = [ordered]@{
         status = if ($interactionPassed) { 'pass' } else { 'fail' }
+        input_channel_wait_ms = $inputReady.WaitMs
+        input_channel_stable_samples = $inputReady.StableSamples
         jump_marker_wait_ms = $jumpWait.WaitMs
         dash_marker_wait_ms = $dashWait.WaitMs
         pause_marker_wait_ms = $pauseWait.WaitMs
@@ -560,6 +677,7 @@ $summary = [ordered]@{
 }
 
 $summaryPath = Join-Path $resolvedOutputDir "android_interaction_cycle${Cycle}_summary.json"
+$currentQaPhase = 'complete'
 Write-MtrUtf8 -Path $summaryPath -Text ($summary | ConvertTo-Json -Depth 12)
 $summary | ConvertTo-Json -Depth 12
 

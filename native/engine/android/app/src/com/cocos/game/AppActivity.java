@@ -56,7 +56,8 @@ public class AppActivity extends CocosActivity {
         "mtr_readability_debug",
         "mtr_unlock_achievements",
         "mtr_seed_records",
-        "mtr_qa_reset_loops"
+        "mtr_qa_reset_loops",
+        "mtr_qa_collisions"
     };
 
     private static String startupQuery = "";

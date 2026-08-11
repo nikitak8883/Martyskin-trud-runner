@@ -1,8 +1,8 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m03_3_dev_event_runtime_complete_m03_4_next_release_blocked`  
+Статус: `m03_5_collision_router_complete_m03_6_next_release_blocked`  
 Дата интеграции: 2026-07-23  
-Последнее обновление: 2026-08-10  
+Последнее обновление: 2026-08-11  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 
@@ -64,7 +64,8 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M03.2: typed `GameSessionState` contract сохраняет 14 live states, 44 changed edges и 14 idempotent self-edges, а остальные 138 пар отклоняет детерминированно при единственном writer. Declarative player schema фиксирует 8 states/44 transitions без второго runtime owner. Static gate `9/9`, итоговый CodeRabbit — 0 findings, свежие Android emulator `28/28` и Web `34/34` матрицы с restart `10/10` и пятиминутными soak проходят.
 - M03.3: pure `DevEventLog` и `LifecycleEpoch` подключены через один release-off `GameRootDevEventAdapter`; writer состояния остаётся единственным. DEBUG Web и Android-emulator дают ровно 33 уникальных события для 10 reset-loop, release Web даёт 0 событий. Свежие Web `34/34` и Android-emulator `28/28` матрицы, interaction/name persistence и restart `10/10` проходят; physical device не использовался. Build router теперь fail-closed принимает Cocos exit `36` только вместе с новым terminal success marker. Canonical pre-commit gate — `15/15 PASS`.
 - M03.4: jump, glide, dash и pause направлены через один `GameplayInputAdapter` с общим pause debounce `220 ms`, одним glide writer и неизменной listener topology. Node contract `10/10`, static gate `17/17`, Web Pass A/Pass B/recovery `34/34`, Android-emulator Pass A/Pass B `28/28` и холодный recovery проходят; canonical `M2_PLUS` — `12/12 PASS`, physical device не использовался.
+- M03.5: восемь platform/ground/pickup/bonus/obstacle/NPC/finish callbacks направлены через один синхронный `GameplayCollisionRouter`; detection и exact legacy side-effect order сохранены в `GameRoot`. Node contract `10/10`, static gate `18/18`, Web Pass A/Pass B/recovery `34/34`, Android-emulator Pass A/Pass B `28/28`, collision query и холодный recovery проходят; canonical `M2_PLUS` — `12/12 PASS`, physical device не использовался.
 
 ## Следующее безопасное действие
 
-Выполнить `M03.5`: обернуть pickup, obstacle, platform, trigger и finish callbacks в typed collision events, сохранив точный legacy side-effect order. Release остаётся blocked.
+Выполнить `M03.6`: выделить epoch-aware lifecycle бонусов `spawn → collect → activate → tick → expire → cleanup` с injected clock, сохранив текущие значения, reset/death/retry semantics и Web/Android parity. Release остаётся blocked.

@@ -43,6 +43,14 @@ import type {
 import { GameplayInputAdapter } from './gameplay/input/GameplayInputAdapter';
 import type { GameplayPauseInputContext } from './gameplay/input/GameplayInputAdapter';
 import {
+    GAMEPLAY_COLLISION_KINDS,
+    GameplayCollisionRouter,
+} from './gameplay/collision/GameplayCollisionRouter';
+import type {
+    GameplayCollectibleKind,
+    GameplayCollisionEvent,
+} from './gameplay/collision/GameplayCollisionRouter';
+import {
     GAME_ROOT_DEV_EVENT_CAPACITY,
     GAME_ROOT_DEV_EVENT_MAX_EXPORT_BYTES,
     GameRootDevEventAdapter,
@@ -247,7 +255,7 @@ const THEMED_GAMEPLAY_RUNTIME_KEYS = THEMED_ALL_RUNTIME_KEYS.filter((key) => !ke
 type State = GameSessionState;
 type EndState = 'clear' | 'over' | 'finished';
 type FsmMode = GameSessionMode;
-type CollectibleKind = 'banana' | 'coconut' | 'figLeaf';
+type CollectibleKind = GameplayCollectibleKind;
 
 interface Rect { x: number; y: number; w: number; h: number; }
 interface Platform { x: number; y: number; w: number; type: number; state: number; }
@@ -1028,6 +1036,7 @@ export class GameRoot extends Component {
         eventsEnabled: DEBUG,
         onEvent: DEBUG ? logGameRootDevEvent : undefined,
     });
+    private collisionQaEvents: GameplayCollisionEvent[] | null = null;
 
     private state: State = 'menu';
     private readonly gameplayInput = new GameplayInputAdapter({
@@ -1037,6 +1046,14 @@ export class GameRoot extends Component {
         onGlideChanged: (active) => { this.gliding = active; },
         onDash: () => this.applyDashInput(),
         onPause: (context) => this.applyPauseInput(context),
+    });
+    private readonly gameplayCollisions = new GameplayCollisionRouter({
+        getEpoch: () => this.devEvents.currentEpoch(),
+        getTick: () => this.fixedStepCount,
+        onEvent: (event) => {
+            if (DEBUG && this.collisionQaEvents) this.collisionQaEvents.push(event);
+            this.applyCollisionEvent(event);
+        },
     });
     private levelIndex = 0;
     private unlockedLevel = 0;
@@ -1135,6 +1152,7 @@ export class GameRoot extends Component {
     private gameplayStartGateRetryScheduled = false;
     private pendingQaObstacleSpawn = false;
     private pendingQaBonusSpawn = false;
+    private pendingQaCollisionMatrix = false;
     private pendingSkinSelection = 0;
     private qaForcedSkinVariant: PlayerSkinVariant | null = null;
     private qaForcedPlayerPose: PlayerSkinPose | null = null;
@@ -1527,10 +1545,7 @@ export class GameRoot extends Component {
                 ...currentLevelKeys,
                 ...startupCollectibleKeys,
             ], 'native-critical-current-level', 'critical');
-            this.scheduleUtilitySpriteWarmup('native-post-critical');
-            this.scheduleLevelThemeWarmup('native-post-critical', this.levelIndex);
-            this.preloadSelectedSkinVariantsDeferred('native-post-critical');
-            console.log(`MTR_OBJECT_PRELOAD_REQUESTED platform=native critical=${nativeCriticalCount} strategy=critical-first-chunked-warmup fullCatalogDeferred=true`);
+            console.log(`MTR_OBJECT_PRELOAD_REQUESTED platform=native critical=${nativeCriticalCount} strategy=critical-first-gameplay-warmup fullCatalogDeferred=true`);
             return;
         }
         const webCriticalCount = this.enqueueObjectSprites([
@@ -2380,6 +2395,10 @@ export class GameRoot extends Component {
         this.ensureBackgroundFrame(this.levelIndex, 'start-level');
         this.transitionTo('playing', 'start_level');
         this.reset('start_level');
+        if (sys.isNative) {
+            this.scheduleUtilitySpriteWarmup('native-gameplay-start');
+            this.preloadSelectedSkinVariantsDeferred('native-gameplay-start');
+        }
         this.restartLevelMusic();
         this.playVoice('ui', 0.45);
         if (this.pendingQaObstacleSpawn) {
@@ -2389,6 +2408,9 @@ export class GameRoot extends Component {
         if (this.pendingQaBonusSpawn) {
             this.pendingQaBonusSpawn = false;
             this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.spawnAllBonusStatesForQa()), 0);
+        }
+        if (this.pendingQaCollisionMatrix) {
+            this.scheduleCollisionRouterMatrixForQa();
         }
         if (this.pendingQaPauseAfterStart) {
             this.pendingQaPauseAfterStart = false;
@@ -2542,6 +2564,12 @@ export class GameRoot extends Component {
                 this.spawnAllBonusStatesForQa();
             }
         }
+        if (params.get('mtr_qa_collisions') === '1') {
+            this.pendingQaCollisionMatrix = true;
+            if (this.state === 'playing') {
+                this.scheduleCollisionRouterMatrixForQa();
+            }
+        }
     }
 
     private runDevEventResetLoopForQa(params: StartupQueryParams): void {
@@ -2581,6 +2609,191 @@ export class GameRoot extends Component {
             + ` epoch=${this.devEvents.currentEpoch()} events=${events.length}`
             + ` unique=${sequences.size} resetBegin=${resetBegins} resetEnd=${resetEnds}`
             + ` exportBound=${GAME_ROOT_DEV_EVENT_MAX_EXPORT_BYTES}`,
+        );
+    }
+
+    private scheduleCollisionRouterMatrixForQa(): void {
+        this.pendingQaCollisionMatrix = false;
+        this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.runCollisionRouterMatrixForQa()), 0.05);
+    }
+
+    private runCollisionRouterMatrixForQa(): void {
+        if (!DEBUG || !this.developerMode || this.state !== 'playing') {
+            console.log('MTR_COLLISION_QA_FAIL reason=invalid_runtime_state');
+            return;
+        }
+
+        const expectedEpoch = this.devEvents.currentEpoch();
+        const expectedTick = this.fixedStepCount;
+        const effectChecks: Record<string, boolean> = {};
+        let captured: GameplayCollisionEvent[] = [];
+        let failureReason = 'contract';
+        this.collisionQaEvents = [];
+
+        try {
+            const platformIndex = this.platforms.push({
+                x: this.progress + 200,
+                y: 430,
+                w: 160,
+                type: 0,
+                state: 0,
+            }) - 1;
+            this.gameplayCollisions.route({
+                kind: 'platform_land',
+                entityId: `qa-platform:${platformIndex}`,
+                otherId: 'player',
+                payload: { platformIndex, targetY: 430 },
+            });
+            effectChecks.platform_land = this.player.y === 430
+                && this.player.vy === 0
+                && this.player.onGround
+                && this.player.doubleJump;
+
+            this.gameplayCollisions.route({
+                kind: 'ground_clamp',
+                entityId: 'qa-ground:main',
+                otherId: 'player',
+                payload: { targetY: GROUND },
+            });
+            effectChecks.ground_clamp = this.player.y === GROUND
+                && this.player.vy === 0
+                && this.player.onGround
+                && this.player.doubleJump;
+
+            const collectibleIndex = this.bananas.push({
+                x: this.progress + this.player.x,
+                y: GROUND - 36,
+                taken: false,
+                value: 2,
+                cluster: -1,
+                kind: 'banana',
+            }) - 1;
+            const bananasBeforeCollectible = this.bananasCollected;
+            this.gameplayCollisions.route({
+                kind: 'collectible_pickup',
+                entityId: `qa-collectible:${collectibleIndex}`,
+                otherId: 'player',
+                payload: {
+                    collectibleIndex,
+                    collectibleKind: 'banana',
+                    screenX: this.player.x,
+                    worldY: GROUND - 36,
+                },
+            });
+            effectChecks.collectible_pickup = this.bananas[collectibleIndex].taken
+                && this.bananasCollected === bananasBeforeCollectible + 2;
+
+            const bonusIndex = this.bonuses.push({
+                x: this.progress + this.player.x,
+                y: GROUND - 48,
+                type: 0,
+                taken: false,
+            }) - 1;
+            const bonusCountBefore = this.runBonusCount;
+            this.gameplayCollisions.route({
+                kind: 'bonus_pickup',
+                entityId: `qa-bonus:${bonusIndex}`,
+                otherId: 'player',
+                payload: { bonusIndex, bonusType: 0, screenX: this.player.x, worldY: GROUND - 48 },
+            });
+            effectChecks.bonus_pickup = this.bonuses[bonusIndex].taken
+                && this.runBonusCount === bonusCountBefore + 1
+                && this.jumpBoost > 0;
+
+            const obstacleIndex = this.obstacles.push({
+                x: this.progress + this.player.x,
+                y: GROUND,
+                type: 0,
+                dead: false,
+                label: 'QA',
+                motion: 0,
+            }) - 1;
+            this.invincible = 0;
+            const damageBeforeObstacle = this.runDamageTaken;
+            this.gameplayCollisions.route({
+                kind: 'obstacle_hit',
+                entityId: `qa-obstacle:${obstacleIndex}`,
+                otherId: 'player',
+                payload: { obstacleIndex, obstacleType: 0, screenX: this.player.x, worldY: GROUND - 40 },
+            });
+            effectChecks.obstacle_hit = this.obstacles[obstacleIndex].dead
+                && this.runDamageTaken === damageBeforeObstacle + 1;
+
+            const stompNpcIndex = this.npcs.push({
+                anchor: this.progress + this.player.x,
+                range: 0,
+                speed: 0,
+                skin: 0,
+                t: 0,
+                dead: false,
+            }) - 1;
+            const bananasBeforeStomp = this.bananasCollected;
+            this.gameplayCollisions.route({
+                kind: 'npc_stomp',
+                entityId: `qa-npc-stomp:${stompNpcIndex}`,
+                otherId: 'player',
+                payload: { npcIndex: stompNpcIndex, screenX: this.player.x },
+            });
+            effectChecks.npc_stomp = this.npcs[stompNpcIndex].dead
+                && this.player.vy === -520
+                && this.bananasCollected > bananasBeforeStomp;
+
+            const hitNpcIndex = this.npcs.push({
+                anchor: this.progress + this.player.x,
+                range: 0,
+                speed: 0,
+                skin: 1,
+                t: 0,
+                dead: false,
+            }) - 1;
+            this.invincible = 0;
+            const damageBeforeNpc = this.runDamageTaken;
+            this.gameplayCollisions.route({
+                kind: 'npc_hit',
+                entityId: `qa-npc-hit:${hitNpcIndex}`,
+                otherId: 'player',
+                payload: { npcIndex: hitNpcIndex, screenX: this.player.x, worldY: GROUND - 46 },
+            });
+            effectChecks.npc_hit = this.runDamageTaken === damageBeforeNpc + 1;
+
+            const level = LEVELS[this.levelIndex];
+            const nextState: EndState = this.levelIndex === LEVELS.length - 1 ? 'finished' : 'clear';
+            this.bananasCollected = Math.max(this.bananasCollected, level.target + 1);
+            this.gameplayCollisions.route({
+                kind: 'level_finish',
+                entityId: `qa-level:${this.levelIndex}`,
+                otherId: 'player',
+                payload: { levelIndex: this.levelIndex, nextState },
+            });
+            effectChecks.level_finish = (this.state as State) === nextState;
+            captured = [...this.collisionQaEvents];
+        } catch (error) {
+            failureReason = (error instanceof Error ? error.message : String(error))
+                .replace(/\s+/g, '_')
+                .slice(0, 96);
+            captured = this.collisionQaEvents ? [...this.collisionQaEvents] : [];
+        } finally {
+            this.collisionQaEvents = null;
+        }
+
+        const orderMatches = GAMEPLAY_COLLISION_KINDS.every(
+            (kind, index) => captured[index]?.kind === kind,
+        ) && captured.length === GAMEPLAY_COLLISION_KINDS.length;
+        const contiguousSequence = captured.every(
+            (event, index) => index === 0 || event.sequence === captured[index - 1].sequence + 1,
+        );
+        const epochMatches = captured.every((event) => event.epoch === expectedEpoch);
+        const tickMatches = captured.every((event) => event.tick === expectedTick);
+        const effectPassCount = Object.values(effectChecks).filter(Boolean).length;
+        const effectsMatch = effectPassCount === GAMEPLAY_COLLISION_KINDS.length;
+        const passed = orderMatches && contiguousSequence && epochMatches && tickMatches && effectsMatch;
+        const kinds = captured.map((event) => event.kind).join('>') || 'none';
+        console.log(
+            `MTR_COLLISION_QA_${passed ? 'READY' : 'FAIL'} events=${captured.length}`
+            + ` kinds=${kinds} sequence=${contiguousSequence ? 'contiguous' : 'invalid'}`
+            + ` epoch=${expectedEpoch} tick=${expectedTick}`
+            + ` effects=${effectPassCount}/${GAMEPLAY_COLLISION_KINDS.length}`
+            + ` state=${this.state}${passed ? '' : ` reason=${failureReason}`}`,
         );
     }
 
@@ -2905,68 +3118,68 @@ export class GameRoot extends Component {
         this.player.onGround = false;
 
         if (this.player.vy >= 0) {
-            for (const p of this.platforms) {
+            for (let platformIndex = 0; platformIndex < this.platforms.length; platformIndex += 1) {
+                const p = this.platforms[platformIndex];
                 const sx = this.worldX(p.x);
                 if (this.player.x + 24 > sx && this.player.x - 24 < sx + p.w && prevY <= p.y && this.player.y >= p.y) {
-                    this.player.y = p.y;
-                    this.player.vy = 0;
-                    this.player.onGround = true;
-                    this.player.doubleJump = true;
-                    this.secondJumpPoseTimer = 0;
+                    this.gameplayCollisions.route({
+                        kind: 'platform_land',
+                        entityId: `platform:${platformIndex}`,
+                        otherId: 'player',
+                        payload: { platformIndex, targetY: p.y },
+                    });
                     break;
                 }
             }
         }
 
         if (this.player.y > GROUND) {
-            this.player.y = GROUND;
-            this.player.vy = 0;
-            this.player.onGround = true;
-            this.player.doubleJump = true;
-            this.secondJumpPoseTimer = 0;
+            this.gameplayCollisions.route({
+                kind: 'ground_clamp',
+                entityId: 'ground:main',
+                otherId: 'player',
+                payload: { targetY: GROUND },
+            });
         }
 
         const pr = this.playerRect();
-        for (const b of this.bananas) {
+        for (let collectibleIndex = 0; collectibleIndex < this.bananas.length; collectibleIndex += 1) {
+            const b = this.bananas[collectibleIndex];
             if (b.taken) continue;
             const attracted = this.attractWorldPointTowardPlayer(b.x, b.y, dt, b.kind);
             b.x = attracted.worldX;
             b.y = attracted.y;
             let sx = attracted.screenX;
             if (sx > -50 && sx < W + 50 && hit(pr, { x: sx - 18, y: b.y - 16, w: 36, h: 30 })) {
-                b.taken = true;
-                const gain = Math.max(1, b.value || 1);
-                this.bananasCollected += gain;
-                if (b.kind === 'banana') {
-                    this.score += (15 + this.levelIndex) * gain;
-                    this.emit(sx, b.y, rgb(255, 231, 90), 8 + gain * 2);
-                    this.checkAchievementProgress('banana_collect');
-                } else {
-                    const coconut = b.kind === 'coconut';
-                    this.score += ((coconut ? 35 : 25) + this.levelIndex * 2) * gain;
-                    this.emit(sx, b.y, coconut ? rgb(196, 132, 72) : rgb(98, 218, 104), coconut ? 11 : 9);
-                    this.play('bonus', this.sfxVolume * 0.3);
-                    this.checkAchievementProgress(coconut ? 'coconut_collect' : 'fig_leaf_collect');
-                }
+                this.gameplayCollisions.route({
+                    kind: 'collectible_pickup',
+                    entityId: `collectible:${collectibleIndex}`,
+                    otherId: 'player',
+                    payload: { collectibleIndex, collectibleKind: b.kind, screenX: sx, worldY: b.y },
+                });
             }
         }
 
-        for (const bonus of this.bonuses) {
+        for (let bonusIndex = 0; bonusIndex < this.bonuses.length; bonusIndex += 1) {
+            const bonus = this.bonuses[bonusIndex];
             if (bonus.taken) continue;
             const attracted = this.attractWorldPointTowardPlayer(bonus.x, bonus.y, dt, `bonus_${BONUS_LABELS[bonus.type % BONUS_COUNT]}`);
             bonus.x = attracted.worldX;
             bonus.y = attracted.y;
             const sx = attracted.screenX;
             if (hit(pr, { x: sx - 26, y: bonus.y - 26, w: 52, h: 52 })) {
-                bonus.taken = true;
-                this.activateBonus(bonus.type);
-                this.emit(sx, bonus.y, rgb(183, 255, 138), 24);
-                this.playFirst(['bonus', 'clear'], this.sfxVolume * 0.55);
+                this.gameplayCollisions.route({
+                    kind: 'bonus_pickup',
+                    entityId: `bonus:${bonusIndex}`,
+                    otherId: 'player',
+                    payload: { bonusIndex, bonusType: bonus.type, screenX: sx, worldY: bonus.y },
+                });
             }
         }
 
         if (this.invincible <= 0) {
-            for (const o of this.obstacles) {
+            for (let obstacleIndex = 0; obstacleIndex < this.obstacles.length; obstacleIndex += 1) {
+                const o = this.obstacles[obstacleIndex];
                 if (o.dead) continue;
                 const ox = this.obstacleWorldX(o);
                 const oy = this.obstacleBottomY(o);
@@ -2975,14 +3188,19 @@ export class GameRoot extends Component {
                 const rr = this.obstacleRect(sx, oy, o.type);
                 const prr = this.obstacleRect(psx, oy, o.type);
                 if (sx > -220 && sx < W + 220 && swept(prevRect, pr, prr, rr)) {
-                    o.dead = true;
-                    this.damage(OBSTACLES[o.type % OBSTACLES.length].joke, sx, oy - 40);
+                    this.gameplayCollisions.route({
+                        kind: 'obstacle_hit',
+                        entityId: `obstacle:${obstacleIndex}`,
+                        otherId: 'player',
+                        payload: { obstacleIndex, obstacleType: o.type, screenX: sx, worldY: oy - 40 },
+                    });
                     break;
                 }
             }
         }
 
-        for (const npc of this.npcs) {
+        for (let npcIndex = 0; npcIndex < this.npcs.length; npcIndex += 1) {
+            const npc = this.npcs[npcIndex];
             if (npc.dead) continue;
             npc.t += dt;
             const worldX = npc.anchor + Math.sin(npc.t * npc.speed + npc.skin * 1.7) * npc.range;
@@ -2992,19 +3210,19 @@ export class GameRoot extends Component {
             if (!hit(pr, npcRect)) continue;
             const stomp = prevY <= GROUND - 78 && this.player.vy > -40;
             if (stomp) {
-                npc.dead = true;
-                this.player.vy = -520;
-                const gain = 4 + this.difficulty();
-                this.bananasCollected += gain;
-                this.score += 90 + gain * 8;
-                this.bannerText = `NPC-примат дал ${gain} бананов`;
-                this.bannerTimer = 1.35;
-                this.emit(sx, GROUND - 58, rgb(255, 224, 80), 26);
-                this.playFirst(['stomp', 'monkey_happy', 'monkey'], this.sfxVolume * 0.82);
-                this.playVoice('banana', 0.7);
-                this.checkAchievementProgress('npc_stomp');
+                this.gameplayCollisions.route({
+                    kind: 'npc_stomp',
+                    entityId: `npc:${npcIndex}`,
+                    otherId: 'player',
+                    payload: { npcIndex, screenX: sx },
+                });
             } else if (this.invincible <= 0) {
-                this.damage('NPC-примат доказал, что хаос умеет бегать.', sx, GROUND - 46);
+                this.gameplayCollisions.route({
+                    kind: 'npc_hit',
+                    entityId: `npc:${npcIndex}`,
+                    otherId: 'player',
+                    payload: { npcIndex, screenX: sx, worldY: GROUND - 46 },
+                });
             }
         }
 
@@ -3012,24 +3230,119 @@ export class GameRoot extends Component {
             const nextState: State = this.bananasCollected >= level.target
                 ? (this.levelIndex === LEVELS.length - 1 ? 'finished' : 'clear')
                 : 'over';
-            this.transitionTo(nextState, 'level_end');
-            if (this.state === 'clear' || this.state === 'finished') {
-                this.unlockedLevel = Math.max(this.unlockedLevel, Math.min(LEVELS.length - 1, this.levelIndex + 1));
-                this.saveSettings();
-                this.unlockAchievement('level_clear', 'level_clear');
-                if (this.runDamageTaken === 0) this.unlockAchievement('no_damage_clear', 'no_damage_clear');
-            }
-            if (this.state === 'over') {
-                this.reason = 'Бананов не хватило. Норма есть норма.';
-                this.playVoice('death', 1);
-            } else {
-                this.playVoice('clear', 1);
-            }
-            this.saveRecord();
-            this.playFirst(this.state === 'over' ? ['hit'] : ['level_clear', 'clear'], this.sfxVolume);
+            this.gameplayCollisions.route({
+                kind: 'level_finish',
+                entityId: `level:${this.levelIndex}`,
+                otherId: 'player',
+                payload: { levelIndex: this.levelIndex, nextState },
+            });
         }
 
         this.updateParticles(dt);
+    }
+
+    private applyCollisionEvent(event: GameplayCollisionEvent): void {
+        switch (event.kind) {
+            case 'platform_land':
+                this.player.y = event.payload.targetY;
+                this.player.vy = 0;
+                this.player.onGround = true;
+                this.player.doubleJump = true;
+                this.secondJumpPoseTimer = 0;
+                return;
+            case 'ground_clamp':
+                this.player.y = event.payload.targetY;
+                this.player.vy = 0;
+                this.player.onGround = true;
+                this.player.doubleJump = true;
+                this.secondJumpPoseTimer = 0;
+                return;
+            case 'collectible_pickup': {
+                const collectible = this.bananas[event.payload.collectibleIndex];
+                collectible.taken = true;
+                const gain = Math.max(1, collectible.value || 1);
+                this.bananasCollected += gain;
+                if (event.payload.collectibleKind === 'banana') {
+                    this.score += (15 + this.levelIndex) * gain;
+                    this.emit(event.payload.screenX, event.payload.worldY, rgb(255, 231, 90), 8 + gain * 2);
+                    this.checkAchievementProgress('banana_collect');
+                } else {
+                    const coconut = event.payload.collectibleKind === 'coconut';
+                    this.score += ((coconut ? 35 : 25) + this.levelIndex * 2) * gain;
+                    this.emit(
+                        event.payload.screenX,
+                        event.payload.worldY,
+                        coconut ? rgb(196, 132, 72) : rgb(98, 218, 104),
+                        coconut ? 11 : 9,
+                    );
+                    this.play('bonus', this.sfxVolume * 0.3);
+                    this.checkAchievementProgress(coconut ? 'coconut_collect' : 'fig_leaf_collect');
+                }
+                return;
+            }
+            case 'bonus_pickup': {
+                const bonus = this.bonuses[event.payload.bonusIndex];
+                bonus.taken = true;
+                this.activateBonus(event.payload.bonusType);
+                this.emit(event.payload.screenX, event.payload.worldY, rgb(183, 255, 138), 24);
+                this.playFirst(['bonus', 'clear'], this.sfxVolume * 0.55);
+                return;
+            }
+            case 'obstacle_hit': {
+                const obstacle = this.obstacles[event.payload.obstacleIndex];
+                obstacle.dead = true;
+                this.damage(
+                    OBSTACLES[event.payload.obstacleType % OBSTACLES.length].joke,
+                    event.payload.screenX,
+                    event.payload.worldY,
+                );
+                return;
+            }
+            case 'npc_stomp': {
+                const npc = this.npcs[event.payload.npcIndex];
+                npc.dead = true;
+                this.player.vy = -520;
+                const gain = 4 + this.difficulty();
+                this.bananasCollected += gain;
+                this.score += 90 + gain * 8;
+                this.bannerText = `NPC-примат дал ${gain} бананов`;
+                this.bannerTimer = 1.35;
+                this.emit(event.payload.screenX, GROUND - 58, rgb(255, 224, 80), 26);
+                this.playFirst(['stomp', 'monkey_happy', 'monkey'], this.sfxVolume * 0.82);
+                this.playVoice('banana', 0.7);
+                this.checkAchievementProgress('npc_stomp');
+                return;
+            }
+            case 'npc_hit':
+                this.damage(
+                    'NPC-примат доказал, что хаос умеет бегать.',
+                    event.payload.screenX,
+                    event.payload.worldY,
+                );
+                return;
+            case 'level_finish':
+                this.transitionTo(event.payload.nextState, 'level_end');
+                if (this.state === 'clear' || this.state === 'finished') {
+                    this.unlockedLevel = Math.max(
+                        this.unlockedLevel,
+                        Math.min(LEVELS.length - 1, event.payload.levelIndex + 1),
+                    );
+                    this.saveSettings();
+                    this.unlockAchievement('level_clear', 'level_clear');
+                    if (this.runDamageTaken === 0) this.unlockAchievement('no_damage_clear', 'no_damage_clear');
+                }
+                if (this.state === 'over') {
+                    this.reason = 'Бананов не хватило. Норма есть норма.';
+                    this.playVoice('death', 1);
+                } else {
+                    this.playVoice('clear', 1);
+                }
+                this.saveRecord();
+                this.playFirst(this.state === 'over' ? ['hit'] : ['level_clear', 'clear'], this.sfxVolume);
+                return;
+        }
+        const unhandledEvent: never = event;
+        throw new Error(`Unhandled gameplay collision event: ${String(unhandledEvent)}`);
     }
 
     private applyJumpInput(): void {

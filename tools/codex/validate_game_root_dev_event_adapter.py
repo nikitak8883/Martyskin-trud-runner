@@ -118,7 +118,7 @@ def main() -> int:
     require(len(re.findall(r"this\.devEvents\.recordTransition\(", game_root)) == 3, "transition_branch_observer_count", errors)
     require(len(re.findall(r"this\.devEvents\.beginReset\(", game_root)) == 1, "reset_begin_wiring_count", errors)
     require(len(re.findall(r"this\.devEvents\.endReset\(", game_root)) == 1, "reset_end_wiring_count", errors)
-    require(len(re.findall(r"guardSessionCallback\(", game_root)) == 4, "session_guard_wiring_count", errors)
+    require(len(re.findall(r"guardSessionCallback\(", game_root)) == 5, "session_guard_wiring_count", errors)
 
     reset_reasons = {
         "boot": 1,

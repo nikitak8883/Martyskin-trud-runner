@@ -372,7 +372,7 @@ if (-not (Test-Path -LiteralPath $androidActivityPath)) {
             Add-Error "Android startup-query bridge содержит неиспользуемый key: $key"
         }
     }
-    foreach ($key in @('mtr_qa_obstacles', 'mtr_spawn_obstacles', 'mtr_qa_bonuses', 'mtr_spawn_bonuses', 'mtr_qa_reset_loops')) {
+    foreach ($key in @('mtr_qa_obstacles', 'mtr_spawn_obstacles', 'mtr_qa_bonuses', 'mtr_spawn_bonuses', 'mtr_qa_reset_loops', 'mtr_qa_collisions')) {
         if ($runtimeQueryKeys -notcontains $key -or $nativeQueryKeys -notcontains $key) {
             Add-Error "QA startup-query key должен быть симметричен для Web и Android: $key"
         }

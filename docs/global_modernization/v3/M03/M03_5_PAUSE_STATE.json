@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.execution_pause_state",
+  "execution_unit": "M03.5",
+  "status": "partial",
+  "paused_at": "2026-08-10T19:33:38.1026495+03:00",
+  "branch": "codex/mtr-source-freeze-v3",
+  "base_commit": "43816119b04c04ce95ef03e8e49c72085f4bce08",
+  "checkpoint_kind": "receipt_backed_dirty_worktree",
+  "implementation": {
+    "typed_collision_kinds": 8,
+    "production_route_count": 8,
+    "qa_route_count": 8,
+    "behavioral_test_groups": 10,
+    "latest_change": "defer native non-critical utility and player-variant warmup until gameplay start",
+    "latest_source_built": false,
+    "latest_source_runtime_validated": false
+  },
+  "current_source": {
+    "assets/scripts/GameRoot.ts": "F551F3762B4467FE6030911B2323118F31020A69854F79E259F6EB66426B019F",
+    "assets/scripts/gameplay/collision/GameplayCollisionRouter.ts": "B2D5B9FEB98D24CF6AD5CF0E550FCEED30917199399E8578AA1FA11BC6DA4A7A",
+    "tools/codex/test-gameplay-collision-router.js": "F3A0FDF7DA4DF052AB7BABF1594647A5BCDD9EBC3C817A6C37FA5C0494E93992",
+    "tools/codex/validate_gameplay_collision_router.py": "AF8FBEC97CC3E52713B695BEDAF6591674ACC325647003A3B043EECE28663F0C",
+    "tools/codex/web_collision_router_runtime_function.js": "83C425279FFB2D177724C82CF7152DA4705E6BFC922C53B8A5476BF532984B91",
+    "tools/codex/Run-MtrAndroidCollisionRouterQa.ps1": "9317414FCF7A26A08E469C80CA9BBA795A732BA5AE34E570D2F9C9E82D59C8CA",
+    "build-web-mobile-qa.json": "34EC68B852D23AAC7174EB1C155402FB7564C81A2DE2A193F13F40853335E2E1",
+    "native/engine/android/app/src/com/cocos/game/AppActivity.java": "FA0569AAA403972D23ADDAD082DD905CC5A36B0A2C5C6975986CEB5530F66571",
+    "tools/codex/quality-gate/static-gates.json": "14E10F262404AC76FF4A2BF023F5A0B6E11352ECC67D5F1BE9B079B25FAC76D2"
+  },
+  "current_source_evidence": {
+    "static_gate": {
+      "status": "PASS",
+      "steps": 18,
+      "passed": 18,
+      "failed": 0,
+      "findings": 0,
+      "report": "temp/quality-gate-m03-5/report-native-warmup-fix-static.json",
+      "sha256": "08279E9DD47842DD13B97A1ECA3F85383516B192164A89928ECE342D204D36BC"
+    },
+    "cocos_typescript": "PASS",
+    "collision_node": "10/10 PASS",
+    "collision_validator": "PASS",
+    "config_validator": "PASS"
+  },
+  "superseded_pre_fix_runtime_evidence": {
+    "reason": "All runtime artifacts below predate the final native warmup source change and cannot close M03.5.",
+    "web_pass_a": "34/34 plus interaction and 10/10 restart PASS",
+    "web_pass_b": "34/34 plus interaction and 10/10 restart PASS",
+    "web_collision_probe": "two cycles PASS",
+    "android_collision_probe_a": "PASS",
+    "android_matrix_a": "28/28 PASS",
+    "android_interaction_a": {
+      "status": "FAIL",
+      "functional_subchecks": "touch PASS; name value and persistence correct; restart 10/10 PASS; soak PASS",
+      "blocking_diagnostic": "eight MTR_OBJECT_SPRITE_LOAD_SLOW warnings during cold name entry",
+      "report": "temp/m03-5-android-pass-a-interaction/android_interaction_cycle1_summary.json",
+      "sha256": "086B22CA3184E54E0A6DCEC64070FA541CB84D92DBC615476475EC143A705D0A"
+    }
+  },
+  "roadmap": {
+    "execution_complete": 6,
+    "execution_total_current": 65,
+    "execution_remaining_current": 59,
+    "conditional_units": 7,
+    "m03_5_counted_complete": false,
+    "next_execution_unit": "M03.5"
+  },
+  "resume_order": [
+    "Verify branch, base commit, dirty worktree and current_source hashes.",
+    "Build fresh Web release and Web QA outputs from the current source; rerun collision probes and two complete Web matrices.",
+    "Build a fresh Android emulator APK, install only on emulator-5554, then pm clear the package.",
+    "Run Android collision probe A/B, matrix A/B and interaction A/B with cold name flow and 30-second soak; require zero unexpected diagnostics.",
+    "Run M2_PLUS, final code review, hygiene gate, M03.5 reports and roadmap updates only after all evidence is green.",
+    "Commit M03.5 and run the clean post-commit static gate; do not use a physical device."
+  ]
+}

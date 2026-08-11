@@ -173,7 +173,7 @@ modules:
   M03:
     name: gameroot_decomposition_and_gameplay_routing_seams
     priority: P0
-    current_status: m03_3a_b_complete_m03_3c_next
+    current_status: m03_5_complete_m03_6_next_release_blocked
     depends_on: [M00, M01]
     entry_gate_work_packages: [M02.2, M02.3, M02.4, M02.5]
     work_packages:
@@ -202,9 +202,10 @@ modules:
         outputs: [assets/scripts/gameplay/input/GameplayInputAdapter.ts, tools/codex/test-gameplay-input-adapter.js, tools/codex/validate_gameplay_input_adapter.py, tools/codex/Run-MtrWebMatrixQa.js, docs/global_modernization/v3/M03/gameplay_input_report.md, docs/global_modernization/v3/M03/M03_4_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_4_CODE_REVIEW_REPORT.md]
         gates: [P4, M2_PLUS]
       - id: M03.5
-        status: pending
+        status: complete
         objective: Route pickup, obstacle, platform, trigger and finish callbacks through typed collision events preserving order.
         targets: [assets/scripts/gameplay/collision]
+        outputs: [assets/scripts/gameplay/collision/GameplayCollisionRouter.ts, tools/codex/test-gameplay-collision-router.js, tools/codex/validate_gameplay_collision_router.py, tools/codex/web_collision_router_runtime_function.js, tools/codex/Run-MtrAndroidCollisionRouterQa.ps1, docs/global_modernization/v3/M03/gameplay_collision_report.md, docs/global_modernization/v3/M03/M03_5_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_5_CODE_REVIEW_REPORT.md]
         gates: [P4, M2_PLUS]
       - id: M03.6
         status: pending
@@ -604,7 +605,7 @@ modules:
 
 next_safe_action:
   module: M03
-  work_package: M03.5
-  execution_unit: M03.5
-  prerequisites_complete: [M03.4]
-  action: Route pickup, obstacle, platform, trigger and finish callbacks through typed collision events without changing legacy side-effect order; execute Web plus Android-emulator P4 and keep release blocked.
+  work_package: M03.6
+  execution_unit: M03.6
+  prerequisites_complete: [M03.5]
+  action: Extract the power-up spawn, collect, activate, tick, expire and cleanup lifecycle behind an epoch-aware owner with injected time; preserve current values and execute Web plus Android-emulator P4 while release stays blocked.
