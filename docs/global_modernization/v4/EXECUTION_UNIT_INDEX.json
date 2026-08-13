@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "plan_id": "mtr-global-modernization-v4-20260809",
-  "generated_at": "2026-08-09T12:05:40Z",
+  "generated_at": "2026-08-13T12:50:00Z",
   "basis": {
     "branch": "codex/mtr-source-freeze-v3",
     "documentation_basis_head": "95648b978117b8964469ad4fb236829d9540c239",
@@ -11,20 +11,20 @@
   },
   "source_ledger": {
     "total": 95,
-    "complete": 22,
-    "pending": 60,
+    "complete": 23,
+    "pending": 59,
     "blocked": 3,
     "conditional": 10,
     "mandatory_total": 85,
-    "mandatory_remaining": 63
+    "mandatory_remaining": 62
   },
   "execution_ledger": {
     "mandatory_units_total": 65,
-    "complete": 7,
+    "complete": 8,
     "ready": 1,
-    "planned": 54,
+    "planned": 53,
     "blocked": 3,
-    "mandatory_remaining": 58,
+    "mandatory_remaining": 57,
     "conditional_units_total": 7
   },
   "status_values": ["complete", "ready", "planned", "blocked", "conditional"],
@@ -50,8 +50,8 @@
     {"id":"M03.3C","phase":"P1","status":"complete","source_packages":["M03.3"],"source_slice":"GameRoot transition/reset adapter and runtime parity","depends_on":["M03.3B","TC-01"],"gates":["P4"],"objective":"Wire one release-off GameRoot adapter for transitions/reset/epoch and prove Web/Android-emulator parity."},
     {"id":"M03.4","phase":"P1","status":"complete","source_packages":["M03.4"],"depends_on":["M03.3C"],"gates":["P4","M2_PLUS"],"objective":"Route jump, glide, dash and pause through one input adapter with no duplicate listeners or debounce drift."},
     {"id":"M03.5","phase":"P1","status":"complete","source_packages":["M03.5"],"depends_on":["M03.4"],"gates":["P4","M2_PLUS"],"objective":"Wrap collision callbacks in typed events while preserving exact legacy side-effect order."},
-    {"id":"M03.6","phase":"P1","status":"ready","source_packages":["M03.6"],"depends_on":["M03.5"],"gates":["P4","M2_PLUS"],"objective":"Extract power-up spawn/activate/tick/expire/cleanup into an epoch-aware owner with injected tick."},
-    {"id":"M03.7A","phase":"P1","status":"planned","source_packages":["M03.7"],"source_slice":"ownership and cleanup proof with legacy retained","depends_on":["M03.6"],"gates":["P4","M2_PLUS"],"objective":"Remove UI/skin mutation authority and prove timer/listener/state cleanup without deleting old paths."},
+    {"id":"M03.6","phase":"P1","status":"complete","source_packages":["M03.6"],"depends_on":["M03.5"],"gates":["P4","M2_PLUS"],"objective":"Extract power-up spawn/activate/tick/expire/cleanup into an epoch-aware owner with injected tick."},
+    {"id":"M03.7A","phase":"P1","status":"ready","source_packages":["M03.7"],"source_slice":"ownership and cleanup proof with legacy retained","depends_on":["M03.6"],"gates":["P4","M2_PLUS"],"objective":"Remove UI/skin mutation authority and prove timer/listener/state cleanup without deleting old paths."},
     {"id":"M03.7B","phase":"P1","status":"planned","source_packages":["M03.7"],"source_slice":"approved legacy path removal","depends_on":["M03.7A"],"gates":["QA7","M2_PLUS"],"objective":"Delete only superseded M03 paths after parity, hidden-reference scan and rollback proof."},
 
     {"id":"M04-A","phase":"P2","status":"planned","source_packages":["M04.1","M04.2"],"depends_on":["M03.7B"],"gates":["D4","P4"],"objective":"Revalidate asset inventory and establish canonical ownership/provenance/atlas/bundle schema."},

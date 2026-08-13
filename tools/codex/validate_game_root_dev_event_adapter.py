@@ -118,18 +118,56 @@ def main() -> int:
     require(len(re.findall(r"this\.devEvents\.recordTransition\(", game_root)) == 3, "transition_branch_observer_count", errors)
     require(len(re.findall(r"this\.devEvents\.beginReset\(", game_root)) == 1, "reset_begin_wiring_count", errors)
     require(len(re.findall(r"this\.devEvents\.endReset\(", game_root)) == 1, "reset_end_wiring_count", errors)
-    require(len(re.findall(r"guardSessionCallback\(", game_root)) == 5, "session_guard_wiring_count", errors)
+    required_guarded_routes = {
+        "qa_obstacle_spawn": (r"guardSessionCallback\(\(\)\s*=>\s*this\.spawnAllObstacleFamiliesForQa\(\)\)", 1),
+        "qa_bonus_spawn_and_retry": (r"guardSessionCallback\(\(\)\s*=>\s*this\.spawnAllBonusStatesForQa\(\)\)", 2),
+        "qa_pause_after_start": (
+            r"pendingQaPauseAfterStart\s*=\s*false;\s*"
+            r"this\.scheduleOnce\(this\.devEvents\.guardSessionCallback\(\(\)\s*=>\s*\{",
+            1,
+        ),
+        "qa_collision_matrix": (r"guardSessionCallback\(\(\)\s*=>\s*this\.runCollisionRouterMatrixForQa\(\)\)", 1),
+        "qa_powerup_lifecycle": (r"guardSessionCallback\(\(\)\s*=>\s*this\.runPowerUpLifecycleMatrixForQa\(\)\)", 1),
+    }
+    guarded_route_counts: dict[str, int] = {}
+    for route, (pattern, minimum_count) in required_guarded_routes.items():
+        actual_count = len(re.findall(pattern, game_root, re.DOTALL))
+        guarded_route_counts[route] = actual_count
+        require(actual_count >= minimum_count, f"session_guard_route:{route}", errors)
+
+    session_guard_wiring_count = len(re.findall(r"guardSessionCallback\(", game_root))
+    require(
+        session_guard_wiring_count >= sum(minimum for _, minimum in required_guarded_routes.values()),
+        "session_guard_wiring_count",
+        errors,
+    )
 
     reset_reasons = {
         "boot": 1,
         "start_level": 1,
         "qa_end_state": 1,
-        "qa_reset_loop": 1,
     }
     for reason, expected_count in reset_reasons.items():
         require(
             len(re.findall(rf"this\.reset\('{re.escape(reason)}'\)", game_root)) == expected_count,
             f"reset_reason_count:{reason}",
+            errors,
+        )
+    reset_loop_probe = re.search(
+        r"private\s+runDevEventResetLoopForQa\([^)]*\)\s*:\s*void\s*\{(?P<body>.*?)"
+        r"\n\s*\}\s*\n\s*private\s+scheduleCollisionRouterMatrixForQa\b",
+        game_root,
+        re.DOTALL,
+    )
+    require(reset_loop_probe is not None, "qa_reset_loop_probe_missing", errors)
+    dev_event_reset_loop_wiring_count = 0
+    if reset_loop_probe is not None:
+        dev_event_reset_loop_wiring_count = len(
+            re.findall(r"this\.reset\('qa_reset_loop'\)", reset_loop_probe.group("body"))
+        )
+        require(
+            dev_event_reset_loop_wiring_count == 1,
+            "reset_reason_count:qa_reset_loop_probe",
             errors,
         )
     require(
@@ -233,8 +271,10 @@ def main() -> int:
         "event_capacity": 128,
         "max_export_bytes": 32768,
         "release_web_events_enabled": web_config.get("debug"),
-        "reset_reasons": sorted(reset_reasons),
-        "session_guard_wiring_count": len(re.findall(r"guardSessionCallback\(", game_root)),
+        "reset_reasons": sorted((*reset_reasons, "qa_reset_loop")),
+        "dev_event_reset_loop_wiring_count": dev_event_reset_loop_wiring_count,
+        "guarded_route_counts": guarded_route_counts,
+        "session_guard_wiring_count": session_guard_wiring_count,
         "state_writer_count": len(re.findall(r"this\.state\s*=\s*next\b", game_root)),
         "static_gate_steps": len(steps),
         "status": "PASS" if not errors else "FAIL",

@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M03.6",
+  "source_work_package": "M03.6",
+  "status": "pass",
+  "implementation_status": "complete",
+  "runtime_changed": true,
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "scope": {
+    "objective": "Extract power-up spawn, collect, activate, tick, expire and cleanup behind one epoch-aware owner with injected fixed-step tick and no balance drift.",
+    "runtime_owner": "assets/scripts/gameplay/powerups/PowerUpLifecycle.ts",
+    "integration_owner": "assets/scripts/GameRoot.ts",
+    "deferred": [
+      "UI and skin mutation ownership and cleanup proof to M03.7A",
+      "approved legacy path removal to M03.7B",
+      "production signing and distribution identity to M02.1",
+      "immutable Web deployment topology to M02.7",
+      "owner-approved final cleanup to M12.7"
+    ]
+  },
+  "source_fingerprint": {
+    "algorithm": "sha256(path<TAB>sha256<LF>, entries in listed order)",
+    "aggregate_sha256": "CE174DBF392C72EDB2D6D9490436384254C746867E4B72FC911847604B0341DC",
+    "entry_count": 15,
+    "entries": [
+      {"path":"assets/scripts/gameplay/powerups.meta","sha256":"13303FE16C5A769DB3BE72B0CDE2C23968E8709B8326DBBE25FBC392BFCDBCB9"},
+      {"path":"assets/scripts/gameplay/powerups/PowerUpLifecycle.ts","sha256":"293BE590E3CA335FEE15BE4989725513E411A3ADCD110729CE81FE6E5CFDE724"},
+      {"path":"assets/scripts/gameplay/powerups/PowerUpLifecycle.ts.meta","sha256":"A6C72C0DB697A5E124D5B04FE843822D37F6A49AADA00334DC3DD82051ECE8BE"},
+      {"path":"assets/scripts/GameRoot.ts","sha256":"A4D6BB0F211D12FF94072279420F8F3098B6C77BF42F7D489320945CE7A390EE"},
+      {"path":"docs/global_modernization/v3/M03/game_root_inventory.generated.json","sha256":"173E31FAF3F85CA6A026817C4CD14673D872370E904E254BC9916EC2EB7F0C6C"},
+      {"path":"native/engine/android/app/src/com/cocos/game/AppActivity.java","sha256":"4795D7B8612B67A826DFE732A7901F0C8B00CEC9C376290C8EB20513D894AD6D"},
+      {"path":"tools/codex/quality-gate/static-gates.json","sha256":"210862549DEB0849E7DCF38A1B056715C2A7FB494D4F54AD3EB426EAE1D26E8B"},
+      {"path":"tools/codex/Run-MtrAndroidPowerUpLifecycleQa.ps1","sha256":"EB1013DECE94FE002EE842D67B69C97D592A63F528E03DAD150AD2FC79CCFE15"},
+      {"path":"tools/codex/test-gameplay-collision-router.js","sha256":"10F8480C4FF02ACD5ED3F33173152AFC54862392373D90A397F5905560503EB5"},
+      {"path":"tools/codex/test-powerup-lifecycle.js","sha256":"0240DCFB9472241AE7D16AA05679208B9C114075379AB9B31342FE80961BF4F1"},
+      {"path":"tools/codex/validate_game_root_dev_event_adapter.py","sha256":"17B552375161B592D97C4AAAC05E4D84A5EE3298718E14EDC8741C610FF378EC"},
+      {"path":"tools/codex/validate_gameplay_collision_router.py","sha256":"36E6A4EA8909ACC5A1D4E36ABCABA0C11E108A5FC04936E747C41BD7D8DBD315"},
+      {"path":"tools/codex/validate_powerup_lifecycle.py","sha256":"336630CBA8A9DB2F82040BBAA2BA24566F967482D958F389B07A290AA4C470A9"},
+      {"path":"tools/codex/web_powerup_lifecycle_runtime_function.js","sha256":"FEA9E543425DD6EEF256832A3E28805ACFB830F91C32FA6369F95A153CA01128"},
+      {"path":"tools/validate-mtr-config.ps1","sha256":"99C5ADF088CB9EE4E131AC5956E7004725F97741DBF2D99F57AF060307AEDDA5"}
+    ]
+  },
+  "contracts": {
+    "powerup_kinds": 9,
+    "effect_channels": 10,
+    "phases": ["spawned", "collected", "active", "expired", "cleaned"],
+    "injected_epoch": true,
+    "injected_fixed_step_tick": true,
+    "stale_epoch_rejected": true,
+    "immutable_events": true,
+    "immutable_snapshots": true,
+    "legacy_values_preserved": true,
+    "direct_legacy_writers": 0
+  },
+  "static_qa": {
+    "powerup_node_groups": 14,
+    "powerup_node_status": "PASS",
+    "powerup_python_status": "PASS",
+    "collision_regression_groups": 10,
+    "collision_regression_status": "PASS",
+    "game_root_lines": 6001,
+    "game_root_parse_diagnostics": 0,
+    "config_level_count": 15,
+    "config_platform_query_parity": "PASS",
+    "canonical_development_gate": {
+      "run_id": "qg.20260813125709.210862549deb",
+      "status": "PASS",
+      "passed": 19,
+      "total": 19,
+      "findings": 0,
+      "source_commit": "c381bc7cd32ed95ca297be2c301d9dd621fb0198",
+      "dirty_source_authorized": true,
+      "report": "temp/quality-gate-m03-6/report-final-dirty.json",
+      "report_sha256": "6FDC952C2DDB11C3ECF2D63F0724A69BBBD879DBEDF1622C12B6985ADA574462"
+    },
+    "post_commit_clean_gate": {
+      "status": "required_after_commit",
+      "report": "temp/quality-gate-m03-6/report-final-clean.json"
+    }
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_qa_build": true,
+    "fresh_production_build": true,
+    "qa_build_log_sha256": "013B20157BB09D81E1772FD529883A84F3E4838FFA0AF72FAC66B0198545BA97",
+    "production_build_log_sha256": "9FF7454823A9E4FDB437A2AE205D0D6BF2133F0779F3F8905E3A55B784925D63",
+    "lifecycle_a": {"checks_passed":8,"checks_total":8,"ready_markers":1,"failures":0,"report_sha256":"9DC09F55B79C27B62A2FC7D2C929EF2776489E3D33EF58DBE7D601AE1C7D5575"},
+    "lifecycle_b": {"checks_passed":8,"checks_total":8,"ready_markers":1,"failures":0,"report_sha256":"EF725A2A988291131157028C273F5B7D5E6A3FE26AF11D8173C6EE28BAA96963"},
+    "pass_a": {"matrix_passed":34,"matrix_total":34,"interaction":"PASS","restart_passed":10,"restart_total":10,"report_sha256":"4DF032082DCCDB5A0AE981205B541DDB0BBF50E9445E3811D587935875AD3A93"},
+    "pass_b": {"matrix_passed":34,"matrix_total":34,"interaction":"PASS","restart_passed":10,"restart_total":10,"report_sha256":"2E9525EBE874CED20E1428BB1B4DDF76FB37710EFD62F8DE002CF8C29146FD94"},
+    "focused_recovery": {"matrix_passed":34,"matrix_total":34,"interaction":"PASS","restart_passed":10,"restart_total":10,"report_sha256":"8E2CBBC601DBC601E6E9465E13D83DD7E0FDBD89A657FF6BA1C0BE6229CFDB23"},
+    "unexpected_diagnostics": 0
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "serial": "emulator-5554",
+    "qemu": true,
+    "abi": "x86_64",
+    "target_sdk": 35,
+    "fresh_build": true,
+    "build_log_sha256": "6E3F688100ED218EE297F114A2BC2D7F0A47FE9CB0D25EBE68151A89F4F224E6",
+    "lifecycle_a": {"checks_passed":8,"checks_total":8,"ready_markers":1,"failures":0,"fatals":0,"report_sha256":"BC1AD30E98B407B87F9BFF5B4EFA4138A7E13630D2B44C16E056F52921BF0A0F"},
+    "lifecycle_b": {"checks_passed":8,"checks_total":8,"ready_markers":1,"failures":0,"fatals":0,"report_sha256":"28D7EA5D81A33A23EC6388A5BD2DC8BFD879CBEA5A8FC4F7ABD680CD1C420BD2"},
+    "pass_a": {"matrix_passed":28,"matrix_total":28,"interaction":"PASS","name_persistence":"PASS","restart_passed":10,"restart_total":10,"soak_seconds":30.176,"process_losses":0,"pss_start_kb":209571,"pss_end_kb":211643,"matrix_report_sha256":"095ED1A5D19BE715EB633B47FB40B247F27B94F9FEEA3F3F4B99476442281A50","interaction_report_sha256":"6F527FCD76099582D745AC7C75E483CA6658F5AADB18E27CBA487570FB06EB27"},
+    "pass_b": {"matrix_passed":28,"matrix_total":28,"interaction":"PASS","name_persistence":"PASS","restart_passed":10,"restart_total":10,"soak_seconds":30.176,"process_losses":0,"pss_start_kb":210973,"pss_end_kb":207536,"matrix_report_sha256":"EE905CF890CE0B1390E4F5664D7DE4064BCFA53A513F3B0860693E0C3A6A7CF4","interaction_report_sha256":"31ABFAE72E1B10E64DD971D28656BA6C368C2A6207E8C372CA8CD06726455301"},
+    "focused_recovery": {"interaction":"PASS","name_persistence":"PASS","restart_passed":10,"restart_total":10,"soak_seconds":30.212,"process_losses":0,"pss_start_kb":233718,"pss_end_kb":196998,"interaction_report_sha256":"5245BEBDBA8B7DCA12D450CEC52644A44C7E4CB5F621390198270356232F5973"},
+    "unexpected_diagnostics": 0,
+    "apk": {
+      "path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk",
+      "bytes": 142901828,
+      "sha256": "B33B9DDD364E91D042C134A574DCA5DD0C00533BC001C3DF6C1EFD188D7B8F68",
+      "signature_scope": "debug_emulator_qa_only"
+    }
+  },
+  "m2_plus": {
+    "status": "PASS",
+    "applicable_slots": 12,
+    "passed_slots": 12,
+    "findings": 0,
+    "focused_recovery_applicable": true,
+    "report": "temp/m03-6-m2-profile/20260813T124231Z/m2-plus.profile.json",
+    "report_sha256": "B7DDB6D35B2E0BBDA64DFE06DE1DC7A1CF6D595F126486BA7515B7860E65536F"
+  },
+  "review": {
+    "accepted_findings": 2,
+    "fixed_findings": 2,
+    "open_findings": 0,
+    "atomicity_fix": "PASS",
+    "validator_cardinality_fix": "PASS",
+    "android_web_contract_check": "approve",
+    "codex_final_review": "PASS",
+    "hygiene_gate": "PASS"
+  },
+  "roadmap": {
+    "execution_complete": 8,
+    "execution_total_current": 65,
+    "execution_remaining_current": 57,
+    "conditional_units": 7,
+    "source_complete": 23,
+    "source_total": 95,
+    "source_mandatory_remaining": 62,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M03.7A"
+  },
+  "release_blockers": ["M02.1", "M02.7", "M12.7"]
+}

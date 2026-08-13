@@ -173,7 +173,7 @@ modules:
   M03:
     name: gameroot_decomposition_and_gameplay_routing_seams
     priority: P0
-    current_status: m03_5_complete_m03_6_next_release_blocked
+    current_status: m03_6_complete_m03_7a_next_release_blocked
     depends_on: [M00, M01]
     entry_gate_work_packages: [M02.2, M02.3, M02.4, M02.5]
     work_packages:
@@ -208,10 +208,10 @@ modules:
         outputs: [assets/scripts/gameplay/collision/GameplayCollisionRouter.ts, tools/codex/test-gameplay-collision-router.js, tools/codex/validate_gameplay_collision_router.py, tools/codex/web_collision_router_runtime_function.js, tools/codex/Run-MtrAndroidCollisionRouterQa.ps1, docs/global_modernization/v3/M03/gameplay_collision_report.md, docs/global_modernization/v3/M03/M03_5_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_5_CODE_REVIEW_REPORT.md]
         gates: [P4, M2_PLUS]
       - id: M03.6
-        status: pending
+        status: complete
         objective: Extract spawn, collect, activate, tick, expire and cleanup into PowerUpLifecycle with injected clock/tests.
         targets: [assets/scripts/gameplay/powerups]
-        outputs: [docs/global_modernization/v3/M03/powerup_lifecycle_report.md]
+        outputs: [assets/scripts/gameplay/powerups/PowerUpLifecycle.ts, tools/codex/test-powerup-lifecycle.js, tools/codex/validate_powerup_lifecycle.py, tools/codex/web_powerup_lifecycle_runtime_function.js, tools/codex/Run-MtrAndroidPowerUpLifecycleQa.ps1, docs/global_modernization/v3/M03/powerup_lifecycle_report.md, docs/global_modernization/v3/M03/M03_6_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_6_CODE_REVIEW_REPORT.md]
         gates: [P4, M2_PLUS]
       - id: M03.7
         status: pending
@@ -605,7 +605,7 @@ modules:
 
 next_safe_action:
   module: M03
-  work_package: M03.6
-  execution_unit: M03.6
-  prerequisites_complete: [M03.5]
-  action: Extract the power-up spawn, collect, activate, tick, expire and cleanup lifecycle behind an epoch-aware owner with injected time; preserve current values and execute Web plus Android-emulator P4 while release stays blocked.
+  work_package: M03.7
+  execution_unit: M03.7A
+  prerequisites_complete: [M03.6]
+  action: Remove remaining UI and skin mutation authority from gameplay state and prove timer, listener and state cleanup while retaining legacy paths; execute Web plus Android-emulator P4 and M2_PLUS while release stays blocked.

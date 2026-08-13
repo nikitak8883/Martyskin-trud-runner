@@ -1,13 +1,29 @@
 # CURRENT_STATE — Martyshkin Trud Runner
 
 Generated: 2026-07-02 15:44 +03:00  
-Updated: 2026-08-11  
+Updated: 2026-08-13  
 Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`  
 Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m03_5_complete / m03_6_partial / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m03_6_complete / m03_7a_ready / release_blocked`
+
+## 2026-08-13 M03.6 completion overlay
+
+This overlay supersedes the earlier M03.6 bounded-pause instructions below; those entries remain historical evidence only.
+
+- M03.6 is complete. One epoch-aware `PowerUpLifecycle` owns spawn, collect, activate, fixed-step tick, expire and cleanup for 9 power-up kinds and 10 effect channels; direct legacy writers are zero.
+- Final 15-entry implementation-source fingerprint: `CE174DBF392C72EDB2D6D9490436384254C746867E4B72FC911847604B0341DC`.
+- Fresh Web QA and production builds passed. Web lifecycle A/B passed exact `8/8`; matrix A/B/recovery each passed `34/34`, interaction and restart `10/10`.
+- Fresh x86_64 Android-emulator build/install passed. Lifecycle A/B passed exact `8/8`; matrix A/B each passed `28/28`; interaction/name/restart/soak A/B/recovery passed with `30/30` restarts and zero process loss.
+- Canonical static gate: `19/19 PASS`, zero findings. Canonical `M2_PLUS`: `12/12 PASS`, zero findings. Physical device used: `NO`.
+- A stale validator-cardinality assumption exposed by M03.6 was corrected to validate named guarded routes and the scoped QA reset writer; focused behavior and the full static gate pass after the correction.
+- Roadmap: execution `8/65 complete`, `57` mandatory remaining plus `7` conditional; source `23/95 complete`, `62` mandatory remaining plus `10` conditional.
+- Current checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20260813_M03_6_COMPLETE.md`.
+- Current validation report: `docs/global_modernization/v3/M03/M03_6_VALIDATION_SUMMARY.json`.
+- Next safe unit: `M03.7A`, proving UI/skin ownership and timer/listener/state cleanup while retaining legacy paths.
+- Release remains blocked by production signing/distribution (`M02.1`), immutable Web deployment/live parity (`M02.7`) and owner-approved final cleanup (`M12.7`).
 
 ## 2026-08-11 M03.6 bounded-pause overlay
 

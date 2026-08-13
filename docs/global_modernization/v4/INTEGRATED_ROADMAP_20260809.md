@@ -2,10 +2,10 @@
 
 ## Текущее положение
 
-- Source ledger: `19/95 complete`; mandatory `19/85`, осталось `66`; conditional `10`.
-- V4 remaining-scope execution ledger: `4/65 complete`, осталось `61`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
-- Текущий milestone: `M03.3A`, `M03.3B` и `TC-01` complete; source package `M03.3` остаётся pending до C.
-- Следующий unit: `M03.3C` с полным P4.
+- Source ledger: `23/95 complete`; mandatory `23/85`, осталось `62`; conditional `10`.
+- V4 remaining-scope execution ledger: `8/65 complete`, осталось `57`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
+- Текущий milestone: `M03.6` complete; Web и Android-emulator P4 пройдены, canonical `M2_PLUS` — `12/12 PASS`.
+- Следующий unit: `M03.7A` — ownership и cleanup proof с сохранением legacy paths.
 - Release: `BLOCKED`.
 
 ## Phase 0 — contracts, toolchain и publication model
@@ -18,7 +18,7 @@
 - machine-readable v4 execution DAG;
 - library adoption/rejection manifest;
 - schema-first roadmap validator и отрицательные тесты;
-- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 14 steps.
+- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 19 steps.
 
 ### `TC-01` — complete
 
@@ -44,12 +44,12 @@
 
 1. `M03.3A` — complete: pure DevEvent types, validated bounded ring buffer, deterministic tests.
 2. `M03.3B` — complete: pure lifecycle epoch + synchronous-entry stale callback guards/tests.
-3. `M03.3C` — next: один GameRoot adapter, release-off policy, reset/transition integration, полный P4.
-4. `M03.4`: один input router; сохранить debounce/touch/keyboard order.
-5. `M03.5`: typed collision events без перестановки legacy order.
-6. `M03.6`: power-up lifecycle с injected tick/epoch и cleanup.
-7. `M03.7A`: ownership cleanup proof без удаления.
-8. `M03.7B`: удаление legacy paths только после M2_PLUS.
+3. `M03.3C` — complete: один GameRoot adapter, release-off policy, reset/transition integration, полный P4.
+4. `M03.4` — complete: один input router с сохранённым debounce/touch/keyboard order.
+5. `M03.5` — complete: typed collision events без перестановки legacy order.
+6. `M03.6` — complete: power-up lifecycle с injected tick/epoch, cleanup и Web/Android parity.
+7. `M03.7A` — next: ownership cleanup proof без удаления legacy paths.
+8. `M03.7B` — planned: удаление legacy paths только после M03.7A и M2_PLUS.
 
 ## Phase 2 — M04 → M06 → M05, 10–17 недель
 
