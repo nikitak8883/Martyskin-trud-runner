@@ -7,7 +7,23 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m03_6_complete / m03_7a_ready / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m03_7a_complete / m03_7b_ready / release_blocked`
+
+## 2026-08-13 M03.7A completion overlay
+
+This overlay supersedes the M03.6 next-action line below; older entries remain historical evidence only.
+
+- M03.7A is complete. `GameplayUiIntentAdapter` is now the sole bridge from rendered UI controls to six typed intents, so drawing callbacks no longer mutate navigation, level start, skin selection or developer-gate state directly.
+- `GameRuntimeLifecycleOwner` owns eight input/view listener registrations and all session/component scheduling. Accepted screen transitions cancel session callbacks, epoch guards reject stale work, reset clears session work, and destroy removes listeners and all remaining callbacks.
+- Final 16-entry implementation-source fingerprint: `328C0AA1847190DB7C8EB4E46CFCA759390B015B6C3EE470AFCF3A17CAA1C679`.
+- Fresh Web QA passed ownership A/B exact `8/8`; matrix A/B/recovery each passed `34/34`, interaction and restart `10/10` with zero unexpected diagnostics.
+- Fresh x86_64 Android-emulator build/install passed. Ownership A/B/recovery passed exact `8/8`; matrix A/B each passed `28/28`; interaction/name/restart/soak A/B/recovery passed with `30/30` restarts and zero process loss.
+- Canonical static gate: `20/20 PASS`, zero findings. Canonical `M2_PLUS`: `12/12 PASS`, zero findings. Physical device used: `NO`.
+- Roadmap: execution `9/65 complete`, `56` mandatory remaining plus `7` conditional; source remains `23/95 complete`, `62` mandatory remaining plus `10` conditional because aggregate package M03.7 closes only after M03.7B.
+- Current checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20260813_M03_7A_COMPLETE.md`.
+- Current validation report: `docs/global_modernization/v3/M03/M03_7A_VALIDATION_SUMMARY.json`.
+- Next safe unit: `M03.7B`, bounded hidden-reference/rollback proof and removal of only superseded M03 legacy paths, followed by QA7 and M2_PLUS.
+- Release remains blocked by production signing/distribution (`M02.1`), immutable Web deployment/live parity (`M02.7`) and owner-selected final cleanup (`M12.7`).
 
 ## 2026-08-13 M03.6 completion overlay
 

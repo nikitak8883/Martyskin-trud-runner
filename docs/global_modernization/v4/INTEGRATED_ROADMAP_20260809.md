@@ -3,9 +3,9 @@
 ## Текущее положение
 
 - Source ledger: `23/95 complete`; mandatory `23/85`, осталось `62`; conditional `10`.
-- V4 remaining-scope execution ledger: `8/65 complete`, осталось `57`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
-- Текущий milestone: `M03.6` complete; Web и Android-emulator P4 пройдены, canonical `M2_PLUS` — `12/12 PASS`.
-- Следующий unit: `M03.7A` — ownership и cleanup proof с сохранением legacy paths.
+- V4 remaining-scope execution ledger: `9/65 complete`, осталось `56`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
+- Текущий milestone: `M03.7A` complete; Web и Android-emulator P4 пройдены, canonical `M2_PLUS` — `12/12 PASS`.
+- Следующий unit: `M03.7B` — hidden-reference/rollback proof и удаление только superseded legacy paths.
 - Release: `BLOCKED`.
 
 ## Phase 0 — contracts, toolchain и publication model
@@ -18,7 +18,7 @@
 - machine-readable v4 execution DAG;
 - library adoption/rejection manifest;
 - schema-first roadmap validator и отрицательные тесты;
-- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 19 steps.
+- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 20 steps.
 
 ### `TC-01` — complete
 
@@ -48,8 +48,8 @@
 4. `M03.4` — complete: один input router с сохранённым debounce/touch/keyboard order.
 5. `M03.5` — complete: typed collision events без перестановки legacy order.
 6. `M03.6` — complete: power-up lifecycle с injected tick/epoch, cleanup и Web/Android parity.
-7. `M03.7A` — next: ownership cleanup proof без удаления legacy paths.
-8. `M03.7B` — planned: удаление legacy paths только после M03.7A и M2_PLUS.
+7. `M03.7A` — complete: typed UI intents, единый lifecycle owner и Web/Android cleanup parity при сохранённых legacy paths.
+8. `M03.7B` — next: hidden-reference/rollback proof и удаление только superseded legacy paths с QA7 и M2_PLUS.
 
 ## Phase 2 — M04 → M06 → M05, 10–17 недель
 

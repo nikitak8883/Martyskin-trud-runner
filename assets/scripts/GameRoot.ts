@@ -42,6 +42,9 @@ import type {
 } from './gameplay/state/GameSessionState';
 import { GameplayInputAdapter } from './gameplay/input/GameplayInputAdapter';
 import type { GameplayPauseInputContext } from './gameplay/input/GameplayInputAdapter';
+import { GameRuntimeLifecycleOwner } from './gameplay/lifecycle/GameRuntimeLifecycleOwner';
+import type { GameRuntimeCallbackScope, GameRuntimeLifecycleEvent } from './gameplay/lifecycle/GameRuntimeLifecycleOwner';
+import { GameplayUiIntentAdapter } from './gameplay/ui/GameplayUiIntentAdapter';
 import {
     GAMEPLAY_COLLISION_KINDS,
     GameplayCollisionRouter,
@@ -71,6 +74,13 @@ function logGameRootDevEvent(event: DevEventRecord): void {
     console.log(
         `MTR_DEV_EVENT sequence=${event.sequence} epoch=${event.epoch} tick=${event.tick}`
         + ` code=${event.code} state=${event.state || '-'} reason=${event.reason || '-'}`,
+    );
+}
+
+function logGameRuntimeLifecycleEvent(event: GameRuntimeLifecycleEvent): void {
+    console.log(
+        `MTR_RUNTIME_OWNER code=${event.code} scope=${event.scope}`
+        + ` key=${event.key} epoch=${event.epoch} reason=${event.reason}`,
     );
 }
 
@@ -1042,6 +1052,12 @@ export class GameRoot extends Component {
         eventsEnabled: DEBUG,
         onEvent: DEBUG ? logGameRootDevEvent : undefined,
     });
+    private readonly runtimeLifecycle = new GameRuntimeLifecycleOwner({
+        getEpoch: () => this.devEvents.currentEpoch(),
+        scheduleOnce: (callback, delaySeconds) => this.scheduleOnce(callback, delaySeconds),
+        unschedule: (callback) => this.unschedule(callback),
+        onEvent: DEBUG ? logGameRuntimeLifecycleEvent : undefined,
+    });
     private collisionQaEvents: GameplayCollisionEvent[] | null = null;
     private powerUpQaEvents: PowerUpLifecycleEvent[] | null = null;
     private readonly powerUps = new PowerUpLifecycle({
@@ -1061,6 +1077,17 @@ export class GameRoot extends Component {
         onGlideChanged: (active) => { this.gliding = active; },
         onDash: () => this.applyDashInput(),
         onPause: (context) => this.applyPauseInput(context),
+    });
+    private readonly gameplayUi = new GameplayUiIntentAdapter({
+        getSessionState: () => this.state,
+        getLevelCount: () => LEVELS.length,
+        getSkinCount: () => SKINS.length,
+        onNavigate: (next, reason) => this.transitionTo(next, reason).accepted,
+        onStartLevel: (levelIndex) => this.startLevel(levelIndex),
+        onPreviewSkin: (skinIndex) => this.previewSkinSelection(skinIndex),
+        onConfirmSkin: () => this.confirmSkinSelection(),
+        onOpenDeveloperGate: () => this.openDevGate(),
+        onSubmitDeveloperGate: () => this.tryOpenDeveloperMode(),
     });
     private readonly gameplayCollisions = new GameplayCollisionRouter({
         getEpoch: () => this.devEvents.currentEpoch(),
@@ -1169,6 +1196,7 @@ export class GameRoot extends Component {
     private pendingQaBonusSpawn = false;
     private pendingQaCollisionMatrix = false;
     private pendingQaPowerUpLifecycle = false;
+    private pendingQaRuntimeOwnership = false;
     private pendingSkinSelection = 0;
     private qaForcedSkinVariant: PlayerSkinVariant | null = null;
     private qaForcedPlayerPose: PlayerSkinPose | null = null;
@@ -1201,7 +1229,6 @@ export class GameRoot extends Component {
     onLoad(): void {
         profiler.hideStats();
         this.applyResponsiveResolutionPolicy();
-        view.on('canvas-resize', this.onCanvasResize, this);
         this.node.getComponent(UITransform)?.setContentSize(W, H);
         const uiLayer = this.node.layer;
         console.log(`MTR_BITMAP_RUNTIME_READY owner=GameRoot platform=${sys.isNative ? 'native' : 'web'} backgrounds=resources/backgrounds objects=latest_themed_assets`);
@@ -1246,7 +1273,6 @@ export class GameRoot extends Component {
         this.pauseTouchZone.layer = uiLayer;
         this.pauseTouchZone.addComponent(UITransform).setContentSize(160, 104);
         this.pauseTouchZone.setPosition(this.cx(W - 90), this.cy(116));
-        this.pauseTouchZone.on(Input.EventType.TOUCH_END, this.onPauseTouchZoneTap, this);
         this.pauseTouchZone.active = false;
         this.node.addChild(this.pauseTouchZone);
         this.pauseTouchZone.setSiblingIndex(9999);
@@ -1294,12 +1320,7 @@ export class GameRoot extends Component {
         this.logGameStateSnapshot('boot');
         console.log(`MTR_RUNTIME_CORE_READY state=${this.state} mode=${this.gameState.mode} levels=${LEVELS.length} fixedDt=${this.fixedDt}`);
 
-        input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
-        input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
-        input.on(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
-        input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this);
-        input.on(Input.EventType.KEY_UP, this.onKeyUp, this);
+        this.registerRuntimeListeners();
 
         this.reset('boot');
         this.applyStartupQuery();
@@ -1308,14 +1329,94 @@ export class GameRoot extends Component {
     onDestroy(): void {
         const invalidatedEpoch = this.devEvents.invalidate(this.state, 'component_destroy', this.fixedStepCount);
         this.powerUps.invalidate(invalidatedEpoch, 'component_destroy');
-        input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
-        input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this);
-        input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
-        input.off(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this);
-        input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this);
-        input.off(Input.EventType.KEY_UP, this.onKeyUp, this);
-        view.off('canvas-resize', this.onCanvasResize, this);
-        if (this.pauseTouchZone) this.pauseTouchZone.off(Input.EventType.TOUCH_END, this.onPauseTouchZoneTap, this);
+        const cleanup = this.runtimeLifecycle.destroy('component_destroy');
+        if (DEBUG) {
+            console.log(
+                `MTR_RUNTIME_OWNER_DESTROYED listeners=${cleanup.listeners}`
+                + ` componentCallbacks=${cleanup.componentCallbacks} sessionCallbacks=${cleanup.sessionCallbacks}`,
+            );
+        }
+    }
+
+    private registerRuntimeListeners(): void {
+        this.runtimeLifecycle.registerListener(
+            'view.canvas-resize',
+            () => { view.on('canvas-resize', this.onCanvasResize, this); },
+            () => { view.off('canvas-resize', this.onCanvasResize, this); },
+        );
+        this.runtimeLifecycle.registerListener(
+            'pause-zone.touch-end',
+            () => { this.pauseTouchZone.on(Input.EventType.TOUCH_END, this.onPauseTouchZoneTap, this); },
+            () => { this.pauseTouchZone.off(Input.EventType.TOUCH_END, this.onPauseTouchZoneTap, this); },
+        );
+        this.runtimeLifecycle.registerListener(
+            'input.touch-start',
+            () => { input.on(Input.EventType.TOUCH_START, this.onTouchStart, this); },
+            () => { input.off(Input.EventType.TOUCH_START, this.onTouchStart, this); },
+        );
+        this.runtimeLifecycle.registerListener(
+            'input.touch-move',
+            () => { input.on(Input.EventType.TOUCH_MOVE, this.onTouchMove, this); },
+            () => { input.off(Input.EventType.TOUCH_MOVE, this.onTouchMove, this); },
+        );
+        this.runtimeLifecycle.registerListener(
+            'input.touch-end',
+            () => { input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this); },
+            () => { input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this); },
+        );
+        this.runtimeLifecycle.registerListener(
+            'input.touch-cancel',
+            () => { input.on(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this); },
+            () => { input.off(Input.EventType.TOUCH_CANCEL, this.onTouchEnd, this); },
+        );
+        this.runtimeLifecycle.registerListener(
+            'input.key-down',
+            () => { input.on(Input.EventType.KEY_DOWN, this.onKeyDown, this); },
+            () => { input.off(Input.EventType.KEY_DOWN, this.onKeyDown, this); },
+        );
+        this.runtimeLifecycle.registerListener(
+            'input.key-up',
+            () => { input.on(Input.EventType.KEY_UP, this.onKeyUp, this); },
+            () => { input.off(Input.EventType.KEY_UP, this.onKeyUp, this); },
+        );
+        if (DEBUG) console.log(`MTR_RUNTIME_OWNER_LISTENERS_READY count=${this.runtimeLifecycle.snapshot().listeners}`);
+    }
+
+    private scheduleOwnedOnce(
+        key: string,
+        scope: GameRuntimeCallbackScope,
+        callback: () => void,
+        delaySeconds: number,
+    ): void {
+        this.runtimeLifecycle.scheduleOnce(key, scope, callback, delaySeconds);
+    }
+
+    private scheduleComponentOnce(key: string, callback: () => void, delaySeconds: number): void {
+        this.scheduleOwnedOnce(key, 'component', callback, delaySeconds);
+    }
+
+    private scheduleSessionOnce(key: string, callback: () => void, delaySeconds: number): void {
+        this.scheduleOwnedOnce(key, 'session', callback, delaySeconds);
+    }
+
+    private emitUiNavigationIntent(next: State, reason: string): void {
+        this.gameplayUi.dispatch({ action: 'navigate', next, reason });
+    }
+
+    private emitUiStartLevelIntent(levelIndex: number): void {
+        this.gameplayUi.dispatch({ action: 'start_level', levelIndex });
+    }
+
+    private emitUiPreviewSkinIntent(skinIndex: number): void {
+        this.gameplayUi.dispatch({ action: 'preview_skin', skinIndex });
+    }
+
+    private emitUiConfirmSkinIntent(): void {
+        this.gameplayUi.dispatch({ action: 'confirm_skin' });
+    }
+
+    private emitUiDeveloperGateIntent(action: 'open_developer_gate' | 'submit_developer_gate'): void {
+        this.gameplayUi.dispatch({ action });
     }
 
     update(dt: number): void {
@@ -1428,6 +1529,7 @@ export class GameRoot extends Component {
         const prevMode = this.modeForState(prev);
         const nextMode = this.modeForState(next);
         if (next === 'skins') this.pendingSkinSelection = this.selectedSkin;
+        this.runtimeLifecycle.cancelSession(`transition:${prev}->${next}:${reason}`);
         if (this.shouldCleanupPowerUpsForTransition(prev, next)) {
             this.powerUps.cleanupSession(`transition:${prev}->${next}:${reason}`);
         }
@@ -1527,7 +1629,7 @@ export class GameRoot extends Component {
         this.audioCoreLoadStarted = true;
         const names = ['jump', 'dash', 'hit', 'bonus', 'pause', 'banner', 'musicA', 'musicB'];
         this.loadAudioClips(names, 'core');
-        this.scheduleOnce(() => this.loadDeferredAudio(), sys.isNative ? 4.25 : 1.25);
+        this.scheduleComponentOnce('audio.deferred', () => this.loadDeferredAudio(), sys.isNative ? 4.25 : 1.25);
     }
 
     private scheduleAudioPreload(reason: string): void {
@@ -1535,7 +1637,7 @@ export class GameRoot extends Component {
         this.audioPreloadScheduled = true;
         const delay = sys.isNative ? 0.35 : 0;
         console.log(`MTR_AUDIO_LOAD_SCHEDULED reason=${reason} delay=${delay}`);
-        this.scheduleOnce(() => this.loadAudio(), delay);
+        this.scheduleComponentOnce('audio.core', () => this.loadAudio(), delay);
     }
 
     private loadDeferredAudio(): void {
@@ -1631,7 +1733,7 @@ export class GameRoot extends Component {
             this.enqueueObjectSpritesChunked(keys, `player-skin-variants:${reason}:${PLAYER_SKIN_IDS[normalizedSkinIndex]}`, sys.isNative ? 'normal' : 'idle');
             console.log(`MTR_PLAYER_SKIN_VARIANTS_DEFERRED_PRELOAD_REQUESTED reason=${reason} skin=${PLAYER_SKIN_IDS[normalizedSkinIndex]} count=${keys.length} policy=chunked-idle`);
         };
-        this.scheduleOnce(start, sys.isNative ? 0.75 : WEB_SKIN_VARIANTS_DEFER_SEC);
+        this.scheduleComponentOnce(`skin-variants:${normalizedSkinIndex}:${reason}`, start, sys.isNative ? 0.75 : WEB_SKIN_VARIANTS_DEFER_SEC);
     }
 
     private criticalHazardSpriteKeys(levelIndex = this.levelIndex): string[] {
@@ -1755,8 +1857,8 @@ export class GameRoot extends Component {
             this.enqueueObjectSpritesChunked(keys, `secondary-ui:${reason}`, sys.isNative ? 'normal' : 'idle');
             console.log(`MTR_SECONDARY_UI_PRELOAD_REQUESTED reason=${reason} policy=shared_blank_runtime_text_chunked surfaces=${SECONDARY_MENU_UI_SURFACES.join(',')} count=${keys.size}`);
         };
-        if (sys.isNative) this.scheduleOnce(start, 0.25);
-        else this.scheduleOnce(start, 1.25);
+        if (sys.isNative) this.scheduleComponentOnce('main-menu.deferred-buttons.native', start, 0.25);
+        else this.scheduleComponentOnce('main-menu.deferred-buttons.web', start, 1.25);
     }
 
     private enqueueObjectSprites(keys: Iterable<string>, reason: string, priority: ObjectSpriteLoadPriority): number {
@@ -1789,7 +1891,7 @@ export class GameRoot extends Component {
             for (const key of slice) this.requestObjectSprite(key, priority);
             offset += slice.length;
             if (offset < uniqueKeys.length) {
-                this.scheduleOnce(enqueueNextChunk, intervalSec);
+                this.scheduleComponentOnce(`object-sprite.chunk:${reason}:${offset}`, enqueueNextChunk, intervalSec);
                 return;
             }
             console.log(`MTR_OBJECT_SPRITE_CHUNKED_ENQUEUE_DONE reason=${reason} count=${uniqueKeys.length} priority=${priority}`);
@@ -1804,7 +1906,7 @@ export class GameRoot extends Component {
         const critical = new Set(this.criticalHazardSpriteKeys(normalizedLevelIndex));
         const keys = this.fullLevelThemeSpriteKeys(normalizedLevelIndex).filter((key) => !critical.has(key));
         const start = () => this.enqueueObjectSpritesChunked(keys, `level-theme-warmup:${reason}:level-${normalizedLevelIndex + 1}`, sys.isNative ? 'normal' : 'idle');
-        this.scheduleOnce(start, sys.isNative ? 0.15 : 1.1);
+        this.scheduleComponentOnce(`level-theme-warmup:${normalizedLevelIndex}:${reason}`, start, sys.isNative ? 0.15 : 1.1);
         console.log(`MTR_LEVEL_THEME_WARMUP_SCHEDULED reason=${reason} level=${normalizedLevelIndex + 1} deferredCount=${keys.length} platform=${sys.isNative ? 'native' : 'web'}`);
     }
 
@@ -1818,7 +1920,7 @@ export class GameRoot extends Component {
             ...collectibleWarmupKeys,
         ];
         const start = () => this.enqueueObjectSpritesChunked(keys, `utility-warmup:${reason}`, sys.isNative ? 'normal' : 'idle');
-        this.scheduleOnce(start, sys.isNative ? 0.25 : WEB_UTILITY_WARMUP_DEFER_SEC);
+        this.scheduleComponentOnce(`utility-warmup:${reason}`, start, sys.isNative ? 0.25 : WEB_UTILITY_WARMUP_DEFER_SEC);
         console.log(`MTR_UTILITY_SPRITE_WARMUP_SCHEDULED reason=${reason} count=${keys.length} platform=${sys.isNative ? 'native' : 'web'}`);
     }
 
@@ -1858,7 +1960,7 @@ export class GameRoot extends Component {
         const retryDelay = this.playerSkinStartGateAttempts < 10 ? 0.28 : 0.55;
         if (!this.gameplayStartGateRetryScheduled) {
             this.gameplayStartGateRetryScheduled = true;
-            this.scheduleOnce(() => {
+            this.scheduleSessionOnce(`gameplay-start-gate:${target}`, () => {
                 this.gameplayStartGateRetryScheduled = false;
                 if (this.pendingStartLevel === target && this.state !== 'playing') this.startLevel(target);
             }, retryDelay);
@@ -1893,7 +1995,7 @@ export class GameRoot extends Component {
                 this.backgroundPreviewFrameCache[themeIndex] = frame;
                 console.log(`MTR_BACKGROUND_PREVIEW_LOAD_OK level=${themeIndex + 1} elapsedMs=${elapsedMs}`);
                 if (reason === 'boot-preview') {
-                    this.scheduleOnce(() => this.ensureBackgroundFrame(themeIndex, 'boot-current'), sys.isNative ? 0.15 : 0);
+                    this.scheduleComponentOnce(`background.boot-current:${themeIndex}`, () => this.ensureBackgroundFrame(themeIndex, 'boot-current'), sys.isNative ? 0.15 : 0);
                 }
             } else {
                 const message = err instanceof Error ? err.message : String(err || 'unknown');
@@ -2030,7 +2132,7 @@ export class GameRoot extends Component {
             if (this.objectSpriteQueue.length > 0 && this.objectSpriteActiveLoads < maxLoads) this.pumpObjectSpriteLoadQueue();
         };
         if (sys.isNative) pump();
-        else this.scheduleOnce(pump, 0);
+        else this.scheduleComponentOnce('object-sprite.queue-pump', pump, 0);
     }
 
     private beginObjectSpriteLoad(key: string): void {
@@ -2337,6 +2439,7 @@ export class GameRoot extends Component {
 
     private reset(reason: GameRootResetReason): void {
         const resetEpoch = this.devEvents.beginReset(this.state, reason, this.fixedStepCount);
+        this.runtimeLifecycle.cancelSession(`reset:${reason}`);
         this.powerUps.beginEpoch(resetEpoch, reason);
         this.progress = 0;
         this.score = 0;
@@ -2417,11 +2520,11 @@ export class GameRoot extends Component {
         this.playVoice('ui', 0.45);
         if (this.pendingQaObstacleSpawn) {
             this.pendingQaObstacleSpawn = false;
-            this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.spawnAllObstacleFamiliesForQa()), 0);
+            this.scheduleSessionOnce('qa.obstacle-spawn', this.devEvents.guardSessionCallback(() => this.spawnAllObstacleFamiliesForQa()), 0);
         }
         if (this.pendingQaBonusSpawn) {
             this.pendingQaBonusSpawn = false;
-            this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.spawnAllBonusStatesForQa()), 0);
+            this.scheduleSessionOnce('qa.bonus-spawn', this.devEvents.guardSessionCallback(() => this.spawnAllBonusStatesForQa()), 0);
         }
         if (this.pendingQaCollisionMatrix) {
             this.scheduleCollisionRouterMatrixForQa();
@@ -2429,9 +2532,12 @@ export class GameRoot extends Component {
         if (this.pendingQaPowerUpLifecycle) {
             this.schedulePowerUpLifecycleMatrixForQa();
         }
+        if (this.pendingQaRuntimeOwnership) {
+            this.scheduleRuntimeOwnershipMatrixForQa();
+        }
         if (this.pendingQaPauseAfterStart) {
             this.pendingQaPauseAfterStart = false;
-            this.scheduleOnce(this.devEvents.guardSessionCallback(() => {
+            this.scheduleSessionOnce('qa.pause-after-start', this.devEvents.guardSessionCallback(() => {
                 if (this.state !== 'playing') {
                     this.pendingQaPauseShowTouchZones = false;
                     return;
@@ -2593,6 +2699,12 @@ export class GameRoot extends Component {
                 this.schedulePowerUpLifecycleMatrixForQa();
             }
         }
+        if (params.get('mtr_qa_ownership') === '1') {
+            this.pendingQaRuntimeOwnership = true;
+            if (this.state === 'playing') {
+                this.scheduleRuntimeOwnershipMatrixForQa();
+            }
+        }
     }
 
     private runDevEventResetLoopForQa(params: StartupQueryParams): void {
@@ -2637,7 +2749,7 @@ export class GameRoot extends Component {
 
     private scheduleCollisionRouterMatrixForQa(): void {
         this.pendingQaCollisionMatrix = false;
-        this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.runCollisionRouterMatrixForQa()), 0.05);
+        this.scheduleSessionOnce('qa.collision-matrix', this.devEvents.guardSessionCallback(() => this.runCollisionRouterMatrixForQa()), 0.05);
     }
 
     private runCollisionRouterMatrixForQa(): void {
@@ -2823,7 +2935,73 @@ export class GameRoot extends Component {
 
     private schedulePowerUpLifecycleMatrixForQa(): void {
         this.pendingQaPowerUpLifecycle = false;
-        this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.runPowerUpLifecycleMatrixForQa()), 0.05);
+        this.scheduleSessionOnce('qa.powerup-lifecycle', this.devEvents.guardSessionCallback(() => this.runPowerUpLifecycleMatrixForQa()), 0.05);
+    }
+
+    private scheduleRuntimeOwnershipMatrixForQa(): void {
+        this.pendingQaRuntimeOwnership = false;
+        this.scheduleSessionOnce(
+            'qa.runtime-ownership',
+            this.devEvents.guardSessionCallback(() => this.runRuntimeOwnershipMatrixForQa()),
+            0.05,
+        );
+    }
+
+    private runRuntimeOwnershipMatrixForQa(): void {
+        if (!DEBUG || !this.developerMode || this.state !== 'playing') {
+            console.log('MTR_OWNERSHIP_QA_FAIL reason=invalid_runtime_state');
+            return;
+        }
+
+        const checks: Record<string, boolean> = {};
+        const initial = this.runtimeLifecycle.snapshot();
+        let sessionProbeExecuted = false;
+        let pauseIntentAccepted = false;
+
+        checks.listenersOwned = initial.listeners === 8;
+        checks.initialState = this.state === 'playing';
+
+        this.scheduleSessionOnce('qa.runtime-ownership.cancelled-probe', () => {
+            sessionProbeExecuted = true;
+            console.log('MTR_OWNERSHIP_QA_FAIL reason=session_callback_not_cancelled');
+        }, 0.18);
+
+        this.scheduleComponentOnce('qa.runtime-ownership.verification', () => {
+            const paused = this.runtimeLifecycle.snapshot();
+            checks.pauseIntentAccepted = pauseIntentAccepted;
+            checks.pausedState = this.state === 'paused';
+            checks.sessionProbeCancelled = !sessionProbeExecuted;
+            checks.sessionQueueEmpty = paused.sessionCallbacks === 0;
+            checks.componentCallbackSurvived = true;
+
+            const resume = this.gameplayUi.dispatch({
+                action: 'navigate',
+                next: 'playing',
+                reason: 'qa_runtime_ownership_resume',
+            });
+            checks.resumeIntentAccepted = resume.accepted && this.state === 'playing';
+
+            const checkCount = Object.keys(checks).length;
+            const passCount = Object.values(checks).filter(Boolean).length;
+            const passed = checkCount === 8 && passCount === checkCount;
+            console.log(
+                `MTR_OWNERSHIP_QA_${passed ? 'READY' : 'FAIL'} checks=${passCount}/${checkCount}`
+                + ` listeners=${initial.listeners}`
+                + ` sessionCancelled=${checks.sessionProbeCancelled && checks.sessionQueueEmpty ? 1 : 0}`
+                + ` componentSurvived=${checks.componentCallbackSurvived ? 1 : 0}`
+                + ` uiTransition=${checks.pauseIntentAccepted && checks.resumeIntentAccepted ? 1 : 0}`
+                + ` state=${this.state}`,
+            );
+        }, 0.28);
+
+        this.scheduleSessionOnce('qa.runtime-ownership.pause', () => {
+            const pause = this.gameplayUi.dispatch({
+                action: 'navigate',
+                next: 'paused',
+                reason: 'qa_runtime_ownership_pause',
+            });
+            pauseIntentAccepted = pause.accepted && this.state === 'paused';
+        }, 0.05);
     }
 
     private runPowerUpLifecycleMatrixForQa(): void {
@@ -3069,7 +3247,7 @@ export class GameRoot extends Component {
             this.bannerText = 'Грузим все варианты экипировки...';
             this.bannerTimer = TOAST_DURATION_SEC;
             console.log(`MTR_QA_BONUS_PRELOAD_WAIT variants=${requiredVariants.length} missing=${missing.length}${sample ? ` sample=${sample}` : ''}`);
-            this.scheduleOnce(this.devEvents.guardSessionCallback(() => this.spawnAllBonusStatesForQa()), 0.35);
+            this.scheduleSessionOnce('qa.bonus-spawn-retry', this.devEvents.guardSessionCallback(() => this.spawnAllBonusStatesForQa()), 0.35);
             return;
         }
         if (this.state !== 'playing') {
@@ -4950,20 +5128,20 @@ textarea, input {
             const leftX = 238;
             const rightX = 660;
             const rowY = [220, 350, 480];
-            this.button(leftX, rowY[0], mainButtonW, mainButtonH, 'НАЧАТЬ ИГРУ', () => this.transitionTo('name', 'ui_start_menu'), primary, dark, light);
-            this.button(rightX, rowY[0], mainButtonW, mainButtonH, 'ВЫБЕРИ СВОЕГО ПРИМАТА', () => this.transitionTo('skins', 'ui_skins'), primary, dark, light);
-            this.button(leftX, rowY[1], mainButtonW, mainButtonH, 'МАРТЫШКИНЫ РЕКОРДЫ', () => this.transitionTo('records', 'ui_records'), primary, dark, light);
-            this.button(rightX, rowY[1], mainButtonW, mainButtonH, 'ВЫБОР УРОВНЯ', () => this.transitionTo('levels', 'ui_levels'), primary, dark, light);
-            this.button(leftX, rowY[2], mainButtonW, mainButtonH, 'ЗВУК И НАСТРОЙКИ', () => this.transitionTo('sound', 'ui_sound'), primary, dark, light);
-            this.button(rightX, rowY[2], mainButtonW, mainButtonH, 'РЕЖИМ РАЗРАБОТЧИКА', () => this.openDevGate(), rgb(255, 214, 102), dark, rgb(255, 240, 184));
+            this.button(leftX, rowY[0], mainButtonW, mainButtonH, 'НАЧАТЬ ИГРУ', () => this.emitUiNavigationIntent('name', 'ui_start_menu'), primary, dark, light);
+            this.button(rightX, rowY[0], mainButtonW, mainButtonH, 'ВЫБЕРИ СВОЕГО ПРИМАТА', () => this.emitUiNavigationIntent('skins', 'ui_skins'), primary, dark, light);
+            this.button(leftX, rowY[1], mainButtonW, mainButtonH, 'МАРТЫШКИНЫ РЕКОРДЫ', () => this.emitUiNavigationIntent('records', 'ui_records'), primary, dark, light);
+            this.button(rightX, rowY[1], mainButtonW, mainButtonH, 'ВЫБОР УРОВНЯ', () => this.emitUiNavigationIntent('levels', 'ui_levels'), primary, dark, light);
+            this.button(leftX, rowY[2], mainButtonW, mainButtonH, 'ЗВУК И НАСТРОЙКИ', () => this.emitUiNavigationIntent('sound', 'ui_sound'), primary, dark, light);
+            this.button(rightX, rowY[2], mainButtonW, mainButtonH, 'РЕЖИМ РАЗРАБОТЧИКА', () => this.emitUiDeveloperGateIntent('open_developer_gate'), rgb(255, 214, 102), dark, rgb(255, 240, 184));
             if (this.developerMode && this.showPerfOverlay) this.drawStatusChip('РАЗРАБОТЧИК: ВСЕ УРОВНИ ОТКРЫТЫ · HP НЕ ТРАТИТСЯ', 620, rgb(255, 236, 94));
         } else if (this.state === 'devgate') {
             this.text('Доступ только для примата с паролем. Пароль в лог не пишется.', 640, 220, 18, rgb(255, 255, 255));
             this.drawAssetSprite(UI_SKIN.assets.panelChip, 640, 318, 460, 72, 245, 'ui_achievements', 'dev_password_field_back');
             if (!(this.devPasswordEdit?.string || '').trim()) this.text('Пароль разработчика', 640, 318, 22, rgb(255, 230, 142), 'center', 360);
             if (this.devStatusText) this.drawStatusChip(this.devStatusText, 370, this.devStatusText.includes('открыт') ? rgb(170, 255, 160) : rgb(255, 168, 128));
-            this.button(390, 414, 240, 64, 'ПРОВЕРИТЬ', () => this.tryOpenDeveloperMode(), rgb(255, 224, 118), dark, light);
-            this.button(650, 414, 240, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(390, 414, 240, 64, 'ПРОВЕРИТЬ', () => this.emitUiDeveloperGateIntent('submit_developer_gate'), rgb(255, 224, 118), dark, light);
+            this.button(650, 414, 240, 64, 'НАЗАД', () => this.emitUiNavigationIntent('menu', 'ui_back'), primary, dark, light);
         } else if (this.state === 'devpanel') {
             this.drawStatusChip(`КОЛЛАЙДЕРЫ ${this.debugColliders ? 'ВКЛ' : 'ВЫКЛ'} · ТАПЫ ${this.showTouchZones ? 'ВКЛ' : 'ВЫКЛ'} · PERF ${this.showPerfOverlay ? 'ВКЛ' : 'ВЫКЛ'}`, 142, rgb(255, 245, 190));
             const rowY = [178, 252, 326, 400];
@@ -4975,11 +5153,11 @@ textarea, input {
             this.button(490, rowY[1], 300, devButtonH, 'ВСЕ БОНУСЫ', () => this.spawnAllBonusStatesForQa(), primary, dark, light);
             this.button(835, rowY[1], 300, devButtonH, 'ОТКРЫТЬ ДОСТИЖЕНИЯ', () => this.unlockAllAchievementsForQa(), primary, dark, light);
             this.button(145, rowY[2], 300, devButtonH, 'ЗАКРЫТЬ ДОСТИЖЕНИЯ', () => this.lockAchievementsForQa(), rgb(255, 150, 120), dark, light);
-            this.button(490, rowY[2], 300, devButtonH, 'УРОВЕНЬ 1', () => this.startLevel(0), primary, dark, light);
-            this.button(835, rowY[2], 300, devButtonH, 'УРОВЕНЬ 15', () => this.startLevel(14), primary, dark, light);
-            this.button(145, rowY[3], 300, devButtonH, 'ПРОВЕРКА ПАУЗЫ', () => { this.startLevel(this.levelIndex); this.showTouchZones = true; this.saveSettings(); }, rgb(120, 255, 180), dark, light);
+            this.button(490, rowY[2], 300, devButtonH, 'УРОВЕНЬ 1', () => this.emitUiStartLevelIntent(0), primary, dark, light);
+            this.button(835, rowY[2], 300, devButtonH, 'УРОВЕНЬ 15', () => this.emitUiStartLevelIntent(14), primary, dark, light);
+            this.button(145, rowY[3], 300, devButtonH, 'ПРОВЕРКА ПАУЗЫ', () => { this.emitUiStartLevelIntent(this.levelIndex); this.showTouchZones = true; this.saveSettings(); }, rgb(120, 255, 180), dark, light);
             this.button(490, rowY[3], 300, devButtonH, 'СКРИН: ADB / WEB', () => { this.bannerText = 'Снимок делает внешний QA-инструмент'; this.bannerTimer = TOAST_DURATION_SEC; }, primary, dark, light);
-            this.button(835, rowY[3], 300, devButtonH, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
+            this.button(835, rowY[3], 300, devButtonH, 'В МЕНЮ', () => this.emitUiNavigationIntent('menu', 'ui_menu'), primary, dark, light);
         } else if (this.state === 'name') {
             const name = this.normalizedPlayerName();
             const typedName = this.sanitizePlayerName(this.playerNameEdit?.string || name);
@@ -4989,9 +5167,9 @@ textarea, input {
             this.button(419, 402, 442, 64, 'СОХРАНИТЬ ИМЯ', () => this.commitPlayerNameFromInput(true), primary, dark, light);
             this.button(419, 478, 442, 72, 'ВПЕРЁД, ПРИМАТЫ!', () => {
                 this.commitPlayerNameFromInput(false);
-                this.startLevel(this.levelIndex);
+                this.emitUiStartLevelIntent(this.levelIndex);
             }, primary, dark, light);
-            this.button(419, 562, 442, 64, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
+            this.button(419, 562, 442, 64, 'В МЕНЮ', () => this.emitUiNavigationIntent('menu', 'ui_menu'), primary, dark, light);
         } else if (this.state === 'sound') {
             this.drawAudioSettingsRow('МУЗЫКА', 154, this.musicEnabled, this.musicVolume, () => {
                 this.musicEnabled = !this.musicEnabled;
@@ -5005,7 +5183,7 @@ textarea, input {
             }, () => { this.voiceVolume = clamp(this.voiceVolume - 0.1, 0, 1); }, () => { this.voiceVolume = clamp(this.voiceVolume + 0.1, 0, 1); this.playVoice('jump', 1); });
             this.button(250, 549, 240, 64, 'ПО УМОЛЧАНИЮ', () => this.resetAudioDefaults(), primary, dark, light);
             this.button(520, 549, 240, 64, 'ПРИМЕНИТЬ', () => this.applyAudioSettings(), primary, dark, light);
-            this.button(790, 549, 240, 64, 'НАЗАД', () => { this.saveSettings(); this.transitionTo('menu', 'ui_back'); }, primary, dark, light);
+            this.button(790, 549, 240, 64, 'НАЗАД', () => { this.saveSettings(); this.emitUiNavigationIntent('menu', 'ui_back'); }, primary, dark, light);
         } else if (this.state === 'records') {
             const records = this.records().slice(0, 7);
             if (!records.length) {
@@ -5024,8 +5202,8 @@ textarea, input {
                     this.text(`БАНАНЫ ${r.bananas}`, 960, rowY, 15, rowColor, 'center', 140);
                 }
             }
-            this.button(324, 616, 300, 64, 'ДОСТИЖЕНИЯ', () => this.transitionTo('achievements', 'ui_achievements'), primary, dark, light);
-            this.button(656, 616, 300, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(324, 616, 300, 64, 'ДОСТИЖЕНИЯ', () => this.emitUiNavigationIntent('achievements', 'ui_achievements'), primary, dark, light);
+            this.button(656, 616, 300, 64, 'НАЗАД', () => this.emitUiNavigationIntent('menu', 'ui_back'), primary, dark, light);
         } else if (this.state === 'achievements') {
             const name = this.normalizedPlayerName();
             this.drawStatusChip(`ПРОФИЛЬ: ${name}`, 126, rgb(255, 240, 138));
@@ -5063,27 +5241,27 @@ textarea, input {
                 if (open && entry) this.text(this.formatAchievementDate(entry.timestamp), metaX, y + 52, 10, rgb(230, 226, 190), 'left', 112);
                 this.text(open ? 'ПОЛУЧЕНО' : `${Math.floor(progress * def.target)}/${def.target}`, metaX, y + 74, 11, rgb(255, 238, 180), 'left', 112);
             }
-            this.button(324, 616, 300, 64, 'РЕКОРДЫ', () => this.transitionTo('records', 'ui_records'), primary, dark, light);
-            this.button(656, 616, 300, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(324, 616, 300, 64, 'РЕКОРДЫ', () => this.emitUiNavigationIntent('records', 'ui_records'), primary, dark, light);
+            this.button(656, 616, 300, 64, 'НАЗАД', () => this.emitUiNavigationIntent('menu', 'ui_back'), primary, dark, light);
         } else if (this.state === 'paused') {
-            this.button(430, 276, 420, 64, 'ПРОДОЛЖИТЬ', () => this.transitionTo('playing', 'ui_resume'), primary, dark, light);
-            this.button(430, 346, 420, 64, 'ЗВУК И НАСТРОЙКИ', () => this.transitionTo('sound', 'ui_sound'), primary, dark, light);
-            this.button(430, 416, 420, 64, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
+            this.button(430, 276, 420, 64, 'ПРОДОЛЖИТЬ', () => this.emitUiNavigationIntent('playing', 'ui_resume'), primary, dark, light);
+            this.button(430, 346, 420, 64, 'ЗВУК И НАСТРОЙКИ', () => this.emitUiNavigationIntent('sound', 'ui_sound'), primary, dark, light);
+            this.button(430, 416, 420, 64, 'В МЕНЮ', () => this.emitUiNavigationIntent('menu', 'ui_menu'), primary, dark, light);
         } else if (this.state === 'clear') {
             this.text(`СЧЁТ ${this.score}   ·   БАНАНЫ ${this.bananasCollected}`, 640, 290, 22, rgb(255, 240, 138));
-            this.button(430, 376, 420, 64, 'СЛЕДУЮЩИЙ УРОВЕНЬ', () => this.startLevel(this.levelIndex + 1), primary, dark, light);
-            this.button(430, 443, 420, 64, 'В МЕНЮ', () => this.transitionTo('menu', 'ui_menu'), primary, dark, light);
+            this.button(430, 376, 420, 64, 'СЛЕДУЮЩИЙ УРОВЕНЬ', () => this.emitUiStartLevelIntent(this.levelIndex + 1), primary, dark, light);
+            this.button(430, 443, 420, 64, 'В МЕНЮ', () => this.emitUiNavigationIntent('menu', 'ui_menu'), primary, dark, light);
         } else if (this.state === 'over') {
             this.drawAssetSprite(UI_SKIN.assets.emptyStateCard, 640, 310, 700, 160, 245, 'ui_achievements', 'death_summary');
             this.text(this.reason || 'Объект победил.', 640, 286, 20, rgb(255, 255, 255));
             this.text(`СЧЁТ ${this.score} · БАНАНЫ ${this.bananasCollected} · ПРОГРЕСС ${Math.min(100, Math.floor(this.progress / LEVELS[this.levelIndex].length * 100))}%`, 640, 334, 17, rgb(255, 238, 150));
-            this.button(430, 416, 420, 64, 'ПОВТОРИТЬ', () => { this.playVoice('ui', 0.8); this.startLevel(this.levelIndex); }, primary, dark, light);
-            this.button(430, 486, 420, 64, 'В МЕНЮ', () => { this.transitionTo('menu', 'ui_menu'); this.playVoice('ui', 0.5); }, primary, dark, light);
+            this.button(430, 416, 420, 64, 'ПОВТОРИТЬ', () => { this.playVoice('ui', 0.8); this.emitUiStartLevelIntent(this.levelIndex); }, primary, dark, light);
+            this.button(430, 486, 420, 64, 'В МЕНЮ', () => { this.emitUiNavigationIntent('menu', 'ui_menu'); this.playVoice('ui', 0.5); }, primary, dark, light);
         } else if (this.state === 'finished') {
             this.text('Дом построен. Возможно, это коровник.', 640, 300, 22, rgb(255, 255, 255));
             this.text(`ИТОГОВЫЙ СЧЁТ ${this.score}   ·   БАНАНЫ ${this.bananasCollected}`, 640, 344, 18, rgb(255, 240, 138));
-            this.button(430, 386, 420, 64, 'ЗАНОВО', () => this.startLevel(0), primary, dark, light);
-            this.button(430, 453, 420, 64, 'РЕКОРДЫ', () => this.transitionTo('records', 'ui_records'), primary, dark, light);
+            this.button(430, 386, 420, 64, 'ЗАНОВО', () => this.emitUiStartLevelIntent(0), primary, dark, light);
+            this.button(430, 453, 420, 64, 'РЕКОРДЫ', () => this.emitUiNavigationIntent('records', 'ui_records'), primary, dark, light);
         } else if (this.state === 'skins') {
             const cardW = 252;
             const cardH = 172;
@@ -5098,32 +5276,28 @@ textarea, input {
                 const y = 150 + row * gapY;
                 const selected = this.pendingSkinSelection === i;
                 this.drawAssetSprite(selected ? UI_SKIN.assets.primateCardSelected : UI_SKIN.assets.primateCard, x + cardW * 0.5, y + cardH * 0.5, cardW, cardH, 245, 'ui_achievements', 'shared_primate_card');
-                this.registerImageButton(x, y, cardW, cardH, () => {
-                    this.pendingSkinSelection = i;
-                    this.preloadCriticalPlayerSkinSprites('skin-card-select', i);
-                    this.playVoice('ui', 0.7);
-                });
+                this.registerImageButton(x, y, cardW, cardH, () => this.emitUiPreviewSkinIntent(i));
                 this.drawSkinPreview(x + cardW * 0.5, y + 55, i, selected);
                 if (selected) {
                     this.drawAssetSprite(UI_SKIN.assets.statusChip, x + cardW - 58, y + 24, 104, 34, 245, 'ui_achievements', 'primate_selected_badge');
                     this.text('✓ ВЫБРАН', x + cardW - 58, y + 27, 10, rgb(255, 235, 128), 'center', 96);
                 }
             }
-            this.button(330, 616, 300, 64, 'ВЫБРАТЬ', () => this.confirmSkinSelection(), primary, dark, light);
-            this.button(650, 616, 300, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(330, 616, 300, 64, 'ВЫБРАТЬ', () => this.emitUiConfirmSkinIntent(), primary, dark, light);
+            this.button(650, 616, 300, 64, 'НАЗАД', () => this.emitUiNavigationIntent('menu', 'ui_back'), primary, dark, light);
         } else if (this.state === 'levels') {
             for (let i = 0; i < LEVELS.length; i++) {
                 const row = Math.floor(i / 5);
                 const col = i % 5;
                 const open = this.developerMode || i <= this.unlockedLevel;
                 const action = open
-                    ? () => this.startLevel(i)
+                    ? () => this.emitUiStartLevelIntent(i)
                     : () => { this.bannerText = 'Сначала переживи предыдущий объект'; this.bannerTimer = TOAST_DURATION_SEC; };
                 const x = 68 + col * 234;
                 const y = 152 + row * 142;
                 this.drawUnifiedLevelCard(i, x, y, 210, 116, open, action);
             }
-            this.button(430, 625, 420, 64, 'НАЗАД', () => this.transitionTo('menu', 'ui_back'), primary, dark, light);
+            this.button(430, 625, 420, 64, 'НАЗАД', () => this.emitUiNavigationIntent('menu', 'ui_back'), primary, dark, light);
         }
     }
 
@@ -5216,6 +5390,12 @@ textarea, input {
         }
         const pad = (value: number) => String(value).padStart(2, '0');
         return `${pad(date.getDate())}.${pad(date.getMonth() + 1)}.${date.getFullYear()}`;
+    }
+
+    private previewSkinSelection(skinIndex: number): void {
+        this.pendingSkinSelection = clamp(skinIndex, 0, SKINS.length - 1);
+        this.preloadCriticalPlayerSkinSprites('skin-card-select', this.pendingSkinSelection);
+        this.playVoice('ui', 0.7);
     }
 
     private confirmSkinSelection(): void {

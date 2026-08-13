@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M03.7A",
+  "source_work_package": "M03.7",
+  "status": "pass",
+  "implementation_status": "complete",
+  "runtime_changed": true,
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "scope": {
+    "objective": "Route UI mutation through six typed intents and prove deterministic session/component callback and listener cleanup while retaining legacy paths.",
+    "ui_owner": "assets/scripts/gameplay/ui/GameplayUiIntentAdapter.ts",
+    "lifecycle_owner": "assets/scripts/gameplay/lifecycle/GameRuntimeLifecycleOwner.ts",
+    "integration_owner": "assets/scripts/GameRoot.ts",
+    "deferred": [
+      "hidden-reference scan, rollback proof and approved superseded-path removal to M03.7B",
+      "production signing and distribution identity to M02.1",
+      "immutable Web deployment topology to M02.7",
+      "owner-selected final cleanup to M12.7"
+    ]
+  },
+  "source_fingerprint": {
+    "algorithm": "sha256(path<TAB>sha256<LF>, entries in listed order)",
+    "aggregate_sha256": "328C0AA1847190DB7C8EB4E46CFCA759390B015B6C3EE470AFCF3A17CAA1C679",
+    "entry_count": 16,
+    "entries": [
+      {"path":"assets/scripts/gameplay/ui.meta","sha256":"A8E1E19B78951E4BCD3DFC0488920B4AED070846B03E805648BDCBBE0239074A"},
+      {"path":"assets/scripts/gameplay/ui/GameplayUiIntentAdapter.ts","sha256":"BBEE6015F5F55A8201520F31634EC2BDDBDBE5C12D629626960A5AE8F2CE1786"},
+      {"path":"assets/scripts/gameplay/ui/GameplayUiIntentAdapter.ts.meta","sha256":"AB4790B3EDC66232FB54B26CC80FFB629E52D09D93F87580F5D9F69AE4D2CBAB"},
+      {"path":"assets/scripts/gameplay/lifecycle.meta","sha256":"E10D2E6E2AB5573F5CD88DC460C9297E786C551D85724B1B46B44EA05803BA17"},
+      {"path":"assets/scripts/gameplay/lifecycle/GameRuntimeLifecycleOwner.ts","sha256":"96E5ED2C37592BA56BAD04AAC8E90677B6BF3AC3D585A7CE3124DFC0A44917B3"},
+      {"path":"assets/scripts/gameplay/lifecycle/GameRuntimeLifecycleOwner.ts.meta","sha256":"C91063422DF9A0840DA67C07E2B3FE56271CC99F6F9AF9DC840E908F0CA217FC"},
+      {"path":"assets/scripts/GameRoot.ts","sha256":"913CFA8790232845420994A85058C375AEE8FB6DE9FC96CBA86571284138B480"},
+      {"path":"docs/global_modernization/v3/M03/game_root_inventory.generated.json","sha256":"D88698406A2CFF6898AB7E6E781196B63652355ED332092B5F632E59084CC211"},
+      {"path":"native/engine/android/app/src/com/cocos/game/AppActivity.java","sha256":"F77114949E39C51305F3AA1ED36DEE45EE0A69697D40A2DB8A88B76C1EBBD414"},
+      {"path":"tools/codex/quality-gate/static-gates.json","sha256":"00504EC290B11987644D7C5E06A09691E91DE8E46BD1BEAF5BFF09F4CE2C9605"},
+      {"path":"tools/codex/test-game-runtime-ownership.js","sha256":"CC7A4A8A85F7B41F4EFBF07365545BFFDEA0CE6F2E44CCA94DB71A4F8A7F869E"},
+      {"path":"tools/codex/validate_game_runtime_ownership.py","sha256":"6EE47218E21709ED7752C20D39BE5ACF398433F984608CF8938BFE32C78570E8"},
+      {"path":"tools/codex/validate_game_root_dev_event_adapter.py","sha256":"DD70F1F234573C34C52D29EACD0BAF80D64AB046ED89CF0F831D4227FDE604C6"},
+      {"path":"tools/codex/web_runtime_ownership_function.js","sha256":"5ACCDC2B646F97271FEDA7133A74A382A5A81456988CDC087742E1AA9501599A"},
+      {"path":"tools/codex/Run-MtrAndroidRuntimeOwnershipQa.ps1","sha256":"6DE14EB561029895D9EA053E818D1F573BD1E68ED80E396C0C6DC743B41CDD47"},
+      {"path":"tools/validate-mtr-config.ps1","sha256":"1074CEEE700EAC3D839B5BF77F58726404315E30EC401698100FC14DDB3B99B5"}
+    ]
+  },
+  "contracts": {
+    "ui_actions": ["navigate", "start_level", "preview_skin", "confirm_skin", "open_developer_gate", "submit_developer_gate"],
+    "ui_action_count": 6,
+    "listener_routes": 8,
+    "session_schedule_routes": 11,
+    "component_schedule_routes": 12,
+    "direct_schedule_boundary_count": 1,
+    "stale_epoch_rejected": true,
+    "session_callbacks_cancelled_on_changed_transition": true,
+    "component_callbacks_survive_transition": true,
+    "destroy_removes_all_listeners_and_callbacks": true,
+    "legacy_paths_retained": true
+  },
+  "static_qa": {
+    "behavioral_groups": 14,
+    "behavioral_status": "PASS",
+    "structural_status": "PASS",
+    "game_root_lines": 6181,
+    "game_root_parse_diagnostics": 0,
+    "config_level_count": 15,
+    "config_platform_query_parity": "PASS",
+    "canonical_development_gate": {
+      "run_id": "qg.20260813143314.00504ec290b1",
+      "status": "PASS",
+      "passed": 20,
+      "total": 20,
+      "findings": 0,
+      "source_commit": "78d85a9a04dc04ca1ebe106a22e9ce4b5945b643",
+      "dirty_source_authorized": true,
+      "report": "temp/quality-gate-m03-7a/report-final-precommit.json",
+      "report_sha256": "0CF2B086C3B508B1B3C0F3B81D22FF21338FE4D80DD5CADBAE06F119B08BDB2E"
+    },
+    "post_commit_clean_gate": {
+      "status": "required_after_commit",
+      "report": "temp/quality-gate-m03-7a/report-final-clean.json"
+    }
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_qa_build": true,
+    "qa_build_log_sha256": "D53A1EFB420A13308607091B3F33D316D0B89D390097A5BA46B29E79C83AA0D9",
+    "ownership_a": {"checks_passed":8,"checks_total":8,"ready_markers":1,"failures":0,"report_sha256":"DA3902498EA22EDBC81EBDE02E6EC4B52BF6017777101A387615B8CB84EB80F9"},
+    "ownership_b": {"checks_passed":8,"checks_total":8,"ready_markers":1,"failures":0,"report_sha256":"DA3902498EA22EDBC81EBDE02E6EC4B52BF6017777101A387615B8CB84EB80F9"},
+    "pass_a": {"matrix_passed":34,"matrix_total":34,"interaction":"PASS","restart_passed":10,"restart_total":10,"report_sha256":"EADDBEA7D8B24922869FCA393B5DB3055C8F91962AD6404B941625C4C4A40EAD"},
+    "pass_b": {"matrix_passed":34,"matrix_total":34,"interaction":"PASS","restart_passed":10,"restart_total":10,"report_sha256":"F91D46A3E79BC7B9161B3AA11828951D0C1AAE90EDAB91EF673E3691D827E2D7"},
+    "focused_recovery": {"matrix_passed":34,"matrix_total":34,"interaction":"PASS","restart_passed":10,"restart_total":10,"report_sha256":"B2EAADFDC42BE45239DD7E56ED6667FEF2D5DA05D07E5729A42FB2619E70A032"},
+    "unexpected_diagnostics": 0
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "serial": "emulator-5554",
+    "qemu": true,
+    "abi": "x86_64",
+    "target_sdk": 35,
+    "fresh_build": true,
+    "build_log_sha256": "8DE907322B96A254A483F581EFA1DC5E9D882CB12A0CA90CDE05FDF42545108C",
+    "ownership_a": {"checks_passed":8,"checks_total":8,"ready_markers":1,"failures":0,"fatals":0,"report_sha256":"BCE205179A88097C56C6930DB02E104C166431F1D204ED79F6339AC33BC2274C"},
+    "ownership_b": {"checks_passed":8,"checks_total":8,"ready_markers":1,"failures":0,"fatals":0,"report_sha256":"D302624D6ED640E489F4987BA2CD1906675E5B4F420DF976683236C56CF6BB57"},
+    "ownership_recovery": {"checks_passed":8,"checks_total":8,"ready_markers":1,"failures":0,"fatals":0,"report_sha256":"2B3FD3CB994E7EEB94C9E343C760BD4392FEA59B880BCB45D91FA88D5DDA5C95"},
+    "pass_a": {"matrix_passed":28,"matrix_total":28,"interaction":"PASS","name_persistence":"PASS","restart_passed":10,"restart_total":10,"soak_seconds":30.367,"process_losses":0,"pss_start_kb":196233,"pss_end_kb":200105,"matrix_report_sha256":"57973A4FB3F5B07E08E223F5740E955DD983E23A832032413642B08265D29858","interaction_report_sha256":"16C23FDF00C0C2D0F47A4D0621E892E100B996F969AD32A76E6D7FA70560CC6A"},
+    "pass_b": {"matrix_passed":28,"matrix_total":28,"interaction":"PASS","name_persistence":"PASS","restart_passed":10,"restart_total":10,"soak_seconds":30.476,"process_losses":0,"pss_start_kb":229149,"pss_end_kb":214238,"matrix_report_sha256":"C5164FA0E33C8F1E7E0966DB76E732B941B978F0186FA2BDEF5134E12BA796F7","interaction_report_sha256":"9384C4D5A414E56705530217E0691E88FE542CF17EF17860A003C72BC58850D0"},
+    "focused_recovery": {"interaction":"PASS","name_persistence":"PASS","restart_passed":10,"restart_total":10,"soak_seconds":30.466,"process_losses":0,"pss_start_kb":185787,"pss_end_kb":200543,"interaction_report_sha256":"1E7883B3B892C4E717DE4FA8D4768CC66A2D0125F8C1DC398B2ACA0DCF87D9A0"},
+    "unexpected_diagnostics": 0,
+    "apk": {
+      "path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk",
+      "bytes": 142905915,
+      "sha256": "5E8AEB4783E4F418DACC3BCE31FA36175353D668A734D7FC666EC6A7A6CA6FCC",
+      "signature_scope": "debug_emulator_qa_only"
+    }
+  },
+  "m2_plus": {
+    "status": "PASS",
+    "applicable_slots": 12,
+    "passed_slots": 12,
+    "findings": 0,
+    "focused_recovery_applicable": true,
+    "report": "temp/m03-7a-m2-profile/20260813T141115Z/m2-plus.profile.json",
+    "report_sha256": "49DCB3CE3D0BC31862798404BE2799EB130636DBD045DFE5F907085459A94C2F"
+  },
+  "review": {
+    "accepted_findings": 1,
+    "fixed_findings": 1,
+    "open_findings": 0,
+    "transition_cleanup_fix": "PASS",
+    "android_web_contract_check": "approve",
+    "codex_final_review": "PASS",
+    "hygiene_gate": "PASS"
+  },
+  "roadmap": {
+    "execution_complete": 9,
+    "execution_total_current": 65,
+    "execution_remaining_current": 56,
+    "conditional_units": 7,
+    "source_complete": 23,
+    "source_total": 95,
+    "source_mandatory_remaining": 62,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M03.7B"
+  },
+  "release_blockers": ["M02.1", "M02.7", "M12.7"]
+}

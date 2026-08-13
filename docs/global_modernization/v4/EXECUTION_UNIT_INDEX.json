@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "plan_id": "mtr-global-modernization-v4-20260809",
-  "generated_at": "2026-08-13T12:50:00Z",
+  "generated_at": "2026-08-13T14:30:00Z",
   "basis": {
     "branch": "codex/mtr-source-freeze-v3",
     "documentation_basis_head": "95648b978117b8964469ad4fb236829d9540c239",
-    "runtime_checkpoint": "f99408151c98cf8806e269307fe5e552f5b185c9",
+    "runtime_checkpoint": "78d85a9a04dc04ca1ebe106a22e9ce4b5945b643",
     "external_package_sha256": "E1863AB38C6B20FDB7A548CFC3029E2049BECA199D0C0F3DC74480253FC53F80",
     "source_work_package_index": "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml"
   },
@@ -20,11 +20,11 @@
   },
   "execution_ledger": {
     "mandatory_units_total": 65,
-    "complete": 8,
+    "complete": 9,
     "ready": 1,
-    "planned": 53,
+    "planned": 52,
     "blocked": 3,
-    "mandatory_remaining": 57,
+    "mandatory_remaining": 56,
     "conditional_units_total": 7
   },
   "status_values": ["complete", "ready", "planned", "blocked", "conditional"],
@@ -51,8 +51,8 @@
     {"id":"M03.4","phase":"P1","status":"complete","source_packages":["M03.4"],"depends_on":["M03.3C"],"gates":["P4","M2_PLUS"],"objective":"Route jump, glide, dash and pause through one input adapter with no duplicate listeners or debounce drift."},
     {"id":"M03.5","phase":"P1","status":"complete","source_packages":["M03.5"],"depends_on":["M03.4"],"gates":["P4","M2_PLUS"],"objective":"Wrap collision callbacks in typed events while preserving exact legacy side-effect order."},
     {"id":"M03.6","phase":"P1","status":"complete","source_packages":["M03.6"],"depends_on":["M03.5"],"gates":["P4","M2_PLUS"],"objective":"Extract power-up spawn/activate/tick/expire/cleanup into an epoch-aware owner with injected tick."},
-    {"id":"M03.7A","phase":"P1","status":"ready","source_packages":["M03.7"],"source_slice":"ownership and cleanup proof with legacy retained","depends_on":["M03.6"],"gates":["P4","M2_PLUS"],"objective":"Remove UI/skin mutation authority and prove timer/listener/state cleanup without deleting old paths."},
-    {"id":"M03.7B","phase":"P1","status":"planned","source_packages":["M03.7"],"source_slice":"approved legacy path removal","depends_on":["M03.7A"],"gates":["QA7","M2_PLUS"],"objective":"Delete only superseded M03 paths after parity, hidden-reference scan and rollback proof."},
+    {"id":"M03.7A","phase":"P1","status":"complete","source_packages":["M03.7"],"source_slice":"ownership and cleanup proof with legacy retained","depends_on":["M03.6"],"gates":["P4","M2_PLUS"],"objective":"Remove UI/skin mutation authority and prove timer/listener/state cleanup without deleting old paths."},
+    {"id":"M03.7B","phase":"P1","status":"ready","source_packages":["M03.7"],"source_slice":"approved legacy path removal","depends_on":["M03.7A"],"gates":["QA7","M2_PLUS"],"objective":"Delete only superseded M03 paths after parity, hidden-reference scan and rollback proof."},
 
     {"id":"M04-A","phase":"P2","status":"planned","source_packages":["M04.1","M04.2"],"depends_on":["M03.7B"],"gates":["D4","P4"],"objective":"Revalidate asset inventory and establish canonical ownership/provenance/atlas/bundle schema."},
     {"id":"M04-B","phase":"P2","status":"planned","source_packages":["M04.3","M04.4"],"depends_on":["M04-A"],"gates":["P4"],"objective":"Extend fail-visible asset validation and generate manifest-linked contact sheets."},

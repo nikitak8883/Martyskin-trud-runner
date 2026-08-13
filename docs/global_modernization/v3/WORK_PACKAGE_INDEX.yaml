@@ -216,6 +216,11 @@ modules:
       - id: M03.7
         status: pending
         objective: Remove UI/skin mutation of physics and prove timer/listener/state cleanup across death, retry, pause and transition before deleting old paths.
+        targets: [assets/scripts/gameplay/ui, assets/scripts/gameplay/lifecycle, assets/scripts/GameRoot.ts]
+        execution_units: [M03.7A, M03.7B]
+        completed_execution_units: [M03.7A]
+        next_execution_unit: M03.7B
+        outputs: [assets/scripts/gameplay/ui/GameplayUiIntentAdapter.ts, assets/scripts/gameplay/lifecycle/GameRuntimeLifecycleOwner.ts, tools/codex/test-game-runtime-ownership.js, tools/codex/validate_game_runtime_ownership.py, tools/codex/web_runtime_ownership_function.js, tools/codex/Run-MtrAndroidRuntimeOwnershipQa.ps1, docs/global_modernization/v3/M03/game_runtime_ownership_report.md, docs/global_modernization/v3/M03/M03_7A_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_7A_CODE_REVIEW_REPORT.md]
         gates: [QA7, M2_PLUS]
 
   M04:
@@ -606,6 +611,6 @@ modules:
 next_safe_action:
   module: M03
   work_package: M03.7
-  execution_unit: M03.7A
-  prerequisites_complete: [M03.6]
-  action: Remove remaining UI and skin mutation authority from gameplay state and prove timer, listener and state cleanup while retaining legacy paths; execute Web plus Android-emulator P4 and M2_PLUS while release stays blocked.
+  execution_unit: M03.7B
+  prerequisites_complete: [M03.7A]
+  action: Prove hidden-reference and rollback coverage, remove only superseded M03 legacy paths, then execute QA7 and M2_PLUS while release stays blocked.

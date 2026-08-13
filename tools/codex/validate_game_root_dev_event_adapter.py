@@ -123,11 +123,13 @@ def main() -> int:
         "qa_bonus_spawn_and_retry": (r"guardSessionCallback\(\(\)\s*=>\s*this\.spawnAllBonusStatesForQa\(\)\)", 2),
         "qa_pause_after_start": (
             r"pendingQaPauseAfterStart\s*=\s*false;\s*"
-            r"this\.scheduleOnce\(this\.devEvents\.guardSessionCallback\(\(\)\s*=>\s*\{",
+            r"this\.scheduleSessionOnce\('qa\.pause-after-start',\s*"
+            r"this\.devEvents\.guardSessionCallback\(\(\)\s*=>\s*\{",
             1,
         ),
         "qa_collision_matrix": (r"guardSessionCallback\(\(\)\s*=>\s*this\.runCollisionRouterMatrixForQa\(\)\)", 1),
         "qa_powerup_lifecycle": (r"guardSessionCallback\(\(\)\s*=>\s*this\.runPowerUpLifecycleMatrixForQa\(\)\)", 1),
+        "qa_runtime_ownership": (r"guardSessionCallback\(\(\)\s*=>\s*this\.runRuntimeOwnershipMatrixForQa\(\)\)", 1),
     }
     guarded_route_counts: dict[str, int] = {}
     for route, (pattern, minimum_count) in required_guarded_routes.items():
