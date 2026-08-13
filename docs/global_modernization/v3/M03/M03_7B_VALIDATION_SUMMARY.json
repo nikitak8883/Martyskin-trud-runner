@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M03.7B",
+  "source_work_package": "M03.7",
+  "status": "pass",
+  "implementation_status": "complete",
+  "runtime_changed": true,
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "scope": {
+    "objective": "Remove only the callback-guard layer proven redundant after M03.7A, while preserving the single runtime scheduling owner and exact rollback evidence.",
+    "removed_symbols": [
+      "LifecycleEpoch.capture",
+      "LifecycleEpoch.guard",
+      "GameRootDevEventAdapter.guardSessionCallback"
+    ],
+    "removed_nested_wirings": 7,
+    "retained_runtime_owner": "assets/scripts/gameplay/lifecycle/GameRuntimeLifecycleOwner.ts",
+    "retained_session_schedule_routes": 11,
+    "retained_component_schedule_routes": 12,
+    "active_hidden_legacy_references": 0
+  },
+  "rollback": {
+    "anchor_commit": "08a55a5aaebbbac8592e2e662618ccfc8101a43c",
+    "manifest": "docs/global_modernization/v3/M03/M03_7B_CLEANUP_MANIFEST.json",
+    "pre_change_blobs_verified": 10,
+    "duplicate_backup_files_created": false
+  },
+  "source_fingerprint": {
+    "algorithm": "sha256(path<TAB>sha256<LF>, entries in listed order)",
+    "aggregate_sha256": "6A346D5A62F68AF2557BFFC8C82F965FAB083D7CE6308D97CD38AD6D1C005450",
+    "entry_count": 12,
+    "entries": [
+      {"path":"assets/scripts/GameRoot.ts","sha256":"9DEADDDB83CBC1A9BC8D732253C363F4D637BD467BB63CF920218F681CD13FF3"},
+      {"path":"assets/scripts/gameplay/lifecycle/GameRuntimeLifecycleOwner.ts","sha256":"E1175650E38AFAEF963075A6A6DA0EAE781D530D7665FA4851F29D1B7AE42F0B"},
+      {"path":"assets/scripts/qa/GameRootDevEventAdapter.ts","sha256":"B27705BE819A85CA1835E696E79C2E88BBEDA8DEED18D732A565ECFB8B3E08E2"},
+      {"path":"assets/scripts/qa/LifecycleEpoch.ts","sha256":"A893588A998165D312B4B304346BCD5315DBF7275602F0CA67ADBD310D6EBC55"},
+      {"path":"docs/global_modernization/v4/library/reference/LifecycleEpoch.reference.ts","sha256":"59D15175321849FDE6E65582BC3019B508DD875CF198683DB51B1F1116693601"},
+      {"path":"tools/codex/test-game-root-dev-event-adapter.js","sha256":"BC8DA29A7A0644684613FA9AE05DDE93B79FEF56B9A1FAF54E8B36225CC220CB"},
+      {"path":"tools/codex/test-lifecycle-epoch.js","sha256":"5F9AC143F4ACF9DE1F0C4785D26181BB5471386F59E3B6F1DBB53E4153B2AFB3"},
+      {"path":"tools/codex/validate_game_root_dev_event_adapter.py","sha256":"F8296A156BDC9B88F1EB6A7F8AF74FDDC20CA51C1E895E412581C05AEBF04AF4"},
+      {"path":"tools/codex/validate_lifecycle_epoch.py","sha256":"80E70AFFAF838EF1A833524C4F6C4FA1FB3F4709FE3DABD0B37C765B900ED340"},
+      {"path":"tools/codex/quality-gate/static-gates.json","sha256":"5C95C75540CE9025FCF08A2B56A3B3B78865D4AA56BCE317292ABCD6153E2FE4"},
+      {"path":"tools/codex/validate_m03_7b_cleanup.py","sha256":"D383D1EEBAAD9CF0A557EE8D021026E04F3E3671C888F0DD3FC7A3E825DC0191"},
+      {"path":"docs/global_modernization/v3/M03/M03_7B_CLEANUP_MANIFEST.json","sha256":"BF6847785F0EA3BF5899A139C99E58EF1C3EE90E60DDB35E6494224C005C58A5"}
+    ]
+  },
+  "static_qa": {
+    "lifecycle_epoch_test_groups": 10,
+    "dev_event_adapter_test_groups": 10,
+    "runtime_ownership_test_groups": 14,
+    "cleanup_validator": "PASS",
+    "rollback_blobs_verified": 10,
+    "canonical_development_gate": {
+      "run_id": "qg.m03-7b.final-precommit.20260813",
+      "status": "PASS",
+      "passed": 21,
+      "total": 21,
+      "findings": 0,
+      "source_commit": "08a55a5aaebbbac8592e2e662618ccfc8101a43c",
+      "dirty_source_authorized": true,
+      "report": "temp/quality-gate-m03-7b/report-final-precommit.json",
+      "report_sha256": "05C59D92AAC4F733ABC765391D5F70D338E0F8DC613A0DE7F8DCAD12DE412366"
+    },
+    "post_commit_clean_gate": {
+      "status": "required_after_commit",
+      "report": "temp/quality-gate-m03-7b/report-final-clean.json"
+    }
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_qa_build": true,
+    "qa_build_log_sha256": "9FCEA70137E45FBE1B95FC1A8BB91D3D5F0A88A16F81B39467FFEA87EA03229D",
+    "pass_a": {"matrix_passed":34,"matrix_total":34,"interaction":"PASS","restart_passed":10,"restart_total":10,"report_sha256":"D6CE2F2584D9EC8F575ABC761873FC5E70A54624D79CDC3B64D8D70B97B04496"},
+    "pass_b": {"matrix_passed":34,"matrix_total":34,"interaction":"PASS","restart_passed":10,"restart_total":10,"report_sha256":"95B252830FC05F7D93B984DBC2A74FB920110DAFD953CAD6884EE3F277A3B934"},
+    "focused_recovery": {"matrix_passed":34,"matrix_total":34,"interaction":"PASS","restart_passed":10,"restart_total":10,"report_sha256":"88164FCF40C196BF6E287A9DBCDC7537421A5080BC67EA5524E849AFB1DD9FD4"},
+    "visual_14x5": {"screens":14,"viewports":5,"passed":70,"total":70,"manual_contact_sheet_review":"PASS","report_sha256":"916B22986E6A0B46D4E14EB37063283541DF36EA9B67A84D3717D0C99ABDC8D6"},
+    "gameplay_probes": {"collision":"PASS","powerup":"PASS","dev_event_reset":"PASS"},
+    "soak": {"status":"PASS","seconds":60.332,"input_bursts":7,"console_errors":0,"console_warnings":0,"report_sha256":"D6051AD221D8919FFE8DD0996D9E1A9811EE78325254BCD30B8E44D5FBD9122D"},
+    "unexpected_diagnostics": 0
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "serial": "emulator-5554",
+    "qemu": true,
+    "abi": "x86_64",
+    "fresh_build": true,
+    "build_log_sha256": "9CDFFFB26A861DBDA0C35541444FE64692FFAC51AD0D563C58B0D27F580DEE9F",
+    "pass_a": {"matrix_passed":28,"matrix_total":28,"interaction":"PASS","restart_passed":10,"restart_total":10,"soak_seconds":30.604,"process_losses":0,"pss_start_kb":205339,"pss_end_kb":202435},
+    "pass_b": {"matrix_passed":28,"matrix_total":28,"interaction":"PASS","restart_passed":10,"restart_total":10,"soak_seconds":30.660,"process_losses":0,"pss_start_kb":202602,"pss_end_kb":208891},
+    "focused_recovery": {"interaction":"PASS","restart_passed":10,"restart_total":10,"soak_seconds":30.496,"process_losses":0,"pss_start_kb":229853,"pss_end_kb":189688},
+    "ownership_a_b_recovery": "PASS",
+    "gameplay_probes": {"collision":"PASS","powerup":"PASS","dev_event_reset":"PASS"},
+    "unexpected_diagnostics": 0,
+    "apk": {
+      "path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk",
+      "bytes": 142905580,
+      "sha256": "3A6C797B82AF4D4512648E69150E55933AABBA8DAE931A85304A44681A58298B",
+      "signature_scope": "debug_emulator_qa_only"
+    }
+  },
+  "profiles": {
+    "m2_plus": {"status":"PASS","passed_slots":12,"applicable_slots":12,"findings":0,"report":"temp/m03-7b-profiles/20260813T155751Z/m2-plus.profile.json","report_sha256":"EDCC3BCF0CBC9AF2A2E1D22EE4E9F61682ECA7D654D1BE636EC995FE33B68DFC"},
+    "qa7": {"status":"PASS","passed_slots":7,"applicable_slots":7,"findings":0,"report":"temp/m03-7b-profiles/20260813T155751Z/qa7.profile.json","report_sha256":"23F60DB554A05D6F4B9C6826ECE0355AF2E98244D3AEE40D8FBE7CF6C574F0EB"}
+  },
+  "review": {
+    "accepted_findings": 0,
+    "fixed_findings": 0,
+    "rejected_false_positives": 2,
+    "open_findings": 0,
+    "codex_final_review": "PASS",
+    "hygiene_gate": "PASS"
+  },
+  "roadmap": {
+    "execution_complete": 10,
+    "execution_total_current": 65,
+    "execution_remaining_current": 55,
+    "conditional_units": 7,
+    "source_complete": 24,
+    "source_total": 95,
+    "source_mandatory_remaining": 61,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M04-A"
+  },
+  "release_blockers": ["M02.1", "M02.7", "M12.7"]
+}

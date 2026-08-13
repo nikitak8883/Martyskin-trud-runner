@@ -1,12 +1,12 @@
-# M03.7A runtime ownership report
+# M03.7 runtime ownership and cleanup report
 
 Date: 2026-08-13  
-Execution unit: `M03.7A`  
+Execution units: `M03.7A + M03.7B`  
 Verdict: `COMPLETE / P4 PASS / M2_PLUS PASS / RELEASE BLOCKED`
 
 ## Objective and boundary
 
-M03.7A removes direct gameplay mutation authority from rendered UI callbacks and proves deterministic ownership of component listeners and scheduled work. Legacy methods remain available behind the adapters; deleting superseded paths is deliberately deferred to M03.7B.
+M03.7A removed direct gameplay mutation authority from rendered UI callbacks and established deterministic ownership of component listeners and scheduled work. M03.7B then proved rollback and hidden-reference coverage and removed only the duplicate callback-guard layer; gameplay mutation methods and the single scheduling owner remain intact.
 
 No balance values, physics constants, content IDs, persistence schema, production signing, Pages deployment or release artifacts changed. Android runtime QA used `emulator-5554` only; no physical device was used.
 
@@ -58,9 +58,11 @@ The GameRoot integration has one injected Cocos scheduler boundary. All other sc
 - `GameRuntimeLifecycleOwner.ts`: `96E5ED2C37592BA56BAD04AAC8E90677B6BF3AC3D585A7CE3124DFC0A44917B3`.
 - `GameRoot.ts`: `913CFA8790232845420994A85058C375AEE8FB6DE9FC96CBA86571284138B480`.
 
-## Deferred work and rollback
+## M03.7B cleanup closure
 
-- M03.7B must inventory hidden references and produce a rollback map before deleting any superseded path.
-- The accepted rollback anchor before this unit is `78d85a9a04dc04ca1ebe106a22e9ce4b5945b643`; the exact new-source identity is in `M03_7A_VALIDATION_SUMMARY.json`.
+- Removed `LifecycleEpoch.capture`, `LifecycleEpoch.guard`, `GameRootDevEventAdapter.guardSessionCallback` and seven nested wrappers only.
+- `GameRuntimeLifecycleOwner` remains the sole scheduling/stale-suppression owner; all 11 session and 12 component routes remain covered.
+- Hidden active legacy references: `0`; exact rollback blobs: `10/10`; rollback anchor: `08a55a5aaebbbac8592e2e662618ccfc8101a43c`.
+- Fresh acceptance: static `21/21`, QA7 `7/7`, M2_PLUS `12/12`, Web visual `70/70`, Web/Android recovery and `30/30` restarts pass.
+- Exact current-source and evidence identities are in `M03_7B_VALIDATION_SUMMARY.json`.
 - Release remains blocked by M02.1, M02.7 and M12.7.
-

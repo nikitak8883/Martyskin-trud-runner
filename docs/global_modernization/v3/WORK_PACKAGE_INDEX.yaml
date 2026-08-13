@@ -1,5 +1,5 @@
 schema_version: 1
-updated_at: "2026-08-09"
+updated_at: "2026-08-13"
 project: martyshkin_trud_runner
 execution_model: dependency_gated_bounded_patch_with_v4_execution_units
 runtime_started: true
@@ -173,7 +173,7 @@ modules:
   M03:
     name: gameroot_decomposition_and_gameplay_routing_seams
     priority: P0
-    current_status: m03_6_complete_m03_7a_next_release_blocked
+    current_status: complete_release_blocked
     depends_on: [M00, M01]
     entry_gate_work_packages: [M02.2, M02.3, M02.4, M02.5]
     work_packages:
@@ -214,13 +214,13 @@ modules:
         outputs: [assets/scripts/gameplay/powerups/PowerUpLifecycle.ts, tools/codex/test-powerup-lifecycle.js, tools/codex/validate_powerup_lifecycle.py, tools/codex/web_powerup_lifecycle_runtime_function.js, tools/codex/Run-MtrAndroidPowerUpLifecycleQa.ps1, docs/global_modernization/v3/M03/powerup_lifecycle_report.md, docs/global_modernization/v3/M03/M03_6_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_6_CODE_REVIEW_REPORT.md]
         gates: [P4, M2_PLUS]
       - id: M03.7
-        status: pending
+        status: complete
         objective: Remove UI/skin mutation of physics and prove timer/listener/state cleanup across death, retry, pause and transition before deleting old paths.
         targets: [assets/scripts/gameplay/ui, assets/scripts/gameplay/lifecycle, assets/scripts/GameRoot.ts]
         execution_units: [M03.7A, M03.7B]
-        completed_execution_units: [M03.7A]
-        next_execution_unit: M03.7B
-        outputs: [assets/scripts/gameplay/ui/GameplayUiIntentAdapter.ts, assets/scripts/gameplay/lifecycle/GameRuntimeLifecycleOwner.ts, tools/codex/test-game-runtime-ownership.js, tools/codex/validate_game_runtime_ownership.py, tools/codex/web_runtime_ownership_function.js, tools/codex/Run-MtrAndroidRuntimeOwnershipQa.ps1, docs/global_modernization/v3/M03/game_runtime_ownership_report.md, docs/global_modernization/v3/M03/M03_7A_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_7A_CODE_REVIEW_REPORT.md]
+        completed_execution_units: [M03.7A, M03.7B]
+        next_execution_unit: null
+        outputs: [assets/scripts/gameplay/ui/GameplayUiIntentAdapter.ts, assets/scripts/gameplay/lifecycle/GameRuntimeLifecycleOwner.ts, tools/codex/test-game-runtime-ownership.js, tools/codex/validate_game_runtime_ownership.py, tools/codex/web_runtime_ownership_function.js, tools/codex/Run-MtrAndroidRuntimeOwnershipQa.ps1, tools/codex/validate_m03_7b_cleanup.py, docs/global_modernization/v3/M03/M03_7B_CLEANUP_MANIFEST.json, docs/global_modernization/v3/M03/game_runtime_ownership_report.md, docs/global_modernization/v3/M03/M03_7A_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_7A_CODE_REVIEW_REPORT.md, docs/global_modernization/v3/M03/M03_7B_VALIDATION_SUMMARY.json, docs/global_modernization/v3/M03/M03_7B_CODE_REVIEW_REPORT.md]
         gates: [QA7, M2_PLUS]
 
   M04:
@@ -609,8 +609,8 @@ modules:
         gates: [RC2]
 
 next_safe_action:
-  module: M03
-  work_package: M03.7
-  execution_unit: M03.7B
-  prerequisites_complete: [M03.7A]
-  action: Prove hidden-reference and rollback coverage, remove only superseded M03 legacy paths, then execute QA7 and M2_PLUS while release stays blocked.
+  module: M04
+  work_package: M04.1
+  execution_unit: M04-A
+  prerequisites_complete: [M03.7B]
+  action: Revalidate the current asset inventory and establish canonical ownership, provenance, atlas and bundle contracts without changing runtime assets in the inventory slice.

@@ -79,7 +79,6 @@ def main() -> int:
         "epoch_event": r"code\s*:\s*'session\.epoch\.changed'",
         "reset_begin_event": r"code\s*:\s*'session\.reset\.begin'",
         "reset_end_event": r"code\s*:\s*'session\.reset\.end'",
-        "guard": r"guardSessionCallback<[^>]+>",
         "bounded_export": r"return\s+this\.events\.exportJson\(maxEvents,\s*maxBytes\)",
         "sink_isolation": r"try\s*\{\s*this\.onEvent\(event\);\s*\}\s*catch\s*\{",
     }
@@ -118,31 +117,47 @@ def main() -> int:
     require(len(re.findall(r"this\.devEvents\.recordTransition\(", game_root)) == 3, "transition_branch_observer_count", errors)
     require(len(re.findall(r"this\.devEvents\.beginReset\(", game_root)) == 1, "reset_begin_wiring_count", errors)
     require(len(re.findall(r"this\.devEvents\.endReset\(", game_root)) == 1, "reset_end_wiring_count", errors)
-    required_guarded_routes = {
-        "qa_obstacle_spawn": (r"guardSessionCallback\(\(\)\s*=>\s*this\.spawnAllObstacleFamiliesForQa\(\)\)", 1),
-        "qa_bonus_spawn_and_retry": (r"guardSessionCallback\(\(\)\s*=>\s*this\.spawnAllBonusStatesForQa\(\)\)", 2),
+    required_session_owned_routes = {
+        "qa_obstacle_spawn": (
+            r"scheduleSessionOnce\('qa\.obstacle-spawn',\s*\(\)\s*=>\s*"
+            r"this\.spawnAllObstacleFamiliesForQa\(\),\s*0\)",
+            1,
+        ),
+        "qa_bonus_spawn_and_retry": (
+            r"scheduleSessionOnce\('qa\.bonus-spawn(?:-retry)?',\s*\(\)\s*=>\s*"
+            r"this\.spawnAllBonusStatesForQa\(\),\s*(?:0|0\.35)\)",
+            2,
+        ),
         "qa_pause_after_start": (
             r"pendingQaPauseAfterStart\s*=\s*false;\s*"
             r"this\.scheduleSessionOnce\('qa\.pause-after-start',\s*"
-            r"this\.devEvents\.guardSessionCallback\(\(\)\s*=>\s*\{",
+            r"\(\)\s*=>\s*\{",
             1,
         ),
-        "qa_collision_matrix": (r"guardSessionCallback\(\(\)\s*=>\s*this\.runCollisionRouterMatrixForQa\(\)\)", 1),
-        "qa_powerup_lifecycle": (r"guardSessionCallback\(\(\)\s*=>\s*this\.runPowerUpLifecycleMatrixForQa\(\)\)", 1),
-        "qa_runtime_ownership": (r"guardSessionCallback\(\(\)\s*=>\s*this\.runRuntimeOwnershipMatrixForQa\(\)\)", 1),
+        "qa_collision_matrix": (
+            r"scheduleSessionOnce\('qa\.collision-matrix',\s*\(\)\s*=>\s*"
+            r"this\.runCollisionRouterMatrixForQa\(\),\s*0\.05\)",
+            1,
+        ),
+        "qa_powerup_lifecycle": (
+            r"scheduleSessionOnce\('qa\.powerup-lifecycle',\s*\(\)\s*=>\s*"
+            r"this\.runPowerUpLifecycleMatrixForQa\(\),\s*0\.05\)",
+            1,
+        ),
+        "qa_runtime_ownership": (
+            r"scheduleSessionOnce\(\s*'qa\.runtime-ownership',\s*\(\)\s*=>\s*"
+            r"this\.runRuntimeOwnershipMatrixForQa\(\),\s*0\.05",
+            1,
+        ),
     }
-    guarded_route_counts: dict[str, int] = {}
-    for route, (pattern, minimum_count) in required_guarded_routes.items():
+    session_owned_route_counts: dict[str, int] = {}
+    for route, (pattern, expected_count) in required_session_owned_routes.items():
         actual_count = len(re.findall(pattern, game_root, re.DOTALL))
-        guarded_route_counts[route] = actual_count
-        require(actual_count >= minimum_count, f"session_guard_route:{route}", errors)
+        session_owned_route_counts[route] = actual_count
+        require(actual_count == expected_count, f"session_owned_route:{route}", errors)
 
-    session_guard_wiring_count = len(re.findall(r"guardSessionCallback\(", game_root))
-    require(
-        session_guard_wiring_count >= sum(minimum for _, minimum in required_guarded_routes.values()),
-        "session_guard_wiring_count",
-        errors,
-    )
+    legacy_session_guard_wiring_count = len(re.findall(r"guardSessionCallback", game_root + adapter))
+    require(legacy_session_guard_wiring_count == 0, "legacy_session_guard_wiring_count", errors)
 
     reset_reasons = {
         "boot": 1,
@@ -199,7 +214,8 @@ def main() -> int:
         "release_disabled_log_still_advances_epoch",
         "transition_events_are_unique_and_do_not_write_state",
         "reset_pairing_rejects_nested_and_stale_end",
-        "guard_suppresses_work_after_next_reset",
+        "reset_advances_shared_epoch_identity",
+        "destroy_invalidation_advances_once_and_records_event",
         "ten_loop_runtime_contract_is_exact",
         "ring_and_export_remain_bounded",
         "compilerTarget: 'ES2015'",
@@ -275,8 +291,8 @@ def main() -> int:
         "release_web_events_enabled": web_config.get("debug"),
         "reset_reasons": sorted((*reset_reasons, "qa_reset_loop")),
         "dev_event_reset_loop_wiring_count": dev_event_reset_loop_wiring_count,
-        "guarded_route_counts": guarded_route_counts,
-        "session_guard_wiring_count": session_guard_wiring_count,
+        "session_owned_route_counts": session_owned_route_counts,
+        "legacy_session_guard_wiring_count": legacy_session_guard_wiring_count,
         "state_writer_count": len(re.findall(r"this\.state\s*=\s*next\b", game_root)),
         "static_gate_steps": len(steps),
         "status": "PASS" if not errors else "FAIL",

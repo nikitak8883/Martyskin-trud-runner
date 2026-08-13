@@ -44,7 +44,7 @@ interface OwnedListener {
 }
 
 /**
- * Pure M03.7A owner for Cocos one-shot callbacks and listener cleanup.
+ * Pure M03.7 runtime owner for Cocos one-shot callbacks and listener cleanup.
  * Scheduling and unsubscription are injected so this contract stays directly
  * testable without importing the engine.
  */

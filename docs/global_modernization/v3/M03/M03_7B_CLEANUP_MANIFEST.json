@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m03_7b_cleanup_manifest",
+  "execution_unit": "M03.7B",
+  "scope": "superseded callback-guard layer only",
+  "rollback": {
+    "repository_root": "C:/Projects/Monkey Work",
+    "anchor_commit": "08a55a5aaebbbac8592e2e662618ccfc8101a43c",
+    "project_prefix": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/",
+    "pre_change_blobs": {
+      "assets/scripts/GameRoot.ts": "b2f0d9a5f913cfe3cf4a0fb0e5394c3d95b4f146",
+      "assets/scripts/gameplay/lifecycle/GameRuntimeLifecycleOwner.ts": "a7578ad522fdd5fbdf787b43f2fb7896bb872fde",
+      "assets/scripts/qa/GameRootDevEventAdapter.ts": "8429f8c5bc8a0c77dfabb55c50728082fc1b774b",
+      "assets/scripts/qa/LifecycleEpoch.ts": "501bbf71f20fc241ea3c77fddff84c68c74292c1",
+      "docs/global_modernization/v4/library/reference/LifecycleEpoch.reference.ts": "2c8e6f34fb117822bea8649c4f18e124a42512e0",
+      "tools/codex/test-game-root-dev-event-adapter.js": "f74b652df163e2b2ec9587b47c87f6b2efea01b4",
+      "tools/codex/test-lifecycle-epoch.js": "f5404b9460216146d1ed3527d8b2e7827c40c597",
+      "tools/codex/validate_game_root_dev_event_adapter.py": "5e2d3ab66754682923fb81a6f8096c99205a2734",
+      "tools/codex/validate_lifecycle_epoch.py": "eba9fc8836475dc276de3efb77407ca61c4308e5",
+      "tools/codex/quality-gate/static-gates.json": "6f74b98cc430d7d4f756697adacc8a387421136f"
+    }
+  },
+  "removed_symbols": [
+    "LifecycleEpoch.capture",
+    "LifecycleEpoch.guard",
+    "GameRootDevEventAdapter.guardSessionCallback"
+  ],
+  "removed_wirings": [
+    "qa.obstacle-spawn",
+    "qa.bonus-spawn",
+    "qa.pause-after-start",
+    "qa.collision-matrix",
+    "qa.powerup-lifecycle",
+    "qa.runtime-ownership",
+    "qa.bonus-spawn-retry"
+  ],
+  "retained_owners": {
+    "epoch_identity": "GameRootDevEventAdapter + LifecycleEpoch",
+    "session_scheduling_and_stale_suppression": "GameRuntimeLifecycleOwner",
+    "gameplay_mutation": "typed adapters and GameRoot internal executors"
+  },
+  "active_hidden_reference_roots": [
+    "assets/scripts",
+    "native/engine/android/app/src"
+  ],
+  "expected": {
+    "active_legacy_symbol_references": 0,
+    "direct_session_owned_routes": 7,
+    "game_root_direct_schedule_once": 1,
+    "game_root_session_schedule_routes": 11
+  }
+}

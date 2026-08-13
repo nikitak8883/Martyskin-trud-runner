@@ -2520,11 +2520,11 @@ export class GameRoot extends Component {
         this.playVoice('ui', 0.45);
         if (this.pendingQaObstacleSpawn) {
             this.pendingQaObstacleSpawn = false;
-            this.scheduleSessionOnce('qa.obstacle-spawn', this.devEvents.guardSessionCallback(() => this.spawnAllObstacleFamiliesForQa()), 0);
+            this.scheduleSessionOnce('qa.obstacle-spawn', () => this.spawnAllObstacleFamiliesForQa(), 0);
         }
         if (this.pendingQaBonusSpawn) {
             this.pendingQaBonusSpawn = false;
-            this.scheduleSessionOnce('qa.bonus-spawn', this.devEvents.guardSessionCallback(() => this.spawnAllBonusStatesForQa()), 0);
+            this.scheduleSessionOnce('qa.bonus-spawn', () => this.spawnAllBonusStatesForQa(), 0);
         }
         if (this.pendingQaCollisionMatrix) {
             this.scheduleCollisionRouterMatrixForQa();
@@ -2537,7 +2537,7 @@ export class GameRoot extends Component {
         }
         if (this.pendingQaPauseAfterStart) {
             this.pendingQaPauseAfterStart = false;
-            this.scheduleSessionOnce('qa.pause-after-start', this.devEvents.guardSessionCallback(() => {
+            this.scheduleSessionOnce('qa.pause-after-start', () => {
                 if (this.state !== 'playing') {
                     this.pendingQaPauseShowTouchZones = false;
                     return;
@@ -2547,7 +2547,7 @@ export class GameRoot extends Component {
                 this.gameplayInput.dispatch({ action: 'pause', phase: 'trigger', source: 'qa' });
                 console.log(`MTR_QA_STARTUP_PAUSE_APPLIED level=${this.levelIndex + 1}`);
                 console.log('MTR_QA_SCREEN_READY screen=paused');
-            }), 0.18);
+            }, 0.18);
         }
     }
 
@@ -2749,7 +2749,7 @@ export class GameRoot extends Component {
 
     private scheduleCollisionRouterMatrixForQa(): void {
         this.pendingQaCollisionMatrix = false;
-        this.scheduleSessionOnce('qa.collision-matrix', this.devEvents.guardSessionCallback(() => this.runCollisionRouterMatrixForQa()), 0.05);
+        this.scheduleSessionOnce('qa.collision-matrix', () => this.runCollisionRouterMatrixForQa(), 0.05);
     }
 
     private runCollisionRouterMatrixForQa(): void {
@@ -2935,14 +2935,14 @@ export class GameRoot extends Component {
 
     private schedulePowerUpLifecycleMatrixForQa(): void {
         this.pendingQaPowerUpLifecycle = false;
-        this.scheduleSessionOnce('qa.powerup-lifecycle', this.devEvents.guardSessionCallback(() => this.runPowerUpLifecycleMatrixForQa()), 0.05);
+        this.scheduleSessionOnce('qa.powerup-lifecycle', () => this.runPowerUpLifecycleMatrixForQa(), 0.05);
     }
 
     private scheduleRuntimeOwnershipMatrixForQa(): void {
         this.pendingQaRuntimeOwnership = false;
         this.scheduleSessionOnce(
             'qa.runtime-ownership',
-            this.devEvents.guardSessionCallback(() => this.runRuntimeOwnershipMatrixForQa()),
+            () => this.runRuntimeOwnershipMatrixForQa(),
             0.05,
         );
     }
@@ -3247,7 +3247,7 @@ export class GameRoot extends Component {
             this.bannerText = 'Грузим все варианты экипировки...';
             this.bannerTimer = TOAST_DURATION_SEC;
             console.log(`MTR_QA_BONUS_PRELOAD_WAIT variants=${requiredVariants.length} missing=${missing.length}${sample ? ` sample=${sample}` : ''}`);
-            this.scheduleSessionOnce('qa.bonus-spawn-retry', this.devEvents.guardSessionCallback(() => this.spawnAllBonusStatesForQa()), 0.35);
+            this.scheduleSessionOnce('qa.bonus-spawn-retry', () => this.spawnAllBonusStatesForQa(), 0.35);
             return;
         }
         if (this.state !== 'playing') {

@@ -77,16 +77,6 @@ function testGroup(name, callback) {
   }
 }
 
-async function testGroupAsync(name, callback) {
-  try {
-    await callback();
-    passedGroups += 1;
-  } catch (error) {
-    error.message = `${name}: ${error.message}`;
-    throw error;
-  }
-}
-
 testGroup('default_and_initial_values', () => {
   const zero = new LifecycleEpoch();
   assert.strictEqual(zero.current(), 0);
@@ -112,11 +102,10 @@ testGroup('invalid_initial_values', () => {
   }
 });
 
-testGroup('capture_and_current_are_stable', () => {
+testGroup('current_is_stable', () => {
   const epoch = new LifecycleEpoch(7);
-  assert.strictEqual(epoch.capture(), 7);
   assert.strictEqual(epoch.current(), 7);
-  assert.strictEqual(epoch.capture(), epoch.current());
+  assert.strictEqual(epoch.current(), epoch.current());
 });
 
 testGroup('advance_is_monotonic', () => {
@@ -134,83 +123,23 @@ testGroup('is_current_rejects_invalid_stale_and_future_values', () => {
   }
 });
 
-testGroup('guard_executes_and_forwards_arguments', () => {
-  const epoch = new LifecycleEpoch(5);
-  const calls = [];
-  const guarded = epoch.guard((...args) => calls.push(args));
-  assert.strictEqual(guarded('alpha', 2), true);
-  assert.deepStrictEqual(calls, [['alpha', 2]]);
-});
-
-testGroup('guard_becomes_stale_after_advance', () => {
+testGroup('is_current_tracks_monotonic_identity', () => {
   const epoch = new LifecycleEpoch();
-  let calls = 0;
-  const guarded = epoch.guard(() => { calls += 1; });
-  epoch.advance();
-  assert.strictEqual(guarded(), false);
-  assert.strictEqual(guarded(), false);
-  assert.strictEqual(calls, 0);
-});
-
-testGroup('guard_captures_internally_and_cannot_future_activate', () => {
-  const epoch = new LifecycleEpoch();
-  assert.throws(() => epoch.guard(1, () => {}), /callback must be a function/);
-  const currentGuard = epoch.guard(() => {});
-  epoch.advance();
-  assert.strictEqual(currentGuard(), false);
-  epoch.advance();
-  assert.strictEqual(currentGuard(), false);
-});
-
-testGroup('numeric_tokens_are_captured_snapshots_not_future_guards', () => {
-  const epoch = new LifecycleEpoch();
-  const captured = epoch.capture();
-  const synthesizedFuture = captured + 1;
-  assert.strictEqual(epoch.isCurrent(captured), true);
-  assert.strictEqual(epoch.isCurrent(synthesizedFuture), false);
-  epoch.advance();
-  assert.strictEqual(epoch.isCurrent(captured), false);
-  assert.strictEqual(epoch.isCurrent(synthesizedFuture), true);
-  const guardCapturedBeforeAdvance = new LifecycleEpoch().guard(() => {});
-  assert.strictEqual(guardCapturedBeforeAdvance(), true);
-});
-
-testGroup('guard_validates_callback', () => {
-  const epoch = new LifecycleEpoch();
-  for (const value of [undefined, null, 0, {}, 'callback']) {
-    assert.throws(() => epoch.guard(value), /callback must be a function/);
-  }
-});
-
-testGroup('callback_exception_propagates', () => {
-  const epoch = new LifecycleEpoch();
-  const expected = new Error('callback-failure');
-  const guarded = epoch.guard(() => { throw expected; });
-  assert.throws(() => guarded(), (error) => error === expected);
-  assert.strictEqual(epoch.current(), 0);
-});
-
-testGroup('callback_advance_invalidates_later_invocations', () => {
-  const epoch = new LifecycleEpoch();
-  let calls = 0;
-  const guarded = epoch.guard(() => {
-    calls += 1;
-    epoch.advance();
-  });
-  assert.strictEqual(guarded(), true);
-  assert.strictEqual(guarded(), false);
-  assert.strictEqual(calls, 1);
+  const first = epoch.current();
+  assert.strictEqual(epoch.isCurrent(first), true);
+  const second = epoch.advance();
+  assert.strictEqual(epoch.isCurrent(first), false);
+  assert.strictEqual(epoch.isCurrent(second), true);
 });
 
 testGroup('instances_are_independent', () => {
   const first = new LifecycleEpoch();
   const second = new LifecycleEpoch();
-  const firstGuard = first.guard(() => {});
-  const secondGuard = second.guard(() => {});
   first.advance();
-  assert.strictEqual(firstGuard(), false);
-  assert.strictEqual(secondGuard(), true);
+  assert.strictEqual(first.current(), 1);
   assert.strictEqual(second.current(), 0);
+  assert.strictEqual(first.isCurrent(second.current()), false);
+  assert.strictEqual(second.isCurrent(second.current()), true);
 });
 
 testGroup('overflow_fails_before_mutation', () => {
@@ -229,37 +158,27 @@ testGroup('source_boundary_and_zero_wiring', () => {
   for (const forbidden of ['Date.', 'Math.random', 'console.', 'localStorage', 'fetch(', 'scheduleOnce']) {
     assert.strictEqual(source.includes(forbidden), false, `Forbidden source marker: ${forbidden}`);
   }
+  assert.strictEqual(/public\s+capture\s*\(/.test(source), false);
+  assert.strictEqual(/public\s+guard(?:<|\s*\()/.test(source), false);
   assert.strictEqual(gameRoot.includes('LifecycleEpoch'), false);
 });
 
-(async () => {
-  await testGroupAsync('async_continuation_requires_its_own_ownership_check', async () => {
-    const epoch = new LifecycleEpoch();
-    let continuedAfterAwait = false;
-    const guarded = epoch.guard(async () => {
-      await Promise.resolve();
-      continuedAfterAwait = true;
-    });
-    assert.strictEqual(guarded(), true);
-    epoch.advance();
-    await Promise.resolve();
-    assert.strictEqual(continuedAfterAwait, true);
-    assert.strictEqual(epoch.current(), 1);
-  });
-
-  process.stdout.write(`${JSON.stringify({
-    status: 'PASS',
-    testGroups: passedGroups,
-    strictTypeScript: true,
-    typescriptVersion: ts.version,
-    compilerTarget: 'ES2015',
-    compilerPath: typescriptPath,
-    guardCapturesInternally: true,
-    guardSemantics: 'SYNCHRONOUS_ENTRY_ONLY',
-    numericTokenPolicy: 'CAPTURED_SNAPSHOTS_ONLY',
-    gameRootWired: false,
-  })}\n`);
-})().catch((error) => {
-  process.stderr.write(`${error.stack || error.message}\n`);
-  process.exitCode = 1;
+testGroup('public_surface_excludes_callback_ownership', () => {
+  const methods = Object.getOwnPropertyNames(LifecycleEpoch.prototype).sort();
+  assert.deepStrictEqual(methods, ['advance', 'constructor', 'current', 'isCurrent'].sort());
+  const epoch = new LifecycleEpoch();
+  assert.strictEqual(typeof epoch.capture, 'undefined');
+  assert.strictEqual(typeof epoch.guard, 'undefined');
 });
+
+process.stdout.write(`${JSON.stringify({
+  status: 'PASS',
+  testGroups: passedGroups,
+  strictTypeScript: true,
+  typescriptVersion: ts.version,
+  compilerTarget: 'ES2015',
+  compilerPath: typescriptPath,
+  legacyCallbackHelpers: false,
+  callbackOwnership: 'GAME_RUNTIME_LIFECYCLE_OWNER',
+  gameRootWired: false,
+})}\n`);

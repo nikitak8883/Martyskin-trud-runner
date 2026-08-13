@@ -2,10 +2,10 @@
 
 ## Текущее положение
 
-- Source ledger: `23/95 complete`; mandatory `23/85`, осталось `62`; conditional `10`.
-- V4 remaining-scope execution ledger: `9/65 complete`, осталось `56`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
-- Текущий milestone: `M03.7A` complete; Web и Android-emulator P4 пройдены, canonical `M2_PLUS` — `12/12 PASS`.
-- Следующий unit: `M03.7B` — hidden-reference/rollback proof и удаление только superseded legacy paths.
+- Source ledger: `24/95 complete`; mandatory `24/85`, осталось `61`; conditional `10`.
+- V4 remaining-scope execution ledger: `10/65 complete`, осталось `55`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
+- Текущий milestone: `M03.7B` и весь `M03.7` complete; hidden refs `0`, rollback blobs `10/10`, QA7 `7/7`, M2_PLUS `12/12`.
+- Следующий unit: `M04-A` — revalidation asset inventory и canonical ownership/provenance/atlas/bundle contracts.
 - Release: `BLOCKED`.
 
 ## Phase 0 — contracts, toolchain и publication model
@@ -49,7 +49,7 @@
 5. `M03.5` — complete: typed collision events без перестановки legacy order.
 6. `M03.6` — complete: power-up lifecycle с injected tick/epoch, cleanup и Web/Android parity.
 7. `M03.7A` — complete: typed UI intents, единый lifecycle owner и Web/Android cleanup parity при сохранённых legacy paths.
-8. `M03.7B` — next: hidden-reference/rollback proof и удаление только superseded legacy paths с QA7 и M2_PLUS.
+8. `M03.7B` — complete: hidden-reference/rollback proof, удалён только duplicate callback-guard layer; QA7 `7/7`, M2_PLUS `12/12`.
 
 ## Phase 2 — M04 → M06 → M05, 10–17 недель
 

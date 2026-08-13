@@ -27,10 +27,10 @@ export interface GameRootDevEventAdapterOptions {
 /**
  * The single M03.3C observation seam around GameRoot's existing writer.
  *
- * It owns diagnostics and lifecycle epochs, but never owns or mutates the
- * GameRoot state itself. Release builds still advance epochs for stale-callback
- * safety while the bounded event log remains disabled by the caller's DEBUG
- * compile-time flag.
+ * It owns diagnostics and publishes lifecycle epochs, but never owns or mutates
+ * GameRoot state or callback scheduling. Release builds still advance epochs
+ * for GameRuntimeLifecycleOwner while the bounded event log remains disabled
+ * by the caller's DEBUG compile-time flag.
  */
 export class GameRootDevEventAdapter {
     private readonly events: DevEventLog;
@@ -129,12 +129,6 @@ export class GameRootDevEventAdapter {
             payload: { previousEpoch, currentEpoch: epoch },
         });
         return epoch;
-    }
-
-    public guardSessionCallback<TArgs extends readonly unknown[]>(
-        callback: (...args: TArgs) => void,
-    ): (...args: TArgs) => boolean {
-        return this.lifecycle.guard(callback);
     }
 
     public snapshot(): readonly DevEventRecord[] {

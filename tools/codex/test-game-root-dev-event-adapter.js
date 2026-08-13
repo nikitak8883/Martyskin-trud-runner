@@ -173,23 +173,19 @@ testGroup('reset_pairing_rejects_nested_and_stale_end', () => {
   assert.throws(() => adapter.endReset(epoch, 'menu', 'boot', 0), /stale epoch/);
 });
 
-testGroup('guard_suppresses_work_after_next_reset', () => {
+testGroup('reset_advances_shared_epoch_identity', () => {
   const adapter = new GameRootDevEventAdapter({ eventsEnabled: true });
-  completeReset(adapter, 'playing', 'start_level');
-  let calls = 0;
-  const guarded = adapter.guardSessionCallback(() => { calls += 1; });
-  assert.strictEqual(guarded(), true);
-  completeReset(adapter, 'playing', 'qa_reset_loop');
-  assert.strictEqual(guarded(), false);
-  assert.strictEqual(calls, 1);
+  assert.strictEqual(completeReset(adapter, 'playing', 'start_level'), 1);
+  assert.strictEqual(adapter.currentEpoch(), 1);
+  assert.strictEqual(completeReset(adapter, 'playing', 'qa_reset_loop'), 2);
+  assert.strictEqual(adapter.currentEpoch(), 2);
 });
 
-testGroup('destroy_invalidation_advances_once_and_suppresses_guard', () => {
+testGroup('destroy_invalidation_advances_once_and_records_event', () => {
   const adapter = new GameRootDevEventAdapter({ eventsEnabled: true });
   completeReset(adapter, 'menu', 'boot');
-  const guarded = adapter.guardSessionCallback(() => {});
   assert.strictEqual(adapter.invalidate('menu', 'component_destroy', 0), 2);
-  assert.strictEqual(guarded(), false);
+  assert.strictEqual(adapter.currentEpoch(), 2);
   const last = adapter.snapshot().slice(-1)[0];
   assert.strictEqual(last.code, 'session.epoch.changed');
   assert.strictEqual(last.reason, 'component_destroy');
@@ -245,6 +241,11 @@ testGroup('source_boundary_and_release_wiring', () => {
   for (const forbidden of ["from 'cc'", 'localStorage', 'fetch(', 'Date.', 'Math.random']) {
     assert.strictEqual(adapterSource.includes(forbidden), false, `Forbidden adapter marker: ${forbidden}`);
   }
+  assert.strictEqual(adapterSource.includes('guardSessionCallback'), false);
+  assert.strictEqual(gameRootSource.includes('guardSessionCallback'), false);
+  const lifecycleSource = fs.readFileSync(lifecyclePath, 'utf8');
+  assert.strictEqual(/public\s+capture\s*\(/.test(lifecycleSource), false);
+  assert.strictEqual(/public\s+guard(?:<|\s*\()/.test(lifecycleSource), false);
   assert.strictEqual((gameRootSource.match(/this\.state\s*=\s*next/g) || []).length, 1);
   assert.ok(gameRootSource.includes("import { DEBUG } from 'cc/env';"));
   assert.ok(gameRootSource.includes('eventsEnabled: DEBUG'));

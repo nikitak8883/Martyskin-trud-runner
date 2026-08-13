@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cross-platform structural validator for the pure M03.3B lifecycle epoch."""
+"""Validate the minimal epoch value object after M03.7B callback-owner cleanup."""
 
 from __future__ import annotations
 
@@ -55,15 +55,9 @@ def main() -> int:
         "constructor": r"constructor\s*\(\s*initialValue\s*=\s*0\s*\)",
         "safe_initial": r"Number\.isSafeInteger\(initialValue\)",
         "current": r"public\s+current\s*\(\s*\)\s*:\s*number",
-        "capture": r"public\s+capture\s*\(\s*\)\s*:\s*number",
         "is_current": r"public\s+isCurrent\s*\(\s*epoch\s*:\s*number\s*\)\s*:\s*boolean",
         "advance": r"public\s+advance\s*\(\s*\)\s*:\s*number",
         "overflow_guard": r"this\.value\s*>=\s*Number\.MAX_SAFE_INTEGER",
-        "guard_callback_only": r"public\s+guard<[^>]+>\s*\(\s*callback\s*:",
-        "internal_capture": r"const\s+capturedEpoch\s*=\s*this\.capture\(\)",
-        "stale_suppression": r"if\s*\(\s*!this\.isCurrent\(capturedEpoch\)\s*\)",
-        "callback_invocation": r"callback\s*\(\s*\.\.\.args\s*\)",
-        "successful_guard_result": r"callback\s*\(\s*\.\.\.args\s*\)\s*;\s*return\s+true\s*;",
     }
     for label, pattern in required_patterns.items():
         require(re.search(pattern, source, re.DOTALL) is not None, f"missing_contract:{label}", errors)
@@ -85,18 +79,24 @@ def main() -> int:
     require(re.search(r"^\s*import\s", source, re.MULTILINE) is None, "source_has_import", errors)
     for marker in forbidden_markers:
         require(marker not in source, f"forbidden_source_marker:{marker}", errors)
-    require("guard(epoch" not in source.replace(" ", ""), "external_epoch_guard_present", errors)
+    require(re.search(r"public\s+capture\s*\(", source) is None, "legacy_capture_present", errors)
+    require(re.search(r"public\s+guard(?:<|\s*\()", source) is None, "legacy_guard_present", errors)
+    require(
+        re.search(r"\bcallback\s*(?::|\()", source, re.IGNORECASE) is None,
+        "callback_ownership_present",
+        errors,
+    )
     require("this.value = 1" not in source, "overflow_wrap_to_one", errors)
     require("LifecycleEpoch" not in game_root, "game_root_wired", errors)
 
     for marker in (
-        "guard_captures_internally_and_cannot_future_activate",
-        "numeric_tokens_are_captured_snapshots_not_future_guards",
+        "current_is_stable",
+        "is_current_tracks_monotonic_identity",
+        "public_surface_excludes_callback_ownership",
         "overflow_fails_before_mutation",
-        "callback_advance_invalidates_later_invocations",
-        "async_continuation_requires_its_own_ownership_check",
         "Symbol('epoch')",
-        "guardSemantics: 'SYNCHRONOUS_ENTRY_ONLY'",
+        "legacyCallbackHelpers: false",
+        "callbackOwnership: 'GAME_RUNTIME_LIFECYCLE_OWNER'",
         "compilerTarget: 'ES2015'",
     ):
         require(marker in test_source, f"missing_test_marker:{marker}", errors)
@@ -159,7 +159,9 @@ def main() -> int:
     result = {
         "errors": sorted(errors),
         "game_root_wired": "LifecycleEpoch" in game_root,
-        "guard_captures_internally": "const capturedEpoch = this.capture()" in source,
+        "legacy_callback_helpers": bool(
+            re.search(r"public\s+(?:capture\s*\(|guard(?:<|\s*\())", source)
+        ),
         "meta_uuid": lifecycle_uuid,
         "static_gate_steps": len(steps),
         "status": "PASS" if not errors else "FAIL",

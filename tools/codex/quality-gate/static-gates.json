@@ -91,6 +91,21 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "m03-7b-cleanup-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_m03_7b_cleanup.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 120,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "web-matrix-cli-contract",
       "mandatory": true,
       "enabled": true,
