@@ -163,7 +163,6 @@ const OBJECT_SPRITE_WEB_URGENT_LOAD_CONCURRENCY = 5;
 const OBJECT_SPRITE_NATIVE_LOAD_CONCURRENCY = 8;
 const OBJECT_SPRITE_LOAD_SLOW_MS = 1800;
 const OBJECT_SPRITE_QUEUE_LOG_STEP = 50;
-const M04_C_ATLAS_PILOT_ID = 'objective_npc';
 const M04_C_ATLAS_PILOT_SAMPLE_COUNT = 7;
 const M04_C_ATLAS_PILOT_READY_POLL_LIMIT = 120;
 const M04_C_ATLAS_PILOT_SAMPLE_RETRY_LIMIT = 20;
@@ -808,6 +807,61 @@ const OBJECTIVE_BATCH_NPC_KEYS = [
     'objectives/npc/npc_cleaner_broom_01',
 ] as const;
 
+const M04_C_ACHIEVEMENT_UI_ATLAS_KEYS = [
+    ...OBJECTIVE_BATCH_UI_KEYS,
+    'objectives/ui/ui_monkey_profile_badge_01',
+] as const;
+
+interface M04CAtlasQaSpec {
+    atlasId: string;
+    title: string;
+    keys: readonly string[];
+    category: ObjectiveCategory;
+    columns: number;
+    xStart: number;
+    yStart: number;
+    xStep: number;
+    yStep: number;
+    spriteWidth: number;
+    spriteHeight: number;
+}
+
+const M04_C_ATLAS_QA_SPECS = {
+    objective_npc: {
+        atlasId: 'objective_npc',
+        title: 'OBJECTIVE NPC',
+        keys: OBJECTIVE_BATCH_NPC_KEYS,
+        category: 'npc_decor',
+        columns: 5,
+        xStart: 144,
+        yStart: 278,
+        xStep: 248,
+        yStep: 244,
+        spriteWidth: 132,
+        spriteHeight: 168,
+    },
+    achievement_ui: {
+        atlasId: 'achievement_ui',
+        title: 'ACHIEVEMENT UI',
+        keys: M04_C_ACHIEVEMENT_UI_ATLAS_KEYS,
+        category: 'ui_achievements',
+        columns: 5,
+        xStart: 144,
+        yStart: 278,
+        xStep: 248,
+        yStep: 244,
+        spriteWidth: 132,
+        spriteHeight: 132,
+    },
+} as const satisfies Record<string, M04CAtlasQaSpec>;
+
+function m04CAtlasQaSpecForId(requestedAtlasId: string): M04CAtlasQaSpec | null {
+    if (!Object.prototype.hasOwnProperty.call(M04_C_ATLAS_QA_SPECS, requestedAtlasId)) return null;
+    return M04_C_ATLAS_QA_SPECS[requestedAtlasId as keyof typeof M04_C_ATLAS_QA_SPECS];
+}
+
+const M04_C_ATLAS_QA_ALLOWED_IDS = Object.keys(M04_C_ATLAS_QA_SPECS).join(',');
+
 const OBJECT_SPRITES = [
     ...OBJECTIVE_BATCH_EQUIPMENT_KEYS,
     ...OBJECTIVE_BATCH_BONUS_KEYS,
@@ -1205,6 +1259,7 @@ export class GameRoot extends Component {
     private pendingQaRuntimeOwnership = false;
     private qaAtlasPilotRequested = false;
     private qaAtlasPilotActive = false;
+    private qaAtlasPilotSpec: M04CAtlasQaSpec | null = null;
     private qaAtlasPilotLoadStartedAt = 0;
     private qaAtlasPilotLoadElapsedMs = 0;
     private qaAtlasPilotSamples: AtlasPilotSample[] = [];
@@ -1240,8 +1295,9 @@ export class GameRoot extends Component {
     onLoad(): void {
         profiler.hideStats();
         const startupParams = this.startupQueryParams();
-        this.qaAtlasPilotRequested = DEBUG
-            && startupParams?.get('mtr_qa_atlas_pilot') === M04_C_ATLAS_PILOT_ID;
+        const requestedAtlasPilot = startupParams?.get('mtr_qa_atlas_pilot') || '';
+        this.qaAtlasPilotSpec = DEBUG ? m04CAtlasQaSpecForId(requestedAtlasPilot) : null;
+        this.qaAtlasPilotRequested = this.qaAtlasPilotSpec !== null;
         this.applyResponsiveResolutionPolicy();
         this.node.getComponent(UITransform)?.setContentSize(W, H);
         const uiLayer = this.node.layer;
@@ -2730,35 +2786,44 @@ export class GameRoot extends Component {
 
     private configureAtlasPilotForQa(requestedAtlasId: string): void {
         if (!DEBUG) return;
-        if (requestedAtlasId !== M04_C_ATLAS_PILOT_ID) {
-            console.warn(`MTR_ATLAS_PILOT_REJECTED requested=${requestedAtlasId || '-'} allowed=${M04_C_ATLAS_PILOT_ID}`);
+        const spec = m04CAtlasQaSpecForId(requestedAtlasId);
+        if (!spec) {
+            console.warn(`MTR_ATLAS_PILOT_REJECTED requested=${requestedAtlasId || '-'} allowed=${M04_C_ATLAS_QA_ALLOWED_IDS}`);
             return;
         }
+        this.qaAtlasPilotSpec = spec;
+        this.qaAtlasPilotRequested = true;
         this.qaAtlasPilotActive = true;
         this.qaAtlasPilotLoadStartedAt = Date.now();
         this.qaAtlasPilotLoadElapsedMs = 0;
         this.qaAtlasPilotSamples = [];
         profiler.showStats();
-        this.enqueueObjectSprites(OBJECTIVE_BATCH_NPC_KEYS, 'm04-c-atlas-pilot', 'critical');
+        this.enqueueObjectSprites(spec.keys, 'm04-c-atlas-pilot', 'critical');
         console.log(
-            `MTR_ATLAS_PILOT_START atlasId=${M04_C_ATLAS_PILOT_ID}`
-            + ` platform=${sys.isNative ? 'android' : 'web'} sourceCount=${OBJECTIVE_BATCH_NPC_KEYS.length}`,
+            `MTR_ATLAS_PILOT_START atlasId=${spec.atlasId}`
+            + ` platform=${sys.isNative ? 'android' : 'web'} sourceCount=${spec.keys.length}`,
         );
         this.pollAtlasPilotReadyForQa(0);
     }
 
     private pollAtlasPilotReadyForQa(attempt: number): void {
         if (!this.qaAtlasPilotActive) return;
-        const failed = OBJECTIVE_BATCH_NPC_KEYS.filter((key) => !!this.objectSpriteLoadFailures[key]);
-        if (failed.length > 0) {
-            console.warn(`MTR_ATLAS_PILOT_FAIL atlasId=${M04_C_ATLAS_PILOT_ID} reason=load_failed count=${failed.length}`);
+        const spec = this.qaAtlasPilotSpec;
+        if (!spec) {
+            console.warn('MTR_ATLAS_PILOT_FAIL atlasId=- reason=missing_spec');
             profiler.hideStats();
             return;
         }
-        const missing = OBJECTIVE_BATCH_NPC_KEYS.filter((key) => !this.objectSpriteFrames[key]);
+        const failed = spec.keys.filter((key) => !!this.objectSpriteLoadFailures[key]);
+        if (failed.length > 0) {
+            console.warn(`MTR_ATLAS_PILOT_FAIL atlasId=${spec.atlasId} reason=load_failed count=${failed.length}`);
+            profiler.hideStats();
+            return;
+        }
+        const missing = spec.keys.filter((key) => !this.objectSpriteFrames[key]);
         if (missing.length > 0) {
             if (attempt >= M04_C_ATLAS_PILOT_READY_POLL_LIMIT) {
-                console.warn(`MTR_ATLAS_PILOT_FAIL atlasId=${M04_C_ATLAS_PILOT_ID} reason=ready_timeout missing=${missing.length}`);
+                console.warn(`MTR_ATLAS_PILOT_FAIL atlasId=${spec.atlasId} reason=ready_timeout missing=${missing.length}`);
                 profiler.hideStats();
                 return;
             }
@@ -2771,7 +2836,7 @@ export class GameRoot extends Component {
         }
         this.qaAtlasPilotLoadElapsedMs = Math.max(0, Date.now() - this.qaAtlasPilotLoadStartedAt);
         console.log(
-            `MTR_ATLAS_PILOT_READY atlasId=${M04_C_ATLAS_PILOT_ID}`
+            `MTR_ATLAS_PILOT_READY atlasId=${spec.atlasId}`
             + ` loadElapsedMs=${this.qaAtlasPilotLoadElapsedMs}`
             + ` sourceTextureCount=${this.atlasPilotSourceTextureCountForQa()}`
             + ` drawTextureCount=${this.atlasPilotDrawTextureCountForQa()}`
@@ -2782,10 +2847,16 @@ export class GameRoot extends Component {
 
     private captureAtlasPilotSampleForQa(retry: number): void {
         if (!this.qaAtlasPilotActive) return;
+        const spec = this.qaAtlasPilotSpec;
+        if (!spec) {
+            console.warn('MTR_ATLAS_PILOT_FAIL atlasId=- reason=missing_spec');
+            profiler.hideStats();
+            return;
+        }
         const stats = profiler.stats;
         if (!stats) {
             if (retry >= M04_C_ATLAS_PILOT_SAMPLE_RETRY_LIMIT) {
-                console.warn(`MTR_ATLAS_PILOT_FAIL atlasId=${M04_C_ATLAS_PILOT_ID} reason=profiler_unavailable`);
+                console.warn(`MTR_ATLAS_PILOT_FAIL atlasId=${spec.atlasId} reason=profiler_unavailable`);
                 profiler.hideStats();
                 return;
             }
@@ -2817,9 +2888,9 @@ export class GameRoot extends Component {
         console.log(`MTR_ATLAS_PILOT_COMPLETE ${JSON.stringify({
             contract: 'mtr.atlas_pilot_runtime_metric',
             schemaVersion: 2,
-            atlasId: M04_C_ATLAS_PILOT_ID,
+            atlasId: spec.atlasId,
             platform: sys.isNative ? 'android' : 'web',
-            sourceCount: OBJECTIVE_BATCH_NPC_KEYS.length,
+            sourceCount: spec.keys.length,
             sourceTextureCount: this.atlasPilotSourceTextureCountForQa(),
             drawTextureCount: this.atlasPilotDrawTextureCountForQa(),
             dynamicAtlasPackedCount: this.atlasPilotDynamicAtlasPackedCountForQa(),
@@ -2831,7 +2902,7 @@ export class GameRoot extends Component {
 
     private atlasPilotSourceTextureCountForQa(): number {
         const textures = new Set<string>();
-        for (const key of OBJECTIVE_BATCH_NPC_KEYS) {
+        for (const key of this.qaAtlasPilotSpec?.keys || []) {
             const frame = this.objectSpriteFrames[key];
             const texture = frame?.original?._texture ?? frame?.texture;
             if (texture) textures.add(texture.uuid);
@@ -2841,7 +2912,7 @@ export class GameRoot extends Component {
 
     private atlasPilotDrawTextureCountForQa(): number {
         const textures = new Set<string>();
-        for (const key of OBJECTIVE_BATCH_NPC_KEYS) {
+        for (const key of this.qaAtlasPilotSpec?.keys || []) {
             const texture = this.objectSpriteFrames[key]?.texture;
             if (texture) textures.add(texture.uuid);
         }
@@ -2849,7 +2920,7 @@ export class GameRoot extends Component {
     }
 
     private atlasPilotDynamicAtlasPackedCountForQa(): number {
-        return OBJECTIVE_BATCH_NPC_KEYS.filter((key) => !!this.objectSpriteFrames[key]?.original).length;
+        return (this.qaAtlasPilotSpec?.keys || []).filter((key) => !!this.objectSpriteFrames[key]?.original).length;
     }
 
     private runDevEventResetLoopForQa(params: StartupQueryParams): void {
@@ -5124,25 +5195,27 @@ textarea, input {
 
     private drawAtlasPilotForQa(): void {
         if (!DEBUG || !this.qaAtlasPilotActive) return;
+        const spec = this.qaAtlasPilotSpec;
+        if (!spec) return;
         this.fillRect(24, 102, W - 48, H - 126, rgb(8, 10, 12, 236));
         this.strokeRect(24, 102, W - 48, H - 126, rgb(120, 255, 180, 218));
-        this.text('M04-C · OBJECTIVE NPC · 10 CO-VISIBLE SPRITES', W * 0.5, 134, 18, rgb(160, 255, 190));
-        for (let index = 0; index < OBJECTIVE_BATCH_NPC_KEYS.length; index++) {
-            const column = index % 5;
-            const row = Math.floor(index / 5);
-            const x = 144 + column * 248;
-            const y = 278 + row * 244;
+        this.text(`M04-C · ${spec.title} · ${spec.keys.length} CO-VISIBLE SPRITES`, W * 0.5, 134, 18, rgb(160, 255, 190));
+        for (let index = 0; index < spec.keys.length; index++) {
+            const column = index % spec.columns;
+            const row = Math.floor(index / spec.columns);
+            const x = spec.xStart + column * spec.xStep;
+            const y = spec.yStart + row * spec.yStep;
             this.drawAssetSprite(
-                OBJECTIVE_BATCH_NPC_KEYS[index],
+                spec.keys[index],
                 x,
                 y,
-                132,
-                168,
+                spec.spriteWidth,
+                spec.spriteHeight,
                 255,
-                'npc_decor',
+                spec.category,
                 'm04_c_atlas_pilot',
             );
-            this.text(String(index + 1).padStart(2, '0'), x, y + 104, 13, rgb(170, 255, 202));
+            this.text(String(index + 1).padStart(2, '0'), x, y + spec.spriteHeight * 0.5 + 20, 13, rgb(170, 255, 202));
         }
     }
 

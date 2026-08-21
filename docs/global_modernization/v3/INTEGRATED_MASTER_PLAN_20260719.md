@@ -1,6 +1,6 @@
 # Integrated MTR implementation plan v3
 
-Статус: `m03_complete_m04_a_complete_m04_b_next_release_blocked`; runtime implementation продолжается bounded execution units.
+Статус: `m03_complete_m04_c_achievement_ui_child_complete_release_blocked`; runtime implementation продолжается bounded execution units.
 
 ## Цель
 
@@ -42,7 +42,7 @@ M11 PCG/DDA starts after M07+M09+M10 and remains optional/non-blocking for R2.
 | M01 | complete / release blocked | полный инвентарь 32/32, canonical quality schemas, 18-source registry, 11 active adapters, positive/negative fixtures, typed fail-closed runner, D4/P4/M2_PLUS/QA7/RC2 profiles, delete-incapable retention dry-run для 801/801 evidence files, один Windows/Linux CI/local static command и fail-closed release summary | preserve; не ослаблять mandatory evidence |
 | M02 | M02.2 complete / release blocked | shared immutable source/content identity, Web/emulator historical artifacts и старый arm APK | fresh Web/emulator, current arm64, Pages parity, signing decision, conditional AAB |
 | M03 | complete / release blocked | state, bounded log, input, collision, power-up и lifecycle ownership seams; superseded callback guards удалены после parity | preserve accepted owners and cleanup contracts |
-| M04 | in progress; M04-A, M04-B and M04-C-PILOT complete | canonical 1,636-file inventory, 24 ownership scopes, 11 atlas groups, strict pre-import validator, 7-category/1,558-asset contact-sheet index, accepted `objective_npc` static atlas with 63/63 comparison | remaining accepted atlas families one child at a time, then dynamic/bundle lifecycle slices |
+| M04 | in progress; M04-A, M04-B, M04-C-PILOT and `achievement_ui` family child complete | canonical 1,637-file inventory, 24 ownership scopes, 11 atlas groups, strict pre-import validator, 7-category/1,558-asset contact-sheet index, accepted `objective_npc` and `achievement_ui` static atlases with 63/63 comparisons | remaining accepted atlas families one child at a time, then dynamic/bundle lifecycle slices |
 | M05 | revalidate then extend | 14 UI IR, выбранные runtime pilots | shared tokens/components/SafeArea/Layout/9-slice, full regression |
 | M06 | revalidate then extend | 576 static matrix, contact sheets, selected emulator QA | registry/resolver, full lifecycle matrix, bundle cleanup |
 | M07 | product works / ownership pending | 15 levels and current visuals | manifest, pilots, streaming, readability/size metrics |
@@ -97,7 +97,7 @@ M03 завершён strangler-патчами: inventory → state transitions/l
 
 ### Phase 3 — Presentation pipeline
 
-1. M04-A/B завершили inventory, policy, fail-visible pre-import checks и contact sheets; M04-C-PILOT принял только `objective_npc`. Далее разрешён `M04-C-FAMILIES` — один measured accepted family на child checkpoint.
+1. M04-A/B завершили inventory, policy, fail-visible pre-import checks и contact sheets; M04-C принял `objective_npc` pilot и отдельный `achievement_ui` child. Далее `M04-C-FAMILIES` продолжается только по одному measured accepted family на child checkpoint.
 2. M06 SkinRegistry/BonusVisualResolver и полный lifecycle.
 3. M05 shared UI runtime на базе уже существующего UI IR.
 

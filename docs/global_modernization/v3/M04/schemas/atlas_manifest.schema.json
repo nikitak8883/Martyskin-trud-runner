@@ -31,7 +31,7 @@
       "const": "mtr.atlas_manifest"
     },
     "status": {
-      "const": "contract_with_measured_runtime_pilot"
+      "enum": ["contract_with_measured_runtime_pilot", "contract_with_measured_runtime_families"]
     },
     "generated_at": {
       "type": "string",
@@ -385,7 +385,7 @@
           "properties": {
             "web": {"type": "string", "minLength": 1},
             "android": {"type": "string", "minLength": 1},
-            "status": {"enum": ["unchanged_until_measured", "measured_pilot_accepted"]}
+            "status": {"enum": ["unchanged_until_measured", "measured_pilot_accepted", "measured_family_accepted"]}
           }
         },
         "trim_policy": {"const": "preserve_existing_import"},

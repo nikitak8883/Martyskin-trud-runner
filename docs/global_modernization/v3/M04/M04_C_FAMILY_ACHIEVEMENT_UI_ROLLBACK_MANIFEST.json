@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m04_c_family_rollback_manifest",
+  "execution_unit": "M04-C-FAMILY-ACHIEVEMENT-UI",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "scope": "one measured achievement_ui static atlas plus generalized fail-closed family telemetry and validation",
+  "rollback": {
+    "repository_root": "C:/Projects/Monkey Work",
+    "anchor_commit": "5716a6eed3ee3e2290f08a20ce01bd90ce123a89",
+    "project_prefix": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/",
+    "pre_change_blobs": {
+      "assets/resources/config/atlas_manifest.json": "67ee2125288eafa1f03b86e14bf8023874f690f4",
+      "assets/scripts/GameRoot.ts": "8780b09b05ec6169d0da84d651e413bfe4901a9f",
+      "docs/codex/CURRENT_STATE.md": "b0b1da1cfd1fc4b78f9734c982756920016d4186",
+      "docs/global_modernization/v3/INTEGRATED_MASTER_PLAN_20260719.md": "501913fffb0954165d531a98332d17b44de978be",
+      "docs/global_modernization/v3/M04/atlas_policy_report.md": "b32f9fb64f0d62337041f6ff79245274b8d465a5",
+      "docs/global_modernization/v3/M04/contact_sheet_index.json": "8937e8dad30f41d8fcdfc9c909f7fc9dff8dacaf",
+      "docs/global_modernization/v3/M04/schemas/atlas_manifest.schema.json": "57266533f1d529e65c768fe9814d8a46c39f169f",
+      "docs/global_modernization/v3/MODULE_EXECUTION_INDEX.yaml": "ee7917dea391238bee826257a7cc97cbfe32eb1b",
+      "docs/global_modernization/v3/README_START_HERE.md": "5b65c164276eb96a06e4163e04a70a8119d2ce24",
+      "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml": "4f7b7a626d74eede91fcaa70befc9e7297e4ea90",
+      "docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json": "cd4b1b69ec6d24a0abf00da940f65b548bcc4956",
+      "docs/global_modernization/v4/INTEGRATED_ROADMAP_20260809.md": "8de71a6d5024f25e6b16bb1f6de40eb3de085a0e",
+      "docs/global_modernization/v4/README_START_HERE.md": "807ec0ff78530ef5b73dc8f208bff2ea514a4b40",
+      "tools/codex/Compare-MtrAtlasPilotVisuals.py": "df352fd7d8c25f042634c023e2ab608bcc1348b5",
+      "tools/codex/Measure-MtrAtlasPilotArtifacts.js": "614c5c4d778ade3cb60a08dd243194bd0d29fa8a",
+      "tools/codex/Run-MtrAndroidAtlasPilotQa.ps1": "1406c044b48f286e04c2a5e118ba1fb6af5c88ed",
+      "tools/codex/test-atlas-pilot-metrics.js": "12351db4fc81951ac4bf7a2e99cb00311802ff0d",
+      "tools/codex/tests/test_validate_m04_a_asset_contract.py": "d31ba307796dd9db70b68598ec0fe5e299d9d987",
+      "tools/codex/validate_m04_a_asset_contract.py": "f8912adae841289db9ae1dfc918e983b35355741",
+      "tools/codex/web_atlas_pilot_runtime_function.js": "0a2b2fc8b33f317dc6cdc5d0e3f3e68f631fe7fd"
+    },
+    "new_files_remove_on_rollback": [
+      "assets/resources/objectives/ui/achievement_ui.pac",
+      "assets/resources/objectives/ui/achievement_ui.pac.meta",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_VALIDATION_SUMMARY.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CODE_REVIEW_REPORT.md",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ROLLBACK_MANIFEST.json",
+      "docs/qa/CONTROL_LOG_CHECKPOINT_20260821_M04_C_FAMILY_ACHIEVEMENT_UI_COMPLETE.md"
+    ]
+  },
+  "runtime_assets_changed": true,
+  "runtime_metadata_changed": true,
+  "source_png_files_changed": false,
+  "build_outputs_tracked": false,
+  "duplicate_backup_files_created": false
+}

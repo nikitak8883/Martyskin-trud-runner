@@ -12,6 +12,7 @@ const webQaConfigPath = path.join(projectRoot, 'build-web-mobile-qa.json');
 const androidQaConfigPath = path.join(projectRoot, 'build-android-emulator.json');
 const releaseWebConfigPath = path.join(projectRoot, 'build-web-mobile.json');
 const contractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_PILOT_CONTRACT.json');
+const achievementUiContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json');
 const webRuntimeFunctionPath = path.join(projectRoot, 'tools', 'codex', 'web_atlas_pilot_runtime_function.js');
 const artifactMeasurerPath = path.join(projectRoot, 'tools', 'codex', 'Measure-MtrAtlasPilotArtifacts.js');
 const androidRunnerPath = path.join(projectRoot, 'tools', 'codex', 'Run-MtrAndroidAtlasPilotQa.ps1');
@@ -28,6 +29,7 @@ for (const requiredPath of [
   androidQaConfigPath,
   releaseWebConfigPath,
   contractPath,
+  achievementUiContractPath,
   webRuntimeFunctionPath,
   artifactMeasurerPath,
   androidRunnerPath,
@@ -99,6 +101,9 @@ assert.throws(() => aggregateAtlasPilotSamples([
 const gameRootSource = fs.readFileSync(gameRootPath, 'utf8');
 const appActivitySource = fs.readFileSync(appActivityPath, 'utf8');
 assert.ok(gameRootSource.includes("params.get('mtr_qa_atlas_pilot')"));
+assert.ok(gameRootSource.includes("objective_npc: {"));
+assert.ok(gameRootSource.includes("achievement_ui: {"));
+assert.ok(gameRootSource.includes("'objectives/ui/ui_monkey_profile_badge_01'"));
 assert.ok(gameRootSource.includes('if (!DEBUG) return;'));
 assert.ok(gameRootSource.includes('MTR_ATLAS_PILOT_COMPLETE'));
 assert.ok(gameRootSource.includes("'m04_c_atlas_pilot'"));
@@ -128,6 +133,27 @@ assert.strictEqual(contract.rollback.broader_family_migration_authorized, false)
 assert.strictEqual(contract.candidate_result.status, 'accepted');
 assert.deepStrictEqual(contract.candidate_result.acceptance_checks, { passed: 63, total: 63 });
 
+const achievementUiContract = JSON.parse(fs.readFileSync(achievementUiContractPath, 'utf8'));
+assert.strictEqual(achievementUiContract.$schema, 'mtr.m04_c_atlas_family_contract.v1');
+assert.strictEqual(achievementUiContract.unit_id, 'M04-C-FAMILY-ACHIEVEMENT-UI');
+assert.strictEqual(achievementUiContract.parent_unit, 'M04-C-FAMILIES');
+assert.strictEqual(achievementUiContract.status, 'candidate_accepted');
+assert.strictEqual(achievementUiContract.selection.selected_before_runtime_asset_mutation, true);
+assert.strictEqual(achievementUiContract.selection.candidate_descriptor_present_at_selection, false);
+assert.strictEqual(achievementUiContract.selection.metric_fishing_prohibited, true);
+assert.strictEqual(achievementUiContract.candidate.atlas_id, 'achievement_ui');
+assert.strictEqual(achievementUiContract.candidate.source_count, 9);
+assert.strictEqual(achievementUiContract.candidate.source_bytes, 1787287);
+assert.strictEqual(achievementUiContract.candidate.descriptor_uuid, '35f049fd-ff92-47ec-bbe0-7ab05469eab2');
+assert.strictEqual(achievementUiContract.measurement_protocol.screenshot_filename, 'atlas-family.png');
+assert.strictEqual(achievementUiContract.acceptance.source_texture_count.baseline_by_platform.web, 9);
+assert.strictEqual(achievementUiContract.acceptance.draw_texture_count.baseline_by_platform.android_emulator, 9);
+assert.strictEqual(achievementUiContract.acceptance.dynamic_atlas_packed_count.candidate_expected_by_platform.web, 0);
+assert.strictEqual(achievementUiContract.acceptance.draw_calls.android_emulator.minimum_relative_reduction, 0.3);
+assert.strictEqual(achievementUiContract.rollback.parent_family_batch_authorized, false);
+assert.strictEqual(achievementUiContract.candidate_result.status, 'accepted');
+assert.deepStrictEqual(achievementUiContract.candidate_result.acceptance_checks, { passed: 63, total: 63 });
+
 const webRuntimeFunction = fs.readFileSync(webRuntimeFunctionPath, 'utf8');
 assert.ok(webRuntimeFunction.includes("schema: 'mtr.web_atlas_pilot.v1'"));
 assert.ok(webRuntimeFunction.includes("MTR_ATLAS_PILOT_COMPLETE "));
@@ -135,19 +161,34 @@ assert.ok(webRuntimeFunction.includes("MTR_ATLAS_PILOT_FAIL "));
 assert.ok(!webRuntimeFunction.includes('page.reload('));
 assert.ok(webRuntimeFunction.includes('metric.sourceTextureCount'));
 assert.ok(webRuntimeFunction.includes('metric.drawTextureCount'));
+assert.ok(webRuntimeFunction.includes('achievement_ui: 9'));
+assert.ok(webRuntimeFunction.includes('metric.atlasId === atlasId'));
 assert.ok(webRuntimeFunction.includes('expectedInfrastructureErrors'));
 assert.strictEqual(typeof Function(`"use strict"; return (${webRuntimeFunction});`)(), 'function');
 
 const artifactMeasurer = fs.readFileSync(artifactMeasurerPath, 'utf8');
 assert.ok(artifactMeasurer.includes("schema: 'mtr.atlas_pilot_artifact_metric.v1'"));
 assert.ok(artifactMeasurer.includes('skippedLinks.push(absolute)'));
+assert.ok(artifactMeasurer.includes("values.get('--candidate-source-directory')"));
+assert.ok(artifactMeasurer.includes('candidateSourceDirectory: path.relative'));
+assert.ok(!artifactMeasurer.includes("path.join(projectRoot, 'assets', 'resources', 'objectives', 'npc')"));
 const androidRunner = fs.readFileSync(androidRunnerPath, 'utf8');
 assert.ok(androidRunner.includes("$Serial -notmatch '^emulator-\\d+$'"));
 assert.ok(androidRunner.includes("'shell', 'am', 'start', '--user', '0'"));
 assert.ok(androidRunner.includes('MTR_ATLAS_PILOT_COMPLETE'));
+assert.ok(androidRunner.includes("[string]$AtlasId = 'objective_npc'"));
+assert.ok(androidRunner.includes('[int]$ExpectedSourceCount = 10'));
+assert.ok(androidRunner.includes("[string]$ProjectRoot = ''"));
+assert.ok(androidRunner.includes('$MyInvocation.MyCommand.Path'));
+assert.ok(!androidRunner.includes("Join-Path $PSScriptRoot '..\\..'"));
+assert.ok(androidRunner.includes("$ErrorActionPreference = 'Continue'"));
+assert.ok(androidRunner.includes('$exitCode = $LASTEXITCODE'));
+assert.ok(androidRunner.includes('$ErrorActionPreference = $previousErrorActionPreference'));
 const visualComparator = fs.readFileSync(visualComparatorPath, 'utf8');
 assert.ok(visualComparator.includes('mtr.atlas_pilot_visual_parity.v1'));
 assert.ok(visualComparator.includes('maximum_changed_pixel_fraction'));
+assert.ok(visualComparator.includes('screenshot_filename'));
+assert.ok(visualComparator.includes('Unsafe screenshot filename in contract'));
 const comparisonSource = fs.readFileSync(comparisonPath, 'utf8');
 assert.ok(comparisonSource.includes('mtr.atlas_pilot_comparison.v1'));
 assert.ok(comparisonSource.includes('minimum_relative_reduction'));

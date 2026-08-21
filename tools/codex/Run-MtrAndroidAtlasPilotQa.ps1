@@ -3,7 +3,11 @@ param(
     [ValidateSet('baseline', 'candidate', 'rollback')]
     [string]$Phase = 'baseline',
     [string]$Serial = 'emulator-5554',
-    [string]$ProjectRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..\..')).Path,
+    [ValidatePattern('^[a-z0-9_]{3,64}$')]
+    [string]$AtlasId = 'objective_npc',
+    [ValidateRange(1, 64)]
+    [int]$ExpectedSourceCount = 10,
+    [string]$ProjectRoot = '',
     [string]$OutputPath = 'temp\m04-c-pilot\baseline\android\runtime.json',
     [string]$ScreenshotPath = 'temp\m04-c-pilot\baseline\android\atlas-pilot.png',
     [ValidateRange(10, 120)]
@@ -12,6 +16,15 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+
+$scriptPath = [string]$MyInvocation.MyCommand.Path
+if ([string]::IsNullOrWhiteSpace($scriptPath)) {
+    throw 'Cannot resolve the Android atlas QA script path.'
+}
+if ([string]::IsNullOrWhiteSpace($ProjectRoot)) {
+    $scriptRoot = Split-Path -Parent $scriptPath
+    $ProjectRoot = (Resolve-Path -LiteralPath (Join-Path $scriptRoot '..\..')).Path
+}
 
 if ($Serial -notmatch '^emulator-\d+$') {
     throw "Emulator-only guard rejected serial '$Serial' before any ADB call."
@@ -43,8 +56,17 @@ $component = "$packageName/com.cocos.game.AppActivity"
 
 function Invoke-MtrAdb {
     param([Parameter(Mandatory = $true)][string[]]$Arguments)
-    $output = @(& $adb -s $Serial @Arguments 2>&1)
-    $exitCode = $LASTEXITCODE
+    # adb writes successful transfer progress to stderr. Under Windows PowerShell
+    # and ErrorActionPreference=Stop that stream otherwise becomes a terminating
+    # NativeCommandError before LASTEXITCODE can be evaluated.
+    $previousErrorActionPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'Continue'
+        $output = @(& $adb -s $Serial @Arguments 2>&1)
+        $exitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousErrorActionPreference
+    }
     $text = $output -join "`n"
     if ($exitCode -ne 0) {
         throw "adb failed ($exitCode): $($Arguments -join ' ')`n$text"
@@ -63,7 +85,7 @@ Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 Invoke-MtrAdb -Arguments @('shell', 'am', 'force-stop', '--user', '0', $packageName) | Out-Null
 $launchOutput = Invoke-MtrAdb -Arguments @(
     'shell', 'am', 'start', '--user', '0', '-n', $component,
-    '--es', 'mtr_qa_atlas_pilot', 'objective_npc',
+    '--es', 'mtr_qa_atlas_pilot', $AtlasId,
     '--es', 'mtr_screen', 'menu'
 )
 
@@ -92,7 +114,7 @@ if ($completeMatches.Count -eq 1) {
 
 $appProcessId = (Invoke-MtrAdb -Arguments @('shell', 'pidof', '-s', $packageName)).Trim()
 $meminfo = Invoke-MtrAdb -Arguments @('shell', 'dumpsys', 'meminfo', $packageName)
-$remoteScreenshot = "/sdcard/mtr-atlas-pilot-$Phase.png"
+$remoteScreenshot = "/sdcard/mtr-atlas-$AtlasId-$Phase.png"
 Invoke-MtrAdb -Arguments @('shell', 'rm', '-f', $remoteScreenshot) | Out-Null
 Invoke-MtrAdb -Arguments @('shell', 'screencap', '-p', $remoteScreenshot) | Out-Null
 Invoke-MtrAdb -Arguments @('pull', $remoteScreenshot, $resolvedScreenshot) | Out-Null
@@ -103,9 +125,9 @@ Invoke-MtrAdb -Arguments @('shell', 'rm', '-f', $remoteScreenshot) | Out-Null
 $metricValid = $null -ne $metric -and
     [string]$metric.contract -eq 'mtr.atlas_pilot_runtime_metric' -and
     [int]$metric.schemaVersion -eq 2 -and
-    [string]$metric.atlasId -eq 'objective_npc' -and
+    [string]$metric.atlasId -eq $AtlasId -and
     [string]$metric.platform -eq 'android' -and
-    [int]$metric.sourceCount -eq 10 -and
+    [int]$metric.sourceCount -eq $ExpectedSourceCount -and
     [int]$metric.aggregate.sampleCount -eq 7 -and
     [int]$metric.sourceTextureCount -gt 0 -and
     [int]$metric.drawTextureCount -gt 0
@@ -123,6 +145,8 @@ $result = [ordered]@{
     schema = 'mtr.android_atlas_pilot.v1'
     status = if ($passed) { 'pass' } else { 'fail' }
     phase = $Phase
+    atlasId = $AtlasId
+    expectedSourceCount = $ExpectedSourceCount
     serial = $Serial
     androidUser = 0
     emulatorVerified = ($qemu -eq '1')

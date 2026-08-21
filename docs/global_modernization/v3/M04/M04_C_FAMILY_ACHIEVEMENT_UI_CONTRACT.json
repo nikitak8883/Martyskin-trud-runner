@@ -1,0 +1,189 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_contract.v1",
+  "unit_id": "M04-C-FAMILY-ACHIEVEMENT-UI",
+  "parent_unit": "M04-C-FAMILIES",
+  "status": "candidate_accepted",
+  "selection": {
+    "selected_before_runtime_asset_mutation": true,
+    "candidate_descriptor_present_at_selection": false,
+    "selected_at_source_commit": "5716a6eed3ee3e2290f08a20ce01bd90ce123a89",
+    "metric_fishing_prohibited": true,
+    "reason": "Small non-gameplay UI family with nine bounded co-visible sprites, low 2048 atlas occupancy and no animation-frame ordering risk.",
+    "alternatives_deferred": [
+      {"atlas_id": "ui_shared_core", "reason": "High estimated 2048 occupancy and broad cross-screen UI ownership."},
+      {"atlas_id": "bonus_items", "reason": "Gameplay-critical power-up and equipment visuals require a later focused lifecycle matrix."},
+      {"atlas_id": "runner_collectibles", "reason": "Gameplay-critical collision/readability family requires a later all-level focused matrix."}
+    ]
+  },
+  "candidate": {
+    "atlas_id": "achievement_ui",
+    "source_directory": "assets/resources/objectives/ui",
+    "source_count": 9,
+    "source_bytes": 1787287,
+    "source_area_px": 1251584,
+    "alpha_area_px": 1248346,
+    "estimated_2048_occupancy": 0.2984,
+    "maximum_source_dimensions": {"width": 512, "height": 384},
+    "risk_class": "bounded_non_gameplay_ui",
+    "fallback_policy": "block_release",
+    "descriptor": "assets/resources/objectives/ui/achievement_ui.pac",
+    "descriptor_uuid": "35f049fd-ff92-47ec-bbe0-7ab05469eab2",
+    "source_keys": [
+      "objectives/ui/ui_label_plate_01",
+      "objectives/ui/ui_achievement_trophy_01",
+      "objectives/ui/ui_speedrun_badge_01",
+      "objectives/ui/ui_bonus_bundle_badge_01",
+      "objectives/ui/ui_level_lock_01",
+      "objectives/ui/ui_avatar_worker_01",
+      "objectives/ui/ui_avatar_scholar_01",
+      "objectives/ui/ui_avatar_guard_01",
+      "objectives/ui/ui_monkey_profile_badge_01"
+    ],
+    "configuration": {
+      "max_width": 2048,
+      "max_height": 2048,
+      "padding": 2,
+      "allow_rotation": false,
+      "algorithm": "MaxRects",
+      "format": "png",
+      "filter_unused": false,
+      "remove_source_textures_from_bundle": true,
+      "wrap_mode": "clamp-to-edge",
+      "filtering": "linear",
+      "mip_filter": "none"
+    }
+  },
+  "measurement_protocol": {
+    "platforms": ["web", "android_emulator"],
+    "web_build_config": "build-web-mobile-qa.json",
+    "android_build_config": "build-android-emulator.json",
+    "android_serial": "emulator-5554",
+    "android_user": 0,
+    "viewport": {"width": 1280, "height": 720},
+    "scene": "main.scene",
+    "screen": "isolated_nine_sprite_grid",
+    "screenshot_filename": "atlas-family.png",
+    "sample_count": 7,
+    "settle_ms": 1100,
+    "sample_interval_ms": 550,
+    "same_harness_and_build_config_before_after": true,
+    "required_runtime_metrics": [
+      "source_texture_count",
+      "draw_texture_count",
+      "dynamic_atlas_packed_count",
+      "load_elapsed_ms",
+      "draws",
+      "texture_memory_mb",
+      "buffer_memory_mb",
+      "fps"
+    ],
+    "artifact_metrics": ["runtime_bytes", "resources_bytes", "android_package_bytes"]
+  },
+  "acceptance": {
+    "source_texture_count": {
+      "baseline_by_platform": {"web": 9, "android_emulator": 9},
+      "candidate_expected_by_platform": {"web": 1, "android_emulator": 1}
+    },
+    "draw_texture_count": {
+      "baseline_by_platform": {"web": 1, "android_emulator": 9},
+      "candidate_expected_by_platform": {"web": 1, "android_emulator": 1}
+    },
+    "dynamic_atlas_packed_count": {
+      "baseline_by_platform": {"web": 9, "android_emulator": 0},
+      "candidate_expected_by_platform": {"web": 0, "android_emulator": 0}
+    },
+    "draw_calls": {
+      "web": {"maximum_absolute_increase": 1},
+      "android_emulator": {"minimum_absolute_reduction": 6, "minimum_relative_reduction": 0.3}
+    },
+    "load_elapsed_ms": {"maximum_relative_increase": 0.25, "maximum_absolute_slack_ms": 100},
+    "texture_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 2},
+    "buffer_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 1},
+    "fps": {"maximum_relative_drop": 0.15, "maximum_absolute_drop": 3},
+    "artifact_size": {"maximum_relative_increase": 0.03, "maximum_absolute_increase_bytes": 2097152},
+    "runtime": {"load_failures": 0, "unexpected_errors": 0, "unexpected_warnings": 0},
+    "visual": {
+      "all_sources_visible": true,
+      "white_or_opaque_matte_fragments": 0,
+      "pivot_or_trim_regressions": 0,
+      "same_frame_screenshot_required": true,
+      "automated_parity": {
+        "channel_delta_threshold": 8,
+        "maximum_mean_absolute_error": 0.35,
+        "maximum_changed_pixel_fraction": 0.003,
+        "content_roi_by_platform": {
+          "web": {"left": 0.01875, "top": 0.141666667, "right": 0.98125, "bottom": 0.966666667},
+          "android_emulator": {"left": 0.115, "top": 0.139880952, "right": 0.881666667, "bottom": 0.967261905}
+        }
+      }
+    },
+    "decision_rule": "accept_only_if_every_platform_threshold_and_visual_gate_passes_with_material_android_gain"
+  },
+  "baseline_observation": {
+    "captured_before_candidate_descriptor_creation": true,
+    "web": {
+      "status": "pass",
+      "source_texture_count": 9,
+      "draw_texture_count": 1,
+      "dynamic_atlas_packed_count": 9,
+      "load_elapsed_ms": 212,
+      "draws_median": 16,
+      "texture_memory_mb_median": 30.68,
+      "buffer_memory_mb_median": 9.03,
+      "fps_median": 60,
+      "runtime_bytes": 124280392,
+      "resources_bytes": 118950643,
+      "candidate_uuid_artifact_count": 27
+    },
+    "android_emulator": {
+      "status": "pass",
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "emulator_verified": true,
+      "abi": "x86_64",
+      "source_texture_count": 9,
+      "draw_texture_count": 9,
+      "dynamic_atlas_packed_count": 0,
+      "load_elapsed_ms": 475,
+      "draws_median": 24,
+      "texture_memory_mb_median": 16.16,
+      "buffer_memory_mb_median": 18.03,
+      "fps_median": 23,
+      "runtime_bytes": 124467211,
+      "resources_bytes": 118950643,
+      "apk_bytes": 143210813,
+      "candidate_uuid_artifact_count": 27
+    }
+  },
+  "baseline_evidence": [
+    {"path": "temp/m04-c-families/achievement_ui/baseline/web/runtime.json", "sha256": "FC3052927A4EE500CC44A5C00E682BDC69336B33D29A6E1223A767D92D7F9BDD"},
+    {"path": "temp/m04-c-families/achievement_ui/baseline/web/artifacts.json", "sha256": "C09C413FF2DD9E913F28CCCD7CE75E8C69335E5A220A1610FAA73B330B17C15A"},
+    {"path": "temp/m04-c-families/achievement_ui/baseline/web/atlas-family.png", "sha256": "A33EE2780BDDC56E4486D99ED642337B0E2B405803BEDEE5742D37BB8B88A707"},
+    {"path": "temp/m04-c-families/achievement_ui/baseline/android/runtime.json", "sha256": "E62CD71B41647FE8EE8A928FFFD25B3302B91EDF29B9D2822E23829BB2A84C2A"},
+    {"path": "temp/m04-c-families/achievement_ui/baseline/android/artifacts.json", "sha256": "119B4143133021058A2761F8520B42331EB7EE240278DC3AD4E5C624F589A4DF"},
+    {"path": "temp/m04-c-families/achievement_ui/baseline/android/atlas-family.png", "sha256": "B884E8D5E291BAD0F19AF719333E3F7FF499979836BA53FE944C5B957399A8A3"}
+  ],
+  "harness_preventions": [
+    "artifact measurement requires an explicit contained candidate source directory",
+    "Windows PowerShell child invocation resolves project root after script entry",
+    "ADB stderr transfer progress is evaluated by native exit code and cannot become a false failure"
+  ],
+  "candidate_result": {
+    "status": "accepted",
+    "acceptance_checks": {"passed": 63, "total": 63},
+    "durable_evidence": "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+    "material_android_gain": {
+      "draws_median": {"baseline": 24, "candidate": 16, "absolute_reduction": 8, "relative_reduction": 0.333333},
+      "load_elapsed_ms": {"baseline": 475, "candidate": 425}
+    },
+    "web_non_regression": {
+      "draws_median": {"baseline": 16, "candidate": 16},
+      "texture_memory_mb_median": {"baseline": 30.68, "candidate": 15.13},
+      "load_elapsed_ms": {"baseline": 212, "candidate": 219}
+    }
+  },
+  "rollback": {
+    "on_failure": "do_not_create_or_remove_candidate_descriptor_restore_contract_and_rebuild_both_platforms",
+    "parent_family_batch_authorized": false
+  }
+}

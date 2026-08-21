@@ -1,8 +1,8 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m03_complete_m04_a_complete_m04_b_next_release_blocked`  
+Статус: `m03_complete_m04_c_achievement_ui_child_complete_release_blocked`  
 Дата интеграции: 2026-07-23  
-Последнее обновление: 2026-08-13  
+Последнее обновление: 2026-08-21  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 
@@ -70,7 +70,8 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M04-A: канонический inventory фиксирует 1 635 source-файлов и 1 882 metadata-файла, 24 непересекающихся ownership scopes и 11 atlas-policy groups; runtime textures не перепаковывались. Schema/validator, 8 direct tests и 11 negative fixtures проходят; свежие Web `34/34 × 2` плюс recovery и Android-emulator `28/28 × 2` плюс recovery, touch/name/restart/soak циклы проходят.
 - M04-B: fail-visible pre-import validation и manifest-linked contact sheets закрыты; `1 558/1 558` изображений покрыты ровно один раз, семь категорий и 29 воспроизводимых страниц.
 - M04-C-PILOT: принят ровно один статический Auto Atlas `objective_npc` из 10 PNG. Fail-closed comparison `63/63`, Android median draws `26 → 17`, Web non-regression `17 → 17`; Web/Android-emulator P4 и M2_PLUS проходят. Source package `M04.5` остаётся pending до завершения остальных принятых family children.
+- M04-C-FAMILY-ACHIEVEMENT-UI: принят второй изолированный статический Auto Atlas из 9 PNG. Comparison `63/63`; Android median draws `24 → 16` (`-33.3333%`), Web остаётся `16 → 16`; Web `34/34 × 2`, Android-emulator `28/28 × 2`, visual parity, interaction/restart/soak и M2_PLUS проходят. Aggregate `M04.5` по-прежнему pending.
 
 ## Следующее безопасное действие
 
-Выполнять `M04-C-FAMILIES` как один измеренный accepted atlas family на отдельный child checkpoint. Пакетная перепаковка, изменение dynamic-atlas policy, physical-device QA и release остаются запрещены до своих отдельных gates.
+Продолжать `M04-C-FAMILIES` выбором ровно одного следующего measured candidate до мутации. Пакетная перепаковка, изменение dynamic-atlas policy, physical-device QA и release остаются запрещены до своих отдельных gates.

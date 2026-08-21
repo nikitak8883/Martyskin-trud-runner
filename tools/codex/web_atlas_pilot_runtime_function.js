@@ -3,6 +3,16 @@ async function (page) {
     const query = new URL(page.url()).searchParams;
     const phase = query.get('mtr_qa_atlas_phase') || 'unlabelled';
     if (!/^[a-z0-9_-]{3,32}$/i.test(phase)) throw new Error(`Unsafe atlas pilot phase: ${phase}`);
+    const atlasId = query.get('mtr_qa_atlas_pilot') || '';
+    const atlasSourceCounts = Object.freeze({ objective_npc: 10, achievement_ui: 9 });
+    if (!Object.prototype.hasOwnProperty.call(atlasSourceCounts, atlasId)) {
+        throw new Error(`Unsupported atlas QA id: ${atlasId || '-'}`);
+    }
+    const expectedSourceCount = atlasSourceCounts[atlasId];
+    const requestedSourceCount = query.get('mtr_qa_atlas_source_count');
+    if (requestedSourceCount !== null && Number(requestedSourceCount) !== expectedSourceCount) {
+        throw new Error(`Atlas QA source count mismatch: ${requestedSourceCount} != ${expectedSourceCount}`);
+    }
 
     const consoleEvents = [];
     const pageErrors = [];
@@ -50,7 +60,10 @@ async function (page) {
         terminal = await Promise.race([terminalPromise, timeout]);
         await page.waitForTimeout(350);
 
-        const screenshot = `temp/m04-c-pilot/${phase}/web/atlas-pilot.png`;
+        const evidenceRoot = atlasId === 'objective_npc'
+            ? 'temp/m04-c-pilot'
+            : `temp/m04-c-families/${atlasId}`;
+        const screenshot = `${evidenceRoot}/${phase}/web/atlas-family.png`;
         await page.screenshot({ path: screenshot });
         const metric = terminal?.kind === 'complete' ? terminal.payload : null;
         const expectedInfrastructureErrors = consoleEvents.filter((event) => (
@@ -66,9 +79,9 @@ async function (page) {
             metric
             && metric.contract === 'mtr.atlas_pilot_runtime_metric'
             && metric.schemaVersion === 2
-            && metric.atlasId === 'objective_npc'
+            && metric.atlasId === atlasId
             && metric.platform === 'web'
-            && metric.sourceCount === 10
+            && metric.sourceCount === expectedSourceCount
             && metric.aggregate?.sampleCount === 7
             && Number.isFinite(metric.sourceTextureCount)
             && metric.sourceTextureCount > 0
@@ -90,6 +103,8 @@ async function (page) {
             schema: 'mtr.web_atlas_pilot.v1',
             status,
             phase,
+            atlasId,
+            expectedSourceCount,
             elapsedMs: Date.now() - startedAt,
             expectedMetric,
             terminal,

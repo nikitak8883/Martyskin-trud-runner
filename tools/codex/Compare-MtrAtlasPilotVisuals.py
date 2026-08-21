@@ -127,11 +127,22 @@ def main() -> int:
     candidate_root = resolve_contained(project_root, args.candidate_root, "--candidate-root")
     output = resolve_contained(project_root, args.output, "--output")
     visual = contract["acceptance"]["visual"]["automated_parity"]
+    screenshot_filename = str(
+        contract.get("measurement_protocol", {}).get("screenshot_filename", "atlas-pilot.png")
+    )
+    if (
+        not screenshot_filename
+        or screenshot_filename != Path(screenshot_filename).name
+        or "/" in screenshot_filename
+        or "\\" in screenshot_filename
+        or not screenshot_filename.lower().endswith(".png")
+    ):
+        raise ValueError(f"Unsafe screenshot filename in contract: {screenshot_filename!r}")
     comparisons: dict[str, Any] = {}
     for platform, directory in (("web", "web"), ("android_emulator", "android")):
         comparisons[platform] = compare_images(
-            baseline_root / directory / "atlas-pilot.png",
-            candidate_root / directory / "atlas-pilot.png",
+            baseline_root / directory / screenshot_filename,
+            candidate_root / directory / screenshot_filename,
             visual["content_roi_by_platform"][platform],
             int(visual["channel_delta_threshold"]),
             float(visual["maximum_mean_absolute_error"]),
@@ -141,6 +152,7 @@ def main() -> int:
         "schema": "mtr.atlas_pilot_visual_parity.v1",
         "status": "pass" if all(item["status"] == "pass" for item in comparisons.values()) else "fail",
         "contractStatus": contract["status"],
+        "screenshotFilename": screenshot_filename,
         "comparisons": comparisons,
     }
     atomic_write_json(output, report)

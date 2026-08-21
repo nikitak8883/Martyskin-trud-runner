@@ -11,10 +11,10 @@
   },
   "source": {
     "atlasManifest": "assets/resources/config/atlas_manifest.json",
-    "atlasManifestSha256": "AC352C754A0E88442A5FD42326EA782764908A364CD3F2E5A18FF6DD55101ABE",
+    "atlasManifestSha256": "ED1379EEB708EC4BE13E9DD9606D7E64D12DE5C480604211DC75FB8236DE1E15",
     "contentIdentity": "assets/resources/config/content_identity.json",
     "logicalContentVersion": "mtr-v3-source-4492deee4209",
-    "sourcePayloadSha256": "864BC15D125F559BB007235D0D4764C000957160C6CFC5AFE4C5A2184A49AEE2"
+    "sourcePayloadSha256": "6BE3B39107FC031EDBEE3A37D9E50862317D012DF1CAAA929F2F13DA1AB593F1"
   },
   "materialization": {
     "policy": "local_qa_evidence_not_runtime_not_committed",
@@ -71,7 +71,9 @@
       ],
       "provenance": [
         "assets/resources/config/current_objective_runtime_usage.json",
-        "assets/resources/config/ui_skin_manifest.json"
+        "assets/resources/config/ui_skin_manifest.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
       ],
       "sheets": [
         {
@@ -104,7 +106,9 @@
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 0
@@ -128,7 +132,9 @@
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 1
@@ -152,7 +158,9 @@
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 2
@@ -176,7 +184,9 @@
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 3
@@ -200,7 +210,9 @@
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 4
@@ -224,7 +236,9 @@
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 5
@@ -248,7 +262,9 @@
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 6
@@ -272,7 +288,9 @@
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 7
@@ -296,7 +314,9 @@
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 8

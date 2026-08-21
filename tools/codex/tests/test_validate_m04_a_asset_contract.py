@@ -66,16 +66,16 @@ class M04AAssetContractTests(unittest.TestCase):
     def test_repository_contract_passes(self) -> None:
         report = VALIDATOR.validate_manifest(PROJECT_ROOT, check_git=False)
         self.assertEqual(report["status"], "PASS", report["findings"])
-        self.assertEqual(report["counts"]["source_files"], 1636)
+        self.assertEqual(report["counts"]["source_files"], 1637)
         self.assertEqual(report["counts"]["image_files"], 1558)
-        self.assertEqual(report["counts"]["auto_atlas_files"], 1)
-        self.assertEqual(report["counts"]["measured_static_atlases"], 1)
+        self.assertEqual(report["counts"]["auto_atlas_files"], 2)
+        self.assertEqual(report["counts"]["measured_static_atlases"], 2)
         measured = [
             group["atlas_id"]
             for group in self.manifest["atlas_groups"]
             if group["packing"]["implementation_status"] == "measured_static_atlas"
         ]
-        self.assertEqual(measured, ["objective_npc"])
+        self.assertEqual(measured, ["objective_npc", "achievement_ui"])
 
     def test_measured_atlas_uuid_drift_fails_closed(self) -> None:
         manifest = copy.deepcopy(self.manifest)

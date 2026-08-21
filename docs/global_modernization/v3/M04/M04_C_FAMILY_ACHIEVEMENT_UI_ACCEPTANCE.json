@@ -1,0 +1,74 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_acceptance.v1",
+  "unit_id": "M04-C-FAMILY-ACHIEVEMENT-UI",
+  "parent_unit": "M04-C-FAMILIES",
+  "status": "PASS",
+  "generated_at": "2026-08-21T14:37:38+03:00",
+  "candidate": {
+    "atlas_id": "achievement_ui",
+    "descriptor": "assets/resources/objectives/ui/achievement_ui.pac",
+    "descriptor_uuid": "35f049fd-ff92-47ec-bbe0-7ab05469eab2",
+    "source_sprite_count": 9
+  },
+  "acceptance": {
+    "checks_passed": 63,
+    "checks_total": 63,
+    "failed_checks": [],
+    "web": {
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 9, "candidate": 1},
+      "draw_texture_count": {"baseline": 1, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 9, "candidate": 0},
+      "draws_median": {"baseline": 16, "candidate": 16},
+      "load_elapsed_ms": {"baseline": 212, "candidate": 219},
+      "texture_memory_mb_median": {"baseline": 30.68, "candidate": 15.13},
+      "buffer_memory_mb_median": {"baseline": 9.03, "candidate": 9.03},
+      "fps_median": {"baseline": 60, "candidate": 60},
+      "runtime_bytes": {"baseline": 124280392, "candidate": 124771374},
+      "resources_bytes": {"baseline": 118950643, "candidate": 119441625}
+    },
+    "android_emulator": {
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "emulator_verified": true,
+      "abi": "x86_64",
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 9, "candidate": 1},
+      "draw_texture_count": {"baseline": 9, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {"baseline": 24, "candidate": 16, "absolute_reduction": 8, "relative_reduction": 0.333333},
+      "load_elapsed_ms": {"baseline": 475, "candidate": 425},
+      "texture_memory_mb_median": {"baseline": 16.16, "candidate": 16.61},
+      "buffer_memory_mb_median": {"baseline": 18.03, "candidate": 18.03},
+      "fps_median": {"baseline": 23, "candidate": 23},
+      "runtime_bytes": {"baseline": 124467211, "candidate": 124958193},
+      "resources_bytes": {"baseline": 118950643, "candidate": 119441625},
+      "apk_bytes": {"baseline": 143210813, "candidate": 143697666}
+    },
+    "visual_parity": {
+      "status": "pass",
+      "manual_review": "pass_all_nine_sprites_visible_no_white_matte_no_pivot_or_trim_regression",
+      "web": {"mean_absolute_error": 0.013835, "changed_pixel_fraction": 0.00067504},
+      "android_emulator": {"mean_absolute_error": 0.013922, "changed_pixel_fraction": 0.000644079}
+    }
+  },
+  "harness_corrections": [
+    "candidate source directory is explicit in artifact measurement",
+    "Windows PowerShell child launch resolves the QA project root after script entry",
+    "successful ADB stderr progress no longer becomes a false NativeCommandError",
+    "visual comparator screenshot filename is contract-driven and basename-validated"
+  ],
+  "ephemeral_evidence": [
+    {"path": "temp/m04-c-families/achievement_ui/baseline/web/runtime.json", "sha256": "FC3052927A4EE500CC44A5C00E682BDC69336B33D29A6E1223A767D92D7F9BDD"},
+    {"path": "temp/m04-c-families/achievement_ui/candidate/web/runtime.json", "sha256": "A6AF84F8256F0FD66462A69A271D500DB1EDF7F851F6C730C3E77A9C55B6475B"},
+    {"path": "temp/m04-c-families/achievement_ui/baseline/android/runtime.json", "sha256": "E62CD71B41647FE8EE8A928FFFD25B3302B91EDF29B9D2822E23829BB2A84C2A"},
+    {"path": "temp/m04-c-families/achievement_ui/candidate/android/runtime.json", "sha256": "395B8A8A66ADACA133BDE79417D8B8E326B145279F1E03EF09A9938047B8D837"},
+    {"path": "temp/m04-c-families/achievement_ui/baseline/web/artifacts.json", "sha256": "C09C413FF2DD9E913F28CCCD7CE75E8C69335E5A220A1610FAA73B330B17C15A"},
+    {"path": "temp/m04-c-families/achievement_ui/candidate/web/artifacts.json", "sha256": "D4F7D0C59C51FDA140C207D4B230BD0702DD20D8E3D9F564E0F485BB8972D511"},
+    {"path": "temp/m04-c-families/achievement_ui/baseline/android/artifacts.json", "sha256": "119B4143133021058A2761F8520B42331EB7EE240278DC3AD4E5C624F589A4DF"},
+    {"path": "temp/m04-c-families/achievement_ui/candidate/android/artifacts.json", "sha256": "221D8313D9D026BA81E1222756B780046053B880F68B8F878E4BF1BCDD60B19A"},
+    {"path": "temp/m04-c-families/achievement_ui/comparison/visual-parity.json", "sha256": "88A62D04997DDB54ED90C076A123DEC31693EDA35FC816FD8630BAC108C7FD14"},
+    {"path": "temp/m04-c-families/achievement_ui/comparison/acceptance.json", "sha256": "657B427BFC062B1D17E6E9AD8C95C3F5D888710D3695DBFAC441597653035E10"}
+  ],
+  "decision": "accept_achievement_ui_static_atlas_keep_other_families_closed"
+}

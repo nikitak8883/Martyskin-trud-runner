@@ -2,8 +2,8 @@
   "$schema": "https://schemas.mtr.local/assets/v1/atlas-manifest.schema.json",
   "schema_version": 1,
   "contract": "mtr.atlas_manifest",
-  "status": "contract_with_measured_runtime_pilot",
-  "generated_at": "2026-08-21T12:26:20+03:00",
+  "status": "contract_with_measured_runtime_families",
+  "generated_at": "2026-08-21T14:37:38+03:00",
   "source_checkpoint": {
     "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
     "branch": "mtr-source-v3",
@@ -38,14 +38,14 @@
       "assets/resources/config/content_identity.json.meta"
     ],
     "source_payload": {
-      "count": 1636,
-      "bytes": 116453976,
-      "sha256": "864BC15D125F559BB007235D0D4764C000957160C6CFC5AFE4C5A2184A49AEE2"
+      "count": 1637,
+      "bytes": 116454011,
+      "sha256": "6BE3B39107FC031EDBEE3A37D9E50862317D012DF1CAAA929F2F13DA1AB593F1"
     },
     "cocos_metadata": {
-      "count": 1883,
-      "bytes": 4575611,
-      "sha256": "976610FA3F7566A314F1E358CA5E4BCB9D071E796D481F4F3529B184B8E908E9"
+      "count": 1884,
+      "bytes": 4576434,
+      "sha256": "F559EB62CE45A5FDF6D4CF0F7F9B29119D2DAF219ADD8990EAFB8BB130AD80A7"
     },
     "png_validation": {
       "count": 1528,
@@ -62,7 +62,7 @@
       ".jpg": {"count": 30, "bytes": 5999213},
       ".json": {"count": 35, "bytes": 1163846},
       ".mp3": {"count": 1, "bytes": 116284},
-      ".pac": {"count": 1, "bytes": 35},
+      ".pac": {"count": 2, "bytes": 70},
       ".png": {"count": 1528, "bytes": 107146623},
       ".wav": {"count": 40, "bytes": 2018006}
     }
@@ -317,9 +317,13 @@
       "match": "prefix",
       "owner": "save_achievements_telemetry",
       "bundle_id": "resources",
-      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
-      "asset_count": 9,
-      "total_bytes": 1787287,
+      "provenance": [
+        "assets/resources/config/current_objective_runtime_usage.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json"
+      ],
+      "asset_count": 10,
+      "total_bytes": 1787322,
       "fallback_policy": "block_release"
     },
     {
@@ -558,19 +562,27 @@
       "owner": "save_achievements_telemetry",
       "bundle_id": "resources",
       "packing": {
-        "mode": "static_atlas_candidate",
-        "implementation_status": "policy_only_not_packed",
+        "mode": "static_atlas",
+        "implementation_status": "measured_static_atlas",
         "max_texture_size": 2048,
         "padding_px": 2,
-        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "compression": {"web": "auto_atlas_png_lossless", "android": "auto_atlas_png_lossless", "status": "measured_family_accepted"},
         "trim_policy": "preserve_existing_import",
         "pivot_policy": "preserve_existing_import",
-        "dynamic_atlas_allowed": false
+        "dynamic_atlas_allowed": false,
+        "descriptor": "assets/resources/objectives/ui/achievement_ui.pac",
+        "descriptor_uuid": "35f049fd-ff92-47ec-bbe0-7ab05469eab2",
+        "measurement_contract": "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json",
+        "acceptance_evidence": "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json"
       },
-      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
+      "provenance": [
+        "assets/resources/config/current_objective_runtime_usage.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json"
+      ],
       "observed": {"count": 9, "bytes": 1787287},
       "fallback_policy": "block_release",
-      "runtime_effect": false
+      "runtime_effect": true
     },
     {
       "atlas_id": "level_backgrounds",

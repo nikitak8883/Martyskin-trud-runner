@@ -1,7 +1,7 @@
 # M04 atlas, bundle and provenance policy
 
 Date: `2026-08-21`  
-Verdict: `CANONICAL POLICY ACCEPTED; OBJECTIVE_NPC PILOT ACCEPTED; REMAINING RUNTIME PACKING DEFERRED`
+Verdict: `CANONICAL POLICY ACCEPTED; OBJECTIVE_NPC AND ACHIEVEMENT_UI ACCEPTED; REMAINING RUNTIME PACKING DEFERRED`
 
 ## Canonical contract
 
@@ -15,7 +15,7 @@ The contract requires:
 - project-contained, existing provenance files;
 - explicit bundle ID, packing mode, max texture size, padding, Web/Android compression status, trim/pivot policy and dynamic-atlas decision;
 - exact source/content checkpoint and Cocos metadata integrity;
-- `runtime_effect: false` for every M04-A group.
+- `runtime_effect: false` for policy-only groups; a measured family may set it true only with a contained descriptor plus accepted contract/evidence links.
 
 ## Current policy groups
 
@@ -29,7 +29,7 @@ The contract requires:
 | `objective_npc` | 10 | static atlas | `M04-C-PILOT` accepted and measured |
 | `level_theme_families` | 280 | unpacked family | existing unpacked |
 | `last_iteration_ui` | 214 | unpacked family | existing unpacked |
-| `achievement_ui` | 9 | static atlas candidate | policy only |
+| `achievement_ui` | 9 | static atlas | `M04-C-FAMILY-ACHIEVEMENT-UI` accepted and measured |
 | `level_backgrounds` | 15 | standalone | existing standalone |
 | `level_background_previews` | 15 | standalone | existing standalone |
 
@@ -39,7 +39,7 @@ Coverage is `1,558/1,558` PNG/JPG, uncovered `0`, overlaps `0`. A `static_atlas_
 
 The existing Cocos `resources` bundle remains unchanged: `isBundle=true`, `bundleName=resources`, priority `8`. Load/preload/release ownership is explicitly deferred to `M04.7 / M04-E`; optional packs must not be moved or eagerly loaded in M04-A.
 
-Dynamic atlas remains disabled for the accepted `objective_npc` group and is otherwise deferred until `M04.6 / M04-D` has a measured allowlist. The pilot uses the Cocos Auto Atlas PNG descriptor on both Web and Android; this is a measured group-specific result, not a project-wide Android texture-compression claim. Every remaining group retains `platform_default_pending_measurement` until its own emulator memory/build/runtime evidence exists.
+Dynamic atlas remains disabled for the accepted `objective_npc` and `achievement_ui` groups and is otherwise deferred until `M04.6 / M04-D` has a measured allowlist. Both accepted groups use Cocos Auto Atlas PNG descriptors on Web and Android; these are family-specific results, not a project-wide Android texture-compression claim. Every remaining candidate retains `platform_default_pending_measurement` until its own emulator memory/build/runtime evidence exists.
 
 ## Fail-closed rules
 
@@ -62,3 +62,5 @@ Dynamic atlas remains disabled for the accepted `objective_npc` group and is oth
 No open correctness finding remains. M04-B enforces naming, trim, pivot, alpha/null-frame, metadata/reference, bundle, provenance, quarantine and resolved-path contracts across all `1,558` governed images. Its deterministic seven-category index covers every image exactly once and links each entry to its atlas group, ownership scope and provenance.
 
 `M04-C-PILOT` accepted only `objective_npc`: ten co-visible decorative sources are packed into one static atlas. The final comparator passed `63/63`; Android emulator median draw calls fell from `26` to `17` (`-34.6154%`) while Web remained at `17`, and automated plus manual parity found no white matte, missing source, trim or pivot regression. The durable decision is recorded in `M04_C_PILOT_ACCEPTANCE.json`. Broader repacking is still unauthorized and must proceed family-by-family under `M04-C-FAMILIES` with the same fail-closed measurement contract.
+
+`M04-C-FAMILY-ACHIEVEMENT-UI` then accepted exactly nine bounded non-gameplay UI sources. Its comparator passed `63/63`; Android emulator median draw calls fell from `24` to `16` (`-33.3333%`) while Web remained at `16`. Automated and manual parity found no matte, missing-source, trim or pivot regression. The durable decision is recorded in `M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json`; every other family remains closed.

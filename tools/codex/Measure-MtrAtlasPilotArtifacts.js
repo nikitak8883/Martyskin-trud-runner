@@ -18,6 +18,8 @@ function parseArguments(argv) {
         output: values.get('--output'),
         phase: values.get('--phase'),
         platform: values.get('--platform'),
+        candidateSourceDirectory: values.get('--candidate-source-directory')
+            || 'assets/resources/objectives/npc',
     };
 }
 
@@ -70,7 +72,15 @@ function main() {
     const projectRoot = path.resolve(options.projectRoot);
     const buildRoot = resolveContained(projectRoot, options.buildRoot, '--build-root');
     const output = resolveContained(projectRoot, options.output, '--output');
+    const candidateRoot = resolveContained(
+        projectRoot,
+        options.candidateSourceDirectory,
+        '--candidate-source-directory',
+    );
     if (!fs.statSync(buildRoot).isDirectory()) throw new Error(`Build root is not a directory: ${buildRoot}`);
+    if (!fs.statSync(candidateRoot).isDirectory()) {
+        throw new Error(`Candidate source directory is not a directory: ${candidateRoot}`);
+    }
 
     const skippedLinks = [];
     const files = walkFiles(buildRoot, skippedLinks);
@@ -81,7 +91,6 @@ function main() {
     const nativeImageFiles = walkFiles(path.join(resourcesRoot, 'native'))
         .filter((file) => /\.(?:png|jpe?g|webp|ktx2?)$/i.test(file));
     const importFiles = walkFiles(path.join(resourcesRoot, 'import'));
-    const candidateRoot = path.join(projectRoot, 'assets', 'resources', 'objectives', 'npc');
     const candidateUuids = fs.readdirSync(candidateRoot)
         .filter((name) => name.endsWith('.png.meta'))
         .map((name) => JSON.parse(fs.readFileSync(path.join(candidateRoot, name), 'utf8')).uuid)
@@ -105,6 +114,7 @@ function main() {
         phase: options.phase,
         platform: options.platform,
         buildRoot: path.relative(projectRoot, buildRoot).replaceAll('\\', '/'),
+        candidateSourceDirectory: path.relative(projectRoot, candidateRoot).replaceAll('\\', '/'),
         all: summarize(files),
         runtime: summarize(runtimeFiles),
         resources: summarize(resourcesFiles),

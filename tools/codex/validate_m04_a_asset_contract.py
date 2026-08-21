@@ -36,6 +36,11 @@ EXPECTED_GOVERNANCE_META_EXCLUSIONS = {
 IMAGE_EXTENSIONS = {".png", ".jpg"}
 UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$")
 SHA1_RE = re.compile(r"^[0-9a-f]{40}$")
+ATLAS_FAMILY_UNIT_RE = re.compile(r"^M04-C-FAMILY-[A-Z0-9-]+$")
+ATLAS_CONTRACT_TO_ACCEPTANCE_SCHEMA = {
+    "mtr.m04_c_atlas_pilot_contract.v1": "mtr.m04_c_atlas_pilot_acceptance.v1",
+    "mtr.m04_c_atlas_family_contract.v1": "mtr.m04_c_atlas_family_acceptance.v1",
+}
 
 
 def load_json(path: Path) -> Any:
@@ -473,6 +478,9 @@ def validate_manifest(
             measurement_path = resolve_project_path(project_root, str(packing.get("measurement_contract", "")))
             acceptance_path = resolve_project_path(project_root, str(packing.get("acceptance_evidence", "")))
             measurement_checks: dict[str, Any] | None = None
+            expected_acceptance_schema: str | None = None
+            expected_acceptance_unit: str | None = None
+            expected_parent_unit: str | None = None
             if measurement_path is None or not measurement_path.is_file():
                 add_finding(findings, "ATLAS_MEASUREMENT_CONTRACT_MISSING", f"atlas_groups[{index}].packing.measurement_contract", "existing project file", packing.get("measurement_contract"))
             else:
@@ -489,9 +497,27 @@ def validate_manifest(
                         measurement_checks_value = measurement_result.get("acceptance_checks")
                         if isinstance(measurement_checks_value, dict):
                             measurement_checks = measurement_checks_value
+                        measurement_schema = str(measurement.get("$schema", ""))
+                        measurement_unit = str(measurement.get("unit_id", ""))
+                        is_pilot_contract = (
+                            measurement_schema == "mtr.m04_c_atlas_pilot_contract.v1"
+                            and measurement_unit == "M04-C-PILOT"
+                            and measurement.get("parent_unit") is None
+                        )
+                        is_family_contract = (
+                            measurement_schema == "mtr.m04_c_atlas_family_contract.v1"
+                            and ATLAS_FAMILY_UNIT_RE.fullmatch(measurement_unit) is not None
+                            and measurement.get("parent_unit") == "M04-C-FAMILIES"
+                        )
+                        measurement_identity_valid = is_pilot_contract or is_family_contract
+                        if measurement_identity_valid:
+                            expected_acceptance_schema = ATLAS_CONTRACT_TO_ACCEPTANCE_SCHEMA[measurement_schema]
+                            expected_acceptance_unit = measurement_unit
+                            expected_parent_unit = "M04-C-FAMILIES" if is_family_contract else None
                         measurement_actual = {
-                            "schema": measurement.get("$schema"),
-                            "unit_id": measurement.get("unit_id"),
+                            "schema": measurement_schema,
+                            "unit_id": measurement_unit,
+                            "parent_unit": measurement.get("parent_unit"),
                             "status": measurement.get("status"),
                             "atlas_id": measurement_candidate.get("atlas_id"),
                             "descriptor": measurement_candidate.get("descriptor"),
@@ -500,8 +526,9 @@ def validate_manifest(
                             "acceptance_checks": measurement_checks,
                         }
                         measurement_expected = {
-                            "schema": "mtr.m04_c_atlas_pilot_contract.v1",
-                            "unit_id": "M04-C-PILOT",
+                            "schema": measurement_schema if measurement_identity_valid else sorted(ATLAS_CONTRACT_TO_ACCEPTANCE_SCHEMA),
+                            "unit_id": measurement_unit if measurement_identity_valid else "M04-C-PILOT or M04-C-FAMILY-<ID>",
+                            "parent_unit": expected_parent_unit,
                             "status": "candidate_accepted",
                             "atlas_id": atlas_id,
                             "descriptor": descriptor,
@@ -515,7 +542,7 @@ def validate_manifest(
                             and measurement_checks["total"] > 0
                             and measurement_checks.get("passed") == measurement_checks["total"]
                         )
-                        if not checks_valid or measurement_actual != measurement_expected:
+                        if not measurement_identity_valid or not checks_valid or measurement_actual != measurement_expected:
                             add_finding(findings, "ATLAS_MEASUREMENT_CONTRACT_MISMATCH", str(packing.get("measurement_contract")), measurement_expected, measurement_actual)
             if acceptance_path is None or not acceptance_path.is_file():
                 add_finding(findings, "ATLAS_ACCEPTANCE_EVIDENCE_MISSING", f"atlas_groups[{index}].packing.acceptance_evidence", "existing project file", packing.get("acceptance_evidence"))
@@ -533,6 +560,7 @@ def validate_manifest(
                         acceptance_actual = {
                             "schema": acceptance.get("$schema"),
                             "unit_id": acceptance.get("unit_id"),
+                            "parent_unit": acceptance.get("parent_unit"),
                             "status": acceptance.get("status"),
                             "atlas_id": acceptance_candidate.get("atlas_id"),
                             "descriptor": acceptance_candidate.get("descriptor"),
@@ -542,8 +570,9 @@ def validate_manifest(
                         }
                         expected_total = measurement_checks.get("total") if isinstance(measurement_checks, dict) else None
                         acceptance_expected = {
-                            "schema": "mtr.m04_c_atlas_pilot_acceptance.v1",
-                            "unit_id": "M04-C-PILOT",
+                            "schema": expected_acceptance_schema,
+                            "unit_id": expected_acceptance_unit,
+                            "parent_unit": expected_parent_unit,
                             "status": "PASS",
                             "atlas_id": atlas_id,
                             "descriptor": descriptor,
@@ -551,7 +580,7 @@ def validate_manifest(
                             "checks_passed": expected_total,
                             "checks_total": expected_total,
                         }
-                        if expected_total is None or acceptance_actual != acceptance_expected:
+                        if expected_total is None or expected_acceptance_schema is None or acceptance_actual != acceptance_expected:
                             add_finding(findings, "ATLAS_ACCEPTANCE_EVIDENCE_MISMATCH", str(packing.get("acceptance_evidence")), acceptance_expected, acceptance_actual)
 
     duplicate_descriptors = {descriptor: groups for descriptor, groups in measured_descriptors.items() if len(groups) != 1}

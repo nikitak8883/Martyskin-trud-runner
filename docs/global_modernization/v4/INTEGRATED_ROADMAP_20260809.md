@@ -3,9 +3,9 @@
 ## Текущее положение
 
 - Source ledger: `28/95 complete`; mandatory `28/85`, осталось `57`; conditional `10`. `M04.5` остаётся pending до закрытия remaining family children.
-- V4 remaining-scope execution ledger: `13/65 complete`, осталось `52`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
-- Текущий milestone: `M04-C-PILOT` complete; `objective_npc` принят как единственный measured static atlas pilot, comparison `63/63`, P4 и M2_PLUS зелёные.
-- Следующий unit: `M04-C-FAMILIES` — один accepted measured family на изолированный child checkpoint; broader batching не разрешён.
+- V4 remaining-scope execution ledger: `14/66 complete`, осталось `52`; conditional units `7`. Знаменатель расширен на один inventory-derived child `M04-C-FAMILY-ACHIEVEMENT-UI` и остаётся provisional для следующих M04/M05/M10 children.
+- Текущий milestone: `M04-C-FAMILY-ACHIEVEMENT-UI` complete; после pilot `objective_npc` принят второй measured static atlas `achievement_ui`, comparison `63/63`, P4 и M2_PLUS зелёные.
+- Следующий unit: продолжение `M04-C-FAMILIES` — один новый accepted measured family на изолированный child checkpoint; broader batching не разрешён.
 - Release: `BLOCKED`.
 
 ## Phase 0 — contracts, toolchain и publication model
