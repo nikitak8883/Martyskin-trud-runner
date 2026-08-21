@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m04_b_rollback_manifest",
+  "execution_unit": "M04-B",
+  "scope": "pre-import validation and reproducible contact-sheet governance only; no runtime asset mutation",
+  "rollback": {
+    "repository_root": "C:/Projects/Monkey Work",
+    "anchor_commit": "745d0411c29402f4c3e8d08a9d5e06313079640e",
+    "project_prefix": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/",
+    "pre_change_blobs": {
+      "tools/validate-assets.py": "6f37b78fee44d936f7e8a4be81f6b08d383ab192",
+      "tools/codex/quality-gate/static-gates.json": "ef38bc747bea3d60f76b4fb24abb89e61c905732",
+      "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml": "46251d6f305ddaab5e805679f98de6d2e747d4e8",
+      "docs/global_modernization/v3/MODULE_EXECUTION_INDEX.yaml": "34203c8cc309ddff84b82f2dd6e6a28c557aad3f",
+      "docs/global_modernization/v3/INTEGRATED_MASTER_PLAN_20260719.md": "259af057fe10c055f3b44335397e10c4628f898b",
+      "docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json": "a8cf61c551c7619a0896cb7113bc8dc9bc4ca81e",
+      "docs/codex/CURRENT_STATE.md": "e3604916fc0600c81e5d47c521b3c33598c0e0e1",
+      "docs/global_modernization/v3/M04/atlas_policy_report.md": "4eacf852caf0f744b2a8c835b40a4703a213b72d"
+    },
+    "new_files_remove_on_rollback": [
+      "docs/global_modernization/v3/M04/M04_B_IMPLEMENTATION_PLAN.md",
+      "docs/global_modernization/v3/M04/pre_import_and_contact_sheet_report.md",
+      "docs/global_modernization/v3/M04/contact_sheet_index.json",
+      "docs/global_modernization/v3/M04/schemas/contact_sheet_index.schema.json",
+      "docs/global_modernization/v3/M04/M04_B_VALIDATION_SUMMARY.json",
+      "docs/global_modernization/v3/M04/M04_B_CODE_REVIEW_REPORT.md",
+      "docs/global_modernization/v3/M04/M04_B_ROLLBACK_MANIFEST.json",
+      "docs/global_modernization/v3/library/fixtures/assets/pre_import_negative_cases.json",
+      "tools/codex/render_m04_b_contact_sheets.py",
+      "tools/codex/tests/test_m04_b_contact_sheets.py",
+      "tools/codex/tests/test_validate_assets_m04_b.py",
+      "docs/qa/CONTROL_LOG_CHECKPOINT_20260821_M04_B_COMPLETE.md"
+    ]
+  },
+  "runtime_assets_changed": false,
+  "runtime_metadata_changed": false,
+  "build_outputs_tracked": false,
+  "duplicate_backup_files_created": false
+}

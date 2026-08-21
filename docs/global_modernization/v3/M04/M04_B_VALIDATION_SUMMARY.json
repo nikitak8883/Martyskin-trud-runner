@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M04-B",
+  "source_work_packages": ["M04.3", "M04.4"],
+  "status": "pass",
+  "implementation_status": "complete",
+  "runtime_changed": false,
+  "runtime_assets_repacked": false,
+  "runtime_metadata_changed": false,
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "pre_import_validation": {
+    "status": "PASS",
+    "image_count": 1558,
+    "png_count": 1528,
+    "trim_types": {"auto": 585, "none": 973},
+    "pivots": {"0.5,0.5": 1558},
+    "decode_errors": 0,
+    "missing_meta": 0,
+    "oversize": 0,
+    "white_matte_suspects": 0,
+    "null_frames": 0,
+    "pre_import_blockers": 0,
+    "hidden_reference_dangling": 0,
+    "path_escapes": 0,
+    "report": "temp/m04-b-development/asset-validation-hardening.json",
+    "report_sha256": "C109ED6C30589307246C5C104C80DC795575872BC417197ABCAD08B32E03A4F5"
+  },
+  "contact_sheets": {
+    "status": "PASS",
+    "category_count": 7,
+    "asset_count": 1558,
+    "sheet_count": 29,
+    "unclassified_count": 0,
+    "duplicate_classification_count": 0,
+    "category_asset_counts": {"hud": 11, "menu": 240, "runner": 84, "bonuses": 900, "obstacles": 290, "backgrounds": 31, "vfx": 2},
+    "index": "docs/global_modernization/v3/M04/contact_sheet_index.json",
+    "index_sha256": "CBD9D7F2DBD4E2200681068F1A31E6CB99B321824E20DB3E9448A18EFE61BF7C",
+    "artifacts_policy": "local_temp_reproducible_not_runtime_not_committed"
+  },
+  "tests": {
+    "status": "PASS",
+    "passed": 14,
+    "total": 14,
+    "negative_fixture_cases": 8,
+    "skipped": 0
+  },
+  "static_gate": {
+    "status": "PASS",
+    "passed": 25,
+    "total": 25,
+    "findings": 0,
+    "report": "temp/m04-b-static-gate-final/report.json",
+    "report_sha256": "9F1134FFED3DFD5A429A25C7279B2C63F6D33C3E23F33B42B65994A4B5D292D5",
+    "preserved_failure_receipt": {
+      "classification": "transient_windows_atomic_replace_lock_not_reproduced",
+      "report": "temp/m04-b-static-gate-post-review/report.json",
+      "report_sha256": "62EF7B1359DBDFBEE248D62AA6606F4D2859244FD7C4EF6391A43415D3D2E31C"
+    }
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_build": true,
+    "build_report_sha256": "BA584E431ED5F75C0A5C859B22EC0F3D308274F7420A26E3CE7F5EF3A9F9C49E",
+    "cycles": [
+      {"cycle": 1, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "41E0759C4178E9F0C720D0BF21AF6570DC7D59D433D8DFFCB033726BB339CE0A"},
+      {"cycle": 2, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "0A8479AF101D794CC6F662961644D2BD6EA91AC237C23789E22B850D4940E2F1"}
+    ],
+    "visual_sample": "PASS",
+    "qa_port_closed": true
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "serial": "emulator-5554",
+    "qemu": true,
+    "abi": "x86_64",
+    "installed_user": 0,
+    "fresh_build": true,
+    "build_report_sha256": "43B8FBD75ADA91DE61F8059CEA4B8801ABFB2EC9EA81E4400C97BA5A0E3F6213",
+    "matrix_cycles": [
+      {"cycle": 1, "passed": 28, "total": 28, "report_sha256": "6EAE9DCF497B21FD50D1B1C091CC7A53578BA0F4A5E7705D7E4E5C96BCBBE57F"},
+      {"cycle": 2, "passed": 28, "total": 28, "report_sha256": "E1CD5CC23AFF6A40B5C6CE4FF20F09BC7F1968244FD34C295BE993E35591F408"}
+    ],
+    "interaction": {"status": "PASS", "name_persistence": "PASS", "restart_passed": 10, "restart_total": 10, "soak_seconds": 300.104, "input_bursts": 322, "state_actions": 17, "process_losses": 0, "report_sha256": "46209D480FFD455D89F907E5AF4D1700757F8B5A046160571837646660A49D45"},
+    "unexpected_diagnostics": 0,
+    "apk": {"path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk", "bytes": 142909453, "sha256": "1E399112CC8E3892B3A78403BA043D48EA0CA0DD027DA46F7B0C284A2580517E", "signature_scope": "debug_emulator_qa_only"}
+  },
+  "review": {
+    "accepted_and_fixed_findings": 3,
+    "rejected_false_positives": 3,
+    "open_findings": 0,
+    "codex_final_review": "PASS",
+    "local_contact_sheet_review": "accept",
+    "local_coder_cleanup_verified": true,
+    "hygiene_gate": "PASS"
+  },
+  "roadmap": {
+    "execution_complete": 12,
+    "execution_total_current": 65,
+    "execution_remaining_current": 53,
+    "conditional_units": 7,
+    "source_complete": 28,
+    "source_total": 95,
+    "source_mandatory_remaining": 57,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M04-C-PILOT"
+  },
+  "release_blockers": ["M02.1", "M02.7", "M12.7"]
+}

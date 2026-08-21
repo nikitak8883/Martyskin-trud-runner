@@ -10,7 +10,7 @@ modules:
   M01: {status: complete_release_blocked, completed: [M01.1, M01.2, M01.3, M01.4, M01.5, M01.6, M01.7], next: null, report: docs/global_modernization/final_qa_report.md}
   M02: {status: technical_baseline_complete_release_blocked, completed: [M02.2, M02.3, M02.4, M02.5], next: M02.1, report: docs/global_modernization/v3/M02/M02_5_VALIDATION_SUMMARY.json}
   M03: {status: complete_release_blocked, completed: [M03.1, M03.2, M03.3, M03.4, M03.5, M03.6, M03.7], completed_execution_units: [M03.3A, M03.3B, M03.3C, M03.4, M03.5, M03.6, M03.7A, M03.7B], next: null, next_execution_unit: null, report: docs/global_modernization/v3/M03/M03_7B_VALIDATION_SUMMARY.json}
-  M04: {status: in_progress, completed: [M04.1, M04.2], completed_execution_units: [M04-A], next: M04.3, next_execution_unit: M04-B, report: docs/global_modernization/v3/M04/M04_A_VALIDATION_SUMMARY.json}
+  M04: {status: in_progress, completed: [M04.1, M04.2, M04.3, M04.4], completed_execution_units: [M04-A, M04-B], next: M04.5, next_execution_unit: M04-C-PILOT, report: docs/global_modernization/v3/M04/M04_B_VALIDATION_SUMMARY.json}
   M05: {status: revalidate_then_extend, completed: [], next: M05.1, report: docs/global_modernization/ui_ir_migration_report.md}
   M06: {status: revalidate_then_extend, completed: [], next: M06.1, report: docs/global_modernization/skin_bonus_contract_report.md}
   M07: {status: pending, completed: [], next: M07.1, report: null}
@@ -24,4 +24,4 @@ release_blockers:
   - immutable Web/Pages deployment mechanism and fresh live parity are not approved or executed
   - no production-signed arm64 artifact from accepted source
   - production signing identity, backup ownership and upgrade-compatibility policy are unresolved
-next_safe_action: execute M04-B by extending fail-visible pre-import validation and generating manifest-linked contact sheets; keep runtime repacking, signing and deployment blocked until their dedicated gates pass
+next_safe_action: execute M04-C-PILOT as one measured low-risk co-visible atlas family with pivot, trim, rollback and before-after evidence; keep broader repacking, signing and deployment blocked until their dedicated gates pass

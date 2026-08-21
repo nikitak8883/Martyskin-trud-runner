@@ -59,4 +59,4 @@ Dynamic atlas is disabled until `M04.6 / M04-D` has a measured allowlist. Androi
 3. Explicit path conventions removed ambiguity between source-root-relative selectors and project-root-relative provenance/meta paths.
 4. Direct unit tests now prove text/binary canonicalization, metadata pairing/orphan detection, path containment and post-publication Git ancestry.
 
-No open correctness finding remains. Measured texture migration starts only with one bounded `M04-C-PILOT` group after `M04-B` contact sheets and pre-import validation are accepted.
+No open correctness finding remains. M04-B now enforces naming, trim, pivot, alpha/null-frame, metadata/reference, bundle, provenance, quarantine and resolved-path contracts across all `1,558` governed images. Its deterministic seven-category index covers every image exactly once and links each entry to its atlas group, ownership scope and provenance. Measured texture migration may now start only with one bounded `M04-C-PILOT` group; broader repacking remains unauthorized.

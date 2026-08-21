@@ -307,6 +307,42 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "m04-b-contact-sheet-contract",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/render_m04_b_contact_sheets.py",
+        "--project-root",
+        ".",
+        "--check"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 300,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "m04-b-asset-pipeline-tests",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/codex/tests",
+        "-p",
+        "test_*m04_b*.py",
+        "-v"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 300,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "skin-bonus-contracts",
       "mandatory": true,
       "enabled": true,

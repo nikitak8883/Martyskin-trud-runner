@@ -1,13 +1,29 @@
 # CURRENT_STATE — Martyshkin Trud Runner
 
 Generated: 2026-07-02 15:44 +03:00  
-Updated: 2026-08-13  
+Updated: 2026-08-21  
 Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`  
 Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m03_7a_complete / m03_7b_ready / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m04_b_complete / m04_c_pilot_ready / release_blocked`
+
+## 2026-08-21 M04-B completion overlay
+
+This overlay supersedes every older next-action line below; older sections remain historical evidence only.
+
+- M04-B (`M04.3 + M04.4`) is complete without changing runtime assets, Cocos import metadata or gameplay code.
+- The strict pre-import validator covers all `1,558` PNG/JPG images and rejects unsafe naming/casefold collisions, invalid trim/pivot/alpha, null frames, broken Cocos UUID redirects, unresolved provenance, bundle drift, quarantine leaks, dangling hidden references and resolved-path escapes.
+- Deterministic contact sheets cover all `1,558/1,558` images exactly once in seven required categories, `29` pages total; canonical index SHA-256 is `CBD9D7F2DBD4E2200681068F1A31E6CB99B321824E20DB3E9448A18EFE61BF7C`.
+- Direct M04-B tests pass `14/14`; strict asset scan reports zero blockers; final static gate passes `25/25` with zero findings.
+- Fresh Web QA passes two cycles at `34/34`, interaction PASS and restart `10/10` each.
+- Fresh Android x86_64 emulator build/install passes two cycles at `28/28`; interaction/name persistence pass, restart `10/10`, and `300.104 s` soak completes with zero process loss. No physical device was used.
+- Roadmap: execution `12/65` complete, `53` mandatory units remain plus `7` conditional; source `28/95` complete, `57` mandatory packages remain plus `10` conditional.
+- Current checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20260821_M04_B_COMPLETE.md`.
+- Current validation report: `docs/global_modernization/v3/M04/M04_B_VALIDATION_SUMMARY.json`.
+- Next safe unit: `M04-C-PILOT`, exactly one measured low-risk co-visible atlas family with before/after metrics and rollback.
+- Release remains blocked by production signing/distribution (`M02.1`), immutable Web deployment/live parity (`M02.7`) and owner-selected final cleanup (`M12.7`).
 
 ## 2026-08-13 M03.7A completion overlay
 

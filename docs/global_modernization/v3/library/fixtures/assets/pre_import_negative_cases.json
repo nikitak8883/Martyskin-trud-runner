@@ -1,0 +1,54 @@
+{
+  "schema": "mtr.asset_pre_import_negative_cases.v1",
+  "cases": [
+    {
+      "id": "unsafe_asset_name",
+      "operation": "rename_image",
+      "value": "Bad Asset.png",
+      "expected_type": "asset_naming_invalid"
+    },
+    {
+      "id": "pivot_out_of_range",
+      "operation": "set_sprite_field",
+      "field": "pivotX",
+      "value": 1.25,
+      "expected_type": "image_pivot_invalid"
+    },
+    {
+      "id": "trim_out_of_bounds",
+      "operation": "set_sprite_field",
+      "field": "width",
+      "value": 65,
+      "expected_type": "image_trim_bounds_invalid"
+    },
+    {
+      "id": "broken_internal_redirect",
+      "operation": "set_root_field",
+      "field": "redirect",
+      "value": "00000000-0000-4000-8000-000000000099@6c48a",
+      "expected_type": "image_meta_internal_reference_invalid"
+    },
+    {
+      "id": "missing_provenance",
+      "operation": "clear_group_provenance",
+      "expected_type": "asset_provenance_missing"
+    },
+    {
+      "id": "runtime_quarantine_leak",
+      "operation": "move_to_runtime_quarantine",
+      "expected_type": "runtime_quarantine_leak"
+    },
+    {
+      "id": "bundle_name_drift",
+      "operation": "set_bundle_name",
+      "value": "legacy-resources",
+      "expected_type": "bundle_placement_invalid"
+    },
+    {
+      "id": "dangling_hidden_uuid",
+      "operation": "add_dangling_scene_uuid",
+      "value": "00000000-0000-4000-8000-000000000099",
+      "expected_type": "hidden_uuid_reference_dangling"
+    }
+  ]
+}

@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
+import re
 from collections import defaultdict, deque
 from dataclasses import asdict, dataclass
 from pathlib import Path
@@ -30,6 +32,12 @@ OPAQUE_ALPHA_MIN = 250
 WHITE_RGB_MIN = 245
 WHITE_MATTE_WARN_THRESHOLD = 200
 REFERENCE_MISSING_SAMPLE_LIMIT = 50
+IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg"}
+SAFE_ASSET_SEGMENT_RE = re.compile(r"^[a-z0-9][a-z0-9_-]*$")
+UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}(?:@[0-9a-f]+)?$")
+UUID_REFERENCE_RE = re.compile(r'"__uuid__"\s*:\s*"([0-9a-fA-F@-]+)"')
+QUARANTINE_SEGMENTS = {"quarantine", "_quarantine", "incoming", "_incoming", "staging", "_staging"}
+HIDDEN_REFERENCE_EXTENSIONS = {".scene", ".prefab", ".fire", ".anim", ".json"}
 
 # These ids are deliberately reported by GameRoot.ts telemetry and drawn by
 # code, not loaded as `assets/resources/<key>.png`. Keep this list tiny and
@@ -55,6 +63,8 @@ class PngInfo:
     oversize: bool = False
     edgeConnectedOpaqueWhitePixels: int = 0
     whiteMatteSuspect: bool = False
+    alphaBBox: list[int] | None = None
+    fullyTransparent: bool = False
 
 
 def rel(path: Path, root: Path) -> str:
@@ -66,6 +76,18 @@ def project_rel(path: Path, root: Path) -> str:
         return path.relative_to(root).as_posix()
     except ValueError:
         return str(path)
+
+
+def contained_path(root: Path, candidate: Path) -> Path | None:
+    """Resolve a path and reject traversal or symlink/junction escape."""
+
+    resolved_root = root.resolve()
+    resolved_candidate = candidate.resolve()
+    try:
+        resolved_candidate.relative_to(resolved_root)
+    except ValueError:
+        return None
+    return resolved_candidate
 
 
 def has_alpha(image: Image.Image) -> bool:  # type: ignore[name-defined]
@@ -132,12 +154,19 @@ def scan_pngs(resources_root: Path, max_edge: int) -> tuple[list[PngInfo], dict[
     groups: dict[str, dict[str, int]] = defaultdict(lambda: {"count": 0, "bytes": 0, "alpha": 0, "maxWidth": 0, "maxHeight": 0})
 
     for path in pngs:
+        relative = rel(path, resources_root)
+        meta_path = Path(str(path) + ".meta")
         info = PngInfo(
-            path=rel(path, resources_root),
-            bytes=path.stat().st_size,
-            hasMeta=Path(str(path) + ".meta").exists(),
+            path=relative,
+            bytes=0,
+            hasMeta=contained_path(resources_root, meta_path) is not None and meta_path.exists(),
         )
+        if contained_path(resources_root, path) is None:
+            info.decodeError = "path escapes resources root through traversal or symlink/junction"
+            infos.append(info)
+            continue
         try:
+            info.bytes = path.stat().st_size
             with Image.open(path) as image:
                 info.width, info.height = image.size
                 info.mode = image.mode
@@ -145,6 +174,10 @@ def scan_pngs(resources_root: Path, max_edge: int) -> tuple[list[PngInfo], dict[
                 info.oversize = image.size[0] > max_edge or image.size[1] > max_edge
                 info.edgeConnectedOpaqueWhitePixels = edge_connected_opaque_white_count(image)
                 info.whiteMatteSuspect = info.edgeConnectedOpaqueWhitePixels > WHITE_MATTE_WARN_THRESHOLD
+                if info.hasAlpha:
+                    alpha_bbox = image.convert("RGBA").getchannel("A").getbbox()
+                    info.alphaBBox = list(alpha_bbox) if alpha_bbox else None
+                    info.fullyTransparent = alpha_bbox is None
         except Exception as exc:
             info.decodeError = str(exc)
 
@@ -161,6 +194,515 @@ def scan_pngs(resources_root: Path, max_edge: int) -> tuple[list[PngInfo], dict[
         infos.append(info)
 
     return infos, dict(sorted(groups.items()))
+
+
+def add_blocker(blockers: list[dict[str, Any]], finding_type: str, path: str, **details: Any) -> None:
+    blockers.append({"type": finding_type, "path": path, **details})
+
+
+def safe_json(path: Path) -> tuple[Any | None, str | None]:
+    try:
+        return json.loads(path.read_text(encoding="utf-8")), None
+    except Exception as exc:
+        return None, str(exc)
+
+
+def selector_matches(relative: str, selector: dict[str, Any]) -> bool:
+    selector_path = selector.get("path")
+    mode = selector.get("match")
+    extensions = selector.get("extensions")
+    if not isinstance(selector_path, str) or mode not in {"prefix", "exact_file"}:
+        return False
+    if isinstance(extensions, list) and Path(relative).suffix.lower() not in extensions:
+        return False
+    if mode == "exact_file":
+        return relative == selector_path
+    return relative == selector_path or relative.startswith(f"{selector_path}/")
+
+
+def ownership_matches(relative: str, scope: dict[str, Any]) -> bool:
+    scope_path = scope.get("path")
+    mode = scope.get("match")
+    if not isinstance(scope_path, str) or mode not in {"prefix", "exact_file"}:
+        return False
+    if mode == "exact_file":
+        return relative == scope_path
+    return relative == scope_path or relative.startswith(f"{scope_path}/")
+
+
+def sprite_submeta(meta: dict[str, Any]) -> dict[str, Any] | None:
+    sub_metas = meta.get("subMetas")
+    if not isinstance(sub_metas, dict):
+        return None
+    return next(
+        (value for value in sub_metas.values() if isinstance(value, dict) and value.get("importer") == "sprite-frame"),
+        None,
+    )
+
+
+def texture_submeta(meta: dict[str, Any]) -> dict[str, Any] | None:
+    sub_metas = meta.get("subMetas")
+    if not isinstance(sub_metas, dict):
+        return None
+    return next(
+        (value for value in sub_metas.values() if isinstance(value, dict) and value.get("importer") == "texture"),
+        None,
+    )
+
+
+def finite_number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(float(value))
+
+
+def collect_all_meta_uuids(assets_root: Path) -> tuple[set[str], list[Path]]:
+    uuids: set[str] = set()
+    escaped: list[Path] = []
+    for meta_path in sorted(assets_root.rglob("*.meta")):
+        if contained_path(assets_root, meta_path) is None:
+            escaped.append(meta_path)
+            continue
+        data, error = safe_json(meta_path)
+        if error or not isinstance(data, dict):
+            continue
+        candidates = [data.get("uuid")]
+        sub_metas = data.get("subMetas")
+        if isinstance(sub_metas, dict):
+            candidates.extend(
+                value.get("uuid")
+                for value in sub_metas.values()
+                if isinstance(value, dict)
+            )
+        for candidate in candidates:
+            if isinstance(candidate, str):
+                uuids.add(candidate.lower())
+    return uuids, escaped
+
+
+def validate_hidden_uuid_references(
+    project_root: Path,
+    assets_root: Path,
+    image_uuids: set[str],
+    blockers: list[dict[str, Any]],
+) -> dict[str, Any]:
+    all_uuids, escaped_meta_paths = collect_all_meta_uuids(assets_root)
+    for escaped_path in escaped_meta_paths:
+        add_blocker(
+            blockers,
+            "metadata_path_escape",
+            project_rel(escaped_path, project_root),
+        )
+    resolved_image = 0
+    dangling: list[dict[str, str]] = []
+    scanned_files = 0
+    for source_path in sorted(assets_root.rglob("*")):
+        if not source_path.is_file() or source_path.suffix.lower() not in HIDDEN_REFERENCE_EXTENSIONS:
+            continue
+        if contained_path(assets_root, source_path) is None:
+            add_blocker(
+                blockers,
+                "hidden_reference_path_escape",
+                project_rel(source_path, project_root),
+            )
+            continue
+        scanned_files += 1
+        try:
+            text = source_path.read_text(encoding="utf-8")
+        except UnicodeDecodeError:
+            continue
+        for match in UUID_REFERENCE_RE.finditer(text):
+            uuid = match.group(1).lower()
+            if uuid in image_uuids:
+                resolved_image += 1
+            elif uuid not in all_uuids and UUID_RE.fullmatch(uuid):
+                item = {"path": project_rel(source_path, project_root), "uuid": uuid}
+                dangling.append(item)
+                add_blocker(blockers, "hidden_uuid_reference_dangling", item["path"], uuid=uuid)
+    return {
+        "checked": True,
+        "scannedFileCount": scanned_files,
+        "knownUuidCount": len(all_uuids),
+        "metadataPathEscapeCount": len(escaped_meta_paths),
+        "imageUuidCount": len(image_uuids),
+        "resolvedImageReferenceCount": resolved_image,
+        "danglingCount": len(dangling),
+        "danglingSample": dangling[:REFERENCE_MISSING_SAMPLE_LIMIT],
+    }
+
+
+def validate_bundle_meta(
+    project_root: Path,
+    resources_root: Path,
+    blockers: list[dict[str, Any]],
+) -> dict[str, Any]:
+    meta_path = Path(str(resources_root) + ".meta")
+    relative = project_rel(meta_path, project_root)
+    if contained_path(project_root, meta_path) is None:
+        add_blocker(blockers, "bundle_meta_path_escape", relative)
+        return {"checked": True, "path": relative, "valid": False, "error": "path_escape"}
+    data, error = safe_json(meta_path)
+    if error or not isinstance(data, dict):
+        add_blocker(blockers, "bundle_meta_invalid", relative, error=error or "not_an_object")
+        return {"checked": True, "path": relative, "valid": False, "error": error}
+    user_data = data.get("userData") if isinstance(data.get("userData"), dict) else {}
+    expected = {"isBundle": True, "bundleName": "resources", "priority": 8}
+    actual = {key: user_data.get(key) for key in expected}
+    if actual != expected:
+        add_blocker(blockers, "bundle_placement_invalid", relative, expected=expected, actual=actual)
+    return {
+        "checked": True,
+        "path": relative,
+        "valid": actual == expected,
+        "bundleName": user_data.get("bundleName"),
+        "priority": user_data.get("priority"),
+    }
+
+
+def validate_image_governance(
+    project_root: Path,
+    resources_root: Path,
+    atlas_data: Any,
+    png_infos: list[PngInfo],
+    quarantine_root: Path | None,
+) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    """Validate M04-B pre-import rules without changing source assets."""
+
+    blockers: list[dict[str, Any]] = []
+    if not isinstance(atlas_data, dict):
+        add_blocker(blockers, "atlas_manifest_invalid", "assets/resources/config/atlas_manifest.json")
+        return {"checked": True, "status": "FAIL", "blockerCount": len(blockers)}, blockers
+
+    raw_groups = atlas_data.get("atlas_groups")
+    raw_scopes = atlas_data.get("ownership_scopes")
+    groups = raw_groups if isinstance(raw_groups, list) else []
+    scopes = raw_scopes if isinstance(raw_scopes, list) else []
+    if not groups:
+        add_blocker(blockers, "atlas_groups_invalid", "assets/resources/config/atlas_manifest.json")
+    if not scopes:
+        add_blocker(blockers, "ownership_scopes_invalid", "assets/resources/config/atlas_manifest.json")
+    for index, group in enumerate(groups):
+        if (
+            not isinstance(group, dict)
+            or not isinstance(group.get("atlas_id"), str)
+            or not group.get("atlas_id")
+            or not isinstance(group.get("source_selectors"), list)
+            or not group.get("source_selectors")
+        ):
+            add_blocker(blockers, "atlas_group_contract_invalid", f"/atlas_groups/{index}")
+    for index, scope in enumerate(scopes):
+        if (
+            not isinstance(scope, dict)
+            or not isinstance(scope.get("scope_id"), str)
+            or not scope.get("scope_id")
+            or scope.get("match") not in {"prefix", "exact_file"}
+            or not isinstance(scope.get("path"), str)
+        ):
+            add_blocker(blockers, "ownership_scope_contract_invalid", f"/ownership_scopes/{index}")
+    images = sorted(
+        path for path in resources_root.rglob("*")
+        if path.is_file() and path.suffix.lower() in IMAGE_EXTENSIONS
+    )
+    png_by_path = {item.path: item for item in png_infos}
+    casefolded: dict[str, str] = {}
+    naming_invalid = 0
+    naming_collisions = 0
+    quarantine_leaks = 0
+    ownership_invalid = 0
+    atlas_invalid = 0
+    provenance_invalid = 0
+    metadata_invalid = 0
+    trim_invalid = 0
+    pivot_invalid = 0
+    alpha_invalid = 0
+    internal_reference_invalid = 0
+    image_uuids: set[str] = set()
+    trim_types: dict[str, int] = defaultdict(int)
+    pivots: dict[str, int] = defaultdict(int)
+    atlas_counts: dict[str, int] = defaultdict(int)
+    scope_counts: dict[str, int] = defaultdict(int)
+
+    for image_path in images:
+        relative = rel(image_path, resources_root)
+        if contained_path(resources_root, image_path) is None:
+            metadata_invalid += 1
+            add_blocker(blockers, "asset_path_escape", relative)
+            continue
+        parts = list(Path(relative).parts)
+        invalid_segments = [segment for segment in parts[:-1] if not SAFE_ASSET_SEGMENT_RE.fullmatch(segment)]
+        stem = image_path.stem
+        if not SAFE_ASSET_SEGMENT_RE.fullmatch(stem) or image_path.suffix != image_path.suffix.lower() or invalid_segments:
+            naming_invalid += 1
+            add_blocker(
+                blockers,
+                "asset_naming_invalid",
+                relative,
+                invalidSegments=invalid_segments,
+                requiredPattern=SAFE_ASSET_SEGMENT_RE.pattern,
+            )
+        folded = relative.casefold()
+        if folded in casefolded and casefolded[folded] != relative:
+            naming_collisions += 1
+            add_blocker(blockers, "asset_casefold_collision", relative, other=casefolded[folded])
+        else:
+            casefolded[folded] = relative
+
+        leaking_segments = sorted({segment.casefold() for segment in parts if segment.casefold() in QUARANTINE_SEGMENTS})
+        if leaking_segments:
+            quarantine_leaks += 1
+            add_blocker(blockers, "runtime_quarantine_leak", relative, segments=leaking_segments)
+
+        matching_scopes = [scope for scope in scopes if isinstance(scope, dict) and ownership_matches(relative, scope)]
+        matching_groups = [
+            group for group in groups
+            if isinstance(group, dict)
+            and any(selector_matches(relative, selector) for selector in group.get("source_selectors", []) if isinstance(selector, dict))
+        ]
+        if len(matching_scopes) != 1:
+            ownership_invalid += 1
+            add_blocker(
+                blockers,
+                "asset_ownership_coverage_invalid",
+                relative,
+                matches=[scope.get("scope_id") for scope in matching_scopes],
+            )
+        if len(matching_groups) != 1:
+            atlas_invalid += 1
+            add_blocker(
+                blockers,
+                "asset_atlas_coverage_invalid",
+                relative,
+                matches=[group.get("atlas_id") for group in matching_groups],
+            )
+        scope = matching_scopes[0] if len(matching_scopes) == 1 else None
+        group = matching_groups[0] if len(matching_groups) == 1 else None
+        if scope:
+            scope_counts[str(scope.get("scope_id"))] += 1
+        if group:
+            atlas_counts[str(group.get("atlas_id"))] += 1
+
+        provenance_paths: set[str] = set()
+        for owner in (scope, group):
+            if owner is None:
+                continue
+            if owner.get("bundle_id") != "resources":
+                atlas_invalid += 1
+                add_blocker(blockers, "asset_bundle_id_invalid", relative, owner=owner.get("scope_id") or owner.get("atlas_id"))
+            provenance = owner.get("provenance")
+            if not isinstance(provenance, list) or not provenance:
+                provenance_invalid += 1
+                add_blocker(blockers, "asset_provenance_missing", relative, owner=owner.get("scope_id") or owner.get("atlas_id"))
+                continue
+            for provenance_path in provenance:
+                if not isinstance(provenance_path, str):
+                    provenance_invalid += 1
+                    add_blocker(blockers, "asset_provenance_invalid", relative, value=provenance_path)
+                    continue
+                provenance_paths.add(provenance_path)
+        for provenance_path in sorted(provenance_paths):
+            candidate = contained_path(project_root, project_root / provenance_path)
+            if candidate is None or not candidate.is_file():
+                provenance_invalid += 1
+                add_blocker(blockers, "asset_provenance_unresolved", relative, provenance=provenance_path)
+
+        try:
+            with Image.open(image_path) as image:  # type: ignore[union-attr]
+                actual_width, actual_height = image.size
+                actual_alpha = has_alpha(image)
+                alpha_bbox = image.convert("RGBA").getchannel("A").getbbox() if actual_alpha else None
+        except Exception:
+            # Decode errors are already emitted by the legacy PNG scan. JPEG
+            # decode failures are made visible here.
+            if image_path.suffix.lower() != ".png":
+                metadata_invalid += 1
+                add_blocker(blockers, "image_decode_error", relative)
+            continue
+
+        meta_path = Path(str(image_path) + ".meta")
+        if contained_path(resources_root, meta_path) is None:
+            metadata_invalid += 1
+            add_blocker(blockers, "image_meta_path_escape", relative)
+            continue
+        meta, meta_error = safe_json(meta_path)
+        if meta_error or not isinstance(meta, dict):
+            if image_path.suffix.lower() != ".png" or meta_path.exists():
+                metadata_invalid += 1
+                add_blocker(blockers, "image_meta_invalid", relative, error=meta_error or "not_an_object")
+            continue
+        texture = texture_submeta(meta)
+        sprite = sprite_submeta(meta)
+        if texture is None or sprite is None:
+            metadata_invalid += 1
+            add_blocker(blockers, "image_meta_submetas_missing", relative)
+            continue
+        root_uuid = meta.get("uuid")
+        texture_uuid = texture.get("uuid")
+        sprite_uuid = sprite.get("uuid")
+        for uuid in (root_uuid, texture_uuid, sprite_uuid):
+            if not isinstance(uuid, str) or not UUID_RE.fullmatch(uuid):
+                internal_reference_invalid += 1
+                add_blocker(blockers, "image_meta_uuid_invalid", relative, uuid=uuid)
+            else:
+                image_uuids.add(uuid.lower())
+
+        root_user = meta.get("userData") if isinstance(meta.get("userData"), dict) else {}
+        texture_user = texture.get("userData") if isinstance(texture.get("userData"), dict) else {}
+        sprite_user = sprite.get("userData") if isinstance(sprite.get("userData"), dict) else {}
+        reference_expectations = [
+            ("root.redirect", root_user.get("redirect"), texture_uuid),
+            ("texture.imageUuidOrDatabaseUri", texture_user.get("imageUuidOrDatabaseUri"), root_uuid),
+            ("sprite.imageUuidOrDatabaseUri", sprite_user.get("imageUuidOrDatabaseUri"), texture_uuid),
+        ]
+        for field, actual, expected in reference_expectations:
+            if actual != expected:
+                internal_reference_invalid += 1
+                add_blocker(blockers, "image_meta_internal_reference_invalid", relative, field=field, expected=expected, actual=actual)
+
+        for owner_name, display_name in (("texture", texture.get("displayName")), ("sprite", sprite.get("displayName"))):
+            if display_name != stem:
+                metadata_invalid += 1
+                add_blocker(blockers, "image_meta_display_name_invalid", relative, owner=owner_name, expected=stem, actual=display_name)
+
+        trim_type = sprite_user.get("trimType")
+        trim_types[str(trim_type)] += 1
+        numeric_fields = ("trimX", "trimY", "width", "height", "rawWidth", "rawHeight", "offsetX", "offsetY")
+        if trim_type not in {"none", "auto"} or any(not finite_number(sprite_user.get(field)) for field in numeric_fields):
+            trim_invalid += 1
+            add_blocker(blockers, "image_trim_contract_invalid", relative, trimType=trim_type)
+        else:
+            trim_x = float(sprite_user["trimX"])
+            trim_y = float(sprite_user["trimY"])
+            width = float(sprite_user["width"])
+            height = float(sprite_user["height"])
+            raw_width = float(sprite_user["rawWidth"])
+            raw_height = float(sprite_user["rawHeight"])
+            valid_bounds = (
+                raw_width == actual_width
+                and raw_height == actual_height
+                and width > 0
+                and height > 0
+                and trim_x >= 0
+                and trim_y >= 0
+                and trim_x + width <= raw_width
+                and trim_y + height <= raw_height
+            )
+            if trim_type == "none":
+                valid_bounds = valid_bounds and (
+                    trim_x == 0
+                    and trim_y == 0
+                    and width == raw_width
+                    and height == raw_height
+                    and float(sprite_user["offsetX"]) == 0
+                    and float(sprite_user["offsetY"]) == 0
+                )
+            if not valid_bounds:
+                trim_invalid += 1
+                add_blocker(
+                    blockers,
+                    "image_trim_bounds_invalid",
+                    relative,
+                    actual=[actual_width, actual_height],
+                    trim=[trim_x, trim_y, width, height, raw_width, raw_height],
+                )
+
+        pivot_x = sprite_user.get("pivotX")
+        pivot_y = sprite_user.get("pivotY")
+        if not finite_number(pivot_x) or not finite_number(pivot_y) or not (0 <= float(pivot_x) <= 1 and 0 <= float(pivot_y) <= 1):
+            pivot_invalid += 1
+            add_blocker(blockers, "image_pivot_invalid", relative, pivot=[pivot_x, pivot_y])
+        else:
+            pivots[f"{float(pivot_x):g},{float(pivot_y):g}"] += 1
+
+        packing = group.get("packing") if group and isinstance(group.get("packing"), dict) else {}
+        standalone = packing.get("mode") == "standalone_texture"
+        if not isinstance(sprite_user.get("packable"), bool):
+            metadata_invalid += 1
+            add_blocker(blockers, "image_packable_policy_invalid", relative, expected="boolean", actual=sprite_user.get("packable"))
+        if sprite_user.get("atlasUuid") not in {"", None}:
+            internal_reference_invalid += 1
+            add_blocker(blockers, "unexpected_pre_m04_c_atlas_reference", relative, atlasUuid=sprite_user.get("atlasUuid"))
+
+        declared_alpha = root_user.get("hasAlpha")
+        expected_alpha = image_path.suffix.lower() == ".png" and not standalone
+        if declared_alpha is not actual_alpha or actual_alpha is not expected_alpha:
+            alpha_invalid += 1
+            add_blocker(
+                blockers,
+                "image_alpha_contract_invalid",
+                relative,
+                actual=actual_alpha,
+                declared=declared_alpha,
+                expected=expected_alpha,
+            )
+        png_info = png_by_path.get(relative)
+        if png_info and png_info.fullyTransparent:
+            alpha_invalid += 1
+            add_blocker(blockers, "image_null_frame", relative)
+        elif actual_alpha and alpha_bbox is None:
+            alpha_invalid += 1
+            add_blocker(blockers, "image_null_frame", relative)
+
+    quarantine_count = 0
+    quarantine_escaped = 0
+    quarantine_path_text = None
+    if quarantine_root is not None:
+        quarantine_path_text = project_rel(quarantine_root, project_root)
+        resolved_quarantine = contained_path(project_root, quarantine_root)
+        if resolved_quarantine is None:
+            add_blocker(blockers, "quarantine_root_escape", quarantine_path_text)
+            quarantine_escaped += 1
+        elif resolved_quarantine.exists():
+            for candidate in resolved_quarantine.rglob("*"):
+                if candidate.is_file() and candidate.suffix.lower() in IMAGE_EXTENSIONS:
+                    if contained_path(resolved_quarantine, candidate) is None:
+                        quarantine_escaped += 1
+                        add_blocker(blockers, "quarantine_asset_escape", project_rel(candidate, project_root))
+                    else:
+                        quarantine_count += 1
+
+    bundle = validate_bundle_meta(project_root, resources_root, blockers)
+    hidden_references = validate_hidden_uuid_references(
+        project_root,
+        project_root / "assets",
+        image_uuids,
+        blockers,
+    )
+    report = {
+        "checked": True,
+        "status": "PASS" if not blockers else "FAIL",
+        "policy": {
+            "namingPattern": SAFE_ASSET_SEGMENT_RE.pattern,
+            "imageExtensions": sorted(IMAGE_EXTENSIONS),
+            "quarantineSegments": sorted(QUARANTINE_SEGMENTS),
+            "runtimeBundle": "resources",
+            "preM04CAtlasUuid": "empty",
+            "mutatesFiles": False,
+        },
+        "summary": {
+            "imageCount": len(images),
+            "namingInvalidCount": naming_invalid,
+            "casefoldCollisionCount": naming_collisions,
+            "runtimeQuarantineLeakCount": quarantine_leaks,
+            "ownershipInvalidCount": ownership_invalid,
+            "atlasPlacementInvalidCount": atlas_invalid,
+            "provenanceInvalidCount": provenance_invalid,
+            "metadataInvalidCount": metadata_invalid,
+            "trimInvalidCount": trim_invalid,
+            "pivotInvalidCount": pivot_invalid,
+            "alphaInvalidCount": alpha_invalid,
+            "internalReferenceInvalidCount": internal_reference_invalid,
+            "quarantinedAssetCount": quarantine_count,
+            "quarantineEscapeCount": quarantine_escaped,
+            "blockerCount": len(blockers),
+        },
+        "bundle": bundle,
+        "trimTypes": dict(sorted(trim_types.items())),
+        "pivots": dict(sorted(pivots.items())),
+        "atlasCounts": dict(sorted(atlas_counts.items())),
+        "ownershipCounts": dict(sorted(scope_counts.items())),
+        "quarantine": {"path": quarantine_path_text, "assetCount": quarantine_count, "escapeCount": quarantine_escaped},
+        "hiddenReferences": hidden_references,
+        "blockerSample": blockers[:REFERENCE_MISSING_SAMPLE_LIMIT],
+    }
+    return report, blockers
 
 
 def normalize_resource_key(value: str) -> str:
@@ -183,10 +725,10 @@ def resource_key_exists(resources_root: Path, key: str) -> tuple[bool, str, str 
         return True, normalized, "procedural"
 
     png_path = resources_root / f"{normalized}.png"
-    if png_path.exists():
+    if contained_path(resources_root, png_path) is not None and png_path.exists():
         return True, normalized, rel(png_path, resources_root)
     raw_path = resources_root / normalized
-    if raw_path.exists() and raw_path.is_file():
+    if contained_path(resources_root, raw_path) is not None and raw_path.exists() and raw_path.is_file():
         return True, normalized, rel(raw_path, resources_root)
     return False, normalized, None
 
@@ -354,7 +896,21 @@ def validate_manifest_references(project_root: Path, resources_root: Path, args:
     blockers: list[dict[str, Any]] = []
 
     for source, rel_manifest_path, collector in specs:
-        manifest_path = (project_root / rel_manifest_path).resolve()
+        manifest_path = contained_path(project_root, project_root / rel_manifest_path)
+        if manifest_path is None:
+            error = {
+                "type": "reference_manifest_path_escape",
+                "path": str(rel_manifest_path),
+            }
+            checks[source] = {
+                "checked": True,
+                "exists": False,
+                "source": source,
+                "path": str(rel_manifest_path),
+                "error": error,
+            }
+            blockers.append(error)
+            continue
         data, manifest_error = read_json_manifest(project_root, manifest_path)
         if manifest_error:
             checks[source] = {
@@ -383,14 +939,30 @@ def validate_manifest_references(project_root: Path, resources_root: Path, args:
     return checks, blockers
 
 
-def validate_atlas_manifest(project_root: Path, resources_root: Path, manifest_path: Path | None) -> dict[str, Any]:
+def validate_atlas_manifest(
+    project_root: Path,
+    resources_root: Path,
+    manifest_path: Path | None,
+    manifest_data: Any | None = None,
+) -> dict[str, Any]:
     if manifest_path is None:
         return {"checked": False, "reason": "not_provided", "missingSourceCandidates": []}
     if not manifest_path.exists():
         return {"checked": True, "exists": False, "missingSourceCandidates": [str(manifest_path)]}
 
-    data = json.loads(manifest_path.read_text(encoding="utf-8"))
+    data = manifest_data
+    if data is None:
+        data, error = safe_json(manifest_path)
+        if error or not isinstance(data, dict):
+            return {
+                "checked": True,
+                "exists": True,
+                "path": project_rel(manifest_path, project_root),
+                "invalidJson": error or "not_an_object",
+                "missingSourceCandidates": [],
+            }
     missing: list[str] = []
+    escaped: list[str] = []
     atlas_groups = data.get("atlas_groups")
     if isinstance(atlas_groups, list):
         for atlas in atlas_groups:
@@ -403,7 +975,9 @@ def validate_atlas_manifest(project_root: Path, resources_root: Path, manifest_p
                 if not isinstance(candidate, str):
                     continue
                 candidate_path = resources_root / candidate
-                if not candidate_path.exists():
+                if contained_path(resources_root, candidate_path) is None:
+                    escaped.append(candidate)
+                elif not candidate_path.exists():
                     missing.append(candidate)
         atlas_count = len(atlas_groups)
         contract = data.get("contract")
@@ -415,8 +989,13 @@ def validate_atlas_manifest(project_root: Path, resources_root: Path, manifest_p
             if not isinstance(atlas, dict):
                 continue
             for candidate in atlas.get("sourceCandidates", []):
+                if not isinstance(candidate, str):
+                    escaped.append(str(candidate))
+                    continue
                 candidate_path = resources_root / candidate
-                if not candidate_path.exists():
+                if contained_path(resources_root, candidate_path) is None:
+                    escaped.append(str(candidate))
+                elif not candidate_path.exists():
                     missing.append(candidate)
         atlas_count = len(atlases)
         contract = data.get("$schema")
@@ -427,6 +1006,7 @@ def validate_atlas_manifest(project_root: Path, resources_root: Path, manifest_p
         "contract": contract,
         "atlasCount": atlas_count,
         "missingSourceCandidates": missing,
+        "escapedSourceCandidates": escaped,
     }
 
 
@@ -434,6 +1014,12 @@ def build_report(args: argparse.Namespace) -> dict[str, Any]:
     project_root = Path(args.project_root).resolve()
     resources_root = (project_root / args.resources_root).resolve()
     manifest_path = (project_root / args.atlas_manifest).resolve() if args.atlas_manifest else None
+    quarantine_root = (project_root / args.quarantine_root).resolve() if args.quarantine_root else None
+
+    if contained_path(project_root, resources_root) is None:
+        raise ValueError(f"resources root escapes project root: {resources_root}")
+    if manifest_path is not None and contained_path(project_root, manifest_path) is None:
+        raise ValueError(f"atlas manifest escapes project root: {manifest_path}")
 
     infos, groups = scan_pngs(resources_root, args.max_edge)
 
@@ -442,9 +1028,21 @@ def build_report(args: argparse.Namespace) -> dict[str, Any]:
     oversize = [asdict(info) for info in infos if info.oversize]
     white_matte_suspects = [asdict(info) for info in infos if info.whiteMatteSuspect]
     no_alpha = [asdict(info) for info in infos if info.hasAlpha is False]
+    null_frames = [asdict(info) for info in infos if info.fullyTransparent]
 
-    atlas_manifest = validate_atlas_manifest(project_root, resources_root, manifest_path)
+    atlas_data: Any | None = None
+    atlas_error: str | None = None
+    if manifest_path is not None and manifest_path.exists():
+        atlas_data, atlas_error = safe_json(manifest_path)
+    atlas_manifest = validate_atlas_manifest(project_root, resources_root, manifest_path, atlas_data)
     reference_checks, reference_blockers = validate_manifest_references(project_root, resources_root, args)
+    pre_import, pre_import_blockers = validate_image_governance(
+        project_root,
+        resources_root,
+        atlas_data,
+        infos,
+        quarantine_root,
+    )
     blockers: list[dict[str, Any]] = []
 
     for item in decode_errors:
@@ -455,7 +1053,16 @@ def build_report(args: argparse.Namespace) -> dict[str, Any]:
         blockers.append({"type": "oversize", "path": item["path"], "width": item["width"], "height": item["height"]})
     for candidate in atlas_manifest.get("missingSourceCandidates", []):
         blockers.append({"type": "missing_atlas_source_candidate", "path": candidate})
+    for candidate in atlas_manifest.get("escapedSourceCandidates", []):
+        blockers.append({"type": "atlas_source_candidate_path_escape", "path": candidate})
+    if atlas_error:
+        blockers.append({
+            "type": "invalid_atlas_manifest_json",
+            "path": project_rel(manifest_path, project_root) if manifest_path else "",
+            "error": atlas_error,
+        })
     blockers.extend(reference_blockers)
+    blockers.extend(pre_import_blockers)
     if args.fail_on_white_matte:
         for item in white_matte_suspects:
             blockers.append({
@@ -485,11 +1092,14 @@ def build_report(args: argparse.Namespace) -> dict[str, Any]:
             "missingMetaCount": len(missing_meta),
             "oversizeCount": len(oversize),
             "whiteMatteSuspectCount": len(white_matte_suspects),
+            "nullFrameCount": len(null_frames),
+            "preImportBlockerCount": len(pre_import_blockers),
             "blockerCount": len(blockers),
         },
         "groups": groups,
         "atlasManifest": atlas_manifest,
         "referenceChecks": reference_checks,
+        "preImport": pre_import,
         "blockers": blockers,
         "warnings": {
             "noAlpha": no_alpha,
@@ -527,6 +1137,11 @@ def parse_args() -> argparse.Namespace:
         default="assets/resources/config/last_iteration_asset_manifest.generated.json",
         help="Generated last-iteration asset manifest path relative to project root.",
     )
+    parser.add_argument(
+        "--quarantine-root",
+        default="assets/quarantine",
+        help="Non-runtime quarantine path relative to project root; assets here are inventoried but never accepted into resources.",
+    )
     parser.add_argument("--max-edge", type=int, default=2048, help="Maximum allowed PNG width/height.")
     parser.add_argument("--report", default="", help="Optional JSON report output path.")
     parser.add_argument("--fail-on-white-matte", action="store_true", help="Treat white matte suspects as blockers.")
@@ -542,12 +1157,23 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    report = build_report(args)
+    try:
+        report = build_report(args)
+    except Exception as exc:
+        print(json.dumps({"ok": False, "error": str(exc)}, ensure_ascii=False))
+        return 2
 
     if args.report:
-        out = Path(args.report)
+        project_root = Path(args.project_root).resolve()
+        requested = Path(args.report)
+        out = requested.resolve() if requested.is_absolute() else (project_root / requested).resolve()
+        if contained_path(project_root, out) is None:
+            print(json.dumps({"ok": False, "error": f"report path escapes project root: {out}"}, ensure_ascii=False))
+            return 2
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+        temporary = out.with_name(f".{out.name}.tmp")
+        temporary.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        temporary.replace(out)
 
     print(json.dumps({
         "ok": report["summary"]["blockerCount"] == 0,

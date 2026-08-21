@@ -1,5 +1,5 @@
 schema_version: 1
-updated_at: "2026-08-13"
+updated_at: "2026-08-21"
 project: martyshkin_trud_runner
 execution_model: dependency_gated_bounded_patch_with_v4_execution_units
 runtime_started: true
@@ -240,14 +240,15 @@ modules:
         outputs: [assets/resources/config/atlas_manifest.json, docs/global_modernization/v3/M04/schemas/atlas_manifest.schema.json, tools/codex/validate_m04_a_asset_contract.py, docs/global_modernization/v3/M04/atlas_policy_report.md]
         gates: [D4, P4]
       - id: M04.3
-        status: pending
+        status: complete
         objective: Extend pre-import validator for naming, trim, pivot, provenance, quarantine, bundle placement, alpha/matte and hidden references.
         targets: [tools/validate-assets.py]
+        outputs: [docs/global_modernization/v3/M04/pre_import_and_contact_sheet_report.md, docs/global_modernization/v3/M04/M04_B_VALIDATION_SUMMARY.json, tools/codex/tests/test_validate_assets_m04_b.py, docs/global_modernization/v3/library/fixtures/assets/pre_import_negative_cases.json]
         gates: [P4]
       - id: M04.4
-        status: pending
+        status: complete
         objective: Generate contact sheets for HUD, menu, runner, bonuses, obstacles, backgrounds and VFX with manifest links.
-        outputs: [docs/global_modernization/v3/M04/contact_sheet_index.json]
+        outputs: [docs/global_modernization/v3/M04/contact_sheet_index.json, docs/global_modernization/v3/M04/schemas/contact_sheet_index.schema.json, tools/codex/render_m04_b_contact_sheets.py, tools/codex/tests/test_m04_b_contact_sheets.py]
         gates: [P4]
       - id: M04.5
         status: pending
