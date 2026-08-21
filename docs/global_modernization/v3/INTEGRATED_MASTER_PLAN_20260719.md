@@ -1,6 +1,6 @@
 # Integrated MTR implementation plan v3
 
-Статус: `m00_complete_m01_5_complete_m01_6_decision_next`, runtime implementation не начат.
+Статус: `m03_complete_m04_a_complete_m04_b_next_release_blocked`; runtime implementation продолжается bounded execution units.
 
 ## Цель
 
@@ -41,8 +41,8 @@ M11 PCG/DDA starts after M07+M09+M10 and remains optional/non-blocking for R2.
 | M00 | complete | classification, topology ADR, source commit/tag, source/Pages bundles, manifest, evidence anchor, offline restore PASS | none; preserve immutable source anchor |
 | M01 | complete / release blocked | полный инвентарь 32/32, canonical quality schemas, 18-source registry, 11 active adapters, positive/negative fixtures, typed fail-closed runner, D4/P4/M2_PLUS/QA7/RC2 profiles, delete-incapable retention dry-run для 801/801 evidence files, один Windows/Linux CI/local static command и fail-closed release summary | preserve; не ослаблять mandatory evidence |
 | M02 | M02.2 complete / release blocked | shared immutable source/content identity, Web/emulator historical artifacts и старый arm APK | fresh Web/emulator, current arm64, Pages parity, signing decision, conditional AAB |
-| M03 | not started | существующая рабочая логика | state/input/collision/power-up seams и bounded log |
-| M04 | revalidate then extend | asset validators, draft atlas, selected contact sheets | final ownership/atlas/bundle contracts и metrics |
+| M03 | complete / release blocked | state, bounded log, input, collision, power-up и lifecycle ownership seams; superseded callback guards удалены после parity | preserve accepted owners and cleanup contracts |
+| M04 | in progress; M04-A complete | canonical 1,635-file inventory, 24 ownership scopes, 11 atlas-policy groups, schema/validator/negative fixtures | M04-B pre-import checks/contact sheets, then measured atlas and bundle lifecycle slices |
 | M05 | revalidate then extend | 14 UI IR, выбранные runtime pilots | shared tokens/components/SafeArea/Layout/9-slice, full regression |
 | M06 | revalidate then extend | 576 static matrix, contact sheets, selected emulator QA | registry/resolver, full lifecycle matrix, bundle cleanup |
 | M07 | product works / ownership pending | 15 levels and current visuals | manifest, pilots, streaming, readability/size metrics |
@@ -93,11 +93,11 @@ Exit: воспроизводимая техническая release line. Produc
 
 ### Phase 2 — Gameplay seams
 
-M03 выполняется strangler-патчами: inventory → state transitions/log → input → collision → power-up → UI/physics decoupling. Старый путь удаляется только после parity gate. Один patch — одна ответственность.
+M03 завершён strangler-патчами: inventory → state transitions/log → input → collision → power-up → UI/physics decoupling. Старый callback-guard path удалён только после parity gate; один runtime owner сохранён.
 
 ### Phase 3 — Presentation pipeline
 
-1. M04 final asset ownership/atlas/bundle policy и метрики.
+1. M04-A завершил inventory и canonical ownership/atlas policy; M04-B добавляет pre-import checks/contact sheets, затем идут только измеренные atlas/bundle изменения.
 2. M06 SkinRegistry/BonusVisualResolver и полный lifecycle.
 3. M05 shared UI runtime на базе уже существующего UI IR.
 

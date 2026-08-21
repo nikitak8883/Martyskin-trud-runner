@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.atlas_manifest_negative_fixtures",
+  "cases": [
+    {"id": "missing_group_owner", "operation": "delete", "path": ["atlas_groups", 0, "owner"], "expected_code": "SCHEMA_VIOLATION"},
+    {"id": "duplicate_scope", "operation": "append_copy", "path": ["ownership_scopes"], "source_index": 0, "expected_code": "DUPLICATE_SCOPE_ID"},
+    {"id": "unowned_source", "operation": "delete_index", "path": ["ownership_scopes"], "index": 0, "expected_code": "OWNERSHIP_UNCOVERED"},
+    {"id": "stale_source_fingerprint", "operation": "replace", "path": ["inventory", "source_payload", "sha256"], "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "expected_code": "SOURCE_FINGERPRINT_MISMATCH"},
+    {"id": "overlapping_atlas_selector", "operation": "append_selector_copy", "path": ["atlas_groups", 1, "source_selectors"], "source_group": 0, "source_selector": 0, "expected_code": "ATLAS_SELECTOR_OVERLAP"},
+    {"id": "missing_provenance", "operation": "replace", "path": ["ownership_scopes", 0, "provenance", 0], "value": "missing/provenance.json", "expected_code": "PROVENANCE_MISSING"},
+    {"id": "bundle_priority_drift", "operation": "replace", "path": ["bundle", "priority"], "value": 7, "expected_code": "BUNDLE_META_MISMATCH"},
+    {"id": "content_identity_drift", "operation": "replace", "path": ["content_identity", "logical_content_version"], "value": "mtr-v3-source-000000000000", "expected_code": "CONTENT_IDENTITY_MANIFEST_MISMATCH"},
+    {"id": "duplicate_atlas_id", "operation": "copy_value", "path": ["atlas_groups", 1, "atlas_id"], "source_path": ["atlas_groups", 0, "atlas_id"], "expected_code": "DUPLICATE_ATLAS_ID"},
+    {"id": "atlas_owner_crosses_scope", "operation": "replace", "path": ["atlas_groups", 0, "owner"], "value": "levels_backgrounds_content_pipeline", "expected_code": "ATLAS_OWNER_MISMATCH"},
+    {"id": "ambiguous_path_base", "operation": "replace", "path": ["path_conventions", "provenance_and_meta_paths"], "value": "source_root_relative_posix", "expected_code": "SCHEMA_VIOLATION"}
+  ]
+}

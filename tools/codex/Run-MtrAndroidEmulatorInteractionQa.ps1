@@ -74,13 +74,17 @@ function Read-MtrRecentCocosLog {
 function Wait-MtrLogMarker {
     param(
         [Parameter(Mandatory = $true)]
-        [string]$Pattern
+        [string]$Pattern,
+        [ValidateRange(1, 120)]
+        [int]$TimeoutSeconds = $MarkerTimeoutSeconds,
+        [ValidateRange(50, 2000)]
+        [int]$PollMilliseconds = 300
     )
 
     $started = Get-Date
-    $deadline = $started.AddSeconds($MarkerTimeoutSeconds)
+    $deadline = $started.AddSeconds($TimeoutSeconds)
     do {
-        Start-Sleep -Milliseconds 300
+        Start-Sleep -Milliseconds $PollMilliseconds
         $log = Read-MtrLogcat
         if ([regex]::IsMatch($log, $Pattern, [Text.RegularExpressions.RegexOptions]::IgnoreCase)) {
             return [pscustomobject]@{
@@ -195,7 +199,7 @@ function Wait-MtrAppInputReady {
         )
         if ($focused -and $responsiveChannel) {
             $stableSamples += 1
-            if ($stableSamples -ge 2) {
+            if ($stableSamples -ge 4) {
                 return [pscustomobject]@{
                     Found = $true
                     WaitMs = [int]((Get-Date) - $started).TotalMilliseconds
@@ -214,6 +218,61 @@ function Wait-MtrAppInputReady {
         WaitMs = [int]((Get-Date) - $started).TotalMilliseconds
         Focus = $lastFocus
         StableSamples = $stableSamples
+    }
+}
+
+function Invoke-MtrVerifiedTap {
+    param(
+        [Parameter(Mandatory = $true)]
+        [object]$Point,
+        [Parameter(Mandatory = $true)]
+        [string]$Pattern,
+        [ValidateRange(1, 3)]
+        [int]$MaxAttempts = 3,
+        [ValidateRange(1, 10)]
+        [int]$PerAttemptTimeoutSeconds = 3
+    )
+
+    $attempts = [System.Collections.Generic.List[object]]::new()
+    $stopwatch = [Diagnostics.Stopwatch]::StartNew()
+    $lastWait = $null
+
+    for ($attempt = 1; $attempt -le $MaxAttempts; $attempt++) {
+        $focusBeforeTap = Get-MtrCurrentFocus
+        Invoke-MtrTap -Point $Point
+        $lastWait = Wait-MtrLogMarker -Pattern $Pattern -TimeoutSeconds $PerAttemptTimeoutSeconds
+        $attempts.Add([pscustomobject]@{
+            attempt = $attempt
+            found = $lastWait.Found
+            marker_wait_ms = $lastWait.WaitMs
+            focus_before_tap = $focusBeforeTap
+        })
+
+        if ($lastWait.Found) {
+            $stopwatch.Stop()
+            return [pscustomobject]@{
+                Found = $true
+                WaitMs = [int]$stopwatch.ElapsedMilliseconds
+                AttemptCount = $attempt
+                Attempts = @($attempts)
+                Log = $lastWait.Log
+            }
+        }
+
+        if ($attempt -lt $MaxAttempts) {
+            $inputReadyAfterMiss = Wait-MtrAppInputReady
+            if (-not $inputReadyAfterMiss.Found) { break }
+            Start-Sleep -Milliseconds 400
+        }
+    }
+
+    $stopwatch.Stop()
+    return [pscustomobject]@{
+        Found = $false
+        WaitMs = [int]$stopwatch.ElapsedMilliseconds
+        AttemptCount = $attempts.Count
+        Attempts = @($attempts)
+        Log = if ($null -ne $lastWait) { $lastWait.Log } else { Read-MtrLogcat }
     }
 }
 
@@ -400,12 +459,11 @@ $inputReady = Wait-MtrAppInputReady
 if (-not $inputReady.Found) {
     throw "App input channel did not become focused and responsive: $($inputReady.Focus)"
 }
-Start-Sleep -Milliseconds 250
+Start-Sleep -Milliseconds 400
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 
 $currentQaPhase = 'touch_dash'
-Invoke-MtrTap -Point $points.dash
-$dashWait = Wait-MtrLogMarker -Pattern 'MTR_PLAYER_POSE[^\r\n]*pose=crouch_dash\b'
+$dashWait = Invoke-MtrVerifiedTap -Point $points.dash -Pattern 'MTR_PLAYER_POSE[^\r\n]*pose=crouch_dash\b'
 if (-not $dashWait.Found) { throw 'Dash touch did not produce a crouch_dash pose.' }
 $dashScreenshot = Save-MtrScreenshot -Name 'touch_dash'
 $dashLog = Read-MtrLogcat
@@ -413,8 +471,7 @@ Start-Sleep -Milliseconds 1100
 
 $currentQaPhase = 'touch_jump'
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
-Invoke-MtrTap -Point $points.jump
-$jumpWait = Wait-MtrLogMarker -Pattern 'MTR_PLAYER_POSE[^\r\n]*pose=jump(?:_2)?\b'
+$jumpWait = Invoke-MtrVerifiedTap -Point $points.jump -Pattern 'MTR_PLAYER_POSE[^\r\n]*pose=jump(?:_2)?\b'
 if (-not $jumpWait.Found) { throw 'Jump touch did not produce a jump pose.' }
 $jumpScreenshot = Save-MtrScreenshot -Name 'touch_jump'
 $jumpLog = Read-MtrLogcat
@@ -422,19 +479,17 @@ Start-Sleep -Milliseconds 650
 
 $currentQaPhase = 'touch_pause_resume'
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
-Invoke-MtrTap -Point $points.pause
-$pauseWait = Wait-MtrLogMarker -Pattern 'MTR_FSM:RUNNING->PAUSED[^\r\n]*state=playing->paused'
+$pauseWait = Invoke-MtrVerifiedTap -Point $points.pause -Pattern 'MTR_FSM:RUNNING->PAUSED[^\r\n]*state=playing->paused'
 if (-not $pauseWait.Found) { throw 'Pause touch did not produce RUNNING->PAUSED.' }
 $pauseMenuGate = Wait-MtrLogMarker -Pattern 'MTR_MENU_UI_GATE_READY[^\r\n]*screen=paused'
 if (-not $pauseMenuGate.Found) { throw 'Paused UI gate did not become ready.' }
 Start-Sleep -Milliseconds 500
 $pauseScreenshot = Save-MtrScreenshot -Name 'touch_pause'
-Invoke-MtrTap -Point $points.resume
-$resumeWait = Wait-MtrLogMarker -Pattern 'MTR_FSM:PAUSED->RUNNING[^\r\n]*state=paused->playing'
+$resumeWait = Invoke-MtrVerifiedTap -Point $points.resume -Pattern 'MTR_FSM:PAUSED->RUNNING[^\r\n]*state=paused->playing'
 if (-not $resumeWait.Found) { throw 'Resume button did not produce PAUSED->RUNNING.' }
 $resumeScreenshot = Save-MtrScreenshot -Name 'touch_resume'
 $pauseResumeLog = Read-MtrLogcat
-$interactionLog = "===== jump =====`n$jumpLog`n===== dash =====`n$dashLog`n===== pause_resume =====`n$pauseResumeLog"
+$interactionLog = "===== dash =====`n$dashLog`n===== jump =====`n$jumpLog`n===== pause_resume =====`n$pauseResumeLog"
 Write-MtrUtf8 -Path (Join-Path $resolvedOutputDir 'touch_interaction.logcat.txt') -Text $interactionLog
 $interactionDiagnostics = Get-MtrDiagnostics -Log $interactionLog
 
@@ -643,6 +698,12 @@ $summary = [ordered]@{
         dash_marker_wait_ms = $dashWait.WaitMs
         pause_marker_wait_ms = $pauseWait.WaitMs
         resume_marker_wait_ms = $resumeWait.WaitMs
+        touch_attempts = [ordered]@{
+            dash = $dashWait.Attempts
+            jump = $jumpWait.Attempts
+            pause = $pauseWait.Attempts
+            resume = $resumeWait.Attempts
+        }
         screenshots = @($jumpScreenshot, $dashScreenshot, $pauseScreenshot, $resumeScreenshot)
         diagnostics = $interactionDiagnostics
     }

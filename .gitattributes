@@ -16,4 +16,9 @@
 # Shared release identity must hash identically in Web and Android reports.
 /assets/resources/config/content_identity.json text eol=lf
 /assets/resources/config/content_identity.json.meta text eol=lf
+/assets/resources/config/atlas_manifest.json text eol=lf
+/assets/resources/config/atlas_manifest.json.meta text eol=lf
+/docs/global_modernization/v3/M04/** text eol=lf
+/tools/codex/validate_m04_a_asset_contract.py text eol=lf
+/tools/codex/tests/test_validate_m04_a_asset_contract.py text eol=lf
 /tools/validate-content-identity.py text eol=lf

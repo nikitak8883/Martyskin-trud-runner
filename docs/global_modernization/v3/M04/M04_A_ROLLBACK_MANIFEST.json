@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m04_a_rollback_manifest",
+  "execution_unit": "M04-A",
+  "scope": "asset inventory and policy contracts only; no runtime asset mutation",
+  "rollback": {
+    "repository_root": "C:/Projects/Monkey Work",
+    "anchor_commit": "58d057c65098935e4b8c1b6c40f4965b45238dd5",
+    "project_prefix": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/",
+    "pre_change_blobs": {
+      ".gitattributes": "af520bf8a037884234fd2be23b26b8efbdd5b00a",
+      "assets/resources/config/content_identity.json": "a784e5721224180a7b48c2cc8af112c5359a093d",
+      "docs/global_modernization/v3/M02/content_parity_contract.md": "bd287ff13d40231a6b8db28918bb2d55114df215",
+      "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml": "57b185a3533e65201125a7040d6f41b1ecd842d4",
+      "docs/global_modernization/v3/MODULE_EXECUTION_INDEX.yaml": "d861d61c4b1cd38973d15c68ec5b0157d610427a",
+      "docs/global_modernization/v3/INTEGRATED_MASTER_PLAN_20260719.md": "037230f85c3cb172a1dd3ea33f5983d8707dee3c",
+      "docs/global_modernization/v3/README_START_HERE.md": "1d075d7383e6e98aebb7560e049760576145ca69",
+      "docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json": "4efa924b2b39ac35abe0fbfea907d5daa60ac0bd",
+      "tools/codex/MtrEntrypoint.psm1": "b99f16d90c9fafb98065348b69233f8c56edb355",
+      "tools/codex/Run-MtrAndroidEmulatorInteractionQa.ps1": "6ab42ec47fce6cfae09e43bf66e764a32dc5098a",
+      "tools/codex/quality-gate/static-gates.json": "79abb65cfcc7e75ecfa51a60e676bc3bb1e34e82",
+      "tools/validate-assets.py": "2d024ba261f128a61d3d7cea3d3c1d9049b023b2",
+      "tools/validate-content-identity.py": "1e6dfd7c3c0d22f043b5da7cdd732e3feb591ff7"
+    },
+    "new_files_remove_on_rollback": [
+      "assets/resources/config/atlas_manifest.json",
+      "assets/resources/config/atlas_manifest.json.meta",
+      "docs/global_modernization/v3/M04/graphics_inventory.md",
+      "docs/global_modernization/v3/M04/atlas_policy_report.md",
+      "docs/global_modernization/v3/M04/M04_A_ROLLBACK_MANIFEST.json",
+      "docs/global_modernization/v3/M04/M04_A_VALIDATION_SUMMARY.json",
+      "docs/global_modernization/v3/M04/M04_A_CODE_REVIEW_REPORT.md",
+      "docs/global_modernization/v3/M04/schemas/atlas_manifest.schema.json",
+      "docs/global_modernization/v3/library/fixtures/assets/atlas_manifest_negative_cases.json",
+      "tools/codex/tests/test_validate_m04_a_asset_contract.py",
+      "tools/codex/validate_m04_a_asset_contract.py",
+      "docs/qa/CONTROL_LOG_CHECKPOINT_20260813_M04_A_FINAL_QA_PARTIAL.md",
+      "docs/qa/CONTROL_LOG_CHECKPOINT_20260821_M04_A_COMPLETE.md"
+    ]
+  },
+  "runtime_assets_changed": false,
+  "build_outputs_tracked": false,
+  "duplicate_backup_files_created": false
+}

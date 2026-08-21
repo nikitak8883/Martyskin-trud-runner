@@ -1,0 +1,618 @@
+{
+  "$schema": "https://schemas.mtr.local/assets/v1/atlas-manifest.schema.json",
+  "schema_version": 1,
+  "contract": "mtr.atlas_manifest",
+  "status": "contract_only_no_runtime_repack",
+  "generated_at": "2026-08-13T19:57:42+03:00",
+  "source_checkpoint": {
+    "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
+    "branch": "mtr-source-v3",
+    "published_subtree_commit": "4492deee4209ef8b09dce9a7ab35db7f5831d623",
+    "parent_checkpoint": "58d057c65098935e4b8c1b6c40f4965b45238dd5",
+    "project_tree": "63949a951908c3780d8a8576de7a4cef534f5aee"
+  },
+  "content_identity": {
+    "path": "assets/resources/config/content_identity.json",
+    "logical_content_version": "mtr-v3-source-4492deee4209"
+  },
+  "source_root": "assets/resources",
+  "path_conventions": {
+    "inventory_and_selector_paths": "source_root_relative_posix",
+    "provenance_and_meta_paths": "project_root_relative_posix",
+    "self_reference_rule": "governance_files_excluded_from_own_fingerprint_only"
+  },
+  "inventory": {
+    "fingerprint_algorithm": "sha256_sorted_path_size_digest_v1",
+    "canonicalization": {
+      "text_extensions": [".html", ".json", ".meta"],
+      "line_endings": "normalize_crlf_and_cr_to_lf",
+      "binary": "raw_bytes",
+      "entry_encoding": "utf8_path_nul_decimal_size_nul_upper_sha256_lf"
+    },
+    "excluded_governance_source_files": [
+      "config/atlas_manifest.json",
+      "config/content_identity.json"
+    ],
+    "excluded_governance_meta_files": [
+      "assets/resources/config/atlas_manifest.json.meta",
+      "assets/resources/config/content_identity.json.meta"
+    ],
+    "source_payload": {
+      "count": 1635,
+      "bytes": 116453941,
+      "sha256": "9C68E11B117FF03F261B4170BAF50C1CB9BDA2B1BD515C27F64AE7AAE6A16408"
+    },
+    "cocos_metadata": {
+      "count": 1882,
+      "bytes": 4574788,
+      "sha256": "4DE87CF49754E2206204F9F44FAEBB827118BBAAE99F91A68AA6341769E32763"
+    },
+    "png_validation": {
+      "count": 1528,
+      "bytes": 107146623,
+      "alpha_count": 1527,
+      "non_alpha_count": 1,
+      "decode_error_count": 0,
+      "missing_meta_count": 0,
+      "oversize_count": 0,
+      "white_matte_suspect_count": 0
+    },
+    "extension_counts": {
+      ".html": {"count": 1, "bytes": 9969},
+      ".jpg": {"count": 30, "bytes": 5999213},
+      ".json": {"count": 35, "bytes": 1163846},
+      ".mp3": {"count": 1, "bytes": 116284},
+      ".png": {"count": 1528, "bytes": 107146623},
+      ".wav": {"count": 40, "bytes": 2018006}
+    }
+  },
+  "bundle": {
+    "bundle_id": "resources",
+    "meta_path": "assets/resources.meta",
+    "is_bundle": true,
+    "priority": 8,
+    "ownership_status": "existing_global_bundle_pre_m04_7",
+    "load_policy": "unchanged_deferred_to_m04_7",
+    "release_policy": "unchanged_deferred_to_m04_7"
+  },
+  "ownership_scopes": [
+    {
+      "scope_id": "resources_audio",
+      "path": "audio",
+      "match": "prefix",
+      "owner": "audio_vfx_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/audio_manifest.json"],
+      "asset_count": 41,
+      "total_bytes": 2134290,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "level_backgrounds",
+      "path": "backgrounds",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/backgrounds/background_sources.json"],
+      "asset_count": 16,
+      "total_bytes": 5512712,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "level_background_previews",
+      "path": "backgrounds_preview",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/backgrounds/background_sources.json"],
+      "asset_count": 15,
+      "total_bytes": 569087,
+      "fallback_policy": "warn_decorative_only"
+    },
+    {
+      "scope_id": "player_skins",
+      "path": "characters/player_skins",
+      "match": "prefix",
+      "owner": "character_skin_bonus_animation_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["docs/skins_integration/manifests/player_skins_manifest.json"],
+      "asset_count": 965,
+      "total_bytes": 54302683,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "content_config",
+      "path": "config",
+      "match": "prefix",
+      "owner": "cross_module_content_governance",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/content_identity.json"],
+      "asset_count": 29,
+      "total_bytes": 952942,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "objective_bonuses",
+      "path": "objectives/bonuses",
+      "match": "prefix",
+      "owner": "character_skin_bonus_animation_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
+      "asset_count": 8,
+      "total_bytes": 975198,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "objective_collectibles",
+      "path": "objectives/collectibles",
+      "match": "prefix",
+      "owner": "gameplay_core_mechanics",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/objectives/objectives_manifest.json"],
+      "asset_count": 14,
+      "total_bytes": 1071680,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "objective_equipment",
+      "path": "objectives/equipment",
+      "match": "prefix",
+      "owner": "character_skin_bonus_animation_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/equipment_anchor_contract.json"],
+      "asset_count": 4,
+      "total_bytes": 763190,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "objective_npc",
+      "path": "objectives/npc",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
+      "asset_count": 10,
+      "total_bytes": 1566620,
+      "fallback_policy": "warn_decorative_only"
+    },
+    {
+      "scope_id": "themed_archive",
+      "path": "objectives/themed/last_iteration/archive",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 17,
+      "total_bytes": 1224151,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_construction",
+      "path": "objectives/themed/last_iteration/construction",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 24,
+      "total_bytes": 2394667,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_farm",
+      "path": "objectives/themed/last_iteration/farm",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 12,
+      "total_bytes": 1314618,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_industrial",
+      "path": "objectives/themed/last_iteration/industrial",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 30,
+      "total_bytes": 2575651,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_inspection",
+      "path": "objectives/themed/last_iteration/inspection",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 29,
+      "total_bytes": 2397912,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_jungle",
+      "path": "objectives/themed/last_iteration/jungle",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 27,
+      "total_bytes": 2786738,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_logistics",
+      "path": "objectives/themed/last_iteration/logistics",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 26,
+      "total_bytes": 2313787,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_office",
+      "path": "objectives/themed/last_iteration/office",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 28,
+      "total_bytes": 2222938,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_security",
+      "path": "objectives/themed/last_iteration/security",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 30,
+      "total_bytes": 2294111,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_shared",
+      "path": "objectives/themed/last_iteration/shared",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 28,
+      "total_bytes": 2130248,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_steampunk",
+      "path": "objectives/themed/last_iteration/steampunk",
+      "match": "prefix",
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 29,
+      "total_bytes": 2478656,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "themed_ui",
+      "path": "objectives/themed/last_iteration/ui",
+      "match": "prefix",
+      "owner": "ui_ux_design_system",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "asset_count": 214,
+      "total_bytes": 19014116,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "objective_ui",
+      "path": "objectives/ui",
+      "match": "prefix",
+      "owner": "save_achievements_telemetry",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
+      "asset_count": 9,
+      "total_bytes": 1787287,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "objective_catalog",
+      "path": "objectives/objectives_manifest.json",
+      "match": "exact_file",
+      "owner": "gameplay_core_mechanics",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/theme_asset_integration_plan_20260603.json"],
+      "asset_count": 1,
+      "total_bytes": 5148,
+      "fallback_policy": "block_release"
+    },
+    {
+      "scope_id": "shared_ui",
+      "path": "ui",
+      "match": "prefix",
+      "owner": "ui_ux_design_system",
+      "bundle_id": "resources",
+      "provenance": ["assets/resources/config/ui_skin_manifest.json"],
+      "asset_count": 29,
+      "total_bytes": 3665511,
+      "fallback_policy": "block_release"
+    }
+  ],
+  "atlas_groups": [
+    {
+      "atlas_id": "ui_shared_core",
+      "usage_scopes": ["hud", "menu"],
+      "source_selectors": [
+        {"path": "ui/shared", "match": "prefix", "extensions": [".png"]}
+      ],
+      "owner": "ui_ux_design_system",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "static_atlas_candidate",
+        "implementation_status": "policy_only_not_packed",
+        "max_texture_size": 2048,
+        "padding_px": 2,
+        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/config/ui_skin_manifest.json"],
+      "observed": {"count": 28, "bytes": 137622},
+      "fallback_policy": "block_release",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "main_menu_background",
+      "usage_scopes": ["background", "menu"],
+      "source_selectors": [
+        {"path": "ui/main_menu_background/main_menu_bg_far.png", "match": "exact_file", "extensions": [".png"]}
+      ],
+      "owner": "ui_ux_design_system",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "standalone_texture",
+        "implementation_status": "existing_standalone",
+        "max_texture_size": 2048,
+        "padding_px": 0,
+        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/config/ui_skin_manifest.json"],
+      "observed": {"count": 1, "bytes": 3527889},
+      "fallback_policy": "block_release",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "player_skins_selected",
+      "usage_scopes": ["skin"],
+      "source_selectors": [
+        {"path": "characters/player_skins", "match": "prefix", "extensions": [".png"]}
+      ],
+      "owner": "character_skin_bonus_animation_pipeline",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "unpacked_family",
+        "implementation_status": "existing_unpacked",
+        "max_texture_size": 2048,
+        "padding_px": 2,
+        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["docs/skins_integration/manifests/player_skins_manifest.json"],
+      "observed": {"count": 960, "bytes": 54169544},
+      "fallback_policy": "block_release",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "bonus_items",
+      "usage_scopes": ["bonus"],
+      "source_selectors": [
+        {"path": "objectives/bonuses", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/equipment", "match": "prefix", "extensions": [".png"]}
+      ],
+      "owner": "character_skin_bonus_animation_pipeline",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "static_atlas_candidate",
+        "implementation_status": "policy_only_not_packed",
+        "max_texture_size": 2048,
+        "padding_px": 2,
+        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/config/current_objective_runtime_usage.json", "assets/resources/config/equipment_anchor_contract.json"],
+      "observed": {"count": 12, "bytes": 1738388},
+      "fallback_policy": "block_release",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "runner_collectibles",
+      "usage_scopes": ["runner_core"],
+      "source_selectors": [
+        {"path": "objectives/collectibles", "match": "prefix", "extensions": [".png"]}
+      ],
+      "owner": "gameplay_core_mechanics",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "static_atlas_candidate",
+        "implementation_status": "policy_only_not_packed",
+        "max_texture_size": 2048,
+        "padding_px": 2,
+        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/objectives/objectives_manifest.json"],
+      "observed": {"count": 14, "bytes": 1071680},
+      "fallback_policy": "block_release",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "objective_npc",
+      "usage_scopes": ["obstacle"],
+      "source_selectors": [
+        {"path": "objectives/npc", "match": "prefix", "extensions": [".png"]}
+      ],
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "static_atlas_candidate",
+        "implementation_status": "policy_only_not_packed",
+        "max_texture_size": 2048,
+        "padding_px": 2,
+        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
+      "observed": {"count": 10, "bytes": 1566620},
+      "fallback_policy": "warn_decorative_only",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "level_theme_families",
+      "usage_scopes": ["obstacle", "platform"],
+      "source_selectors": [
+        {"path": "objectives/themed/last_iteration/archive", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/construction", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/farm", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/industrial", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/inspection", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/jungle", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/logistics", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/office", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/security", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/shared", "match": "prefix", "extensions": [".png"]},
+        {"path": "objectives/themed/last_iteration/steampunk", "match": "prefix", "extensions": [".png"]}
+      ],
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "unpacked_family",
+        "implementation_status": "existing_unpacked",
+        "max_texture_size": 2048,
+        "padding_px": 2,
+        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "observed": {"count": 280, "bytes": 24133477},
+      "fallback_policy": "block_release",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "last_iteration_ui",
+      "usage_scopes": ["hud", "menu"],
+      "source_selectors": [
+        {"path": "objectives/themed/last_iteration/ui", "match": "prefix", "extensions": [".png"]}
+      ],
+      "owner": "ui_ux_design_system",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "unpacked_family",
+        "implementation_status": "existing_unpacked",
+        "max_texture_size": 2048,
+        "padding_px": 2,
+        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
+      "observed": {"count": 214, "bytes": 19014116},
+      "fallback_policy": "block_release",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "achievement_ui",
+      "usage_scopes": ["hud", "menu"],
+      "source_selectors": [
+        {"path": "objectives/ui", "match": "prefix", "extensions": [".png"]}
+      ],
+      "owner": "save_achievements_telemetry",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "static_atlas_candidate",
+        "implementation_status": "policy_only_not_packed",
+        "max_texture_size": 2048,
+        "padding_px": 2,
+        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
+      "observed": {"count": 9, "bytes": 1787287},
+      "fallback_policy": "block_release",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "level_backgrounds",
+      "usage_scopes": ["background"],
+      "source_selectors": [
+        {"path": "backgrounds", "match": "prefix", "extensions": [".jpg"]}
+      ],
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "standalone_texture",
+        "implementation_status": "existing_standalone",
+        "max_texture_size": 2048,
+        "padding_px": 0,
+        "compression": {"web": "source_jpeg", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/backgrounds/background_sources.json"],
+      "observed": {"count": 15, "bytes": 5430126},
+      "fallback_policy": "block_release",
+      "runtime_effect": false
+    },
+    {
+      "atlas_id": "level_background_previews",
+      "usage_scopes": ["preview"],
+      "source_selectors": [
+        {"path": "backgrounds_preview", "match": "prefix", "extensions": [".jpg"]}
+      ],
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "standalone_texture",
+        "implementation_status": "existing_standalone",
+        "max_texture_size": 1024,
+        "padding_px": 0,
+        "compression": {"web": "source_jpeg", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false
+      },
+      "provenance": ["assets/resources/backgrounds/background_sources.json"],
+      "observed": {"count": 15, "bytes": 569087},
+      "fallback_policy": "warn_decorative_only",
+      "runtime_effect": false
+    }
+  ],
+  "policies": {
+    "ownership_coverage": "every_non_meta_runtime_source_exactly_one_scope",
+    "atlas_selector_coverage": "every_png_or_jpg_exactly_one_group",
+    "atlas_selector_overlap": "forbidden",
+    "dynamic_atlas": "disabled_until_m04_6_measured_allowlist",
+    "migration": "one_measured_group_per_checkpoint_from_m04_c",
+    "destructive_cleanup": "forbidden_in_m04_a"
+  }
+}

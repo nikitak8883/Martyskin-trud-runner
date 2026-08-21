@@ -272,6 +272,41 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "m04-a-asset-governance-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_m04_a_asset_contract.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 180,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "m04-a-asset-governance-tests",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/codex/tests",
+        "-p",
+        "test_validate_m04_a_asset_contract.py",
+        "-v"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 180,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "skin-bonus-contracts",
       "mandatory": true,
       "enabled": true,

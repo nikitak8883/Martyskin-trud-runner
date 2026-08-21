@@ -17,15 +17,15 @@ Cocos metadata: `assets/resources/config/content_identity.json.meta`
 | Field | Accepted value |
 | --- | --- |
 | Contract | `mtr.content_identity` v1 |
-| Logical content version | `mtr-v3-source-a5c4bdbb2fca` |
+| Logical content version | `mtr-v3-source-4492deee4209` |
 | Repository | `https://github.com/nikitak8883/Martyskin-trud-runner.git` |
 | Source branch | `mtr-source-v3` |
-| Public baseline commit | `a5c4bdbb2fca479ad918ea7f3fa4fdd40bdffce2` |
+| Public baseline commit | `4492deee4209ef8b09dce9a7ab35db7f5831d623` |
 | Baseline kind | `published_source_before_identity_metadata` |
 | Original M00 freeze | `mtr-v3-freeze-12670452ae45` at parent commit `12670452ae4580ef5c685ff986476daf91522978` |
 | M00 aggregate SHA-256 | `E3C72CE3D41BAA9EA54D9941A6A91312DFD38A94112C99ADC02D935915A8EDFD` |
 
-The public baseline is deliberately the last published source commit before this identity file was added. A metadata file cannot contain the SHA of the commit that contains itself; using the immediately preceding immutable commit avoids a circular/self-invalidating identity. The nested M00 provenance preserves the earlier full-source fingerprint independently.
+The public baseline is deliberately the last published source-subtree commit before the M04-A canonical atlas manifest and this identity update were added. A metadata file cannot contain the SHA of the commit that contains itself; using the immediately preceding immutable commit avoids a circular/self-invalidating identity. The parent checkpoint is `58d057c65098935e4b8c1b6c40f4965b45238dd5`, whose project tree is byte-identical to published subtree commit `4492deee4209ef8b09dce9a7ab35db7f5831d623`. The nested M00 provenance preserves the earlier full-source fingerprint independently.
 
 ## Build-report contract
 

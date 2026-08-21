@@ -1,0 +1,457 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.mtr.local/assets/v1/atlas-manifest.schema.json",
+  "title": "MTR canonical asset ownership and atlas policy manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "contract",
+    "status",
+    "generated_at",
+    "source_checkpoint",
+    "content_identity",
+    "source_root",
+    "path_conventions",
+    "inventory",
+    "bundle",
+    "ownership_scopes",
+    "atlas_groups",
+    "policies"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://schemas.mtr.local/assets/v1/atlas-manifest.schema.json"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "contract": {
+      "const": "mtr.atlas_manifest"
+    },
+    "status": {
+      "const": "contract_only_no_runtime_repack"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_checkpoint": {
+      "$ref": "#/$defs/source_checkpoint"
+    },
+    "content_identity": {
+      "$ref": "#/$defs/content_identity"
+    },
+    "source_root": {
+      "const": "assets/resources"
+    },
+    "path_conventions": {
+      "$ref": "#/$defs/path_conventions"
+    },
+    "inventory": {
+      "$ref": "#/$defs/inventory"
+    },
+    "bundle": {
+      "$ref": "#/$defs/bundle"
+    },
+    "ownership_scopes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/ownership_scope"
+      }
+    },
+    "atlas_groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/atlas_group"
+      }
+    },
+    "policies": {
+      "$ref": "#/$defs/policies"
+    }
+  },
+  "$defs": {
+    "safe_id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 128,
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "relative_path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^(?![A-Za-z]:)(?![/\\\\])(?!.*(?:^|[/\\\\])\\.\\.(?:[/\\\\]|$))(?!.*:).+$"
+    },
+    "sha1": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[A-F0-9]{64}$"
+    },
+    "owner": {
+      "enum": [
+        "audio_vfx_pipeline",
+        "character_skin_bonus_animation_pipeline",
+        "cross_module_content_governance",
+        "gameplay_core_mechanics",
+        "levels_backgrounds_content_pipeline",
+        "save_achievements_telemetry",
+        "ui_ux_design_system"
+      ]
+    },
+    "count_bytes_sha": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "bytes", "sha256"],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "count_bytes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["count", "bytes"],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "path_conventions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inventory_and_selector_paths",
+        "provenance_and_meta_paths",
+        "self_reference_rule"
+      ],
+      "properties": {
+        "inventory_and_selector_paths": {"const": "source_root_relative_posix"},
+        "provenance_and_meta_paths": {"const": "project_root_relative_posix"},
+        "self_reference_rule": {"const": "governance_files_excluded_from_own_fingerprint_only"}
+      }
+    },
+    "source_checkpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "branch",
+        "published_subtree_commit",
+        "parent_checkpoint",
+        "project_tree"
+      ],
+      "properties": {
+        "repository": {
+          "const": "https://github.com/nikitak8883/Martyskin-trud-runner.git"
+        },
+        "branch": {
+          "const": "mtr-source-v3"
+        },
+        "published_subtree_commit": {
+          "$ref": "#/$defs/sha1"
+        },
+        "parent_checkpoint": {
+          "$ref": "#/$defs/sha1"
+        },
+        "project_tree": {
+          "$ref": "#/$defs/sha1"
+        }
+      }
+    },
+    "content_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "logical_content_version"],
+      "properties": {
+        "path": {
+          "const": "assets/resources/config/content_identity.json"
+        },
+        "logical_content_version": {
+          "type": "string",
+          "pattern": "^mtr-v3-source-[0-9a-f]{12}$"
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fingerprint_algorithm",
+        "canonicalization",
+        "excluded_governance_source_files",
+        "excluded_governance_meta_files",
+        "source_payload",
+        "cocos_metadata",
+        "png_validation",
+        "extension_counts"
+      ],
+      "properties": {
+        "fingerprint_algorithm": {
+          "const": "sha256_sorted_path_size_digest_v1"
+        },
+        "canonicalization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text_extensions", "line_endings", "binary", "entry_encoding"],
+          "properties": {
+            "text_extensions": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "uniqueItems": true,
+              "items": {"enum": [".html", ".json", ".meta"]}
+            },
+            "line_endings": {"const": "normalize_crlf_and_cr_to_lf"},
+            "binary": {"const": "raw_bytes"},
+            "entry_encoding": {"const": "utf8_path_nul_decimal_size_nul_upper_sha256_lf"}
+          }
+        },
+        "excluded_governance_source_files": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/relative_path"
+          }
+        },
+        "excluded_governance_meta_files": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/relative_path"
+          }
+        },
+        "source_payload": {
+          "$ref": "#/$defs/count_bytes_sha"
+        },
+        "cocos_metadata": {
+          "$ref": "#/$defs/count_bytes_sha"
+        },
+        "png_validation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "count",
+            "bytes",
+            "alpha_count",
+            "non_alpha_count",
+            "decode_error_count",
+            "missing_meta_count",
+            "oversize_count",
+            "white_matte_suspect_count"
+          ],
+          "properties": {
+            "count": {"type": "integer", "minimum": 0},
+            "bytes": {"type": "integer", "minimum": 0},
+            "alpha_count": {"type": "integer", "minimum": 0},
+            "non_alpha_count": {"type": "integer", "minimum": 0},
+            "decode_error_count": {"type": "integer", "minimum": 0},
+            "missing_meta_count": {"type": "integer", "minimum": 0},
+            "oversize_count": {"type": "integer", "minimum": 0},
+            "white_matte_suspect_count": {"type": "integer", "minimum": 0}
+          }
+        },
+        "extension_counts": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "pattern": "^\\.[a-z0-9]+$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/count_bytes"
+          }
+        }
+      }
+    },
+    "bundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundle_id",
+        "meta_path",
+        "is_bundle",
+        "priority",
+        "ownership_status",
+        "load_policy",
+        "release_policy"
+      ],
+      "properties": {
+        "bundle_id": {"const": "resources"},
+        "meta_path": {"const": "assets/resources.meta"},
+        "is_bundle": {"const": true},
+        "priority": {"type": "integer", "minimum": 0, "maximum": 10},
+        "ownership_status": {"const": "existing_global_bundle_pre_m04_7"},
+        "load_policy": {"const": "unchanged_deferred_to_m04_7"},
+        "release_policy": {"const": "unchanged_deferred_to_m04_7"}
+      }
+    },
+    "ownership_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope_id",
+        "path",
+        "match",
+        "owner",
+        "bundle_id",
+        "provenance",
+        "asset_count",
+        "total_bytes",
+        "fallback_policy"
+      ],
+      "properties": {
+        "scope_id": {"$ref": "#/$defs/safe_id"},
+        "path": {"$ref": "#/$defs/relative_path"},
+        "match": {"enum": ["prefix", "exact_file"]},
+        "owner": {"$ref": "#/$defs/owner"},
+        "bundle_id": {"const": "resources"},
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/relative_path"}
+        },
+        "asset_count": {"type": "integer", "minimum": 0},
+        "total_bytes": {"type": "integer", "minimum": 0},
+        "fallback_policy": {"enum": ["block_release", "warn_decorative_only", "explicit_runtime_fallback"]}
+      }
+    },
+    "selector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "match", "extensions"],
+      "properties": {
+        "path": {"$ref": "#/$defs/relative_path"},
+        "match": {"enum": ["prefix", "exact_file"]},
+        "extensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": [".png", ".jpg"]}
+        }
+      }
+    },
+    "packing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "implementation_status",
+        "max_texture_size",
+        "padding_px",
+        "compression",
+        "trim_policy",
+        "pivot_policy",
+        "dynamic_atlas_allowed"
+      ],
+      "properties": {
+        "mode": {"enum": ["static_atlas_candidate", "standalone_texture", "unpacked_family"]},
+        "implementation_status": {"enum": ["policy_only_not_packed", "existing_standalone", "existing_unpacked"]},
+        "max_texture_size": {"type": "integer", "enum": [1024, 2048, 4096]},
+        "padding_px": {"type": "integer", "minimum": 0, "maximum": 16},
+        "compression": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["web", "android", "status"],
+          "properties": {
+            "web": {"type": "string", "minLength": 1},
+            "android": {"type": "string", "minLength": 1},
+            "status": {"const": "unchanged_until_measured"}
+          }
+        },
+        "trim_policy": {"const": "preserve_existing_import"},
+        "pivot_policy": {"const": "preserve_existing_import"},
+        "dynamic_atlas_allowed": {"type": "boolean"}
+      }
+    },
+    "atlas_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "atlas_id",
+        "usage_scopes",
+        "source_selectors",
+        "owner",
+        "bundle_id",
+        "packing",
+        "provenance",
+        "observed",
+        "fallback_policy",
+        "runtime_effect"
+      ],
+      "properties": {
+        "atlas_id": {"$ref": "#/$defs/safe_id"},
+        "usage_scopes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["hud", "menu", "runner_core", "skin", "bonus", "obstacle", "platform", "background", "preview", "vfx"]
+          }
+        },
+        "source_selectors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/selector"}
+        },
+        "owner": {"$ref": "#/$defs/owner"},
+        "bundle_id": {"const": "resources"},
+        "packing": {"$ref": "#/$defs/packing"},
+        "provenance": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/relative_path"}
+        },
+        "observed": {"$ref": "#/$defs/count_bytes"},
+        "fallback_policy": {"enum": ["block_release", "warn_decorative_only", "explicit_runtime_fallback"]},
+        "runtime_effect": {"const": false}
+      }
+    },
+    "policies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ownership_coverage",
+        "atlas_selector_coverage",
+        "atlas_selector_overlap",
+        "dynamic_atlas",
+        "migration",
+        "destructive_cleanup"
+      ],
+      "properties": {
+        "ownership_coverage": {"const": "every_non_meta_runtime_source_exactly_one_scope"},
+        "atlas_selector_coverage": {"const": "every_png_or_jpg_exactly_one_group"},
+        "atlas_selector_overlap": {"const": "forbidden"},
+        "dynamic_atlas": {"const": "disabled_until_m04_6_measured_allowlist"},
+        "migration": {"const": "one_measured_group_per_checkpoint_from_m04_c"},
+        "destructive_cleanup": {"const": "forbidden_in_m04_a"}
+      }
+    }
+  }
+}

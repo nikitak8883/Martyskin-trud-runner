@@ -167,7 +167,7 @@ def validate_git_baseline(project_root: Path, commit: str) -> list[str]:
     object_check = _run_git(project_root, "cat-file", "-e", f"{commit}^{{commit}}")
     if object_check.returncode != 0:
         return ["git baseline: commit object is unavailable"]
-    refs = ("HEAD", "codex/mtr-source-v3", "origin/mtr-source-v3")
+    refs = ("HEAD", "codex/mtr-source-freeze-v3", "codex/mtr-source-v3", "origin/mtr-source-v3")
     reachable = False
     for ref in refs:
         if _run_git(project_root, "rev-parse", "--verify", "--quiet", ref).returncode != 0:

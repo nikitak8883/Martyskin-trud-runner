@@ -2,7 +2,7 @@
 """Validate Martyshkin Trud runtime art assets without modifying files.
 
 This script is intentionally non-mutating. It checks PNG readability, matching
-`.meta` files, size limits, basic white-matte edge suspects, draft atlas
+`.meta` files, size limits, basic white-matte edge suspects, canonical atlas
 manifest source paths, and resource references declared by runtime manifests.
 It emits JSON for Codex/QA reports and returns non-zero only for structural
 blockers by default.
@@ -391,17 +391,41 @@ def validate_atlas_manifest(project_root: Path, resources_root: Path, manifest_p
 
     data = json.loads(manifest_path.read_text(encoding="utf-8"))
     missing: list[str] = []
-    atlases = data.get("atlases", [])
-    for atlas in atlases:
-        for candidate in atlas.get("sourceCandidates", []):
-            candidate_path = resources_root / candidate
-            if not candidate_path.exists():
-                missing.append(candidate)
+    atlas_groups = data.get("atlas_groups")
+    if isinstance(atlas_groups, list):
+        for atlas in atlas_groups:
+            if not isinstance(atlas, dict):
+                continue
+            for selector in atlas.get("source_selectors", []):
+                if not isinstance(selector, dict):
+                    continue
+                candidate = selector.get("path")
+                if not isinstance(candidate, str):
+                    continue
+                candidate_path = resources_root / candidate
+                if not candidate_path.exists():
+                    missing.append(candidate)
+        atlas_count = len(atlas_groups)
+        contract = data.get("contract")
+    else:
+        # Historical draft compatibility remains read-only so old audit reports
+        # can still be reproduced explicitly with --atlas-manifest.
+        atlases = data.get("atlases", [])
+        for atlas in atlases:
+            if not isinstance(atlas, dict):
+                continue
+            for candidate in atlas.get("sourceCandidates", []):
+                candidate_path = resources_root / candidate
+                if not candidate_path.exists():
+                    missing.append(candidate)
+        atlas_count = len(atlases)
+        contract = data.get("$schema")
     return {
         "checked": True,
         "exists": True,
         "path": str(manifest_path.relative_to(project_root)),
-        "atlasCount": len(atlases),
+        "contract": contract,
+        "atlasCount": atlas_count,
         "missingSourceCandidates": missing,
     }
 
@@ -480,8 +504,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--resources-root", default="assets/resources", help="Resources path relative to project root.")
     parser.add_argument(
         "--atlas-manifest",
-        default="docs/global_modernization/manifests/atlas_manifest.draft.json",
-        help="Draft atlas manifest path relative to project root.",
+        default="assets/resources/config/atlas_manifest.json",
+        help="Canonical atlas manifest path relative to project root.",
     )
     parser.add_argument(
         "--player-skins-manifest",

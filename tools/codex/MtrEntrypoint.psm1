@@ -121,7 +121,10 @@ function Write-MtrEntrypointLog {
 
 function Stop-MtrProcessTree {
     [CmdletBinding()]
-    param([Parameter(Mandatory=$true)][int]$ProcessId)
+    param(
+        [Parameter(Mandatory=$true)][int]$ProcessId,
+        [switch]$ChildrenOnly
+    )
 
     try {
         $children = @(Get-CimInstance Win32_Process -Filter "ParentProcessId=$ProcessId" -ErrorAction SilentlyContinue)
@@ -132,7 +135,9 @@ function Stop-MtrProcessTree {
         # Process tree cleanup is best-effort; the caller still verifies the main process state.
     }
 
-    Stop-Process -Id $ProcessId -Force -ErrorAction SilentlyContinue
+    if (-not $ChildrenOnly) {
+        Stop-Process -Id $ProcessId -Force -ErrorAction SilentlyContinue
+    }
 }
 
 function Get-MtrSha256Hex {
@@ -264,7 +269,8 @@ function Invoke-MtrEntrypoint {
         [string[]]$SuccessPattern = @(),
         [int[]]$SuccessPatternAcceptedNonzeroExitCode = @(),
         [int]$SuccessPollIntervalMilliseconds = 1000,
-        [ValidateRange(1024, 1048576)][int]$SuccessScanChunkLimitBytes = 1048576
+        [ValidateRange(1024, 1048576)][int]$SuccessScanChunkLimitBytes = 1048576,
+        [ValidateRange(100, 60000)][int]$RedirectDrainTimeoutMilliseconds = 10000
     )
 
     $resolvedFilePath = Resolve-MtrExecutable -FilePath $FilePath
@@ -429,6 +435,7 @@ function Invoke-MtrEntrypoint {
                     if ($match.matched) {
                         $completedBySuccessPattern = $true
                         $successMatch = $match
+                        $parentHadExitedBeforeSuccessCleanup = $exited
                         Write-MtrEntrypointLog -LogPath $LogPath -Record @{
                             event = 'entrypoint.success-pattern'
                             tool = 'mtr-entrypoint-router'
@@ -438,9 +445,14 @@ function Invoke-MtrEntrypoint {
                             successMatch = $successMatch
                             processExitCode = if ($exited) { $process.ExitCode } else { $null }
                             action = 'stop-process-tree-after-success-log'
+                            parentHadExitedBeforeCleanup = $parentHadExitedBeforeSuccessCleanup
                         }
+                        # GUI builders can exit their main process while renderer/crash
+                        # descendants still inherit the redirected stdout/stderr handles.
+                        # Always clean the recorded process tree after terminal success;
+                        # otherwise ReadToEndAsync below can wait forever for EOF.
+                        Stop-MtrProcessTree -ProcessId $process.Id -ChildrenOnly:$parentHadExitedBeforeSuccessCleanup
                         if (-not $exited) {
-                            Stop-MtrProcessTree -ProcessId $process.Id
                             [void]$process.WaitForExit(10000)
                         }
                         break
@@ -463,11 +475,24 @@ function Invoke-MtrEntrypoint {
         $process.Refresh()
     }
 
-    if ($stdoutTask -and $RedirectStandardOutput) {
-        [System.IO.File]::WriteAllText($RedirectStandardOutput, $stdoutTask.Result, [Text.Encoding]::UTF8)
-    }
-    if ($stderrTask -and $RedirectStandardError) {
-        [System.IO.File]::WriteAllText($RedirectStandardError, $stderrTask.Result, [Text.Encoding]::UTF8)
+    foreach ($redirect in @(
+        [pscustomobject]@{ name = 'stdout'; task = $stdoutTask; path = $RedirectStandardOutput },
+        [pscustomobject]@{ name = 'stderr'; task = $stderrTask; path = $RedirectStandardError }
+    )) {
+        if (-not $redirect.task -or -not $redirect.path) { continue }
+        if (-not $redirect.task.Wait($RedirectDrainTimeoutMilliseconds)) {
+            Write-MtrEntrypointLog -LogPath $LogPath -Record @{
+                event = 'entrypoint.redirect-drain-timeout'
+                tool = 'mtr-entrypoint-router'
+                filePath = $resolvedFilePath
+                workingDirectory = $resolvedWorkingDirectory
+                processId = $process.Id
+                stream = $redirect.name
+                timeoutMilliseconds = $RedirectDrainTimeoutMilliseconds
+            }
+            throw "Entrypoint redirected $($redirect.name) did not close within $RedirectDrainTimeoutMilliseconds ms: $resolvedFilePath"
+        }
+        [System.IO.File]::WriteAllText($redirect.path, $redirect.task.GetAwaiter().GetResult(), [Text.Encoding]::UTF8)
     }
 
     $exitCode = $null
@@ -486,6 +511,7 @@ function Invoke-MtrEntrypoint {
         successMatch = $successMatch
         successEvidenceOverflow = $successEvidenceOverflow
         successPatternAcceptedNonzeroExitCode = $acceptedSuccessExitCodes
+        redirectDrainTimeoutMilliseconds = $RedirectDrainTimeoutMilliseconds
         logPath = $LogPath
         stdout = $RedirectStandardOutput
         stderr = $RedirectStandardError
@@ -617,6 +643,31 @@ function Test-MtrEntrypointQuoting {
             -SuccessPollIntervalMilliseconds 100 `
             -PassThru
 
+        $descendantPidPath = Join-Path $tempRoot 'inherited-handle-child.pid'
+        $inheritedHandleScript = "import pathlib, subprocess, sys; child = subprocess.Popen([sys.executable, '-c', 'import time; time.sleep(30)']); pathlib.Path(sys.argv[2]).write_text(str(child.pid), encoding='utf-8'); pathlib.Path(sys.argv[1]).open('a', encoding='utf-8').write('MTR_CURRENT_SUCCESS\n'); raise SystemExit(36)"
+        $inheritedHandleRun = Invoke-MtrEntrypoint `
+            -FilePath $python.Source `
+            -ArgumentList @('-c', $inheritedHandleScript, $successLogPath, $descendantPidPath) `
+            -WorkingDirectory (Get-Location).Path `
+            -LogPath $LogPath `
+            -Wait `
+            -TimeoutSeconds 5 `
+            -SuccessLogPath @($successLogPath) `
+            -SuccessPattern @('MTR_CURRENT_SUCCESS') `
+            -SuccessPatternAcceptedNonzeroExitCode @(36) `
+            -SuccessPollIntervalMilliseconds 100 `
+            -RedirectStandardOutput (Join-Path $tempRoot 'inherited-handle.stdout.log') `
+            -RedirectStandardError (Join-Path $tempRoot 'inherited-handle.stderr.log') `
+            -RedirectDrainTimeoutMilliseconds 3000 `
+            -PassThru
+        $descendantPid = if (Test-Path -LiteralPath $descendantPidPath -PathType Leaf) {
+            [int](Get-Content -LiteralPath $descendantPidPath -Raw)
+        } else { 0 }
+        $inheritedHandleDescendantCleaned = (
+            $descendantPid -gt 0 -and
+            $null -eq (Get-Process -Id $descendantPid -ErrorAction SilentlyContinue)
+        )
+
         $overflowRejected = $false
         $overflowScript = "import pathlib, sys, time; pathlib.Path(sys.argv[1]).open('a', encoding='utf-8').write('X' * 2048); time.sleep(1)"
         try {
@@ -652,6 +703,9 @@ function Test-MtrEntrypointQuoting {
             $acceptedNonzeroRun.logicalExitCode -eq 0 -and
             -not $acceptedNonzeroWithoutEvidenceRun.completedBySuccessPattern -and
             $acceptedNonzeroWithoutEvidenceRun.logicalExitCode -eq 36 -and
+            $inheritedHandleRun.completedBySuccessPattern -and
+            $inheritedHandleRun.logicalExitCode -eq 0 -and
+            $inheritedHandleDescendantCleaned -and
             $overflowRejected
         )
         Write-MtrEntrypointLog -LogPath $LogPath -Record @{
@@ -666,6 +720,7 @@ function Test-MtrEntrypointQuoting {
             nonzeroExitPrecedence = ($nonzeroAfterSuccessRun.logicalExitCode -eq 7)
             allowlistedNonzeroWithCurrentEvidenceAccepted = ($acceptedNonzeroRun.logicalExitCode -eq 0)
             allowlistedNonzeroWithoutCurrentEvidenceRejected = ($acceptedNonzeroWithoutEvidenceRun.logicalExitCode -eq 36)
+            inheritedRedirectHandleDescendantCleaned = $inheritedHandleDescendantCleaned
             boundedSuccessLogOverflowRejected = $overflowRejected
         }
 
@@ -679,6 +734,7 @@ function Test-MtrEntrypointQuoting {
             nonzeroExitPrecedence = ($nonzeroAfterSuccessRun.logicalExitCode -eq 7)
             allowlistedNonzeroWithCurrentEvidenceAccepted = ($acceptedNonzeroRun.logicalExitCode -eq 0)
             allowlistedNonzeroWithoutCurrentEvidenceRejected = ($acceptedNonzeroWithoutEvidenceRun.logicalExitCode -eq 36)
+            inheritedRedirectHandleDescendantCleaned = $inheritedHandleDescendantCleaned
             boundedSuccessLogOverflowRejected = $overflowRejected
         }
     } finally {

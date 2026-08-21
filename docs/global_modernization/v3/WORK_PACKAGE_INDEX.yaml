@@ -226,18 +226,18 @@ modules:
   M04:
     name: graphics_atlas_bundle_and_asset_governance
     priority: P0
-    current_status: revalidate_then_extend
+    current_status: in_progress
     depends_on: [M01, M03]
     work_packages:
       - id: M04.1
-        status: pending
+        status: complete
         objective: Revalidate existing asset inventory, meta/reference ownership and accepted validators against current source checkpoint.
-        outputs: [docs/global_modernization/v3/M04/graphics_inventory.md]
+        outputs: [docs/global_modernization/v3/M04/graphics_inventory.md, docs/global_modernization/v3/M04/M04_A_VALIDATION_SUMMARY.json]
         gates: [P4]
       - id: M04.2
-        status: pending
+        status: complete
         objective: Promote atlas draft to canonical schema with owner, scope, bundle, compression, padding, provenance and fallback.
-        outputs: [assets/resources/config/atlas_manifest.json, docs/global_modernization/v3/M04/atlas_policy_report.md]
+        outputs: [assets/resources/config/atlas_manifest.json, docs/global_modernization/v3/M04/schemas/atlas_manifest.schema.json, tools/codex/validate_m04_a_asset_contract.py, docs/global_modernization/v3/M04/atlas_policy_report.md]
         gates: [D4, P4]
       - id: M04.3
         status: pending
@@ -610,7 +610,7 @@ modules:
 
 next_safe_action:
   module: M04
-  work_package: M04.1
-  execution_unit: M04-A
-  prerequisites_complete: [M03.7B]
-  action: Revalidate the current asset inventory and establish canonical ownership, provenance, atlas and bundle contracts without changing runtime assets in the inventory slice.
+  work_package: M04.3
+  execution_unit: M04-B
+  prerequisites_complete: [M04-A]
+  action: Extend fail-visible pre-import validation and generate manifest-linked contact sheets without repacking runtime textures.

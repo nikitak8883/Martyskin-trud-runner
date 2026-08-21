@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M04-A",
+  "source_work_packages": ["M04.1", "M04.2"],
+  "status": "pass",
+  "implementation_status": "complete",
+  "runtime_changed": false,
+  "runtime_assets_repacked": false,
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "scope": {
+    "source_files": 1635,
+    "source_bytes": 116453941,
+    "metadata_files": 1882,
+    "metadata_bytes": 4574788,
+    "png_files": 1528,
+    "image_files": 1558,
+    "ownership_scopes": 24,
+    "atlas_groups": 11,
+    "physical_auto_atlas_files": 0
+  },
+  "fingerprints": {
+    "source_payload_sha256": "9C68E11B117FF03F261B4170BAF50C1CB9BDA2B1BD515C27F64AE7AAE6A16408",
+    "cocos_metadata_sha256": "4DE87CF49754E2206204F9F44FAEBB827118BBAAE99F91A68AA6341769E32763",
+    "content_identity_sha256": "7DA412A9B41C8D82B72EC56B394DE9358F756AADC8FA0A0BD034F6224B118709"
+  },
+  "contract_validation": {
+    "status": "PASS",
+    "findings": 0,
+    "unowned_sources": 0,
+    "ownership_overlaps": 0,
+    "uncovered_images": 0,
+    "atlas_overlaps": 0,
+    "meta_missing_pairs": 0,
+    "meta_orphans": 0,
+    "meta_duplicate_uuids": 0,
+    "direct_tests_passed": 8,
+    "negative_fixtures_passed": 11,
+    "report": "temp/m04-a-final-review/m04-a-contract.json",
+    "report_sha256": "30255EE8BA0CCA2C04D600BBE1F861DA66DA7535B17B5C8879F7DF71190D98CC"
+  },
+  "asset_validation": {
+    "status": "PASS",
+    "decode_errors": 0,
+    "missing_meta": 0,
+    "oversize": 0,
+    "white_matte_suspects": 0,
+    "reference_blockers": 0,
+    "report": "temp/m04-a-final-review/asset-scan.json",
+    "report_sha256": "39BD5142BAB0200BBD74300BFF7EC2FD7F7EDA6E995CFE2E80A94EB54DA86EA2"
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_build": true,
+    "manifest_packaged": true,
+    "build_report_sha256": "EBE2F67AC0C9F9F22BF143F3BDB039E988C36EEDC6327E8A2D1793806ED3E312",
+    "pass_a": {"matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "2D5E6644155C764CA29163C9FFE8E47EB0276C72E08615643CEBA84C6F73E538"},
+    "pass_b": {"matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "0BEADD8AD2C93CF6EAFA14193C09B2DB0C5B71C414CF3D6EF8EF7DBA16654B91"},
+    "final_recovery": {"matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "4EB25592EDAA83C027787B8EF1081EEFD69A66F69ACE3B3926F50AE1EE372311"},
+    "visual_sample": "PASS"
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "serial": "emulator-5554",
+    "qemu": true,
+    "abi": "x86_64",
+    "fresh_build": true,
+    "installed_user": 0,
+    "manifest_packaged": true,
+    "build_report_sha256": "C10A2D5F12B0DF393C924A232D6480125FDB6607041A8A52613AE2B73F991218",
+    "pass_a": {"matrix_passed": 28, "matrix_total": 28, "report_sha256": "945D990C0A6227874D93D32D064040C9F083075E0888C79DEE99FEFF075F308D", "interaction": "PASS", "restart_passed": 10, "soak_seconds": 60.14, "process_losses": 0},
+    "pass_b": {"matrix_passed": 28, "matrix_total": 28, "report_sha256": "AE73B4B71B69608B548768D132EF949F68545860049E557767AC60C1C276807E", "interaction": "PASS", "restart_passed": 10, "soak_seconds": 60.259, "process_losses": 0},
+    "final_matrix_recovery": {"matrix_passed": 28, "matrix_total": 28, "report_sha256": "12256E3E9A224EB277C74DC55DD902DE586A1F9379D5F8F8BFB909D5B80FA0C0", "unexpected_diagnostics": 0},
+    "final_interaction_recovery": {"status": "PASS", "touch_attempts": {"dash": 1, "jump": 1, "pause": 1, "resume": 1}, "name_persistence": "PASS", "restart_passed": 10, "restart_total": 10, "soak_seconds": 30.719, "process_losses": 0, "report_sha256": "424D6E88E8018FBA4A8C9A78584D7FD0C11D6C25B721921996C200C2F6867619"},
+    "preserved_failure_receipt": {"classification": "emulator_input_transition_harness", "phase": "touch_dash", "report_sha256": "53020FE74A513A91EA8F9199341777C08DA89FBC661F339708A920250D3176EE"},
+    "unexpected_diagnostics": 0,
+    "apk": {"path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk", "bytes": 142909453, "sha256": "1E399112CC8E3892B3A78403BA043D48EA0CA0DD027DA46F7B0C284A2580517E", "signature_scope": "debug_emulator_qa_only"}
+  },
+  "review": {
+    "accepted_and_fixed_findings": 5,
+    "rejected_false_positives": 8,
+    "open_findings": 0,
+    "codex_final_review": "PASS",
+    "entrypoint_selftests_passed": 3,
+    "local_coder_cleanup_verified": true,
+    "pre_report_static_gate": {"status": "PASS", "passed": 23, "total": 23, "report": "temp/m04-a-final-review/static-gate-pre-report.json", "report_sha256": "D7C8E7E2D4DA98F250E7E959DE92E3D34ABBB0C1F4A13DB37D7D2A4F3442E051"},
+    "final_static_gate": {"status": "PASS", "passed": 23, "total": 23, "report": "temp/m04-a-final-review/static-gate-final.json", "report_sha256": "BDF1DD528D24A63A4C0AB5B7A8F86E43292A5806EB438AD64DA268487FC131C8"},
+    "hygiene_gate": "PASS"
+  },
+  "roadmap": {
+    "execution_complete": 11,
+    "execution_total_current": 65,
+    "execution_remaining_current": 54,
+    "conditional_units": 7,
+    "source_complete": 26,
+    "source_total": 95,
+    "source_mandatory_remaining": 59,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M04-B"
+  },
+  "release_blockers": ["M02.1", "M02.7", "M12.7"]
+}

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "contract": "mtr.content_identity",
-  "logical_content_version": "mtr-v3-source-a5c4bdbb2fca",
+  "logical_content_version": "mtr-v3-source-4492deee4209",
   "source": {
     "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
     "branch": "mtr-source-v3",
-    "baseline_commit": "a5c4bdbb2fca479ad918ea7f3fa4fdd40bdffce2",
+    "baseline_commit": "4492deee4209ef8b09dce9a7ab35db7f5831d623",
     "baseline_kind": "published_source_before_identity_metadata"
   },
   "freeze_provenance": {

@@ -1,8 +1,8 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m03_5_collision_router_complete_m03_6_next_release_blocked`  
+Статус: `m03_complete_m04_a_complete_m04_b_next_release_blocked`  
 Дата интеграции: 2026-07-23  
-Последнее обновление: 2026-08-11  
+Последнее обновление: 2026-08-13  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 
@@ -65,7 +65,10 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M03.3: pure `DevEventLog` и `LifecycleEpoch` подключены через один release-off `GameRootDevEventAdapter`; writer состояния остаётся единственным. DEBUG Web и Android-emulator дают ровно 33 уникальных события для 10 reset-loop, release Web даёт 0 событий. Свежие Web `34/34` и Android-emulator `28/28` матрицы, interaction/name persistence и restart `10/10` проходят; physical device не использовался. Build router теперь fail-closed принимает Cocos exit `36` только вместе с новым terminal success marker. Canonical pre-commit gate — `15/15 PASS`.
 - M03.4: jump, glide, dash и pause направлены через один `GameplayInputAdapter` с общим pause debounce `220 ms`, одним glide writer и неизменной listener topology. Node contract `10/10`, static gate `17/17`, Web Pass A/Pass B/recovery `34/34`, Android-emulator Pass A/Pass B `28/28` и холодный recovery проходят; canonical `M2_PLUS` — `12/12 PASS`, physical device не использовался.
 - M03.5: восемь platform/ground/pickup/bonus/obstacle/NPC/finish callbacks направлены через один синхронный `GameplayCollisionRouter`; detection и exact legacy side-effect order сохранены в `GameRoot`. Node contract `10/10`, static gate `18/18`, Web Pass A/Pass B/recovery `34/34`, Android-emulator Pass A/Pass B `28/28`, collision query и холодный recovery проходят; canonical `M2_PLUS` — `12/12 PASS`, physical device не использовался.
+- M03.6: power-up spawn/activate/tick/expire/cleanup переданы epoch-aware owner с injected tick; Web/Android parity и lifecycle recovery подтверждены.
+- M03.7A/M03.7B: единый runtime scheduling/UI ownership принят, семь дублирующих callback wrappers удалены после rollback/hidden-reference gate; M03 закрыт, physical device не использовался.
+- M04-A: канонический inventory фиксирует 1 635 source-файлов и 1 882 metadata-файла, 24 непересекающихся ownership scopes и 11 atlas-policy groups; runtime textures не перепаковывались. Schema/validator, 8 direct tests и 11 negative fixtures проходят; свежие Web `34/34 × 2` плюс recovery и Android-emulator `28/28 × 2` плюс recovery, touch/name/restart/soak циклы проходят.
 
 ## Следующее безопасное действие
 
-Выполнить `M03.6`: выделить epoch-aware lifecycle бонусов `spawn → collect → activate → tick → expire → cleanup` с injected clock, сохранив текущие значения, reset/death/retry semantics и Web/Android parity. Release остаётся blocked.
+Выполнить `M04-B` (`M04.3 + M04.4`): расширить fail-visible pre-import validator и создать manifest-linked contact sheets. Перепаковка runtime textures остаётся запрещена до измеренного `M04-C-PILOT`; release остаётся blocked.
