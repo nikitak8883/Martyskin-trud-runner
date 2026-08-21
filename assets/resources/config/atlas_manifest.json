@@ -2,8 +2,8 @@
   "$schema": "https://schemas.mtr.local/assets/v1/atlas-manifest.schema.json",
   "schema_version": 1,
   "contract": "mtr.atlas_manifest",
-  "status": "contract_only_no_runtime_repack",
-  "generated_at": "2026-08-13T19:57:42+03:00",
+  "status": "contract_with_measured_runtime_pilot",
+  "generated_at": "2026-08-21T12:26:20+03:00",
   "source_checkpoint": {
     "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
     "branch": "mtr-source-v3",
@@ -38,14 +38,14 @@
       "assets/resources/config/content_identity.json.meta"
     ],
     "source_payload": {
-      "count": 1635,
-      "bytes": 116453941,
-      "sha256": "9C68E11B117FF03F261B4170BAF50C1CB9BDA2B1BD515C27F64AE7AAE6A16408"
+      "count": 1636,
+      "bytes": 116453976,
+      "sha256": "864BC15D125F559BB007235D0D4764C000957160C6CFC5AFE4C5A2184A49AEE2"
     },
     "cocos_metadata": {
-      "count": 1882,
-      "bytes": 4574788,
-      "sha256": "4DE87CF49754E2206204F9F44FAEBB827118BBAAE99F91A68AA6341769E32763"
+      "count": 1883,
+      "bytes": 4575611,
+      "sha256": "976610FA3F7566A314F1E358CA5E4BCB9D071E796D481F4F3529B184B8E908E9"
     },
     "png_validation": {
       "count": 1528,
@@ -62,6 +62,7 @@
       ".jpg": {"count": 30, "bytes": 5999213},
       ".json": {"count": 35, "bytes": 1163846},
       ".mp3": {"count": 1, "bytes": 116284},
+      ".pac": {"count": 1, "bytes": 35},
       ".png": {"count": 1528, "bytes": 107146623},
       ".wav": {"count": 40, "bytes": 2018006}
     }
@@ -170,9 +171,12 @@
       "match": "prefix",
       "owner": "levels_backgrounds_content_pipeline",
       "bundle_id": "resources",
-      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
-      "asset_count": 10,
-      "total_bytes": 1566620,
+      "provenance": [
+        "assets/resources/config/current_objective_runtime_usage.json",
+        "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json"
+      ],
+      "asset_count": 11,
+      "total_bytes": 1566655,
       "fallback_policy": "warn_decorative_only"
     },
     {
@@ -467,19 +471,27 @@
       "owner": "levels_backgrounds_content_pipeline",
       "bundle_id": "resources",
       "packing": {
-        "mode": "static_atlas_candidate",
-        "implementation_status": "policy_only_not_packed",
+        "mode": "static_atlas",
+        "implementation_status": "measured_static_atlas",
         "max_texture_size": 2048,
         "padding_px": 2,
-        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "compression": {"web": "auto_atlas_png_lossless", "android": "auto_atlas_png_lossless", "status": "measured_pilot_accepted"},
         "trim_policy": "preserve_existing_import",
         "pivot_policy": "preserve_existing_import",
-        "dynamic_atlas_allowed": false
+        "dynamic_atlas_allowed": false,
+        "descriptor": "assets/resources/objectives/npc/objective_npc.pac",
+        "descriptor_uuid": "47e91249-9fb1-4e70-bcc2-d0b7fd20fd9b",
+        "measurement_contract": "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json",
+        "acceptance_evidence": "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json"
       },
-      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
+      "provenance": [
+        "assets/resources/config/current_objective_runtime_usage.json",
+        "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json"
+      ],
       "observed": {"count": 10, "bytes": 1566620},
       "fallback_policy": "warn_decorative_only",
-      "runtime_effect": false
+      "runtime_effect": true
     },
     {
       "atlas_id": "level_theme_families",
@@ -611,7 +623,7 @@
     "ownership_coverage": "every_non_meta_runtime_source_exactly_one_scope",
     "atlas_selector_coverage": "every_png_or_jpg_exactly_one_group",
     "atlas_selector_overlap": "forbidden",
-    "dynamic_atlas": "disabled_until_m04_6_measured_allowlist",
+    "dynamic_atlas": "static_pilot_measured_dynamic_runtime_unchanged",
     "migration": "one_measured_group_per_checkpoint_from_m04_c",
     "destructive_cleanup": "forbidden_in_m04_a"
   }

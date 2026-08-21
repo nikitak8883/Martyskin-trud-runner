@@ -1,0 +1,154 @@
+{
+  "$schema": "mtr.m04_c_atlas_pilot_contract.v1",
+  "unit_id": "M04-C-PILOT",
+  "status": "candidate_accepted",
+  "amendment": {
+    "kind": "pre_candidate_baseline_correction",
+    "candidate_descriptor_present_at_amendment": false,
+    "reason": "The measured Web baseline already packs all ten source SpriteFrames into one draw texture through Dynamic Atlas, while the Android native baseline keeps ten draw textures. Platform-specific draw-call criteria are required to avoid an impossible Web reduction target and preserve an objective Android material-gain gate.",
+    "metric_fishing_prohibited": true
+  },
+  "candidate": {
+    "atlas_id": "objective_npc",
+    "source_directory": "assets/resources/objectives/npc",
+    "source_count": 10,
+    "source_bytes": 1566620,
+    "risk_class": "low_risk_decorative",
+    "fallback_policy": "warn_decorative_only",
+    "descriptor": "assets/resources/objectives/npc/objective_npc.pac",
+    "descriptor_uuid": "47e91249-9fb1-4e70-bcc2-d0b7fd20fd9b",
+    "configuration": {
+      "max_width": 2048,
+      "max_height": 2048,
+      "padding": 2,
+      "allow_rotation": false,
+      "algorithm": "MaxRects",
+      "format": "png",
+      "filter_unused": false,
+      "remove_source_textures_from_bundle": true,
+      "wrap_mode": "clamp-to-edge",
+      "filtering": "linear",
+      "mip_filter": "none"
+    }
+  },
+  "measurement_protocol": {
+    "platforms": ["web", "android_emulator"],
+    "web_build_config": "build-web-mobile-qa.json",
+    "android_build_config": "build-android-emulator.json",
+    "android_serial": "emulator-5554",
+    "android_user": 0,
+    "viewport": {"width": 1280, "height": 720},
+    "scene": "main.scene",
+    "screen": "menu",
+    "co_visible_layout": "five_columns_by_two_rows",
+    "sample_count": 7,
+    "settle_ms": 1100,
+    "sample_interval_ms": 550,
+    "required_runtime_metrics": [
+      "source_texture_count",
+      "draw_texture_count",
+      "dynamic_atlas_packed_count",
+      "load_elapsed_ms",
+      "draws",
+      "texture_memory_mb",
+      "buffer_memory_mb",
+      "fps"
+    ],
+    "artifact_metrics": ["runtime_bytes", "resources_bytes", "android_package_bytes"],
+    "same_build_config_before_after": true
+  },
+  "baseline_observation": {
+    "candidate_descriptor_present": false,
+    "evidence": {
+      "web_runtime": "temp/m04-c-pilot/baseline/web/runtime.json",
+      "web_artifacts": "temp/m04-c-pilot/baseline/web/artifacts.json",
+      "web_screenshot": "temp/m04-c-pilot/baseline/web/atlas-pilot.png",
+      "android_runtime": "temp/m04-c-pilot/baseline/android/runtime.json",
+      "android_artifacts": "temp/m04-c-pilot/baseline/android/artifacts.json",
+      "android_screenshot": "temp/m04-c-pilot/baseline/android/atlas-pilot.png"
+    },
+    "web": {
+      "source_texture_count": 10,
+      "draw_texture_count": 1,
+      "dynamic_atlas_packed_count": 10,
+      "draws_median": 17,
+      "load_elapsed_ms": 226,
+      "texture_memory_mb_median": 30.92,
+      "buffer_memory_mb_median": 9.03,
+      "fps_median": 60,
+      "runtime_bytes": 123824003,
+      "resources_bytes": 118648127
+    },
+    "android_emulator": {
+      "source_texture_count": 10,
+      "draw_texture_count": 10,
+      "dynamic_atlas_packed_count": 0,
+      "draws_median": 26,
+      "load_elapsed_ms": 582,
+      "texture_memory_mb_median": 16.53,
+      "buffer_memory_mb_median": 18.03,
+      "fps_median": 20,
+      "runtime_bytes": 124162476,
+      "resources_bytes": 118648127,
+      "android_package_bytes": 142912196
+    }
+  },
+  "acceptance": {
+    "source_texture_count": {
+      "baseline_by_platform": {"web": 10, "android_emulator": 10},
+      "candidate_expected_by_platform": {"web": 1, "android_emulator": 1}
+    },
+    "draw_texture_count": {
+      "baseline_by_platform": {"web": 1, "android_emulator": 10},
+      "candidate_expected_by_platform": {"web": 1, "android_emulator": 1}
+    },
+    "dynamic_atlas_packed_count": {
+      "baseline_by_platform": {"web": 10, "android_emulator": 0},
+      "candidate_expected_by_platform": {"web": 0, "android_emulator": 0}
+    },
+    "draw_calls": {
+      "web": {"maximum_absolute_increase": 1},
+      "android_emulator": {"minimum_absolute_reduction": 6, "minimum_relative_reduction": 0.3}
+    },
+    "load_elapsed_ms": {"maximum_relative_increase": 0.25, "maximum_absolute_slack_ms": 100},
+    "texture_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 2},
+    "buffer_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 1},
+    "fps": {"maximum_relative_drop": 0.15, "maximum_absolute_drop": 3},
+    "artifact_size": {"maximum_relative_increase": 0.03, "maximum_absolute_increase_bytes": 2097152},
+    "runtime": {"load_failures": 0, "unexpected_errors": 0, "unexpected_warnings": 0},
+    "visual": {
+      "all_sources_visible": true,
+      "white_or_opaque_matte_fragments": 0,
+      "pivot_or_trim_regressions": 0,
+      "same_frame_screenshot_required": true,
+      "automated_parity": {
+        "channel_delta_threshold": 8,
+        "maximum_mean_absolute_error": 0.35,
+        "maximum_changed_pixel_fraction": 0.003,
+        "content_roi_by_platform": {
+          "web": {"left": 0.01875, "top": 0.141666667, "right": 0.98125, "bottom": 0.966666667},
+          "android_emulator": {"left": 0.115, "top": 0.139880952, "right": 0.881666667, "bottom": 0.967261905}
+        }
+      }
+    },
+    "decision_rule": "accept_only_if_every_applicable_platform_threshold_and_visual_gate_passes_with_material_android_gain"
+  },
+  "rollback": {
+    "on_failure": "remove_descriptor_restore_manifest_and_rebuild_both_platforms",
+    "broader_family_migration_authorized": false
+  },
+  "candidate_result": {
+    "status": "accepted",
+    "acceptance_checks": {"passed": 63, "total": 63},
+    "durable_evidence": "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+    "material_android_gain": {
+      "draws_median": {"baseline": 26, "candidate": 17, "absolute_reduction": 9, "relative_reduction": 0.346154},
+      "load_elapsed_ms": {"baseline": 582, "candidate": 413}
+    },
+    "web_non_regression": {
+      "draws_median": {"baseline": 17, "candidate": 17},
+      "texture_memory_mb_median": {"baseline": 30.92, "candidate": 15.56},
+      "load_elapsed_ms": {"baseline": 226, "candidate": 216}
+    }
+  }
+}

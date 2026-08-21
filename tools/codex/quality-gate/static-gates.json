@@ -343,6 +343,18 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "m04-c-atlas-pilot-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "node",
+      "arguments": [
+        "tools/codex/test-atlas-pilot-metrics.js"
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "skin-bonus-contracts",
       "mandatory": true,
       "enabled": true,

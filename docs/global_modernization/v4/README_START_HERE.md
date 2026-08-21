@@ -1,6 +1,6 @@
 # MTR global modernization v4 — точка входа
 
-Статус: `M03.3A_B_AND_TC-01_COMPLETE / M03.3C_READY / RELEASE_BLOCKED`  
+Статус: `M04_C_PILOT_COMPLETE / M04_C_FAMILIES_READY / RELEASE_BLOCKED`  
 Дата аудита: `2026-08-09`  
 Живой runtime checkpoint: `f99408151c98cf8806e269307fe5e552f5b185c9`  
 Документационная база до RDX-01: `95648b978117b8964469ad4fb236829d9540c239`
@@ -22,8 +22,8 @@
 
 ## Два независимых счётчика
 
-- Требования проекта: `95` source work packages; `19` complete, `63` pending, `3` blocked, `10` conditional. Обязательный остаток: `66`.
-- Исполнение от текущей точки: `65` обязательных v4 execution units, включая `RDX-01` и `TC-01`; `4/65` завершены, `61` остаётся. Ещё `7` units условные. Знаменатель provisional до инвентаризации child batches M04/M05/M10.
+- Требования проекта: `95` source work packages; `28` complete, `54` pending, `3` blocked, `10` conditional. Обязательный остаток: `57`.
+- Исполнение от текущей точки: `65` обязательных v4 execution units, включая `RDX-01` и `TC-01`; `13/65` завершены, `52` остаётся. Ещё `7` units условные. Знаменатель provisional до инвентаризации child batches M04/M05/M10.
 
 Эти знаменатели нельзя смешивать: один считает требования, другой — инженерные rollback/QA-границы.
 
@@ -40,9 +40,9 @@
 
 ## Следующие безопасные действия
 
-1. `M03.3C`: один release-off GameRoot adapter для transition/reset/epoch.
-2. Выполнить полный P4: fresh Web + Android-emulator build/install/runtime parity.
-3. Не продвигать source package `M03.3` до завершения M03.3C.
+1. `M04-C-FAMILIES`: один измеренный accepted static-atlas family на child checkpoint.
+2. Для каждого child выполнить frozen before/after, Web/Android-emulator P4, M2_PLUS, visual parity и rollback.
+3. Не закрывать aggregate source package `M04.5` и не менять dynamic-atlas policy до завершения соответствующих execution units.
 
 ## Запреты до соответствующих gates
 

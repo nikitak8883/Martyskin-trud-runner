@@ -7,7 +7,21 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m04_b_complete / m04_c_pilot_ready / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m04_c_pilot_complete / m04_c_families_ready / release_blocked`
+
+## 2026-08-21 M04-C-PILOT completion overlay
+
+This overlay supersedes every older next-action line below; older sections remain historical evidence only.
+
+- `objective_npc` is the only accepted measured static Auto Atlas: 10 low-risk co-visible decorative PNGs, descriptor UUID `47e91249-9fb1-4e70-bcc2-d0b7fd20fd9b`, source images and pivots/trim preserved.
+- Frozen before/after evidence passes `63/63` fail-closed checks. Android-emulator median draws improve `26 → 17` (`-9`, `-34.6154%`) and load time improves `582 → 413 ms`; Web draws remain `17 → 17`, load `226 → 216 ms`, texture memory `30.92 → 15.56 MiB`.
+- Automated visual parity passes on Web and Android emulator; manual review confirms all ten sprites, no white matte, missing frame or pivot/trim regression.
+- Final static gate passes `26/26`; Web passes `34/34 × 2`, interaction and restart `10/10 × 2`; Android emulator passes `28/28 × 2`, touch/name persistence, restart `10/10` and soak `300.272 s` with zero process loss.
+- Roadmap: execution `13/65` complete, `52` mandatory units remain plus `7` conditional. Source remains `28/95`, because aggregate `M04.5` stays pending until accepted family children close; `57` mandatory source packages remain plus `10` conditional.
+- Current checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20260821_M04_C_PILOT_COMPLETE.md`.
+- Current validation report: `docs/global_modernization/v3/M04/M04_C_PILOT_VALIDATION_SUMMARY.json`.
+- Next safe unit: `M04-C-FAMILIES`, one measured accepted family per isolated child checkpoint. No batch migration or dynamic-atlas policy change is implied.
+- Physical device used: `NO`. Release remains blocked by `M02.1`, `M02.7` and `M12.7`.
 
 ## 2026-08-21 M04-B completion overlay
 

@@ -66,9 +66,62 @@ class M04AAssetContractTests(unittest.TestCase):
     def test_repository_contract_passes(self) -> None:
         report = VALIDATOR.validate_manifest(PROJECT_ROOT, check_git=False)
         self.assertEqual(report["status"], "PASS", report["findings"])
-        self.assertEqual(report["counts"]["source_files"], 1635)
+        self.assertEqual(report["counts"]["source_files"], 1636)
         self.assertEqual(report["counts"]["image_files"], 1558)
-        self.assertEqual(report["counts"]["auto_atlas_files"], 0)
+        self.assertEqual(report["counts"]["auto_atlas_files"], 1)
+        self.assertEqual(report["counts"]["measured_static_atlases"], 1)
+        measured = [
+            group["atlas_id"]
+            for group in self.manifest["atlas_groups"]
+            if group["packing"]["implementation_status"] == "measured_static_atlas"
+        ]
+        self.assertEqual(measured, ["objective_npc"])
+
+    def test_measured_atlas_uuid_drift_fails_closed(self) -> None:
+        manifest = copy.deepcopy(self.manifest)
+        group = next(group for group in manifest["atlas_groups"] if group["atlas_id"] == "objective_npc")
+        group["packing"]["descriptor_uuid"] = "00000000-0000-4000-8000-000000000099"
+        report = VALIDATOR.validate_manifest(PROJECT_ROOT, manifest, check_git=False)
+        self.assertIn("AUTO_ATLAS_META_MISMATCH", {finding["code"] for finding in report["findings"]})
+
+    def test_measured_atlas_malformed_evidence_records_structured_finding(self) -> None:
+        group = next(group for group in self.manifest["atlas_groups"] if group["atlas_id"] == "objective_npc")
+        real_load_json = VALIDATOR.load_json
+        evidence_cases = (
+            (group["packing"]["measurement_contract"], "ATLAS_MEASUREMENT_CONTRACT_INVALID_JSON"),
+            (group["packing"]["acceptance_evidence"], "ATLAS_ACCEPTANCE_EVIDENCE_INVALID_JSON"),
+        )
+        for relative_path, expected_code in evidence_cases:
+            target = (PROJECT_ROOT / relative_path).resolve()
+
+            def load_json_with_failure(path: Path, *, _target: Path = target) -> Any:
+                if path.resolve() == _target:
+                    raise json.JSONDecodeError("fixture", "{", 1)
+                return real_load_json(path)
+
+            with self.subTest(path=relative_path), mock.patch.object(
+                VALIDATOR, "load_json", side_effect=load_json_with_failure
+            ):
+                report = VALIDATOR.validate_manifest(PROJECT_ROOT, copy.deepcopy(self.manifest), check_git=False)
+                self.assertEqual(report["status"], "FAIL")
+                self.assertIn(expected_code, {finding["code"] for finding in report["findings"]})
+
+    def test_acceptance_count_must_match_measurement_contract(self) -> None:
+        group = next(group for group in self.manifest["atlas_groups"] if group["atlas_id"] == "objective_npc")
+        acceptance_path = (PROJECT_ROOT / group["packing"]["acceptance_evidence"]).resolve()
+        real_load_json = VALIDATOR.load_json
+
+        def load_json_with_drift(path: Path) -> Any:
+            value = real_load_json(path)
+            if path.resolve() == acceptance_path:
+                value = copy.deepcopy(value)
+                value["acceptance"]["checks_total"] -= 1
+                value["acceptance"]["checks_passed"] -= 1
+            return value
+
+        with mock.patch.object(VALIDATOR, "load_json", side_effect=load_json_with_drift):
+            report = VALIDATOR.validate_manifest(PROJECT_ROOT, copy.deepcopy(self.manifest), check_git=False)
+        self.assertIn("ATLAS_ACCEPTANCE_EVIDENCE_MISMATCH", {finding["code"] for finding in report["findings"]})
 
     def test_negative_fixtures_fail_with_expected_code(self) -> None:
         for case in self.fixtures:

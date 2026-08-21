@@ -31,7 +31,7 @@
       "const": "mtr.atlas_manifest"
     },
     "status": {
-      "const": "contract_only_no_runtime_repack"
+      "const": "contract_with_measured_runtime_pilot"
     },
     "generated_at": {
       "type": "string",
@@ -93,6 +93,10 @@
     "sha256": {
       "type": "string",
       "pattern": "^[A-F0-9]{64}$"
+    },
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
     },
     "owner": {
       "enum": [
@@ -370,8 +374,8 @@
         "dynamic_atlas_allowed"
       ],
       "properties": {
-        "mode": {"enum": ["static_atlas_candidate", "standalone_texture", "unpacked_family"]},
-        "implementation_status": {"enum": ["policy_only_not_packed", "existing_standalone", "existing_unpacked"]},
+        "mode": {"enum": ["static_atlas_candidate", "static_atlas", "standalone_texture", "unpacked_family"]},
+        "implementation_status": {"enum": ["policy_only_not_packed", "measured_static_atlas", "existing_standalone", "existing_unpacked"]},
         "max_texture_size": {"type": "integer", "enum": [1024, 2048, 4096]},
         "padding_px": {"type": "integer", "minimum": 0, "maximum": 16},
         "compression": {
@@ -381,13 +385,29 @@
           "properties": {
             "web": {"type": "string", "minLength": 1},
             "android": {"type": "string", "minLength": 1},
-            "status": {"const": "unchanged_until_measured"}
+            "status": {"enum": ["unchanged_until_measured", "measured_pilot_accepted"]}
           }
         },
         "trim_policy": {"const": "preserve_existing_import"},
         "pivot_policy": {"const": "preserve_existing_import"},
-        "dynamic_atlas_allowed": {"type": "boolean"}
-      }
+        "dynamic_atlas_allowed": {"type": "boolean"},
+        "descriptor": {"$ref": "#/$defs/relative_path"},
+        "descriptor_uuid": {"$ref": "#/$defs/uuid"},
+        "measurement_contract": {"$ref": "#/$defs/relative_path"},
+        "acceptance_evidence": {"$ref": "#/$defs/relative_path"}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"implementation_status": {"const": "measured_static_atlas"}},
+            "required": ["implementation_status"]
+          },
+          "then": {
+            "required": ["descriptor", "descriptor_uuid", "measurement_contract", "acceptance_evidence"],
+            "properties": {"mode": {"const": "static_atlas"}}
+          }
+        }
+      ]
     },
     "atlas_group": {
       "type": "object",
@@ -430,8 +450,23 @@
         },
         "observed": {"$ref": "#/$defs/count_bytes"},
         "fallback_policy": {"enum": ["block_release", "warn_decorative_only", "explicit_runtime_fallback"]},
-        "runtime_effect": {"const": false}
-      }
+        "runtime_effect": {"type": "boolean"}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "packing": {
+                "properties": {"implementation_status": {"const": "measured_static_atlas"}},
+                "required": ["implementation_status"]
+              }
+            },
+            "required": ["packing"]
+          },
+          "then": {"properties": {"runtime_effect": {"const": true}}},
+          "else": {"properties": {"runtime_effect": {"const": false}}}
+        }
+      ]
     },
     "policies": {
       "type": "object",
@@ -448,7 +483,7 @@
         "ownership_coverage": {"const": "every_non_meta_runtime_source_exactly_one_scope"},
         "atlas_selector_coverage": {"const": "every_png_or_jpg_exactly_one_group"},
         "atlas_selector_overlap": {"const": "forbidden"},
-        "dynamic_atlas": {"const": "disabled_until_m04_6_measured_allowlist"},
+        "dynamic_atlas": {"const": "static_pilot_measured_dynamic_runtime_unchanged"},
         "migration": {"const": "one_measured_group_per_checkpoint_from_m04_c"},
         "destructive_cleanup": {"const": "forbidden_in_m04_a"}
       }

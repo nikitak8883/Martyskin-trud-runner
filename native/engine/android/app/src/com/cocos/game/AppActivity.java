@@ -59,7 +59,8 @@ public class AppActivity extends CocosActivity {
         "mtr_qa_reset_loops",
         "mtr_qa_collisions",
         "mtr_qa_powerups",
-        "mtr_qa_ownership"
+        "mtr_qa_ownership",
+        "mtr_qa_atlas_pilot"
     };
 
     private static String startupQuery = "";

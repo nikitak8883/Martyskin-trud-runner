@@ -65,6 +65,8 @@ import {
     GameRootDevEventAdapter,
 } from './qa/GameRootDevEventAdapter';
 import type { DevEventRecord, GameRootResetReason } from './qa/GameRootDevEventAdapter';
+import { aggregateAtlasPilotSamples } from './qa/AtlasPilotMetrics';
+import type { AtlasPilotSample } from './qa/AtlasPilotMetrics';
 import { UI_SCREEN_TITLES, UI_SHARED_ASSET_KEYS, UI_SKIN } from './ui/UITheme';
 import type { UiColorTuple } from './ui/UITheme';
 
@@ -161,6 +163,10 @@ const OBJECT_SPRITE_WEB_URGENT_LOAD_CONCURRENCY = 5;
 const OBJECT_SPRITE_NATIVE_LOAD_CONCURRENCY = 8;
 const OBJECT_SPRITE_LOAD_SLOW_MS = 1800;
 const OBJECT_SPRITE_QUEUE_LOG_STEP = 50;
+const M04_C_ATLAS_PILOT_ID = 'objective_npc';
+const M04_C_ATLAS_PILOT_SAMPLE_COUNT = 7;
+const M04_C_ATLAS_PILOT_READY_POLL_LIMIT = 120;
+const M04_C_ATLAS_PILOT_SAMPLE_RETRY_LIMIT = 20;
 const OBJECT_SPRITE_IDLE_CHUNK_WEB = 4;
 const OBJECT_SPRITE_IDLE_CHUNK_NATIVE = 16;
 const OBJECT_SPRITE_WEB_CHUNK_INTERVAL_SEC = 0.22;
@@ -1197,6 +1203,11 @@ export class GameRoot extends Component {
     private pendingQaCollisionMatrix = false;
     private pendingQaPowerUpLifecycle = false;
     private pendingQaRuntimeOwnership = false;
+    private qaAtlasPilotRequested = false;
+    private qaAtlasPilotActive = false;
+    private qaAtlasPilotLoadStartedAt = 0;
+    private qaAtlasPilotLoadElapsedMs = 0;
+    private qaAtlasPilotSamples: AtlasPilotSample[] = [];
     private pendingSkinSelection = 0;
     private qaForcedSkinVariant: PlayerSkinVariant | null = null;
     private qaForcedPlayerPose: PlayerSkinPose | null = null;
@@ -1228,6 +1239,9 @@ export class GameRoot extends Component {
 
     onLoad(): void {
         profiler.hideStats();
+        const startupParams = this.startupQueryParams();
+        this.qaAtlasPilotRequested = DEBUG
+            && startupParams?.get('mtr_qa_atlas_pilot') === M04_C_ATLAS_PILOT_ID;
         this.applyResponsiveResolutionPolicy();
         this.node.getComponent(UITransform)?.setContentSize(W, H);
         const uiLayer = this.node.layer;
@@ -1311,10 +1325,14 @@ export class GameRoot extends Component {
         this.loadSettings();
         if (this.playerNameEdit) this.playerNameEdit.string = this.playerName;
         this.audioUnlocked = sys.isNative;
-        this.preloadCriticalMenuUiSprites('boot-main-menu');
-        this.preloadBackgroundFrames();
-        this.preloadCriticalPlayerSkinSprites('boot-selected-skin');
-        console.log('MTR_AUDIO_LOAD_DEFERRED_UNTIL_BACKGROUND reason=protect-cold-background-start');
+        if (!this.qaAtlasPilotRequested) {
+            this.preloadCriticalMenuUiSprites('boot-main-menu');
+            this.preloadBackgroundFrames();
+            this.preloadCriticalPlayerSkinSprites('boot-selected-skin');
+            console.log('MTR_AUDIO_LOAD_DEFERRED_UNTIL_BACKGROUND reason=protect-cold-background-start');
+        } else {
+            console.log('MTR_ATLAS_PILOT_ISOLATION_READY suppressed=menu,background,skin,audio,warmup');
+        }
         this.syncGameState();
         this.logDifficultyProfile('boot');
         this.logGameStateSnapshot('boot');
@@ -1323,10 +1341,11 @@ export class GameRoot extends Component {
         this.registerRuntimeListeners();
 
         this.reset('boot');
-        this.applyStartupQuery();
+        this.applyStartupQuery(startupParams);
     }
 
     onDestroy(): void {
+        if (this.qaAtlasPilotActive && profiler.isShowingStats()) profiler.hideStats();
         const invalidatedEpoch = this.devEvents.invalidate(this.state, 'component_destroy', this.fixedStepCount);
         this.powerUps.invalidate(invalidatedEpoch, 'component_destroy');
         const cleanup = this.runtimeLifecycle.destroy('component_destroy');
@@ -2583,10 +2602,12 @@ export class GameRoot extends Component {
         console.log(`MTR_QA_END_STATE_SEEDED screen=${state} level=${this.levelIndex + 1} score=${this.score} bananas=${this.bananasCollected} progress=${Math.round(this.progress)}`);
     }
 
-    private applyStartupQuery(): void {
-        const params = this.startupQueryParams();
+    private applyStartupQuery(startupParams: StartupQueryParams | null = this.startupQueryParams()): void {
+        const params = startupParams;
         if (!params) return;
         if (params.get('mtr_dev') === '1') this.enableDeveloperMode();
+        const requestedAtlasPilot = params.get('mtr_qa_atlas_pilot');
+        if (requestedAtlasPilot !== null) this.configureAtlasPilotForQa(requestedAtlasPilot);
         this.runDevEventResetLoopForQa(params);
         const skinParam = params.get('mtr_skin') || params.get('mtr_qa_skin');
         if (skinParam) {
@@ -2705,6 +2726,130 @@ export class GameRoot extends Component {
                 this.scheduleRuntimeOwnershipMatrixForQa();
             }
         }
+    }
+
+    private configureAtlasPilotForQa(requestedAtlasId: string): void {
+        if (!DEBUG) return;
+        if (requestedAtlasId !== M04_C_ATLAS_PILOT_ID) {
+            console.warn(`MTR_ATLAS_PILOT_REJECTED requested=${requestedAtlasId || '-'} allowed=${M04_C_ATLAS_PILOT_ID}`);
+            return;
+        }
+        this.qaAtlasPilotActive = true;
+        this.qaAtlasPilotLoadStartedAt = Date.now();
+        this.qaAtlasPilotLoadElapsedMs = 0;
+        this.qaAtlasPilotSamples = [];
+        profiler.showStats();
+        this.enqueueObjectSprites(OBJECTIVE_BATCH_NPC_KEYS, 'm04-c-atlas-pilot', 'critical');
+        console.log(
+            `MTR_ATLAS_PILOT_START atlasId=${M04_C_ATLAS_PILOT_ID}`
+            + ` platform=${sys.isNative ? 'android' : 'web'} sourceCount=${OBJECTIVE_BATCH_NPC_KEYS.length}`,
+        );
+        this.pollAtlasPilotReadyForQa(0);
+    }
+
+    private pollAtlasPilotReadyForQa(attempt: number): void {
+        if (!this.qaAtlasPilotActive) return;
+        const failed = OBJECTIVE_BATCH_NPC_KEYS.filter((key) => !!this.objectSpriteLoadFailures[key]);
+        if (failed.length > 0) {
+            console.warn(`MTR_ATLAS_PILOT_FAIL atlasId=${M04_C_ATLAS_PILOT_ID} reason=load_failed count=${failed.length}`);
+            profiler.hideStats();
+            return;
+        }
+        const missing = OBJECTIVE_BATCH_NPC_KEYS.filter((key) => !this.objectSpriteFrames[key]);
+        if (missing.length > 0) {
+            if (attempt >= M04_C_ATLAS_PILOT_READY_POLL_LIMIT) {
+                console.warn(`MTR_ATLAS_PILOT_FAIL atlasId=${M04_C_ATLAS_PILOT_ID} reason=ready_timeout missing=${missing.length}`);
+                profiler.hideStats();
+                return;
+            }
+            this.scheduleComponentOnce(
+                `qa.atlas-pilot-ready:${attempt + 1}`,
+                () => this.pollAtlasPilotReadyForQa(attempt + 1),
+                0.1,
+            );
+            return;
+        }
+        this.qaAtlasPilotLoadElapsedMs = Math.max(0, Date.now() - this.qaAtlasPilotLoadStartedAt);
+        console.log(
+            `MTR_ATLAS_PILOT_READY atlasId=${M04_C_ATLAS_PILOT_ID}`
+            + ` loadElapsedMs=${this.qaAtlasPilotLoadElapsedMs}`
+            + ` sourceTextureCount=${this.atlasPilotSourceTextureCountForQa()}`
+            + ` drawTextureCount=${this.atlasPilotDrawTextureCountForQa()}`
+            + ` dynamicAtlasPackedCount=${this.atlasPilotDynamicAtlasPackedCountForQa()}`,
+        );
+        this.scheduleComponentOnce('qa.atlas-pilot-sample:0', () => this.captureAtlasPilotSampleForQa(0), 1.1);
+    }
+
+    private captureAtlasPilotSampleForQa(retry: number): void {
+        if (!this.qaAtlasPilotActive) return;
+        const stats = profiler.stats;
+        if (!stats) {
+            if (retry >= M04_C_ATLAS_PILOT_SAMPLE_RETRY_LIMIT) {
+                console.warn(`MTR_ATLAS_PILOT_FAIL atlasId=${M04_C_ATLAS_PILOT_ID} reason=profiler_unavailable`);
+                profiler.hideStats();
+                return;
+            }
+            this.scheduleComponentOnce(
+                `qa.atlas-pilot-profiler-retry:${retry + 1}`,
+                () => this.captureAtlasPilotSampleForQa(retry + 1),
+                0.1,
+            );
+            return;
+        }
+        const sample: AtlasPilotSample = {
+            sampledAtMs: Math.max(0, Date.now() - this.qaAtlasPilotLoadStartedAt),
+            draws: stats.draws.counter.human(),
+            textureMemoryMb: stats.textureMemory.counter.human(),
+            bufferMemoryMb: stats.bufferMemory.counter.human(),
+            fps: stats.fps.counter.human(),
+        };
+        this.qaAtlasPilotSamples.push(sample);
+        console.log(`MTR_ATLAS_PILOT_SAMPLE ${JSON.stringify({ sequence: this.qaAtlasPilotSamples.length, ...sample })}`);
+        if (this.qaAtlasPilotSamples.length < M04_C_ATLAS_PILOT_SAMPLE_COUNT) {
+            this.scheduleComponentOnce(
+                `qa.atlas-pilot-sample:${this.qaAtlasPilotSamples.length}`,
+                () => this.captureAtlasPilotSampleForQa(0),
+                0.55,
+            );
+            return;
+        }
+        const aggregate = aggregateAtlasPilotSamples(this.qaAtlasPilotSamples);
+        console.log(`MTR_ATLAS_PILOT_COMPLETE ${JSON.stringify({
+            contract: 'mtr.atlas_pilot_runtime_metric',
+            schemaVersion: 2,
+            atlasId: M04_C_ATLAS_PILOT_ID,
+            platform: sys.isNative ? 'android' : 'web',
+            sourceCount: OBJECTIVE_BATCH_NPC_KEYS.length,
+            sourceTextureCount: this.atlasPilotSourceTextureCountForQa(),
+            drawTextureCount: this.atlasPilotDrawTextureCountForQa(),
+            dynamicAtlasPackedCount: this.atlasPilotDynamicAtlasPackedCountForQa(),
+            loadElapsedMs: this.qaAtlasPilotLoadElapsedMs,
+            aggregate,
+        })}`);
+        profiler.hideStats();
+    }
+
+    private atlasPilotSourceTextureCountForQa(): number {
+        const textures = new Set<string>();
+        for (const key of OBJECTIVE_BATCH_NPC_KEYS) {
+            const frame = this.objectSpriteFrames[key];
+            const texture = frame?.original?._texture ?? frame?.texture;
+            if (texture) textures.add(texture.uuid);
+        }
+        return textures.size;
+    }
+
+    private atlasPilotDrawTextureCountForQa(): number {
+        const textures = new Set<string>();
+        for (const key of OBJECTIVE_BATCH_NPC_KEYS) {
+            const texture = this.objectSpriteFrames[key]?.texture;
+            if (texture) textures.add(texture.uuid);
+        }
+        return textures.size;
+    }
+
+    private atlasPilotDynamicAtlasPackedCountForQa(): number {
+        return OBJECTIVE_BATCH_NPC_KEYS.filter((key) => !!this.objectSpriteFrames[key]?.original).length;
     }
 
     private runDevEventResetLoopForQa(params: StartupQueryParams): void {
@@ -3828,7 +3973,8 @@ export class GameRoot extends Component {
             this.withRenderLayer('HUD', () => this.drawOverlay());
             this.withRenderLayer('HUD', () => this.drawHud());
         }
-        if (this.state !== 'playing') this.withRenderLayer('HUD', () => this.drawMenu());
+        if (this.state !== 'playing' && !this.qaAtlasPilotActive) this.withRenderLayer('HUD', () => this.drawMenu());
+        if (this.qaAtlasPilotActive) this.withRenderLayer('HUD', () => this.drawAtlasPilotForQa());
         this.deactivateUnusedLayerNodes();
         this.logRenderContractSnapshot(gameplayVisible);
     }
@@ -4976,6 +5122,30 @@ textarea, input {
         this.text('ПРИМАТ', x, bottom - 98, 11, rgb(255, 240, 120));
     }
 
+    private drawAtlasPilotForQa(): void {
+        if (!DEBUG || !this.qaAtlasPilotActive) return;
+        this.fillRect(24, 102, W - 48, H - 126, rgb(8, 10, 12, 236));
+        this.strokeRect(24, 102, W - 48, H - 126, rgb(120, 255, 180, 218));
+        this.text('M04-C · OBJECTIVE NPC · 10 CO-VISIBLE SPRITES', W * 0.5, 134, 18, rgb(160, 255, 190));
+        for (let index = 0; index < OBJECTIVE_BATCH_NPC_KEYS.length; index++) {
+            const column = index % 5;
+            const row = Math.floor(index / 5);
+            const x = 144 + column * 248;
+            const y = 278 + row * 244;
+            this.drawAssetSprite(
+                OBJECTIVE_BATCH_NPC_KEYS[index],
+                x,
+                y,
+                132,
+                168,
+                255,
+                'npc_decor',
+                'm04_c_atlas_pilot',
+            );
+            this.text(String(index + 1).padStart(2, '0'), x, y + 104, 13, rgb(170, 255, 202));
+        }
+    }
+
     private drawParticles(): void {
         for (const p of this.particles) this.circle(p.x, p.y, p.size, this.alpha(p.color, clamp(p.life / 0.9, 0, 1) * 255));
     }
@@ -5886,6 +6056,7 @@ textarea, input {
 
     private spriteLayerForUsage(category?: ObjectiveCategory, reason = ''): RenderLayerName {
         if (reason === 'main_menu_bg_far') return 'BG_FAR';
+        if (reason.includes('m04_c_atlas_pilot')) return 'HUD';
         if (reason.includes('menu_skin_preview')) return 'HUD';
         if (reason.includes('player_equipment')) return 'PLAYER_EQUIPMENT';
         if (category === 'platforms') return 'PLATFORMS_SOLID';

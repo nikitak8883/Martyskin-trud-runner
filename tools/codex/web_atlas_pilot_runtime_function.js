@@ -1,0 +1,112 @@
+async function (page) {
+    const startedAt = Date.now();
+    const query = new URL(page.url()).searchParams;
+    const phase = query.get('mtr_qa_atlas_phase') || 'unlabelled';
+    if (!/^[a-z0-9_-]{3,32}$/i.test(phase)) throw new Error(`Unsafe atlas pilot phase: ${phase}`);
+
+    const consoleEvents = [];
+    const pageErrors = [];
+    const requestFailures = [];
+    let terminal = null;
+    let resolveTerminal;
+    const terminalPromise = new Promise((resolve) => { resolveTerminal = resolve; });
+
+    const onConsole = (message) => {
+        const event = {
+            type: message.type(),
+            text: message.text(),
+            location: message.location(),
+        };
+        consoleEvents.push(event);
+        if (event.text.startsWith('MTR_ATLAS_PILOT_COMPLETE ')) {
+            try {
+                terminal = {
+                    kind: 'complete',
+                    payload: JSON.parse(event.text.slice('MTR_ATLAS_PILOT_COMPLETE '.length)),
+                };
+            } catch (error) {
+                terminal = { kind: 'invalid_complete', error: String(error?.message || error) };
+            }
+            resolveTerminal(terminal);
+        } else if (event.text.startsWith('MTR_ATLAS_PILOT_FAIL ')) {
+            terminal = { kind: 'fail', text: event.text };
+            resolveTerminal(terminal);
+        }
+    };
+    const onPageError = (error) => pageErrors.push(String(error?.stack || error));
+    const onRequestFailed = (request) => requestFailures.push({
+        url: request.url(),
+        error: request.failure()?.errorText || 'unknown',
+    });
+    page.on('console', onConsole);
+    page.on('pageerror', onPageError);
+    page.on('requestfailed', onRequestFailed);
+
+    try {
+        const timeout = new Promise((resolve) => setTimeout(
+            () => resolve({ kind: 'timeout', timeoutMs: 45000 }),
+            45000,
+        ));
+        terminal = await Promise.race([terminalPromise, timeout]);
+        await page.waitForTimeout(350);
+
+        const screenshot = `temp/m04-c-pilot/${phase}/web/atlas-pilot.png`;
+        await page.screenshot({ path: screenshot });
+        const metric = terminal?.kind === 'complete' ? terminal.payload : null;
+        const expectedInfrastructureErrors = consoleEvents.filter((event) => (
+            event.type === 'error'
+            && /\/favicon\.ico(?:$|\?)/i.test(event.location?.url || '')
+            && /404|failed to load resource/i.test(event.text)
+        ));
+        const errors = consoleEvents.filter((event) => (
+            event.type === 'error' && !expectedInfrastructureErrors.includes(event)
+        ));
+        const warnings = consoleEvents.filter((event) => event.type === 'warning');
+        const expectedMetric = Boolean(
+            metric
+            && metric.contract === 'mtr.atlas_pilot_runtime_metric'
+            && metric.schemaVersion === 2
+            && metric.atlasId === 'objective_npc'
+            && metric.platform === 'web'
+            && metric.sourceCount === 10
+            && metric.aggregate?.sampleCount === 7
+            && Number.isFinite(metric.sourceTextureCount)
+            && metric.sourceTextureCount > 0
+            && Number.isFinite(metric.drawTextureCount)
+            && metric.drawTextureCount > 0
+            && Number.isFinite(metric.dynamicAtlasPackedCount)
+            && Number.isFinite(metric.loadElapsedMs)
+        );
+        const status = terminal?.kind === 'complete'
+            && expectedMetric
+            && errors.length === 0
+            && warnings.length === 0
+            && pageErrors.length === 0
+            && requestFailures.length === 0
+            ? 'pass'
+            : 'fail';
+
+        return {
+            schema: 'mtr.web_atlas_pilot.v1',
+            status,
+            phase,
+            elapsedMs: Date.now() - startedAt,
+            expectedMetric,
+            terminal,
+            metric,
+            screenshot,
+            diagnostics: {
+                consoleErrors: errors,
+                consoleWarnings: warnings,
+                pageErrors,
+                requestFailures,
+                expectedInfrastructureErrors,
+            },
+            consoleEvents,
+        };
+    } finally {
+        page.off('console', onConsole);
+        page.off('pageerror', onPageError);
+        page.off('requestfailed', onRequestFailed);
+    }
+}

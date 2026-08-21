@@ -68,7 +68,9 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M03.6: power-up spawn/activate/tick/expire/cleanup переданы epoch-aware owner с injected tick; Web/Android parity и lifecycle recovery подтверждены.
 - M03.7A/M03.7B: единый runtime scheduling/UI ownership принят, семь дублирующих callback wrappers удалены после rollback/hidden-reference gate; M03 закрыт, physical device не использовался.
 - M04-A: канонический inventory фиксирует 1 635 source-файлов и 1 882 metadata-файла, 24 непересекающихся ownership scopes и 11 atlas-policy groups; runtime textures не перепаковывались. Schema/validator, 8 direct tests и 11 negative fixtures проходят; свежие Web `34/34 × 2` плюс recovery и Android-emulator `28/28 × 2` плюс recovery, touch/name/restart/soak циклы проходят.
+- M04-B: fail-visible pre-import validation и manifest-linked contact sheets закрыты; `1 558/1 558` изображений покрыты ровно один раз, семь категорий и 29 воспроизводимых страниц.
+- M04-C-PILOT: принят ровно один статический Auto Atlas `objective_npc` из 10 PNG. Fail-closed comparison `63/63`, Android median draws `26 → 17`, Web non-regression `17 → 17`; Web/Android-emulator P4 и M2_PLUS проходят. Source package `M04.5` остаётся pending до завершения остальных принятых family children.
 
 ## Следующее безопасное действие
 
-Выполнить `M04-B` (`M04.3 + M04.4`): расширить fail-visible pre-import validator и создать manifest-linked contact sheets. Перепаковка runtime textures остаётся запрещена до измеренного `M04-C-PILOT`; release остаётся blocked.
+Выполнять `M04-C-FAMILIES` как один измеренный accepted atlas family на отдельный child checkpoint. Пакетная перепаковка, изменение dynamic-atlas policy, physical-device QA и release остаются запрещены до своих отдельных gates.

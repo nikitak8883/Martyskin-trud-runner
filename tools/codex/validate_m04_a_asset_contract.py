@@ -341,6 +341,7 @@ def validate_manifest(
     }
     atlas_ids: set[str] = set()
     atlas_matches: dict[str, list[str]] = defaultdict(list)
+    measured_descriptors: dict[str, list[str]] = defaultdict(list)
     auto_atlas_files = sorted(
         path.relative_to(project_root).as_posix()
         for path in (project_root / "assets").rglob("*")
@@ -387,8 +388,182 @@ def validate_manifest(
         if observed != group.get("observed"):
             add_finding(findings, "ATLAS_OBSERVED_MISMATCH", f"atlas_groups[{index}].observed", group.get("observed"), observed)
         packing = group.get("packing", {})
-        if packing.get("implementation_status") == "policy_only_not_packed" and group.get("runtime_effect") is not False:
+        implementation_status = packing.get("implementation_status")
+        descriptor_fields = {
+            key: packing.get(key)
+            for key in ("descriptor", "descriptor_uuid", "measurement_contract", "acceptance_evidence")
+            if packing.get(key) is not None
+        }
+        if implementation_status == "policy_only_not_packed" and group.get("runtime_effect") is not False:
             add_finding(findings, "POLICY_ONLY_RUNTIME_EFFECT", f"atlas_groups[{index}].runtime_effect", False, group.get("runtime_effect"))
+        if implementation_status != "measured_static_atlas" and descriptor_fields:
+            add_finding(findings, "UNMEASURED_ATLAS_DESCRIPTOR", f"atlas_groups[{index}].packing", "no descriptor fields", descriptor_fields)
+        if implementation_status == "measured_static_atlas":
+            descriptor = str(packing.get("descriptor", ""))
+            descriptor_uuid = str(packing.get("descriptor_uuid", ""))
+            measured_descriptors[descriptor].append(atlas_id)
+            descriptor_path = resolve_project_path(project_root, descriptor)
+            descriptor_meta_path = resolve_project_path(project_root, f"{descriptor}.meta")
+            if descriptor_path is None or not descriptor_path.is_file():
+                add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_MISSING", f"atlas_groups[{index}].packing.descriptor", "existing project file", descriptor)
+            else:
+                try:
+                    descriptor_value = load_json(descriptor_path)
+                except (OSError, json.JSONDecodeError) as exc:
+                    add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_INVALID", descriptor, {"__type__": "cc.SpriteAtlas"}, str(exc))
+                else:
+                    if descriptor_value != {"__type__": "cc.SpriteAtlas"}:
+                        add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_INVALID", descriptor, {"__type__": "cc.SpriteAtlas"}, descriptor_value)
+            if descriptor_meta_path is None or not descriptor_meta_path.is_file():
+                add_finding(findings, "AUTO_ATLAS_META_MISSING", f"{descriptor}.meta", "existing project file", None)
+            else:
+                try:
+                    descriptor_meta = load_json(descriptor_meta_path)
+                except (OSError, json.JSONDecodeError) as exc:
+                    add_finding(findings, "AUTO_ATLAS_META_INVALID", f"{descriptor}.meta", "valid JSON", str(exc))
+                else:
+                    actual_meta_header = {
+                        "ver": descriptor_meta.get("ver"),
+                        "importer": descriptor_meta.get("importer"),
+                        "imported": descriptor_meta.get("imported"),
+                        "uuid": descriptor_meta.get("uuid"),
+                        "files": descriptor_meta.get("files"),
+                        "subMetas": descriptor_meta.get("subMetas"),
+                    }
+                    expected_meta_header = {
+                        "ver": "1.0.8",
+                        "importer": "auto-atlas",
+                        "imported": True,
+                        "uuid": descriptor_uuid,
+                        "files": [".json"],
+                        "subMetas": {},
+                    }
+                    if actual_meta_header != expected_meta_header:
+                        add_finding(findings, "AUTO_ATLAS_META_MISMATCH", f"{descriptor}.meta", expected_meta_header, actual_meta_header)
+                    user_data = descriptor_meta.get("userData", {})
+                    expected_user_data = {
+                        "maxWidth": packing.get("max_texture_size"),
+                        "maxHeight": packing.get("max_texture_size"),
+                        "padding": packing.get("padding_px"),
+                        "allowRotation": False,
+                        "forceSquared": False,
+                        "powerOfTwo": False,
+                        "algorithm": "MaxRects",
+                        "format": "png",
+                        "quality": 80,
+                        "contourBleed": True,
+                        "paddingBleed": True,
+                        "filterUnused": False,
+                        "removeTextureInBundle": True,
+                        "removeImageInBundle": True,
+                        "removeSpriteAtlasInBundle": True,
+                        "compressSettings": {},
+                        "textureSetting": {
+                            "wrapModeS": "clamp-to-edge",
+                            "wrapModeT": "clamp-to-edge",
+                            "minfilter": "linear",
+                            "magfilter": "linear",
+                            "mipfilter": "none",
+                            "anisotropy": 0,
+                        },
+                    }
+                    if user_data != expected_user_data:
+                        add_finding(findings, "AUTO_ATLAS_SETTINGS_MISMATCH", f"{descriptor}.meta.userData", expected_user_data, user_data)
+
+            measurement_path = resolve_project_path(project_root, str(packing.get("measurement_contract", "")))
+            acceptance_path = resolve_project_path(project_root, str(packing.get("acceptance_evidence", "")))
+            measurement_checks: dict[str, Any] | None = None
+            if measurement_path is None or not measurement_path.is_file():
+                add_finding(findings, "ATLAS_MEASUREMENT_CONTRACT_MISSING", f"atlas_groups[{index}].packing.measurement_contract", "existing project file", packing.get("measurement_contract"))
+            else:
+                try:
+                    measurement = load_json(measurement_path)
+                except (OSError, json.JSONDecodeError) as exc:
+                    add_finding(findings, "ATLAS_MEASUREMENT_CONTRACT_INVALID_JSON", str(packing.get("measurement_contract")), "valid JSON object", str(exc))
+                else:
+                    if not isinstance(measurement, dict):
+                        add_finding(findings, "ATLAS_MEASUREMENT_CONTRACT_INVALID", str(packing.get("measurement_contract")), "JSON object", type(measurement).__name__)
+                    else:
+                        measurement_candidate = measurement.get("candidate") if isinstance(measurement.get("candidate"), dict) else {}
+                        measurement_result = measurement.get("candidate_result") if isinstance(measurement.get("candidate_result"), dict) else {}
+                        measurement_checks_value = measurement_result.get("acceptance_checks")
+                        if isinstance(measurement_checks_value, dict):
+                            measurement_checks = measurement_checks_value
+                        measurement_actual = {
+                            "schema": measurement.get("$schema"),
+                            "unit_id": measurement.get("unit_id"),
+                            "status": measurement.get("status"),
+                            "atlas_id": measurement_candidate.get("atlas_id"),
+                            "descriptor": measurement_candidate.get("descriptor"),
+                            "descriptor_uuid": measurement_candidate.get("descriptor_uuid"),
+                            "result": measurement_result.get("status"),
+                            "acceptance_checks": measurement_checks,
+                        }
+                        measurement_expected = {
+                            "schema": "mtr.m04_c_atlas_pilot_contract.v1",
+                            "unit_id": "M04-C-PILOT",
+                            "status": "candidate_accepted",
+                            "atlas_id": atlas_id,
+                            "descriptor": descriptor,
+                            "descriptor_uuid": descriptor_uuid,
+                            "result": "accepted",
+                            "acceptance_checks": measurement_checks,
+                        }
+                        checks_valid = (
+                            isinstance(measurement_checks, dict)
+                            and isinstance(measurement_checks.get("total"), int)
+                            and measurement_checks["total"] > 0
+                            and measurement_checks.get("passed") == measurement_checks["total"]
+                        )
+                        if not checks_valid or measurement_actual != measurement_expected:
+                            add_finding(findings, "ATLAS_MEASUREMENT_CONTRACT_MISMATCH", str(packing.get("measurement_contract")), measurement_expected, measurement_actual)
+            if acceptance_path is None or not acceptance_path.is_file():
+                add_finding(findings, "ATLAS_ACCEPTANCE_EVIDENCE_MISSING", f"atlas_groups[{index}].packing.acceptance_evidence", "existing project file", packing.get("acceptance_evidence"))
+            else:
+                try:
+                    acceptance = load_json(acceptance_path)
+                except (OSError, json.JSONDecodeError) as exc:
+                    add_finding(findings, "ATLAS_ACCEPTANCE_EVIDENCE_INVALID_JSON", str(packing.get("acceptance_evidence")), "valid JSON object", str(exc))
+                else:
+                    if not isinstance(acceptance, dict):
+                        add_finding(findings, "ATLAS_ACCEPTANCE_EVIDENCE_INVALID", str(packing.get("acceptance_evidence")), "JSON object", type(acceptance).__name__)
+                    else:
+                        acceptance_candidate = acceptance.get("candidate") if isinstance(acceptance.get("candidate"), dict) else {}
+                        acceptance_result = acceptance.get("acceptance") if isinstance(acceptance.get("acceptance"), dict) else {}
+                        acceptance_actual = {
+                            "schema": acceptance.get("$schema"),
+                            "unit_id": acceptance.get("unit_id"),
+                            "status": acceptance.get("status"),
+                            "atlas_id": acceptance_candidate.get("atlas_id"),
+                            "descriptor": acceptance_candidate.get("descriptor"),
+                            "descriptor_uuid": acceptance_candidate.get("descriptor_uuid"),
+                            "checks_passed": acceptance_result.get("checks_passed"),
+                            "checks_total": acceptance_result.get("checks_total"),
+                        }
+                        expected_total = measurement_checks.get("total") if isinstance(measurement_checks, dict) else None
+                        acceptance_expected = {
+                            "schema": "mtr.m04_c_atlas_pilot_acceptance.v1",
+                            "unit_id": "M04-C-PILOT",
+                            "status": "PASS",
+                            "atlas_id": atlas_id,
+                            "descriptor": descriptor,
+                            "descriptor_uuid": descriptor_uuid,
+                            "checks_passed": expected_total,
+                            "checks_total": expected_total,
+                        }
+                        if expected_total is None or acceptance_actual != acceptance_expected:
+                            add_finding(findings, "ATLAS_ACCEPTANCE_EVIDENCE_MISMATCH", str(packing.get("acceptance_evidence")), acceptance_expected, acceptance_actual)
+
+    duplicate_descriptors = {descriptor: groups for descriptor, groups in measured_descriptors.items() if len(groups) != 1}
+    for descriptor, groups in sorted(duplicate_descriptors.items()):
+        add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_DUPLICATE", descriptor, "one measured atlas group", groups)
+    measured_descriptor_set = {descriptor for descriptor in measured_descriptors if descriptor}
+    unregistered_auto_atlases = sorted(set(auto_atlas_files) - measured_descriptor_set)
+    missing_auto_atlases = sorted(measured_descriptor_set - set(auto_atlas_files))
+    if unregistered_auto_atlases:
+        add_finding(findings, "AUTO_ATLAS_UNREGISTERED", "atlas_groups", "all descriptors registered", unregistered_auto_atlases)
+    if missing_auto_atlases:
+        add_finding(findings, "AUTO_ATLAS_REGISTERED_MISSING", "atlas_groups", "all registered descriptors exist", missing_auto_atlases)
 
     atlas_uncovered = sorted(relative for relative in image_files if not atlas_matches.get(relative))
     atlas_overlaps = {relative: groups for relative, groups in atlas_matches.items() if len(groups) != 1}
@@ -447,6 +622,7 @@ def validate_manifest(
             "image_files": len(image_files),
             "atlas_groups": len(manifest.get("atlas_groups", [])),
             "auto_atlas_files": len(auto_atlas_files),
+            "measured_static_atlases": sum(len(groups) for groups in measured_descriptors.values()),
             "findings": len(findings),
         },
         "fingerprints": {"source_payload": source_digest, "cocos_metadata": meta_digest},

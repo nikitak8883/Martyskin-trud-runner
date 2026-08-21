@@ -253,6 +253,10 @@ modules:
       - id: M04.5
         status: pending
         objective: Migrate one measured co-visible static atlas group at a time; preserve pivots/trim and rollback mapping.
+        execution_status: pilot_complete_remaining_families_pending
+        completed_execution_units: [M04-C-PILOT]
+        next_execution_unit: M04-C-FAMILIES
+        outputs: [assets/resources/objectives/npc/objective_npc.pac, docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json, docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json, docs/global_modernization/v3/M04/M04_C_PILOT_VALIDATION_SUMMARY.json]
         gates: [P4, M2_PLUS]
       - id: M04.6
         status: pending

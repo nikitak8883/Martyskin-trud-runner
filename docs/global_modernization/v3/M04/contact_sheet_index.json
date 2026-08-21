@@ -11,10 +11,10 @@
   },
   "source": {
     "atlasManifest": "assets/resources/config/atlas_manifest.json",
-    "atlasManifestSha256": "5C5280D87DF1A4412E8DA972FCF36E9F70196C51666630845ADE12F2D7971121",
+    "atlasManifestSha256": "AC352C754A0E88442A5FD42326EA782764908A364CD3F2E5A18FF6DD55101ABE",
     "contentIdentity": "assets/resources/config/content_identity.json",
     "logicalContentVersion": "mtr-v3-source-4492deee4209",
-    "sourcePayloadSha256": "9C68E11B117FF03F261B4170BAF50C1CB9BDA2B1BD515C27F64AE7AAE6A16408"
+    "sourcePayloadSha256": "864BC15D125F559BB007235D0D4764C000957160C6CFC5AFE4C5A2184A49AEE2"
   },
   "materialization": {
     "policy": "local_qa_evidence_not_runtime_not_committed",
@@ -30025,7 +30025,9 @@
       ],
       "provenance": [
         "assets/resources/config/current_objective_runtime_usage.json",
-        "assets/resources/config/last_iteration_asset_manifest.generated.json"
+        "assets/resources/config/last_iteration_asset_manifest.generated.json",
+        "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
       ],
       "sheets": [
         {
@@ -30094,7 +30096,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 0
@@ -30118,7 +30122,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 1
@@ -30142,7 +30148,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 2
@@ -30166,7 +30174,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 3
@@ -30190,7 +30200,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 4
@@ -30214,7 +30226,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 5
@@ -30238,7 +30252,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 6
@@ -30262,7 +30278,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 7
@@ -30286,7 +30304,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 8
@@ -30310,7 +30330,9 @@
           "ownershipScope": "objective_npc",
           "ownershipManifestPointer": "/ownership_scopes/8",
           "provenance": [
-            "assets/resources/config/current_objective_runtime_usage.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 9

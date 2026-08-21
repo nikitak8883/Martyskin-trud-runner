@@ -2,10 +2,10 @@
 
 ## Текущее положение
 
-- Source ledger: `24/95 complete`; mandatory `24/85`, осталось `61`; conditional `10`.
-- V4 remaining-scope execution ledger: `10/65 complete`, осталось `55`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
-- Текущий milestone: `M03.7B` и весь `M03.7` complete; hidden refs `0`, rollback blobs `10/10`, QA7 `7/7`, M2_PLUS `12/12`.
-- Следующий unit: `M04-A` — revalidation asset inventory и canonical ownership/provenance/atlas/bundle contracts.
+- Source ledger: `28/95 complete`; mandatory `28/85`, осталось `57`; conditional `10`. `M04.5` остаётся pending до закрытия remaining family children.
+- V4 remaining-scope execution ledger: `13/65 complete`, осталось `52`; conditional units `7`; denominator provisional до inventory-derived children M04/M05/M10.
+- Текущий milestone: `M04-C-PILOT` complete; `objective_npc` принят как единственный measured static atlas pilot, comparison `63/63`, P4 и M2_PLUS зелёные.
+- Следующий unit: `M04-C-FAMILIES` — один accepted measured family на изолированный child checkpoint; broader batching не разрешён.
 - Release: `BLOCKED`.
 
 ## Phase 0 — contracts, toolchain и publication model

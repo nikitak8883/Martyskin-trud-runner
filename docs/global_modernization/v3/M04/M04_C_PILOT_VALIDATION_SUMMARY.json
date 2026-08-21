@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M04-C-PILOT",
+  "source_work_packages": ["M04.5"],
+  "status": "pass",
+  "implementation_status": "pilot_complete",
+  "aggregate_work_package_status": "pending_remaining_families",
+  "runtime_changed": true,
+  "runtime_assets_repacked": true,
+  "runtime_png_sources_changed": false,
+  "runtime_metadata_changed": true,
+  "broader_family_migration_authorized": false,
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "candidate": {
+    "atlas_id": "objective_npc",
+    "descriptor": "assets/resources/objectives/npc/objective_npc.pac",
+    "descriptor_uuid": "47e91249-9fb1-4e70-bcc2-d0b7fd20fd9b",
+    "source_sprite_count": 10,
+    "source_bytes": 1566620,
+    "risk_class": "low_risk_decorative",
+    "decision": "accepted"
+  },
+  "measurement_acceptance": {
+    "status": "PASS",
+    "passed": 63,
+    "total": 63,
+    "failed": 0,
+    "contract": "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json",
+    "contract_sha256": "CE97F82EF911C707216E4EF39F50C9B3BCF0009D25AE2C409E711497694E98FC",
+    "durable_acceptance": "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
+    "durable_acceptance_sha256": "43F0D4757A6058FF561C4F5196525A85D9D88ACBCF1E5A55C80DF5D4C8E4F7CF",
+    "comparison_report": "temp/m04-c-pilot/comparison/acceptance.json",
+    "comparison_report_sha256": "845ED39298125E2C17BA3819FDFE5922F191414480194346B6D6824085AE914D",
+    "negative_identity_fixture": "PASS"
+  },
+  "performance": {
+    "web": {
+      "source_texture_count": {"baseline": 10, "candidate": 1},
+      "draw_texture_count": {"baseline": 1, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 10, "candidate": 0},
+      "draws_median": {"baseline": 17, "candidate": 17},
+      "load_elapsed_ms": {"baseline": 226, "candidate": 216},
+      "texture_memory_mb_median": {"baseline": 30.92, "candidate": 15.56},
+      "fps_median": {"baseline": 60, "candidate": 60}
+    },
+    "android_emulator": {
+      "source_texture_count": {"baseline": 10, "candidate": 1},
+      "draw_texture_count": {"baseline": 10, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {"baseline": 26, "candidate": 17, "absolute_reduction": 9, "relative_reduction": 0.346154},
+      "load_elapsed_ms": {"baseline": 582, "candidate": 413},
+      "texture_memory_mb_median": {"baseline": 16.53, "candidate": 17.16},
+      "fps_median": {"baseline": 20, "candidate": 21}
+    }
+  },
+  "visual_parity": {
+    "status": "PASS",
+    "all_ten_sources_visible": true,
+    "white_matte_fragments": 0,
+    "missing_frames": 0,
+    "pivot_or_trim_regressions": 0,
+    "web": {"mean_absolute_error": 0.029814, "changed_pixel_fraction": 0.001352814},
+    "android_emulator": {"mean_absolute_error": 0.030062, "changed_pixel_fraction": 0.001346961},
+    "report": "temp/m04-c-pilot/comparison/visual-parity.json",
+    "report_sha256": "33868E6DE2096F827AB87DB4C2FE8A398E2D4BC8755E8AB85CEE6D45B925CED2"
+  },
+  "tests": {
+    "status": "PASS",
+    "atlas_metrics_test": "PASS",
+    "manifest_validator_tests": {"passed": 11, "total": 11},
+    "malformed_evidence_json_fixture": "PASS",
+    "acceptance_count_drift_fixture": "PASS"
+  },
+  "static_gate": {
+    "status": "PASS",
+    "passed": 26,
+    "total": 26,
+    "findings": 0,
+    "report": "temp/m04-c-pilot/final/static-gate-roadmap/report.json",
+    "report_sha256": "0CF3A9F1C686BC8C893BA7635E867510F2FF2291660B00964C16A19C41D55568",
+    "post_review_code_gate": {
+      "report": "temp/m04-c-pilot/final/static-gate-post-review/report.json",
+      "report_sha256": "FCC03921489FA46CD3247BA808C3CADC075F47486EBD2507671B5D3374B6D3B4"
+    },
+    "preserved_failure_receipt": {
+      "classification": "expected_contract_drift_after_measured_route_and_manifest_change",
+      "report": "temp/m04-c-pilot/final/static-gate/report.json",
+      "report_sha256": "43FC131435D138FF91EE8501E0EB7892FABFF8E8BDB7AD1282D92A4E48030F04",
+      "failed_steps": ["game-runtime-ownership-contracts", "m04-b-contact-sheet-contract", "m04-b-asset-pipeline-tests"],
+      "recovery_report": "temp/m04-c-pilot/final/static-gate-rerun/report.json",
+      "recovery_report_sha256": "F920D36DC7405539C899B84B111C9FDA88B235454238654B167DEBF6747432F4"
+    }
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_build": true,
+    "build_log": "temp/m04-c-pilot/final/web-build/creator-web-qa.log",
+    "build_log_sha256": "E97E56C99A0A9C75700ED43CC1B34BDED83F44879D775EF22D098801B972DB15",
+    "cycles": [
+      {"cycle": 1, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "7FD7015815865FEEB917536E5D64B4A48B1B5FD41172591BAB3AB706189953F8"},
+      {"cycle": 2, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "A84416CE8E1004B5CA92054A3C1CEA4822BF13B2B7168C4953AC7518697B11A9"}
+    ],
+    "visual_sample": "PASS",
+    "qa_port_closed": true
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "serial": "emulator-5554",
+    "qemu": true,
+    "abi": "x86_64",
+    "installed_user": 0,
+    "fresh_build": true,
+    "build_log": "temp/m04-c-pilot/final/android-build/creator-android-emulator.log",
+    "build_log_sha256": "DA7AFC161DFF031D9425CE7C312CD0897AD867C547ABF8529F347A38E2544460",
+    "matrix_cycles": [
+      {"cycle": 1, "passed": 28, "total": 28, "report_sha256": "AB766737314E2EAEF662DA0313E51B3A3FDB50F9C9B342EA2DAB903E1BEE1AA1"},
+      {"cycle": 2, "passed": 28, "total": 28, "report_sha256": "EA2624F8A4008544D4B65F23B2D36B9D118B2FA9C2D295A9EC7388DC3A37B84B"}
+    ],
+    "interaction": {
+      "status": "PASS",
+      "name_persistence": "PASS",
+      "persisted_name": "QAPrimateC1",
+      "restart_passed": 10,
+      "restart_total": 10,
+      "soak_seconds": 300.272,
+      "input_bursts": 308,
+      "state_actions": 17,
+      "process_losses": 0,
+      "unexpected_diagnostics": 0,
+      "report_sha256": "40CFBFE8A563EBC7B413E3461DCB8D12B76AB0DCAB8BDF3524B070E97DCB6C5C"
+    },
+    "apk": {
+      "path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk",
+      "bytes": 143210348,
+      "sha256": "B26E2A3A11D1ACB23FA37EFAB301C7AF186AA1B489869BECDC3149DAAA916440",
+      "signature_scope": "debug_emulator_qa_only"
+    }
+  },
+  "review": {
+    "accepted_and_fixed_findings": 2,
+    "rejected_false_positives": 4,
+    "open_findings": 0,
+    "codex_final_review": "PASS",
+    "local_coder_cleanup_verified": true,
+    "hygiene_gate": "PASS"
+  },
+  "roadmap": {
+    "execution_complete": 13,
+    "execution_total_current": 65,
+    "execution_remaining_current": 52,
+    "execution_percent": 20.0,
+    "conditional_units": 7,
+    "source_complete": 28,
+    "source_total": 95,
+    "source_mandatory_remaining": 57,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M04-C-FAMILIES"
+  },
+  "release_blockers": ["M02.1", "M02.7", "M12.7"]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "mtr.m04_c_atlas_pilot_acceptance.v1",
+  "unit_id": "M04-C-PILOT",
+  "status": "PASS",
+  "generated_at": "2026-08-21T12:26:20+03:00",
+  "candidate": {
+    "atlas_id": "objective_npc",
+    "descriptor": "assets/resources/objectives/npc/objective_npc.pac",
+    "descriptor_uuid": "47e91249-9fb1-4e70-bcc2-d0b7fd20fd9b",
+    "source_sprite_count": 10
+  },
+  "acceptance": {
+    "checks_passed": 63,
+    "checks_total": 63,
+    "failed_checks": [],
+    "web": {
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 10, "candidate": 1},
+      "draw_texture_count": {"baseline": 1, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 10, "candidate": 0},
+      "draws_median": {"baseline": 17, "candidate": 17},
+      "load_elapsed_ms": {"baseline": 226, "candidate": 216},
+      "texture_memory_mb_median": {"baseline": 30.92, "candidate": 15.56},
+      "buffer_memory_mb_median": {"baseline": 9.03, "candidate": 9.03},
+      "fps_median": {"baseline": 60, "candidate": 60},
+      "runtime_bytes": {"baseline": 123824003, "candidate": 124278172},
+      "resources_bytes": {"baseline": 118648127, "candidate": 118950643}
+    },
+    "android_emulator": {
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "abi": "x86_64",
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 10, "candidate": 1},
+      "draw_texture_count": {"baseline": 10, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {"baseline": 26, "candidate": 17, "absolute_reduction": 9, "relative_reduction": 0.346154},
+      "load_elapsed_ms": {"baseline": 582, "candidate": 413},
+      "texture_memory_mb_median": {"baseline": 16.53, "candidate": 17.16},
+      "buffer_memory_mb_median": {"baseline": 18.03, "candidate": 18.03},
+      "fps_median": {"baseline": 20, "candidate": 21},
+      "runtime_bytes": {"baseline": 124162476, "candidate": 124464992},
+      "resources_bytes": {"baseline": 118648127, "candidate": 118950643},
+      "apk_bytes": {"baseline": 142912196, "candidate": 143210348}
+    },
+    "visual_parity": {
+      "status": "pass",
+      "manual_review": "pass_all_ten_sprites_visible_no_white_matte_no_pivot_or_trim_regression",
+      "web": {"mean_absolute_error": 0.029814, "changed_pixel_fraction": 0.001352814},
+      "android_emulator": {"mean_absolute_error": 0.030062, "changed_pixel_fraction": 0.001346961}
+    }
+  },
+  "ephemeral_evidence": [
+    {"path": "temp/m04-c-pilot/baseline/web/runtime.json", "sha256": "924DD21F70E25B4F25836700580D1F7D89686B17C57B925C0AE21EB55C994168"},
+    {"path": "temp/m04-c-pilot/candidate/web/runtime.json", "sha256": "1C958874539A0A6DFFF41FCC126829BE487E2AB3166F5F4072552EA09EDB7B88"},
+    {"path": "temp/m04-c-pilot/baseline/android/runtime.json", "sha256": "AE2E77F71FE956A14B6C649F7CC8759A9EC4D6709AD3A153F65245D1B8246877"},
+    {"path": "temp/m04-c-pilot/candidate/android/runtime.json", "sha256": "8166D6334CE42B6793637180DDD449D37F83C4D8E7C35F781AE0BD92631A33F6"},
+    {"path": "temp/m04-c-pilot/baseline/web/artifacts.json", "sha256": "86FA2FA26438528CCBBB4534C8A1D2AB555EB38A049F4E665C1394719D217529"},
+    {"path": "temp/m04-c-pilot/candidate/web/artifacts.json", "sha256": "0D1F399E7C0139BB65294909ABAC4D2E8D405347397334ADE3ED0FBDECAF9153"},
+    {"path": "temp/m04-c-pilot/baseline/android/artifacts.json", "sha256": "06E5B3A9AEF4A30A2190DC4F7A35EB7558DEA1EAE5286149CBB749EA262582FF"},
+    {"path": "temp/m04-c-pilot/candidate/android/artifacts.json", "sha256": "6ADE8C63F9173343445EC24CC07F1B2309226C20D024720637F98966CDBB977E"},
+    {"path": "temp/m04-c-pilot/comparison/visual-parity.json", "sha256": "33868E6DE2096F827AB87DB4C2FE8A398E2D4BC8755E8AB85CEE6D45B925CED2"},
+    {"path": "temp/m04-c-pilot/comparison/acceptance.json", "sha256": "845ED39298125E2C17BA3819FDFE5922F191414480194346B6D6824085AE914D"}
+  ],
+  "decision": "accept_objective_npc_static_atlas_keep_broader_migration_closed"
+}
