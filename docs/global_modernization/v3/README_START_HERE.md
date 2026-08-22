@@ -71,6 +71,7 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M04-B: fail-visible pre-import validation и manifest-linked contact sheets закрыты; `1 558/1 558` изображений покрыты ровно один раз, семь категорий и 29 воспроизводимых страниц.
 - M04-C-PILOT: принят ровно один статический Auto Atlas `objective_npc` из 10 PNG. Fail-closed comparison `63/63`, Android median draws `26 → 17`, Web non-regression `17 → 17`; Web/Android-emulator P4 и M2_PLUS проходят. Source package `M04.5` остаётся pending до завершения остальных принятых family children.
 - M04-C-FAMILY-ACHIEVEMENT-UI: принят второй изолированный статический Auto Atlas из 9 PNG. Comparison `63/63`; Android median draws `24 → 16` (`-33.3333%`), Web остаётся `16 → 16`; Web `34/34 × 2`, Android-emulator `28/28 × 2`, visual parity, interaction/restart/soak и M2_PLUS проходят. Aggregate `M04.5` по-прежнему pending.
+- M04-C-FAMILY-RUNNER-COLLECTIBLES: принят третий изолированный статический Auto Atlas из 14 PNG. Comparison `63/63`; Android median draws `34 → 21` (`-38.2353%`), Web остаётся `21 → 21`; Web `34/34 × 2`, Android-emulator `28/28 × 2`, visual parity, interaction/restart/soak и M2_PLUS проходят. Aggregate `M04.5` по-прежнему pending.
 
 ## Следующее безопасное действие
 

@@ -11,10 +11,10 @@
   },
   "source": {
     "atlasManifest": "assets/resources/config/atlas_manifest.json",
-    "atlasManifestSha256": "ED1379EEB708EC4BE13E9DD9606D7E64D12DE5C480604211DC75FB8236DE1E15",
+    "atlasManifestSha256": "A74FF8D7B661AA964C461F19611037528AB81CA0A8681434C338755A2DF0D9C4",
     "contentIdentity": "assets/resources/config/content_identity.json",
     "logicalContentVersion": "mtr-v3-source-4492deee4209",
-    "sourcePayloadSha256": "6BE3B39107FC031EDBEE3A37D9E50862317D012DF1CAAA929F2F13DA1AB593F1"
+    "sourcePayloadSha256": "08B475D577BA0853AB86197048DD32046198FD080991C114A61ED7B9FB5A50F9"
   },
   "materialization": {
     "policy": "local_qa_evidence_not_runtime_not_committed",
@@ -6206,6 +6206,8 @@
       ],
       "provenance": [
         "assets/resources/objectives/objectives_manifest.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json",
         "docs/skins_integration/manifests/player_skins_manifest.json"
       ],
       "sheets": [
@@ -7976,7 +7978,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 8
@@ -8000,7 +8004,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 9
@@ -8024,7 +8030,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 10
@@ -8048,7 +8056,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 11
@@ -8072,7 +8082,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 12
@@ -8096,7 +8108,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 13
@@ -8120,7 +8134,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 14
@@ -8144,7 +8160,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 15
@@ -8168,7 +8186,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 16
@@ -8192,7 +8212,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 17
@@ -8216,7 +8238,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 18
@@ -8240,7 +8264,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "runner-02",
           "cellIndex": 19
@@ -37715,7 +37741,9 @@
         "objective_collectibles"
       ],
       "provenance": [
-        "assets/resources/objectives/objectives_manifest.json"
+        "assets/resources/objectives/objectives_manifest.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
       ],
       "sheets": [
         {
@@ -37748,7 +37776,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "vfx-01",
           "cellIndex": 0
@@ -37772,7 +37802,9 @@
           "ownershipScope": "objective_collectibles",
           "ownershipManifestPointer": "/ownership_scopes/6",
           "provenance": [
-            "assets/resources/objectives/objectives_manifest.json"
+            "assets/resources/objectives/objectives_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json"
           ],
           "sheetId": "vfx-01",
           "cellIndex": 1

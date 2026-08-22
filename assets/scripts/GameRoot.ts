@@ -812,6 +812,11 @@ const M04_C_ACHIEVEMENT_UI_ATLAS_KEYS = [
     'objectives/ui/ui_monkey_profile_badge_01',
 ] as const;
 
+const M04_C_RUNNER_COLLECTIBLES_ATLAS_KEYS = [
+    ...OBJECTIVE_BATCH_COLLECTIBLE_KEYS,
+    ...NEW_COLLECTIBLE_ASSET_KEYS,
+] as const;
+
 interface M04CAtlasQaSpec {
     atlasId: string;
     title: string;
@@ -850,6 +855,19 @@ const M04_C_ATLAS_QA_SPECS = {
         yStart: 278,
         xStep: 248,
         yStep: 244,
+        spriteWidth: 132,
+        spriteHeight: 132,
+    },
+    runner_collectibles: {
+        atlasId: 'runner_collectibles',
+        title: 'RUNNER COLLECTIBLES',
+        keys: M04_C_RUNNER_COLLECTIBLES_ATLAS_KEYS,
+        category: 'collectibles',
+        columns: 5,
+        xStart: 144,
+        yStart: 190,
+        xStep: 248,
+        yStep: 175,
         spriteWidth: 132,
         spriteHeight: 132,
     },

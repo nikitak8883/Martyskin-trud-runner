@@ -4,7 +4,11 @@ async function (page) {
     const phase = query.get('mtr_qa_atlas_phase') || 'unlabelled';
     if (!/^[a-z0-9_-]{3,32}$/i.test(phase)) throw new Error(`Unsafe atlas pilot phase: ${phase}`);
     const atlasId = query.get('mtr_qa_atlas_pilot') || '';
-    const atlasSourceCounts = Object.freeze({ objective_npc: 10, achievement_ui: 9 });
+    const atlasSourceCounts = Object.freeze({
+        objective_npc: 10,
+        achievement_ui: 9,
+        runner_collectibles: 14,
+    });
     if (!Object.prototype.hasOwnProperty.call(atlasSourceCounts, atlasId)) {
         throw new Error(`Unsupported atlas QA id: ${atlasId || '-'}`);
     }

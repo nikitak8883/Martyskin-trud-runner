@@ -1,13 +1,28 @@
 # CURRENT_STATE — Martyshkin Trud Runner
 
 Generated: 2026-07-02 15:44 +03:00  
-Updated: 2026-08-21  
+Updated: 2026-08-22  
 Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`  
 Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m04_c_achievement_ui_child_complete / m04_c_families_ready / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m04_c_runner_collectibles_child_complete / m04_c_families_ready / release_blocked`
+
+## 2026-08-22 M04-C-FAMILY-RUNNER-COLLECTIBLES completion overlay
+
+This overlay supersedes every older next-action line below; older sections remain historical evidence only.
+
+- `runner_collectibles` is the third accepted measured static Auto Atlas: 14 gameplay-critical collectible PNGs, descriptor UUID `f2b9f0ac-e094-4354-b291-94f7b6777c7c`; source PNG bytes, runtime keys and pivots/trim are preserved.
+- Frozen comparison passes `63/63`. Android-emulator median draws improve `34 → 21` (`-13`, `-38.2353%`) and load time `698 → 658 ms`; Web draws remain `21 → 21`, load `254 → 249 ms`, texture memory `29.57 → 14.24 MiB`.
+- Automated and manual Web/Android visual parity passes: all 14 sprites visible, no new white matte, missing frame or pivot/trim regression.
+- Static gate passes `26/26 × 2`; Web passes `34/34 × 2`, interaction and restart `10/10 × 2`; Android emulator passes `28/28 × 2`, touch/name persistence, restart `10/10` and soak `300.024 s` with zero process loss.
+- M2_PLUS passes `8/8` applicable slots; four focused-recovery slots are explicitly not applicable because no save, migration, signing, release or recovery seam changed.
+- Roadmap denominator expands for this inventory-derived child: execution `15/67` complete, `52` mandatory units remain plus `7` conditional. Source remains `28/95`; aggregate `M04.5` remains pending with `57` mandatory source packages plus `10` conditional.
+- Current checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20260822_M04_C_FAMILY_RUNNER_COLLECTIBLES_COMPLETE.md`.
+- Current validation report: `docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_VALIDATION_SUMMARY.json`.
+- Next safe unit: continue `M04-C-FAMILIES` with exactly one preselected measured family. `bonus_items` remains deferred because its source ownership spans two directories.
+- Physical device used: `NO`. Release remains blocked by `M02.1`, `M02.7` and `M12.7`.
 
 ## 2026-08-21 M04-C-FAMILY-ACHIEVEMENT-UI completion overlay
 

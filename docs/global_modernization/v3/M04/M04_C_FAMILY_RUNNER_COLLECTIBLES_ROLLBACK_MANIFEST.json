@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m04_c_family_rollback_manifest",
+  "execution_unit": "M04-C-FAMILY-RUNNER-COLLECTIBLES",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "scope": "one measured runner_collectibles static atlas plus exact DEBUG QA routing, validation and roadmap records",
+  "rollback": {
+    "repository_root": "C:/Projects/Monkey Work",
+    "anchor_commit": "8fb9ee12d4bb690f0457dafb2c6eb09e1c7f5435",
+    "project_prefix": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/",
+    "pre_change_blobs": {
+      "assets/resources/config/atlas_manifest.json": "caf988a25e72920f6cd766be4a80a3c9eb2738c2",
+      "assets/scripts/GameRoot.ts": "5487892d07e47fc152943a66549ee843a11ffef2",
+      "docs/codex/CURRENT_STATE.md": "ce579e8eed4b7fdb5c123cce4052c5bfa87c315d",
+      "docs/global_modernization/v3/INTEGRATED_MASTER_PLAN_20260719.md": "fb97fd3d5fdb3544a9f796b663a32397c3260ed4",
+      "docs/global_modernization/v3/M04/atlas_policy_report.md": "0d7567665711f067b22e180e4040b1da4da8d7ed",
+      "docs/global_modernization/v3/M04/contact_sheet_index.json": "13e15f3c0957e17725b909757a2417c181568dc3",
+      "docs/global_modernization/v3/MODULE_EXECUTION_INDEX.yaml": "905a92c7079f1eeb17c5be8201457ac68d583e59",
+      "docs/global_modernization/v3/README_START_HERE.md": "fa3dd14bac2e32daae8a136628b0d6d9306d5a65",
+      "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml": "eab77e4b72ea2fcb4b02a2660e48d9a057de277f",
+      "docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json": "0d8fb0e64dd5e19f8d32ad053c1eb10aff19a970",
+      "docs/global_modernization/v4/INTEGRATED_ROADMAP_20260809.md": "7ce1bef2ecb41a47fe5c97a97098535d221bc795",
+      "docs/global_modernization/v4/README_START_HERE.md": "bc5679ac614f93644c71cb009f06b43b603d64f6",
+      "tools/codex/tests/test_validate_m04_a_asset_contract.py": "13868d38944272a34dae5e3695d195b8f2df821b",
+      "tools/codex/web_atlas_pilot_runtime_function.js": "9e693437953ffba5e6e2968737dd34825add9f4c"
+    },
+    "new_files_remove_on_rollback": [
+      "assets/resources/objectives/collectibles/runner_collectibles.pac",
+      "assets/resources/objectives/collectibles/runner_collectibles.pac.meta",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_VALIDATION_SUMMARY.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CODE_REVIEW_REPORT.md",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ROLLBACK_MANIFEST.json",
+      "docs/qa/CONTROL_LOG_CHECKPOINT_20260822_M04_C_FAMILY_RUNNER_COLLECTIBLES_COMPLETE.md"
+    ]
+  },
+  "runtime_assets_changed": true,
+  "runtime_metadata_changed": true,
+  "source_png_files_changed": false,
+  "build_outputs_tracked": false,
+  "duplicate_backup_files_created": false
+}

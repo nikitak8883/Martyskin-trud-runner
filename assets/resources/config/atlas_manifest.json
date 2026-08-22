@@ -3,7 +3,7 @@
   "schema_version": 1,
   "contract": "mtr.atlas_manifest",
   "status": "contract_with_measured_runtime_families",
-  "generated_at": "2026-08-21T14:37:38+03:00",
+  "generated_at": "2026-08-22T12:38:34+03:00",
   "source_checkpoint": {
     "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
     "branch": "mtr-source-v3",
@@ -38,14 +38,14 @@
       "assets/resources/config/content_identity.json.meta"
     ],
     "source_payload": {
-      "count": 1637,
-      "bytes": 116454011,
-      "sha256": "6BE3B39107FC031EDBEE3A37D9E50862317D012DF1CAAA929F2F13DA1AB593F1"
+      "count": 1638,
+      "bytes": 116454046,
+      "sha256": "08B475D577BA0853AB86197048DD32046198FD080991C114A61ED7B9FB5A50F9"
     },
     "cocos_metadata": {
-      "count": 1884,
-      "bytes": 4576434,
-      "sha256": "F559EB62CE45A5FDF6D4CF0F7F9B29119D2DAF219ADD8990EAFB8BB130AD80A7"
+      "count": 1885,
+      "bytes": 4577257,
+      "sha256": "3C09330C2BD99EBC91BC68549AEB902EAB6E541726C00ABB4E6A232AE26A4593"
     },
     "png_validation": {
       "count": 1528,
@@ -62,7 +62,7 @@
       ".jpg": {"count": 30, "bytes": 5999213},
       ".json": {"count": 35, "bytes": 1163846},
       ".mp3": {"count": 1, "bytes": 116284},
-      ".pac": {"count": 2, "bytes": 70},
+      ".pac": {"count": 3, "bytes": 105},
       ".png": {"count": 1528, "bytes": 107146623},
       ".wav": {"count": 40, "bytes": 2018006}
     }
@@ -149,9 +149,13 @@
       "match": "prefix",
       "owner": "gameplay_core_mechanics",
       "bundle_id": "resources",
-      "provenance": ["assets/resources/objectives/objectives_manifest.json"],
-      "asset_count": 14,
-      "total_bytes": 1071680,
+      "provenance": [
+        "assets/resources/objectives/objectives_manifest.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json"
+      ],
+      "asset_count": 15,
+      "total_bytes": 1071715,
       "fallback_policy": "block_release"
     },
     {
@@ -452,19 +456,27 @@
       "owner": "gameplay_core_mechanics",
       "bundle_id": "resources",
       "packing": {
-        "mode": "static_atlas_candidate",
-        "implementation_status": "policy_only_not_packed",
+        "mode": "static_atlas",
+        "implementation_status": "measured_static_atlas",
         "max_texture_size": 2048,
         "padding_px": 2,
-        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "compression": {"web": "auto_atlas_png_lossless", "android": "auto_atlas_png_lossless", "status": "measured_family_accepted"},
         "trim_policy": "preserve_existing_import",
         "pivot_policy": "preserve_existing_import",
-        "dynamic_atlas_allowed": false
+        "dynamic_atlas_allowed": false,
+        "descriptor": "assets/resources/objectives/collectibles/runner_collectibles.pac",
+        "descriptor_uuid": "f2b9f0ac-e094-4354-b291-94f7b6777c7c",
+        "measurement_contract": "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json",
+        "acceptance_evidence": "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json"
       },
-      "provenance": ["assets/resources/objectives/objectives_manifest.json"],
+      "provenance": [
+        "assets/resources/objectives/objectives_manifest.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json"
+      ],
       "observed": {"count": 14, "bytes": 1071680},
       "fallback_policy": "block_release",
-      "runtime_effect": false
+      "runtime_effect": true
     },
     {
       "atlas_id": "objective_npc",

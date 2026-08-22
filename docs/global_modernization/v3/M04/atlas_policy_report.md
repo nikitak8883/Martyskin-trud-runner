@@ -1,7 +1,7 @@
 # M04 atlas, bundle and provenance policy
 
-Date: `2026-08-21`  
-Verdict: `CANONICAL POLICY ACCEPTED; OBJECTIVE_NPC AND ACHIEVEMENT_UI ACCEPTED; REMAINING RUNTIME PACKING DEFERRED`
+Date: `2026-08-22`  
+Verdict: `CANONICAL POLICY ACCEPTED; OBJECTIVE_NPC, ACHIEVEMENT_UI AND RUNNER_COLLECTIBLES ACCEPTED; REMAINING RUNTIME PACKING DEFERRED`
 
 ## Canonical contract
 
@@ -25,7 +25,7 @@ The contract requires:
 | `main_menu_background` | 1 | standalone | existing standalone |
 | `player_skins_selected` | 960 | unpacked family | existing unpacked |
 | `bonus_items` | 12 | static atlas candidate | policy only |
-| `runner_collectibles` | 14 | static atlas candidate | policy only |
+| `runner_collectibles` | 14 | static atlas | `M04-C-FAMILY-RUNNER-COLLECTIBLES` accepted and measured |
 | `objective_npc` | 10 | static atlas | `M04-C-PILOT` accepted and measured |
 | `level_theme_families` | 280 | unpacked family | existing unpacked |
 | `last_iteration_ui` | 214 | unpacked family | existing unpacked |
@@ -39,7 +39,7 @@ Coverage is `1,558/1,558` PNG/JPG, uncovered `0`, overlaps `0`. A `static_atlas_
 
 The existing Cocos `resources` bundle remains unchanged: `isBundle=true`, `bundleName=resources`, priority `8`. Load/preload/release ownership is explicitly deferred to `M04.7 / M04-E`; optional packs must not be moved or eagerly loaded in M04-A.
 
-Dynamic atlas remains disabled for the accepted `objective_npc` and `achievement_ui` groups and is otherwise deferred until `M04.6 / M04-D` has a measured allowlist. Both accepted groups use Cocos Auto Atlas PNG descriptors on Web and Android; these are family-specific results, not a project-wide Android texture-compression claim. Every remaining candidate retains `platform_default_pending_measurement` until its own emulator memory/build/runtime evidence exists.
+Dynamic atlas remains disabled for the accepted `objective_npc`, `achievement_ui` and `runner_collectibles` groups and is otherwise deferred until `M04.6 / M04-D` has a measured allowlist. All three accepted groups use Cocos Auto Atlas PNG descriptors on Web and Android; these are family-specific results, not a project-wide Android texture-compression claim. Every remaining candidate retains `platform_default_pending_measurement` until its own emulator memory/build/runtime evidence exists.
 
 ## Fail-closed rules
 
@@ -64,3 +64,5 @@ No open correctness finding remains. M04-B enforces naming, trim, pivot, alpha/n
 `M04-C-PILOT` accepted only `objective_npc`: ten co-visible decorative sources are packed into one static atlas. The final comparator passed `63/63`; Android emulator median draw calls fell from `26` to `17` (`-34.6154%`) while Web remained at `17`, and automated plus manual parity found no white matte, missing source, trim or pivot regression. The durable decision is recorded in `M04_C_PILOT_ACCEPTANCE.json`. Broader repacking is still unauthorized and must proceed family-by-family under `M04-C-FAMILIES` with the same fail-closed measurement contract.
 
 `M04-C-FAMILY-ACHIEVEMENT-UI` then accepted exactly nine bounded non-gameplay UI sources. Its comparator passed `63/63`; Android emulator median draw calls fell from `24` to `16` (`-33.3333%`) while Web remained at `16`. Automated and manual parity found no matte, missing-source, trim or pivot regression. The durable decision is recorded in `M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json`; every other family remains closed.
+
+`M04-C-FAMILY-RUNNER-COLLECTIBLES` then accepted exactly 14 gameplay-critical collectible sources. Its comparator passed `63/63`; Android emulator median draw calls fell from `34` to `21` (`-38.2353%`) while Web remained at `21`. Automated and manual parity found no matte, missing-source, trim or pivot regression. The durable decision is recorded in `M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json`; every remaining family remains closed.

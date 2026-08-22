@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M04-C-FAMILY-RUNNER-COLLECTIBLES",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "source_work_packages": ["M04.5"],
+  "status": "pass",
+  "implementation_status": "family_child_complete",
+  "aggregate_work_package_status": "pending_remaining_families",
+  "runtime_changed": true,
+  "runtime_assets_repacked": true,
+  "runtime_png_sources_changed": false,
+  "runtime_metadata_changed": true,
+  "broader_family_migration_authorized": false,
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "candidate": {
+    "atlas_id": "runner_collectibles",
+    "descriptor": "assets/resources/objectives/collectibles/runner_collectibles.pac",
+    "descriptor_uuid": "f2b9f0ac-e094-4354-b291-94f7b6777c7c",
+    "source_sprite_count": 14,
+    "source_bytes": 1071680,
+    "risk_class": "gameplay_critical_collectible_readability_and_collision",
+    "decision": "accepted"
+  },
+  "measurement_acceptance": {
+    "status": "PASS",
+    "passed": 63,
+    "total": 63,
+    "failed": 0,
+    "contract": "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json",
+    "contract_sha256": "9E85FD6B0C45457F4CF2C8DE4E3BB0D5575B887D03BB5ECC0A04C786333D8D9F",
+    "durable_acceptance": "docs/global_modernization/v3/M04/M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json",
+    "durable_acceptance_sha256": "DCD031D9488AF104160ABEEF4750D8B004B4DDC52DC41B29D0AA9236139C50F0",
+    "comparison_report": "temp/m04-c-families/runner_collectibles/comparison/acceptance.json",
+    "comparison_report_sha256": "27536887D36529E96E04A6E59CEB70115438232F6F3E925B93C7E5EE778937BE",
+    "negative_identity_fixture": "PASS"
+  },
+  "performance": {
+    "web": {
+      "source_texture_count": {"baseline": 14, "candidate": 1},
+      "draw_texture_count": {"baseline": 1, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 14, "candidate": 0},
+      "draws_median": {"baseline": 21, "candidate": 21},
+      "load_elapsed_ms": {"baseline": 254, "candidate": 249},
+      "texture_memory_mb_median": {"baseline": 29.57, "candidate": 14.24},
+      "fps_median": {"baseline": 60, "candidate": 60}
+    },
+    "android_emulator": {
+      "source_texture_count": {"baseline": 14, "candidate": 1},
+      "draw_texture_count": {"baseline": 14, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {"baseline": 34, "candidate": 21, "absolute_reduction": 13, "relative_reduction": 0.382353},
+      "load_elapsed_ms": {"baseline": 698, "candidate": 658},
+      "texture_memory_mb_median": {"baseline": 15.69, "candidate": 16.35},
+      "fps_median": {"baseline": 16, "candidate": 15}
+    }
+  },
+  "visual_parity": {
+    "status": "PASS",
+    "all_fourteen_sources_visible": true,
+    "white_matte_fragments": 0,
+    "missing_frames": 0,
+    "pivot_or_trim_regressions": 0,
+    "web": {"mean_absolute_error": 0.011332, "changed_pixel_fraction": 0.000127083},
+    "android_emulator": {"mean_absolute_error": 0.032656, "changed_pixel_fraction": 0.00017719},
+    "report": "temp/m04-c-families/runner_collectibles/comparison/visual-parity.json",
+    "report_sha256": "79018FB0794B3ADFA6554446DCD88817AB5DB08679E7E0228D5BA900FFBB7F48"
+  },
+  "tests": {
+    "status": "PASS",
+    "atlas_metrics_test": "PASS",
+    "manifest_validator_tests": {"passed": 11, "total": 11},
+    "wrong_family_measurement_fixture": "PASS",
+    "malformed_evidence_json_fixture": "PASS",
+    "acceptance_count_drift_fixture": "PASS"
+  },
+  "static_gate": {
+    "status": "PASS",
+    "cycles": [
+      {"cycle": 1, "passed": 26, "total": 26, "findings": 0, "report": "temp/m04-c-families/runner_collectibles/qa/cycle1-static-fixed/report.json", "report_sha256": "FE815746C3A0FAD01CA9389F88F45FD7A242D05ED3A71D5324CE8BCB975CCDC7"},
+      {"cycle": 2, "passed": 26, "total": 26, "findings": 0, "report": "temp/m04-c-families/runner_collectibles/qa/cycle2-static/report.json", "report_sha256": "6ABF369618A7A1959CC4B2E0DD8B4DA34EC543204EDFC6591F6106CB69DB6F3E"}
+    ],
+    "post_fix_pre_documentation_gate": {
+      "passed": 26,
+      "total": 26,
+      "findings": 0,
+      "report": "temp/m04-c-families/runner_collectibles/postfix/static-pre-doc/report.json",
+      "report_sha256": "BE2828352AB276589573F2DA83AB6577B5F8B45695052F9136FCC6A9EC474F01"
+    },
+    "final_documentation_gate": {
+      "passed": 26,
+      "total": 26,
+      "findings": 0,
+      "report": "temp/m04-c-families/runner_collectibles/postfix/static-final/report.json"
+    },
+    "preserved_failure_receipt": {
+      "classification": "expected_exact_inventory_count_drift_after_new_descriptor",
+      "report": "temp/m04-c-families/runner_collectibles/qa/cycle1-static/report.json",
+      "report_sha256": "54A98332388F9E181D71CAAED10BF2CD316AC454812BF1DFA3276D8804D25779",
+      "passed": 25,
+      "total": 26,
+      "failed_steps": ["m04-b-asset-pipeline-tests"]
+    }
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_post_fix_build": true,
+    "build_log": "logs/m04-c-runner-collectibles-postfix-web-20260822.log",
+    "build_log_sha256": "6E193E606604CC61F8A22FDC8F18C532A04CE36833408F929488AFA4B3848A7F",
+    "cycles": [
+      {"cycle": 1, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "C9BC35587CD58C102427788EBD2AE0471A2FFE1B9BC85DBF35DD1298FC3D564D"},
+      {"cycle": 2, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "E5B182562CAE564195CE50A353D4F39ECF729A9E442211E05212D9832F22FB39"}
+    ],
+    "qa_port_closed": true
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "serial": "emulator-5554",
+    "qemu": true,
+    "abi": "x86_64",
+    "installed_user": 0,
+    "fresh_post_fix_build": true,
+    "build_log": "logs/m04-c-runner-collectibles-postfix-android-20260822.log",
+    "build_log_sha256": "290E0E0A708E3DF369652725F97AE34F1A382B9DE73AACAF3B975049C04EB433",
+    "matrix_cycles": [
+      {"cycle": 1, "passed": 28, "total": 28, "report_sha256": "0A9D874F0EEF623305DF363BFBBBC02F30A321DF78E441CC70DC44423EFA1B0C"},
+      {"cycle": 2, "passed": 28, "total": 28, "report_sha256": "DDC65B3CF252322E9825EEB645C8996712B4A5E83504558E6BA9A90DA5C07B29"}
+    ],
+    "interaction": {
+      "status": "PASS",
+      "name_persistence": "PASS",
+      "persisted_name": "QAPrimateC1",
+      "restart_passed": 10,
+      "restart_total": 10,
+      "soak_seconds": 300.301,
+      "input_bursts": 319,
+      "state_actions": 17,
+      "process_losses": 0,
+      "unexpected_diagnostics": 0,
+      "report_sha256": "288517789CAB412EDA3053C6E6A86B280B3436542209909536673987B3342587"
+    },
+    "apk": {
+      "path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk",
+      "bytes": 144031734,
+      "sha256": "2E4BCBC3481651F9FF05CF1DBA47A523208E9CE0F2013C2FA26CBD6E3417A519",
+      "signature_scope": "debug_emulator_qa_only"
+    }
+  },
+  "m2_plus": {
+    "status": "PASS",
+    "applicable_passed": 8,
+    "applicable_total": 8,
+    "conditional_not_applicable": 4,
+    "findings": 0,
+    "profile": "temp/m04-c-families/runner_collectibles/m2-profile/20260822T102628Z/m2-plus.profile.json",
+    "profile_sha256": "9E36DF7D9B28DFC7738F810ABFF95AF80C7DD3A4FA9C9DD4BB460A9318BAFE96",
+    "not_applicable_reason": "Release behavior changes only static packing metadata; the GameRoot delta is DEBUG-only measurement routing and no recovery seam changed."
+  },
+  "review": {
+    "confirmed_findings": 1,
+    "corrected_findings": 1,
+    "open_findings": 0,
+    "codex_final_review": "PASS",
+    "hygiene_gate": "PASS"
+  },
+  "roadmap": {
+    "execution_complete": 15,
+    "execution_total_current": 67,
+    "execution_remaining_current": 52,
+    "execution_percent": 22.3881,
+    "conditional_units": 7,
+    "source_complete": 28,
+    "source_total": 95,
+    "source_mandatory_remaining": 57,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M04-C-FAMILIES"
+  },
+  "release_blockers": ["M02.1", "M02.7", "M12.7"]
+}

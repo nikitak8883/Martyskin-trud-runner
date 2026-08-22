@@ -1,0 +1,74 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_acceptance.v1",
+  "unit_id": "M04-C-FAMILY-RUNNER-COLLECTIBLES",
+  "parent_unit": "M04-C-FAMILIES",
+  "status": "PASS",
+  "generated_at": "2026-08-22T12:38:34+03:00",
+  "candidate": {
+    "atlas_id": "runner_collectibles",
+    "descriptor": "assets/resources/objectives/collectibles/runner_collectibles.pac",
+    "descriptor_uuid": "f2b9f0ac-e094-4354-b291-94f7b6777c7c",
+    "source_sprite_count": 14
+  },
+  "acceptance": {
+    "checks_passed": 63,
+    "checks_total": 63,
+    "failed_checks": [],
+    "web": {
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 14, "candidate": 1},
+      "draw_texture_count": {"baseline": 1, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 14, "candidate": 0},
+      "draws_median": {"baseline": 21, "candidate": 21},
+      "load_elapsed_ms": {"baseline": 254, "candidate": 249},
+      "texture_memory_mb_median": {"baseline": 29.57, "candidate": 14.24},
+      "buffer_memory_mb_median": {"baseline": 9.03, "candidate": 9.03},
+      "fps_median": {"baseline": 60, "candidate": 60},
+      "runtime_bytes": {"baseline": 124772496, "candidate": 125112880},
+      "resources_bytes": {"baseline": 119442243, "candidate": 119782627}
+    },
+    "android_emulator": {
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "emulator_verified": true,
+      "abi": "x86_64",
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 14, "candidate": 1},
+      "draw_texture_count": {"baseline": 14, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {"baseline": 34, "candidate": 21, "absolute_reduction": 13, "relative_reduction": 0.382353},
+      "load_elapsed_ms": {"baseline": 698, "candidate": 658},
+      "texture_memory_mb_median": {"baseline": 15.69, "candidate": 16.35},
+      "buffer_memory_mb_median": {"baseline": 18.03, "candidate": 18.03},
+      "fps_median": {"baseline": 16, "candidate": 15},
+      "runtime_bytes": {"baseline": 124959314, "candidate": 125299698},
+      "resources_bytes": {"baseline": 119442243, "candidate": 119782627},
+      "apk_bytes": {"baseline": 143697896, "candidate": 144031625}
+    },
+    "visual_parity": {
+      "status": "pass",
+      "manual_review": "pass_all_fourteen_sprites_visible_no_new_white_matte_no_pivot_or_trim_regression",
+      "web": {"mean_absolute_error": 0.011332, "changed_pixel_fraction": 0.000127083},
+      "android_emulator": {"mean_absolute_error": 0.032656, "changed_pixel_fraction": 0.00017719}
+    }
+  },
+  "harness_corrections": [
+    "runner_collectibles was added to the strict Web and runtime atlas-family allowlists",
+    "candidate source directory is explicit and project-contained in artifact measurement",
+    "Android baseline and candidate were installed and measured only on emulator-5554 user 0",
+    "visual comparator used the contract-driven basename and frozen content ROIs"
+  ],
+  "ephemeral_evidence": [
+    {"path": "temp/m04-c-families/runner_collectibles/baseline/web/runtime.json", "sha256": "2B3217F4F57B18C4AFB3AB4D637B212E17CC10A0E1815C9501B2D7284E9C6D1A"},
+    {"path": "temp/m04-c-families/runner_collectibles/candidate/web/runtime.json", "sha256": "F3CE5F290ACFB55E1FDE54568BE90F34CC9270689F553ED033307591A0C98F34"},
+    {"path": "temp/m04-c-families/runner_collectibles/baseline/android/runtime.json", "sha256": "765B7837176245525C520C7C106E241EB9B874CF9D5A9A44F95BCC919058DF58"},
+    {"path": "temp/m04-c-families/runner_collectibles/candidate/android/runtime.json", "sha256": "6E5F2C468A07C2BD84AA5A578D0C9C1478CE7B5CCDDDC0B34A8447264585E241"},
+    {"path": "temp/m04-c-families/runner_collectibles/baseline/web/artifacts.json", "sha256": "DC50FFDCCA1EC26872EB322028133A0E39929CC482DA755A52E0D3EBCA22441B"},
+    {"path": "temp/m04-c-families/runner_collectibles/candidate/web/artifacts.json", "sha256": "AF708B134978961C9445657DE15F9DDFA4D042587B01466BDBE2FBACE1F74A7E"},
+    {"path": "temp/m04-c-families/runner_collectibles/baseline/android/artifacts.json", "sha256": "C03794CC88014E1A58253F7A7E1C87B80B705931F6577C48903C5CC388FE85FE"},
+    {"path": "temp/m04-c-families/runner_collectibles/candidate/android/artifacts.json", "sha256": "61AD2380BA7A8C7159663B878AC0031BCFF74B45D1F69C9265C5A551890C87FE"},
+    {"path": "temp/m04-c-families/runner_collectibles/comparison/visual-parity.json", "sha256": "79018FB0794B3ADFA6554446DCD88817AB5DB08679E7E0228D5BA900FFBB7F48"},
+    {"path": "temp/m04-c-families/runner_collectibles/comparison/acceptance.json", "sha256": "27536887D36529E96E04A6E59CEB70115438232F6F3E925B93C7E5EE778937BE"}
+  ],
+  "decision": "accept_runner_collectibles_static_atlas_keep_other_families_closed"
+}
