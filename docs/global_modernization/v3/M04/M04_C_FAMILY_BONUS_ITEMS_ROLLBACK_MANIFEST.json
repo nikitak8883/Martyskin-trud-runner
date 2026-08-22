@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m04_c_family_rollback_manifest",
+  "execution_unit": "M04-C-FAMILY-BONUS-ITEMS",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "scope": "one measured bonus_items family using two directory-local static atlases plus exact DEBUG QA routing, validation and roadmap records",
+  "rollback": {
+    "repository_root": "C:/Projects/Monkey Work",
+    "anchor_commit": "55557ff566cead8832b7a90714c1f999e384797d",
+    "project_prefix": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/",
+    "pre_change_blobs": {
+      "assets/resources/config/atlas_manifest.json": "d0f62a01fecae8253bcf88c5698ff3e39b877ddd",
+      "assets/scripts/GameRoot.ts": "d2ca4994f8442ced1831d4de32224552e3e62e5a",
+      "docs/codex/CURRENT_STATE.md": "ede0496e4a92a5b9ba097bd8bbdf2acc606c2a61",
+      "docs/global_modernization/v3/INTEGRATED_MASTER_PLAN_20260719.md": "3dea8a0e692037cf75587baa5f10f2e1d97cf9a4",
+      "docs/global_modernization/v3/M04/atlas_policy_report.md": "fd6cc0ffa3426466c7d9d302bdb22d4102f8d0e2",
+      "docs/global_modernization/v3/M04/contact_sheet_index.json": "44327c3051ce7b9ea0ddf8cee71855a5b678f38f",
+      "docs/global_modernization/v3/M04/schemas/atlas_manifest.schema.json": "2fbfee838345ea0d132ecec4b15108fd27bb9483",
+      "docs/global_modernization/v3/MODULE_EXECUTION_INDEX.yaml": "da50107c3e2188fe207b38e4e063a3ae7bb522b2",
+      "docs/global_modernization/v3/README_START_HERE.md": "81134b9399c08ed3f018536aba5eca8e5be04b8b",
+      "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml": "9def9e08bb6b246779e8596d5f8493c7c92831e6",
+      "docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json": "67dd57a7326bbd481123255388b562b64470b7eb",
+      "docs/global_modernization/v4/INTEGRATED_ROADMAP_20260809.md": "f2adab14b6c3fa8bb945ccc3b58d96432f9e0d48",
+      "docs/global_modernization/v4/README_START_HERE.md": "16cd66d4e41fd60646ae255f54120230fdd4ff60",
+      "tools/codex/Measure-MtrAtlasPilotArtifacts.js": "4ce340836bbc72c3c31840e271db901fecc07e3f",
+      "tools/codex/test-atlas-pilot-metrics.js": "757dc3371dda67a99bb2ad8c9104ef427258c19e",
+      "tools/codex/tests/test_validate_m04_a_asset_contract.py": "5400ae9a65a1a4e2bba2c55b1acf539a18c0bc71",
+      "tools/codex/validate_m04_a_asset_contract.py": "9b82b684b554cd51ad3615aea1277fd180bf5914",
+      "tools/codex/web_atlas_pilot_runtime_function.js": "070a03217695a358941d63e260f62c00e35a4c70"
+    },
+    "new_files_remove_on_rollback": [
+      "assets/resources/objectives/bonuses/bonus_items_bonuses.pac",
+      "assets/resources/objectives/bonuses/bonus_items_bonuses.pac.meta",
+      "assets/resources/objectives/equipment/bonus_items_equipment.pac",
+      "assets/resources/objectives/equipment/bonus_items_equipment.pac.meta",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_VALIDATION_SUMMARY.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CODE_REVIEW_REPORT.md",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ROLLBACK_MANIFEST.json",
+      "docs/qa/CONTROL_LOG_CHECKPOINT_20260822_M04_C_FAMILY_BONUS_ITEMS_COMPLETE.md",
+      "tools/codex/Run-MtrWebAtlasPilotQa.js"
+    ]
+  },
+  "runtime_assets_changed": true,
+  "runtime_metadata_changed": true,
+  "source_png_files_changed": false,
+  "source_files_relocated": false,
+  "build_outputs_tracked": false,
+  "duplicate_backup_files_created": false
+}

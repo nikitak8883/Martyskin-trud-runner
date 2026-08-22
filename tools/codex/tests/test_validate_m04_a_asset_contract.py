@@ -66,16 +66,16 @@ class M04AAssetContractTests(unittest.TestCase):
     def test_repository_contract_passes(self) -> None:
         report = VALIDATOR.validate_manifest(PROJECT_ROOT, check_git=False)
         self.assertEqual(report["status"], "PASS", report["findings"])
-        self.assertEqual(report["counts"]["source_files"], 1638)
+        self.assertEqual(report["counts"]["source_files"], 1640)
         self.assertEqual(report["counts"]["image_files"], 1558)
-        self.assertEqual(report["counts"]["auto_atlas_files"], 3)
-        self.assertEqual(report["counts"]["measured_static_atlases"], 3)
+        self.assertEqual(report["counts"]["auto_atlas_files"], 5)
+        self.assertEqual(report["counts"]["measured_static_atlases"], 5)
         measured = [
             group["atlas_id"]
             for group in self.manifest["atlas_groups"]
             if group["packing"]["implementation_status"] == "measured_static_atlas"
         ]
-        self.assertEqual(measured, ["runner_collectibles", "objective_npc", "achievement_ui"])
+        self.assertEqual(measured, ["bonus_items", "runner_collectibles", "objective_npc", "achievement_ui"])
 
     def test_measured_atlas_uuid_drift_fails_closed(self) -> None:
         manifest = copy.deepcopy(self.manifest)
@@ -83,6 +83,54 @@ class M04AAssetContractTests(unittest.TestCase):
         group["packing"]["descriptor_uuid"] = "00000000-0000-4000-8000-000000000099"
         report = VALIDATOR.validate_manifest(PROJECT_ROOT, manifest, check_git=False)
         self.assertIn("AUTO_ATLAS_META_MISMATCH", {finding["code"] for finding in report["findings"]})
+
+    def test_split_descriptor_schema_and_identity_are_backward_compatible(self) -> None:
+        schema = VALIDATOR.load_json(PROJECT_ROOT / VALIDATOR.SCHEMA_RELATIVE)
+        manifest = copy.deepcopy(self.manifest)
+        group = next(group for group in manifest["atlas_groups"] if group["atlas_id"] == "bonus_items")
+        group["packing"].update({
+            "mode": "static_atlas",
+            "implementation_status": "measured_static_atlas",
+            "descriptors": [
+                {
+                    "descriptor": "assets/resources/objectives/bonuses/bonus_items_bonuses.pac",
+                    "descriptor_uuid": "270951e3-0ab9-45b7-ba53-f37215afcbfd",
+                    "source_directory": "assets/resources/objectives/bonuses",
+                    "source_count": 8,
+                },
+                {
+                    "descriptor": "assets/resources/objectives/equipment/bonus_items_equipment.pac",
+                    "descriptor_uuid": "dd109296-15b2-4a45-b26c-445d112941a3",
+                    "source_directory": "assets/resources/objectives/equipment",
+                    "source_count": 4,
+                },
+            ],
+            "measurement_contract": "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json",
+            "acceptance_evidence": "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+        })
+        group["runtime_effect"] = True
+        findings: list[dict[str, Any]] = []
+        VALIDATOR.validate_schema(manifest, schema, findings)
+        self.assertEqual(findings, [])
+        self.assertEqual(
+            VALIDATOR.descriptor_identity(group["packing"]),
+            [
+                {
+                    "descriptor": "assets/resources/objectives/bonuses/bonus_items_bonuses.pac",
+                    "descriptor_uuid": "270951e3-0ab9-45b7-ba53-f37215afcbfd",
+                },
+                {
+                    "descriptor": "assets/resources/objectives/equipment/bonus_items_equipment.pac",
+                    "descriptor_uuid": "dd109296-15b2-4a45-b26c-445d112941a3",
+                },
+            ],
+        )
+
+        group["packing"]["descriptor"] = "assets/resources/objectives/bonuses/invalid.pac"
+        group["packing"]["descriptor_uuid"] = "00000000-0000-4000-8000-000000000099"
+        findings = []
+        VALIDATOR.validate_schema(manifest, schema, findings)
+        self.assertIn("SCHEMA_VIOLATION", {finding["code"] for finding in findings})
 
     def test_measured_atlas_malformed_evidence_records_structured_finding(self) -> None:
         group = next(group for group in self.manifest["atlas_groups"] if group["atlas_id"] == "objective_npc")

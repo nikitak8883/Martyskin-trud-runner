@@ -7,7 +7,23 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m04_c_runner_collectibles_child_complete / m04_c_families_ready / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m04_c_bonus_items_child_complete / m04_c_families_ready / release_blocked`
+
+## 2026-08-22 M04-C-FAMILY-BONUS-ITEMS completion overlay
+
+This overlay supersedes every older next-action line below; older sections remain historical evidence only.
+
+- `bonus_items` is the fourth accepted measured static Auto Atlas family: 12 gameplay bonus/equipment PNGs in two directory-local descriptors, UUIDs `270951e3-0ab9-45b7-ba53-f37215afcbfd` and `dd109296-15b2-4a45-b26c-445d112941a3`; no source PNG was moved or rewritten.
+- Frozen comparison passes `63/63`. Android-emulator median draws improve `30 → 20` (`-10`, `-33.3333%`) and load time `711 → 533 ms`; Web draws remain within the predeclared non-regression budget at `19 → 20`, while load improves `499 → 367 ms` and texture memory `32.91 → 17.58 MiB`.
+- The first comparison result (`62/63`) is preserved. Its only failure exposed an impossible `50%` total-draw threshold: 18 fixed draws plus the frozen two-descriptor floor cap the possible reduction at `33.3333%`. The contract was audibly corrected to the established `30%` gate before acceptance; all absolute, texture, artifact, runtime and visual gates remained unchanged.
+- Automated and manual Web/Android visual parity passes: all 12 sprites visible, no new white matte, missing frame or pivot/trim regression.
+- Static gate passes `26/26 × 2`; Web passes `34/34 × 2`, interaction and restart `10/10 × 2`; Android emulator passes `28/28 × 2`, touch/name persistence, restart `10/10` and soak `300.771 s` with zero process loss.
+- M2_PLUS passes `8/8` applicable slots; four focused-recovery slots are explicitly not applicable because no save, migration, signing, release or recovery seam changed.
+- The inventory-derived child expands the execution denominator: `16/68` complete (`23.5294%`), `52` mandatory units remain plus `7` conditional. Source remains `28/95`; aggregate `M04.5` remains pending with `57` mandatory source packages plus `10` conditional.
+- Current checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20260822_M04_C_FAMILY_BONUS_ITEMS_COMPLETE.md`.
+- Current validation report: `docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_VALIDATION_SUMMARY.json`.
+- Next safe unit: continue `M04-C-FAMILIES` with one preselected measured `ui_shared_core` child contract; its five UI directories require a separate multi-descriptor screen-coverage boundary.
+- Physical device used: `NO`. Release remains blocked by `M02.1`, `M02.7` and `M12.7`.
 
 ## 2026-08-22 M04-C-FAMILY-RUNNER-COLLECTIBLES completion overlay
 

@@ -360,6 +360,17 @@
         }
       }
     },
+    "atlas_descriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["descriptor", "descriptor_uuid", "source_directory", "source_count"],
+      "properties": {
+        "descriptor": {"$ref": "#/$defs/relative_path"},
+        "descriptor_uuid": {"$ref": "#/$defs/uuid"},
+        "source_directory": {"$ref": "#/$defs/relative_path"},
+        "source_count": {"type": "integer", "minimum": 1}
+      }
+    },
     "packing": {
       "type": "object",
       "additionalProperties": false,
@@ -393,6 +404,12 @@
         "dynamic_atlas_allowed": {"type": "boolean"},
         "descriptor": {"$ref": "#/$defs/relative_path"},
         "descriptor_uuid": {"$ref": "#/$defs/uuid"},
+        "descriptors": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/atlas_descriptor"}
+        },
         "measurement_contract": {"$ref": "#/$defs/relative_path"},
         "acceptance_evidence": {"$ref": "#/$defs/relative_path"}
       },
@@ -403,8 +420,18 @@
             "required": ["implementation_status"]
           },
           "then": {
-            "required": ["descriptor", "descriptor_uuid", "measurement_contract", "acceptance_evidence"],
-            "properties": {"mode": {"const": "static_atlas"}}
+            "required": ["measurement_contract", "acceptance_evidence"],
+            "properties": {"mode": {"const": "static_atlas"}},
+            "oneOf": [
+              {
+                "required": ["descriptor", "descriptor_uuid"],
+                "not": {"required": ["descriptors"]}
+              },
+              {
+                "required": ["descriptors"],
+                "not": {"anyOf": [{"required": ["descriptor"]}, {"required": ["descriptor_uuid"]}]}
+              }
+            ]
           }
         }
       ]

@@ -817,6 +817,11 @@ const M04_C_RUNNER_COLLECTIBLES_ATLAS_KEYS = [
     ...NEW_COLLECTIBLE_ASSET_KEYS,
 ] as const;
 
+const M04_C_BONUS_ITEMS_ATLAS_KEYS = [
+    ...OBJECTIVE_BATCH_EQUIPMENT_KEYS,
+    ...OBJECTIVE_BATCH_BONUS_KEYS,
+] as const;
+
 interface M04CAtlasQaSpec {
     atlasId: string;
     title: string;
@@ -867,6 +872,19 @@ const M04_C_ATLAS_QA_SPECS = {
         xStart: 144,
         yStart: 190,
         xStep: 248,
+        yStep: 175,
+        spriteWidth: 132,
+        spriteHeight: 132,
+    },
+    bonus_items: {
+        atlasId: 'bonus_items',
+        title: 'BONUS + EQUIPMENT',
+        keys: M04_C_BONUS_ITEMS_ATLAS_KEYS,
+        category: 'bonuses',
+        columns: 4,
+        xStart: 174,
+        yStart: 190,
+        xStep: 300,
         yStep: 175,
         spriteWidth: 132,
         spriteHeight: 132,

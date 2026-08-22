@@ -1,0 +1,98 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_acceptance.v1",
+  "unit_id": "M04-C-FAMILY-BONUS-ITEMS",
+  "parent_unit": "M04-C-FAMILIES",
+  "status": "PASS",
+  "generated_at": "2026-08-22T15:42:51+03:00",
+  "candidate": {
+    "atlas_id": "bonus_items",
+    "descriptor_count": 2,
+    "descriptors": [
+      {
+        "source_directory": "assets/resources/objectives/bonuses",
+        "source_sprite_count": 8,
+        "descriptor": "assets/resources/objectives/bonuses/bonus_items_bonuses.pac",
+        "descriptor_uuid": "270951e3-0ab9-45b7-ba53-f37215afcbfd"
+      },
+      {
+        "source_directory": "assets/resources/objectives/equipment",
+        "source_sprite_count": 4,
+        "descriptor": "assets/resources/objectives/equipment/bonus_items_equipment.pac",
+        "descriptor_uuid": "dd109296-15b2-4a45-b26c-445d112941a3"
+      }
+    ],
+    "source_sprite_count": 12
+  },
+  "acceptance": {
+    "checks_passed": 63,
+    "checks_total": 63,
+    "failed_checks": [],
+    "web": {
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 12, "candidate": 2},
+      "draw_texture_count": {"baseline": 1, "candidate": 2},
+      "dynamic_atlas_packed_count": {"baseline": 12, "candidate": 0},
+      "draws_median": {"baseline": 19, "candidate": 20},
+      "load_elapsed_ms": {"baseline": 499, "candidate": 367},
+      "texture_memory_mb_median": {"baseline": 32.91, "candidate": 17.58},
+      "buffer_memory_mb_median": {"baseline": 9.03, "candidate": 9.03},
+      "fps_median": {"baseline": 50, "candidate": 54},
+      "runtime_bytes": {"baseline": 125114003, "candidate": 125631487},
+      "resources_bytes": {"baseline": 119783287, "candidate": 120300774}
+    },
+    "android_emulator": {
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "emulator_verified": true,
+      "abi": "x86_64",
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 12, "candidate": 2},
+      "draw_texture_count": {"baseline": 12, "candidate": 2},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {"baseline": 30, "candidate": 20, "absolute_reduction": 10, "relative_reduction": 0.333333},
+      "load_elapsed_ms": {"baseline": 711, "candidate": 533},
+      "texture_memory_mb_median": {"baseline": 18.77, "candidate": 19.44},
+      "buffer_memory_mb_median": {"baseline": 18.03, "candidate": 18.03},
+      "fps_median": {"baseline": 16, "candidate": 15},
+      "runtime_bytes": {"baseline": 125300820, "candidate": 125818307},
+      "resources_bytes": {"baseline": 119783287, "candidate": 120300774},
+      "apk_bytes": {"baseline": 144031844, "candidate": 144544707}
+    },
+    "visual_parity": {
+      "status": "pass",
+      "manual_review": "pass_all_twelve_sprites_visible_no_new_white_matte_no_missing_sprite_no_pivot_or_trim_regression",
+      "web": {"mean_absolute_error": 0.021629, "changed_pixel_fraction": 0.000880012},
+      "android_emulator": {"mean_absolute_error": 0.038208, "changed_pixel_fraction": 0.00088556}
+    }
+  },
+  "contract_correction": {
+    "correction_id": "BONUS-ITEMS-DRAW-RATIO-001",
+    "status": "audited_pre_acceptance_correction",
+    "original_relative_gate": 0.5,
+    "corrected_relative_gate": 0.3,
+    "mathematical_candidate_ceiling": 0.333333,
+    "first_comparison": {"passed": 62, "total": 63, "failed": ["android_emulator:draw_calls_android_relative_gain"]},
+    "final_comparison": {"passed": 63, "total": 63, "failed": []}
+  },
+  "harness_corrections": [
+    "bonus_items was added to strict Web and runtime atlas-family allowlists",
+    "artifact measurement accepts explicit non-overlapping contained source directories and rejects duplicate UUIDs",
+    "Web QA runs through a local loopback-only Playwright entrypoint with atomic evidence output",
+    "Android baseline and candidate were installed and measured only on emulator-5554 user 0",
+    "the first impossible relative-gain result was preserved before correcting the frozen contract arithmetic"
+  ],
+  "ephemeral_evidence": [
+    {"path": "temp/m04-c-families/bonus_items/baseline/web/runtime.json", "sha256": "326F7B0F00B436E516254FCA3327AC8C8E8F84338F1F25D7DD14859A11691307"},
+    {"path": "temp/m04-c-families/bonus_items/candidate/web/runtime.json", "sha256": "D76112F9791AE2F5667150A6546BDCC49C6BE3B20AA52EC78D6BA212B3B51F3E"},
+    {"path": "temp/m04-c-families/bonus_items/baseline/android/runtime.json", "sha256": "C288967FD5ACA26A17658B9D917F177FF0687B6C939FF7F0633862381507AA87"},
+    {"path": "temp/m04-c-families/bonus_items/candidate/android/runtime.json", "sha256": "C1644F67998BB1B4CCEADB998220E47852D6EB4447667BF42F21AFD0684674CC"},
+    {"path": "temp/m04-c-families/bonus_items/baseline/web/artifacts.json", "sha256": "45160513E5C2199B4118D8FFEF339EED264709CC25455DE31486F619EC259B40"},
+    {"path": "temp/m04-c-families/bonus_items/candidate/web/artifacts.json", "sha256": "40BFC62F4C00E4EF9CF331C3034CCFD303BCFBC7AC944BA76C415DF6F5E67EC8"},
+    {"path": "temp/m04-c-families/bonus_items/baseline/android/artifacts.json", "sha256": "0198E1C2988476620E2A26677CFB3721DFD8EF229CAAFC601FE94E480A292628"},
+    {"path": "temp/m04-c-families/bonus_items/candidate/android/artifacts.json", "sha256": "F4F808B81322039D6942E1CA2455E91683BDC8D6BB38CA89E8E8B18E529BC139"},
+    {"path": "temp/m04-c-families/bonus_items/comparison/visual-parity.json", "sha256": "D9530BC9F6FD5F1C96FF026103001A2EA8F5A0FD2C39003E34B990DE64FE89F0"},
+    {"path": "temp/m04-c-families/bonus_items/comparison/acceptance-pre-correction.json", "sha256": "9F06335447101023F3550E54B476339B7D1F516373D7B0F4D07ECFCFC3A7293C"},
+    {"path": "temp/m04-c-families/bonus_items/comparison/acceptance.json", "sha256": "884A3634B70FA6C9B67290D9FABB5CA7D4900E2A99DED156509765630E926F8E"}
+  ],
+  "decision": "accept_two_directory_local_bonus_items_static_atlases_keep_other_families_closed"
+}

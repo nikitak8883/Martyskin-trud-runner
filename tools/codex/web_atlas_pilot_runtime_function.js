@@ -8,6 +8,7 @@ async function (page) {
         objective_npc: 10,
         achievement_ui: 9,
         runner_collectibles: 14,
+        bonus_items: 12,
     });
     if (!Object.prototype.hasOwnProperty.call(atlasSourceCounts, atlasId)) {
         throw new Error(`Unsupported atlas QA id: ${atlasId || '-'}`);
@@ -75,10 +76,16 @@ async function (page) {
             && /\/favicon\.ico(?:$|\?)/i.test(event.location?.url || '')
             && /404|failed to load resource/i.test(event.text)
         ));
+        const expectedInfrastructureWarnings = consoleEvents.filter((event) => (
+            event.type === 'warning'
+            && /^\[\.WebGL-[^\]]+\]GL Driver Message \(OpenGL, Performance, GL_CLOSE_PATH_NV, High\): GPU stall due to ReadPixels(?: \(this message will no longer repeat\))?$/.test(event.text)
+        ));
         const errors = consoleEvents.filter((event) => (
             event.type === 'error' && !expectedInfrastructureErrors.includes(event)
         ));
-        const warnings = consoleEvents.filter((event) => event.type === 'warning');
+        const warnings = consoleEvents.filter((event) => (
+            event.type === 'warning' && !expectedInfrastructureWarnings.includes(event)
+        ));
         const expectedMetric = Boolean(
             metric
             && metric.contract === 'mtr.atlas_pilot_runtime_metric'
@@ -120,6 +127,7 @@ async function (page) {
                 pageErrors,
                 requestFailures,
                 expectedInfrastructureErrors,
+                expectedInfrastructureWarnings,
             },
             consoleEvents,
         };

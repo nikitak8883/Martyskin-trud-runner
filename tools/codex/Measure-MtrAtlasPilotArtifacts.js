@@ -4,13 +4,28 @@
 const fs = require('fs');
 const path = require('path');
 
+const ALLOWED_ARGUMENTS = new Set([
+    '--project-root',
+    '--build-root',
+    '--output',
+    '--phase',
+    '--platform',
+    '--candidate-source-directory',
+]);
+
 function parseArguments(argv) {
     const values = new Map();
+    const candidateSourceDirectories = [];
     for (let index = 0; index < argv.length; index += 2) {
         const key = argv[index];
         const value = argv[index + 1];
         if (!key?.startsWith('--') || value === undefined) throw new Error(`Invalid argument near ${key || '<end>'}.`);
-        values.set(key, value);
+        if (!ALLOWED_ARGUMENTS.has(key)) throw new Error(`Unknown argument ${key}.`);
+        if (key === '--candidate-source-directory') candidateSourceDirectories.push(value);
+        else {
+            if (values.has(key)) throw new Error(`Duplicate argument ${key}.`);
+            values.set(key, value);
+        }
     }
     return {
         projectRoot: values.get('--project-root') || process.cwd(),
@@ -18,8 +33,9 @@ function parseArguments(argv) {
         output: values.get('--output'),
         phase: values.get('--phase'),
         platform: values.get('--platform'),
-        candidateSourceDirectory: values.get('--candidate-source-directory')
-            || 'assets/resources/objectives/npc',
+        candidateSourceDirectories: candidateSourceDirectories.length > 0
+            ? candidateSourceDirectories
+            : ['assets/resources/objectives/npc'],
     };
 }
 
@@ -72,14 +88,29 @@ function main() {
     const projectRoot = path.resolve(options.projectRoot);
     const buildRoot = resolveContained(projectRoot, options.buildRoot, '--build-root');
     const output = resolveContained(projectRoot, options.output, '--output');
-    const candidateRoot = resolveContained(
+    const candidateRoots = options.candidateSourceDirectories.map((directory) => resolveContained(
         projectRoot,
-        options.candidateSourceDirectory,
+        directory,
         '--candidate-source-directory',
-    );
+    ));
+    if (new Set(candidateRoots.map((root) => root.toLowerCase())).size !== candidateRoots.length) {
+        throw new Error('Duplicate --candidate-source-directory values are forbidden.');
+    }
+    for (let left = 0; left < candidateRoots.length; left += 1) {
+        for (let right = left + 1; right < candidateRoots.length; right += 1) {
+            const relative = path.relative(candidateRoots[left], candidateRoots[right]);
+            const reverse = path.relative(candidateRoots[right], candidateRoots[left]);
+            const overlaps = relative === ''
+                || (!relative.startsWith('..') && !path.isAbsolute(relative))
+                || (!reverse.startsWith('..') && !path.isAbsolute(reverse));
+            if (overlaps) throw new Error('Overlapping --candidate-source-directory values are forbidden.');
+        }
+    }
     if (!fs.statSync(buildRoot).isDirectory()) throw new Error(`Build root is not a directory: ${buildRoot}`);
-    if (!fs.statSync(candidateRoot).isDirectory()) {
-        throw new Error(`Candidate source directory is not a directory: ${candidateRoot}`);
+    for (const candidateRoot of candidateRoots) {
+        if (!fs.statSync(candidateRoot).isDirectory()) {
+            throw new Error(`Candidate source directory is not a directory: ${candidateRoot}`);
+        }
     }
 
     const skippedLinks = [];
@@ -91,10 +122,17 @@ function main() {
     const nativeImageFiles = walkFiles(path.join(resourcesRoot, 'native'))
         .filter((file) => /\.(?:png|jpe?g|webp|ktx2?)$/i.test(file));
     const importFiles = walkFiles(path.join(resourcesRoot, 'import'));
-    const candidateUuids = fs.readdirSync(candidateRoot)
-        .filter((name) => name.endsWith('.png.meta'))
-        .map((name) => JSON.parse(fs.readFileSync(path.join(candidateRoot, name), 'utf8')).uuid)
+    const candidateMetaFiles = candidateRoots.flatMap((candidateRoot) => walkFiles(candidateRoot)
+        .filter((file) => file.endsWith('.png.meta')));
+    const candidateUuids = candidateMetaFiles
+        .map((file) => JSON.parse(fs.readFileSync(file, 'utf8')).uuid)
         .sort();
+    if (candidateUuids.some((uuid) => typeof uuid !== 'string' || uuid.length === 0)) {
+        throw new Error('Every candidate PNG meta must contain a non-empty UUID.');
+    }
+    if (new Set(candidateUuids).size !== candidateUuids.length) {
+        throw new Error('Candidate PNG UUIDs must be unique across source directories.');
+    }
     const candidateUuidArtifacts = runtimeFiles
         .filter((file) => candidateUuids.some((uuid) => path.basename(file).includes(uuid)))
         .map((file) => ({
@@ -114,7 +152,11 @@ function main() {
         phase: options.phase,
         platform: options.platform,
         buildRoot: path.relative(projectRoot, buildRoot).replaceAll('\\', '/'),
-        candidateSourceDirectory: path.relative(projectRoot, candidateRoot).replaceAll('\\', '/'),
+        candidateSourceDirectory: candidateRoots.length === 1
+            ? path.relative(projectRoot, candidateRoots[0]).replaceAll('\\', '/')
+            : null,
+        candidateSourceDirectories: candidateRoots
+            .map((candidateRoot) => path.relative(projectRoot, candidateRoot).replaceAll('\\', '/')),
         all: summarize(files),
         runtime: summarize(runtimeFiles),
         resources: summarize(resourcesFiles),

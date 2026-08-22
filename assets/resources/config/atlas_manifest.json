@@ -3,7 +3,7 @@
   "schema_version": 1,
   "contract": "mtr.atlas_manifest",
   "status": "contract_with_measured_runtime_families",
-  "generated_at": "2026-08-22T12:38:34+03:00",
+  "generated_at": "2026-08-22T15:42:51+03:00",
   "source_checkpoint": {
     "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
     "branch": "mtr-source-v3",
@@ -38,14 +38,14 @@
       "assets/resources/config/content_identity.json.meta"
     ],
     "source_payload": {
-      "count": 1638,
-      "bytes": 116454046,
-      "sha256": "08B475D577BA0853AB86197048DD32046198FD080991C114A61ED7B9FB5A50F9"
+      "count": 1640,
+      "bytes": 116454116,
+      "sha256": "EBCA3861E9DF98F6F6D1F33CC423EDC9D34BEC6DE6536355887AF434E0B9BE1A"
     },
     "cocos_metadata": {
-      "count": 1885,
-      "bytes": 4577257,
-      "sha256": "3C09330C2BD99EBC91BC68549AEB902EAB6E541726C00ABB4E6A232AE26A4593"
+      "count": 1887,
+      "bytes": 4578903,
+      "sha256": "B3D7A5A20422E04C4563BCCA14F8E1BF2E7C9E9ADC895DFC9974C7A39782F972"
     },
     "png_validation": {
       "count": 1528,
@@ -62,7 +62,7 @@
       ".jpg": {"count": 30, "bytes": 5999213},
       ".json": {"count": 35, "bytes": 1163846},
       ".mp3": {"count": 1, "bytes": 116284},
-      ".pac": {"count": 3, "bytes": 105},
+      ".pac": {"count": 5, "bytes": 175},
       ".png": {"count": 1528, "bytes": 107146623},
       ".wav": {"count": 40, "bytes": 2018006}
     }
@@ -138,9 +138,13 @@
       "match": "prefix",
       "owner": "character_skin_bonus_animation_pipeline",
       "bundle_id": "resources",
-      "provenance": ["assets/resources/config/current_objective_runtime_usage.json"],
-      "asset_count": 8,
-      "total_bytes": 975198,
+      "provenance": [
+        "assets/resources/config/current_objective_runtime_usage.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json"
+      ],
+      "asset_count": 9,
+      "total_bytes": 975233,
       "fallback_policy": "block_release"
     },
     {
@@ -164,9 +168,13 @@
       "match": "prefix",
       "owner": "character_skin_bonus_animation_pipeline",
       "bundle_id": "resources",
-      "provenance": ["assets/resources/config/equipment_anchor_contract.json"],
-      "asset_count": 4,
-      "total_bytes": 763190,
+      "provenance": [
+        "assets/resources/config/equipment_anchor_contract.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json"
+      ],
+      "asset_count": 5,
+      "total_bytes": 763225,
       "fallback_policy": "block_release"
     },
     {
@@ -433,19 +441,40 @@
       "owner": "character_skin_bonus_animation_pipeline",
       "bundle_id": "resources",
       "packing": {
-        "mode": "static_atlas_candidate",
-        "implementation_status": "policy_only_not_packed",
+        "mode": "static_atlas",
+        "implementation_status": "measured_static_atlas",
         "max_texture_size": 2048,
         "padding_px": 2,
-        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "compression": {"web": "auto_atlas_png_lossless", "android": "auto_atlas_png_lossless", "status": "measured_family_accepted"},
         "trim_policy": "preserve_existing_import",
         "pivot_policy": "preserve_existing_import",
-        "dynamic_atlas_allowed": false
+        "dynamic_atlas_allowed": false,
+        "descriptors": [
+          {
+            "source_directory": "assets/resources/objectives/bonuses",
+            "source_count": 8,
+            "descriptor": "assets/resources/objectives/bonuses/bonus_items_bonuses.pac",
+            "descriptor_uuid": "270951e3-0ab9-45b7-ba53-f37215afcbfd"
+          },
+          {
+            "source_directory": "assets/resources/objectives/equipment",
+            "source_count": 4,
+            "descriptor": "assets/resources/objectives/equipment/bonus_items_equipment.pac",
+            "descriptor_uuid": "dd109296-15b2-4a45-b26c-445d112941a3"
+          }
+        ],
+        "measurement_contract": "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json",
+        "acceptance_evidence": "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json"
       },
-      "provenance": ["assets/resources/config/current_objective_runtime_usage.json", "assets/resources/config/equipment_anchor_contract.json"],
+      "provenance": [
+        "assets/resources/config/current_objective_runtime_usage.json",
+        "assets/resources/config/equipment_anchor_contract.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json"
+      ],
       "observed": {"count": 12, "bytes": 1738388},
       "fallback_policy": "block_release",
-      "runtime_effect": false
+      "runtime_effect": true
     },
     {
       "atlas_id": "runner_collectibles",

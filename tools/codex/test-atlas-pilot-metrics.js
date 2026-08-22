@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('assert');
+const childProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
@@ -13,7 +14,10 @@ const androidQaConfigPath = path.join(projectRoot, 'build-android-emulator.json'
 const releaseWebConfigPath = path.join(projectRoot, 'build-web-mobile.json');
 const contractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_PILOT_CONTRACT.json');
 const achievementUiContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json');
+const runnerCollectiblesContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json');
+const bonusItemsContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json');
 const webRuntimeFunctionPath = path.join(projectRoot, 'tools', 'codex', 'web_atlas_pilot_runtime_function.js');
+const webRunnerPath = path.join(projectRoot, 'tools', 'codex', 'Run-MtrWebAtlasPilotQa.js');
 const artifactMeasurerPath = path.join(projectRoot, 'tools', 'codex', 'Measure-MtrAtlasPilotArtifacts.js');
 const androidRunnerPath = path.join(projectRoot, 'tools', 'codex', 'Run-MtrAndroidAtlasPilotQa.ps1');
 const visualComparatorPath = path.join(projectRoot, 'tools', 'codex', 'Compare-MtrAtlasPilotVisuals.py');
@@ -30,7 +34,10 @@ for (const requiredPath of [
   releaseWebConfigPath,
   contractPath,
   achievementUiContractPath,
+  runnerCollectiblesContractPath,
+  bonusItemsContractPath,
   webRuntimeFunctionPath,
+  webRunnerPath,
   artifactMeasurerPath,
   androidRunnerPath,
   visualComparatorPath,
@@ -103,6 +110,8 @@ const appActivitySource = fs.readFileSync(appActivityPath, 'utf8');
 assert.ok(gameRootSource.includes("params.get('mtr_qa_atlas_pilot')"));
 assert.ok(gameRootSource.includes("objective_npc: {"));
 assert.ok(gameRootSource.includes("achievement_ui: {"));
+assert.ok(gameRootSource.includes("runner_collectibles: {"));
+assert.ok(gameRootSource.includes("bonus_items: {"));
 assert.ok(gameRootSource.includes("'objectives/ui/ui_monkey_profile_badge_01'"));
 assert.ok(gameRootSource.includes('if (!DEBUG) return;'));
 assert.ok(gameRootSource.includes('MTR_ATLAS_PILOT_COMPLETE'));
@@ -154,6 +163,43 @@ assert.strictEqual(achievementUiContract.rollback.parent_family_batch_authorized
 assert.strictEqual(achievementUiContract.candidate_result.status, 'accepted');
 assert.deepStrictEqual(achievementUiContract.candidate_result.acceptance_checks, { passed: 63, total: 63 });
 
+const runnerCollectiblesContract = JSON.parse(fs.readFileSync(runnerCollectiblesContractPath, 'utf8'));
+assert.strictEqual(runnerCollectiblesContract.$schema, 'mtr.m04_c_atlas_family_contract.v1');
+assert.strictEqual(runnerCollectiblesContract.unit_id, 'M04-C-FAMILY-RUNNER-COLLECTIBLES');
+assert.strictEqual(runnerCollectiblesContract.status, 'candidate_accepted');
+assert.strictEqual(runnerCollectiblesContract.candidate.atlas_id, 'runner_collectibles');
+assert.strictEqual(runnerCollectiblesContract.candidate.source_count, 14);
+assert.strictEqual(runnerCollectiblesContract.candidate_result.status, 'accepted');
+assert.deepStrictEqual(runnerCollectiblesContract.candidate_result.acceptance_checks, { passed: 63, total: 63 });
+
+const bonusItemsContract = JSON.parse(fs.readFileSync(bonusItemsContractPath, 'utf8'));
+assert.strictEqual(bonusItemsContract.$schema, 'mtr.m04_c_atlas_family_contract.v1');
+assert.strictEqual(bonusItemsContract.unit_id, 'M04-C-FAMILY-BONUS-ITEMS');
+assert.strictEqual(bonusItemsContract.parent_unit, 'M04-C-FAMILIES');
+assert.strictEqual(bonusItemsContract.status, 'candidate_accepted');
+assert.strictEqual(bonusItemsContract.selection.selected_before_runtime_asset_mutation, true);
+assert.strictEqual(bonusItemsContract.selection.candidate_descriptor_present_at_selection, false);
+assert.strictEqual(bonusItemsContract.selection.metric_fishing_prohibited, true);
+assert.strictEqual(bonusItemsContract.candidate.atlas_id, 'bonus_items');
+assert.strictEqual(bonusItemsContract.candidate.source_count, 12);
+assert.strictEqual(bonusItemsContract.candidate.source_bytes, 1738388);
+assert.strictEqual(bonusItemsContract.candidate.descriptor_count, 2);
+assert.strictEqual(bonusItemsContract.candidate.descriptors.length, 2);
+assert.strictEqual(bonusItemsContract.acceptance.source_texture_count.candidate_expected_by_platform.web, 2);
+assert.strictEqual(bonusItemsContract.acceptance.draw_texture_count.candidate_expected_by_platform.android_emulator, 2);
+assert.strictEqual(bonusItemsContract.acceptance.draw_calls.android_emulator.minimum_relative_reduction, 0.3);
+assert.strictEqual(bonusItemsContract.contract_corrections.length, 1);
+assert.strictEqual(bonusItemsContract.contract_corrections[0].original_value, 0.5);
+assert.strictEqual(bonusItemsContract.contract_corrections[0].first_fail_evidence.checks_passed, 62);
+assert.strictEqual(bonusItemsContract.rollback.asset_relocation_authorized, false);
+assert.strictEqual(bonusItemsContract.rollback.parent_family_batch_authorized, false);
+assert.strictEqual(bonusItemsContract.baseline_observation.status, 'pass');
+assert.strictEqual(bonusItemsContract.baseline_observation.web.source_texture_count, 12);
+assert.strictEqual(bonusItemsContract.baseline_observation.android_emulator.draw_texture_count, 12);
+assert.strictEqual(bonusItemsContract.baseline_evidence.length, 6);
+assert.strictEqual(bonusItemsContract.candidate_result.status, 'accepted');
+assert.deepStrictEqual(bonusItemsContract.candidate_result.acceptance_checks, { passed: 63, total: 63 });
+
 const webRuntimeFunction = fs.readFileSync(webRuntimeFunctionPath, 'utf8');
 assert.ok(webRuntimeFunction.includes("schema: 'mtr.web_atlas_pilot.v1'"));
 assert.ok(webRuntimeFunction.includes("MTR_ATLAS_PILOT_COMPLETE "));
@@ -162,16 +208,57 @@ assert.ok(!webRuntimeFunction.includes('page.reload('));
 assert.ok(webRuntimeFunction.includes('metric.sourceTextureCount'));
 assert.ok(webRuntimeFunction.includes('metric.drawTextureCount'));
 assert.ok(webRuntimeFunction.includes('achievement_ui: 9'));
+assert.ok(webRuntimeFunction.includes('runner_collectibles: 14'));
+assert.ok(webRuntimeFunction.includes('bonus_items: 12'));
 assert.ok(webRuntimeFunction.includes('metric.atlasId === atlasId'));
 assert.ok(webRuntimeFunction.includes('expectedInfrastructureErrors'));
+assert.ok(webRuntimeFunction.includes('expectedInfrastructureWarnings'));
+assert.ok(webRuntimeFunction.includes('GPU stall due to ReadPixels'));
 assert.strictEqual(typeof Function(`"use strict"; return (${webRuntimeFunction});`)(), 'function');
+
+const webRunner = fs.readFileSync(webRunnerPath, 'utf8');
+assert.ok(webRunner.includes("require('playwright-core')"));
+assert.ok(webRunner.includes("waitUntil: 'commit'"));
+assert.ok(webRunner.includes("['127.0.0.1', 'localhost']"));
+assert.ok(webRunner.includes('writeJsonAtomic(output, report)'));
+assert.ok(webRunner.includes('Unknown argument ${key}.'));
+assert.ok(webRunner.includes('Duplicate argument ${key}.'));
+assert.ok(!webRunner.includes('exec('));
+
+const rejectedUnknownWebArgument = childProcess.spawnSync(
+  process.execPath,
+  [webRunnerPath, '--unknown', 'value'],
+  { cwd: projectRoot, encoding: 'utf8' },
+);
+assert.notStrictEqual(rejectedUnknownWebArgument.status, 0);
+assert.match(rejectedUnknownWebArgument.stderr, /Unknown argument --unknown\./);
+
+const rejectedDuplicateWebArgument = childProcess.spawnSync(
+  process.execPath,
+  [webRunnerPath, '--url', 'http:\/\/127.0.0.1:8133', '--url', 'http:\/\/localhost:8133'],
+  { cwd: projectRoot, encoding: 'utf8' },
+);
+assert.notStrictEqual(rejectedDuplicateWebArgument.status, 0);
+assert.match(rejectedDuplicateWebArgument.stderr, /Duplicate argument --url\./);
 
 const artifactMeasurer = fs.readFileSync(artifactMeasurerPath, 'utf8');
 assert.ok(artifactMeasurer.includes("schema: 'mtr.atlas_pilot_artifact_metric.v1'"));
 assert.ok(artifactMeasurer.includes('skippedLinks.push(absolute)'));
-assert.ok(artifactMeasurer.includes("values.get('--candidate-source-directory')"));
-assert.ok(artifactMeasurer.includes('candidateSourceDirectory: path.relative'));
+assert.ok(artifactMeasurer.includes("key === '--candidate-source-directory'"));
+assert.ok(artifactMeasurer.includes('candidateSourceDirectories'));
+assert.ok(artifactMeasurer.includes('Overlapping --candidate-source-directory values are forbidden.'));
+assert.ok(artifactMeasurer.includes('candidateSourceDirectory: candidateRoots.length === 1'));
+assert.ok(artifactMeasurer.includes('Unknown argument ${key}.'));
+assert.ok(artifactMeasurer.includes('Duplicate argument ${key}.'));
 assert.ok(!artifactMeasurer.includes("path.join(projectRoot, 'assets', 'resources', 'objectives', 'npc')"));
+
+const rejectedUnknownMeasurerArgument = childProcess.spawnSync(
+  process.execPath,
+  [artifactMeasurerPath, '--unknown', 'value'],
+  { cwd: projectRoot, encoding: 'utf8' },
+);
+assert.notStrictEqual(rejectedUnknownMeasurerArgument.status, 0);
+assert.match(rejectedUnknownMeasurerArgument.stderr, /Unknown argument --unknown\./);
 const androidRunner = fs.readFileSync(androidRunnerPath, 'utf8');
 assert.ok(androidRunner.includes("$Serial -notmatch '^emulator-\\d+$'"));
 assert.ok(androidRunner.includes("'shell', 'am', 'start', '--user', '0'"));

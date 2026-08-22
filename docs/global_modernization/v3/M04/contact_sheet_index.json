@@ -11,10 +11,10 @@
   },
   "source": {
     "atlasManifest": "assets/resources/config/atlas_manifest.json",
-    "atlasManifestSha256": "A74FF8D7B661AA964C461F19611037528AB81CA0A8681434C338755A2DF0D9C4",
+    "atlasManifestSha256": "1631087FB98B249488E293B89BC4DCE7454F21FA2D2C379A182AC47E1FCC8174",
     "contentIdentity": "assets/resources/config/content_identity.json",
     "logicalContentVersion": "mtr-v3-source-4492deee4209",
-    "sourcePayloadSha256": "08B475D577BA0853AB86197048DD32046198FD080991C114A61ED7B9FB5A50F9"
+    "sourcePayloadSha256": "EBCA3861E9DF98F6F6D1F33CC423EDC9D34BEC6DE6536355887AF434E0B9BE1A"
   },
   "materialization": {
     "policy": "local_qa_evidence_not_runtime_not_committed",
@@ -8291,6 +8291,8 @@
       "provenance": [
         "assets/resources/config/current_objective_runtime_usage.json",
         "assets/resources/config/equipment_anchor_contract.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json",
         "docs/skins_integration/manifests/player_skins_manifest.json"
       ],
       "sheets": [
@@ -29763,7 +29765,9 @@
           "ownershipManifestPointer": "/ownership_scopes/5",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-14",
           "cellIndex": 56
@@ -29788,7 +29792,9 @@
           "ownershipManifestPointer": "/ownership_scopes/5",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-14",
           "cellIndex": 57
@@ -29813,7 +29819,9 @@
           "ownershipManifestPointer": "/ownership_scopes/5",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-14",
           "cellIndex": 58
@@ -29838,7 +29846,9 @@
           "ownershipManifestPointer": "/ownership_scopes/5",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-14",
           "cellIndex": 59
@@ -29863,7 +29873,9 @@
           "ownershipManifestPointer": "/ownership_scopes/5",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-14",
           "cellIndex": 60
@@ -29888,7 +29900,9 @@
           "ownershipManifestPointer": "/ownership_scopes/5",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-14",
           "cellIndex": 61
@@ -29913,7 +29927,9 @@
           "ownershipManifestPointer": "/ownership_scopes/5",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-14",
           "cellIndex": 62
@@ -29938,7 +29954,9 @@
           "ownershipManifestPointer": "/ownership_scopes/5",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-14",
           "cellIndex": 63
@@ -29963,7 +29981,9 @@
           "ownershipManifestPointer": "/ownership_scopes/7",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-15",
           "cellIndex": 0
@@ -29988,7 +30008,9 @@
           "ownershipManifestPointer": "/ownership_scopes/7",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-15",
           "cellIndex": 1
@@ -30013,7 +30035,9 @@
           "ownershipManifestPointer": "/ownership_scopes/7",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-15",
           "cellIndex": 2
@@ -30038,7 +30062,9 @@
           "ownershipManifestPointer": "/ownership_scopes/7",
           "provenance": [
             "assets/resources/config/current_objective_runtime_usage.json",
-            "assets/resources/config/equipment_anchor_contract.json"
+            "assets/resources/config/equipment_anchor_contract.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json"
           ],
           "sheetId": "bonuses-15",
           "cellIndex": 3

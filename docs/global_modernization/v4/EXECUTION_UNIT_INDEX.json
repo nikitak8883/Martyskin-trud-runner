@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "plan_id": "mtr-global-modernization-v4-20260809",
-  "generated_at": "2026-08-22T10:37:13Z",
+  "generated_at": "2026-08-22T13:58:14Z",
   "basis": {
     "branch": "codex/mtr-source-freeze-v3",
     "documentation_basis_head": "95648b978117b8964469ad4fb236829d9540c239",
@@ -19,8 +19,8 @@
     "mandatory_remaining": 57
   },
   "execution_ledger": {
-    "mandatory_units_total": 67,
-    "complete": 15,
+    "mandatory_units_total": 68,
+    "complete": 16,
     "ready": 1,
     "planned": 48,
     "blocked": 3,
@@ -59,7 +59,8 @@
     {"id":"M04-C-PILOT","phase":"P2","status":"complete","source_packages":["M04.5"],"source_slice":"one measured co-visible atlas pilot","depends_on":["M04-B"],"gates":["P4","M2_PLUS"],"objective":"Migrate one low-risk atlas family with pivot/trim/rollback and before-after evidence."},
     {"id":"M04-C-FAMILY-ACHIEVEMENT-UI","phase":"P2","status":"complete","source_packages":["M04.5"],"source_slice":"measured nine-source achievement_ui static atlas child","depends_on":["M04-C-PILOT"],"gates":["P4","M2_PLUS"],"objective":"Migrate the bounded achievement UI family with exact source ownership, visual parity, rollback and Web/Android-emulator evidence."},
     {"id":"M04-C-FAMILY-RUNNER-COLLECTIBLES","phase":"P2","status":"complete","source_packages":["M04.5"],"source_slice":"measured fourteen-source runner_collectibles static atlas child","depends_on":["M04-C-FAMILY-ACHIEVEMENT-UI"],"gates":["P4","M2_PLUS"],"objective":"Migrate the gameplay-critical collectible family with exact source ownership, visual parity, rollback and Web/Android-emulator evidence."},
-    {"id":"M04-C-FAMILIES","phase":"P2","status":"ready","source_packages":["M04.5"],"source_slice":"remaining accepted atlas family batches","depends_on":["M04-C-PILOT"],"gates":["P4","M2_PLUS"],"objective":"Migrate each remaining approved atlas family as an isolated measured child checkpoint."},
+    {"id":"M04-C-FAMILY-BONUS-ITEMS","phase":"P2","status":"complete","source_packages":["M04.5"],"source_slice":"measured twelve-source bonus_items family using two directory-local static atlas descriptors","depends_on":["M04-C-FAMILY-RUNNER-COLLECTIBLES"],"gates":["P4","M2_PLUS"],"objective":"Migrate the gameplay bonus/equipment family without source relocation, with exact two-descriptor identity, visual parity, rollback and Web/Android-emulator evidence."},
+    {"id":"M04-C-FAMILIES","phase":"P2","status":"ready","source_packages":["M04.5"],"source_slice":"remaining accepted atlas family batches","depends_on":["M04-C-FAMILY-BONUS-ITEMS"],"gates":["P4","M2_PLUS"],"objective":"Migrate each remaining approved atlas family as an isolated measured child checkpoint."},
     {"id":"M04-D","phase":"P2","status":"planned","source_packages":["M04.6"],"depends_on":["M04-C-PILOT"],"gates":["M2_PLUS"],"objective":"Adopt only measured dynamic-atlas families and reject native-memory regressions."},
     {"id":"M04-E","phase":"P2","status":"planned","source_packages":["M04.7"],"depends_on":["M04-A"],"gates":["P4"],"objective":"Define bundle preload/load/release/content-version ownership with optional packs excluded from startup."},
     {"id":"M04-CLOSE","phase":"P2","status":"planned","source_packages":["M04.8"],"depends_on":["M04-C-FAMILIES","M04-D","M04-E"],"gates":["M2_PLUS"],"objective":"Close M04 with draw-call, waste, load, memory and build-size before-after evidence."},

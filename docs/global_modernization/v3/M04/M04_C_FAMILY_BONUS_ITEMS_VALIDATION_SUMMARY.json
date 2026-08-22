@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M04-C-FAMILY-BONUS-ITEMS",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "source_work_packages": ["M04.5"],
+  "status": "pass",
+  "implementation_status": "family_child_complete",
+  "aggregate_work_package_status": "pending_ui_shared_core_family",
+  "runtime_changed": true,
+  "runtime_assets_repacked": true,
+  "runtime_png_sources_changed": false,
+  "runtime_metadata_changed": true,
+  "broader_family_migration_authorized": false,
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "candidate": {
+    "atlas_id": "bonus_items",
+    "descriptor_count": 2,
+    "descriptors": [
+      {
+        "descriptor": "assets/resources/objectives/bonuses/bonus_items_bonuses.pac",
+        "descriptor_uuid": "270951e3-0ab9-45b7-ba53-f37215afcbfd",
+        "source_directory": "assets/resources/objectives/bonuses",
+        "source_sprite_count": 8
+      },
+      {
+        "descriptor": "assets/resources/objectives/equipment/bonus_items_equipment.pac",
+        "descriptor_uuid": "dd109296-15b2-4a45-b26c-445d112941a3",
+        "source_directory": "assets/resources/objectives/equipment",
+        "source_sprite_count": 4
+      }
+    ],
+    "source_sprite_count": 12,
+    "source_bytes": 1738388,
+    "risk_class": "gameplay_critical_bonus_readability_equipment_anchor_and_powerup_lifecycle",
+    "decision": "accepted_without_source_relocation"
+  },
+  "measurement_acceptance": {
+    "status": "PASS",
+    "passed": 63,
+    "total": 63,
+    "failed": 0,
+    "contract": "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json",
+    "contract_sha256": "FE767961C138C553B4E0AAFD743CF201374D07203786B0298748C7A02086B7DA",
+    "durable_acceptance": "docs/global_modernization/v3/M04/M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json",
+    "durable_acceptance_sha256": "EEAD2AC9D6CFA780975E662D94E82B0A0FE15939BC7F1485750E5586CF7C8F46",
+    "comparison_report": "temp/m04-c-families/bonus_items/comparison/acceptance.json",
+    "comparison_report_sha256": "884A3634B70FA6C9B67290D9FABB5CA7D4900E2A99DED156509765630E926F8E",
+    "negative_identity_fixture": "PASS"
+  },
+  "contract_correction": {
+    "status": "audited_before_acceptance",
+    "correction_id": "BONUS-ITEMS-DRAW-RATIO-001",
+    "scope": "acceptance.draw_calls.android_emulator.minimum_relative_reduction",
+    "original_value": 0.5,
+    "corrected_value": 0.3,
+    "mathematical_candidate_ceiling": 0.333333,
+    "reason": "The frozen baseline contains 18 fixed non-family draws and the two-descriptor candidate floor is 20 total draws; a 50% total-draw reduction was therefore impossible.",
+    "first_failed_report": "temp/m04-c-families/bonus_items/comparison/acceptance-pre-correction.json",
+    "first_failed_report_sha256": "9F06335447101023F3550E54B476339B7D1F516373D7B0F4D07ECFCFC3A7293C",
+    "first_result": {"passed": 62, "total": 63, "failed_check": "android_emulator:draw_calls_android_relative_gain"},
+    "unchanged_gate_classes": ["minimum_absolute_reduction", "source_texture_count", "draw_texture_count", "dynamic_atlas_packed_count", "runtime", "artifact_size", "visual_parity"]
+  },
+  "performance": {
+    "web": {
+      "source_texture_count": {"baseline": 12, "candidate": 2},
+      "draw_texture_count": {"baseline": 1, "candidate": 2},
+      "dynamic_atlas_packed_count": {"baseline": 12, "candidate": 0},
+      "draws_median": {"baseline": 19, "candidate": 20},
+      "load_elapsed_ms": {"baseline": 499, "candidate": 367},
+      "texture_memory_mb_median": {"baseline": 32.91, "candidate": 17.58},
+      "fps_median": {"baseline": 50, "candidate": 54}
+    },
+    "android_emulator": {
+      "source_texture_count": {"baseline": 12, "candidate": 2},
+      "draw_texture_count": {"baseline": 12, "candidate": 2},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {"baseline": 30, "candidate": 20, "absolute_reduction": 10, "relative_reduction": 0.333333},
+      "load_elapsed_ms": {"baseline": 711, "candidate": 533},
+      "texture_memory_mb_median": {"baseline": 18.77, "candidate": 19.44},
+      "fps_median": {"baseline": 16, "candidate": 15}
+    }
+  },
+  "visual_parity": {
+    "status": "PASS",
+    "all_twelve_sources_visible": true,
+    "white_matte_fragments": 0,
+    "missing_frames": 0,
+    "pivot_or_trim_regressions": 0,
+    "web": {"mean_absolute_error": 0.021629, "changed_pixel_fraction": 0.000880012},
+    "android_emulator": {"mean_absolute_error": 0.038208, "changed_pixel_fraction": 0.00088556},
+    "report": "temp/m04-c-families/bonus_items/comparison/visual-parity.json",
+    "report_sha256": "D9530BC9F6FD5F1C96FF026103001A2EA8F5A0FD2C39003E34B990DE64FE89F0"
+  },
+  "tests": {
+    "status": "PASS",
+    "atlas_metrics_test": "PASS",
+    "manifest_validator_tests": {"passed": 12, "total": 12},
+    "multi_descriptor_identity_fixtures": "PASS",
+    "unknown_and_duplicate_cli_argument_fixtures": "PASS",
+    "post_hardening_web_runner_smoke": {
+      "status": "PASS",
+      "warnings": 0,
+      "errors": 0,
+      "page_errors": 0,
+      "request_failures": 0,
+      "report": "temp/m04-c-families/bonus_items/post-hardening-web-runner.json",
+      "report_sha256": "83E501C5A7FD68015325A7AF80371F3618830DC1D77FF113DC28D4E2CE9A4BC6"
+    }
+  },
+  "static_gate": {
+    "status": "PASS",
+    "cycles": [
+      {"cycle": 1, "passed": 26, "total": 26, "findings": 0, "report": "temp/m04-c-families/bonus_items/qa/cycle1-static-fixed/report.json", "report_sha256": "16FF5694CC3094EEBFD7541842D6ADA5A7C8D812925CD7D225B28ED37FB08655"},
+      {"cycle": 2, "passed": 26, "total": 26, "findings": 0, "report": "temp/m04-c-families/bonus_items/qa/cycle2-static/report.json", "report_sha256": "1C64F79FDC9231A251CA7DA21BF074880E441BDC784F436AB7F75A25AA5FD40A"}
+    ],
+    "final_documentation_gate": {
+      "status": "PASS",
+      "passed": 26,
+      "total": 26,
+      "findings": 0,
+      "report": "temp/m04-c-families/bonus_items/postfix/static-final/report.json"
+    },
+    "preserved_failure_receipt": {
+      "classification": "expected_contact_sheet_index_drift_after_new_descriptor_metadata",
+      "report": "temp/m04-c-families/bonus_items/qa/cycle1-static/report.json",
+      "report_sha256": "E52618024EB592336D09A26F8D6D5710DD7444017EF9FEAA347D7B90642520DD",
+      "passed": 24,
+      "total": 26,
+      "failed_steps": ["m04-b-contact-sheet-contract", "m04-b-asset-pipeline-tests"]
+    }
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_post_fix_build": true,
+    "build_log": "logs/m04-c-bonus-items-postfix-web-20260822.log",
+    "build_log_sha256": "190E57A6C88282EB37F3E031BF2CAAB8A53B589F5CA655AE2A5A7FCCF35043A4",
+    "cycles": [
+      {"cycle": 1, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "849FD7EAE3BBEF48C7C74F322D483999325D1C1B996BF402A9F3D6E385F439EE"},
+      {"cycle": 2, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report_sha256": "9F53EE5682B7EEB1615364B05D9B778E3A52E9A7877ABECCA51F2AA9F86AEA9F"}
+    ],
+    "qa_port_closed": true
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "serial": "emulator-5554",
+    "qemu": true,
+    "abi": "x86_64",
+    "installed_user": 0,
+    "fresh_post_fix_build": true,
+    "build_log": "logs/m04-c-bonus-items-postfix-android-20260822.log",
+    "build_log_sha256": "BF021DC4249D325033888C5A81182FD617050EB18EAFA9CA5F02B0DC135639F4",
+    "matrix_cycles": [
+      {"cycle": 1, "passed": 28, "total": 28, "report_sha256": "9255919C1BA2C7291037350450D5622A97A9FF5B0A4F655F44FD0630A9F63F2D"},
+      {"cycle": 2, "passed": 28, "total": 28, "report_sha256": "9CE519504355FFEC47B3C048CCA047B55C573BBB6CAF685BDF9C4E105E19E1AF"}
+    ],
+    "interaction": {
+      "status": "PASS",
+      "touch_first_attempts": 4,
+      "touch_total": 4,
+      "name_persistence": "PASS",
+      "persisted_name": "QAPrimateC1",
+      "restart_passed": 10,
+      "restart_total": 10,
+      "soak_seconds": 300.771,
+      "input_bursts": 305,
+      "state_actions": 17,
+      "process_losses": 0,
+      "unexpected_diagnostics": 0,
+      "pss_kb": {"start": 207881, "peak": 210957, "end": 195285},
+      "report_sha256": "7009FE36A9CC4B6D5090F28DF23F72B3DAC45DEA51DC9E15F9170C61F0F491D1"
+    },
+    "apk": {
+      "path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk",
+      "bytes": 144544876,
+      "sha256": "6659EEE409F9C6AE1F3F41E52488B73F06DB6541048226CB0438D5DE318590A6",
+      "signature_scope": "debug_emulator_qa_only"
+    }
+  },
+  "m2_plus": {
+    "status": "PASS",
+    "applicable_passed": 8,
+    "applicable_total": 8,
+    "conditional_not_applicable": 4,
+    "findings": 0,
+    "profile": "temp/m04-c-families/bonus_items/m2-profile/20260822T133549Z/m2-plus.profile.json",
+    "profile_sha256": "DF96E170A1BBCCF5864E36D8A5967540DD83262A91105DBC2BD89700BA60F027",
+    "not_applicable_reason": "Release behavior changes only static packing metadata; the GameRoot delta is DEBUG-only measurement routing and no recovery seam changed."
+  },
+  "review": {
+    "confirmed_findings": 5,
+    "corrected_findings": 5,
+    "open_findings": 0,
+    "codex_final_review": "PASS",
+    "hygiene_gate": "PASS"
+  },
+  "roadmap": {
+    "execution_complete": 16,
+    "execution_total_current": 68,
+    "execution_remaining_current": 52,
+    "execution_percent": 23.5294,
+    "conditional_units": 7,
+    "source_complete": 28,
+    "source_total": 95,
+    "source_mandatory_remaining": 57,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M04-C-FAMILIES"
+  },
+  "release_blockers": ["M02.1", "M02.7", "M12.7"]
+}

@@ -23,7 +23,7 @@
 ## Два независимых счётчика
 
 - Требования проекта: `95` source work packages; `28` complete, `54` pending, `3` blocked, `10` conditional. Обязательный остаток: `57`.
-- Исполнение от текущей точки: `67` обязательных v4 execution units, включая inventory-derived `M04-C-FAMILY-ACHIEVEMENT-UI` и `M04-C-FAMILY-RUNNER-COLLECTIBLES`; `15/67` завершены, `52` остаётся. Ещё `7` units условные. Знаменатель provisional до дальнейшей инвентаризации child batches M04/M05/M10.
+- Исполнение от текущей точки: `68` обязательных v4 execution units, включая inventory-derived `M04-C-FAMILY-ACHIEVEMENT-UI`, `M04-C-FAMILY-RUNNER-COLLECTIBLES` и `M04-C-FAMILY-BONUS-ITEMS`; `16/68` завершены, `52` остаётся. Ещё `7` units условные. Знаменатель provisional до дальнейшей инвентаризации child batches M04/M05/M10.
 
 Эти знаменатели нельзя смешивать: один считает требования, другой — инженерные rollback/QA-границы.
 
@@ -40,7 +40,7 @@
 
 ## Следующие безопасные действия
 
-1. Продолжить `M04-C-FAMILIES`: после принятых `objective_npc`, `achievement_ui` и `runner_collectibles` выбрать ровно один следующий measured static-atlas family до мутации.
+1. Продолжить `M04-C-FAMILIES`: после принятых `objective_npc`, `achievement_ui`, `runner_collectibles` и двухдескрипторного `bonus_items` зафиксировать отдельный multi-descriptor screen-coverage contract для `ui_shared_core` до мутации.
 2. Для каждого child выполнить frozen before/after, Web/Android-emulator P4, M2_PLUS, visual parity и rollback.
 3. Не закрывать aggregate source package `M04.5` и не менять dynamic-atlas policy до завершения соответствующих execution units.
 

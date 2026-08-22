@@ -43,6 +43,27 @@ ATLAS_CONTRACT_TO_ACCEPTANCE_SCHEMA = {
 }
 
 
+def descriptor_identity(value: Any) -> list[dict[str, str]]:
+    if not isinstance(value, dict):
+        return []
+    descriptors = value.get("descriptors")
+    if isinstance(descriptors, list):
+        return [
+            {
+                "descriptor": str(item.get("descriptor", "")),
+                "descriptor_uuid": str(item.get("descriptor_uuid", "")),
+            }
+            for item in descriptors
+            if isinstance(item, dict)
+        ]
+    if value.get("descriptor") is None and value.get("descriptor_uuid") is None:
+        return []
+    return [{
+        "descriptor": str(value.get("descriptor", "")),
+        "descriptor_uuid": str(value.get("descriptor_uuid", "")),
+    }]
+
+
 def load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -396,7 +417,7 @@ def validate_manifest(
         implementation_status = packing.get("implementation_status")
         descriptor_fields = {
             key: packing.get(key)
-            for key in ("descriptor", "descriptor_uuid", "measurement_contract", "acceptance_evidence")
+            for key in ("descriptor", "descriptor_uuid", "descriptors", "measurement_contract", "acceptance_evidence")
             if packing.get(key) is not None
         }
         if implementation_status == "policy_only_not_packed" and group.get("runtime_effect") is not False:
@@ -404,76 +425,117 @@ def validate_manifest(
         if implementation_status != "measured_static_atlas" and descriptor_fields:
             add_finding(findings, "UNMEASURED_ATLAS_DESCRIPTOR", f"atlas_groups[{index}].packing", "no descriptor fields", descriptor_fields)
         if implementation_status == "measured_static_atlas":
-            descriptor = str(packing.get("descriptor", ""))
-            descriptor_uuid = str(packing.get("descriptor_uuid", ""))
-            measured_descriptors[descriptor].append(atlas_id)
-            descriptor_path = resolve_project_path(project_root, descriptor)
-            descriptor_meta_path = resolve_project_path(project_root, f"{descriptor}.meta")
-            if descriptor_path is None or not descriptor_path.is_file():
-                add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_MISSING", f"atlas_groups[{index}].packing.descriptor", "existing project file", descriptor)
-            else:
-                try:
-                    descriptor_value = load_json(descriptor_path)
-                except (OSError, json.JSONDecodeError) as exc:
-                    add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_INVALID", descriptor, {"__type__": "cc.SpriteAtlas"}, str(exc))
+            raw_descriptors = packing.get("descriptors")
+            descriptor_specs = raw_descriptors if isinstance(raw_descriptors, list) else [{
+                "descriptor": packing.get("descriptor"),
+                "descriptor_uuid": packing.get("descriptor_uuid"),
+            }]
+            manifest_descriptor_identity = descriptor_identity(packing)
+            for descriptor_index, descriptor_spec in enumerate(descriptor_specs):
+                descriptor_label = (
+                    f"atlas_groups[{index}].packing.descriptors[{descriptor_index}]"
+                    if isinstance(raw_descriptors, list)
+                    else f"atlas_groups[{index}].packing"
+                )
+                if not isinstance(descriptor_spec, dict):
+                    add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_INVALID", descriptor_label, "descriptor object", descriptor_spec)
+                    continue
+                descriptor = str(descriptor_spec.get("descriptor", ""))
+                descriptor_uuid = str(descriptor_spec.get("descriptor_uuid", ""))
+                measured_descriptors[descriptor].append(atlas_id)
+                descriptor_path = resolve_project_path(project_root, descriptor)
+                descriptor_meta_path = resolve_project_path(project_root, f"{descriptor}.meta")
+                source_directory = descriptor_spec.get("source_directory")
+                if source_directory is not None:
+                    source_root = resolve_project_path(project_root, str(source_directory))
+                    expected_source_count = descriptor_spec.get("source_count")
+                    actual_source_count = (
+                        len(list(source_root.glob("*.png")))
+                        if source_root is not None and source_root.is_dir()
+                        else None
+                    )
+                    descriptor_parent = descriptor_path.parent if descriptor_path is not None else None
+                    if source_root is None or not source_root.is_dir() or descriptor_parent != source_root:
+                        add_finding(
+                            findings,
+                            "AUTO_ATLAS_SOURCE_DIRECTORY_MISMATCH",
+                            descriptor_label,
+                            "existing directory equal to descriptor parent",
+                            source_directory,
+                        )
+                    if actual_source_count != expected_source_count:
+                        add_finding(
+                            findings,
+                            "AUTO_ATLAS_SOURCE_COUNT_MISMATCH",
+                            f"{descriptor_label}.source_count",
+                            expected_source_count,
+                            actual_source_count,
+                        )
+                if descriptor_path is None or not descriptor_path.is_file():
+                    add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_MISSING", f"{descriptor_label}.descriptor", "existing project file", descriptor)
                 else:
-                    if descriptor_value != {"__type__": "cc.SpriteAtlas"}:
-                        add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_INVALID", descriptor, {"__type__": "cc.SpriteAtlas"}, descriptor_value)
-            if descriptor_meta_path is None or not descriptor_meta_path.is_file():
-                add_finding(findings, "AUTO_ATLAS_META_MISSING", f"{descriptor}.meta", "existing project file", None)
-            else:
-                try:
-                    descriptor_meta = load_json(descriptor_meta_path)
-                except (OSError, json.JSONDecodeError) as exc:
-                    add_finding(findings, "AUTO_ATLAS_META_INVALID", f"{descriptor}.meta", "valid JSON", str(exc))
+                    try:
+                        descriptor_value = load_json(descriptor_path)
+                    except (OSError, json.JSONDecodeError) as exc:
+                        add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_INVALID", descriptor, {"__type__": "cc.SpriteAtlas"}, str(exc))
+                    else:
+                        if descriptor_value != {"__type__": "cc.SpriteAtlas"}:
+                            add_finding(findings, "AUTO_ATLAS_DESCRIPTOR_INVALID", descriptor, {"__type__": "cc.SpriteAtlas"}, descriptor_value)
+                if descriptor_meta_path is None or not descriptor_meta_path.is_file():
+                    add_finding(findings, "AUTO_ATLAS_META_MISSING", f"{descriptor}.meta", "existing project file", None)
                 else:
-                    actual_meta_header = {
-                        "ver": descriptor_meta.get("ver"),
-                        "importer": descriptor_meta.get("importer"),
-                        "imported": descriptor_meta.get("imported"),
-                        "uuid": descriptor_meta.get("uuid"),
-                        "files": descriptor_meta.get("files"),
-                        "subMetas": descriptor_meta.get("subMetas"),
-                    }
-                    expected_meta_header = {
-                        "ver": "1.0.8",
-                        "importer": "auto-atlas",
-                        "imported": True,
-                        "uuid": descriptor_uuid,
-                        "files": [".json"],
-                        "subMetas": {},
-                    }
-                    if actual_meta_header != expected_meta_header:
-                        add_finding(findings, "AUTO_ATLAS_META_MISMATCH", f"{descriptor}.meta", expected_meta_header, actual_meta_header)
-                    user_data = descriptor_meta.get("userData", {})
-                    expected_user_data = {
-                        "maxWidth": packing.get("max_texture_size"),
-                        "maxHeight": packing.get("max_texture_size"),
-                        "padding": packing.get("padding_px"),
-                        "allowRotation": False,
-                        "forceSquared": False,
-                        "powerOfTwo": False,
-                        "algorithm": "MaxRects",
-                        "format": "png",
-                        "quality": 80,
-                        "contourBleed": True,
-                        "paddingBleed": True,
-                        "filterUnused": False,
-                        "removeTextureInBundle": True,
-                        "removeImageInBundle": True,
-                        "removeSpriteAtlasInBundle": True,
-                        "compressSettings": {},
-                        "textureSetting": {
-                            "wrapModeS": "clamp-to-edge",
-                            "wrapModeT": "clamp-to-edge",
-                            "minfilter": "linear",
-                            "magfilter": "linear",
-                            "mipfilter": "none",
-                            "anisotropy": 0,
-                        },
-                    }
-                    if user_data != expected_user_data:
-                        add_finding(findings, "AUTO_ATLAS_SETTINGS_MISMATCH", f"{descriptor}.meta.userData", expected_user_data, user_data)
+                    try:
+                        descriptor_meta = load_json(descriptor_meta_path)
+                    except (OSError, json.JSONDecodeError) as exc:
+                        add_finding(findings, "AUTO_ATLAS_META_INVALID", f"{descriptor}.meta", "valid JSON", str(exc))
+                    else:
+                        actual_meta_header = {
+                            "ver": descriptor_meta.get("ver"),
+                            "importer": descriptor_meta.get("importer"),
+                            "imported": descriptor_meta.get("imported"),
+                            "uuid": descriptor_meta.get("uuid"),
+                            "files": descriptor_meta.get("files"),
+                            "subMetas": descriptor_meta.get("subMetas"),
+                        }
+                        expected_meta_header = {
+                            "ver": "1.0.8",
+                            "importer": "auto-atlas",
+                            "imported": True,
+                            "uuid": descriptor_uuid,
+                            "files": [".json"],
+                            "subMetas": {},
+                        }
+                        if actual_meta_header != expected_meta_header:
+                            add_finding(findings, "AUTO_ATLAS_META_MISMATCH", f"{descriptor}.meta", expected_meta_header, actual_meta_header)
+                        user_data = descriptor_meta.get("userData", {})
+                        expected_user_data = {
+                            "maxWidth": packing.get("max_texture_size"),
+                            "maxHeight": packing.get("max_texture_size"),
+                            "padding": packing.get("padding_px"),
+                            "allowRotation": False,
+                            "forceSquared": False,
+                            "powerOfTwo": False,
+                            "algorithm": "MaxRects",
+                            "format": "png",
+                            "quality": 80,
+                            "contourBleed": True,
+                            "paddingBleed": True,
+                            "filterUnused": False,
+                            "removeTextureInBundle": True,
+                            "removeImageInBundle": True,
+                            "removeSpriteAtlasInBundle": True,
+                            "compressSettings": {},
+                            "textureSetting": {
+                                "wrapModeS": "clamp-to-edge",
+                                "wrapModeT": "clamp-to-edge",
+                                "minfilter": "linear",
+                                "magfilter": "linear",
+                                "mipfilter": "none",
+                                "anisotropy": 0,
+                            },
+                        }
+                        if user_data != expected_user_data:
+                            add_finding(findings, "AUTO_ATLAS_SETTINGS_MISMATCH", f"{descriptor}.meta.userData", expected_user_data, user_data)
 
             measurement_path = resolve_project_path(project_root, str(packing.get("measurement_contract", "")))
             acceptance_path = resolve_project_path(project_root, str(packing.get("acceptance_evidence", "")))
@@ -520,8 +582,7 @@ def validate_manifest(
                             "parent_unit": measurement.get("parent_unit"),
                             "status": measurement.get("status"),
                             "atlas_id": measurement_candidate.get("atlas_id"),
-                            "descriptor": measurement_candidate.get("descriptor"),
-                            "descriptor_uuid": measurement_candidate.get("descriptor_uuid"),
+                            "descriptors": descriptor_identity(measurement_candidate),
                             "result": measurement_result.get("status"),
                             "acceptance_checks": measurement_checks,
                         }
@@ -531,8 +592,7 @@ def validate_manifest(
                             "parent_unit": expected_parent_unit,
                             "status": "candidate_accepted",
                             "atlas_id": atlas_id,
-                            "descriptor": descriptor,
-                            "descriptor_uuid": descriptor_uuid,
+                            "descriptors": manifest_descriptor_identity,
                             "result": "accepted",
                             "acceptance_checks": measurement_checks,
                         }
@@ -563,8 +623,7 @@ def validate_manifest(
                             "parent_unit": acceptance.get("parent_unit"),
                             "status": acceptance.get("status"),
                             "atlas_id": acceptance_candidate.get("atlas_id"),
-                            "descriptor": acceptance_candidate.get("descriptor"),
-                            "descriptor_uuid": acceptance_candidate.get("descriptor_uuid"),
+                            "descriptors": descriptor_identity(acceptance_candidate),
                             "checks_passed": acceptance_result.get("checks_passed"),
                             "checks_total": acceptance_result.get("checks_total"),
                         }
@@ -575,8 +634,7 @@ def validate_manifest(
                             "parent_unit": expected_parent_unit,
                             "status": "PASS",
                             "atlas_id": atlas_id,
-                            "descriptor": descriptor,
-                            "descriptor_uuid": descriptor_uuid,
+                            "descriptors": manifest_descriptor_identity,
                             "checks_passed": expected_total,
                             "checks_total": expected_total,
                         }
