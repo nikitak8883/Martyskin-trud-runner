@@ -368,7 +368,17 @@
         "descriptor": {"$ref": "#/$defs/relative_path"},
         "descriptor_uuid": {"$ref": "#/$defs/uuid"},
         "source_directory": {"$ref": "#/$defs/relative_path"},
-        "source_count": {"type": "integer", "minimum": 1}
+        "source_count": {"type": "integer", "minimum": 1},
+        "allow_rotation": {"type": "boolean"}
+      }
+    },
+    "atlas_standalone_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "source_count"],
+      "properties": {
+        "source": {"$ref": "#/$defs/relative_path"},
+        "source_count": {"const": 1}
       }
     },
     "packing": {
@@ -409,6 +419,12 @@
           "minItems": 2,
           "uniqueItems": true,
           "items": {"$ref": "#/$defs/atlas_descriptor"}
+        },
+        "standalone_sources": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/atlas_standalone_source"}
         },
         "measurement_contract": {"$ref": "#/$defs/relative_path"},
         "acceptance_evidence": {"$ref": "#/$defs/relative_path"}

@@ -1,13 +1,30 @@
 # CURRENT_STATE — Martyshkin Trud Runner
 
 Generated: 2026-07-02 15:44 +03:00  
-Updated: 2026-08-22  
+Updated: 2026-08-26  
 Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`  
 Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m04_c_bonus_items_child_complete / m04_c_families_ready / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m04_c_ui_shared_core_child_complete / m04_c_families_ready / release_blocked`
+
+## 2026-08-26 M04-C-FAMILY-UI-SHARED-CORE completion overlay
+
+This overlay supersedes every older next-action line below; older sections remain historical evidence only.
+
+- `ui_shared_core` is the fifth accepted measured static-atlas family: 28 shared UI PNGs are represented by four directory-local descriptors plus one explicit standalone title banner. Source PNG bytes, resource keys and file locations are unchanged.
+- Frozen comparison passes `63/63`. Android-emulator median draws improve `62 → 40` (`-22`, `-35.4839%`) and load time `1915 → 1255 ms`; Web improves `54 → 40`, load `991 → 564 ms`, texture memory `40.11 → 25.09 MiB`, and dynamic-atlas copies `10 → 0`.
+- Four contract corrections were audited before acceptance: an ineffective singleton descriptor was removed, runtime repacking of the bounded shared UI family was disabled, MaxRects rotation was restricted to cards/panels, visual parity gained zero-new-white and exact-repeat gates, and an impossible total-draw ratio was replaced by the established `30%` gate while retaining the absolute reduction gate.
+- Visual parity passes on Web and Android: all 28 sprites visible, no new near-white matte pixels, no missing/pivot/trim/rotation regression, and fresh candidate repeats are pixel-identical.
+- Static gate passes `26/26 × 2`; Web passes `34/34 × 2`, interaction and restart `10/10 × 2`; Android emulator passes `28/28 × 2`, touch/name persistence, restart `10/10` and soak `300.439 s` with zero process loss.
+- Android QA is host-silent by construction: AVD startup requires `-no-audio`, media stream 3 is fail-closed at volume `0`, and no physical device was addressed.
+- M2_PLUS passes `8/8` applicable slots; four focused-recovery slots are explicitly not applicable because no save, migration, signing, release or recovery seam changed.
+- The inventory-derived child expands the execution denominator: `17/69` complete (`24.6377%`), `52` mandatory units remain plus `7` conditional. Source remains `28/95`; aggregate `M04.5` remains pending with `57` mandatory source packages plus `10` conditional.
+- Current checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20260826_M04_C_FAMILY_UI_SHARED_CORE_COMPLETE.md`.
+- Current validation report: `docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_VALIDATION_SUMMARY.json`.
+- Next safe unit: continue `M04-C-FAMILIES` by selecting and freezing exactly one remaining measured family from the current inventory; no broader batch is implied.
+- Physical device used: `NO`. Release remains blocked by `M02.1`, `M02.7` and `M12.7`.
 
 ## 2026-08-22 M04-C-FAMILY-BONUS-ITEMS completion overlay
 

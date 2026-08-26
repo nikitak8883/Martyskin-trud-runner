@@ -51,6 +51,27 @@ function Invoke-MtrAdb {
     return $text
 }
 
+function Disable-MtrEmulatorAudio {
+    $setOutput = Invoke-MtrAdb -Arguments @(
+        'shell', 'cmd', 'media_session', 'volume', '--stream', '3', '--set', '0'
+    )
+    $state = Invoke-MtrAdb -Arguments @(
+        'shell', 'cmd', 'media_session', 'volume', '--stream', '3', '--get'
+    )
+    $volumeMatch = [regex]::Match($state, 'volume is (?<volume>\d+)\b')
+    if (-not $volumeMatch.Success -or [int]$volumeMatch.Groups['volume'].Value -ne 0) {
+        throw "Emulator audio mute precondition failed: $state"
+    }
+    return [pscustomobject]@{
+        policy = 'host-no-audio-plus-media-stream-zero'
+        startup_argument_required = '-no-audio'
+        media_stream = 3
+        volume = 0
+        set_output = $setOutput
+        verification = $state
+    }
+}
+
 function Write-MtrUtf8 {
     param(
         [Parameter(Mandatory = $true)]
@@ -434,6 +455,7 @@ $isEmulator = (Invoke-MtrAdb -Arguments @('shell', 'getprop', 'ro.kernel.qemu'))
 if ($deviceState -ne 'device' -or -not $isEmulator) {
     throw "Emulator-only guard rejected serial '$Serial' (state=$deviceState, qemu=$isEmulator)."
 }
+$audioPolicy = Disable-MtrEmulatorAudio
 
 $windowSize = Get-MtrWindowSize
 $points = [ordered]@{
@@ -680,6 +702,7 @@ $summary = [ordered]@{
     status = if ($overallPassed) { 'pass' } else { 'fail' }
     serial = $Serial
     emulator_only_guard = $true
+    audio_policy = $audioPolicy
     component = $component
     started_at = $runStartedAt.ToString('o')
     finished_at = (Get-Date).ToString('o')

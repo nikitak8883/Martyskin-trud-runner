@@ -405,7 +405,9 @@ if ($EnsureEmulator -and @($onlineDevices).Count -eq 0 -and $tools.adb.found -an
     $selectedAvdName = Select-MtrAvdName -AvdNames $avds -PreferredName $PreferredAvdName
     $emulatorStdoutPath = Join-Path $logRoot ("emulator-start-{0}.stdout.log" -f $timestamp)
     $emulatorStderrPath = Join-Path $logRoot ("emulator-start-{0}.stderr.log" -f $timestamp)
-    $emulatorArguments = @('-avd', $selectedAvdName, '-no-snapshot-save', '-no-boot-anim')
+    # QA emulators are always host-silent. This prevents background game audio
+    # without mutating the product audio settings exercised by the test cases.
+    $emulatorArguments = @('-avd', $selectedAvdName, '-no-snapshot-save', '-no-boot-anim', '-no-audio')
     if (-not $Windowed) {
         $emulatorArguments += @('-no-window', '-gpu', 'swiftshader_indirect')
     }
@@ -423,6 +425,7 @@ if ($EnsureEmulator -and @($onlineDevices).Count -eq 0 -and $tools.adb.found -an
         $emulatorStart = [pscustomobject]@{
             attempted = $true
             avdName = $selectedAvdName
+            arguments = @($emulatorArguments)
             processId = $startRun.processId
             hasExited = $startRun.hasExited
             exitCode = $startRun.exitCode
@@ -434,6 +437,7 @@ if ($EnsureEmulator -and @($onlineDevices).Count -eq 0 -and $tools.adb.found -an
         $emulatorStart = [pscustomobject]@{
             attempted = $true
             avdName = $selectedAvdName
+            arguments = @($emulatorArguments)
             processId = $null
             hasExited = $null
             exitCode = $null

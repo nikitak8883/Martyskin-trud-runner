@@ -1,0 +1,132 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_acceptance.v1",
+  "unit_id": "M04-C-FAMILY-UI-SHARED-CORE",
+  "parent_unit": "M04-C-FAMILIES",
+  "status": "PASS",
+  "generated_at": "2026-08-22T19:00:56+03:00",
+  "candidate": {
+    "atlas_id": "ui_shared_core",
+    "source_sprite_count": 28,
+    "descriptor_count": 4,
+    "standalone_texture_count": 1,
+    "candidate_texture_area_px": 3733352,
+    "descriptors": [
+      {
+        "source_directory": "assets/resources/ui/shared/buttons",
+        "source_sprite_count": 7,
+        "descriptor": "assets/resources/ui/shared/buttons/ui_shared_buttons.pac",
+        "descriptor_uuid": "93129a59-c6e4-4e02-bca8-eeb419b29c5c",
+        "allow_rotation": false
+      },
+      {
+        "source_directory": "assets/resources/ui/shared/cards",
+        "source_sprite_count": 11,
+        "descriptor": "assets/resources/ui/shared/cards/ui_shared_cards.pac",
+        "descriptor_uuid": "774f5471-1002-4fef-a865-61171ad80f4f",
+        "allow_rotation": true
+      },
+      {
+        "source_directory": "assets/resources/ui/shared/controls",
+        "source_sprite_count": 5,
+        "descriptor": "assets/resources/ui/shared/controls/ui_shared_controls.pac",
+        "descriptor_uuid": "e6592333-8918-477b-b9bf-d36d17314edb",
+        "allow_rotation": false
+      },
+      {
+        "source_directory": "assets/resources/ui/shared/panels",
+        "source_sprite_count": 4,
+        "descriptor": "assets/resources/ui/shared/panels/ui_shared_panels.pac",
+        "descriptor_uuid": "4a0d4489-d08e-4b1a-bc63-8a940035506e",
+        "allow_rotation": true
+      }
+    ],
+    "standalone_texture": "assets/resources/ui/shared/banners/title_banner_blank.png",
+    "runtime_dynamic_atlas_policy": "ui/shared SpriteFrame.packable=false after static-atlas import"
+  },
+  "acceptance": {
+    "checks_passed": 63,
+    "checks_total": 63,
+    "failed_checks": [],
+    "web": {
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 28, "candidate": 5},
+      "draw_texture_count": {"baseline": 19, "candidate": 5},
+      "dynamic_atlas_packed_count": {"baseline": 10, "candidate": 0},
+      "draws_median": {"baseline": 54, "candidate": 40},
+      "load_elapsed_ms": {"baseline": 991, "candidate": 564},
+      "texture_memory_mb_median": {"baseline": 40.11, "candidate": 25.09},
+      "buffer_memory_mb_median": {"baseline": 9.03, "candidate": 9.03},
+      "fps_median": {"baseline": 45, "candidate": 49},
+      "runtime_bytes": {"baseline": 125633057, "candidate": 125655193},
+      "resources_bytes": {"baseline": 120301836, "candidate": 120323900},
+      "retained_source_uuid_artifacts": {"baseline": 84, "candidate": 3}
+    },
+    "android_emulator": {
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "emulator_verified": true,
+      "abi": "x86_64",
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 28, "candidate": 5},
+      "draw_texture_count": {"baseline": 28, "candidate": 5},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {
+        "baseline": 62,
+        "candidate": 40,
+        "absolute_reduction": 22,
+        "relative_reduction": 0.354839
+      },
+      "load_elapsed_ms": {"baseline": 1915, "candidate": 1255},
+      "texture_memory_mb_median": {"baseline": 28.01, "candidate": 28.99},
+      "buffer_memory_mb_median": {"baseline": 18.04, "candidate": 18.04},
+      "fps_median": {"baseline": 8, "candidate": 8},
+      "runtime_bytes": {"baseline": 125819845, "candidate": 125841981},
+      "resources_bytes": {"baseline": 120301836, "candidate": 120323900},
+      "apk_bytes": {"baseline": 144544977, "candidate": 144556149},
+      "retained_source_uuid_artifacts": {"baseline": 84, "candidate": 3}
+    },
+    "visual_parity": {
+      "status": "pass",
+      "manual_review": "pass_all_twenty_eight_sprites_visible_no_new_white_or_opaque_matte_no_pivot_trim_or_rotation_regression",
+      "web": {
+        "mean_absolute_error": 0.181948,
+        "changed_pixel_fraction": 0.004764911,
+        "new_near_white_pixels": 0
+      },
+      "android_emulator": {
+        "mean_absolute_error": 0.206102,
+        "changed_pixel_fraction": 0.005114609,
+        "new_near_white_pixels": 0
+      },
+      "candidate_repeat_stability": {
+        "status": "pass",
+        "web_mean_absolute_error": 0,
+        "web_changed_pixels": 0,
+        "android_mean_absolute_error": 0,
+        "android_changed_pixels": 0
+      }
+    }
+  },
+  "contract_corrections": [
+    "UI-SHARED-DESIGN-001: removed a no-op singleton descriptor and blocked redundant runtime dynamic-atlas repacking",
+    "UI-SHARED-PACKING-002: enabled cards/panels MaxRects rotation to remove the Android texture-memory regression",
+    "UI-SHARED-VISUAL-003: paired the family-sized edge envelope with zero-new-white-pixel and exact-repeat gates",
+    "UI-SHARED-DRAW-RATIO-004: replaced an impossible total-draw ratio with the established 0.3 gate while retaining the absolute reduction gate"
+  ],
+  "ephemeral_evidence": [
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/web/runtime.json", "sha256": "C41876E1EDD15392ECC2FAED927F44C999DF589C5A00F0C9EF48171DF127E121"},
+    {"path": "temp/m04-c-families/ui_shared_core/candidate/web/runtime.json", "sha256": "13BAC0DE28F3A676305587DDA96ACC6CDC531536D7D7F47570258B99016619D2"},
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/android/runtime.json", "sha256": "117AA7A5E7588E96C6728D720A7BE57E56FE83007B0294C2A5F09935465A0F59"},
+    {"path": "temp/m04-c-families/ui_shared_core/candidate/android/runtime.json", "sha256": "207B423824899BE33595DB75150037F7C7E0E1191B4EA44F477971B5F3F4C3A5"},
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/web/artifacts.json", "sha256": "F9AF2782E1505B6C2935D3912EEBA883038265C8FBE4E2B672B6C37D798CEA17"},
+    {"path": "temp/m04-c-families/ui_shared_core/candidate/web/artifacts.json", "sha256": "3B87878806A5DBCA9A1D2B74A1423F1DE9B0E36FC7932FCF3F5F134601DAD62E"},
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/android/artifacts.json", "sha256": "E39735A8F0CE209868F144CAC7A3B8F09FB1C2F9D81B7495E33B3011F7328FFB"},
+    {"path": "temp/m04-c-families/ui_shared_core/candidate/android/artifacts.json", "sha256": "C3C5E48968F87A952D31D76692DE83E8E35437E0AFDA6737D186A269EF116412"},
+    {"path": "temp/m04-c-families/ui_shared_core/comparison/visual-parity.json", "sha256": "0BA25685E31DC54DC89510EBA4FC6FAE06328D5CAB339EBCD1D5E4B4D979D627"},
+    {"path": "temp/m04-c-families/ui_shared_core/comparison/acceptance.json", "sha256": "34A8A5710D77C1D7F11607E212873C74A19551A4496D2C0A1AEDBCE802F655BC"},
+    {"path": "temp/m04-c-families/ui_shared_core/candidate-repeat-final/web/atlas-family.png", "sha256": "B96649C0DAB6C0342C4FFC8EFC0A14ADE2D1992A82489BCC58D55F358BDB297A"},
+    {"path": "temp/m04-c-families/ui_shared_core/candidate-repeat-final/android/atlas-family.png", "sha256": "B6437B23D454FA28308B325FD87549F4CE35C7C3BD03641D17336B3C69C15E8E"},
+    {"path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk", "sha256": "A3A0DE35748BBB30F69D739F466462B2A5C0F0736E72D3E77DD5C8CBFF29A0FF"}
+  ],
+  "decision": "accept_ui_shared_core_mixed_static_atlas_topology_keep_unmeasured_families_closed"
+}

@@ -3,7 +3,7 @@
   "schema_version": 1,
   "contract": "mtr.atlas_manifest",
   "status": "contract_with_measured_runtime_families",
-  "generated_at": "2026-08-22T15:42:51+03:00",
+  "generated_at": "2026-08-26T09:49:01+03:00",
   "source_checkpoint": {
     "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
     "branch": "mtr-source-v3",
@@ -38,14 +38,14 @@
       "assets/resources/config/content_identity.json.meta"
     ],
     "source_payload": {
-      "count": 1640,
-      "bytes": 116454116,
-      "sha256": "EBCA3861E9DF98F6F6D1F33CC423EDC9D34BEC6DE6536355887AF434E0B9BE1A"
+      "count": 1644,
+      "bytes": 116454256,
+      "sha256": "B98ED41401A44C13D9E006999C19F71BD8F1CB102E2DAB941B5E57722FE7457B"
     },
     "cocos_metadata": {
-      "count": 1887,
-      "bytes": 4578903,
-      "sha256": "B3D7A5A20422E04C4563BCCA14F8E1BF2E7C9E9ADC895DFC9974C7A39782F972"
+      "count": 1891,
+      "bytes": 4582193,
+      "sha256": "01F0DFBCC3676F545298248E64C33D5230F0D141C99D48F876531E9B99EC6944"
     },
     "png_validation": {
       "count": 1528,
@@ -62,7 +62,7 @@
       ".jpg": {"count": 30, "bytes": 5999213},
       ".json": {"count": 35, "bytes": 1163846},
       ".mp3": {"count": 1, "bytes": 116284},
-      ".pac": {"count": 5, "bytes": 175},
+      ".pac": {"count": 9, "bytes": 315},
       ".png": {"count": 1528, "bytes": 107146623},
       ".wav": {"count": 40, "bytes": 2018006}
     }
@@ -355,9 +355,13 @@
       "match": "prefix",
       "owner": "ui_ux_design_system",
       "bundle_id": "resources",
-      "provenance": ["assets/resources/config/ui_skin_manifest.json"],
-      "asset_count": 29,
-      "total_bytes": 3665511,
+      "provenance": [
+        "assets/resources/config/ui_skin_manifest.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json"
+      ],
+      "asset_count": 33,
+      "total_bytes": 3665651,
       "fallback_policy": "block_release"
     }
   ],
@@ -371,19 +375,61 @@
       "owner": "ui_ux_design_system",
       "bundle_id": "resources",
       "packing": {
-        "mode": "static_atlas_candidate",
-        "implementation_status": "policy_only_not_packed",
+        "mode": "static_atlas",
+        "implementation_status": "measured_static_atlas",
         "max_texture_size": 2048,
         "padding_px": 2,
-        "compression": {"web": "lossless_source_png", "android": "platform_default_pending_measurement", "status": "unchanged_until_measured"},
+        "compression": {"web": "auto_atlas_png_lossless", "android": "auto_atlas_png_lossless", "status": "measured_family_accepted"},
         "trim_policy": "preserve_existing_import",
         "pivot_policy": "preserve_existing_import",
-        "dynamic_atlas_allowed": false
+        "dynamic_atlas_allowed": false,
+        "descriptors": [
+          {
+            "source_directory": "assets/resources/ui/shared/buttons",
+            "source_count": 7,
+            "descriptor": "assets/resources/ui/shared/buttons/ui_shared_buttons.pac",
+            "descriptor_uuid": "93129a59-c6e4-4e02-bca8-eeb419b29c5c",
+            "allow_rotation": false
+          },
+          {
+            "source_directory": "assets/resources/ui/shared/cards",
+            "source_count": 11,
+            "descriptor": "assets/resources/ui/shared/cards/ui_shared_cards.pac",
+            "descriptor_uuid": "774f5471-1002-4fef-a865-61171ad80f4f",
+            "allow_rotation": true
+          },
+          {
+            "source_directory": "assets/resources/ui/shared/controls",
+            "source_count": 5,
+            "descriptor": "assets/resources/ui/shared/controls/ui_shared_controls.pac",
+            "descriptor_uuid": "e6592333-8918-477b-b9bf-d36d17314edb",
+            "allow_rotation": false
+          },
+          {
+            "source_directory": "assets/resources/ui/shared/panels",
+            "source_count": 4,
+            "descriptor": "assets/resources/ui/shared/panels/ui_shared_panels.pac",
+            "descriptor_uuid": "4a0d4489-d08e-4b1a-bc63-8a940035506e",
+            "allow_rotation": true
+          }
+        ],
+        "standalone_sources": [
+          {
+            "source": "assets/resources/ui/shared/banners/title_banner_blank.png",
+            "source_count": 1
+          }
+        ],
+        "measurement_contract": "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json",
+        "acceptance_evidence": "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json"
       },
-      "provenance": ["assets/resources/config/ui_skin_manifest.json"],
+      "provenance": [
+        "assets/resources/config/ui_skin_manifest.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json"
+      ],
       "observed": {"count": 28, "bytes": 137622},
       "fallback_policy": "block_release",
-      "runtime_effect": false
+      "runtime_effect": true
     },
     {
       "atlas_id": "main_menu_background",

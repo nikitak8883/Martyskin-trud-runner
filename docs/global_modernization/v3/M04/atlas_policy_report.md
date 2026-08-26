@@ -1,7 +1,7 @@
 # M04 atlas, bundle and provenance policy
 
-Date: `2026-08-22`  
-Verdict: `CANONICAL POLICY ACCEPTED; OBJECTIVE_NPC, ACHIEVEMENT_UI, RUNNER_COLLECTIBLES AND BONUS_ITEMS ACCEPTED; REMAINING RUNTIME PACKING DEFERRED`
+Date: `2026-08-26`  
+Verdict: `CANONICAL POLICY ACCEPTED; OBJECTIVE_NPC, ACHIEVEMENT_UI, RUNNER_COLLECTIBLES, BONUS_ITEMS AND UI_SHARED_CORE ACCEPTED; REMAINING RUNTIME PACKING DEFERRED`
 
 ## Canonical contract
 
@@ -15,13 +15,13 @@ The contract requires:
 - project-contained, existing provenance files;
 - explicit bundle ID, packing mode, max texture size, padding, Web/Android compression status, trim/pivot policy and dynamic-atlas decision;
 - exact source/content checkpoint and Cocos metadata integrity;
-- `runtime_effect: false` for policy-only groups; a measured family may set it true only with a contained descriptor plus accepted contract/evidence links.
+- `runtime_effect: false` for policy-only groups; a measured family may set it true only with contained descriptors, any explicit standalone remainder, and accepted contract/evidence links.
 
 ## Current policy groups
 
 | Group | Images | Mode | Implementation |
 | --- | ---: | --- | --- |
-| `ui_shared_core` | 28 | static atlas candidate | policy only |
+| `ui_shared_core` | 28 | mixed static atlas | `M04-C-FAMILY-UI-SHARED-CORE` accepted as four measured directory-local descriptors plus one explicit standalone banner |
 | `main_menu_background` | 1 | standalone | existing standalone |
 | `player_skins_selected` | 960 | unpacked family | existing unpacked |
 | `bonus_items` | 12 | static atlas | `M04-C-FAMILY-BONUS-ITEMS` accepted as two measured directory-local descriptors |
@@ -39,7 +39,7 @@ Coverage is `1,558/1,558` PNG/JPG, uncovered `0`, overlaps `0`. A `static_atlas_
 
 The existing Cocos `resources` bundle remains unchanged: `isBundle=true`, `bundleName=resources`, priority `8`. Load/preload/release ownership is explicitly deferred to `M04.7 / M04-E`; optional packs must not be moved or eagerly loaded in M04-A.
 
-Dynamic atlas remains disabled for the accepted `objective_npc`, `achievement_ui`, `runner_collectibles` and `bonus_items` groups and is otherwise deferred until `M04.6 / M04-D` has a measured allowlist. The four accepted groups use Cocos Auto Atlas PNG descriptors on Web and Android; `bonus_items` intentionally uses two directory-local descriptors so resource keys remain stable. These are family-specific results, not a project-wide Android texture-compression claim. Every remaining candidate retains `platform_default_pending_measurement` until its own emulator memory/build/runtime evidence exists.
+Dynamic atlas remains disabled for the accepted `objective_npc`, `achievement_ui`, `runner_collectibles`, `bonus_items` and `ui_shared_core` groups and is otherwise deferred until `M04.6 / M04-D` has a measured allowlist. The five accepted groups use Cocos Auto Atlas PNG descriptors on Web and Android; `bonus_items` uses two directory-local descriptors, while `ui_shared_core` uses four directory-local descriptors and keeps its no-op singleton banner as one explicit standalone texture. Cards and panels alone permit MaxRects rotation because that measured policy removed the Android texture-memory regression without changing resource keys or frame geometry. These are family-specific results, not a project-wide Android texture-compression claim. Every remaining candidate retains `platform_default_pending_measurement` until its own emulator memory/build/runtime evidence exists.
 
 ## Fail-closed rules
 
@@ -58,6 +58,7 @@ Dynamic atlas remains disabled for the accepted `objective_npc`, `achievement_ui
 2. The broad themed ownership scope was split into eleven playable families plus themed UI, and owner equality is now validated.
 3. Explicit path conventions removed ambiguity between source-root-relative selectors and project-root-relative provenance/meta paths.
 4. Direct unit tests now prove text/binary canonicalization, metadata pairing/orphan detection, path containment and post-publication Git ancestry.
+5. The measured-family schema now models descriptor-local rotation and an explicit standalone remainder; validation fails closed on rotation drift, missing standalone files, or a descriptor-plus-standalone source-count mismatch.
 
 No open correctness finding remains. M04-B enforces naming, trim, pivot, alpha/null-frame, metadata/reference, bundle, provenance, quarantine and resolved-path contracts across all `1,558` governed images. Its deterministic seven-category index covers every image exactly once and links each entry to its atlas group, ownership scope and provenance.
 
@@ -68,3 +69,5 @@ No open correctness finding remains. M04-B enforces naming, trim, pivot, alpha/n
 `M04-C-FAMILY-RUNNER-COLLECTIBLES` then accepted exactly 14 gameplay-critical collectible sources. Its comparator passed `63/63`; Android emulator median draw calls fell from `34` to `21` (`-38.2353%`) while Web remained at `21`. Automated and manual parity found no matte, missing-source, trim or pivot regression. The durable decision is recorded in `M04_C_FAMILY_RUNNER_COLLECTIBLES_ACCEPTANCE.json`; every remaining family remains closed.
 
 `M04-C-FAMILY-BONUS-ITEMS` accepted exactly 12 gameplay bonus/equipment sources through two non-overlapping directory-local descriptors. Its final comparator passed `63/63`; Android emulator median draw calls fell from `30` to `20` (`-33.3333%`) while Web moved from `19` to `20`, within the frozen absolute non-regression budget. Automated and manual parity found no matte, missing-source, trim or pivot regression. The preserved first comparison (`62/63`) proved that the original `50%` relative total-draw gate was mathematically unreachable because 18 baseline draws were outside this family; the gate alone was corrected to the established `30%` family threshold before acceptance, with every absolute, texture, runtime, artifact and visual gate unchanged. The durable decision is recorded in `M04_C_FAMILY_BONUS_ITEMS_ACCEPTANCE.json`; every remaining family remains closed.
+
+`M04-C-FAMILY-UI-SHARED-CORE` accepted all 28 shared UI sources through four non-overlapping directory-local descriptors and one explicit standalone banner. The final comparator passed `63/63`; Android emulator median draw calls fell from `62` to `40` (`-35.4839%`), Web fell from `54` to `40`, and dynamic-atlas copies fell from `10` to `0` on Web. Rotation limited to cards/panels reduced the candidate texture area to `3,733,352 px` and kept Android texture memory at `28.99 MiB` versus `28.01 MiB` baseline. Automated parity introduced zero near-white pixels, manual review found no matte/missing/pivot/trim/rotation defect, and fresh Web plus Android repeats matched the accepted screenshots pixel-for-pixel. The durable decision is recorded in `M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json`; every unmeasured family remains closed.

@@ -16,6 +16,8 @@ const contractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3'
 const achievementUiContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json');
 const runnerCollectiblesContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_RUNNER_COLLECTIBLES_CONTRACT.json');
 const bonusItemsContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json');
+const uiSharedCoreContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json');
+const uiSharedCoreAcceptancePath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json');
 const webRuntimeFunctionPath = path.join(projectRoot, 'tools', 'codex', 'web_atlas_pilot_runtime_function.js');
 const webRunnerPath = path.join(projectRoot, 'tools', 'codex', 'Run-MtrWebAtlasPilotQa.js');
 const artifactMeasurerPath = path.join(projectRoot, 'tools', 'codex', 'Measure-MtrAtlasPilotArtifacts.js');
@@ -36,6 +38,8 @@ for (const requiredPath of [
   achievementUiContractPath,
   runnerCollectiblesContractPath,
   bonusItemsContractPath,
+  uiSharedCoreContractPath,
+  uiSharedCoreAcceptancePath,
   webRuntimeFunctionPath,
   webRunnerPath,
   artifactMeasurerPath,
@@ -112,6 +116,8 @@ assert.ok(gameRootSource.includes("objective_npc: {"));
 assert.ok(gameRootSource.includes("achievement_ui: {"));
 assert.ok(gameRootSource.includes("runner_collectibles: {"));
 assert.ok(gameRootSource.includes("bonus_items: {"));
+assert.ok(gameRootSource.includes("ui_shared_core: {"));
+assert.ok(gameRootSource.includes("UI_SHARED_ASSET_KEYS.filter((key) => key.startsWith('ui/shared/'))"));
 assert.ok(gameRootSource.includes("'objectives/ui/ui_monkey_profile_badge_01'"));
 assert.ok(gameRootSource.includes('if (!DEBUG) return;'));
 assert.ok(gameRootSource.includes('MTR_ATLAS_PILOT_COMPLETE'));
@@ -200,6 +206,79 @@ assert.strictEqual(bonusItemsContract.baseline_evidence.length, 6);
 assert.strictEqual(bonusItemsContract.candidate_result.status, 'accepted');
 assert.deepStrictEqual(bonusItemsContract.candidate_result.acceptance_checks, { passed: 63, total: 63 });
 
+const uiSharedCoreContract = JSON.parse(fs.readFileSync(uiSharedCoreContractPath, 'utf8'));
+assert.strictEqual(uiSharedCoreContract.$schema, 'mtr.m04_c_atlas_family_contract.v1');
+assert.strictEqual(uiSharedCoreContract.unit_id, 'M04-C-FAMILY-UI-SHARED-CORE');
+assert.strictEqual(uiSharedCoreContract.parent_unit, 'M04-C-FAMILIES');
+assert.strictEqual(uiSharedCoreContract.status, 'candidate_accepted');
+assert.strictEqual(uiSharedCoreContract.selection.selected_before_runtime_asset_mutation, true);
+assert.strictEqual(uiSharedCoreContract.selection.candidate_descriptor_present_at_selection, false);
+assert.strictEqual(uiSharedCoreContract.selection.metric_fishing_prohibited, true);
+assert.strictEqual(uiSharedCoreContract.candidate.atlas_id, 'ui_shared_core');
+assert.strictEqual(uiSharedCoreContract.candidate.source_count, 28);
+assert.strictEqual(uiSharedCoreContract.candidate.source_bytes, 137622);
+assert.strictEqual(uiSharedCoreContract.candidate.descriptor_count, 4);
+assert.strictEqual(uiSharedCoreContract.candidate.descriptors.length, 4);
+assert.strictEqual(uiSharedCoreContract.candidate.standalone_sources.length, 1);
+assert.strictEqual(uiSharedCoreContract.candidate.runtime_policy_overrides.length, 1);
+assert.strictEqual(uiSharedCoreContract.candidate.runtime_policy_overrides[0].source_count, 28);
+assert.deepStrictEqual(
+  uiSharedCoreContract.candidate.expected_retained_source_uuid_artifacts_by_platform,
+  { web: 3, android_emulator: 3 },
+);
+for (const descriptor of uiSharedCoreContract.candidate.descriptors) {
+  assert.ok(fs.existsSync(path.join(projectRoot, descriptor.descriptor)));
+  const descriptorMetaPath = path.join(projectRoot, descriptor.descriptor + '.meta');
+  assert.ok(fs.existsSync(descriptorMetaPath));
+  const descriptorMeta = JSON.parse(fs.readFileSync(descriptorMetaPath, 'utf8'));
+  assert.strictEqual(descriptorMeta.uuid, descriptor.descriptor_uuid);
+  assert.strictEqual(descriptorMeta.userData.allowRotation, descriptor.allow_rotation);
+}
+assert.ok(!fs.existsSync(path.join(projectRoot, 'assets', 'resources', 'ui', 'shared', 'banners', 'ui_shared_banners.pac')));
+assert.ok(gameRootSource.includes("if (key.startsWith('ui/shared/')) frame.packable = false;"));
+assert.strictEqual(uiSharedCoreContract.acceptance.source_texture_count.candidate_expected_by_platform.web, 5);
+assert.strictEqual(uiSharedCoreContract.acceptance.draw_texture_count.candidate_expected_by_platform.android_emulator, 5);
+assert.strictEqual(uiSharedCoreContract.acceptance.draw_calls.web.maximum_absolute_increase, 4);
+assert.strictEqual(uiSharedCoreContract.acceptance.draw_calls.android_emulator.minimum_absolute_reduction, 20);
+assert.strictEqual(uiSharedCoreContract.acceptance.draw_calls.android_emulator.minimum_relative_reduction, 0.3);
+assert.strictEqual(uiSharedCoreContract.acceptance.visual.automated_parity.maximum_changed_pixel_fraction, 0.006);
+assert.strictEqual(uiSharedCoreContract.acceptance.visual.automated_parity.maximum_new_near_white_pixels, 0);
+assert.strictEqual(uiSharedCoreContract.acceptance.visual.automated_parity.repeat_stability.required, true);
+assert.strictEqual(uiSharedCoreContract.acceptance.visual.automated_parity.repeat_stability.maximum_changed_pixel_fraction, 0);
+assert.strictEqual(uiSharedCoreContract.contract_corrections.length, 4);
+assert.deepStrictEqual(
+  uiSharedCoreContract.contract_corrections.map((correction) => correction.correction_id),
+  ['UI-SHARED-DESIGN-001', 'UI-SHARED-PACKING-002', 'UI-SHARED-VISUAL-003', 'UI-SHARED-DRAW-RATIO-004'],
+);
+assert.strictEqual(uiSharedCoreContract.contract_corrections[0].original_value.descriptor_count, 5);
+assert.strictEqual(uiSharedCoreContract.contract_corrections[0].corrected_value.descriptor_count, 4);
+assert.strictEqual(uiSharedCoreContract.contract_corrections[1].corrected_value.candidate_texture_area_px, 3733352);
+assert.strictEqual(uiSharedCoreContract.contract_corrections[2].corrected_value.maximum_new_near_white_pixels, 0);
+assert.strictEqual(uiSharedCoreContract.contract_corrections[3].corrected_value, 0.3);
+assert.strictEqual(uiSharedCoreContract.rollback.asset_relocation_authorized, false);
+assert.strictEqual(uiSharedCoreContract.rollback.parent_family_batch_authorized, false);
+assert.strictEqual(uiSharedCoreContract.baseline_observation.status, 'pass');
+assert.strictEqual(uiSharedCoreContract.baseline_observation.web.source_texture_count, 28);
+assert.strictEqual(uiSharedCoreContract.baseline_observation.web.draw_texture_count, 19);
+assert.strictEqual(uiSharedCoreContract.baseline_observation.web.dynamic_atlas_packed_count, 10);
+assert.strictEqual(uiSharedCoreContract.baseline_observation.android_emulator.draw_texture_count, 28);
+assert.strictEqual(uiSharedCoreContract.baseline_evidence.length, 6);
+assert.strictEqual(uiSharedCoreContract.candidate_result.status, 'accepted');
+assert.deepStrictEqual(uiSharedCoreContract.candidate_result.acceptance_checks, { passed: 63, total: 63 });
+assert.strictEqual(uiSharedCoreContract.candidate_result.android_emulator.draws_median.absolute_reduction, 22);
+assert.strictEqual(uiSharedCoreContract.candidate_result.visual_parity.repeat_stability, 'exact_pixel_match');
+
+const uiSharedCoreAcceptance = JSON.parse(fs.readFileSync(uiSharedCoreAcceptancePath, 'utf8'));
+assert.strictEqual(uiSharedCoreAcceptance.$schema, 'mtr.m04_c_atlas_family_acceptance.v1');
+assert.strictEqual(uiSharedCoreAcceptance.unit_id, 'M04-C-FAMILY-UI-SHARED-CORE');
+assert.strictEqual(uiSharedCoreAcceptance.status, 'PASS');
+assert.strictEqual(uiSharedCoreAcceptance.acceptance.checks_passed, 63);
+assert.strictEqual(uiSharedCoreAcceptance.acceptance.checks_total, 63);
+assert.deepStrictEqual(uiSharedCoreAcceptance.acceptance.failed_checks, []);
+assert.strictEqual(uiSharedCoreAcceptance.acceptance.android_emulator.emulator_verified, true);
+assert.strictEqual(uiSharedCoreAcceptance.acceptance.android_emulator.draws_median.absolute_reduction, 22);
+assert.strictEqual(uiSharedCoreAcceptance.acceptance.visual_parity.candidate_repeat_stability.status, 'pass');
+
 const webRuntimeFunction = fs.readFileSync(webRuntimeFunctionPath, 'utf8');
 assert.ok(webRuntimeFunction.includes("schema: 'mtr.web_atlas_pilot.v1'"));
 assert.ok(webRuntimeFunction.includes("MTR_ATLAS_PILOT_COMPLETE "));
@@ -210,6 +289,7 @@ assert.ok(webRuntimeFunction.includes('metric.drawTextureCount'));
 assert.ok(webRuntimeFunction.includes('achievement_ui: 9'));
 assert.ok(webRuntimeFunction.includes('runner_collectibles: 14'));
 assert.ok(webRuntimeFunction.includes('bonus_items: 12'));
+assert.ok(webRuntimeFunction.includes('ui_shared_core: 28'));
 assert.ok(webRuntimeFunction.includes('metric.atlasId === atlasId'));
 assert.ok(webRuntimeFunction.includes('expectedInfrastructureErrors'));
 assert.ok(webRuntimeFunction.includes('expectedInfrastructureWarnings'));
@@ -274,11 +354,15 @@ assert.ok(androidRunner.includes('$ErrorActionPreference = $previousErrorActionP
 const visualComparator = fs.readFileSync(visualComparatorPath, 'utf8');
 assert.ok(visualComparator.includes('mtr.atlas_pilot_visual_parity.v1'));
 assert.ok(visualComparator.includes('maximum_changed_pixel_fraction'));
+assert.ok(visualComparator.includes('newNearWhitePixelCount'));
+assert.ok(visualComparator.includes('--candidate-repeat-root'));
+assert.ok(visualComparator.includes('--candidate-repeat-root is required by the visual acceptance contract.'));
 assert.ok(visualComparator.includes('screenshot_filename'));
 assert.ok(visualComparator.includes('Unsafe screenshot filename in contract'));
 const comparisonSource = fs.readFileSync(comparisonPath, 'utf8');
 assert.ok(comparisonSource.includes('mtr.atlas_pilot_comparison.v1'));
 assert.ok(comparisonSource.includes('minimum_relative_reduction'));
+assert.ok(comparisonSource.includes('expected_retained_source_uuid_artifacts_by_platform'));
 
 const comparisonModule = require(comparisonPath);
 const compareFixtureRoot = fs.mkdtempSync(path.join(projectRoot, 'temp', 'm04-c-compare-test-'));

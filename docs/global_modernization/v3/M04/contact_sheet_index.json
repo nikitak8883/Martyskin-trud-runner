@@ -11,10 +11,10 @@
   },
   "source": {
     "atlasManifest": "assets/resources/config/atlas_manifest.json",
-    "atlasManifestSha256": "1631087FB98B249488E293B89BC4DCE7454F21FA2D2C379A182AC47E1FCC8174",
+    "atlasManifestSha256": "C4795EFC8F65861FBEBDAD943F41B96148CE9C03EC14F9732905D858AA8146EB",
     "contentIdentity": "assets/resources/config/content_identity.json",
     "logicalContentVersion": "mtr-v3-source-4492deee4209",
-    "sourcePayloadSha256": "EBCA3861E9DF98F6F6D1F33CC423EDC9D34BEC6DE6536355887AF434E0B9BE1A"
+    "sourcePayloadSha256": "B98ED41401A44C13D9E006999C19F71BD8F1CB102E2DAB941B5E57722FE7457B"
   },
   "materialization": {
     "policy": "local_qa_evidence_not_runtime_not_committed",
@@ -73,7 +73,9 @@
         "assets/resources/config/current_objective_runtime_usage.json",
         "assets/resources/config/ui_skin_manifest.json",
         "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_ACCEPTANCE.json",
-        "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json"
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_ACHIEVEMENT_UI_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
       ],
       "sheets": [
         {
@@ -340,7 +342,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 9
@@ -364,7 +368,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "hud-01",
           "cellIndex": 10
@@ -387,7 +393,9 @@
       ],
       "provenance": [
         "assets/resources/config/last_iteration_asset_manifest.generated.json",
-        "assets/resources/config/ui_skin_manifest.json"
+        "assets/resources/config/ui_skin_manifest.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
       ],
       "sheets": [
         {
@@ -5583,7 +5591,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 22
@@ -5607,7 +5617,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 23
@@ -5631,7 +5643,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 24
@@ -5655,7 +5669,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 25
@@ -5679,7 +5695,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 26
@@ -5703,7 +5721,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 27
@@ -5727,7 +5747,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 28
@@ -5751,7 +5773,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 29
@@ -5775,7 +5799,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 30
@@ -5799,7 +5825,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 31
@@ -5823,7 +5851,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 32
@@ -5847,7 +5877,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 33
@@ -5871,7 +5903,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 34
@@ -5895,7 +5929,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 35
@@ -5919,7 +5955,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 36
@@ -5943,7 +5981,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 37
@@ -5967,7 +6007,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 38
@@ -5991,7 +6033,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 39
@@ -6015,7 +6059,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 40
@@ -6039,7 +6085,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 41
@@ -6063,7 +6111,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 42
@@ -6087,7 +6137,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 43
@@ -6111,7 +6163,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 44
@@ -6135,7 +6189,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 45
@@ -6159,7 +6215,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 46
@@ -6183,7 +6241,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "menu-04",
           "cellIndex": 47
@@ -37149,7 +37209,9 @@
       ],
       "provenance": [
         "assets/resources/backgrounds/background_sources.json",
-        "assets/resources/config/ui_skin_manifest.json"
+        "assets/resources/config/ui_skin_manifest.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
       ],
       "sheets": [
         {
@@ -37747,7 +37809,9 @@
           "ownershipScope": "shared_ui",
           "ownershipManifestPointer": "/ownership_scopes/23",
           "provenance": [
-            "assets/resources/config/ui_skin_manifest.json"
+            "assets/resources/config/ui_skin_manifest.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json"
           ],
           "sheetId": "backgrounds-01",
           "cellIndex": 30

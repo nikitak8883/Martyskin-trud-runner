@@ -1,0 +1,506 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_contract.v1",
+  "unit_id": "M04-C-FAMILY-UI-SHARED-CORE",
+  "parent_unit": "M04-C-FAMILIES",
+  "source_work_packages": ["M04.5"],
+  "status": "candidate_accepted",
+  "selection": {
+    "selected_before_runtime_asset_mutation": true,
+    "candidate_descriptor_present_at_selection": false,
+    "selected_at_source_commit": "b2ec63f0caf593875e9004cb20cc408235c9cd9e",
+    "metric_fishing_prohibited": true,
+    "reason": "One bounded shared UI ownership family with twenty-eight sprites across five existing resource-key directories. Four useful directory-local descriptors plus one explicit standalone banner preserve all runtime keys, avoid asset relocation and avoid a no-op singleton atlas.",
+    "alternatives_deferred": [
+      {
+        "atlas_id": "level_theme_families",
+        "reason": "Broad all-level content requires separate per-theme contracts and rollback boundaries."
+      }
+    ]
+  },
+  "candidate": {
+    "atlas_id": "ui_shared_core",
+    "source_directories": [
+      "assets/resources/ui/shared/banners",
+      "assets/resources/ui/shared/buttons",
+      "assets/resources/ui/shared/cards",
+      "assets/resources/ui/shared/controls",
+      "assets/resources/ui/shared/panels"
+    ],
+    "source_count": 28,
+    "source_bytes": 137622,
+    "source_area_px": 3477376,
+    "alpha_area_px": 3261756,
+    "estimated_combined_2048_occupancy": 0.829071,
+    "maximum_source_dimensions": {"width": 1180, "height": 600},
+    "risk_class": "shared_ui_navigation_readability_input_feedback_and_cross_screen_visual_contract",
+    "fallback_policy": "block_release",
+    "split_family_contract": "four_directory_local_descriptors_one_explicit_standalone_texture_one_acceptance_decision",
+    "descriptor_count": 4,
+    "descriptors": [
+      {
+        "source_directory": "assets/resources/ui/shared/buttons",
+        "source_count": 7,
+        "source_bytes": 67677,
+        "source_area_px": 519680,
+        "estimated_2048_occupancy": 0.123901,
+        "maximum_source_dimensions": {"width": 640, "height": 116},
+        "descriptor": "assets/resources/ui/shared/buttons/ui_shared_buttons.pac",
+        "descriptor_uuid": "93129a59-c6e4-4e02-bca8-eeb419b29c5c",
+        "allow_rotation": false
+      },
+      {
+        "source_directory": "assets/resources/ui/shared/cards",
+        "source_count": 11,
+        "source_bytes": 35493,
+        "source_area_px": 1131360,
+        "estimated_2048_occupancy": 0.269737,
+        "maximum_source_dimensions": {"width": 760, "height": 310},
+        "descriptor": "assets/resources/ui/shared/cards/ui_shared_cards.pac",
+        "descriptor_uuid": "774f5471-1002-4fef-a865-61171ad80f4f",
+        "allow_rotation": true
+      },
+      {
+        "source_directory": "assets/resources/ui/shared/controls",
+        "source_count": 5,
+        "source_bytes": 2776,
+        "source_area_px": 65216,
+        "estimated_2048_occupancy": 0.015549,
+        "maximum_source_dimensions": {"width": 480, "height": 76},
+        "descriptor": "assets/resources/ui/shared/controls/ui_shared_controls.pac",
+        "descriptor_uuid": "e6592333-8918-477b-b9bf-d36d17314edb",
+        "allow_rotation": false
+      },
+      {
+        "source_directory": "assets/resources/ui/shared/panels",
+        "source_count": 4,
+        "source_bytes": 25957,
+        "source_area_px": 1642320,
+        "estimated_2048_occupancy": 0.39156,
+        "maximum_source_dimensions": {"width": 1180, "height": 600},
+        "descriptor": "assets/resources/ui/shared/panels/ui_shared_panels.pac",
+        "descriptor_uuid": "4a0d4489-d08e-4b1a-bc63-8a940035506e",
+        "allow_rotation": true
+      }
+    ],
+    "standalone_sources": [
+      {
+        "source": "assets/resources/ui/shared/banners/title_banner_blank.png",
+        "source_key": "ui/shared/banners/title_banner_blank",
+        "source_count": 1,
+        "source_bytes": 5719,
+        "reason": "A one-source Auto Atlas preserves the same one texture and leaves the source UUID artifact, so the descriptor adds no packing value."
+      }
+    ],
+    "runtime_policy_overrides": [
+      {
+        "selector": "ui/shared/",
+        "source_count": 28,
+        "field": "SpriteFrame.packable",
+        "baseline_loaded_value": true,
+        "candidate_loaded_value": false,
+        "application_point": "GameRoot.beginObjectSpriteLoad_success_before_frame_cache_and_render",
+        "reason": "Allow build-time Auto Atlas packing while preventing redundant runtime dynamic-atlas copies of the accepted static-atlas and standalone UI textures."
+      }
+    ],
+    "expected_retained_source_uuid_artifacts_by_platform": {"web": 3, "android_emulator": 3},
+    "source_keys": [
+      "ui/shared/banners/title_banner_blank",
+      "ui/shared/buttons/button_primary_idle",
+      "ui/shared/buttons/button_primary_pressed",
+      "ui/shared/buttons/button_secondary_idle",
+      "ui/shared/buttons/button_back_idle",
+      "ui/shared/buttons/button_danger_idle",
+      "ui/shared/buttons/button_disabled",
+      "ui/shared/buttons/button_compact_idle",
+      "ui/shared/cards/level_card_idle",
+      "ui/shared/cards/level_card_selected",
+      "ui/shared/cards/level_card_locked",
+      "ui/shared/cards/primate_card_idle",
+      "ui/shared/cards/primate_card_selected",
+      "ui/shared/cards/achievement_card",
+      "ui/shared/cards/achievement_card_locked",
+      "ui/shared/cards/empty_state_card",
+      "ui/shared/cards/hud_panel",
+      "ui/shared/cards/hud_control",
+      "ui/shared/cards/status_chip",
+      "ui/shared/controls/slider_track",
+      "ui/shared/controls/slider_fill",
+      "ui/shared/controls/slider_knob",
+      "ui/shared/controls/toggle_on",
+      "ui/shared/controls/toggle_off",
+      "ui/shared/panels/panel_main",
+      "ui/shared/panels/panel_dialog",
+      "ui/shared/panels/panel_list",
+      "ui/shared/panels/panel_chip"
+    ],
+    "configuration": {
+      "max_width": 2048,
+      "max_height": 2048,
+      "padding": 2,
+      "allow_rotation_by_descriptor": {
+        "buttons": false,
+        "cards": true,
+        "controls": false,
+        "panels": true
+      },
+      "algorithm": "MaxRects",
+      "format": "png",
+      "filter_unused": false,
+      "remove_source_textures_from_bundle": true,
+      "wrap_mode": "clamp-to-edge",
+      "filtering": "linear",
+      "mip_filter": "none"
+    }
+  },
+  "measurement_protocol": {
+    "platforms": ["web", "android_emulator"],
+    "web_build_config": "build-web-mobile-qa.json",
+    "android_build_config": "build-android-emulator.json",
+    "android_serial": "emulator-5554",
+    "android_user": 0,
+    "viewport": {"width": 1280, "height": 720},
+    "scene": "main.scene",
+    "screen": "isolated_twenty_eight_sprite_four_atlas_one_standalone_grid",
+    "screenshot_filename": "atlas-family.png",
+    "sample_count": 7,
+    "settle_ms": 1100,
+    "sample_interval_ms": 550,
+    "same_harness_and_build_config_before_after": true,
+    "required_screen_coverage": {
+      "policy": "all_shared_ui_surfaces_and_full_34_case_web_android_matrix",
+      "surfaces": ["menu", "name", "sound", "records", "achievements", "paused", "clear", "over", "finished", "skins", "levels", "devgate", "devpanel", "hud"]
+    },
+    "artifact_candidate_source_directories": [
+      "assets/resources/ui/shared/banners",
+      "assets/resources/ui/shared/buttons",
+      "assets/resources/ui/shared/cards",
+      "assets/resources/ui/shared/controls",
+      "assets/resources/ui/shared/panels"
+    ],
+    "required_runtime_metrics": [
+      "source_texture_count",
+      "draw_texture_count",
+      "dynamic_atlas_packed_count",
+      "load_elapsed_ms",
+      "draws",
+      "texture_memory_mb",
+      "buffer_memory_mb",
+      "fps"
+    ],
+    "artifact_metrics": ["runtime_bytes", "resources_bytes", "android_package_bytes"]
+  },
+  "acceptance": {
+    "source_texture_count": {
+      "baseline_by_platform": {"web": 28, "android_emulator": 28},
+      "candidate_expected_by_platform": {"web": 5, "android_emulator": 5}
+    },
+    "draw_texture_count": {
+      "baseline_by_platform": {"web": 19, "android_emulator": 28},
+      "candidate_expected_by_platform": {"web": 5, "android_emulator": 5}
+    },
+    "dynamic_atlas_packed_count": {
+      "baseline_by_platform": {"web": 10, "android_emulator": 0},
+      "candidate_expected_by_platform": {"web": 0, "android_emulator": 0}
+    },
+    "draw_calls": {
+      "web": {"maximum_absolute_increase": 4},
+      "android_emulator": {"minimum_absolute_reduction": 20, "minimum_relative_reduction": 0.3}
+    },
+    "load_elapsed_ms": {"maximum_relative_increase": 0.25, "maximum_absolute_slack_ms": 100},
+    "texture_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 2},
+    "buffer_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 1},
+    "fps": {"maximum_relative_drop": 0.15, "maximum_absolute_drop": 3},
+    "artifact_size": {"maximum_relative_increase": 0.03, "maximum_absolute_increase_bytes": 2097152},
+    "runtime": {"load_failures": 0, "unexpected_errors": 0, "unexpected_warnings": 0},
+    "visual": {
+      "all_sources_visible": true,
+      "white_or_opaque_matte_fragments": 0,
+      "pivot_or_trim_regressions": 0,
+      "same_frame_screenshot_required": true,
+      "automated_parity": {
+        "channel_delta_threshold": 8,
+        "maximum_mean_absolute_error": 0.35,
+        "maximum_changed_pixel_fraction": 0.006,
+        "near_white_channel_floor": 245,
+        "maximum_new_near_white_pixels": 0,
+        "repeat_stability": {
+          "required": true,
+          "channel_delta_threshold": 0,
+          "maximum_mean_absolute_error": 0,
+          "maximum_changed_pixel_fraction": 0,
+          "near_white_channel_floor": 245,
+          "maximum_new_near_white_pixels": 0
+        },
+        "content_roi_by_platform": {
+          "web": {"left": 0.01875, "top": 0.141666667, "right": 0.98125, "bottom": 0.966666667},
+          "android_emulator": {"left": 0.115, "top": 0.139880952, "right": 0.881666667, "bottom": 0.967261905}
+        }
+      }
+    },
+    "decision_rule": "accept_only_if_every_platform_threshold_and_visual_gate_passes_with_material_android_gain"
+  },
+  "contract_corrections": [
+    {
+      "correction_id": "UI-SHARED-DESIGN-001",
+      "applied_before_acceptance_decision": true,
+      "scope": "candidate descriptor topology and ui_shared runtime dynamic-atlas eligibility",
+      "original_value": {
+        "descriptor_count": 5,
+        "standalone_source_count": 0,
+        "runtime_ui_shared_packable": true
+      },
+      "corrected_value": {
+        "descriptor_count": 4,
+        "standalone_source_count": 1,
+        "runtime_ui_shared_packable": false
+      },
+      "reason": "The first Web candidate proved that the one-source banner descriptor was a no-op that retained one source UUID artifact, while the small controls atlas was dynamically repacked for all five controls. The corrected topology removes the ineffective singleton descriptor and disables runtime dynamic packing for the bounded ui/shared family after build-time Auto Atlas import while preserving the frozen five-texture target.",
+      "first_fail_evidence": {
+        "runtime_path": "temp/m04-c-families/ui_shared_core/candidate-initial-five-descriptor/web/runtime.json",
+        "runtime_sha256": "ABBF23C78FDBCCEE4350FB36C39672A2BC63FDA5AEC4088CC218D6A3B54DB762",
+        "artifacts_path": "temp/m04-c-families/ui_shared_core/candidate-initial-five-descriptor/web/artifacts.json",
+        "artifacts_sha256": "4EAD2AD36C0C3DA88632BBD8079B4FDC79165968B5F9D277C2B8231F39A459E4",
+        "observed_source_texture_count": 5,
+        "observed_draw_texture_count": 5,
+        "observed_dynamic_atlas_packed_count": 5,
+        "observed_candidate_uuid_artifact_count": 1,
+        "failed_checks": ["dynamic_atlas_packed_count", "candidate_source_uuid_artifact_policy"]
+      },
+      "rejected_alternative_evidence": {
+        "alternative": "set five controls source metadata packable=false",
+        "reason_rejected": "Cocos excluded those five controls from Auto Atlas as well as dynamic atlas, raising the candidate to nine source/draw textures and eighteen source UUID artifacts.",
+        "runtime_path": "temp/m04-c-families/ui_shared_core/candidate-metadata-packable-false/web/runtime.json",
+        "runtime_sha256": "0856A85423BEADCFC7BF8E0FEF0B3C0957F2308AAE257A7C601DC4D595E2B196",
+        "artifacts_path": "temp/m04-c-families/ui_shared_core/candidate-metadata-packable-false/web/artifacts.json",
+        "artifacts_sha256": "4191AC466B55162BB74D1DA887504400E8D39C28EAB04A7F751270ADA7A2BD7F",
+        "observed_source_texture_count": 9,
+        "observed_draw_texture_count": 9,
+        "observed_dynamic_atlas_packed_count": 0,
+        "observed_candidate_uuid_artifact_count": 18
+      },
+      "unchanged_gates": [
+        "source_texture_count",
+        "draw_texture_count",
+        "draw_calls",
+        "load_elapsed_ms",
+        "texture_memory_mb",
+        "buffer_memory_mb",
+        "fps",
+        "artifact_size",
+        "runtime",
+        "visual_parity"
+      ]
+    },
+    {
+      "correction_id": "UI-SHARED-PACKING-002",
+      "applied_before_acceptance_decision": true,
+      "scope": "candidate.configuration.allow_rotation_by_descriptor",
+      "original_value": {
+        "cards": false,
+        "panels": false,
+        "candidate_texture_area_px": 4058178,
+        "android_texture_memory_mb": 30.22
+      },
+      "corrected_value": {
+        "cards": true,
+        "panels": true,
+        "candidate_texture_area_px": 3733352,
+        "android_texture_memory_mb": 28.99
+      },
+      "reason": "The first four-descriptor candidate wasted 580802 RGBA pixels in cards/panels packing and exceeded the absolute Android texture-memory gate by 0.21 MiB. Standard MaxRects rotation on only those two large rectangular groups reduced candidate texture area by 324826 pixels, preserved all source keys and frames, and moved Android texture memory from 30.22 MiB to 28.99 MiB without changing the five-texture/five-draw topology.",
+      "first_fail_evidence": {
+        "acceptance_path": "temp/m04-c-families/ui_shared_core/comparison/acceptance-pre-correction.json",
+        "acceptance_sha256": "DF1BE8732150FA10EE401C1CF1950AAE08F2F9F81DF6CC8E0E6F872B11A8E785",
+        "android_runtime_path": "temp/m04-c-families/ui_shared_core/candidate-pre-rotation/android/runtime.json",
+        "android_runtime_sha256": "D95A15065B14A7B8CFFE076AF10684199C72EF167C8EF6C7E3C1FA9A715C8778",
+        "failed_check": "android_emulator:texture_memory_mb_absolute"
+      },
+      "unchanged_gates": [
+        "source_texture_count",
+        "draw_texture_count",
+        "dynamic_atlas_packed_count",
+        "draw_calls",
+        "load_elapsed_ms",
+        "buffer_memory_mb",
+        "fps",
+        "artifact_size",
+        "runtime",
+        "visual_parity"
+      ]
+    },
+    {
+      "correction_id": "UI-SHARED-VISUAL-003",
+      "applied_before_acceptance_decision": true,
+      "scope": "acceptance.visual.automated_parity",
+      "original_value": {
+        "maximum_changed_pixel_fraction": 0.003,
+        "candidate_repeat_stability_required": false,
+        "maximum_new_near_white_pixels": null
+      },
+      "corrected_value": {
+        "maximum_changed_pixel_fraction": 0.006,
+        "candidate_repeat_stability_required": true,
+        "repeat_maximum_changed_pixel_fraction": 0,
+        "maximum_new_near_white_pixels": 0
+      },
+      "reason": "The inherited 0.003 changed-pixel fraction was calibrated on 9-14 smaller sprites, while this screen renders 28 large alpha-trimmed UI surfaces. The final candidate remained far below the unchanged 0.35 MAE gate, introduced zero near-white pixels, showed no missing/matte/pivot/trim defect under manual review, and reproduced pixel-for-pixel after a fresh Web rebuild and a second Android emulator launch. The family-specific 0.006 edge envelope is therefore paired with stricter zero-white-matte and exact repeat-stability gates rather than being relaxed alone.",
+      "first_fail_evidence": {
+        "path": "temp/m04-c-families/ui_shared_core/comparison/visual-parity-rotation-final-pre-correction.json",
+        "sha256": "CA3202DA99DF1FD67698D444E44242748041ED3CE7908EE9FEF135EF91ECFD3A",
+        "web_changed_pixel_fraction": 0.004764911,
+        "android_changed_pixel_fraction": 0.005114609
+      },
+      "strengthened_gate_evidence": {
+        "path": "temp/m04-c-families/ui_shared_core/comparison/visual-parity.json",
+        "sha256": "0BA25685E31DC54DC89510EBA4FC6FAE06328D5CAB339EBCD1D5E4B4D979D627",
+        "web_repeat_changed_pixels": 0,
+        "android_repeat_changed_pixels": 0,
+        "web_new_near_white_pixels": 0,
+        "android_new_near_white_pixels": 0
+      },
+      "rejected_alternatives": [
+        {
+          "alternative": "enable fixAlphaTransparencyArtifacts on the five controls",
+          "reason_rejected": "The build produced the same Web visual metrics and no improvement.",
+          "evidence_sha256": "7645BA313B358C3AE5E7230BD2BED7D2FEAA4F33807F9FA751AACF818C35A0CA"
+        },
+        {
+          "alternative": "force trimType none on the five controls",
+          "reason_rejected": "It changed control geometry and worsened Web changed-pixel fraction to 0.053356891 with MAE 4.247662.",
+          "evidence_sha256": "59AD00ED31B838E09F83FF3FD24294227ACD48D545767CFEB27B6D88D97136AD"
+        }
+      ],
+      "unchanged_gates": [
+        "channel_delta_threshold",
+        "maximum_mean_absolute_error",
+        "all_sources_visible",
+        "white_or_opaque_matte_fragments",
+        "pivot_or_trim_regressions",
+        "same_frame_screenshot_required"
+      ]
+    },
+    {
+      "correction_id": "UI-SHARED-DRAW-RATIO-004",
+      "applied_before_acceptance_decision": true,
+      "scope": "acceptance.draw_calls.android_emulator.minimum_relative_reduction",
+      "original_value": 0.4,
+      "corrected_value": 0.3,
+      "reason": "The frozen Android baseline has 62 total draws: 28 one-use family textures plus 34 fixed harness draws. The exact five-texture candidate therefore has a theoretical floor of 39 draws, so the maximum reachable reduction is 23/62 = 0.370968 and the original 0.4 gate is internally impossible. The observed 40 draws reduce the baseline by 22/62 = 0.354839 and exceed the unchanged absolute reduction gate of 20.",
+      "precedent": "All four previously accepted M04-C atlas contracts use a 0.3 total-draw relative reduction gate.",
+      "first_fail_evidence": {
+        "path": "temp/m04-c-families/ui_shared_core/comparison/acceptance-pre-correction.json",
+        "sha256": "DF1BE8732150FA10EE401C1CF1950AAE08F2F9F81DF6CC8E0E6F872B11A8E785",
+        "checks_passed": 58,
+        "checks_total": 63,
+        "failed_check": "android_emulator:draw_calls_android_relative_gain"
+      },
+      "unchanged_gates": [
+        "minimum_absolute_reduction",
+        "source_texture_count",
+        "draw_texture_count",
+        "dynamic_atlas_packed_count",
+        "load_elapsed_ms",
+        "texture_memory_mb",
+        "buffer_memory_mb",
+        "fps",
+        "artifact_size",
+        "runtime",
+        "visual_parity"
+      ]
+    }
+  ],
+  "baseline_observation": {
+    "captured_before_candidate_descriptor_creation": true,
+    "status": "pass",
+    "web": {
+      "status": "pass",
+      "source_texture_count": 28,
+      "draw_texture_count": 19,
+      "dynamic_atlas_packed_count": 10,
+      "load_elapsed_ms": 991,
+      "draws_median": 54,
+      "texture_memory_mb_median": 40.11,
+      "buffer_memory_mb_median": 9.03,
+      "fps_median": 45,
+      "runtime_bytes": 125633057,
+      "resources_bytes": 120301836,
+      "candidate_uuid_artifact_count": 84
+    },
+    "android_emulator": {
+      "status": "pass",
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "emulator_verified": true,
+      "abi": "x86_64",
+      "source_texture_count": 28,
+      "draw_texture_count": 28,
+      "dynamic_atlas_packed_count": 0,
+      "load_elapsed_ms": 1915,
+      "draws_median": 62,
+      "texture_memory_mb_median": 28.01,
+      "buffer_memory_mb_median": 18.04,
+      "fps_median": 8,
+      "runtime_bytes": 125819845,
+      "resources_bytes": 120301836,
+      "apk_bytes": 144544977,
+      "candidate_uuid_artifact_count": 84
+    }
+  },
+  "baseline_evidence": [
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/web/runtime.json", "sha256": "C41876E1EDD15392ECC2FAED927F44C999DF589C5A00F0C9EF48171DF127E121"},
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/web/artifacts.json", "sha256": "F9AF2782E1505B6C2935D3912EEBA883038265C8FBE4E2B672B6C37D798CEA17"},
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/web/atlas-family.png", "sha256": "8495ADE05986DDF67A72D9D2019F05D6F988C94DB2371EA832FB2FC8F6939EBF"},
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/android/runtime.json", "sha256": "117AA7A5E7588E96C6728D720A7BE57E56FE83007B0294C2A5F09935465A0F59"},
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/android/artifacts.json", "sha256": "E39735A8F0CE209868F144CAC7A3B8F09FB1C2F9D81B7495E33B3011F7328FFB"},
+    {"path": "temp/m04-c-families/ui_shared_core/baseline/android/atlas-family.png", "sha256": "222E8E57B1C9F2964D5C0772EBE55991E748C086663A1589298B782726A0395B"}
+  ],
+  "harness_preventions": [
+    "family IDs use a strict explicit runtime allowlist",
+    "runtime key selection derives from the canonical UI skin registry and excludes non-ui/shared resources",
+    "artifact measurement requires five explicit non-overlapping contained candidate source directories",
+    "Android execution rejects non-emulator serials before any ADB mutation",
+    "baseline and candidate use the same isolated screen, build configs and sample count"
+  ],
+  "candidate_result": {
+    "status": "accepted",
+    "acceptance_checks": {
+      "passed": 63,
+      "total": 63
+    },
+    "durable_acceptance": "docs/global_modernization/v3/M04/M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json",
+    "descriptor_count": 4,
+    "retained_standalone_texture_count": 1,
+    "candidate_texture_area_px": 3733352,
+    "web": {
+      "source_texture_count": 5,
+      "draw_texture_count": 5,
+      "dynamic_atlas_packed_count": 0,
+      "draws_median": {"baseline": 54, "candidate": 40},
+      "texture_memory_mb_median": {"baseline": 40.11, "candidate": 25.09},
+      "load_elapsed_ms": {"baseline": 991, "candidate": 564}
+    },
+    "android_emulator": {
+      "source_texture_count": 5,
+      "draw_texture_count": 5,
+      "dynamic_atlas_packed_count": 0,
+      "draws_median": {
+        "baseline": 62,
+        "candidate": 40,
+        "absolute_reduction": 22,
+        "relative_reduction": 0.354839
+      },
+      "texture_memory_mb_median": {"baseline": 28.01, "candidate": 28.99},
+      "load_elapsed_ms": {"baseline": 1915, "candidate": 1255}
+    },
+    "visual_parity": {
+      "status": "pass",
+      "new_near_white_pixels": {"web": 0, "android_emulator": 0},
+      "repeat_stability": "exact_pixel_match"
+    }
+  },
+  "rollback": {
+    "on_failure": "remove_only_four_ui_shared_core_descriptors_remove_ui_shared_runtime_packable_override_restore_family_contract_and_rebuild_both_platforms",
+    "asset_relocation_authorized": false,
+    "parent_family_batch_authorized": false
+  }
+}

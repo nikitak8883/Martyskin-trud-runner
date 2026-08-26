@@ -47,6 +47,27 @@ function Invoke-MtrAdb {
     return $text
 }
 
+function Disable-MtrEmulatorAudio {
+    $setOutput = Invoke-MtrAdb -Arguments @(
+        'shell', 'cmd', 'media_session', 'volume', '--stream', '3', '--set', '0'
+    )
+    $state = Invoke-MtrAdb -Arguments @(
+        'shell', 'cmd', 'media_session', 'volume', '--stream', '3', '--get'
+    )
+    $volumeMatch = [regex]::Match($state, 'volume is (?<volume>\d+)\b')
+    if (-not $volumeMatch.Success -or [int]$volumeMatch.Groups['volume'].Value -ne 0) {
+        throw "Emulator audio mute precondition failed: $state"
+    }
+    return [pscustomobject]@{
+        policy = 'host-no-audio-plus-media-stream-zero'
+        startup_argument_required = '-no-audio'
+        media_stream = 3
+        volume = 0
+        set_output = $setOutput
+        verification = $state
+    }
+}
+
 function Read-MtrLogcat {
     return Invoke-MtrAdb -Arguments @('logcat', '-d', '-v', 'threadtime')
 }
@@ -130,6 +151,7 @@ $isEmulator = (Invoke-MtrAdb -Arguments @('shell', 'getprop', 'ro.kernel.qemu'))
 if ($deviceState -ne 'device' -or -not $isEmulator) {
     throw "Emulator-only guard rejected serial '$Serial' (state=$deviceState, qemu=$isEmulator)."
 }
+$audioPolicy = Disable-MtrEmulatorAudio
 
 $cases = [System.Collections.Generic.List[object]]::new()
 $cases.Add((New-MtrCase -Name 'ui_menu' -Extras ([ordered]@{ mtr_state = 'menu' }) -ExpectedMarker 'MTR_QA_SCREEN_READY screen=menu' -Screen 'menu'))
@@ -163,6 +185,7 @@ $startedAt = Get-Date
 
 foreach ($case in $cases) {
     Write-Host "[MTR Android QA] $($case.Name)"
+    $audioPolicy = Disable-MtrEmulatorAudio
     Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 
     $startArguments = [System.Collections.Generic.List[string]]::new()
@@ -250,6 +273,7 @@ $summary = [pscustomobject]@{
     schema = 'mtr.android_emulator_matrix.v1'
     cycle = $Cycle
     serial = $Serial
+    audio_policy = $audioPolicy
     component = $component
     started_at = $startedAt.ToString('o')
     finished_at = (Get-Date).ToString('o')

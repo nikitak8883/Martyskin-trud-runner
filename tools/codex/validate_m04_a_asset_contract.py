@@ -43,7 +43,7 @@ ATLAS_CONTRACT_TO_ACCEPTANCE_SCHEMA = {
 }
 
 
-def descriptor_identity(value: Any) -> list[dict[str, str]]:
+def descriptor_identity(value: Any) -> list[dict[str, Any]]:
     if not isinstance(value, dict):
         return []
     descriptors = value.get("descriptors")
@@ -52,6 +52,7 @@ def descriptor_identity(value: Any) -> list[dict[str, str]]:
             {
                 "descriptor": str(item.get("descriptor", "")),
                 "descriptor_uuid": str(item.get("descriptor_uuid", "")),
+                "allow_rotation": bool(item.get("allow_rotation", False)),
             }
             for item in descriptors
             if isinstance(item, dict)
@@ -61,6 +62,7 @@ def descriptor_identity(value: Any) -> list[dict[str, str]]:
     return [{
         "descriptor": str(value.get("descriptor", "")),
         "descriptor_uuid": str(value.get("descriptor_uuid", "")),
+        "allow_rotation": bool(value.get("allow_rotation", False)),
     }]
 
 
@@ -431,6 +433,7 @@ def validate_manifest(
                 "descriptor_uuid": packing.get("descriptor_uuid"),
             }]
             manifest_descriptor_identity = descriptor_identity(packing)
+            descriptor_source_total = 0
             for descriptor_index, descriptor_spec in enumerate(descriptor_specs):
                 descriptor_label = (
                     f"atlas_groups[{index}].packing.descriptors[{descriptor_index}]"
@@ -449,6 +452,8 @@ def validate_manifest(
                 if source_directory is not None:
                     source_root = resolve_project_path(project_root, str(source_directory))
                     expected_source_count = descriptor_spec.get("source_count")
+                    if isinstance(expected_source_count, int) and expected_source_count > 0:
+                        descriptor_source_total += expected_source_count
                     actual_source_count = (
                         len(list(source_root.glob("*.png")))
                         if source_root is not None and source_root.is_dir()
@@ -512,7 +517,7 @@ def validate_manifest(
                             "maxWidth": packing.get("max_texture_size"),
                             "maxHeight": packing.get("max_texture_size"),
                             "padding": packing.get("padding_px"),
-                            "allowRotation": False,
+                            "allowRotation": bool(descriptor_spec.get("allow_rotation", False)),
                             "forceSquared": False,
                             "powerOfTwo": False,
                             "algorithm": "MaxRects",
@@ -536,6 +541,38 @@ def validate_manifest(
                         }
                         if user_data != expected_user_data:
                             add_finding(findings, "AUTO_ATLAS_SETTINGS_MISMATCH", f"{descriptor}.meta.userData", expected_user_data, user_data)
+
+            standalone_sources = packing.get("standalone_sources", [])
+            standalone_source_total = 0
+            standalone_paths: set[str] = set()
+            if isinstance(standalone_sources, list):
+                for standalone_index, standalone_spec in enumerate(standalone_sources):
+                    standalone_label = f"atlas_groups[{index}].packing.standalone_sources[{standalone_index}]"
+                    if not isinstance(standalone_spec, dict):
+                        add_finding(findings, "AUTO_ATLAS_STANDALONE_INVALID", standalone_label, "standalone source object", standalone_spec)
+                        continue
+                    source = str(standalone_spec.get("source", ""))
+                    source_count = standalone_spec.get("source_count")
+                    if isinstance(source_count, int) and source_count > 0:
+                        standalone_source_total += source_count
+                    source_path = resolve_project_path(project_root, source)
+                    if source in standalone_paths:
+                        add_finding(findings, "AUTO_ATLAS_STANDALONE_DUPLICATE", standalone_label, "unique standalone source", source)
+                    standalone_paths.add(source)
+                    if source_path is None or not source_path.is_file() or source_path.suffix.lower() not in IMAGE_EXTENSIONS:
+                        add_finding(findings, "AUTO_ATLAS_STANDALONE_MISSING", f"{standalone_label}.source", "existing project PNG/JPG", source)
+
+            if isinstance(raw_descriptors, list):
+                expected_topology_count = group.get("observed", {}).get("count")
+                actual_topology_count = descriptor_source_total + standalone_source_total
+                if actual_topology_count != expected_topology_count:
+                    add_finding(
+                        findings,
+                        "AUTO_ATLAS_TOPOLOGY_SOURCE_COUNT_MISMATCH",
+                        f"atlas_groups[{index}].packing",
+                        expected_topology_count,
+                        actual_topology_count,
+                    )
 
             measurement_path = resolve_project_path(project_root, str(packing.get("measurement_contract", "")))
             acceptance_path = resolve_project_path(project_root, str(packing.get("acceptance_evidence", "")))

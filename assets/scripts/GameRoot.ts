@@ -822,6 +822,8 @@ const M04_C_BONUS_ITEMS_ATLAS_KEYS = [
     ...OBJECTIVE_BATCH_BONUS_KEYS,
 ] as const;
 
+const M04_C_UI_SHARED_CORE_ATLAS_KEYS = UI_SHARED_ASSET_KEYS.filter((key) => key.startsWith('ui/shared/'));
+
 interface M04CAtlasQaSpec {
     atlasId: string;
     title: string;
@@ -888,6 +890,19 @@ const M04_C_ATLAS_QA_SPECS = {
         yStep: 175,
         spriteWidth: 132,
         spriteHeight: 132,
+    },
+    ui_shared_core: {
+        atlasId: 'ui_shared_core',
+        title: 'UI SHARED CORE',
+        keys: M04_C_UI_SHARED_CORE_ATLAS_KEYS,
+        category: 'ui_achievements',
+        columns: 7,
+        xStart: 90,
+        yStart: 195,
+        xStep: 180,
+        yStep: 125,
+        spriteWidth: 150,
+        spriteHeight: 100,
     },
 } as const satisfies Record<string, M04CAtlasQaSpec>;
 
@@ -2257,6 +2272,7 @@ export class GameRoot extends Component {
             const elapsedMs = Date.now() - (this.objectSpriteLoadStartedAt[key] || Date.now());
             delete this.objectSpriteLoadStartedAt[key];
             if (!err && frame) {
+                if (key.startsWith('ui/shared/')) frame.packable = false;
                 this.objectSpriteFrames[key] = frame;
                 for (const alias of this.objectSpriteReverseAliases[key] || []) this.objectSpriteFrames[alias] = frame;
                 delete this.objectSpriteLoadFailures[key];

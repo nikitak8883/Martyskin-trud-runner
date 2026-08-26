@@ -233,8 +233,14 @@ function compare(options) {
         }, 'candidate artifact identity', candidateArtifactsValid);
         add('baseline_source_uuid_artifacts_present', platform, baselineArtifacts.candidateUuidArtifactCount,
             '> 0', isFiniteNumber(baselineArtifacts.candidateUuidArtifactCount, { minimum: 1, integer: true }));
-        add('candidate_source_uuid_artifacts_removed', platform, candidateArtifacts.candidateUuidArtifactCount,
-            0, candidateArtifacts.candidateUuidArtifactCount === 0);
+        const retainedSourceUuidArtifacts = contract.candidate.expected_retained_source_uuid_artifacts_by_platform;
+        const expectedRetainedSourceUuidArtifacts = isObject(retainedSourceUuidArtifacts)
+            && isFiniteNumber(retainedSourceUuidArtifacts[platform], { minimum: 0, integer: true })
+            ? retainedSourceUuidArtifacts[platform]
+            : 0;
+        add('candidate_source_uuid_artifact_policy', platform, candidateArtifacts.candidateUuidArtifactCount,
+            expectedRetainedSourceUuidArtifacts,
+            candidateArtifacts.candidateUuidArtifactCount === expectedRetainedSourceUuidArtifacts);
         for (const field of ['runtime', 'resources']) {
             const baselineBytes = artifactMetric(baselineArtifacts, field)?.totalBytes;
             const candidateBytes = artifactMetric(candidateArtifacts, field)?.totalBytes;
