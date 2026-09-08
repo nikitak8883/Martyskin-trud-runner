@@ -18,6 +18,9 @@ const runnerCollectiblesContractPath = path.join(projectRoot, 'docs', 'global_mo
 const bonusItemsContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_BONUS_ITEMS_CONTRACT.json');
 const uiSharedCoreContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_UI_SHARED_CORE_CONTRACT.json');
 const uiSharedCoreAcceptancePath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_UI_SHARED_CORE_ACCEPTANCE.json');
+const themeArchiveContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json');
+const themeArchiveAcceptancePath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json');
+const themeArchiveRollbackPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_ARCHIVE_ROLLBACK_MANIFEST.json');
 const webRuntimeFunctionPath = path.join(projectRoot, 'tools', 'codex', 'web_atlas_pilot_runtime_function.js');
 const webRunnerPath = path.join(projectRoot, 'tools', 'codex', 'Run-MtrWebAtlasPilotQa.js');
 const artifactMeasurerPath = path.join(projectRoot, 'tools', 'codex', 'Measure-MtrAtlasPilotArtifacts.js');
@@ -40,6 +43,9 @@ for (const requiredPath of [
   bonusItemsContractPath,
   uiSharedCoreContractPath,
   uiSharedCoreAcceptancePath,
+  themeArchiveContractPath,
+  themeArchiveAcceptancePath,
+  themeArchiveRollbackPath,
   webRuntimeFunctionPath,
   webRunnerPath,
   artifactMeasurerPath,
@@ -117,7 +123,9 @@ assert.ok(gameRootSource.includes("achievement_ui: {"));
 assert.ok(gameRootSource.includes("runner_collectibles: {"));
 assert.ok(gameRootSource.includes("bonus_items: {"));
 assert.ok(gameRootSource.includes("ui_shared_core: {"));
+assert.ok(gameRootSource.includes("level_theme_archive: {"));
 assert.ok(gameRootSource.includes("UI_SHARED_ASSET_KEYS.filter((key) => key.startsWith('ui/shared/'))"));
+assert.ok(gameRootSource.includes("entry.theme === 'archive'"));
 assert.ok(gameRootSource.includes("'objectives/ui/ui_monkey_profile_badge_01'"));
 assert.ok(gameRootSource.includes('if (!DEBUG) return;'));
 assert.ok(gameRootSource.includes('MTR_ATLAS_PILOT_COMPLETE'));
@@ -279,6 +287,86 @@ assert.strictEqual(uiSharedCoreAcceptance.acceptance.android_emulator.emulator_v
 assert.strictEqual(uiSharedCoreAcceptance.acceptance.android_emulator.draws_median.absolute_reduction, 22);
 assert.strictEqual(uiSharedCoreAcceptance.acceptance.visual_parity.candidate_repeat_stability.status, 'pass');
 
+const themeArchiveContract = JSON.parse(fs.readFileSync(themeArchiveContractPath, 'utf8'));
+assert.strictEqual(themeArchiveContract.$schema, 'mtr.m04_c_atlas_family_contract.v1');
+assert.strictEqual(themeArchiveContract.unit_id, 'M04-C-FAMILY-THEME-ARCHIVE');
+assert.strictEqual(themeArchiveContract.parent_unit, 'M04-C-FAMILIES');
+assert.strictEqual(themeArchiveContract.status, 'candidate_accepted');
+assert.strictEqual(themeArchiveContract.selection.selected_before_runtime_asset_mutation, true);
+assert.strictEqual(themeArchiveContract.selection.candidate_descriptor_present_at_selection, false);
+assert.strictEqual(themeArchiveContract.selection.metric_fishing_prohibited, true);
+assert.strictEqual(themeArchiveContract.candidate.atlas_id, 'level_theme_archive');
+assert.deepStrictEqual(themeArchiveContract.candidate.levels, [8, 9, 13, 15]);
+assert.strictEqual(themeArchiveContract.candidate.source_count, 17);
+assert.strictEqual(themeArchiveContract.candidate.source_bytes, 1224151);
+assert.strictEqual(themeArchiveContract.candidate.source_area_px, 866233);
+assert.strictEqual(themeArchiveContract.candidate.alpha_area_px, 558838);
+assert.strictEqual(themeArchiveContract.candidate.source_keys.length, 17);
+assert.strictEqual(themeArchiveContract.candidate.descriptor_count, 1);
+assert.strictEqual(themeArchiveContract.candidate.descriptors.length, 1);
+assert.strictEqual(themeArchiveContract.candidate.source_inventory_sha256, 'F0B96A9A78C308DE5E5C0F6EA0E18DC00DBBA31F419CCE685907382481B48CBB');
+for (const descriptor of themeArchiveContract.candidate.descriptors) {
+  assert.strictEqual(fs.existsSync(path.join(projectRoot, descriptor.descriptor)), true);
+  const descriptorMetaPath = path.join(projectRoot, descriptor.descriptor + '.meta');
+  assert.strictEqual(fs.existsSync(descriptorMetaPath), true);
+  const descriptorMeta = JSON.parse(fs.readFileSync(descriptorMetaPath, 'utf8'));
+  assert.strictEqual(descriptorMeta.uuid, descriptor.descriptor_uuid);
+  assert.strictEqual(descriptorMeta.userData.allowRotation, descriptor.allow_rotation);
+  assert.strictEqual(descriptor.allow_rotation, false);
+}
+assert.strictEqual(themeArchiveContract.baseline_observation.status, 'pass');
+assert.strictEqual(themeArchiveContract.baseline_observation.web.source_texture_count, 17);
+assert.strictEqual(themeArchiveContract.baseline_observation.web.dynamic_atlas_packed_count, 17);
+assert.strictEqual(themeArchiveContract.baseline_observation.android_emulator.draw_texture_count, 17);
+assert.strictEqual(themeArchiveContract.baseline_observation.android_emulator.audio_policy_status, 'pass');
+assert.strictEqual(themeArchiveContract.baseline_observation.android_emulator.media_stream_3_volume, 0);
+assert.strictEqual(themeArchiveContract.baseline_evidence.length, 6);
+assert.strictEqual(themeArchiveContract.candidate.descriptors[0].descriptor_uuid, 'bb2aab99-0537-4caf-bdb4-2e61d6ce0352');
+assert.deepStrictEqual(themeArchiveContract.acceptance.source_texture_count.candidate_expected_by_platform, { web: 1, android_emulator: 1 });
+assert.deepStrictEqual(themeArchiveContract.acceptance.draw_texture_count.candidate_expected_by_platform, { web: 1, android_emulator: 1 });
+assert.strictEqual(themeArchiveContract.acceptance.visual.automated_parity.maximum_new_near_white_pixels, 0);
+assert.strictEqual(themeArchiveContract.acceptance.visual.automated_parity.repeat_stability.required, true);
+assert.strictEqual(themeArchiveContract.contract_corrections.length, 2);
+assert.strictEqual(themeArchiveContract.contract_corrections[0].id, 'C01_REPLACE_TWO_DESCRIPTOR_CANDIDATE_WITH_RECURSIVE_PARENT');
+assert.strictEqual(themeArchiveContract.contract_corrections[0].thresholds_weakened, false);
+assert.strictEqual(themeArchiveContract.candidate_result.status, 'accepted');
+assert.deepStrictEqual(themeArchiveContract.candidate_result.acceptance_checks, { passed: 63, total: 63 });
+assert.strictEqual(themeArchiveContract.candidate_result.android_emulator.draws_median.absolute_reduction, 16);
+assert.strictEqual(themeArchiveContract.candidate_result.visual_parity.repeat_stability, 'exact_pixel_match');
+assert.strictEqual(themeArchiveContract.rollback.asset_relocation_authorized, false);
+assert.strictEqual(themeArchiveContract.rollback.parent_family_batch_authorized, false);
+
+const themeArchiveAcceptance = JSON.parse(fs.readFileSync(themeArchiveAcceptancePath, 'utf8'));
+assert.strictEqual(themeArchiveAcceptance.$schema, 'mtr.m04_c_atlas_family_acceptance.v1');
+assert.strictEqual(themeArchiveAcceptance.unit_id, 'M04-C-FAMILY-THEME-ARCHIVE');
+assert.strictEqual(themeArchiveAcceptance.status, 'PASS');
+assert.strictEqual(themeArchiveAcceptance.acceptance.checks_passed, 63);
+assert.strictEqual(themeArchiveAcceptance.acceptance.checks_total, 63);
+assert.deepStrictEqual(themeArchiveAcceptance.acceptance.failed_checks, []);
+assert.strictEqual(themeArchiveAcceptance.acceptance.android_emulator.audio_policy.volume, 0);
+assert.strictEqual(themeArchiveAcceptance.acceptance.android_emulator.draws_median.absolute_reduction, 16);
+assert.strictEqual(themeArchiveAcceptance.acceptance.visual_parity.candidate_repeat_stability.status, 'pass');
+
+const themeArchiveRollback = JSON.parse(fs.readFileSync(themeArchiveRollbackPath, 'utf8'));
+assert.strictEqual(themeArchiveRollback.contract, 'mtr.m04_c_family_rollback_manifest');
+assert.strictEqual(themeArchiveRollback.execution_unit, 'M04-C-FAMILY-THEME-ARCHIVE');
+assert.strictEqual(themeArchiveRollback.rollback.anchor_commit, '66a2aa52c5bb9baa5c1ab7261dc37a3c7abdb8b6');
+assert.strictEqual(
+  themeArchiveRollback.rollback.pre_change_blobs['tools/codex/tests/test_validate_m04_a_asset_contract.py'],
+  '4c38d8ba5ea8212054852f1c807fd05f30c67c70',
+);
+for (const rollbackFile of [
+  'assets/resources/objectives/themed/last_iteration/archive/level_theme_archive.pac',
+  'assets/resources/objectives/themed/last_iteration/archive/level_theme_archive.pac.meta',
+  'docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CODE_REVIEW_REPORT.md',
+  'docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_VALIDATION_SUMMARY.json',
+  'docs/qa/CONTROL_LOG_CHECKPOINT_20260908_M04_C_FAMILY_THEME_ARCHIVE_COMPLETE.md',
+  'tools/codex/MtrAndroidQaAudioGuard.ps1',
+  'tools/codex/validate_android_emulator_audio_policy.py',
+]) {
+  assert.ok(themeArchiveRollback.rollback.new_files_remove_on_rollback.includes(rollbackFile));
+}
+
 const webRuntimeFunction = fs.readFileSync(webRuntimeFunctionPath, 'utf8');
 assert.ok(webRuntimeFunction.includes("schema: 'mtr.web_atlas_pilot.v1'"));
 assert.ok(webRuntimeFunction.includes("MTR_ATLAS_PILOT_COMPLETE "));
@@ -290,6 +378,7 @@ assert.ok(webRuntimeFunction.includes('achievement_ui: 9'));
 assert.ok(webRuntimeFunction.includes('runner_collectibles: 14'));
 assert.ok(webRuntimeFunction.includes('bonus_items: 12'));
 assert.ok(webRuntimeFunction.includes('ui_shared_core: 28'));
+assert.ok(webRuntimeFunction.includes('level_theme_archive: 17'));
 assert.ok(webRuntimeFunction.includes('metric.atlasId === atlasId'));
 assert.ok(webRuntimeFunction.includes('expectedInfrastructureErrors'));
 assert.ok(webRuntimeFunction.includes('expectedInfrastructureWarnings'));

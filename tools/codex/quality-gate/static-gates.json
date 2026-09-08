@@ -179,6 +179,21 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "android-emulator-silent-policy",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": [
+        "-B",
+        "tools/codex/validate_android_emulator_audio_policy.py",
+        "--project-root",
+        "."
+      ],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "v4-execution-plan-contract",
       "mandatory": true,
       "enabled": true,

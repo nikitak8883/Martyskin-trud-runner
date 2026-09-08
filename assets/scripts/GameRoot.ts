@@ -824,6 +824,11 @@ const M04_C_BONUS_ITEMS_ATLAS_KEYS = [
 
 const M04_C_UI_SHARED_CORE_ATLAS_KEYS = UI_SHARED_ASSET_KEYS.filter((key) => key.startsWith('ui/shared/'));
 
+const M04_C_LEVEL_THEME_ARCHIVE_ATLAS_KEYS = THEMED_ASSET_ENTRIES
+    .filter((entry) => entry.runtimeEnabled !== false && entry.theme === 'archive')
+    .filter((entry) => entry.category === 'hazards' || entry.category === 'platforms')
+    .map((entry) => entry.key);
+
 interface M04CAtlasQaSpec {
     atlasId: string;
     title: string;
@@ -903,6 +908,19 @@ const M04_C_ATLAS_QA_SPECS = {
         yStep: 125,
         spriteWidth: 150,
         spriteHeight: 100,
+    },
+    level_theme_archive: {
+        atlasId: 'level_theme_archive',
+        title: 'LEVEL THEME ARCHIVE',
+        keys: M04_C_LEVEL_THEME_ARCHIVE_ATLAS_KEYS,
+        category: 'platforms',
+        columns: 6,
+        xStart: 105,
+        yStart: 190,
+        xStep: 214,
+        yStep: 176,
+        spriteWidth: 166,
+        spriteHeight: 136,
     },
 } as const satisfies Record<string, M04CAtlasQaSpec>;
 

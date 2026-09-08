@@ -3,7 +3,7 @@
   "schema_version": 1,
   "contract": "mtr.atlas_manifest",
   "status": "contract_with_measured_runtime_families",
-  "generated_at": "2026-08-26T09:49:01+03:00",
+  "generated_at": "2026-09-08T17:13:03+03:00",
   "source_checkpoint": {
     "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
     "branch": "mtr-source-v3",
@@ -38,14 +38,14 @@
       "assets/resources/config/content_identity.json.meta"
     ],
     "source_payload": {
-      "count": 1644,
-      "bytes": 116454256,
-      "sha256": "B98ED41401A44C13D9E006999C19F71BD8F1CB102E2DAB941B5E57722FE7457B"
+      "count": 1645,
+      "bytes": 116454291,
+      "sha256": "A2F6C735103E5D64F3F0D381DAE53116CAD13D641DF6E0EDACE6FA2A265845A4"
     },
     "cocos_metadata": {
-      "count": 1891,
-      "bytes": 4582193,
-      "sha256": "01F0DFBCC3676F545298248E64C33D5230F0D141C99D48F876531E9B99EC6944"
+      "count": 1892,
+      "bytes": 4583016,
+      "sha256": "588E4266A8FAC7173DC307433EF37CC6EF95B5B7D75CA217A4CC6406B903C689"
     },
     "png_validation": {
       "count": 1528,
@@ -62,7 +62,7 @@
       ".jpg": {"count": 30, "bytes": 5999213},
       ".json": {"count": 35, "bytes": 1163846},
       ".mp3": {"count": 1, "bytes": 116284},
-      ".pac": {"count": 9, "bytes": 315},
+      ".pac": {"count": 10, "bytes": 350},
       ".png": {"count": 1528, "bytes": 107146623},
       ".wav": {"count": 40, "bytes": 2018006}
     }
@@ -198,8 +198,8 @@
       "owner": "levels_backgrounds_content_pipeline",
       "bundle_id": "resources",
       "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
-      "asset_count": 17,
-      "total_bytes": 1224151,
+      "asset_count": 18,
+      "total_bytes": 1224186,
       "fallback_policy": "block_release"
     },
     {
@@ -585,10 +585,41 @@
       "runtime_effect": true
     },
     {
+      "atlas_id": "level_theme_archive",
+      "usage_scopes": ["obstacle", "platform"],
+      "source_selectors": [
+        {"path": "objectives/themed/last_iteration/archive", "match": "prefix", "extensions": [".png"]}
+      ],
+      "owner": "levels_backgrounds_content_pipeline",
+      "bundle_id": "resources",
+      "packing": {
+        "mode": "static_atlas",
+        "implementation_status": "measured_static_atlas",
+        "max_texture_size": 2048,
+        "padding_px": 2,
+        "compression": {"web": "auto_atlas_png_lossless", "android": "auto_atlas_png_lossless", "status": "measured_family_accepted"},
+        "trim_policy": "preserve_existing_import",
+        "pivot_policy": "preserve_existing_import",
+        "dynamic_atlas_allowed": false,
+        "descriptor": "assets/resources/objectives/themed/last_iteration/archive/level_theme_archive.pac",
+        "descriptor_uuid": "bb2aab99-0537-4caf-bdb4-2e61d6ce0352",
+        "measurement_contract": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json",
+        "acceptance_evidence": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json"
+      },
+      "provenance": [
+        "assets/resources/config/current_objective_runtime_usage.json",
+        "assets/resources/config/last_iteration_asset_manifest.generated.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json"
+      ],
+      "observed": {"count": 17, "bytes": 1224151},
+      "fallback_policy": "block_release",
+      "runtime_effect": true
+    },
+    {
       "atlas_id": "level_theme_families",
       "usage_scopes": ["obstacle", "platform"],
       "source_selectors": [
-        {"path": "objectives/themed/last_iteration/archive", "match": "prefix", "extensions": [".png"]},
         {"path": "objectives/themed/last_iteration/construction", "match": "prefix", "extensions": [".png"]},
         {"path": "objectives/themed/last_iteration/farm", "match": "prefix", "extensions": [".png"]},
         {"path": "objectives/themed/last_iteration/industrial", "match": "prefix", "extensions": [".png"]},
@@ -613,7 +644,7 @@
         "dynamic_atlas_allowed": false
       },
       "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
-      "observed": {"count": 280, "bytes": 24133477},
+      "observed": {"count": 263, "bytes": 22909326},
       "fallback_policy": "block_release",
       "runtime_effect": false
     },

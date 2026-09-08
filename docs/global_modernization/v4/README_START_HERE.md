@@ -23,7 +23,7 @@
 ## Два независимых счётчика
 
 - Требования проекта: `95` source work packages; `28` complete, `54` pending, `3` blocked, `10` conditional. Обязательный остаток: `57`.
-- Исполнение от текущей точки: `69` обязательных v4 execution units, включая inventory-derived `M04-C-FAMILY-ACHIEVEMENT-UI`, `M04-C-FAMILY-RUNNER-COLLECTIBLES`, `M04-C-FAMILY-BONUS-ITEMS` и `M04-C-FAMILY-UI-SHARED-CORE`; `17/69` завершены, `52` остаётся. Ещё `7` units условные. Знаменатель provisional до дальнейшей инвентаризации child batches M04/M05/M10.
+- Исполнение от текущей точки: `70` обязательных v4 execution units, включая inventory-derived atlas children вплоть до `M04-C-FAMILY-THEME-ARCHIVE`; `18/70` завершены, `52` остаётся. Ещё `7` units условные. Знаменатель provisional до дальнейшей инвентаризации child batches M04/M05/M10.
 
 Эти знаменатели нельзя смешивать: один считает требования, другой — инженерные rollback/QA-границы.
 

@@ -1,13 +1,27 @@
 # CURRENT_STATE — Martyshkin Trud Runner
 
 Generated: 2026-07-02 15:44 +03:00  
-Updated: 2026-08-26  
+Updated: 2026-09-08  
 Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`  
 Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m04_c_ui_shared_core_child_complete / m04_c_families_ready / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m04_c_theme_archive_child_complete / m04_c_families_ready / release_blocked`
+
+## 2026-09-08 M04-C-FAMILY-THEME-ARCHIVE completion overlay
+
+This overlay supersedes every older next-action line below; older sections remain historical evidence only.
+
+- `level_theme_archive` is the sixth accepted measured static-atlas family: 17 archive hazard/platform PNGs remain in their original child directories and are owned by one recursive parent descriptor. Source PNG bytes, PNG metadata, resource keys and file locations are unchanged.
+- The initial two-descriptor candidate was rejected at `62/63`: Web median draws regressed `24 → 26` beyond the frozen maximum `25`. No threshold was weakened. A fresh Web and Android build proved recursive parent ownership, and the corrected candidate passes `63/63` with Web `24 → 24` and Android `40 → 24` (`-16`, `-40%`).
+- Web texture memory improves `29.61 → 13.84 MiB`; Android texture memory remains within budget at `16.10 → 16.34 MiB`. All 17 source UUID artifacts are removed from both built resource trees.
+- Visual parity passes on Web and Android: 17/17 sprites visible, no clipping, no new near-white matte fragments, no pivot/trim regression, and both candidate-repeat screenshots are pixel-identical.
+- Every Android atlas cycle used only `emulator-5554`; host startup contains `-no-audio`, STREAM_MUSIC is verified at `0/15` before each launch, and no physical device was addressed.
+- Static/P4/M2_PLUS completion evidence is recorded in `docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_VALIDATION_SUMMARY.json` and `docs/qa/CONTROL_LOG_CHECKPOINT_20260908_M04_C_FAMILY_THEME_ARCHIVE_COMPLETE.md`.
+- The inventory-derived child expands the execution denominator: `18/70` complete (`25.7143%`), `52` mandatory units remain plus `7` conditional. Source remains `28/95`; aggregate `M04.5` remains pending with `57` mandatory source packages plus `10` conditional.
+- Next safe unit: continue `M04-C-FAMILIES` by selecting and freezing exactly one remaining measured family from the current inventory; no broader batch is implied.
+- Physical device used: `NO`. Release remains blocked by `M02.1`, `M02.7` and `M12.7`.
 
 ## 2026-08-26 M04-C-FAMILY-UI-SHARED-CORE completion overlay
 

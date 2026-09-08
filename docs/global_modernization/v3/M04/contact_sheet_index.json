@@ -11,10 +11,10 @@
   },
   "source": {
     "atlasManifest": "assets/resources/config/atlas_manifest.json",
-    "atlasManifestSha256": "C4795EFC8F65861FBEBDAD943F41B96148CE9C03EC14F9732905D858AA8146EB",
+    "atlasManifestSha256": "9A5ADEE1318B70CAA0CAF390D4EC912CD518A2C641618004A2325AD18B3A8360",
     "contentIdentity": "assets/resources/config/content_identity.json",
     "logicalContentVersion": "mtr-v3-source-4492deee4209",
-    "sourcePayloadSha256": "B98ED41401A44C13D9E006999C19F71BD8F1CB102E2DAB941B5E57722FE7457B"
+    "sourcePayloadSha256": "A2F6C735103E5D64F3F0D381DAE53116CAD13D641DF6E0EDACE6FA2A265845A4"
   },
   "materialization": {
     "policy": "local_qa_evidence_not_runtime_not_committed",
@@ -23,8 +23,8 @@
     "checkCommand": "python -B tools/codex/render_m04_b_contact_sheets.py --project-root . --check",
     "html": {
       "path": "temp/m04-b-contact-sheets/m04b_contact_sheet_index.html",
-      "sha256": "DF8010B23E516B51CFFDB677C39DFB7EC124176051776764DCA1AFB74A0810E7",
-      "bytes": 6951
+      "sha256": "3E645FD2D3F85BE56C75A658550DF198C92046997692EEDC2ECC31C1193ED132",
+      "bytes": 6972
     }
   },
   "classificationPolicy": {
@@ -104,7 +104,7 @@
             384
           ],
           "atlasId": "achievement_ui",
-          "atlasManifestPointer": "/atlas_groups/8",
+          "atlasManifestPointer": "/atlas_groups/9",
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
@@ -130,7 +130,7 @@
             384
           ],
           "atlasId": "achievement_ui",
-          "atlasManifestPointer": "/atlas_groups/8",
+          "atlasManifestPointer": "/atlas_groups/9",
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
@@ -156,7 +156,7 @@
             384
           ],
           "atlasId": "achievement_ui",
-          "atlasManifestPointer": "/atlas_groups/8",
+          "atlasManifestPointer": "/atlas_groups/9",
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
@@ -182,7 +182,7 @@
             384
           ],
           "atlasId": "achievement_ui",
-          "atlasManifestPointer": "/atlas_groups/8",
+          "atlasManifestPointer": "/atlas_groups/9",
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
@@ -208,7 +208,7 @@
             384
           ],
           "atlasId": "achievement_ui",
-          "atlasManifestPointer": "/atlas_groups/8",
+          "atlasManifestPointer": "/atlas_groups/9",
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
@@ -234,7 +234,7 @@
             294
           ],
           "atlasId": "achievement_ui",
-          "atlasManifestPointer": "/atlas_groups/8",
+          "atlasManifestPointer": "/atlas_groups/9",
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
@@ -260,7 +260,7 @@
             384
           ],
           "atlasId": "achievement_ui",
-          "atlasManifestPointer": "/atlas_groups/8",
+          "atlasManifestPointer": "/atlas_groups/9",
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
@@ -286,7 +286,7 @@
             384
           ],
           "atlasId": "achievement_ui",
-          "atlasManifestPointer": "/atlas_groups/8",
+          "atlasManifestPointer": "/atlas_groups/9",
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
@@ -312,7 +312,7 @@
             383
           ],
           "atlasId": "achievement_ui",
-          "atlasManifestPointer": "/atlas_groups/8",
+          "atlasManifestPointer": "/atlas_groups/9",
           "ownershipScope": "objective_ui",
           "ownershipManifestPointer": "/ownership_scopes/21",
           "provenance": [
@@ -451,7 +451,7 @@
             102
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -475,7 +475,7 @@
             281
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -499,7 +499,7 @@
             276
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -523,7 +523,7 @@
             275
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -547,7 +547,7 @@
             414
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -571,7 +571,7 @@
             222
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -595,7 +595,7 @@
             432
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -619,7 +619,7 @@
             251
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -643,7 +643,7 @@
             243
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -667,7 +667,7 @@
             248
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -691,7 +691,7 @@
             247
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -715,7 +715,7 @@
             121
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -739,7 +739,7 @@
             137
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -763,7 +763,7 @@
             211
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -787,7 +787,7 @@
             205
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -811,7 +811,7 @@
             192
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -835,7 +835,7 @@
             44
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -859,7 +859,7 @@
             129
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -883,7 +883,7 @@
             119
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -907,7 +907,7 @@
             134
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -931,7 +931,7 @@
             38
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -955,7 +955,7 @@
             139
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -979,7 +979,7 @@
             216
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1003,7 +1003,7 @@
             99
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1027,7 +1027,7 @@
             130
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1051,7 +1051,7 @@
             123
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1075,7 +1075,7 @@
             132
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1099,7 +1099,7 @@
             133
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1123,7 +1123,7 @@
             141
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1147,7 +1147,7 @@
             133
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1171,7 +1171,7 @@
             105
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1195,7 +1195,7 @@
             229
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1219,7 +1219,7 @@
             209
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1243,7 +1243,7 @@
             217
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1267,7 +1267,7 @@
             196
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1291,7 +1291,7 @@
             157
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1315,7 +1315,7 @@
             204
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1339,7 +1339,7 @@
             217
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1363,7 +1363,7 @@
             259
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1387,7 +1387,7 @@
             212
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1411,7 +1411,7 @@
             189
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1435,7 +1435,7 @@
             201
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1459,7 +1459,7 @@
             237
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1483,7 +1483,7 @@
             252
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1507,7 +1507,7 @@
             215
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1531,7 +1531,7 @@
             163
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1555,7 +1555,7 @@
             175
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1579,7 +1579,7 @@
             196
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1603,7 +1603,7 @@
             222
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1627,7 +1627,7 @@
             174
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1651,7 +1651,7 @@
             227
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1675,7 +1675,7 @@
             276
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1699,7 +1699,7 @@
             171
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1723,7 +1723,7 @@
             47
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1747,7 +1747,7 @@
             223
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1771,7 +1771,7 @@
             241
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1795,7 +1795,7 @@
             266
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1819,7 +1819,7 @@
             176
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1843,7 +1843,7 @@
             54
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1867,7 +1867,7 @@
             169
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1891,7 +1891,7 @@
             203
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1915,7 +1915,7 @@
             205
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1939,7 +1939,7 @@
             250
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1963,7 +1963,7 @@
             282
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -1987,7 +1987,7 @@
             310
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2011,7 +2011,7 @@
             432
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2035,7 +2035,7 @@
             235
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2059,7 +2059,7 @@
             259
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2083,7 +2083,7 @@
             163
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2107,7 +2107,7 @@
             174
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2131,7 +2131,7 @@
             145
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2155,7 +2155,7 @@
             148
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2179,7 +2179,7 @@
             146
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2203,7 +2203,7 @@
             236
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2227,7 +2227,7 @@
             144
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2251,7 +2251,7 @@
             145
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2275,7 +2275,7 @@
             301
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2299,7 +2299,7 @@
             293
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2323,7 +2323,7 @@
             289
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2347,7 +2347,7 @@
             295
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2371,7 +2371,7 @@
             283
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2395,7 +2395,7 @@
             289
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2419,7 +2419,7 @@
             288
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2443,7 +2443,7 @@
             293
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2467,7 +2467,7 @@
             104
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2491,7 +2491,7 @@
             98
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2515,7 +2515,7 @@
             77
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2539,7 +2539,7 @@
             76
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2563,7 +2563,7 @@
             144
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2587,7 +2587,7 @@
             145
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2611,7 +2611,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2635,7 +2635,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2659,7 +2659,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2683,7 +2683,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2707,7 +2707,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2731,7 +2731,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2755,7 +2755,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2779,7 +2779,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2803,7 +2803,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2827,7 +2827,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2851,7 +2851,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2875,7 +2875,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2899,7 +2899,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2923,7 +2923,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2947,7 +2947,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2971,7 +2971,7 @@
             200
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -2995,7 +2995,7 @@
             55
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3019,7 +3019,7 @@
             118
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3043,7 +3043,7 @@
             128
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3067,7 +3067,7 @@
             137
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3091,7 +3091,7 @@
             133
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3115,7 +3115,7 @@
             137
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3139,7 +3139,7 @@
             133
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3163,7 +3163,7 @@
             128
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3187,7 +3187,7 @@
             137
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3211,7 +3211,7 @@
             82
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3235,7 +3235,7 @@
             82
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3259,7 +3259,7 @@
             80
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3283,7 +3283,7 @@
             80
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3307,7 +3307,7 @@
             285
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3331,7 +3331,7 @@
             150
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3355,7 +3355,7 @@
             150
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3379,7 +3379,7 @@
             75
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3403,7 +3403,7 @@
             157
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3427,7 +3427,7 @@
             75
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3451,7 +3451,7 @@
             178
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3475,7 +3475,7 @@
             160
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3499,7 +3499,7 @@
             160
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3523,7 +3523,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3547,7 +3547,7 @@
             144
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3571,7 +3571,7 @@
             86
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3595,7 +3595,7 @@
             168
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3619,7 +3619,7 @@
             284
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3643,7 +3643,7 @@
             134
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3667,7 +3667,7 @@
             134
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3691,7 +3691,7 @@
             134
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3715,7 +3715,7 @@
             252
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3739,7 +3739,7 @@
             231
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3763,7 +3763,7 @@
             434
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3787,7 +3787,7 @@
             432
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3811,7 +3811,7 @@
             342
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3835,7 +3835,7 @@
             299
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3859,7 +3859,7 @@
             205
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3883,7 +3883,7 @@
             240
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3907,7 +3907,7 @@
             104
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3931,7 +3931,7 @@
             105
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3955,7 +3955,7 @@
             100
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -3979,7 +3979,7 @@
             401
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4003,7 +4003,7 @@
             252
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4027,7 +4027,7 @@
             177
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4051,7 +4051,7 @@
             174
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4075,7 +4075,7 @@
             175
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4099,7 +4099,7 @@
             166
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4123,7 +4123,7 @@
             166
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4147,7 +4147,7 @@
             164
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4171,7 +4171,7 @@
             149
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4195,7 +4195,7 @@
             197
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4219,7 +4219,7 @@
             185
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4243,7 +4243,7 @@
             178
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4267,7 +4267,7 @@
             168
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4291,7 +4291,7 @@
             129
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4315,7 +4315,7 @@
             246
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4339,7 +4339,7 @@
             111
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4363,7 +4363,7 @@
             110
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4387,7 +4387,7 @@
             108
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4411,7 +4411,7 @@
             434
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4435,7 +4435,7 @@
             315
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4459,7 +4459,7 @@
             317
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4483,7 +4483,7 @@
             254
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4507,7 +4507,7 @@
             253
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4531,7 +4531,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4555,7 +4555,7 @@
             124
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4579,7 +4579,7 @@
             141
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4603,7 +4603,7 @@
             147
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4627,7 +4627,7 @@
             151
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4651,7 +4651,7 @@
             144
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4675,7 +4675,7 @@
             152
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4699,7 +4699,7 @@
             159
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4723,7 +4723,7 @@
             134
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4747,7 +4747,7 @@
             152
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4771,7 +4771,7 @@
             145
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4795,7 +4795,7 @@
             110
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4819,7 +4819,7 @@
             111
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4843,7 +4843,7 @@
             109
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4867,7 +4867,7 @@
             91
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4891,7 +4891,7 @@
             91
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4915,7 +4915,7 @@
             156
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4939,7 +4939,7 @@
             154
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4963,7 +4963,7 @@
             157
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -4987,7 +4987,7 @@
             306
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5011,7 +5011,7 @@
             204
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5035,7 +5035,7 @@
             282
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5059,7 +5059,7 @@
             153
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5083,7 +5083,7 @@
             153
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5107,7 +5107,7 @@
             155
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5131,7 +5131,7 @@
             98
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5155,7 +5155,7 @@
             98
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5179,7 +5179,7 @@
             115
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5203,7 +5203,7 @@
             115
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5227,7 +5227,7 @@
             103
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5251,7 +5251,7 @@
             103
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5275,7 +5275,7 @@
             105
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5299,7 +5299,7 @@
             105
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5323,7 +5323,7 @@
             90
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5347,7 +5347,7 @@
             90
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5371,7 +5371,7 @@
             85
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5395,7 +5395,7 @@
             140
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5419,7 +5419,7 @@
             95
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5443,7 +5443,7 @@
             95
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5467,7 +5467,7 @@
             94
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5491,7 +5491,7 @@
             137
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5515,7 +5515,7 @@
             137
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5539,7 +5539,7 @@
             137
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -5563,7 +5563,7 @@
             171
           ],
           "atlasId": "last_iteration_ui",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasManifestPointer": "/atlas_groups/8",
           "ownershipScope": "themed_ui",
           "ownershipManifestPointer": "/ownership_scopes/20",
           "provenance": [
@@ -30138,6 +30138,7 @@
       "sheetCount": 5,
       "sourceDigest": "DF02A57ED218F923BE91DA6E7D30B72621D61A18F793082A3EECA45F71AF45DE",
       "atlasIds": [
+        "level_theme_archive",
         "level_theme_families",
         "objective_npc"
       ],
@@ -30158,6 +30159,8 @@
       "provenance": [
         "assets/resources/config/current_objective_runtime_usage.json",
         "assets/resources/config/last_iteration_asset_manifest.generated.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json",
         "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
         "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
       ],
@@ -30165,8 +30168,8 @@
         {
           "id": "obstacles-01",
           "path": "temp/m04-b-contact-sheets/m04b_obstacles-01.png",
-          "sha256": "A7DACEFDB3D0C1035A06CA3EBD05A94E7E0BDE6809369E940C031703B180198D",
-          "bytes": 1109958,
+          "sha256": "BB74F6C13FC4D4CCC7287A6C542F7C71960B4CAAE4C51612AECC8251ADB4231B",
+          "bytes": 1110407,
           "width": 1432,
           "height": 1464,
           "assetCount": 64
@@ -30483,12 +30486,15 @@
             178,
             257
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 10
@@ -30507,12 +30513,15 @@
             142,
             257
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 11
@@ -30531,12 +30540,15 @@
             122,
             261
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 12
@@ -30555,12 +30567,15 @@
             243,
             263
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 13
@@ -30579,12 +30594,15 @@
             166,
             196
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 14
@@ -30603,12 +30621,15 @@
             217,
             199
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 15
@@ -30627,12 +30648,15 @@
             178,
             269
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 16
@@ -30651,12 +30675,15 @@
             146,
             262
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 17
@@ -30675,12 +30702,15 @@
             255,
             243
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 18
@@ -30699,12 +30729,15 @@
             265,
             214
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 19
@@ -30723,12 +30756,15 @@
             384,
             154
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 20
@@ -30747,12 +30783,15 @@
             493,
             124
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 21
@@ -30771,12 +30810,15 @@
             450,
             134
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 22
@@ -30795,12 +30837,15 @@
             462,
             105
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 23
@@ -30819,12 +30864,15 @@
             430,
             109
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 24
@@ -30843,12 +30891,15 @@
             429,
             100
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 25
@@ -30867,12 +30918,15 @@
             286,
             138
           ],
-          "atlasId": "level_theme_families",
+          "atlasId": "level_theme_archive",
           "atlasManifestPointer": "/atlas_groups/6",
           "ownershipScope": "themed_archive",
           "ownershipManifestPointer": "/ownership_scopes/9",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 26
@@ -30892,7 +30946,7 @@
             265
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -30916,7 +30970,7 @@
             239
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -30940,7 +30994,7 @@
             219
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -30964,7 +31018,7 @@
             231
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -30988,7 +31042,7 @@
             257
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31012,7 +31066,7 @@
             260
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31036,7 +31090,7 @@
             244
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31060,7 +31114,7 @@
             228
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31084,7 +31138,7 @@
             188
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31108,7 +31162,7 @@
             205
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31132,7 +31186,7 @@
             213
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31156,7 +31210,7 @@
             222
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31180,7 +31234,7 @@
             203
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31204,7 +31258,7 @@
             167
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31228,7 +31282,7 @@
             161
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31252,7 +31306,7 @@
             131
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31276,7 +31330,7 @@
             136
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31300,7 +31354,7 @@
             199
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31324,7 +31378,7 @@
             196
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31348,7 +31402,7 @@
             193
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31372,7 +31426,7 @@
             139
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31396,7 +31450,7 @@
             182
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31420,7 +31474,7 @@
             165
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31444,7 +31498,7 @@
             227
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_construction",
           "ownershipManifestPointer": "/ownership_scopes/10",
           "provenance": [
@@ -31468,7 +31522,7 @@
             241
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31492,7 +31546,7 @@
             221
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31516,7 +31570,7 @@
             157
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31540,7 +31594,7 @@
             173
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31564,7 +31618,7 @@
             241
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31588,7 +31642,7 @@
             214
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31612,7 +31666,7 @@
             209
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31636,7 +31690,7 @@
             229
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31660,7 +31714,7 @@
             171
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31684,7 +31738,7 @@
             209
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31708,7 +31762,7 @@
             194
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31732,7 +31786,7 @@
             186
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
@@ -31756,7 +31810,7 @@
             195
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31780,7 +31834,7 @@
             227
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31804,7 +31858,7 @@
             213
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31828,7 +31882,7 @@
             160
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31852,7 +31906,7 @@
             304
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31876,7 +31930,7 @@
             266
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31900,7 +31954,7 @@
             260
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31924,7 +31978,7 @@
             165
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31948,7 +32002,7 @@
             286
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31972,7 +32026,7 @@
             265
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -31996,7 +32050,7 @@
             266
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32020,7 +32074,7 @@
             243
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32044,7 +32098,7 @@
             259
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32068,7 +32122,7 @@
             217
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32092,7 +32146,7 @@
             196
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32116,7 +32170,7 @@
             184
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32140,7 +32194,7 @@
             179
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32164,7 +32218,7 @@
             221
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32188,7 +32242,7 @@
             216
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32212,7 +32266,7 @@
             169
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32236,7 +32290,7 @@
             131
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32260,7 +32314,7 @@
             131
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32284,7 +32338,7 @@
             156
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32308,7 +32362,7 @@
             181
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32332,7 +32386,7 @@
             218
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32356,7 +32410,7 @@
             143
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32380,7 +32434,7 @@
             232
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32404,7 +32458,7 @@
             124
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32428,7 +32482,7 @@
             162
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32452,7 +32506,7 @@
             183
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_industrial",
           "ownershipManifestPointer": "/ownership_scopes/12",
           "provenance": [
@@ -32476,7 +32530,7 @@
             451
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32500,7 +32554,7 @@
             411
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32524,7 +32578,7 @@
             244
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32548,7 +32602,7 @@
             243
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32572,7 +32626,7 @@
             257
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32596,7 +32650,7 @@
             210
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32620,7 +32674,7 @@
             225
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32644,7 +32698,7 @@
             207
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32668,7 +32722,7 @@
             303
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32692,7 +32746,7 @@
             291
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32716,7 +32770,7 @@
             216
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32740,7 +32794,7 @@
             258
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32764,7 +32818,7 @@
             261
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32788,7 +32842,7 @@
             184
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32812,7 +32866,7 @@
             143
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32836,7 +32890,7 @@
             173
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32860,7 +32914,7 @@
             172
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32884,7 +32938,7 @@
             184
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32908,7 +32962,7 @@
             216
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32932,7 +32986,7 @@
             230
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32956,7 +33010,7 @@
             207
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -32980,7 +33034,7 @@
             171
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -33004,7 +33058,7 @@
             170
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -33028,7 +33082,7 @@
             141
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -33052,7 +33106,7 @@
             146
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -33076,7 +33130,7 @@
             220
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -33100,7 +33154,7 @@
             135
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -33124,7 +33178,7 @@
             131
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -33148,7 +33202,7 @@
             131
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_inspection",
           "ownershipManifestPointer": "/ownership_scopes/13",
           "provenance": [
@@ -33172,7 +33226,7 @@
             233
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33196,7 +33250,7 @@
             145
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33220,7 +33274,7 @@
             242
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33244,7 +33298,7 @@
             243
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33268,7 +33322,7 @@
             242
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33292,7 +33346,7 @@
             192
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33316,7 +33370,7 @@
             183
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33340,7 +33394,7 @@
             190
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33364,7 +33418,7 @@
             169
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33388,7 +33442,7 @@
             266
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33412,7 +33466,7 @@
             181
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33436,7 +33490,7 @@
             180
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33460,7 +33514,7 @@
             218
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33484,7 +33538,7 @@
             305
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33508,7 +33562,7 @@
             203
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33532,7 +33586,7 @@
             341
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33556,7 +33610,7 @@
             182
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33580,7 +33634,7 @@
             218
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33604,7 +33658,7 @@
             140
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33628,7 +33682,7 @@
             135
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33652,7 +33706,7 @@
             133
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33676,7 +33730,7 @@
             170
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33700,7 +33754,7 @@
             193
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33724,7 +33778,7 @@
             228
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33748,7 +33802,7 @@
             212
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33772,7 +33826,7 @@
             214
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33796,7 +33850,7 @@
             188
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_jungle",
           "ownershipManifestPointer": "/ownership_scopes/14",
           "provenance": [
@@ -33820,7 +33874,7 @@
             201
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -33844,7 +33898,7 @@
             209
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -33868,7 +33922,7 @@
             278
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -33892,7 +33946,7 @@
             262
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -33916,7 +33970,7 @@
             171
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -33940,7 +33994,7 @@
             247
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -33964,7 +34018,7 @@
             189
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -33988,7 +34042,7 @@
             281
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34012,7 +34066,7 @@
             226
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34036,7 +34090,7 @@
             219
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34060,7 +34114,7 @@
             193
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34084,7 +34138,7 @@
             367
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34108,7 +34162,7 @@
             190
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34132,7 +34186,7 @@
             318
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34156,7 +34210,7 @@
             183
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34180,7 +34234,7 @@
             163
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34204,7 +34258,7 @@
             103
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34228,7 +34282,7 @@
             283
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34252,7 +34306,7 @@
             192
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34276,7 +34330,7 @@
             241
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34300,7 +34354,7 @@
             124
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34324,7 +34378,7 @@
             146
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34348,7 +34402,7 @@
             156
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34372,7 +34426,7 @@
             168
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34396,7 +34450,7 @@
             203
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34420,7 +34474,7 @@
             88
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_logistics",
           "ownershipManifestPointer": "/ownership_scopes/15",
           "provenance": [
@@ -34444,7 +34498,7 @@
             264
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34468,7 +34522,7 @@
             226
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34492,7 +34546,7 @@
             169
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34516,7 +34570,7 @@
             174
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34540,7 +34594,7 @@
             237
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34564,7 +34618,7 @@
             263
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34588,7 +34642,7 @@
             257
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34612,7 +34666,7 @@
             175
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34636,7 +34690,7 @@
             308
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34660,7 +34714,7 @@
             309
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34684,7 +34738,7 @@
             188
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34708,7 +34762,7 @@
             247
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34732,7 +34786,7 @@
             145
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34756,7 +34810,7 @@
             194
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34780,7 +34834,7 @@
             200
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34804,7 +34858,7 @@
             223
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34828,7 +34882,7 @@
             118
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34852,7 +34906,7 @@
             253
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34876,7 +34930,7 @@
             227
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34900,7 +34954,7 @@
             174
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34924,7 +34978,7 @@
             158
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34948,7 +35002,7 @@
             189
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34972,7 +35026,7 @@
             153
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -34996,7 +35050,7 @@
             164
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -35020,7 +35074,7 @@
             239
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -35044,7 +35098,7 @@
             179
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -35068,7 +35122,7 @@
             196
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -35092,7 +35146,7 @@
             133
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_office",
           "ownershipManifestPointer": "/ownership_scopes/16",
           "provenance": [
@@ -35116,7 +35170,7 @@
             277
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35140,7 +35194,7 @@
             315
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35164,7 +35218,7 @@
             263
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35188,7 +35242,7 @@
             219
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35212,7 +35266,7 @@
             175
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35236,7 +35290,7 @@
             208
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35260,7 +35314,7 @@
             223
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35284,7 +35338,7 @@
             136
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35308,7 +35362,7 @@
             188
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35332,7 +35386,7 @@
             316
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35356,7 +35410,7 @@
             212
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35380,7 +35434,7 @@
             241
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35404,7 +35458,7 @@
             227
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35428,7 +35482,7 @@
             97
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35452,7 +35506,7 @@
             250
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35476,7 +35530,7 @@
             229
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35500,7 +35554,7 @@
             221
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35524,7 +35578,7 @@
             201
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35548,7 +35602,7 @@
             191
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35572,7 +35626,7 @@
             186
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35596,7 +35650,7 @@
             151
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35620,7 +35674,7 @@
             148
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35644,7 +35698,7 @@
             171
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35668,7 +35722,7 @@
             171
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35692,7 +35746,7 @@
             177
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35716,7 +35770,7 @@
             242
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35740,7 +35794,7 @@
             157
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35764,7 +35818,7 @@
             239
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35788,7 +35842,7 @@
             130
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35812,7 +35866,7 @@
             130
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_security",
           "ownershipManifestPointer": "/ownership_scopes/17",
           "provenance": [
@@ -35836,7 +35890,7 @@
             211
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -35860,7 +35914,7 @@
             198
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -35884,7 +35938,7 @@
             191
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -35908,7 +35962,7 @@
             193
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -35932,7 +35986,7 @@
             120
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -35956,7 +36010,7 @@
             133
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -35980,7 +36034,7 @@
             242
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36004,7 +36058,7 @@
             217
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36028,7 +36082,7 @@
             202
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36052,7 +36106,7 @@
             136
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36076,7 +36130,7 @@
             231
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36100,7 +36154,7 @@
             220
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36124,7 +36178,7 @@
             246
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36148,7 +36202,7 @@
             204
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36172,7 +36226,7 @@
             174
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36196,7 +36250,7 @@
             187
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36220,7 +36274,7 @@
             193
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36244,7 +36298,7 @@
             199
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36268,7 +36322,7 @@
             265
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36292,7 +36346,7 @@
             269
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36316,7 +36370,7 @@
             100
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36340,7 +36394,7 @@
             100
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36364,7 +36418,7 @@
             132
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36388,7 +36442,7 @@
             113
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36412,7 +36466,7 @@
             232
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36436,7 +36490,7 @@
             116
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36460,7 +36514,7 @@
             103
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36484,7 +36538,7 @@
             161
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_shared",
           "ownershipManifestPointer": "/ownership_scopes/18",
           "provenance": [
@@ -36508,7 +36562,7 @@
             409
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36532,7 +36586,7 @@
             175
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36556,7 +36610,7 @@
             262
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36580,7 +36634,7 @@
             226
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36604,7 +36658,7 @@
             259
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36628,7 +36682,7 @@
             259
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36652,7 +36706,7 @@
             207
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36676,7 +36730,7 @@
             190
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36700,7 +36754,7 @@
             206
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36724,7 +36778,7 @@
             146
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36748,7 +36802,7 @@
             190
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36772,7 +36826,7 @@
             172
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36796,7 +36850,7 @@
             183
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36820,7 +36874,7 @@
             267
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36844,7 +36898,7 @@
             143
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36868,7 +36922,7 @@
             207
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36892,7 +36946,7 @@
             215
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36916,7 +36970,7 @@
             216
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36940,7 +36994,7 @@
             149
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36964,7 +37018,7 @@
             125
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -36988,7 +37042,7 @@
             129
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -37012,7 +37066,7 @@
             147
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -37036,7 +37090,7 @@
             163
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -37060,7 +37114,7 @@
             120
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -37084,7 +37138,7 @@
             96
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -37108,7 +37162,7 @@
             140
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -37132,7 +37186,7 @@
             128
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -37156,7 +37210,7 @@
             152
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -37180,7 +37234,7 @@
             139
           ],
           "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/6",
+          "atlasManifestPointer": "/atlas_groups/7",
           "ownershipScope": "themed_steampunk",
           "ownershipManifestPointer": "/ownership_scopes/19",
           "provenance": [
@@ -37235,7 +37289,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37254,7 +37308,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37273,7 +37327,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37292,7 +37346,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37311,7 +37365,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37330,7 +37384,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37349,7 +37403,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37368,7 +37422,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37387,7 +37441,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37406,7 +37460,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37425,7 +37479,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37444,7 +37498,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37463,7 +37517,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37482,7 +37536,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37501,7 +37555,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_backgrounds",
-          "atlasManifestPointer": "/atlas_groups/9",
+          "atlasManifestPointer": "/atlas_groups/10",
           "ownershipScope": "level_backgrounds",
           "ownershipManifestPointer": "/ownership_scopes/1",
           "provenance": [
@@ -37520,7 +37574,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37539,7 +37593,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37558,7 +37612,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37577,7 +37631,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37596,7 +37650,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37615,7 +37669,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37634,7 +37688,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37653,7 +37707,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37672,7 +37726,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37691,7 +37745,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37710,7 +37764,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37729,7 +37783,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37748,7 +37802,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37767,7 +37821,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [
@@ -37786,7 +37840,7 @@
           "hasAlpha": false,
           "alphaBBox": null,
           "atlasId": "level_background_previews",
-          "atlasManifestPointer": "/atlas_groups/10",
+          "atlasManifestPointer": "/atlas_groups/11",
           "ownershipScope": "level_background_previews",
           "ownershipManifestPointer": "/ownership_scopes/2",
           "provenance": [

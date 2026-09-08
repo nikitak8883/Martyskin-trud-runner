@@ -3,8 +3,8 @@
 ## Текущее положение
 
 - Source ledger: `28/95 complete`; mandatory `28/85`, осталось `57`; conditional `10`. `M04.5` остаётся pending до закрытия remaining family children.
-- V4 remaining-scope execution ledger: `17/69 complete`, осталось `52`; conditional units `7`. Знаменатель расширен на inventory-derived children `M04-C-FAMILY-ACHIEVEMENT-UI`, `M04-C-FAMILY-RUNNER-COLLECTIBLES`, `M04-C-FAMILY-BONUS-ITEMS` и `M04-C-FAMILY-UI-SHARED-CORE` и остаётся provisional для следующих M04/M05/M10 children.
-- Текущий milestone: `M04-C-FAMILY-UI-SHARED-CORE` complete; после четырёх прежних family children принят пятый measured family из 28 PNG через четыре directory-local descriptors и один standalone banner, final comparison `63/63`, P4 и M2_PLUS зелёные.
+- V4 remaining-scope execution ledger: `18/70 complete`, осталось `52`; conditional units `7`. Знаменатель расширен новым inventory-derived child `M04-C-FAMILY-THEME-ARCHIVE` и остаётся provisional для следующих M04/M05/M10 children.
+- Текущий milestone: `M04-C-FAMILY-THEME-ARCHIVE` complete; принят шестой measured family из 17 archive PNG через один эмпирически подтверждённый recursive parent descriptor. Initial two-descriptor candidate отклонён на Web draw-call gate, исправленный final comparison `63/63`, P4 и M2_PLUS зелёные.
 - Следующий unit: продолжение `M04-C-FAMILIES` — один новый accepted measured family на изолированный child checkpoint; broader batching не разрешён.
 - Release: `BLOCKED`.
 

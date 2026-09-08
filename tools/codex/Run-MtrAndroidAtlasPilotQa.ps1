@@ -17,6 +17,12 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+$audioGuardPath = Join-Path $PSScriptRoot 'MtrAndroidQaAudioGuard.ps1'
+if (-not (Test-Path -LiteralPath $audioGuardPath)) {
+    throw "Android QA audio guard is missing: $audioGuardPath"
+}
+. $audioGuardPath
+
 $scriptPath = [string]$MyInvocation.MyCommand.Path
 if ([string]::IsNullOrWhiteSpace($scriptPath)) {
     throw 'Cannot resolve the Android atlas QA script path.'
@@ -80,6 +86,8 @@ $abi = (Invoke-MtrAdb -Arguments @('shell', 'getprop', 'ro.product.cpu.abi')).Tr
 if ($state -ne 'device' -or $qemu -ne '1') {
     throw "Emulator-only guard rejected serial '$Serial' (state=$state, qemu=$qemu)."
 }
+
+$audioPolicy = Assert-MtrAndroidQaAudioMuted -AdbPath $adb -Serial $Serial
 
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 Invoke-MtrAdb -Arguments @('shell', 'am', 'force-stop', '--user', '0', $packageName) | Out-Null
@@ -150,6 +158,7 @@ $result = [ordered]@{
     serial = $Serial
     androidUser = 0
     emulatorVerified = ($qemu -eq '1')
+    audioPolicy = $audioPolicy
     abi = $abi
     packageName = $packageName
     appProcessId = $appProcessId

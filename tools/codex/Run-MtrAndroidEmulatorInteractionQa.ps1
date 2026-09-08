@@ -15,6 +15,12 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+$audioGuardPath = Join-Path $PSScriptRoot 'MtrAndroidQaAudioGuard.ps1'
+if (-not (Test-Path -LiteralPath $audioGuardPath)) {
+    throw "Android QA audio guard is missing: $audioGuardPath"
+}
+. $audioGuardPath
+
 if ($Serial -notmatch '^emulator-\d+$') {
     throw "Emulator-only guard rejected serial '$Serial' before any ADB call."
 }
@@ -49,27 +55,6 @@ function Invoke-MtrAdb {
         throw "adb failed ($exitCode): $($Arguments -join ' ')`n$text"
     }
     return $text
-}
-
-function Disable-MtrEmulatorAudio {
-    $setOutput = Invoke-MtrAdb -Arguments @(
-        'shell', 'cmd', 'media_session', 'volume', '--stream', '3', '--set', '0'
-    )
-    $state = Invoke-MtrAdb -Arguments @(
-        'shell', 'cmd', 'media_session', 'volume', '--stream', '3', '--get'
-    )
-    $volumeMatch = [regex]::Match($state, 'volume is (?<volume>\d+)\b')
-    if (-not $volumeMatch.Success -or [int]$volumeMatch.Groups['volume'].Value -ne 0) {
-        throw "Emulator audio mute precondition failed: $state"
-    }
-    return [pscustomobject]@{
-        policy = 'host-no-audio-plus-media-stream-zero'
-        startup_argument_required = '-no-audio'
-        media_stream = 3
-        volume = 0
-        set_output = $setOutput
-        verification = $state
-    }
 }
 
 function Write-MtrUtf8 {
@@ -455,7 +440,7 @@ $isEmulator = (Invoke-MtrAdb -Arguments @('shell', 'getprop', 'ro.kernel.qemu'))
 if ($deviceState -ne 'device' -or -not $isEmulator) {
     throw "Emulator-only guard rejected serial '$Serial' (state=$deviceState, qemu=$isEmulator)."
 }
-$audioPolicy = Disable-MtrEmulatorAudio
+$audioPolicy = Assert-MtrAndroidQaAudioMuted -AdbPath $adbPath -Serial $Serial
 
 $windowSize = Get-MtrWindowSize
 $points = [ordered]@{

@@ -9,6 +9,12 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+$audioGuardPath = Join-Path $PSScriptRoot 'MtrAndroidQaAudioGuard.ps1'
+if (-not (Test-Path -LiteralPath $audioGuardPath)) {
+    throw "Android QA audio guard is missing: $audioGuardPath"
+}
+. $audioGuardPath
+
 if ($Serial -notmatch '^emulator-\d+$') {
     throw "Emulator-only guard rejected serial '$Serial' before any ADB call."
 }
@@ -36,6 +42,8 @@ $abi = (Invoke-MtrAdb -Arguments @('shell', 'getprop', 'ro.product.cpu.abi')).Tr
 if ($state -ne 'device' -or $qemu -ne '1') {
     throw "Emulator-only guard rejected serial '$Serial' (state=$state, qemu=$qemu)."
 }
+
+$audioPolicy = Assert-MtrAndroidQaAudioMuted -AdbPath $adb -Serial $Serial
 
 Invoke-MtrAdb -Arguments @('logcat', '-c') | Out-Null
 Invoke-MtrAdb -Arguments @('shell', 'am', 'force-stop', $packageName) | Out-Null
@@ -79,6 +87,7 @@ $result = [ordered]@{
     status = if ($passed) { 'pass' } else { 'fail' }
     serial = $Serial
     emulatorVerified = ($qemu -eq '1')
+    audioPolicy = $audioPolicy
     abi = $abi
     packageName = $packageName
     appProcessId = $appProcessId

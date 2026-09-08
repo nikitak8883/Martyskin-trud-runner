@@ -10,6 +10,7 @@ async function (page) {
         runner_collectibles: 14,
         bonus_items: 12,
         ui_shared_core: 28,
+        level_theme_archive: 17,
     });
     if (!Object.prototype.hasOwnProperty.call(atlasSourceCounts, atlasId)) {
         throw new Error(`Unsupported atlas QA id: ${atlasId || '-'}`);

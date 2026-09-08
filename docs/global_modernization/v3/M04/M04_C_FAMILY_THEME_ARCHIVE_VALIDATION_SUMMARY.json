@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M04-C-FAMILY-THEME-ARCHIVE",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "source_work_packages": ["M04.5"],
+  "status": "pass",
+  "implementation_status": "family_child_complete",
+  "aggregate_work_package_status": "pending_remaining_families",
+  "runtime_changed": true,
+  "runtime_assets_repacked": true,
+  "runtime_png_sources_changed": false,
+  "runtime_png_metadata_changed": false,
+  "runtime_metadata_changed": true,
+  "broader_family_migration_authorized": false,
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "candidate": {
+    "atlas_id": "level_theme_archive",
+    "levels": [8, 9, 13, 15],
+    "source_sprite_count": 17,
+    "source_bytes": 1224151,
+    "source_area_px": 866233,
+    "alpha_area_px": 558838,
+    "descriptor_count": 1,
+    "descriptors": [
+      {
+        "descriptor": "assets/resources/objectives/themed/last_iteration/archive/level_theme_archive.pac",
+        "descriptor_uuid": "bb2aab99-0537-4caf-bdb4-2e61d6ce0352",
+        "source_directory": "assets/resources/objectives/themed/last_iteration/archive",
+        "included_child_directories": [
+          "assets/resources/objectives/themed/last_iteration/archive/hazards",
+          "assets/resources/objectives/themed/last_iteration/archive/platforms"
+        ],
+        "source_sprite_count": 17,
+        "allow_rotation": false
+      }
+    ],
+    "source_inventory_sha256": "F0B96A9A78C308DE5E5C0F6EA0E18DC00DBBA31F419CCE685907382481B48CBB",
+    "decision": "accepted_one_recursive_static_atlas_without_source_relocation"
+  },
+  "measurement_acceptance": {
+    "status": "PASS",
+    "passed": 63,
+    "total": 63,
+    "failed": 0,
+    "contract": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json",
+    "contract_sha256": "5C49780CAA01795DE235B2D318E76112DD8996A0E2B5A551FD4DCD2C69039A95",
+    "durable_acceptance": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
+    "durable_acceptance_sha256": "8DEF88C1A50121C9493F26AB7C23B07928727594CE0BD5E409C2B2B613B26E01",
+    "comparison_report": "temp/m04-c-families/level_theme_archive/comparison/acceptance.json",
+    "comparison_report_sha256": "66DF0D11238F7F4DDEB51FC00D400F687EC3216B7708C10E1C6BD2B46BDB47C1",
+    "negative_identity_fixtures": "PASS"
+  },
+  "contract_corrections": [
+    {
+      "id": "C01_REPLACE_TWO_DESCRIPTOR_CANDIDATE_WITH_RECURSIVE_PARENT",
+      "status": "corrected_before_acceptance",
+      "first_result": {"passed": 62, "total": 63},
+      "first_failure": "Web median draws 24 to 26 exceeded the frozen maximum 25",
+      "result": "one empirically verified recursive parent descriptor",
+      "thresholds_weakened": false
+    },
+    {
+      "id": "C02_EXACT_REPEAT_AND_NO_NEW_WHITE",
+      "status": "enforced",
+      "result": "zero new near-white pixels and exact repeat stability on both platforms"
+    }
+  ],
+  "performance": {
+    "web": {
+      "source_texture_count": {"baseline": 17, "candidate": 1},
+      "draw_texture_count": {"baseline": 1, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 17, "candidate": 0},
+      "draws_median": {"baseline": 24, "candidate": 24},
+      "load_elapsed_ms": {"baseline": 546, "candidate": 323},
+      "texture_memory_mb_median": {"baseline": 29.61, "candidate": 13.84},
+      "buffer_memory_mb_median": {"baseline": 9.03, "candidate": 9.03},
+      "fps_median": {"baseline": 57, "candidate": 56},
+      "retained_source_uuid_artifacts": {"baseline": 51, "candidate": 0}
+    },
+    "android_emulator": {
+      "source_texture_count": {"baseline": 17, "candidate": 1},
+      "draw_texture_count": {"baseline": 17, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {"baseline": 40, "candidate": 24, "absolute_reduction": 16, "relative_reduction": 0.4},
+      "load_elapsed_ms": {"baseline": 482, "candidate": 261},
+      "texture_memory_mb_median": {"baseline": 16.1, "candidate": 16.34},
+      "buffer_memory_mb_median": {"baseline": 18.03, "candidate": 18.03},
+      "fps_median": {"baseline": 29, "candidate": 28},
+      "retained_source_uuid_artifacts": {"baseline": 51, "candidate": 0}
+    }
+  },
+  "visual_parity": {
+    "status": "PASS",
+    "all_seventeen_sources_visible": true,
+    "representative_levels_manually_reviewed": [8, 9, 13, 15],
+    "platforms_manually_reviewed": ["web", "android_emulator"],
+    "white_matte_fragments": 0,
+    "missing_frames": 0,
+    "pivot_trim_or_rotation_regressions": 0,
+    "new_near_white_pixels": {"web": 0, "android_emulator": 0},
+    "web": {"mean_absolute_error": 0.061327, "changed_pixel_fraction": 0.002376306},
+    "android_emulator": {"mean_absolute_error": 0.066148, "changed_pixel_fraction": 0.002543388},
+    "candidate_repeat_changed_pixels": {"web": 0, "android_emulator": 0},
+    "report": "temp/m04-c-families/level_theme_archive/comparison/visual-parity.json",
+    "report_sha256": "4C11E31839CCD4DE5EB7DC4A6BD5D335EB6AE2FBE7F8FAD3433012D91C91FEC0"
+  },
+  "asset_governance": {
+    "status": "PASS",
+    "source_files": 1645,
+    "images": 1558,
+    "atlas_files": 10,
+    "measured_static_atlases": 10,
+    "measured_groups": 6,
+    "coverage_gaps": 0,
+    "coverage_overlaps": 0,
+    "metadata_findings": 0,
+    "manifest_validator_tests": {"passed": 13, "total": 13},
+    "manifest_sha256": "9A5ADEE1318B70CAA0CAF390D4EC912CD518A2C641618004A2325AD18B3A8360",
+    "contact_sheet_assets": 1558,
+    "contact_sheet_pages": 29,
+    "contact_sheet_index_sha256": "ECAC22A676B750B6330AC0885EB3F1D735010D1EFCED14FEEB5DBB503810E2E8"
+  },
+  "static_gate": {
+    "status": "PASS",
+    "cycles": [
+      {"cycle": 1, "passed": 27, "total": 27, "findings": 0, "report": "temp/m04-c-families/level_theme_archive/qa/cycle1-static-final/report.json", "report_sha256": "B263E870C5D865F63EC44A895CB4C31EE16C23140C545C1DB73635C22D8A7A20"},
+      {"cycle": 2, "passed": 27, "total": 27, "findings": 0, "report": "temp/m04-c-families/level_theme_archive/qa/cycle2-static/report.json", "report_sha256": "56AE69D228FA16ADEEB05ACCE595722B0999AFFBC22EA3DBAA24DAA12350618C"}
+    ],
+    "final_documentation_gate": {"status": "PASS", "passed": 27, "total": 27, "findings": 0, "report": "temp/m04-c-families/level_theme_archive/qa/static-final/report.json"}
+  },
+  "web_qa": {
+    "status": "PASS",
+    "fresh_post_fix_build": true,
+    "build_log": "logs/creator-m04-c-theme-archive-candidate-web-20260908.log",
+    "build_log_sha256": "16FC50DDCA3C5DF02D5C9B70E0A945AAAD247A7C457AFF050E409712B7E58D0D",
+    "cycles": [
+      {"cycle": 1, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report": "temp/m04-c-families/level_theme_archive/qa/web-cycle1/report.json", "report_sha256": "7539DEF0347300A33E2A8133AD01E2A4DE0092643508F6081517B28B74D427AE"},
+      {"cycle": 2, "matrix_passed": 34, "matrix_total": 34, "interaction": "PASS", "restart_passed": 10, "restart_total": 10, "report": "temp/m04-c-families/level_theme_archive/qa/web-cycle2/report.json", "report_sha256": "C729B32EF67629DCFD99D59375E68A139DFF0A2A09D2053FBF3B38D8AF2B1FC7"}
+    ],
+    "qa_port": 8133,
+    "qa_port_closed": true
+  },
+  "android_emulator_qa": {
+    "status": "PASS",
+    "serial": "emulator-5554",
+    "avd": "MTR_Pixel_8_Pro_API_35",
+    "qemu": true,
+    "abi": "x86_64",
+    "api": 35,
+    "installed_user": 0,
+    "fresh_post_fix_build": true,
+    "build_log": "logs/creator-m04-c-theme-archive-candidate-android-20260908.log",
+    "build_log_sha256": "13EC7B3BFDC6CF898112932E273EDD79A3CB92F6568101A583E5779DF56BC427",
+    "audio_policy": {"status": "PASS", "host_audio": "disabled_by_emulator_-no-audio", "media_stream": 3, "volume": 0, "fail_closed_in_qa_harness": true},
+    "matrix_cycles": [
+      {"cycle": 1, "passed": 28, "total": 28, "report": "temp/m04-c-families/level_theme_archive/qa/android-cycle1/android_matrix_cycle1_summary.json", "report_sha256": "055E9F3079E26DAC4C8AA1C32E4BFCF050310C098D5C99402F9A47FC0B98368A"},
+      {"cycle": 2, "passed": 28, "total": 28, "report": "temp/m04-c-families/level_theme_archive/qa/android-cycle2/android_matrix_cycle2_summary.json", "report_sha256": "AD5D39252B46F05A0682D5A239991519A3AA9F5181B42C5AFEDEFDED822B489A"}
+    ],
+    "interaction": {
+      "status": "PASS",
+      "touch_flow": "PASS",
+      "name_persistence": "PASS",
+      "persisted_name": "QAPrimateC1",
+      "restart_passed": 10,
+      "restart_total": 10,
+      "soak_seconds": 300.345,
+      "input_bursts": 344,
+      "state_actions": 15,
+      "process_losses": 0,
+      "unexpected_diagnostics": 0,
+      "pss_kb": {"start": 197273, "peak": 266960, "end": 199644},
+      "report": "temp/m04-c-families/level_theme_archive/qa/android-interaction/android_interaction_cycle1_summary.json",
+      "report_sha256": "B3154292BD5D20F9DC53542E13ED42ACFAD35847E5C24B489CB7FC33EEF6AF71"
+    },
+    "apk": {
+      "path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk",
+      "bytes": 144984911,
+      "sha256": "9A416427DFCC6DF84B1BEE62734C062D5334F83FBDACE14ABD8B6F394E421C2E",
+      "signature_scope": "debug_emulator_qa_only"
+    },
+    "emulator_stopped_after_qa": true
+  },
+  "m2_plus": {
+    "status": "PASS",
+    "applicable_passed": 8,
+    "applicable_total": 8,
+    "conditional_not_applicable": 4,
+    "findings": 0,
+    "profile": "temp/m04-c-families/level_theme_archive/m2-profile/20260908T150900Z/m2-plus.profile.json",
+    "profile_sha256": "F7F69717E26FE479E1A47D704B60BA63EE275D14C6135565321D76A233CD2F45",
+    "not_applicable_reason": "No save, migration, signing, release or failure-recovery seam changed."
+  },
+  "review": {
+    "confirmed_findings": 3,
+    "corrected_findings": 3,
+    "open_findings": 0,
+    "local_advisory_false_positives": 1,
+    "codex_final_review": "PASS",
+    "hygiene_gate": "PASS",
+    "report": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CODE_REVIEW_REPORT.md"
+  },
+  "rollback": {
+    "status": "PASS",
+    "manifest": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ROLLBACK_MANIFEST.json",
+    "manifest_sha256_before_completion_reports": "6843288CCD91E7200F71490966BEC75FCDE4C44C61C21C7536C2F3ED868247DE",
+    "anchor_commit": "66a2aa52c5bb9baa5c1ab7261dc37a3c7abdb8b6"
+  },
+  "roadmap": {
+    "execution_complete": 18,
+    "execution_total_current": 70,
+    "execution_remaining_current": 52,
+    "execution_percent": 25.7143,
+    "conditional_units": 7,
+    "source_complete": 28,
+    "source_total": 95,
+    "source_mandatory_remaining": 57,
+    "source_conditional_remaining": 10,
+    "next_execution_unit": "M04-C-FAMILIES"
+  },
+  "release_blockers": ["M02.1", "M02.7", "M12.7"]
+}
