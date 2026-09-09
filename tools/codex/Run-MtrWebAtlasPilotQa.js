@@ -84,6 +84,17 @@ async function main() {
         page.setDefaultTimeout(options.timeoutMs);
         await page.goto(url, { waitUntil: 'commit', timeout: options.timeoutMs });
         const report = await runtimeFunction(page);
+        const screenshot = resolveContained(projectRoot, report.screenshot, 'runtime screenshot');
+        const pathForComparison = (value) => {
+            const normalized = path.normalize(value);
+            return process.platform === 'win32' ? normalized.toLowerCase() : normalized;
+        };
+        const outputDirectory = pathForComparison(path.dirname(output));
+        const screenshotDirectory = pathForComparison(path.dirname(screenshot));
+        if (screenshotDirectory !== outputDirectory) {
+            throw new Error(`Runtime screenshot directory does not match --output directory: ${report.screenshot}`);
+        }
+        if (!fs.existsSync(screenshot)) throw new Error(`Runtime screenshot was not created: ${report.screenshot}`);
         writeJsonAtomic(output, report);
         process.stdout.write(`${JSON.stringify({
             status: report.status,

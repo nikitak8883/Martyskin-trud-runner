@@ -85,6 +85,7 @@ def compare_images(
     mean_absolute_error = sum(channel_means) / len(channel_means)
     changed = 0
     new_near_white_pixels = 0
+    near_white_threshold_crossings = 0
     difference_pixels = (
         difference.get_flattened_data() if hasattr(difference, "get_flattened_data") else difference.getdata()
     )
@@ -105,13 +106,17 @@ def compare_images(
         strict=True,
     ):
         red, green, blue = difference_pixel
-        if max(red, green, blue) > channel_delta_threshold:
+        materially_changed = max(red, green, blue) > channel_delta_threshold
+        if materially_changed:
             changed += 1
-        if (
+        near_white_threshold_crossing = (
             near_white_channel_floor is not None
             and min(candidate_pixel) >= near_white_channel_floor
             and min(baseline_pixel) < near_white_channel_floor
-        ):
+        )
+        if near_white_threshold_crossing:
+            near_white_threshold_crossings += 1
+        if near_white_threshold_crossing and materially_changed:
             new_near_white_pixels += 1
     pixel_count = difference.width * difference.height
     changed_fraction = changed / pixel_count if pixel_count else 1.0
@@ -141,6 +146,10 @@ def compare_images(
     }
     if near_white_channel_floor is not None:
         result["thresholds"]["nearWhiteChannelFloor"] = near_white_channel_floor
+        result["nearWhiteThresholdCrossingPixelCount"] = near_white_threshold_crossings
+        result["ignoredSubthresholdNearWhiteCrossings"] = (
+            near_white_threshold_crossings - new_near_white_pixels
+        )
     if maximum_new_near_white_pixels is not None:
         result["thresholds"]["maximumNewNearWhitePixels"] = maximum_new_near_white_pixels
     return result

@@ -829,6 +829,11 @@ const M04_C_LEVEL_THEME_ARCHIVE_ATLAS_KEYS = THEMED_ASSET_ENTRIES
     .filter((entry) => entry.category === 'hazards' || entry.category === 'platforms')
     .map((entry) => entry.key);
 
+const M04_C_LEVEL_THEME_FARM_ATLAS_KEYS = THEMED_ASSET_ENTRIES
+    .filter((entry) => entry.runtimeEnabled !== false && entry.theme === 'farm')
+    .filter((entry) => entry.category === 'hazards' || entry.category === 'platforms')
+    .map((entry) => entry.key);
+
 interface M04CAtlasQaSpec {
     atlasId: string;
     title: string;
@@ -920,6 +925,19 @@ const M04_C_ATLAS_QA_SPECS = {
         xStep: 214,
         yStep: 176,
         spriteWidth: 166,
+        spriteHeight: 136,
+    },
+    level_theme_farm: {
+        atlasId: 'level_theme_farm',
+        title: 'LEVEL THEME FARM',
+        keys: M04_C_LEVEL_THEME_FARM_ATLAS_KEYS,
+        category: 'platforms',
+        columns: 4,
+        xStart: 174,
+        yStart: 190,
+        xStep: 300,
+        yStep: 175,
+        spriteWidth: 190,
         spriteHeight: 136,
     },
 } as const satisfies Record<string, M04CAtlasQaSpec>;

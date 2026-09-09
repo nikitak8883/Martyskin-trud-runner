@@ -11,6 +11,7 @@ async function (page) {
         bonus_items: 12,
         ui_shared_core: 28,
         level_theme_archive: 17,
+        level_theme_farm: 12,
     });
     if (!Object.prototype.hasOwnProperty.call(atlasSourceCounts, atlasId)) {
         throw new Error(`Unsupported atlas QA id: ${atlasId || '-'}`);

@@ -11,10 +11,10 @@
   },
   "source": {
     "atlasManifest": "assets/resources/config/atlas_manifest.json",
-    "atlasManifestSha256": "9A5ADEE1318B70CAA0CAF390D4EC912CD518A2C641618004A2325AD18B3A8360",
+    "atlasManifestSha256": "F64D6642C10FCAFB45B03F6BEDB9C95F898F51B9B4DC24728CD00DE78F19C579",
     "contentIdentity": "assets/resources/config/content_identity.json",
     "logicalContentVersion": "mtr-v3-source-4492deee4209",
-    "sourcePayloadSha256": "A2F6C735103E5D64F3F0D381DAE53116CAD13D641DF6E0EDACE6FA2A265845A4"
+    "sourcePayloadSha256": "7D5F4D5927491C587B7BCCA12B15668773A4F2F47EE7461BF0E7D8C9DDDE4B54"
   },
   "materialization": {
     "policy": "local_qa_evidence_not_runtime_not_committed",
@@ -23,8 +23,8 @@
     "checkCommand": "python -B tools/codex/render_m04_b_contact_sheets.py --project-root . --check",
     "html": {
       "path": "temp/m04-b-contact-sheets/m04b_contact_sheet_index.html",
-      "sha256": "3E645FD2D3F85BE56C75A658550DF198C92046997692EEDC2ECC31C1193ED132",
-      "bytes": 6972
+      "sha256": "6BFCBAC62912ECE2C57F38C07860F58C9110B34476192F4DA84B27DEEB5A32A8",
+      "bytes": 6990
     }
   },
   "classificationPolicy": {
@@ -30140,6 +30140,7 @@
       "atlasIds": [
         "level_theme_archive",
         "level_theme_families",
+        "level_theme_farm",
         "objective_npc"
       ],
       "ownershipScopes": [
@@ -30161,6 +30162,8 @@
         "assets/resources/config/last_iteration_asset_manifest.generated.json",
         "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_ACCEPTANCE.json",
         "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_ARCHIVE_CONTRACT.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+        "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json",
         "docs/global_modernization/v3/M04/M04_C_PILOT_ACCEPTANCE.json",
         "docs/global_modernization/v3/M04/M04_C_PILOT_CONTRACT.json"
       ],
@@ -30168,8 +30171,8 @@
         {
           "id": "obstacles-01",
           "path": "temp/m04-b-contact-sheets/m04b_obstacles-01.png",
-          "sha256": "BB74F6C13FC4D4CCC7287A6C542F7C71960B4CAAE4C51612AECC8251ADB4231B",
-          "bytes": 1110407,
+          "sha256": "087BFD7198051333A2B59166184708317B25E99DD277FBD866AF7375BF86A33D",
+          "bytes": 1110521,
           "width": 1432,
           "height": 1464,
           "assetCount": 64
@@ -31521,12 +31524,15 @@
             168,
             241
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 51
@@ -31545,12 +31551,15 @@
             181,
             221
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 52
@@ -31569,12 +31578,15 @@
             144,
             157
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 53
@@ -31593,12 +31605,15 @@
             282,
             173
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 54
@@ -31617,12 +31632,15 @@
             183,
             241
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 55
@@ -31641,12 +31659,15 @@
             229,
             214
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 56
@@ -31665,12 +31686,15 @@
             168,
             209
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 57
@@ -31689,12 +31713,15 @@
             250,
             229
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 58
@@ -31713,12 +31740,15 @@
             662,
             171
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 59
@@ -31737,12 +31767,15 @@
             658,
             209
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 60
@@ -31761,12 +31794,15 @@
             671,
             194
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 61
@@ -31785,12 +31821,15 @@
             651,
             186
           ],
-          "atlasId": "level_theme_families",
-          "atlasManifestPointer": "/atlas_groups/7",
+          "atlasId": "level_theme_farm",
+          "atlasManifestPointer": "/atlas_groups/12",
           "ownershipScope": "themed_farm",
           "ownershipManifestPointer": "/ownership_scopes/11",
           "provenance": [
-            "assets/resources/config/last_iteration_asset_manifest.generated.json"
+            "assets/resources/config/current_objective_runtime_usage.json",
+            "assets/resources/config/last_iteration_asset_manifest.generated.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+            "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json"
           ],
           "sheetId": "obstacles-01",
           "cellIndex": 62

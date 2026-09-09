@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m04_c_family_rollback_manifest",
+  "execution_unit": "M04-C-FAMILY-THEME-FARM",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "scope": "one measured farm theme static atlas, screenshot-routing prevention, material white-matte comparator semantics, silent Android-emulator QA, validation and roadmap records",
+  "rollback": {
+    "repository_root": "C:/Projects/Monkey Work",
+    "anchor_commit": "d295cd3f0dce664d56e673ea0d9c5ba0ae00477d",
+    "project_prefix": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/",
+    "pre_change_blobs": {
+      "assets/resources/config/atlas_manifest.json": "4f684bbc1c85585a7db4bea71d08492e61ef3740",
+      "assets/scripts/GameRoot.ts": "61c6b2f98cdf6ca649e4d2a0074d016166b35628",
+      "docs/codex/CURRENT_STATE.md": "d856ed114f93b6f845e5ee431a5e61d114841c1c",
+      "docs/global_modernization/v3/INTEGRATED_MASTER_PLAN_20260719.md": "ff38d2dea92d78821f4d98c4c32267275d09ef98",
+      "docs/global_modernization/v3/M04/contact_sheet_index.json": "d71dabd5e9b5fa7741a915b2fb858768793be7f8",
+      "docs/global_modernization/v3/MODULE_EXECUTION_INDEX.yaml": "b4705eb795282ddcbcb412c5a7868113c5af4717",
+      "docs/global_modernization/v3/README_START_HERE.md": "3efa6c0c57bd3380ea7dea010e705138cf6d2ff1",
+      "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml": "db76d1eba19d45d6860de90fe3df9dc51eea0e8c",
+      "docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json": "c289af6ac08d112a3287e061a71d7a241e9393cf",
+      "docs/global_modernization/v4/INTEGRATED_ROADMAP_20260809.md": "72e491152ed83e7ad23a5f5b0736eb85ba39f0ce",
+      "docs/global_modernization/v4/README_START_HERE.md": "dafe7bb6d4d36e25983b81d93da7fd3f294f7b91",
+      "tools/codex/Run-MtrWebAtlasPilotQa.js": "0c83b2d03dc33ba30770f4b9e5da07db6c20278d",
+      "tools/codex/Compare-MtrAtlasPilotVisuals.py": "8d2c816b0a3185594540f237d76a7f3884fe65e5",
+      "tools/codex/test-atlas-pilot-metrics.js": "2cb92b3c20b4544b3a8765dc9b08ce1cb96529dd",
+      "tools/codex/tests/test_validate_m04_a_asset_contract.py": "fd6b8e6dcf0ccc53145dfa99bdad7e03a3ef6e27",
+      "tools/codex/web_atlas_pilot_runtime_function.js": "33ecb4fce9e4ad3ca51ca2b64749809f75bfc528"
+    },
+    "new_files_remove_on_rollback": [
+      "assets/resources/objectives/themed/last_iteration/farm/level_theme_farm.pac",
+      "assets/resources/objectives/themed/last_iteration/farm/level_theme_farm.pac.meta",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CODE_REVIEW_REPORT.md",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_CONTRACT.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ROLLBACK_MANIFEST.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_VALIDATION_SUMMARY.json",
+      "docs/qa/CONTROL_LOG_CHECKPOINT_20260909_M04_C_FAMILY_THEME_FARM_COMPLETE.md"
+    ]
+  },
+  "runtime_assets_changed": true,
+  "runtime_metadata_changed": true,
+  "source_png_files_changed": false,
+  "source_png_metadata_changed": false,
+  "source_files_relocated": false,
+  "physical_device_used": false,
+  "build_outputs_tracked": false,
+  "duplicate_backup_files_created": false
+}

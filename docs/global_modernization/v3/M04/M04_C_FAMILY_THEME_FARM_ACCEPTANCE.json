@@ -1,0 +1,127 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_acceptance.v1",
+  "unit_id": "M04-C-FAMILY-THEME-FARM",
+  "parent_unit": "M04-C-FAMILIES",
+  "status": "PASS",
+  "generated_at": "2026-09-09T15:26:35+03:00",
+  "candidate": {
+    "atlas_id": "level_theme_farm",
+    "source_sprite_count": 12,
+    "source_bytes": 1314618,
+    "descriptor_count": 1,
+    "descriptors": [
+      {
+        "source_directory": "assets/resources/objectives/themed/last_iteration/farm",
+        "included_child_directories": [
+          "assets/resources/objectives/themed/last_iteration/farm/hazards",
+          "assets/resources/objectives/themed/last_iteration/farm/platforms"
+        ],
+        "source_sprite_count": 12,
+        "descriptor": "assets/resources/objectives/themed/last_iteration/farm/level_theme_farm.pac",
+        "descriptor_uuid": "b6a752bb-0ddc-4a0b-8993-5e08716a8d5a",
+        "allow_rotation": false
+      }
+    ],
+    "runtime_dynamic_atlas_policy": "farm SpriteFrames are owned by one recursive build-time static atlas"
+  },
+  "acceptance": {
+    "checks_passed": 63,
+    "checks_total": 63,
+    "failed_checks": [],
+    "web": {
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 12, "candidate": 1},
+      "draw_texture_count": {"baseline": 5, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 8, "candidate": 0},
+      "draws_median": {"baseline": 25, "candidate": 19},
+      "load_elapsed_ms": {"baseline": 347, "candidate": 238},
+      "texture_memory_mb_median": {"baseline": 29.41, "candidate": 13.69},
+      "buffer_memory_mb_median": {"baseline": 9.03, "candidate": 9.03},
+      "fps_median": {"baseline": 60, "candidate": 57},
+      "runtime_bytes": {"baseline": 126093765, "candidate": 126567501},
+      "resources_bytes": {"baseline": 120761021, "candidate": 121234757},
+      "retained_source_uuid_artifacts": {"baseline": 36, "candidate": 0}
+    },
+    "android_emulator": {
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "emulator_verified": true,
+      "abi": "x86_64",
+      "runtime_status": "pass",
+      "audio_policy": {
+        "status": "pass",
+        "host_audio": "disabled_by_emulator_-no-audio",
+        "media_stream": 3,
+        "volume": 0,
+        "fail_closed_in_qa_harness": true
+      },
+      "source_texture_count": {"baseline": 12, "candidate": 1},
+      "draw_texture_count": {"baseline": 12, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {
+        "baseline": 30,
+        "candidate": 19,
+        "absolute_reduction": 11,
+        "relative_reduction": 0.366667
+      },
+      "load_elapsed_ms": {"baseline": 667, "candidate": 442},
+      "texture_memory_mb_median": {"baseline": 15.27, "candidate": 15.55},
+      "buffer_memory_mb_median": {"baseline": 18.03, "candidate": 18.03},
+      "fps_median": {"baseline": 16, "candidate": 15},
+      "runtime_bytes": {"baseline": 126280350, "candidate": 126754086},
+      "resources_bytes": {"baseline": 120761021, "candidate": 121234757},
+      "apk_bytes": {"baseline": 144985084, "candidate": 145454639},
+      "retained_source_uuid_artifacts": {"baseline": 36, "candidate": 0}
+    },
+    "visual_parity": {
+      "status": "pass",
+      "manual_review": "pass_all_twelve_sources_visible_no_clipping_no_material_new_white_or_opaque_matte_no_pivot_or_trim_regression",
+      "web": {
+        "mean_absolute_error": 0.033499,
+        "changed_pixel_fraction": 0.000977032,
+        "new_near_white_pixels": 0
+      },
+      "android_emulator": {
+        "mean_absolute_error": 0.034665,
+        "changed_pixel_fraction": 0.001087839,
+        "new_near_white_pixels": 0,
+        "raw_near_white_threshold_crossings": 1,
+        "ignored_subthreshold_crossings": 1
+      },
+      "candidate_repeat_stability": {
+        "status": "pass",
+        "web_mean_absolute_error": 0,
+        "web_changed_pixels": 0,
+        "android_mean_absolute_error": 0,
+        "android_changed_pixels": 0
+      }
+    }
+  },
+  "contract_corrections": [
+    "C01: froze the observed pre-candidate Web draw-texture and dynamic-atlas counts without changing candidate thresholds",
+    "C02: distinguished one-channel 244-to-245 rounding from material new-white pixels while preserving raw diagnostics and the zero-defect gate",
+    "C03: restored baseline-equivalent Web host load by stopping QEMU before the accepted candidate measurement"
+  ],
+  "ephemeral_evidence": [
+    {"path": "temp/m04-c-families/level_theme_farm/baseline/web/runtime.json", "sha256": "46DBDA0096F1AC0515E14A0192DAC9E952B743DDAAFE8413C4DB3A439FC22DBC"},
+    {"path": "temp/m04-c-families/level_theme_farm/baseline/web/artifacts.json", "sha256": "253C9045536E6587C0D6318079C760D45C24B44CE1DBAE580CD5EE03304F7080"},
+    {"path": "temp/m04-c-families/level_theme_farm/baseline/web/atlas-family.png", "sha256": "1AA86D9E656E516A77B25949032EF018A3A1A2351A784DE20BC949DA0C61DF96"},
+    {"path": "temp/m04-c-families/level_theme_farm/baseline/android/runtime.json", "sha256": "3EB4B7A306F69D92D1E7C98C7D9578E74426560929D2DB8608DA15D4F7215695"},
+    {"path": "temp/m04-c-families/level_theme_farm/baseline/android/artifacts.json", "sha256": "30A6F3153E8189A84065464CFDCCC3CD2C437F619D2967631F03CB73D60B59AE"},
+    {"path": "temp/m04-c-families/level_theme_farm/baseline/android/atlas-family.png", "sha256": "D6526638921D632946183E9666AE1110FAF6A8C90C417E2910F9D25E228A484D"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate/web/runtime.json", "sha256": "FFA84961B7411BC268299C28F024ED0F7900AE6CFECB88AD7A1E2D61FBD8AA97"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate/web/artifacts.json", "sha256": "BDB966A31092B31ACC2D3B6D10D148C74198ACE839C19058EEED3A9233BB8664"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate/web/atlas-family.png", "sha256": "E239CD2670B795771D5580610D7B6009C4D6D6769874AB18FB8B98E191765F78"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate/android/runtime.json", "sha256": "5029C84C249CE0E37472961D78A8C315B81E0B55AFE09F72112C4F4E276E3718"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate/android/artifacts.json", "sha256": "217A1A4550476CDFB788BE04C73661E35082F381FD8F284AA5DF3EBC8B3B4710"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate/android/atlas-family.png", "sha256": "C50DF68CAFA57F81C93E67712C9EF45ECD00387B8529B2BD75D4F81872B6D993"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate-repeat/web/runtime.json", "sha256": "07CEFBF9EA2324147C196BA1728DA1A00CB6831E3206D6DBB9E36C9BF5F2E8D7"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate-repeat/web/atlas-family.png", "sha256": "E239CD2670B795771D5580610D7B6009C4D6D6769874AB18FB8B98E191765F78"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate-repeat/android/runtime.json", "sha256": "44D376C6C01EDB6E73EB49A026902B1A22B0F1017EF33B042D72CA1270C33DD6"},
+    {"path": "temp/m04-c-families/level_theme_farm/candidate-repeat/android/atlas-family.png", "sha256": "C50DF68CAFA57F81C93E67712C9EF45ECD00387B8529B2BD75D4F81872B6D993"},
+    {"path": "temp/m04-c-families/level_theme_farm/comparison/visual-parity.json", "sha256": "06BAC23D1E315A961AD98A8DBDE8674543B2AE169ADEF28F4CCAAB850926F1B5"},
+    {"path": "temp/m04-c-families/level_theme_farm/comparison/acceptance.json", "sha256": "E9CA499FAE4F5C27F88568B3A9D7EFC65413A639483263C53F524581FDA4532F"},
+    {"path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk", "sha256": "6BE5A0FCA60844B914D0C1367B81FD1C6FCA862A83C5C0DDB38183317464D207"}
+  ],
+  "decision": "accept_one_recursive_farm_static_atlas_keep_remaining_theme_families_closed"
+}

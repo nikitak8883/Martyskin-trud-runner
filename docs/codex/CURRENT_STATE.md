@@ -1,13 +1,27 @@
 # CURRENT_STATE — Martyshkin Trud Runner
 
 Generated: 2026-07-02 15:44 +03:00  
-Updated: 2026-09-08  
+Updated: 2026-09-09  
 Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`  
 Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m04_c_theme_archive_child_complete / m04_c_families_ready / release_blocked`
+Status: `runtime_baseline_green / source_frozen / m04_c_theme_farm_child_complete / m04_c_families_ready / release_blocked`
+
+## 2026-09-09 M04-C-FAMILY-THEME-FARM completion overlay
+
+This overlay supersedes every older next-action line below; older sections remain historical evidence only.
+
+- `level_theme_farm` is the seventh accepted measured static-atlas family: 12 farm hazard/platform PNGs for levels `5` and `10` remain in their original child directories and are owned by one recursive parent descriptor. Source PNG bytes, PNG metadata, resource keys and file locations are unchanged.
+- Frozen comparison passes `63/63`: Web draws improve `25 → 19`; Android-emulator draws improve `30 → 19` (`-11`, `-36.6667%`). Source textures become `12 → 1` on both platforms, and all 36 source-UUID artifacts disappear from each built resource tree.
+- Visual parity passes on Web and Android: all 12 sprites are visible, material new-white pixels are zero, and candidate-repeat screenshots are pixel-identical. One raw Android near-white threshold crossing with maximum channel delta `1` remains recorded but is correctly below the frozen material-change threshold `8`.
+- Web QA passes `34/34 × 2` plus interaction and restart `10/10 × 2`. Silent Android-emulator QA passes `28/28 × 2`, custom-name persistence, restart `10/10` and soak `300.539 s` with zero process loss or unexpected diagnostics.
+- Every Android run used only `emulator-5554`; the host AVD had `-no-audio` and STREAM_MUSIC was verified at `0/15`. The emulator and Web QA server were stopped after evidence capture.
+- Static, M2_PLUS, review and rollback evidence is recorded in `docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_VALIDATION_SUMMARY.json` and `docs/qa/CONTROL_LOG_CHECKPOINT_20260909_M04_C_FAMILY_THEME_FARM_COMPLETE.md`.
+- The inventory-derived child expands the execution denominator: `19/71` complete (`26.7606%`), `52` mandatory units remain plus `7` conditional. Source remains `28/95`; aggregate `M04.5` remains pending with `57` mandatory source packages plus `10` conditional.
+- Next safe unit: continue `M04-C-FAMILIES` by selecting and freezing exactly one remaining measured family from the current inventory; no broader batch is implied.
+- Physical device used: `NO`. Release remains blocked by `M02.1`, `M02.7` and `M12.7`.
 
 ## 2026-09-08 M04-C-FAMILY-THEME-ARCHIVE completion overlay
 

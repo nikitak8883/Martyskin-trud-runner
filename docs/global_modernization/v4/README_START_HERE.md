@@ -1,6 +1,6 @@
 # MTR global modernization v4 — точка входа
 
-Статус: `M04_C_UI_SHARED_CORE_CHILD_COMPLETE / M04_C_FAMILIES_READY / RELEASE_BLOCKED`  
+Статус: `M04_C_THEME_FARM_CHILD_COMPLETE / M04_C_FAMILIES_READY / RELEASE_BLOCKED`  
 Дата аудита: `2026-08-09`  
 Живой runtime checkpoint: `f99408151c98cf8806e269307fe5e552f5b185c9`  
 Документационная база до RDX-01: `95648b978117b8964469ad4fb236829d9540c239`
@@ -23,7 +23,7 @@
 ## Два независимых счётчика
 
 - Требования проекта: `95` source work packages; `28` complete, `54` pending, `3` blocked, `10` conditional. Обязательный остаток: `57`.
-- Исполнение от текущей точки: `70` обязательных v4 execution units, включая inventory-derived atlas children вплоть до `M04-C-FAMILY-THEME-ARCHIVE`; `18/70` завершены, `52` остаётся. Ещё `7` units условные. Знаменатель provisional до дальнейшей инвентаризации child batches M04/M05/M10.
+- Исполнение от текущей точки: `71` обязательный v4 execution unit, включая inventory-derived atlas children вплоть до `M04-C-FAMILY-THEME-FARM`; `19/71` завершены (`26.7606%`), `52` остаётся. Ещё `7` units условные. Знаменатель provisional до дальнейшей инвентаризации child batches M04/M05/M10.
 
 Эти знаменатели нельзя смешивать: один считает требования, другой — инженерные rollback/QA-границы.
 
@@ -40,7 +40,7 @@
 
 ## Следующие безопасные действия
 
-1. Продолжить `M04-C-FAMILIES`: после принятых `objective_npc`, `achievement_ui`, `runner_collectibles`, `bonus_items` и mixed-topology `ui_shared_core` выбрать из актуального inventory ровно один следующий measured child и заморозить его contract до мутации.
+1. Продолжить `M04-C-FAMILIES`: после принятых `objective_npc`, `achievement_ui`, `runner_collectibles`, `bonus_items`, mixed-topology `ui_shared_core`, `level_theme_archive` и `level_theme_farm` выбрать из актуального inventory ровно один следующий measured child и заморозить его contract до мутации.
 2. Для каждого child выполнить frozen before/after, Web/Android-emulator P4, M2_PLUS, visual parity и rollback.
 3. Не закрывать aggregate source package `M04.5` и не менять dynamic-atlas policy до завершения соответствующих execution units.
 

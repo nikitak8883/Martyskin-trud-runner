@@ -1,0 +1,309 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_contract.v1",
+  "unit_id": "M04-C-FAMILY-THEME-FARM",
+  "parent_unit": "M04-C-FAMILIES",
+  "source_work_packages": ["M04.5"],
+  "status": "candidate_accepted",
+  "selection": {
+    "selected_before_runtime_asset_mutation": true,
+    "candidate_descriptor_present_at_selection": false,
+    "selected_at_source_commit": "d295cd3f0dce664d56e673ea0d9c5ba0ae00477d",
+    "metric_fishing_prohibited": true,
+    "reason": "Smallest remaining unmeasured playable theme by source count: twelve gameplay sprites, one farm theme, two fixed level affinities and no animation-frame ordering risk. The accepted archive precedent proved recursive parent ownership while avoiding the Web draw-call regression caused by split child descriptors.",
+    "alternatives_deferred": [
+      {"atlas_id": "construction", "reason": "Twenty-four-source family; larger than the selected farm child."},
+      {"atlas_id": "office", "reason": "Twenty-eight-source family with broader level affinity and higher source bytes."},
+      {"atlas_id": "remaining_level_theme_families", "reason": "Each theme requires an isolated measured child and rollback boundary."}
+    ]
+  },
+  "candidate": {
+    "atlas_id": "level_theme_farm",
+    "theme": "farm",
+    "levels": [5, 10],
+    "source_directories": [
+      "assets/resources/objectives/themed/last_iteration/farm/hazards",
+      "assets/resources/objectives/themed/last_iteration/farm/platforms"
+    ],
+    "source_count": 12,
+    "source_bytes": 1314618,
+    "source_area_px": 879922,
+    "alpha_area_px": 596096,
+    "estimated_combined_2048_occupancy": 0.20979,
+    "maximum_source_dimensions": {"width": 677, "height": 247},
+    "critical_source_count": 6,
+    "source_inventory_sha256": "A8578DA6EA75149CDD23250C3D3DF1AEE460C69743D99C56C918AC5C9D76F3A2",
+    "source_inventory_fingerprint": "sha256_of_sorted_compact_source_rows_with_key_path_category_role_critical_content_meta_uuid_dimensions_alpha_trim_pivot_packable_and_atlas_uuid",
+    "risk_class": "gameplay_critical_farm_platform_collision_and_hazard_readability",
+    "fallback_policy": "block_release",
+    "split_family_contract": "one_recursive_parent_descriptor_two_child_source_directories_one_acceptance_decision",
+    "descriptor_count": 1,
+    "descriptors": [
+      {
+        "source_directory": "assets/resources/objectives/themed/last_iteration/farm",
+        "included_child_directories": [
+          "assets/resources/objectives/themed/last_iteration/farm/hazards",
+          "assets/resources/objectives/themed/last_iteration/farm/platforms"
+        ],
+        "source_count": 12,
+        "source_bytes": 1314618,
+        "source_area_px": 879922,
+        "alpha_area_px": 596096,
+        "estimated_2048_occupancy": 0.20979,
+        "maximum_source_dimensions": {"width": 677, "height": 247},
+        "descriptor": "assets/resources/objectives/themed/last_iteration/farm/level_theme_farm.pac",
+        "descriptor_uuid": "b6a752bb-0ddc-4a0b-8993-5e08716a8d5a",
+        "allow_rotation": false
+      }
+    ],
+    "source_keys": [
+      "objectives/themed/last_iteration/farm/hazards/mtr_last_farm_base_hazards_001",
+      "objectives/themed/last_iteration/farm/hazards/mtr_last_farm_base_hazards_002",
+      "objectives/themed/last_iteration/farm/hazards/mtr_last_farm_base_hazards_003",
+      "objectives/themed/last_iteration/farm/hazards/mtr_last_farm_base_hazards_004",
+      "objectives/themed/last_iteration/farm/hazards/mtr_last_farm_base_hazards_005",
+      "objectives/themed/last_iteration/farm/hazards/mtr_last_farm_base_hazards_006",
+      "objectives/themed/last_iteration/farm/hazards/mtr_last_farm_base_hazards_007",
+      "objectives/themed/last_iteration/farm/hazards/mtr_last_farm_base_hazards_008",
+      "objectives/themed/last_iteration/farm/platforms/mtr_last_farm_base_platforms_001",
+      "objectives/themed/last_iteration/farm/platforms/mtr_last_farm_base_platforms_002",
+      "objectives/themed/last_iteration/farm/platforms/mtr_last_farm_base_platforms_003",
+      "objectives/themed/last_iteration/farm/platforms/mtr_last_farm_base_platforms_004"
+    ],
+    "preserved_import_contract": {
+      "trim_type": "auto",
+      "pivot": {"x": 0.5, "y": 0.5},
+      "packable": true,
+      "atlas_uuid_before_candidate": "",
+      "source_uuid_artifacts_mutated": false
+    },
+    "configuration": {
+      "max_width": 2048,
+      "max_height": 2048,
+      "padding": 2,
+      "allow_rotation": false,
+      "algorithm": "MaxRects",
+      "format": "png",
+      "filter_unused": false,
+      "remove_source_textures_from_bundle": true,
+      "wrap_mode": "clamp-to-edge",
+      "filtering": "linear",
+      "mip_filter": "none"
+    }
+  },
+  "measurement_protocol": {
+    "platforms": ["web", "android_emulator"],
+    "web_build_config": "build-web-mobile-qa.json",
+    "android_build_config": "build-android-emulator.json",
+    "android_serial": "emulator-5554",
+    "android_user": 0,
+    "android_audio_policy": "AVD -no-audio plus fail-closed media stream 3 equals zero before runtime QA",
+    "viewport": {"width": 1280, "height": 720},
+    "scene": "main.scene",
+    "screen": "isolated_twelve_sprite_farm_theme_grid",
+    "screenshot_filename": "atlas-family.png",
+    "sample_count": 7,
+    "settle_ms": 1100,
+    "sample_interval_ms": 550,
+    "same_harness_and_build_config_before_after": true,
+    "artifact_candidate_source_directories": [
+      "assets/resources/objectives/themed/last_iteration/farm/hazards",
+      "assets/resources/objectives/themed/last_iteration/farm/platforms"
+    ],
+    "required_runtime_metrics": [
+      "source_texture_count",
+      "draw_texture_count",
+      "dynamic_atlas_packed_count",
+      "load_elapsed_ms",
+      "draws",
+      "texture_memory_mb",
+      "buffer_memory_mb",
+      "fps"
+    ],
+    "artifact_metrics": ["runtime_bytes", "resources_bytes", "android_package_bytes"]
+  },
+  "acceptance": {
+    "source_texture_count": {
+      "baseline_by_platform": {"web": 12, "android_emulator": 12},
+      "candidate_expected_by_platform": {"web": 1, "android_emulator": 1}
+    },
+    "draw_texture_count": {
+      "baseline_by_platform": {"web": 5, "android_emulator": 12},
+      "candidate_expected_by_platform": {"web": 1, "android_emulator": 1}
+    },
+    "dynamic_atlas_packed_count": {
+      "baseline_by_platform": {"web": 8, "android_emulator": 0},
+      "candidate_expected_by_platform": {"web": 0, "android_emulator": 0}
+    },
+    "draw_calls": {
+      "web": {"maximum_absolute_increase": 1},
+      "android_emulator": {"minimum_absolute_reduction": 8, "minimum_relative_reduction": 0.3}
+    },
+    "load_elapsed_ms": {"maximum_relative_increase": 0.25, "maximum_absolute_slack_ms": 100},
+    "texture_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 2},
+    "buffer_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 1},
+    "fps": {"maximum_relative_drop": 0.15, "maximum_absolute_drop": 3},
+    "artifact_size": {"maximum_relative_increase": 0.03, "maximum_absolute_increase_bytes": 2097152},
+    "runtime": {"load_failures": 0, "unexpected_errors": 0, "unexpected_warnings": 0},
+    "visual": {
+      "all_sources_visible": true,
+      "white_or_opaque_matte_fragments": 0,
+      "pivot_or_trim_regressions": 0,
+      "same_frame_screenshot_required": true,
+      "automated_parity": {
+        "channel_delta_threshold": 8,
+        "maximum_mean_absolute_error": 0.35,
+        "maximum_changed_pixel_fraction": 0.003,
+        "near_white_channel_floor": 245,
+        "maximum_new_near_white_pixels": 0,
+        "repeat_stability": {
+          "required": true,
+          "channel_delta_threshold": 0,
+          "maximum_mean_absolute_error": 0,
+          "maximum_changed_pixel_fraction": 0,
+          "near_white_channel_floor": 245,
+          "maximum_new_near_white_pixels": 0
+        },
+        "content_roi_by_platform": {
+          "web": {"left": 0.01875, "top": 0.141666667, "right": 0.98125, "bottom": 0.966666667},
+          "android_emulator": {"left": 0.115, "top": 0.139880952, "right": 0.881666667, "bottom": 0.967261905}
+        }
+      }
+    },
+    "decision_rule": "accept_only_if_every_platform_threshold_and_visual_gate_passes_with_material_android_gain"
+  },
+  "contract_corrections": [
+    {
+      "id": "C01_FREEZE_OBSERVED_WEB_BASELINE",
+      "trigger": "pre_candidate_Web_runtime_measured_five_draw_textures_and_eight_dynamic_atlas_sources_instead_of_the_inventory_estimate",
+      "corrective_action": "freeze_the_observed_baseline_values_before_descriptor_creation",
+      "thresholds_weakened": false,
+      "candidate_measurement_used_for_correction": false
+    },
+    {
+      "id": "C02_DISTINGUISH_MATERIAL_WHITE_MATTE_FROM_ROUNDING",
+      "trigger": "one_Android_pixel_crossed_from_245_245_244_to_245_245_245_with_maximum_channel_delta_one",
+      "corrective_action": "report_all_near_white_threshold_crossings_but_count_a_new_white_matte_only_when_the_existing_channel_delta_threshold_is_also_exceeded",
+      "thresholds_weakened": false,
+      "maximum_new_near_white_pixels": 0,
+      "raw_threshold_crossings_preserved": true
+    },
+    {
+      "id": "C03_RESTORE_SYMMETRIC_WEB_HOST_LOAD",
+      "trigger": "initial_candidate_Web_measurements_ran_while_the_Android_QEMU_process_was_active_but_the_frozen_baseline_did_not",
+      "corrective_action": "stop_the_emulator_and_repeat_candidate_Web_measurement_under_the_same_host_condition_as_baseline",
+      "thresholds_weakened": false,
+      "best_of_selection_used": false,
+      "result": "frozen_fps_absolute_gate_passed_at_57_fps"
+    }
+  ],
+  "baseline_observation": {
+    "captured_before_candidate_descriptor_creation": true,
+    "status": "pass",
+    "visual_review": "pass_all_twelve_sources_visible_no_clipping_pivot_regression_or_unexpected_white_matte_fragments",
+    "web": {
+      "status": "pass",
+      "source_texture_count": 12,
+      "draw_texture_count": 5,
+      "dynamic_atlas_packed_count": 8,
+      "load_elapsed_ms": 347,
+      "draws_median": 25,
+      "texture_memory_mb_median": 29.41,
+      "buffer_memory_mb_median": 9.03,
+      "fps_median": 60,
+      "runtime_bytes": 126093765,
+      "resources_bytes": 120761021,
+      "candidate_uuid_artifact_count": 36
+    },
+    "android_emulator": {
+      "status": "pass",
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "emulator_verified": true,
+      "abi": "x86_64",
+      "audio_policy": "host-no-audio-plus-media-stream-zero",
+      "audio_policy_status": "pass",
+      "media_stream_3_volume": 0,
+      "source_texture_count": 12,
+      "draw_texture_count": 12,
+      "dynamic_atlas_packed_count": 0,
+      "load_elapsed_ms": 667,
+      "draws_median": 30,
+      "texture_memory_mb_median": 15.27,
+      "buffer_memory_mb_median": 18.03,
+      "fps_median": 16,
+      "runtime_bytes": 126280350,
+      "resources_bytes": 120761021,
+      "apk_bytes": 144985084,
+      "candidate_uuid_artifact_count": 36
+    }
+  },
+  "baseline_evidence": [
+    {
+      "path": "temp/m04-c-families/level_theme_farm/baseline/web/runtime.json",
+      "sha256": "46DBDA0096F1AC0515E14A0192DAC9E952B743DDAAFE8413C4DB3A439FC22DBC"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_farm/baseline/web/artifacts.json",
+      "sha256": "253C9045536E6587C0D6318079C760D45C24B44CE1DBAE580CD5EE03304F7080"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_farm/baseline/web/atlas-family.png",
+      "sha256": "1AA86D9E656E516A77B25949032EF018A3A1A2351A784DE20BC949DA0C61DF96"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_farm/baseline/android/runtime.json",
+      "sha256": "3EB4B7A306F69D92D1E7C98C7D9578E74426560929D2DB8608DA15D4F7215695"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_farm/baseline/android/artifacts.json",
+      "sha256": "30A6F3153E8189A84065464CFDCCC3CD2C437F619D2967631F03CB73D60B59AE"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_farm/baseline/android/atlas-family.png",
+      "sha256": "D6526638921D632946183E9666AE1110FAF6A8C90C417E2910F9D25E228A484D"
+    }
+  ],
+  "harness_preventions": [
+    "family IDs use a strict explicit runtime allowlist",
+    "runtime keys derive from the canonical generated theme catalog and select only enabled farm hazards and platforms",
+    "artifact measurement requires two explicit non-overlapping contained candidate source directories",
+    "Android execution rejects non-emulator serials before any ADB mutation",
+    "Android runtime QA blocks unless the host AVD process has -no-audio and media stream 3 verifies as zero",
+    "baseline and candidate use the same isolated screen, build configs and sample count"
+  ],
+  "candidate_result": {
+    "status": "accepted",
+    "acceptance_checks": {"passed": 63, "total": 63},
+    "durable_acceptance": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json",
+    "descriptor_count": 1,
+    "web": {
+      "source_texture_count": 1,
+      "draw_texture_count": 1,
+      "dynamic_atlas_packed_count": 0,
+      "draws_median": {"baseline": 25, "candidate": 19},
+      "load_elapsed_ms": {"baseline": 347, "candidate": 238},
+      "texture_memory_mb_median": {"baseline": 29.41, "candidate": 13.69},
+      "fps_median": {"baseline": 60, "candidate": 57}
+    },
+    "android_emulator": {
+      "source_texture_count": 1,
+      "draw_texture_count": 1,
+      "dynamic_atlas_packed_count": 0,
+      "draws_median": {"baseline": 30, "candidate": 19, "absolute_reduction": 11, "relative_reduction": 0.366667},
+      "load_elapsed_ms": {"baseline": 667, "candidate": 442},
+      "texture_memory_mb_median": {"baseline": 15.27, "candidate": 15.55},
+      "audio_policy": "host-no-audio-plus-media-stream-zero"
+    },
+    "visual_parity": {
+      "status": "pass",
+      "new_near_white_pixels": {"web": 0, "android_emulator": 0},
+      "repeat_stability": "exact_pixel_match"
+    }
+  },
+  "rollback": {
+    "on_failure": "remove_only_the_farm_parent_descriptor_restore_the_frozen_pre-candidate_family_contract_and_rebuild_both_platforms",
+    "asset_relocation_authorized": false,
+    "parent_family_batch_authorized": false,
+    "broader_family_migration_authorized": false
+  }
+}

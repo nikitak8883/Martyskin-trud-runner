@@ -1,8 +1,8 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m03_complete_m04_c_achievement_ui_child_complete_release_blocked`  
+Статус: `m03_complete_m04_c_theme_farm_child_complete_release_blocked`  
 Дата интеграции: 2026-07-23  
-Последнее обновление: 2026-08-21  
+Последнее обновление: 2026-09-09  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 
@@ -75,6 +75,7 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 - M04-C-FAMILY-BONUS-ITEMS: принят четвёртый изолированный static-atlas family из 12 PNG через два directory-local descriptors. Final comparison `63/63`; Android median draws `30 → 20` (`-33.3333%`), Web `19 → 20` остаётся в frozen non-regression budget; Web `34/34 × 2`, Android-emulator `28/28 × 2`, visual parity, interaction/restart/soak и M2_PLUS проходят. Первый `62/63` report сохранён, а математически невозможный relative gate исправлен до принятия. Aggregate `M04.5` по-прежнему pending.
 - M04-C-FAMILY-UI-SHARED-CORE: принят пятый isolated family из 28 shared UI PNG через четыре directory-local descriptors и один declared standalone banner. Final comparison `63/63`; Android draws `62 → 40` (`-35.4839%`), Web `54 → 40`, dynamic-atlas copies `10 → 0`; zero-new-white и exact-repeat visual gates, Web `34/34 × 2`, silent Android-emulator `28/28 × 2`, interaction/restart/soak и M2_PLUS проходят. Aggregate `M04.5` по-прежнему pending.
 - M04-C-FAMILY-THEME-ARCHIVE: принят шестой isolated family из 17 archive hazard/platform PNG через один recursive parent descriptor. Initial two-descriptor candidate отклонён при `62/63` из-за Web draws `24 → 26`; исправленная топология проходит `63/63`, Web `24 → 24`, Android `40 → 24` (`-40%`), exact-repeat/zero-new-white и silent emulator gates проходят. Aggregate `M04.5` по-прежнему pending.
+- M04-C-FAMILY-THEME-FARM: принят седьмой isolated family из 12 farm hazard/platform PNG через один recursive parent descriptor. Comparison `63/63`; Web draws `25 → 19`, Android `30 → 19` (`-36.6667%`), source textures `12 → 1`, exact-repeat/zero-material-new-white, Web `34/34 × 2`, silent Android-emulator `28/28 × 2`, interaction/restart/soak и M2_PLUS проходят. Aggregate `M04.5` по-прежнему pending.
 
 ## Следующее безопасное действие
 
