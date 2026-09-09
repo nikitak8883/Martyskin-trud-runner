@@ -66,10 +66,10 @@ class M04AAssetContractTests(unittest.TestCase):
     def test_repository_contract_passes(self) -> None:
         report = VALIDATOR.validate_manifest(PROJECT_ROOT, check_git=False)
         self.assertEqual(report["status"], "PASS", report["findings"])
-        self.assertEqual(report["counts"]["source_files"], 1646)
+        self.assertEqual(report["counts"]["source_files"], 1647)
         self.assertEqual(report["counts"]["image_files"], 1558)
-        self.assertEqual(report["counts"]["auto_atlas_files"], 11)
-        self.assertEqual(report["counts"]["measured_static_atlases"], 11)
+        self.assertEqual(report["counts"]["auto_atlas_files"], 12)
+        self.assertEqual(report["counts"]["measured_static_atlases"], 12)
         measured = [
             group["atlas_id"]
             for group in self.manifest["atlas_groups"]
@@ -85,6 +85,7 @@ class M04AAssetContractTests(unittest.TestCase):
                 "level_theme_archive",
                 "achievement_ui",
                 "level_theme_farm",
+                "level_theme_construction",
             ],
         )
 

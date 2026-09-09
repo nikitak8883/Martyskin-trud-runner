@@ -3,8 +3,8 @@
 ## Текущее положение
 
 - Source ledger: `28/95 complete`; mandatory `28/85`, осталось `57`; conditional `10`. `M04.5` остаётся pending до закрытия remaining family children.
-- V4 remaining-scope execution ledger: `19/71 complete` (`26.7606%`), осталось `52`; conditional units `7`. Знаменатель расширен новым inventory-derived child `M04-C-FAMILY-THEME-FARM` и остаётся provisional для следующих M04/M05/M10 children.
-- Текущий milestone: `M04-C-FAMILY-THEME-FARM` complete; принят седьмой measured family из 12 farm PNG через один recursive parent descriptor. Final comparison `63/63`, Web draws `25 → 19`, Android draws `30 → 19`, P4 и M2_PLUS зелёные; Android QA выполнен без звука и только на эмуляторе.
+- V4 remaining-scope execution ledger: `20/72 complete` (`27.7778%`), осталось `52`; conditional units `7`. Знаменатель расширен новым inventory-derived child `M04-C-FAMILY-THEME-CONSTRUCTION` и остаётся provisional для следующих M04/M05/M10 children.
+- Текущий milestone: `M04-C-FAMILY-THEME-CONSTRUCTION` complete; принят восьмой measured family из 24 construction PNG через один recursive parent descriptor. Final comparison `63/63`, Web draws `41 → 31`, Android draws `54 → 31`, P4 и M2_PLUS зелёные; Android QA выполнен без звука и только на эмуляторе.
 - Следующий unit: продолжение `M04-C-FAMILIES` — один новый accepted measured family на изолированный child checkpoint; broader batching не разрешён.
 - Release: `BLOCKED`.
 

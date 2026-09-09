@@ -24,6 +24,9 @@ const themeArchiveRollbackPath = path.join(projectRoot, 'docs', 'global_moderniz
 const themeFarmContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_FARM_CONTRACT.json');
 const themeFarmAcceptancePath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_FARM_ACCEPTANCE.json');
 const themeFarmRollbackPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_FARM_ROLLBACK_MANIFEST.json');
+const themeConstructionContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_CONSTRUCTION_CONTRACT.json');
+const themeConstructionAcceptancePath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_CONSTRUCTION_ACCEPTANCE.json');
+const themeConstructionRollbackPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_CONSTRUCTION_ROLLBACK_MANIFEST.json');
 const webRuntimeFunctionPath = path.join(projectRoot, 'tools', 'codex', 'web_atlas_pilot_runtime_function.js');
 const webRunnerPath = path.join(projectRoot, 'tools', 'codex', 'Run-MtrWebAtlasPilotQa.js');
 const artifactMeasurerPath = path.join(projectRoot, 'tools', 'codex', 'Measure-MtrAtlasPilotArtifacts.js');
@@ -52,6 +55,9 @@ for (const requiredPath of [
   themeFarmContractPath,
   themeFarmAcceptancePath,
   themeFarmRollbackPath,
+  themeConstructionContractPath,
+  themeConstructionAcceptancePath,
+  themeConstructionRollbackPath,
   webRuntimeFunctionPath,
   webRunnerPath,
   artifactMeasurerPath,
@@ -429,6 +435,71 @@ assert.strictEqual(themeFarmRollback.rollback.anchor_commit, 'd295cd3f0dce664d56
 assert.strictEqual(themeFarmRollback.source_png_files_changed, false);
 assert.strictEqual(themeFarmRollback.source_png_metadata_changed, false);
 
+const themeConstructionContract = JSON.parse(fs.readFileSync(themeConstructionContractPath, 'utf8'));
+assert.strictEqual(themeConstructionContract.$schema, 'mtr.m04_c_atlas_family_contract.v1');
+assert.strictEqual(themeConstructionContract.unit_id, 'M04-C-FAMILY-THEME-CONSTRUCTION');
+assert.strictEqual(themeConstructionContract.parent_unit, 'M04-C-FAMILIES');
+assert.strictEqual(themeConstructionContract.status, 'candidate_accepted');
+assert.strictEqual(themeConstructionContract.selection.selected_before_runtime_asset_mutation, true);
+assert.strictEqual(themeConstructionContract.selection.candidate_descriptor_present_at_selection, false);
+assert.strictEqual(themeConstructionContract.selection.metric_fishing_prohibited, true);
+assert.strictEqual(themeConstructionContract.candidate.atlas_id, 'level_theme_construction');
+assert.deepStrictEqual(themeConstructionContract.candidate.levels, [1, 2, 10]);
+assert.strictEqual(themeConstructionContract.candidate.source_count, 24);
+assert.strictEqual(themeConstructionContract.candidate.source_bytes, 2394667);
+assert.strictEqual(themeConstructionContract.candidate.source_area_px, 1848193);
+assert.strictEqual(themeConstructionContract.candidate.alpha_area_px, 1157028);
+assert.strictEqual(themeConstructionContract.candidate.source_keys.length, 24);
+assert.strictEqual(themeConstructionContract.candidate.source_inventory_sha256, '1B0D382BE7A9C336E9D60397410EE4E4B3849E87E2E835A91085685DD22C4AC2');
+assert.strictEqual(themeConstructionContract.candidate.descriptor_count, 1);
+assert.strictEqual(themeConstructionContract.candidate.descriptors.length, 1);
+assert.strictEqual(themeConstructionContract.candidate.descriptors[0].descriptor_uuid, '7e0cc7a5-9463-4ff4-92f5-22bb04d2a7ff');
+assert.strictEqual(fs.existsSync(path.join(projectRoot, themeConstructionContract.candidate.descriptors[0].descriptor)), true);
+const themeConstructionDescriptorMetaPath = path.join(projectRoot, themeConstructionContract.candidate.descriptors[0].descriptor + '.meta');
+assert.strictEqual(fs.existsSync(themeConstructionDescriptorMetaPath), true);
+const themeConstructionDescriptorMeta = JSON.parse(fs.readFileSync(themeConstructionDescriptorMetaPath, 'utf8'));
+assert.strictEqual(themeConstructionDescriptorMeta.uuid, themeConstructionContract.candidate.descriptors[0].descriptor_uuid);
+assert.strictEqual(themeConstructionDescriptorMeta.userData.allowRotation, false);
+assert.strictEqual(themeConstructionContract.baseline_observation.status, 'pass');
+assert.strictEqual(themeConstructionContract.baseline_observation.web.source_texture_count, 24);
+assert.strictEqual(themeConstructionContract.baseline_observation.web.draw_texture_count, 10);
+assert.strictEqual(themeConstructionContract.baseline_observation.web.dynamic_atlas_packed_count, 15);
+assert.strictEqual(themeConstructionContract.baseline_observation.android_emulator.draw_texture_count, 24);
+assert.strictEqual(themeConstructionContract.baseline_observation.android_emulator.audio_policy_status, 'pass');
+assert.strictEqual(themeConstructionContract.baseline_observation.android_emulator.media_stream_3_volume, 0);
+assert.strictEqual(themeConstructionContract.baseline_evidence.length, 6);
+assert.strictEqual(themeConstructionContract.contract_corrections.length, 4);
+assert.strictEqual(themeConstructionContract.contract_corrections.every((correction) => correction.thresholds_weakened === false), true);
+assert.strictEqual(themeConstructionContract.candidate_result.status, 'accepted');
+assert.deepStrictEqual(themeConstructionContract.candidate_result.acceptance_checks, { passed: 63, total: 63 });
+assert.strictEqual(themeConstructionContract.candidate_result.android_emulator.draws_absolute_reduction, 23);
+assert.strictEqual(themeConstructionContract.candidate_result.visual_parity.material_new_near_white_pixels, 0);
+assert.strictEqual(themeConstructionContract.candidate_result.visual_parity.repeat_stability, 'exact_pixel_match');
+assert.strictEqual(themeConstructionContract.rollback.asset_relocation_authorized, false);
+assert.strictEqual(themeConstructionContract.rollback.parent_family_batch_authorized, false);
+
+const themeConstructionAcceptance = JSON.parse(fs.readFileSync(themeConstructionAcceptancePath, 'utf8'));
+assert.strictEqual(themeConstructionAcceptance.$schema, 'mtr.m04_c_atlas_family_acceptance.v1');
+assert.strictEqual(themeConstructionAcceptance.unit_id, 'M04-C-FAMILY-THEME-CONSTRUCTION');
+assert.strictEqual(themeConstructionAcceptance.status, 'PASS');
+assert.deepStrictEqual(themeConstructionAcceptance.acceptance.failed_checks, []);
+assert.strictEqual(themeConstructionAcceptance.acceptance.checks_passed, 63);
+assert.strictEqual(themeConstructionAcceptance.acceptance.checks_total, 63);
+assert.strictEqual(themeConstructionAcceptance.acceptance.android_emulator.audio_policy.status, 'pass');
+assert.strictEqual(themeConstructionAcceptance.acceptance.android_emulator.audio_policy.volume, 0);
+assert.strictEqual(themeConstructionAcceptance.acceptance.android_emulator.draws_median.absolute_reduction, 23);
+assert.strictEqual(themeConstructionAcceptance.acceptance.visual_parity.candidate_repeat_stability.status, 'pass');
+
+const themeConstructionRollback = JSON.parse(fs.readFileSync(themeConstructionRollbackPath, 'utf8'));
+assert.strictEqual(themeConstructionRollback.contract, 'mtr.m04_c_family_rollback_manifest');
+assert.strictEqual(themeConstructionRollback.execution_unit, 'M04-C-FAMILY-THEME-CONSTRUCTION');
+assert.strictEqual(themeConstructionRollback.rollback.anchor_commit, '8e0a758d53c7e3c266ab15e926fb429431d87e6d');
+assert.strictEqual(themeConstructionRollback.runtime_assets_changed, true);
+assert.strictEqual(themeConstructionRollback.runtime_metadata_changed, true);
+assert.strictEqual(themeConstructionRollback.source_png_files_changed, false);
+assert.strictEqual(themeConstructionRollback.source_png_metadata_changed, false);
+assert.strictEqual(themeConstructionRollback.physical_device_used, false);
+
 const webRuntimeFunction = fs.readFileSync(webRuntimeFunctionPath, 'utf8');
 assert.ok(webRuntimeFunction.includes("schema: 'mtr.web_atlas_pilot.v1'"));
 assert.ok(webRuntimeFunction.includes("MTR_ATLAS_PILOT_COMPLETE "));
@@ -442,6 +513,7 @@ assert.ok(webRuntimeFunction.includes('bonus_items: 12'));
 assert.ok(webRuntimeFunction.includes('ui_shared_core: 28'));
 assert.ok(webRuntimeFunction.includes('level_theme_archive: 17'));
 assert.ok(webRuntimeFunction.includes('level_theme_farm: 12'));
+assert.ok(webRuntimeFunction.includes('level_theme_construction: 24'));
 assert.ok(webRuntimeFunction.includes('metric.atlasId === atlasId'));
 assert.ok(webRuntimeFunction.includes('expectedInfrastructureErrors'));
 assert.ok(webRuntimeFunction.includes('expectedInfrastructureWarnings'));

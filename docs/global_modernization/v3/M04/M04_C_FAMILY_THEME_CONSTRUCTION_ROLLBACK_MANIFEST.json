@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m04_c_family_rollback_manifest",
+  "execution_unit": "M04-C-FAMILY-THEME-CONSTRUCTION",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "scope": "one measured construction theme static atlas, silent Android-emulator QA, validation and roadmap records",
+  "rollback": {
+    "repository_root": "C:/Projects/Monkey Work",
+    "anchor_commit": "8e0a758d53c7e3c266ab15e926fb429431d87e6d",
+    "project_prefix": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/",
+    "pre_change_blobs": {
+      "assets/resources/config/atlas_manifest.json": "b1c3ca67972b1ed28ad7976efca2cee988711801",
+      "assets/scripts/GameRoot.ts": "0b82159d25c120066b4a24a15dc36924b3b9cafc",
+      "docs/codex/CURRENT_STATE.md": "b0fa620161bc1a93caaa699c04e9d7c19be0d74d",
+      "docs/global_modernization/v3/INTEGRATED_MASTER_PLAN_20260719.md": "82d83d570f099b889ccbd39d3ae61ed75e9a0296",
+      "docs/global_modernization/v3/M04/contact_sheet_index.json": "ca933989259ac50cedda83e5b6d4c395a9c54360",
+      "docs/global_modernization/v3/MODULE_EXECUTION_INDEX.yaml": "9d237ff96c4aba4c7c9222da506775406a51d780",
+      "docs/global_modernization/v3/README_START_HERE.md": "d60556dd4e1160ab6c0d92c452842a9ec84b1431",
+      "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml": "91d143361f3e060515d75e9045e0cf1b8106e25d",
+      "docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json": "ae9c7a75f566602ff7c376d3f9a0381a0635c04c",
+      "docs/global_modernization/v4/INTEGRATED_ROADMAP_20260809.md": "7c01871793292dbcca4c3dee7a23f7aa1928deee",
+      "docs/global_modernization/v4/README_START_HERE.md": "f754bfe846ed29ffa26cb1e36e30de7f9794b0a4",
+      "tools/codex/test-atlas-pilot-metrics.js": "c75c54b1038f59947192f384cced05505bc58a28",
+      "tools/codex/tests/test_validate_m04_a_asset_contract.py": "14cb0a7794b24292a9d29577b177a157443b2bb8",
+      "tools/codex/web_atlas_pilot_runtime_function.js": "33ecb4fce9e4ad3ca51ca2b64749809f75bfc528"
+    },
+    "new_files_remove_on_rollback": [
+      "assets/resources/objectives/themed/last_iteration/construction/level_theme_construction.pac",
+      "assets/resources/objectives/themed/last_iteration/construction/level_theme_construction.pac.meta",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_CONSTRUCTION_ACCEPTANCE.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_CONSTRUCTION_CODE_REVIEW_REPORT.md",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_CONSTRUCTION_CONTRACT.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_CONSTRUCTION_ROLLBACK_MANIFEST.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_CONSTRUCTION_VALIDATION_SUMMARY.json",
+      "docs/qa/CONTROL_LOG_CHECKPOINT_20260909_M04_C_FAMILY_THEME_CONSTRUCTION_COMPLETE.md"
+    ]
+  },
+  "runtime_assets_changed": true,
+  "runtime_metadata_changed": true,
+  "source_png_files_changed": false,
+  "source_png_metadata_changed": false,
+  "source_files_relocated": false,
+  "physical_device_used": false,
+  "build_outputs_tracked": false,
+  "duplicate_backup_files_created": false
+}

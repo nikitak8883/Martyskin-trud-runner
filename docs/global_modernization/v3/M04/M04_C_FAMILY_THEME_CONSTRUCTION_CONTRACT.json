@@ -1,0 +1,337 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_contract.v1",
+  "unit_id": "M04-C-FAMILY-THEME-CONSTRUCTION",
+  "parent_unit": "M04-C-FAMILIES",
+  "source_work_packages": ["M04.5"],
+  "status": "candidate_accepted",
+  "selection": {
+    "selected_before_runtime_asset_mutation": true,
+    "candidate_descriptor_present_at_selection": false,
+    "selected_at_source_commit": "8e0a758d53c7e3c266ab15e926fb429431d87e6d",
+    "metric_fishing_prohibited": true,
+    "reason": "Smallest remaining unmeasured playable theme by source count: twenty-four gameplay sprites, one construction theme, three fixed level affinities and no animation-frame ordering risk.",
+    "alternatives_deferred": [
+      {"atlas_id": "logistics", "reason": "Twenty-six-source family; larger than construction."},
+      {"atlas_id": "jungle", "reason": "Twenty-seven-source family; larger and higher-byte than construction."},
+      {"atlas_id": "remaining_level_theme_families", "reason": "Each theme requires an isolated measured child and rollback boundary."}
+    ]
+  },
+  "candidate": {
+    "atlas_id": "level_theme_construction",
+    "theme": "construction",
+    "levels": [1, 2, 10],
+    "source_directories": [
+      "assets/resources/objectives/themed/last_iteration/construction/hazards",
+      "assets/resources/objectives/themed/last_iteration/construction/platforms"
+    ],
+    "source_count": 24,
+    "source_bytes": 2394667,
+    "source_area_px": 1848193,
+    "alpha_area_px": 1157028,
+    "estimated_combined_2048_occupancy": 0.440644,
+    "maximum_source_dimensions": {"width": 718, "height": 269},
+    "critical_source_count": 12,
+    "source_inventory_sha256": "1B0D382BE7A9C336E9D60397410EE4E4B3849E87E2E835A91085685DD22C4AC2",
+    "source_inventory_fingerprint": "sha256_of_sorted_compact_json_rows_with_sorted_keys_key_path_category_role_critical_content_meta_uuid_dimensions_alpha_trim_pivot_packable_atlas_uuid_and_levels",
+    "risk_class": "gameplay_critical_construction_platform_collision_and_hazard_readability",
+    "fallback_policy": "block_release",
+    "split_family_contract": "one_recursive_parent_descriptor_two_child_source_directories_one_acceptance_decision",
+    "descriptor_count": 1,
+    "descriptors": [
+      {
+        "source_directory": "assets/resources/objectives/themed/last_iteration/construction",
+        "included_child_directories": [
+          "assets/resources/objectives/themed/last_iteration/construction/hazards",
+          "assets/resources/objectives/themed/last_iteration/construction/platforms"
+        ],
+        "source_count": 24,
+        "source_bytes": 2394667,
+        "source_area_px": 1848193,
+        "alpha_area_px": 1157028,
+        "estimated_2048_occupancy": 0.440644,
+        "maximum_source_dimensions": {"width": 718, "height": 269},
+        "descriptor": "assets/resources/objectives/themed/last_iteration/construction/level_theme_construction.pac",
+        "descriptor_uuid": "7e0cc7a5-9463-4ff4-92f5-22bb04d2a7ff",
+        "allow_rotation": false
+      }
+    ],
+    "source_keys": [
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_001",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_002",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_003",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_004",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_005",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_006",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_007",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_base_hazards_008",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_extended_hazards_001",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_extended_hazards_002",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_extended_hazards_003",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_extended_hazards_004",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_extended_hazards_005",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_extended_hazards_006",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_extended_hazards_007",
+      "objectives/themed/last_iteration/construction/hazards/mtr_last_construction_extended_hazards_008",
+      "objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_001",
+      "objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_002",
+      "objectives/themed/last_iteration/construction/platforms/mtr_last_construction_base_platforms_003",
+      "objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_001",
+      "objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_002",
+      "objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_003",
+      "objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_004",
+      "objectives/themed/last_iteration/construction/platforms/mtr_last_construction_extended_platforms_005"
+    ],
+    "preserved_import_contract": {
+      "trim_type": "auto",
+      "pivot": {"x": 0.5, "y": 0.5},
+      "packable": true,
+      "atlas_uuid_before_candidate": "",
+      "source_uuid_artifacts_mutated": false
+    },
+    "expected_retained_source_uuid_artifacts_by_platform": {"web": 0, "android_emulator": 0},
+    "configuration": {
+      "max_width": 2048,
+      "max_height": 2048,
+      "padding": 2,
+      "allow_rotation": false,
+      "algorithm": "MaxRects",
+      "format": "png",
+      "filter_unused": false,
+      "remove_source_textures_from_bundle": true,
+      "wrap_mode": "clamp-to-edge",
+      "filtering": "linear",
+      "mip_filter": "none"
+    }
+  },
+  "measurement_protocol": {
+    "platforms": ["web", "android_emulator"],
+    "web_build_config": "build-web-mobile-qa.json",
+    "android_build_config": "build-android-emulator.json",
+    "android_serial": "emulator-5554",
+    "android_user": 0,
+    "android_audio_policy": "AVD -no-audio plus fail-closed media stream 3 equals zero before runtime QA",
+    "viewport": {"width": 1280, "height": 720},
+    "scene": "main.scene",
+    "screen": "isolated_twenty_four_sprite_construction_theme_grid",
+    "screenshot_filename": "atlas-family.png",
+    "sample_count": 7,
+    "settle_ms": 1100,
+    "sample_interval_ms": 550,
+    "same_harness_and_build_config_before_after": true,
+    "artifact_candidate_source_directories": [
+      "assets/resources/objectives/themed/last_iteration/construction/hazards",
+      "assets/resources/objectives/themed/last_iteration/construction/platforms"
+    ],
+    "required_runtime_metrics": [
+      "source_texture_count",
+      "draw_texture_count",
+      "dynamic_atlas_packed_count",
+      "load_elapsed_ms",
+      "draws",
+      "texture_memory_mb",
+      "buffer_memory_mb",
+      "fps"
+    ],
+    "artifact_metrics": ["runtime_bytes", "resources_bytes", "android_package_bytes"]
+  },
+  "acceptance": {
+    "source_texture_count": {
+      "baseline_by_platform": {"web": 24, "android_emulator": 24},
+      "candidate_expected_by_platform": {"web": 1, "android_emulator": 1}
+    },
+    "draw_texture_count": {
+      "baseline_by_platform": {"web": 10, "android_emulator": 24},
+      "candidate_expected_by_platform": {"web": 1, "android_emulator": 1}
+    },
+    "dynamic_atlas_packed_count": {
+      "baseline_by_platform": {"web": 15, "android_emulator": 0},
+      "candidate_expected_by_platform": {"web": 0, "android_emulator": 0}
+    },
+    "draw_calls": {
+      "web": {"maximum_absolute_increase": 1},
+      "android_emulator": {"minimum_absolute_reduction": 8, "minimum_relative_reduction": 0.3}
+    },
+    "load_elapsed_ms": {"maximum_relative_increase": 0.25, "maximum_absolute_slack_ms": 100},
+    "texture_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 2},
+    "buffer_memory_mb": {"maximum_relative_increase": 0.15, "maximum_absolute_increase_mb": 1},
+    "fps": {"maximum_relative_drop": 0.15, "maximum_absolute_drop": 3},
+    "artifact_size": {"maximum_relative_increase": 0.03, "maximum_absolute_increase_bytes": 2097152},
+    "runtime": {"load_failures": 0, "unexpected_errors": 0, "unexpected_warnings": 0},
+    "visual": {
+      "all_sources_visible": true,
+      "white_or_opaque_matte_fragments": 0,
+      "pivot_or_trim_regressions": 0,
+      "same_frame_screenshot_required": true,
+      "automated_parity": {
+        "channel_delta_threshold": 8,
+        "maximum_mean_absolute_error": 0.35,
+        "maximum_changed_pixel_fraction": 0.003,
+        "near_white_channel_floor": 245,
+        "maximum_new_near_white_pixels": 0,
+        "repeat_stability": {
+          "required": true,
+          "channel_delta_threshold": 0,
+          "maximum_mean_absolute_error": 0,
+          "maximum_changed_pixel_fraction": 0,
+          "near_white_channel_floor": 245,
+          "maximum_new_near_white_pixels": 0
+        },
+        "content_roi_by_platform": {
+          "web": {"left": 0.01875, "top": 0.141666667, "right": 0.98125, "bottom": 0.966666667},
+          "android_emulator": {"left": 0.115, "top": 0.139880952, "right": 0.881666667, "bottom": 0.967261905}
+        }
+      }
+    },
+    "decision_rule": "accept_only_if_every_platform_threshold_and_visual_gate_passes_with_material_android_gain"
+  },
+  "contract_corrections": [
+    {
+      "id": "C01_REJECT_CLIPPED_QA_GRID_BASELINE",
+      "trigger": "first_Web_baseline_rendered_bottom_row_labels_at_the_viewport_edge",
+      "corrective_action": "reduce_the_debug_only_vertical_grid_step_from_150_to_140_and_recapture_both_platform_baselines_before_descriptor_creation",
+      "thresholds_weakened": false,
+      "candidate_measurement_used_for_correction": false
+    },
+    {
+      "id": "C02_FREEZE_OBSERVED_WEB_BASELINE",
+      "trigger": "pre_candidate_Web_runtime_measured_ten_draw_textures_and_fifteen_dynamic_atlas_sources",
+      "corrective_action": "freeze_observed_baseline_values_before_descriptor_creation",
+      "thresholds_weakened": false,
+      "candidate_measurement_used_for_correction": false
+    },
+    {
+      "id": "C03_RESTORE_SYMMETRIC_WEB_HOST_LOAD",
+      "trigger": "initial_candidate_Web_measurement_ran_while_the_Android_QEMU_process_was_active_but_the_frozen_baseline_did_not",
+      "corrective_action": "stop_the_emulator_and_repeat_both_candidate_Web_measurements_under_the_same_host_condition_as_baseline",
+      "thresholds_weakened": false,
+      "best_of_selection_used": false
+    },
+    {
+      "id": "C04_PRESERVE_SUBTHRESHOLD_NEAR_WHITE_DIAGNOSTICS",
+      "trigger": "sixty_six_Android_pixels_crossed_the_near_white_floor_without_exceeding_the_frozen_channel_delta_threshold",
+      "corrective_action": "retain_the_raw_crossing_count_and_classify_all_sixty_six_as_subthreshold_not_material_white_matte",
+      "thresholds_weakened": false,
+      "maximum_new_near_white_pixels": 0,
+      "raw_threshold_crossings_preserved": true
+    }
+  ],
+  "baseline_observation": {
+    "captured_before_candidate_descriptor_creation": true,
+    "status": "pass",
+    "visual_review": "pass_all_twenty_four_sources_and_labels_visible_no_clipping_pivot_regression_or_unexpected_white_matte_fragments",
+    "web": {
+      "status": "pass",
+      "source_texture_count": 24,
+      "draw_texture_count": 10,
+      "dynamic_atlas_packed_count": 15,
+      "load_elapsed_ms": 644,
+      "draws_median": 41,
+      "texture_memory_mb_median": 33.7,
+      "buffer_memory_mb_median": 9.03,
+      "fps_median": 53,
+      "runtime_bytes": 126569662,
+      "resources_bytes": 121236155,
+      "candidate_uuid_artifact_count": 72
+    },
+    "android_emulator": {
+      "status": "pass",
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "emulator_verified": true,
+      "abi": "x86_64",
+      "audio_policy": "host-no-audio-plus-media-stream-zero",
+      "audio_policy_status": "pass",
+      "media_stream_3_volume": 0,
+      "source_texture_count": 24,
+      "draw_texture_count": 24,
+      "dynamic_atlas_packed_count": 0,
+      "load_elapsed_ms": 1572,
+      "draws_median": 54,
+      "texture_memory_mb_median": 21.09,
+      "buffer_memory_mb_median": 18.04,
+      "fps_median": 10,
+      "runtime_bytes": 126756147,
+      "resources_bytes": 121236155,
+      "apk_bytes": 145454849,
+      "candidate_uuid_artifact_count": 72
+    }
+  },
+  "baseline_evidence": [
+    {"path": "temp/m04-c-families/level_theme_construction/baseline/web/runtime.json", "sha256": "83C6101E21F47C9B9CE046EF83BA05A623797BA95A4C87C3678E4E199D8528D2"},
+    {"path": "temp/m04-c-families/level_theme_construction/baseline/web/artifacts.json", "sha256": "139EF4725C744C3374658F334FB3965EF169D111366087DFCAD844A2F797AF17"},
+    {"path": "temp/m04-c-families/level_theme_construction/baseline/web/atlas-family.png", "sha256": "83D82987026D77E689B65C7FD0CD4FAEDC19BB44287E53B4C713C3D4D1E84B7D"},
+    {"path": "temp/m04-c-families/level_theme_construction/baseline/android/runtime.json", "sha256": "9A17B4CB96ECA3BAD6909606DE1FF39FCD9F6E9EA9CF78B2659D78867DBCBD80"},
+    {"path": "temp/m04-c-families/level_theme_construction/baseline/android/artifacts.json", "sha256": "BD8F29BF1A9A4E34139447D00524C2A67309B3ACC3A55D885709B9564B25E7C0"},
+    {"path": "temp/m04-c-families/level_theme_construction/baseline/android/atlas-family.png", "sha256": "F3C2E1F5F7091E468AC60F806170C856F9801A4816AA3FEE233CCE995057050F"}
+  ],
+  "candidate_result": {
+    "status": "accepted",
+    "descriptor_created": true,
+    "acceptance_checks": {"passed": 63, "total": 63},
+    "durable_acceptance": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_CONSTRUCTION_ACCEPTANCE.json",
+    "descriptor_count": 1,
+    "web": {
+      "source_texture_count": 1,
+      "draw_texture_count": 1,
+      "dynamic_atlas_packed_count": 0,
+      "load_elapsed_ms": 444,
+      "draws_median": 31,
+      "texture_memory_mb_median": 18.12,
+      "buffer_memory_mb_median": 9.03,
+      "fps_median": 56,
+      "runtime_bytes": 127403212,
+      "resources_bytes": 122069705,
+      "candidate_uuid_artifact_count": 0
+    },
+    "android_emulator": {
+      "source_texture_count": 1,
+      "draw_texture_count": 1,
+      "dynamic_atlas_packed_count": 0,
+      "load_elapsed_ms": 736,
+      "draws_median": 31,
+      "draws_absolute_reduction": 23,
+      "draws_relative_reduction": 0.425926,
+      "texture_memory_mb_median": 21.51,
+      "buffer_memory_mb_median": 18.04,
+      "fps_median": 10,
+      "runtime_bytes": 127589697,
+      "resources_bytes": 122069705,
+      "apk_bytes": 146280195,
+      "candidate_uuid_artifact_count": 0,
+      "audio_policy_status": "pass",
+      "media_stream_3_volume": 0
+    },
+    "visual_parity": {
+      "status": "pass",
+      "web_mean_absolute_error": 0.043022,
+      "web_changed_pixel_fraction": 0.001370578,
+      "android_mean_absolute_error": 0.132927,
+      "android_changed_pixel_fraction": 0.001628035,
+      "material_new_near_white_pixels": 0,
+      "android_raw_near_white_threshold_crossings": 66,
+      "android_ignored_subthreshold_near_white_crossings": 66,
+      "repeat_stability": "exact_pixel_match"
+    }
+  },
+  "candidate_evidence": [
+    {"path": "temp/m04-c-families/level_theme_construction/candidate/web/runtime.json", "sha256": "876E7246B48423BA7A4D7D5D9ED6564C57C05FC2B76E8AA28B3581C9A9DB7C2C"},
+    {"path": "temp/m04-c-families/level_theme_construction/candidate/web/artifacts.json", "sha256": "0BBDE0BB7335D1123EF13743071900C213AE26D76B73EED40E6DEFA9348ADBBB"},
+    {"path": "temp/m04-c-families/level_theme_construction/candidate/web/atlas-family.png", "sha256": "2DED55CE9451AA0C971048178F8259D3F0683861132A0C1F71799E8425A00FEF"},
+    {"path": "temp/m04-c-families/level_theme_construction/candidate/android/runtime.json", "sha256": "4F20EBA919D7CE694370998D8C78130C49A90FDE885CA44C036B9365E9E14CA9"},
+    {"path": "temp/m04-c-families/level_theme_construction/candidate/android/artifacts.json", "sha256": "A3B03C7532D423119490E685FD0CC449047102D2ACD34034624B3A1670DF3036"},
+    {"path": "temp/m04-c-families/level_theme_construction/candidate/android/atlas-family.png", "sha256": "569ADE46391CD7D13921FBA2277512AA86D61666FEDB0EC238C09A193E3968A5"},
+    {"path": "temp/m04-c-families/level_theme_construction/candidate-repeat/web/runtime.json", "sha256": "1FF4583A598F8CE0D8652D93873AB6534F244AC7A74C27C54D3E11281C569513"},
+    {"path": "temp/m04-c-families/level_theme_construction/candidate-repeat/web/atlas-family.png", "sha256": "2DED55CE9451AA0C971048178F8259D3F0683861132A0C1F71799E8425A00FEF"},
+    {"path": "temp/m04-c-families/level_theme_construction/candidate-repeat/android/runtime.json", "sha256": "7B36E3A026227EE74C0718F9702241307D43F73F6C953B25393660CF18D3CCA4"},
+    {"path": "temp/m04-c-families/level_theme_construction/candidate-repeat/android/atlas-family.png", "sha256": "569ADE46391CD7D13921FBA2277512AA86D61666FEDB0EC238C09A193E3968A5"},
+    {"path": "temp/m04-c-families/level_theme_construction/comparison/visual-parity.json", "sha256": "BA190C0F943EEF4EC53D36EB017BFB2DF6020CD64ABD6F993D9EA6EAF1A6AFC1"},
+    {"path": "temp/m04-c-families/level_theme_construction/comparison/acceptance.json", "sha256": "C6813A2AFF456755BE84CD6CC9935F6C46ECADC2F2EEE59F164A35319641FC12"},
+    {"path": "build/android-emulator/proj/build/CocosGame/outputs/apk/debug/CocosGame-debug.apk", "sha256": "CDDC014A8C621872C56AEA6A9C280AE1A72241627257A519510393BF809FC9FC"}
+  ],
+  "rollback": {
+    "manifest": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_CONSTRUCTION_ROLLBACK_MANIFEST.json",
+    "asset_relocation_authorized": false,
+    "parent_family_batch_authorized": false,
+    "rollback_decision": "remove_the_construction_pac_pair_and_restore_only_listed_pre_change_git_blobs"
+  }
+}

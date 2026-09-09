@@ -1,0 +1,74 @@
+{
+  "$schema": "mtr.m04_c_atlas_family_acceptance.v1",
+  "unit_id": "M04-C-FAMILY-THEME-CONSTRUCTION",
+  "parent_unit": "M04-C-FAMILIES",
+  "status": "PASS",
+  "generated_at": "2026-09-09T18:05:00+03:00",
+  "candidate": {
+    "atlas_id": "level_theme_construction",
+    "source_sprite_count": 24,
+    "source_bytes": 2394667,
+    "descriptor_count": 1,
+    "descriptor": "assets/resources/objectives/themed/last_iteration/construction/level_theme_construction.pac",
+    "descriptor_uuid": "7e0cc7a5-9463-4ff4-92f5-22bb04d2a7ff",
+    "allow_rotation": false,
+    "runtime_dynamic_atlas_policy": "construction SpriteFrames are owned by one recursive build-time static atlas"
+  },
+  "acceptance": {
+    "checks_passed": 63,
+    "checks_total": 63,
+    "failed_checks": [],
+    "web": {
+      "runtime_status": "pass",
+      "source_texture_count": {"baseline": 24, "candidate": 1},
+      "draw_texture_count": {"baseline": 10, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 15, "candidate": 0},
+      "draws_median": {"baseline": 41, "candidate": 31},
+      "load_elapsed_ms": {"baseline": 644, "candidate": 444},
+      "texture_memory_mb_median": {"baseline": 33.7, "candidate": 18.12},
+      "buffer_memory_mb_median": {"baseline": 9.03, "candidate": 9.03},
+      "fps_median": {"baseline": 53, "candidate": 56},
+      "runtime_bytes": {"baseline": 126569662, "candidate": 127403212},
+      "resources_bytes": {"baseline": 121236155, "candidate": 122069705},
+      "candidate_uuid_artifacts": {"baseline": 72, "candidate": 0}
+    },
+    "android_emulator": {
+      "runtime_status": "pass",
+      "serial": "emulator-5554",
+      "android_user": 0,
+      "abi": "x86_64",
+      "audio_policy": {"status": "pass", "startup_argument": "-no-audio", "stream": 3, "volume": 0},
+      "source_texture_count": {"baseline": 24, "candidate": 1},
+      "draw_texture_count": {"baseline": 24, "candidate": 1},
+      "dynamic_atlas_packed_count": {"baseline": 0, "candidate": 0},
+      "draws_median": {"baseline": 54, "candidate": 31, "absolute_reduction": 23, "relative_reduction": 0.425926},
+      "load_elapsed_ms": {"baseline": 1572, "candidate": 736},
+      "texture_memory_mb_median": {"baseline": 21.09, "candidate": 21.51},
+      "buffer_memory_mb_median": {"baseline": 18.04, "candidate": 18.04},
+      "fps_median": {"baseline": 10, "candidate": 10},
+      "runtime_bytes": {"baseline": 126756147, "candidate": 127589697},
+      "resources_bytes": {"baseline": 121236155, "candidate": 122069705},
+      "apk_bytes": {"baseline": 145454849, "candidate": 146280195},
+      "candidate_uuid_artifacts": {"baseline": 72, "candidate": 0}
+    },
+    "visual_parity": {
+      "status": "pass",
+      "all_sources_visible": true,
+      "material_new_near_white_pixels": 0,
+      "pivot_or_trim_regressions": 0,
+      "web": {"mean_absolute_error": 0.043022, "changed_pixel_fraction": 0.001370578},
+      "android_emulator": {"mean_absolute_error": 0.132927, "changed_pixel_fraction": 0.001628035, "raw_near_white_crossings": 66, "ignored_subthreshold_crossings": 66},
+      "candidate_repeat_stability": {"status": "pass", "web_changed_pixels": 0, "android_changed_pixels": 0}
+    }
+  },
+  "evidence_sha256": {
+    "comparison": "C6813A2AFF456755BE84CD6CC9935F6C46ECADC2F2EEE59F164A35319641FC12",
+    "visual_parity": "BA190C0F943EEF4EC53D36EB017BFB2DF6020CD64ABD6F993D9EA6EAF1A6AFC1",
+    "candidate_web_runtime": "876E7246B48423BA7A4D7D5D9ED6564C57C05FC2B76E8AA28B3581C9A9DB7C2C",
+    "candidate_android_runtime": "4F20EBA919D7CE694370998D8C78130C49A90FDE885CA44C036B9365E9E14CA9",
+    "candidate_emulator_apk": "CDDC014A8C621872C56AEA6A9C280AE1A72241627257A519510393BF809FC9FC"
+  },
+  "decision": "accept_one_recursive_construction_static_atlas_keep_remaining_theme_families_closed",
+  "release_status": "BLOCKED",
+  "physical_device_used": false
+}

@@ -97,7 +97,7 @@ M03 завершён strangler-патчами: inventory → state transitions/l
 
 ### Phase 3 — Presentation pipeline
 
-1. M04-A/B завершили inventory, policy, fail-visible pre-import checks и contact sheets; M04-C принял `objective_npc` pilot, `achievement_ui`, `runner_collectibles`, двухдескрипторный `bonus_items`, mixed-topology `ui_shared_core`, одноатласный recursive-parent `level_theme_archive` и одноатласный recursive-parent `level_theme_farm` children. Далее `M04-C-FAMILIES` продолжается только по одному measured accepted family на child checkpoint; следующий кандидат выбирается и замораживается отдельным inventory-derived contract до мутации.
+1. M04-A/B завершили inventory, policy, fail-visible pre-import checks и contact sheets; M04-C принял `objective_npc` pilot, `achievement_ui`, `runner_collectibles`, двухдескрипторный `bonus_items`, mixed-topology `ui_shared_core`, одноатласные recursive-parent `level_theme_archive`, `level_theme_farm` и `level_theme_construction` children. Далее `M04-C-FAMILIES` продолжается только по одному measured accepted family на child checkpoint; следующий кандидат выбирается и замораживается отдельным inventory-derived contract до мутации.
 2. M06 SkinRegistry/BonusVisualResolver и полный lifecycle.
 3. M05 shared UI runtime на базе уже существующего UI IR.
 
