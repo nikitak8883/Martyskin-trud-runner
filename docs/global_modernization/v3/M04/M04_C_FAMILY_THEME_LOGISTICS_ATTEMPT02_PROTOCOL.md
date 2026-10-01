@@ -26,6 +26,16 @@ as failed evidence, not overwritten or excused as a product/runtime pass.
 
 ## Ordered execution
 
+Current preparation supplement2026-10-01: step2's7CBC APK is the historical
+pre-native-repair baseline example, NOT an admitted current input. The clean
+native repair D323FA64 requires matching repair/runtime semantics in BOTH states
+and a new source-specific build/staging manifest. Do not silently reuse either
+APK or relabel old qualification samples. No actual input admission is done.
+`atlas_input_integrity.py` now supplies only all-file byte sealing/verification;
+see `docs/qa/ATLAS_INPUT_INTEGRITY_20261001.md`. Semantic build/artifact/source/
+descriptor/parity and native/Web QA gates remain required separately. Protocol
+JSON revisions and all nine frozen tooling pins are unchanged.
+
 1. Finish qualification of the silent/cold-boot tooling. Its functional QA and
    gallery smoke runs are **not experiment samples**. Keep the original failed
    candidate and verified unpacked rollback reports intact.

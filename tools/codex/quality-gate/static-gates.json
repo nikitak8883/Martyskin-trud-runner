@@ -450,6 +450,16 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "atlas-input-integrity-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": ["-B", "-m", "unittest", "discover", "-s", "tools/codex/tests", "-p", "test_atlas_input_integrity.py", "-v"],
+      "working_directory": ".",
+      "timeout_seconds": 120,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "skin-bonus-contracts",
       "mandatory": true,
       "enabled": true,

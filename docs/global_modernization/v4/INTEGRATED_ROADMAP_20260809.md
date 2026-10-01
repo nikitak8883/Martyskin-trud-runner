@@ -2,6 +2,17 @@
 
 ## Текущее положение
 
+- Input-integrity prerequisite: revision4's required all-file staged hashes now
+  have a deterministic standard-library seal/verify layer, independent outer pin,
+  strict membership/path/schema/link/mutation checks and exclusive publication.
+  It explicitly cannot admit inputs or authorize a timed sample. New mandatory
+  static gate36->37;24-method fixture suite, four final cycles and exact clean/
+  hosted receipts are separate acceptance layers. No product/native/art/build/
+  protocol pin changes. Actual baseline/candidate semantic/source/artifact parity
+  manifest and permitted current Web QA remain required. No roadmap credit:
+  20/73,53 mandatory +7 conditional; source28/95. See
+  `docs/qa/ATLAS_INPUT_INTEGRITY_20261001.md`. Release remains incomplete.
+
 - Cold-boot qualification supplement: exact repair9c0a9992 accepted by actual
   hosted36875609617 Windows/Linux36/36,72 artifact hashes each. Frozen root8001ad73
   /buildb3b82b13/debug APKD323FA64 passes preregistered independent AB/BA/AB/BA

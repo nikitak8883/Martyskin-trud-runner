@@ -9,7 +9,34 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 Status: `m04_c_theme_logistics_partial / alpha_source_fixed / atlas_attempt01_rejected / rollback_verified / release_blocked`
 
-## 2026-10-01 cold-boot cohort active overlay
+## 2026-10-01 input-integrity prerequisite active overlay
+
+- Previous cold-cohort docs publicationc58d5937/roota1eeecd5 accepted by actual
+  hosted36892376573 Windows/Linux36/36; all144 downloaded artifact hashes checked.
+  Hermes1528 recovered20 commands/current identities; four lookup+JSON-load
+  samples225-239ms, not a full agent-restore benchmark. Old receipts stay sealed.
+- Required staged all-file verification was only a protocol condition. New
+  standard-library byte-integrity seal/verify tool checks exact membership/length/
+  SHA, externally pinned seal/protocol, strict paths/shapes, links/reparse/hardlinks,
+  observed read/scan mutations, limits and exclusive non-overwriting publication.
+  No source-art/runtime/native/build/global change or protocol/tooling repin.
+- Tool success explicitly says byte_integrity_only/input_admission:false/runtime
+  NOT_RUN/Release:false. It is not the paired semantic admission manifest; actual
+  staged inputs/artifact reports/build lineage/parity/native/Web QA remain open.
+  Narrative protocol's old7CBC baseline is historical, not an admitted current
+  input; fresh native repair semantics must match across both measured states.
+- Suite24 methods passes after diagnosing a Windows ctime path/handle false
+  guard and a misplaced test assertion. Four final cycles/clean final gate/actual
+  hosted CI receipts follow; new mandatory static step changes36->37 only.
+- Roadmap20/73 (27.3973%),53 mandatory +7 conditional; source28/95 unchanged.
+  Original overlay NOT_OBSERVED; attempt02 descriptor/inputs/samples NOT_RUN,
+  Web preview blocked by prior server-start rejection (no workaround). Release
+  incomplete, no signed/device-valid APK/phone/main/Pages authority used.
+- Next: pair semantic input gate and permitted current Web QA; then fresh
+  symmetric build/staging/admission before any measurements. See
+  `docs/qa/ATLAS_INPUT_INTEGRITY_20261001.md` and final local handoff.
+
+## 2026-10-01 cold-boot cohort prior overlay
 
 - Exact repair source9c0a9992d84174ec188ae9d6e20094becea6de86 accepted by actual
   hosted36875609617, Windows/Linux36/36, all72 artifacts each verified. Root
