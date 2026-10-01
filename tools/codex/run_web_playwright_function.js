@@ -113,6 +113,7 @@ async function main() {
         headless: true,
         executablePath: browserExecutable,
         args: [
+            '--mute-audio',
             '--disable-background-timer-throttling',
             '--disable-renderer-backgrounding',
             '--disable-backgrounding-occluded-windows',
@@ -131,6 +132,7 @@ async function main() {
             browserExecutable,
             browserVersion: browser.version(),
             nodeVersion: process.version,
+            audioPolicy: { status: 'configured', startupArgument: '--mute-audio', productAudioSettingsChanged: false },
         };
         const passed = evaluateResult(summary);
         fs.writeFileSync(path.resolve(summaryPath), `${JSON.stringify(summary, null, 2)}\n`, 'utf8');

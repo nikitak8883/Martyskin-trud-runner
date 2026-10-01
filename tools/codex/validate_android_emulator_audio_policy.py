@@ -36,7 +36,18 @@ def main() -> int:
 
     launcher_path = tools / "Test-MtrAndroidToolchain.ps1"
     launcher = launcher_path.read_text(encoding="utf-8")
-    require(launcher, "'-no-audio'", launcher_path.name, errors)
+    require(launcher, "MtrAndroidQaBootPolicy.psm1", launcher_path.name, errors)
+    require(launcher, "Get-MtrAndroidQaEmulatorArguments", launcher_path.name, errors)
+    boot_policy_path = tools / "MtrAndroidQaBootPolicy.psm1"
+    if not boot_policy_path.is_file():
+        errors.append(f"missing boot policy: {boot_policy_path}")
+    else:
+        boot_policy = boot_policy_path.read_text(encoding="utf-8")
+        require(boot_policy, "'-no-audio'", boot_policy_path.name, errors)
+        require(boot_policy, "'-no-snapshot-load'", boot_policy_path.name, errors)
+    for filename in ("Run-MtrWebAtlasPilotQa.js", "Run-MtrWebMatrixQa.js", "run_web_playwright_function.js"):
+        source = (tools / filename).read_text(encoding="utf-8")
+        require(source, "--mute-audio", filename, errors)
 
     qa_scripts: list[Path] = []
     for path in sorted(tools.glob("Run-MtrAndroid*Qa.ps1")):

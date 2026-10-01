@@ -380,6 +380,36 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "runtime-qa-silent-boot-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "pwsh",
+      "arguments": ["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-File", "tools/codex/test-android-qa-boot-policy.ps1"],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "atlas-evidence-id-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "node",
+      "arguments": ["tools/codex/test-web-atlas-evidence-id.js"],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "atlas-paired-protocol-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "node",
+      "arguments": ["tools/codex/test-atlas-paired-protocol.js"],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "skin-bonus-contracts",
       "mandatory": true,
       "enabled": true,

@@ -137,7 +137,7 @@ async function main() {
     const runtime = loadPlaywright();
     let browser;
     try {
-        browser = await runtime.playwright.chromium.launch({ headless: true });
+        browser = await runtime.playwright.chromium.launch({ headless: true, args: ['--mute-audio'] });
         const context = await browser.newContext({ viewport: { width: 1280, height: 720 } });
         const page = await context.newPage();
         await page.goto(targetUrl.href, { waitUntil: 'load', timeout: 30000 });
@@ -145,6 +145,7 @@ async function main() {
         if (!report || report.schema !== 'mtr.web_matrix_interaction.v1') {
             throw new Error(`Unexpected Web matrix schema: ${report && report.schema}`);
         }
+        report.audioPolicy = { status: 'configured', startupArgument: '--mute-audio', productAudioSettingsChanged: false };
         writeJsonAtomic(outputPath, report);
         process.stdout.write(`${JSON.stringify({
             status: report.status,

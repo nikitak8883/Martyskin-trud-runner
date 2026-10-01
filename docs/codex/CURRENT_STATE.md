@@ -9,7 +9,46 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 Status: `m04_c_theme_logistics_partial / alpha_source_fixed / atlas_attempt01_rejected / rollback_verified / release_blocked`
 
-## 2026-10-01 M04-C-FAMILY-THEME-LOGISTICS active overlay
+## 2026-10-01 silent QA / attempt02 preparation active overlay
+
+This overlay supersedes older next-action lines without replacing their evidence.
+
+- User's silence rule is mandatory until the end of implementation: all seven
+  Android QA entrypoints verify the matching host AVD's `-no-audio` plus media
+  stream3 zero; all three Web launchers explicitly use `--mute-audio`. Product
+  audio code/settings are not disabled or changed.
+- Boot tooling now supports opt-in `-EnsureEmulator -ColdBoot`, never a reused
+  session: no snapshot load/save, no wipe, successful ADB probes, matching AVD,
+  a fresh non-exited launch and no pre-existing emulator host process. Normal
+  startup arguments remain unchanged. Existing-emulator negative control blocks.
+- Four unit cycles pass: silent boot `27/27`, evidence-ID/timer ownership `10/10`,
+  paired protocol/negative controls `17/17`. Web matrix `34/34 x2`, interaction
+  PASS/restarts `10/10 x2`; live Chromium startup contains `--mute-audio`.
+- Full static gate passes `32/32`, findings0; updated roadmap validation passes
+  with zero dependency cycles. `29` new receipts and all6 original baseline
+  receipts rehash correctly. See `docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_SILENT_QA_VALIDATION.json`
+  and the silent-QA control checkpoint for scope/remaining gates.
+- Android tooling qualification preserves ALL three matrices: `28/28`, then
+  **27/28 FAIL** immediately after boot, then a separate settled cold-boot
+  control `28/28`. Every run was silent/user0/emulator-only. The first-menu
+  recreation/bootstrap anomaly remains open as `ANDROID-NATIVE-BOOTSTRAP-001`;
+  settling is not claimed as the native product fix.
+- Web atlas smoke passes on unpacked input with a unique evidence ID: logical
+  phase remains baseline, all26 sources are present, old receipts are not
+  overwritten. The harness clears its owned 45s terminal timer on success/error.
+- Attempt02 protocol revision3 is preregistered. Revisions1/2 remain exact
+  hash-linked predecessors; both revisions happened before any descriptor or
+  timed attempt02 sample, with zero threshold/schedule/cache-definition changes.
+  Input staging/pins and the 16 Android +8 Web samples are **NOT_RUN**.
+- No gameplay/PNG/meta/native/build config changed; the current unpacked debug
+  APK remains SHA-256 `7CBCDCADA60E0A4B6B1D7F4869FC61C20E0B47D6A9FBB363B6E0DB709F4BCFA4`.
+- Roadmap remains `20/73` complete (`27.3973%`), `53` mandatory + `7` conditional
+  remaining; source ledger remains `28/95`. No atlas or Release completion credit.
+- Next: resolve/establish the native bootstrap acceptance boundary, then admit
+  immutable paired inputs and execute the preregistered experiment. Preserve
+  attempt01 rejection and never select the faster repeat as acceptance.
+
+## 2026-10-01 M04-C-FAMILY-THEME-LOGISTICS prior overlay
 
 This overlay supersedes every older next-action line below; older sections remain historical evidence only.
 

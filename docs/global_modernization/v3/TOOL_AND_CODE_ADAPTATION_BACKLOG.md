@@ -94,6 +94,24 @@ Upstream: `SaveRepository.ts`
 Upstream: остальные TypeScript files  
 Перед активацией: stable event contracts, duplicate-handler prevention, lifecycle cleanup, missing-frame hard failure in QA, Cocos-specific adapters and tests. Reference files не импортируются напрямую.
 
+### C05 — Android native bootstrap readiness/recreation
+
+New observed follow-up `ANDROID-NATIVE-BOOTSTRAP-001`: confirmed cold boot alone
+does not guarantee a ready first native activity. Immediate first-menu QA failed
+`27/28`; a separate settled cold-boot matrix passed `28/28`. Both remain evidence.
+See `docs/qa/ANDROID_NATIVE_BOOTSTRAP_001_20261001.md`. Investigate and establish
+the native lifecycle acceptance boundary before logistics attempt02 input
+admission/final `M12.7`; do not hide the failure with a retry or longer timeout.
+This is a prerequisite within existing units, not a new completed roadmap item.
+
+### C06 — Atlas harness terminal timer ownership
+
+Disposition: `implemented_and_runtime_qualified`. The atlas Web runtime function
+now clears its 45s terminal timer on success/error; `10/10` tests verify ID
+isolation and terminal ownership without filesystem writes. CLI overhead is not
+the measured game load metric. Attempt02 protocol revision3 records/pins this
+correction, preserving both predecessors. No metric collection interval changes.
+
 ## Dependency environment
 
 - Использовать Cocos-bundled TypeScript 3.8.8 line. Текущий воспроизводимый project-only gate: `tsc -p tsconfig.json --noEmit --skipLibCheck --lib es2020,dom --isolatedModules false`; прямой `tsc -p ... --noEmit` не является валидным gate.

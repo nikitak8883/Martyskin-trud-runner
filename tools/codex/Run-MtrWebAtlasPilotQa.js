@@ -79,7 +79,7 @@ async function main() {
     if (typeof runtimeFunction !== 'function') throw new Error('Runtime function did not evaluate to a function.');
 
     process.chdir(projectRoot);
-    const browser = await chromium.launch({ headless: true });
+    const browser = await chromium.launch({ headless: true, args: ['--mute-audio'] });
     try {
         const context = await browser.newContext({ viewport: { width: options.width, height: options.height } });
         const page = await context.newPage();
@@ -87,6 +87,7 @@ async function main() {
         await page.goto(url, { waitUntil: 'commit', timeout: options.timeoutMs });
         const report = await runtimeFunction(page);
         report.hostPreflight = hostPreflight;
+        report.audioPolicy = { status: 'configured', startupArgument: '--mute-audio', productAudioSettingsChanged: false };
         const screenshot = resolveContained(projectRoot, report.screenshot, 'runtime screenshot');
         const pathForComparison = (value) => {
             const normalized = path.normalize(value);

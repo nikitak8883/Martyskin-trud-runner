@@ -2,6 +2,15 @@
 
 ## Текущее положение
 
+- Дополнение 2026-10-01: беззвучный QA закреплён для Android/Web, opt-in cold boot
+  проверяется fail-closed. Attempt02 protocol revision3 заранее фиксирует четыре
+  сбалансированные пары и отдельные cold/warm-storage cohorts без ослабления gates;
+  inputs/runtime пока `NOT_RUN`. При tooling-QA сохранён сбой первого запуска
+  `ANDROID-NATIVE-BOOTSTRAP-001` (`27/28`), отдельно settled control `28/28`.
+  Перед admission эксперимента требуется установить/исправить native lifecycle
+  acceptance boundary. Это prerequisite существующего M04 child/M12.7, а не
+  новый выполненный пункт; знаменатель и completed не меняются.
+
 - Source ledger: `28/95 complete`; mandatory `28/85`, осталось `57`; conditional `10`. `M04.5` остаётся pending до закрытия remaining family children.
 - V4 remaining-scope execution ledger: `20/73 complete` (`27.3973%`), осталось `53`; conditional units `7`. Добавлен inventory-derived child `M04-C-FAMILY-THEME-LOGISTICS`, но он ещё не принят; знаменатель увеличен на один без увеличения completed.
 - Текущий milestone: `M04-C-FAMILY-THEME-LOGISTICS` partial. Исправлен PNG спасательного круга с непрозрачной внутренней подложкой; recursive-parent atlas attempt01 отклонён (`61/63`: Android load/FPS). Дескриптор убран; свежий rollback QA прошёл: Web `34/34 × 2`, Android `28/28 × 2`, interaction/restart/soak. Требуется новый заранее зафиксированный эксперимент. Восьмой и последний принятый measured family остаётся `level_theme_construction`.
@@ -18,7 +27,7 @@
 - machine-readable v4 execution DAG;
 - library adoption/rejection manifest;
 - schema-first roadmap validator и отрицательные тесты;
-- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 20 steps.
+- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 32 steps.
 
 ### `TC-01` — complete
 

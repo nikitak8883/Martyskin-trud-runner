@@ -71,9 +71,6 @@ function Assert-MtrAndroidQaAudioMuted {
             $_.CommandLine -match "(?i)(?:^|\s)-avd(?:\s+|=)(?:`"?)$escapedAvd(?:`"?)(?:\s|$)"
         }
     )
-    if ($matchingProcesses.Count -eq 0 -and $emulatorProcesses.Count -eq 1) {
-        $matchingProcesses = @($emulatorProcesses[0])
-    }
     if ($matchingProcesses.Count -eq 0) {
         throw "Silent Android QA guard could not identify the host emulator process for AVD '$avdName'."
     }

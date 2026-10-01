@@ -3,6 +3,8 @@ async function (page) {
     const query = new URL(page.url()).searchParams;
     const phase = query.get('mtr_qa_atlas_phase') || 'unlabelled';
     if (!/^[a-z0-9_-]{3,32}$/i.test(phase)) throw new Error(`Unsafe atlas pilot phase: ${phase}`);
+    const evidenceId = query.get('mtr_qa_atlas_evidence_id') || phase;
+    if (!/^[a-z0-9_-]{3,64}$/i.test(evidenceId)) throw new Error(`Unsafe atlas pilot evidence id: ${evidenceId}`);
     const atlasId = query.get('mtr_qa_atlas_pilot') || '';
     const atlasSourceCounts = Object.freeze({
         objective_npc: 10,
@@ -28,6 +30,7 @@ async function (page) {
     const pageErrors = [];
     const requestFailures = [];
     let terminal = null;
+    let terminalTimer;
     let resolveTerminal;
     const terminalPromise = new Promise((resolve) => { resolveTerminal = resolve; });
 
@@ -63,17 +66,19 @@ async function (page) {
     page.on('requestfailed', onRequestFailed);
 
     try {
-        const timeout = new Promise((resolve) => setTimeout(
-            () => resolve({ kind: 'timeout', timeoutMs: 45000 }),
-            45000,
-        ));
+        const timeout = new Promise((resolve) => {
+            terminalTimer = setTimeout(
+                () => resolve({ kind: 'timeout', timeoutMs: 45000 }),
+                45000,
+            );
+        });
         terminal = await Promise.race([terminalPromise, timeout]);
         await page.waitForTimeout(350);
 
         const evidenceRoot = atlasId === 'objective_npc'
             ? 'temp/m04-c-pilot'
             : `temp/m04-c-families/${atlasId}`;
-        const screenshot = `${evidenceRoot}/${phase}/web/atlas-family.png`;
+        const screenshot = `${evidenceRoot}/${evidenceId}/web/atlas-family.png`;
         await page.screenshot({ path: screenshot });
         const metric = terminal?.kind === 'complete' ? terminal.payload : null;
         const expectedInfrastructureErrors = consoleEvents.filter((event) => (
@@ -119,6 +124,7 @@ async function (page) {
             schema: 'mtr.web_atlas_pilot.v1',
             status,
             phase,
+            evidenceId,
             atlasId,
             expectedSourceCount,
             elapsedMs: Date.now() - startedAt,
@@ -137,6 +143,7 @@ async function (page) {
             consoleEvents,
         };
     } finally {
+        clearTimeout(terminalTimer);
         page.off('console', onConsole);
         page.off('pageerror', onPageError);
         page.off('requestfailed', onRequestFailed);

@@ -1,0 +1,318 @@
+{
+  "schema": "mtr.silent_qa_tooling_qualification.v1",
+  "generated_at": "2026-10-01T09:07:35.916Z",
+  "unit_id": "M04-C-FAMILY-THEME-LOGISTICS",
+  "implementation_status": "silent_policy_and_boot_safety_implemented",
+  "native_runtime_status": "partial_bootstrap_issue_open",
+  "atlas_acceptance": false,
+  "release_acceptance": false,
+  "physical_device_used": false,
+  "static": {
+    "status": "PASS",
+    "passed": 32,
+    "total": 32,
+    "findings": 0,
+    "source": {
+      "commit": "7f58cf86e6f30ae032bafb1a1252961f05c833fc",
+      "content_version": "mtr-logistics-silent-boot-qualification-20261001",
+      "dirty": true,
+      "dirty_authorized": true,
+      "expected_commit": "7f58cf86e6f30ae032bafb1a1252961f05c833fc",
+      "matches_expected": true,
+      "stable_during_run": true
+    }
+  },
+  "unit_cycles": {
+    "cycles": 4,
+    "silent_boot": [
+      27,
+      27
+    ],
+    "evidence_id_and_timer": [
+      10,
+      10
+    ],
+    "protocol": [
+      17,
+      17
+    ],
+    "device_operations": "MOCKS_ONLY"
+  },
+  "web": {
+    "matrices": [
+      [
+        34,
+        34
+      ],
+      [
+        34,
+        34
+      ]
+    ],
+    "interaction": "pass",
+    "restarts": [
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        10
+      ]
+    ],
+    "launch_argument": "--mute-audio",
+    "live_host_argument_verified": true
+  },
+  "android": {
+    "serial": "emulator-5554",
+    "user": 0,
+    "matrices_in_order": [
+      [
+        28,
+        28
+      ],
+      [
+        27,
+        28
+      ],
+      [
+        28,
+        28
+      ]
+    ],
+    "failed_sample_retained": true,
+    "settled_followup_is_not_native_fix": true,
+    "audio_volume": 0,
+    "host_argument": "-no-audio"
+  },
+  "bootstrap_issue": "docs/qa/ANDROID_NATIVE_BOOTSTRAP_001_20261001.md",
+  "attempt02": {
+    "protocol_revision": 3,
+    "input_admission": "NOT_RUN",
+    "timed_samples": "NOT_RUN",
+    "candidate_descriptor_created": false,
+    "acceptance_overrides": 0
+  },
+  "unchanged": [
+    "runtime_code",
+    "native_code",
+    "source_PNG",
+    "PNG_metadata",
+    "build_configuration",
+    "product_audio_settings"
+  ],
+  "not_run": [
+    "new_atlas_M2_PLUS",
+    "physical_QA",
+    "release_signing",
+    "Pages_deployment",
+    "full_campaign_skin_bonus_QA",
+    "external_CodeRabbit",
+    "local_model_patch_review"
+  ],
+  "roadmap": {
+    "position": "P2/M04-C-FAMILY-THEME-LOGISTICS",
+    "completed": 20,
+    "total": 73,
+    "mandatory_remaining": 53,
+    "conditional_remaining": 7,
+    "percentage": 27.3973
+  },
+  "next": "Establish/fix native bootstrap acceptance boundary, then pin both immutable inputs before the ordered attempt02 experiment.",
+  "receipts": [
+    {
+      "path": "temp/qa-silent-boot-20261001/static/report.json",
+      "sha256": "B4C07DA01380F58F11FFC39E15D87A36A31CA87C724E02E064410E5634EB559B",
+      "bytes": 64126,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/web-cycle1/report.json",
+      "sha256": "F9F27506599825E70BCFF82B05B497F31D9227C780671046D95905A2803701B2",
+      "bytes": 51440,
+      "hash_mode": "raw",
+      "actual_status": "pass"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/web-cycle2/report.json",
+      "sha256": "A5A075007CE3801B707A938E9206DE20F2910DE57EECEC75D0C37E0BB55C340C",
+      "bytes": 51441,
+      "hash_mode": "raw",
+      "actual_status": "pass"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/android-cycle1/android_matrix_cycle1_summary.json",
+      "sha256": "C2378D0D2AAC4D30E041B1CF9E772EABA9BE8762911581D50E0FCC7004BFC61E",
+      "bytes": 49312,
+      "hash_mode": "raw",
+      "actual_status": "pass"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/android-cycle2/android_matrix_cycle2_summary.json",
+      "sha256": "3DDCDBBE668A4D5254C89AE272FC23DBEBE809E43887EE5872597A2AAEA43496",
+      "bytes": 49314,
+      "hash_mode": "raw",
+      "actual_status": "fail"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/android-cycle3-settled/android_matrix_cycle3_summary.json",
+      "sha256": "04CF34DDA1E662789CA6611237439290A08CD4F9FC3C5D2D72D65B73AB7B3D18",
+      "bytes": 49760,
+      "hash_mode": "raw",
+      "actual_status": "pass"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/generic-web-launcher-smoke.json",
+      "sha256": "5A2D77B4218699FCA773894296FB47D9FBB4E8D6BDC4B7616FDB036C5D1FB256",
+      "bytes": 556,
+      "hash_mode": "raw",
+      "actual_status": "pass"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/silent_boot_smoke/web/runtime.json",
+      "sha256": "EEEA5C04AFFFE72CECE155EAAA9FB45A9C9ED7A2EAA50A45139F83FC790191E6",
+      "bytes": 90189,
+      "hash_mode": "raw",
+      "actual_status": "pass"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/web-live-mute-proof.json",
+      "sha256": "7627B903664149984C3E6CCA46EB7AB82C4BDD222B870299BAE5FCB603B4A421",
+      "bytes": 159,
+      "hash_mode": "raw"
+    },
+    {
+      "path": "logs/android-toolchain-status-20261001-111710.json",
+      "sha256": "02A3ED0D3F99CD33034F34D26339D4A7F8A9CE99F5D7D5346C41314C758171BD",
+      "bytes": 45685,
+      "hash_mode": "raw"
+    },
+    {
+      "path": "logs/android-toolchain-status-20261001-111930.json",
+      "sha256": "E66D168045F863DB03CD3C3973C0970A473FB7AD23C548EDAD0ED4CCC839C14D",
+      "bytes": 16721,
+      "hash_mode": "raw"
+    },
+    {
+      "path": "logs/android-toolchain-status-20261001-113858.json",
+      "sha256": "3D8516E6A210B8E9FC1972E419EB4B478C917A8146A39630B3C06BC4C9D6045C",
+      "bytes": 41393,
+      "hash_mode": "raw"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/android-cycle2/ui_menu.logcat.txt",
+      "sha256": "29601319C95863EAE8E50F7E9B3D0ACA8434A1293474C46E304845C8D1D3E04C",
+      "bytes": 2142825,
+      "hash_mode": "raw"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/android-cycle2/ui_menu.png",
+      "sha256": "6B2FFFA8466F9904677999ECF18E98383BCA060C8F0678BCE69DB423398A7AD6",
+      "bytes": 34612,
+      "hash_mode": "raw"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle1/silent-boot.json",
+      "sha256": "979548B53345AB922E70731097BD14637E7C888C1E534E948A7C858FAE31C52E",
+      "bytes": 1720,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle1/web-evidence.json",
+      "sha256": "BCFB4A361E805C187A9CF2380204CB1218C6DB06EE7257DE8D66C8F7657B7DE4",
+      "bytes": 97,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle1/paired-protocol.json",
+      "sha256": "E1BD27C8FD75291E987A2BF810932631D7D38C4545D2D22103553E1DF5B3DAFC",
+      "bytes": 127,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle2/silent-boot.json",
+      "sha256": "979548B53345AB922E70731097BD14637E7C888C1E534E948A7C858FAE31C52E",
+      "bytes": 1720,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle2/web-evidence.json",
+      "sha256": "BCFB4A361E805C187A9CF2380204CB1218C6DB06EE7257DE8D66C8F7657B7DE4",
+      "bytes": 97,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle2/paired-protocol.json",
+      "sha256": "E1BD27C8FD75291E987A2BF810932631D7D38C4545D2D22103553E1DF5B3DAFC",
+      "bytes": 127,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle3/silent-boot.json",
+      "sha256": "979548B53345AB922E70731097BD14637E7C888C1E534E948A7C858FAE31C52E",
+      "bytes": 1720,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle3/web-evidence.json",
+      "sha256": "BCFB4A361E805C187A9CF2380204CB1218C6DB06EE7257DE8D66C8F7657B7DE4",
+      "bytes": 97,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle3/paired-protocol.json",
+      "sha256": "E1BD27C8FD75291E987A2BF810932631D7D38C4545D2D22103553E1DF5B3DAFC",
+      "bytes": 127,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle4/silent-boot.json",
+      "sha256": "979548B53345AB922E70731097BD14637E7C888C1E534E948A7C858FAE31C52E",
+      "bytes": 1720,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle4/web-evidence.json",
+      "sha256": "BCFB4A361E805C187A9CF2380204CB1218C6DB06EE7257DE8D66C8F7657B7DE4",
+      "bytes": 97,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "temp/qa-silent-boot-20261001/unit-cycle4/paired-protocol.json",
+      "sha256": "E1BD27C8FD75291E987A2BF810932631D7D38C4545D2D22103553E1DF5B3DAFC",
+      "bytes": 127,
+      "hash_mode": "raw",
+      "actual_status": "PASS"
+    },
+    {
+      "path": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT02_PROTOCOL.json",
+      "sha256": "E746CB44C3A186A811C88EFE761ECA61361BE6A299B0AC614B5C320F74FBD2C2",
+      "bytes": 6895,
+      "hash_mode": "utf8_lf"
+    },
+    {
+      "path": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT02_PROTOCOL_REV1.json",
+      "sha256": "7CB1C6AE0E1C33E3987484679E240203155F6B38E4644B01A3BFDAE574CE1610",
+      "bytes": 6406,
+      "hash_mode": "utf8_lf"
+    },
+    {
+      "path": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT02_PROTOCOL_REV2.json",
+      "sha256": "C5E60F82D0F23937B0285936B60131205D0624CB447C211D60AEB1AB85EA98AD",
+      "bytes": 6894,
+      "hash_mode": "utf8_lf"
+    }
+  ]
+}

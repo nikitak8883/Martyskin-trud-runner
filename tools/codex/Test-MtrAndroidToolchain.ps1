@@ -7,6 +7,7 @@ param(
     [string]$PreferredAvdName = 'MTR_Pixel_8_Pro_API_35',
     [int]$BootTimeoutSeconds = 300,
     [switch]$EnsureEmulator,
+    [switch]$ColdBoot,
     [switch]$Windowed,
     [switch]$FailOnNotReady,
     [switch]$FullJsonOutput,
@@ -34,6 +35,8 @@ $modulePath = Join-Path $scriptRoot 'MtrEntrypoint.psm1'
 
 Import-Module $modulePath -Force
 Import-Module (Join-Path $scriptRoot 'MtrAndroidBuildToolchain.psm1') -Force
+Import-Module (Join-Path $scriptRoot 'MtrAndroidQaBootPolicy.psm1') -Force
+Assert-MtrAndroidQaBootOptions -EnsureEmulator ([bool]$EnsureEmulator) -ColdBoot ([bool]$ColdBoot) -AllowPhysicalDevice ([bool]$AllowPhysicalDevice)
 
 function New-MtrDirectory {
     param([Parameter(Mandatory=$true)][string]$Path)
@@ -399,18 +402,20 @@ $ignoredPhysicalDevices = @($qaTargetSelection.ignoredPhysicalDevices)
 $emulatorStart = $null
 $selectedAvdName = $null
 $bootCompletedSerial = $null
+$coldBootAvdIdentityConfirmed = $false
 $bootPolls = [System.Collections.Generic.List[object]]::new()
+$coldBootResidentProcessCount = 0
+if ($ColdBoot) {
+    $coldBootResidentProcessCount = @(Get-CimInstance Win32_Process -ErrorAction Stop | Where-Object { $_.Name -match '^(?:emulator|qemu-system-.+)\.exe$' }).Count
+}
 
-if ($EnsureEmulator -and @($onlineDevices).Count -eq 0 -and $tools.adb.found -and $tools.emulator.found -and @($avds).Count -gt 0) {
+if ($EnsureEmulator -and @($onlineDevices).Count -eq 0 -and $coldBootResidentProcessCount -eq 0 -and $tools.adb.found -and $tools.emulator.found -and @($avds).Count -gt 0) {
     $selectedAvdName = Select-MtrAvdName -AvdNames $avds -PreferredName $PreferredAvdName
     $emulatorStdoutPath = Join-Path $logRoot ("emulator-start-{0}.stdout.log" -f $timestamp)
     $emulatorStderrPath = Join-Path $logRoot ("emulator-start-{0}.stderr.log" -f $timestamp)
     # QA emulators are always host-silent. This prevents background game audio
     # without mutating the product audio settings exercised by the test cases.
-    $emulatorArguments = @('-avd', $selectedAvdName, '-no-snapshot-save', '-no-boot-anim', '-no-audio')
-    if (-not $Windowed) {
-        $emulatorArguments += @('-no-window', '-gpu', 'swiftshader_indirect')
-    }
+    $emulatorArguments = @(Get-MtrAndroidQaEmulatorArguments -AvdName $selectedAvdName -Windowed ([bool]$Windowed) -ColdBoot ([bool]$ColdBoot))
 
     try {
         $startRun = Invoke-MtrEntrypoint `
@@ -462,9 +467,16 @@ if ($EnsureEmulator -and @($onlineDevices).Count -eq 0 -and $tools.adb.found -an
         $bootCheck = $null
 
         foreach ($device in @($pollOnlineDevices)) {
+            if ($ColdBoot) {
+                if ($device.serial -notmatch '^emulator-\d+$') { continue }
+                $avdIdentityProbe = Invoke-MtrCapturedTool -Name ("adb-avd-identity-{0:000}" -f $pollIndex) -FilePath $tools.adb.source -ArgumentList @('-s', $device.serial, 'emu', 'avd', 'name') -TimeoutSeconds 20
+                $observedAvdName = @($avdIdentityProbe.stdout -split '\r?\n' | ForEach-Object { $_.Trim() } | Where-Object { $_ -and $_ -ne 'OK' }) | Select-Object -First 1
+                if (-not $avdIdentityProbe.ok -or $observedAvdName -ne $selectedAvdName) { continue }
+            }
             $bootCheck = Invoke-MtrCapturedTool -Name ("adb-boot-completed-{0:000}" -f $pollIndex) -FilePath $tools.adb.source -ArgumentList @('-s', $device.serial, 'shell', 'getprop', 'sys.boot_completed') -TimeoutSeconds 20
-            if ($bootCheck.stdout.Trim() -eq '1') {
+            if ($bootCheck.ok -and $bootCheck.stdout.Trim() -eq '1') {
                 $bootCompletedSerial = $device.serial
+                $coldBootAvdIdentityConfirmed = [bool]$ColdBoot
                 break
             }
         }
@@ -505,6 +517,11 @@ if ($tools.adb.found -and @($onlineDevices).Count -eq 0) {
 }
 if ($EnsureEmulator -and $tools.emulator.found -and @($avds).Count -eq 0) { $blockers.Add('no-avd-defined') }
 if ($EnsureEmulator -and $selectedAvdName -and @($onlineDevices).Count -gt 0 -and -not $bootCompletedSerial) { $blockers.Add('emulator-boot-not-confirmed') }
+$coldBootConfirmed = $false
+if ($ColdBoot) {
+    $coldBootConfirmed = Test-MtrAndroidQaColdBootConfirmed -EmulatorStart $emulatorStart -BootCompletedSerial $bootCompletedSerial -AvdIdentityConfirmed $coldBootAvdIdentityConfirmed
+    if (-not $coldBootConfirmed) { $blockers.Add('cold-boot-not-confirmed-existing-or-unverified-session') }
+}
 
 $qaReady = ($blockers.Count -eq 0)
 $status = [pscustomobject]@{
@@ -520,6 +537,9 @@ $status = [pscustomobject]@{
     adbProbe = ConvertTo-MtrProbeSummary -Probe $adbRun
     emulatorProbe = ConvertTo-MtrProbeSummary -Probe $emulatorRun
     ensureEmulator = [bool]$EnsureEmulator
+    coldBootRequested = [bool]$ColdBoot
+    coldBootConfirmed = $coldBootConfirmed
+    coldBootResidentProcessCount = $coldBootResidentProcessCount
     selectedAvdName = $selectedAvdName
     emulatorStart = $emulatorStart
     bootCompletedSerial = $bootCompletedSerial
@@ -543,7 +563,8 @@ $status = [pscustomobject]@{
         'entrypoint-router-captured-stdout-stderr',
         'emulator-only-qa-default-with-physical-device-ignore-log',
         'no-inline-powershell-pipeline-probes',
-        'auto-start-avd-when-no-online-device'
+        'auto-start-avd-when-no-online-device',
+        'opt-in-no-snapshot-load-with-avd-identity-and-fresh-start-proof'
     )
     logs = @{
         jsonl = $jsonlPath
@@ -570,6 +591,9 @@ Write-MtrAndroidToolchainLog -Record @{
     avdCount = @($avds).Count
     androidQaTargetPolicy = $status.androidQaTargetPolicy
     ensureEmulator = [bool]$EnsureEmulator
+    coldBootRequested = [bool]$ColdBoot
+    coldBootConfirmed = $coldBootConfirmed
+    coldBootResidentProcessCount = $coldBootResidentProcessCount
     selectedAvdName = $selectedAvdName
     bootCompletedSerial = $bootCompletedSerial
     qaReady = $qaReady
@@ -583,6 +607,9 @@ $consoleSummary = [pscustomobject]@{
     qaReady = $qaReady
     blockers = @($blockers)
     ensureEmulator = [bool]$EnsureEmulator
+    coldBootRequested = [bool]$ColdBoot
+    coldBootConfirmed = $coldBootConfirmed
+    coldBootResidentProcessCount = $coldBootResidentProcessCount
     androidQaTargetPolicy = $status.androidQaTargetPolicy
     selectedAvdName = $selectedAvdName
     bootCompletedSerial = $bootCompletedSerial
