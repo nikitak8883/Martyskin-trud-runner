@@ -288,6 +288,8 @@ class M04AAssetContractTests(unittest.TestCase):
             outside = container / "outside"
             project_root.mkdir()
             outside.mkdir()
+            sentinel = outside / "sentinel.txt"
+            sentinel.write_text("outside-target-must-survive", encoding="utf-8")
             link = project_root / "linked-outside"
             try:
                 link.symlink_to(outside, target_is_directory=True)
@@ -307,13 +309,50 @@ class M04AAssetContractTests(unittest.TestCase):
             try:
                 self.assertIsNone(VALIDATOR.resolve_project_path(project_root, "linked-outside/report.json"))
             finally:
-                if link.exists():
+                self.assertEqual(link.parent.resolve(), project_root.resolve())
+                if link.is_symlink():
+                    link.unlink()
+                elif os.name == "nt" and link.is_junction():
                     link.rmdir()
+                else:
+                    self.fail("Test-owned escape link changed type; refuse cleanup")
+                self.assertFalse(link.exists())
+                self.assertEqual(sentinel.read_text(encoding="utf-8"), "outside-target-must-survive")
 
     def test_invalid_schema_records_fail_closed_finding(self) -> None:
         findings: list[dict[str, Any]] = []
         VALIDATOR.validate_schema({}, {"type": "not-a-json-schema-type"}, findings)
         self.assertEqual({finding["code"] for finding in findings}, {"SCHEMA_DEFINITION_INVALID"})
+
+    def test_atlas_descriptor_checkout_ignores_host_autocrlf_without_binary_changes(self) -> None:
+        descriptor = PROJECT_ROOT / "assets/resources/objectives/themed/last_iteration/construction/level_theme_construction.pac"
+        expected = descriptor.read_bytes()
+        self.assertNotIn(b"\r", expected)
+        binary = b"\x89PNG\r\n\x00binary-sentinel\r\n"
+        with tempfile.TemporaryDirectory(prefix="m04a_git_eol_", dir=PROJECT_ROOT / "temp") as raw_directory:
+            fixture = Path(raw_directory)
+            (fixture / "assets").mkdir()
+            (fixture / ".gitattributes").write_bytes((PROJECT_ROOT / ".gitattributes").read_bytes())
+            pac = fixture / "assets/checkpoint.pac"
+            png = fixture / "assets/sentinel.png"
+            pac.write_bytes(expected)
+            png.write_bytes(binary)
+
+            def git(*args: str) -> bytes:
+                return subprocess.run(
+                    ["git", *args], cwd=fixture, check=True, capture_output=True,
+                    creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+                ).stdout
+
+            git("init", "--quiet")
+            for policy in ("false", "true"):
+                git("config", "core.autocrlf", policy)
+                git("add", ".gitattributes", "assets/checkpoint.pac", "assets/sentinel.png")
+                self.assertEqual(git("show", ":assets/checkpoint.pac"), expected)
+                self.assertEqual(git("show", ":assets/sentinel.png"), binary)
+                git("checkout-index", "--all", "--force")
+                self.assertEqual(pac.read_bytes(), expected)
+                self.assertEqual(png.read_bytes(), binary)
 
     def test_source_baseline_may_be_ancestor_but_not_divergent(self) -> None:
         checkpoint = copy.deepcopy(self.manifest["source_checkpoint"])

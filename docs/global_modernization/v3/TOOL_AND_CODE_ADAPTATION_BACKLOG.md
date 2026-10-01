@@ -114,6 +114,20 @@ correction, preserving both predecessors. No metric collection interval changes.
 
 ## Dependency environment
 
-- Использовать Cocos-bundled TypeScript 3.8.8 line. Текущий воспроизводимый project-only gate: `tsc -p tsconfig.json --noEmit --skipLibCheck --lib es2020,dom --isolatedModules false`; прямой `tsc -p ... --noEmit` не является валидным gate.
+- Cocos-specific project compilation retains the Creator3.8.8 bundled compiler/engine definitions. Pure Node contract tests use the isolated `tools/codex/node-test-toolchain` lock with TypeScript5.8.2, byte-identical main compiler to this Creator installation; no ambient/global fallback. Текущий воспроизводимый project-only gate: `tsc -p tsconfig.json --noEmit --skipLibCheck --lib es2020,dom --isolatedModules false`; прямой `tsc -p ... --noEmit` не является валидным gate.
 - JSON Schema validator должен быть pinned в изолированном tool environment; глобальный Python не менять молча.
 - CI активируется только после локальной эквивалентности команд и не должен требовать Cocos build там, где runner не воспроизводим.
+
+### CI portability follow-up — current local prerequisites
+
+Implemented: locked compiler/default loader for nine tests, pre-execution SHA and
+version checks/negative controls; `.pac` LF checkout with binary-byte preservation
+roundtrip; symlink/junction cleanup retaining the outside sentinel; M03.7B source-
+projection proof with exact whole-tree/10blob equivalence and ancestry checks.
+Original cleanup/provenance/atlas contracts stay immutable. Four cycles pass
+`19/19 +18/18 +14/14`; hosted acceptance must bind to the new published source.
+
+Still open: Linux reviewed-PNG reproduction raw SHA and contact-sheet canonical
+index portability. Diagnose serializer/encoder/input pin differences separately;
+do not rewrite raw provenance or replace exact-byte gates with pixel-only checks
+to get green CI. Then return to `ANDROID-NATIVE-BOOTSTRAP-001` and atlas attempt02.

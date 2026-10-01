@@ -8,14 +8,12 @@ const projectRoot = path.resolve(__dirname, '..', '..');
 const typesPath = path.join(projectRoot, 'assets', 'scripts', 'qa', 'DevEventTypes.ts');
 const logPath = path.join(projectRoot, 'assets', 'scripts', 'qa', 'DevEventLog.ts');
 const gameRootPath = path.join(projectRoot, 'assets', 'scripts', 'GameRoot.ts');
-const typescriptPath = process.env.COCOS_TYPESCRIPT_JS
-  || 'C:/ProgramData/cocos/editors/Creator/3.8.8/resources/app.asar.unpacked/node_modules/typescript/lib/typescript.js';
+const { compiler: ts, compilerPath: typescriptPath } = require('./load_test_typescript').loadTestTypeScript();
 
 for (const requiredPath of [typesPath, logPath, gameRootPath, typescriptPath]) {
   if (!fs.existsSync(requiredPath)) throw new Error(`Required file not found: ${requiredPath}`);
 }
 
-const ts = require(typescriptPath);
 const compilerOptions = {
   module: ts.ModuleKind.CommonJS,
   moduleResolution: ts.ModuleResolutionKind.Node10,

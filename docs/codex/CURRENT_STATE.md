@@ -9,7 +9,39 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 Status: `m04_c_theme_logistics_partial / alpha_source_fixed / atlas_attempt01_rejected / rollback_verified / release_blocked`
 
-## 2026-10-01 silent QA / attempt02 preparation active overlay
+## 2026-10-01 hermetic CI repair active overlay
+
+This overlay supersedes older next actions; prior reports remain evidence.
+
+- Full hosted CI was already FAIL at source `68a90d880a28c2dd36636bfec5998d4c94dade45`:
+  Windows `21/29`, Linux `20/29`. After silent-QA source `97fd456bb4e3241eb1504a8fb40fa8e021864def`,
+  Windows `24/32`, Linux `23/32`; failed gate ID sets are unchanged, while all three
+  new silent/boot/evidence/protocol gates pass on both. Downloaded reports remain
+  in `temp/qa-silent-boot-20261001`; this is not hosted Release acceptance.
+- Four bounded prerequisites are now implemented: an isolated lock/SHA-pinned
+  TypeScript5.8.2 compiler for all nine Node contract tests; safe test-owned
+  symlink/junction cleanup; LF checkout for JSON `.pac` descriptors; exact M03.7B
+  rollback proof in source-only history without rewriting its historical manifest.
+- The rollback projection is the already-published `ba6b3676e7e40626c0df546bb34ceb9dc4d6330c`:
+  whole-project tree equals the original checkpoint, and all10 original blob IDs
+  match. Missing/divergent/mismatched checkpoints remain fail closed.
+- Four compiler cycles pass `10/10` each. Four proof/asset cycles pass compiler
+  guard `19/19`, rollback proof `18/18`, asset contracts `14/14` with stable inputs.
+  After strengthening physical fixture cleanup, the compiler guard passed four
+  further `19/19` runs. Canonical gate configuration now contains34 steps.
+- Full static/hosted results for the final committed patch must be read from
+  that exact new source, not inferred from prior local runs. See
+  `docs/qa/CONTROL_LOG_CHECKPOINT_20261001_HERMETIC_CI_TOOLING_PARTIAL.md` and the
+  post-publication Hermes handoff for commit/remote/CI receipt identities.
+- No runtime/native/art/meta/build configuration changes or new APK. New runtime
+  QA is NOT_RUN for this source-tooling slice; silence remains mandatory.
+- Roadmap stays `20/73` (`27.3973%`), `53` mandatory +7 conditional remaining;
+  source ledger stays `28/95`. No atlas/Release completion credit.
+- Next: verify hosted portability on the published patch, investigate remaining
+  platform-dependent PNG normalization/contact-sheet evidence without weakening
+  raw provenance, then resolve native bootstrap before attempt02 input admission.
+
+## 2026-10-01 silent QA / attempt02 preparation prior overlay
 
 This overlay supersedes older next-action lines without replacing their evidence.
 

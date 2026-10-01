@@ -15,8 +15,7 @@ const gameRootPath = path.join(projectRoot, 'assets', 'scripts', 'GameRoot.ts');
 const appActivityPath = path.join(projectRoot, 'native', 'engine', 'android', 'app', 'src', 'com', 'cocos', 'game', 'AppActivity.java');
 const webBuildConfigPath = path.join(projectRoot, 'build-web-mobile.json');
 const emulatorBuildConfigPath = path.join(projectRoot, 'build-android-emulator.json');
-const typescriptPath = process.env.COCOS_TYPESCRIPT_JS
-  || 'C:/ProgramData/cocos/editors/Creator/3.8.8/resources/app.asar.unpacked/node_modules/typescript/lib/typescript.js';
+const { compiler: ts, compilerPath: typescriptPath } = require('./load_test_typescript').loadTestTypeScript();
 
 const requiredPaths = [
   adapterPath,
@@ -34,7 +33,6 @@ for (const requiredPath of requiredPaths) {
   if (!fs.existsSync(requiredPath)) throw new Error(`Required file not found: ${requiredPath}`);
 }
 
-const ts = require(typescriptPath);
 const compilerOptions = {
   module: ts.ModuleKind.CommonJS,
   moduleResolution: ts.ModuleResolutionKind.Node10,

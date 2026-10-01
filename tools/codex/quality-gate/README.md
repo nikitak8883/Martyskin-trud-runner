@@ -131,6 +131,13 @@ The wrapper returns `0` for `PASS`, `1` for validated product/QA `FAIL`, `2` for
 
 CI and local execution use this exact platform-independent command from the project root:
 
+Prerequisite on both platforms: install the isolated exact contract-test compiler
+with `npm ci --prefix tools/codex/node-test-toolchain --ignore-scripts --no-audit --no-fund`.
+This affects only ignored tool `node_modules`, not the game's dependency graph;
+the gate never installs/downloads a missing compiler or falls back to a local SDK.
+Version, lock integrity and main compiler SHA are checked before execution. See
+`../node-test-toolchain/README.md` for negative controls and explicit overrides.
+
 ```text
 python tools/codex/quality-gate/bootstrap.py -- --project-root . --config tools/codex/quality-gate/static-gates.json --output temp/quality-gate-m01-6/report.json --content-version mtr-static-gates-v1
 ```

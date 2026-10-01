@@ -34,8 +34,7 @@ const artifactMeasurerPath = path.join(projectRoot, 'tools', 'codex', 'Measure-M
 const androidRunnerPath = path.join(projectRoot, 'tools', 'codex', 'Run-MtrAndroidAtlasPilotQa.ps1');
 const visualComparatorPath = path.join(projectRoot, 'tools', 'codex', 'Compare-MtrAtlasPilotVisuals.py');
 const comparisonPath = path.join(projectRoot, 'tools', 'codex', 'Compare-MtrAtlasPilot.js');
-const typescriptPath = process.env.COCOS_TYPESCRIPT_JS
-  || 'C:/ProgramData/cocos/editors/Creator/3.8.8/resources/app.asar.unpacked/node_modules/typescript/lib/typescript.js';
+const { compiler: ts, compilerPath: typescriptPath } = require('./load_test_typescript').loadTestTypeScript();
 
 for (const requiredPath of [
   metricsPath,
@@ -70,7 +69,6 @@ for (const requiredPath of [
   if (!fs.existsSync(requiredPath)) throw new Error(`Required file not found: ${requiredPath}`);
 }
 
-const ts = require(typescriptPath);
 const program = ts.createProgram([metricsPath], {
   module: ts.ModuleKind.CommonJS,
   moduleResolution: ts.ModuleResolutionKind.Node10,

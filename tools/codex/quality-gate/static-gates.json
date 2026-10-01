@@ -5,6 +5,26 @@
   "artifact_directory": "temp/quality-gate-m01-6/artifacts",
   "steps": [
     {
+      "id": "cleanup-rollback-projection-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": ["-B", "-m", "unittest", "discover", "-s", "tools/codex/tests", "-p", "test_m03_7b_rollback_projection.py", "-v"],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "node-test-toolchain-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "node",
+      "arguments": ["tools/codex/test-node-test-toolchain.js"],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "m01-2-contracts",
       "mandatory": true,
       "enabled": true,

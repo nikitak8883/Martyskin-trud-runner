@@ -8,14 +8,12 @@ const projectRoot = path.resolve(__dirname, '..', '..');
 const uiAdapterPath = path.join(projectRoot, 'assets', 'scripts', 'gameplay', 'ui', 'GameplayUiIntentAdapter.ts');
 const lifecyclePath = path.join(projectRoot, 'assets', 'scripts', 'gameplay', 'lifecycle', 'GameRuntimeLifecycleOwner.ts');
 const statePath = path.join(projectRoot, 'assets', 'scripts', 'gameplay', 'state', 'GameSessionState.ts');
-const typescriptPath = process.env.COCOS_TYPESCRIPT_JS
-  || 'C:/ProgramData/cocos/editors/Creator/3.8.8/resources/app.asar.unpacked/node_modules/typescript/lib/typescript.js';
+const { compiler: ts, compilerPath: typescriptPath } = require('./load_test_typescript').loadTestTypeScript();
 
 for (const requiredPath of [uiAdapterPath, lifecyclePath, statePath, typescriptPath]) {
   if (!fs.existsSync(requiredPath)) throw new Error(`Required file not found: ${requiredPath}`);
 }
 
-const ts = require(typescriptPath);
 const compilerOptions = {
   module: ts.ModuleKind.CommonJS,
   moduleResolution: ts.ModuleResolutionKind.Node10,

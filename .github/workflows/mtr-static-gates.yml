@@ -43,6 +43,9 @@ jobs:
         with:
           python-version: '3.13'
 
+      - name: Install the locked contract-test compiler
+        run: npm ci --prefix tools/codex/node-test-toolchain --ignore-scripts --no-audit --no-fund
+
       - name: Run the canonical static gate
         run: >-
           python tools/codex/quality-gate/bootstrap.py --

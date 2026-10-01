@@ -17,6 +17,16 @@
 - Следующий unit: `M04-C-FAMILY-THEME-LOGISTICS` — изолировать performance-прогоны от сборок и остальных QA, установить причину отказа, затем заранее выбрать и проверить следующую topology. Быстрый repeat не заменяет первый failed result; broader batching не разрешён.
 - Release: `BLOCKED`.
 
+### 2026-10-01 — hermetic CI prerequisites supplement
+
+Four local prerequisites implemented under existing `M01.6`/`M12.7`: exact
+isolated TypeScript compiler, test-link cleanup, `.pac` LF checkout and immutable
+rollback source projection. Canonical gate now has34 steps; final source-pinned
+local/hosted acceptance remains a separate receipt, not inferred from mock tests.
+Current `20/73` and source `28/95` denominators/counts are unchanged. Before native
+bootstrap/atlas input admission, verify hosted CI and resolve platform-dependent
+PNG/contact-sheet evidence. Parent `M04-C-FAMILIES` and Release remain partial.
+
 ## Phase 0 — contracts, toolchain и publication model
 
 ### `RDX-01` — complete
@@ -27,7 +37,7 @@
 - machine-readable v4 execution DAG;
 - library adoption/rejection manifest;
 - schema-first roadmap validator и отрицательные тесты;
-- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 32 steps.
+- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 34 steps.
 
 ### `TC-01` — complete
 

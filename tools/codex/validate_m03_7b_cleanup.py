@@ -11,6 +11,7 @@ import subprocess
 import sys
 from pathlib import Path
 from typing import Any
+from m03_7b_rollback_proof import verify_rollback_proof
 
 
 def require(condition: bool, code: str, errors: list[str]) -> None:
@@ -75,7 +76,6 @@ def main() -> int:
     rollback = manifest.get("rollback", {})
     require(isinstance(rollback, dict), "rollback_not_object", errors)
     anchor = rollback.get("anchor_commit", "") if isinstance(rollback, dict) else ""
-    prefix = rollback.get("project_prefix", "") if isinstance(rollback, dict) else ""
     blobs = rollback.get("pre_change_blobs", {}) if isinstance(rollback, dict) else {}
     require(bool(re.fullmatch(r"[0-9a-f]{40}", str(anchor))), "rollback_anchor_format", errors)
     require(isinstance(blobs, dict) and len(blobs) == 10, "rollback_blob_count", errors)
@@ -85,16 +85,20 @@ def main() -> int:
         repo = repo.parent
     require((repo / ".git").exists(), "git_root_not_found", errors)
     verified_blobs = 0
+    rollback_proof: dict[str, Any] = {}
     if (repo / ".git").exists() and re.fullmatch(r"[0-9a-f]{40}", str(anchor)) and isinstance(blobs, dict):
         try:
-            require(git_output(repo, "cat-file", "-t", str(anchor)) == "commit", "rollback_anchor_missing", errors)
-            for relative, expected_blob in sorted(blobs.items()):
-                require(bool(re.fullmatch(r"[0-9a-f]{40}", str(expected_blob))), f"rollback_blob_format:{relative}", errors)
-                actual_blob = git_output(repo, "rev-parse", f"{anchor}:{prefix}{relative}")
-                require(actual_blob == expected_blob, f"rollback_blob_mismatch:{relative}", errors)
-                if actual_blob == expected_blob:
-                    verified_blobs += 1
-        except (OSError, RuntimeError, subprocess.TimeoutExpired) as exc:
+            projection_path = root / "docs/global_modernization/v3/M03/M03_7B_SOURCE_ROLLBACK_PROJECTION.json"
+            projection = load_json(projection_path) if projection_path.is_file() else None
+            manifest_lf = manifest_path.read_bytes().replace(b"\r\n", b"\n")
+            rollback_proof = verify_rollback_proof(
+                rollback, projection=projection,
+                manifest_sha256_utf8_lf=hashlib.sha256(manifest_lf).hexdigest().upper(),
+                source_only=repo == root, git_query=lambda *values: git_output(repo, *values),
+            )
+            verified_blobs = rollback_proof["verified_blobs"]
+            errors.extend(rollback_proof["errors"])
+        except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired) as exc:
             errors.append(f"rollback_git_error:{type(exc).__name__}:{exc}")
 
     game_root = game_root_path.read_text(encoding="utf-8")
@@ -173,6 +177,7 @@ def main() -> int:
         "implementation_sha256": current_hashes,
         "rollback_anchor": anchor,
         "rollback_blobs_verified": verified_blobs,
+        "rollback_proof": rollback_proof,
         "static_gate_steps": len(steps),
         "status": "PASS" if not errors else "FAIL",
     }
