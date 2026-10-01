@@ -43,7 +43,7 @@ a full regeneration of the original sheet drop.
 ## Repeatable normalization of the approved generated cutout
 
 ```powershell
-python -B tools/asset_generation/normalize_reviewed_sprite.py --source tools/asset_generation/source_assets/logistics/lifebuoy-generated-20261001.png --target tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png --canvas 244 232 --box 6 6 238 226
+python tools/codex/quality-gate/bootstrap.py --module tools.asset_generation.normalize_reviewed_sprite -- --source tools/asset_generation/source_assets/logistics/lifebuoy-generated-20261001.png --target tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png --canvas 244 232 --box 6 6 238 226
 ```
 
 Normalization only crops fully transparent margins and resizes the approved
@@ -51,3 +51,10 @@ cutout. It does not remove matte with heuristic color flooding. Generated source
 and prompt are retained, so restoration never requires another model call.
 New replacements require a reviewed image, new hash pins, region checks,
 inventory/contact-sheet refresh and Web + silent Android-emulator QA.
+
+The isolated lock includes `zlib-ng==1.0.0` / checked codec2.2.5 for byte-stable
+PNG serialization. Shared tool-only encoding retains Pillow filters; original
+PNG/meta/provenance/index pins are unchanged. Do not weaken regeneration to
+pixel-only comparison. See `docs/qa/PNG_SERIALIZATION_CONTRACT_20261001.md`.
+Bootstrap installs the lock; tests and normalization never download implicitly
+or require a global Python install.

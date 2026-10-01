@@ -9,7 +9,44 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 Status: `m04_c_theme_logistics_partial / alpha_source_fixed / atlas_attempt01_rejected / rollback_verified / release_blocked`
 
-## 2026-10-01 hermetic CI repair active overlay
+## 2026-10-01 PNG/CLI portability repair active overlay
+
+- Previous exact source `bfeb49a46a070c83c6c7db80ffbac787e465fe84` has real hosted
+  Windows `33/34`, Linux `31/34` (run `36849094035`). All four earlier fixes pass,
+  including actual source-projection rollback proof10/10. Failed reports are kept.
+- The remaining common CLI defect is fixed: Playwright is loaded only for valid
+  runtime invocation, after argument validation. Four loader-intercept negative
+  controls prove malformed CLI input cannot require the browser package. Actual
+  browser runtime still requires it and keeps `--mute-audio`.
+- PNG root cause is codec-only, not art/filters/fonts: all29 sheets plus reviewed
+  sprite have equal pixels and decompressed filter rows on Windows/Linux. The
+  locked shared tool-only encoder reproduces ALL30 original IDAT streams on both;
+  raw PNG/meta/provenance/index hashes are not relaxed or refreshed.
+- Four initial Windows targeted cycles pass6/6 each: CLI/metrics, PNG10/10, reviewed13/13,
+  contact fixtures7/7, bootstrap7/7 and full29-sheet byte-exact index regeneration.
+  Watched inputs are stable. Local Linux diagnostic full index now reproduces
+  original SHA `923CB83556926935BA3591D6BAE6BE9498F6C7EB3E66DA235A4F09E818154827`.
+- New lock adds only tool dependency `zlib-ng==1.0.0`; its build/runtime codec
+  must be2.2.5. Isolated cache lock SHA begins `2FBD8AC10B67`. No global installs,
+  model/routing/config changes, runtime/native/art/meta changes or new APK.
+- Canonical static gate now has35 mandatory steps. Final clean local/hosted
+  source-pinned receipts follow this commit; never infer hosted green from local
+  diagnostics. See `docs/qa/PNG_SERIALIZATION_CONTRACT_20261001.md` and the control
+  checkpoint/post-publication Hermes handoff. Runtime QA in this slice: NOT_RUN.
+- First clean full gate for root94de9c8 failed34/35 on the intentional frozen
+  revision3 tooling pin. The failed report is retained. Preregistered revision4
+  now preserves exact revision3 SHA/3->2->1 lineage and changes only the Web CLI
+  pin, before any inputs/timed samples. All other protocol fields and eight pins
+  are identical; no thresholds/schedule changes. Final gate must include this fix.
+- Four final combined follow-up cycles pass7/7 each, adding protocol20/20 with
+  stable inputs/goldens. Local Linux diagnostic cycles pass10/10+13/13 four
+  times; these Python3.14 laboratory receipts do not replace hosted Python3.13.
+- Roadmap unchanged `20/73` (`27.3973%`), remaining53 mandatory +7 conditional;
+  source ledger `28/95`. Parent M04-C/M04.5 and Release are incomplete.
+- Next: verify exact published CI, then resolve native bootstrap acceptance
+  before immutable attempt02 inputs and preregistered paired measurements.
+
+## 2026-10-01 hermetic CI repair prior overlay
 
 This overlay supersedes older next actions; prior reports remain evidence.
 

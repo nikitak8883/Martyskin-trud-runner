@@ -36,6 +36,7 @@ class QualityGateBootstrapTests(unittest.TestCase):
                 "pyyaml": "6.0.3",
                 "referencing": "0.37.0",
                 "rpds-py": "2026.6.3",
+                "zlib-ng": "1.0.0",
             },
         )
 

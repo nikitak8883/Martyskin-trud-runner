@@ -3,7 +3,6 @@
 
 const fs = require('fs');
 const path = require('path');
-const { chromium } = require('playwright-core');
 const { assertHostQuiescent } = require('./runtime_qa_host_guard');
 
 const ALLOWED_ARGUMENTS = new Set([
@@ -79,6 +78,9 @@ async function main() {
     if (typeof runtimeFunction !== 'function') throw new Error('Runtime function did not evaluate to a function.');
 
     process.chdir(projectRoot);
+    // Runtime-only dependency: reject malformed CLI input without installing or
+    // loading browser tooling. Actual browser QA still requires Playwright.
+    const { chromium } = require('playwright-core');
     const browser = await chromium.launch({ headless: true, args: ['--mute-audio'] });
     try {
         const context = await browser.newContext({ viewport: { width: options.width, height: options.height } });

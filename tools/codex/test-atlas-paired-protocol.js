@@ -9,12 +9,18 @@ const protocol = JSON.parse(fs.readFileSync(path.join(root, protocolPath), 'utf8
 const sha = (file) => crypto.createHash('sha256').update(fs.readFileSync(path.join(root, file), 'utf8').replace(/\r\n/g, '\n')).digest('hex');
 const hashes = new Map(protocol.tooling_pins.map((pin) => [pin.path, sha(pin.path)]));
 hashes.set(protocol.acceptance_contract, sha(protocol.acceptance_contract));
+hashes.set(protocol.revision_provenance.predecessor, sha(protocol.revision_provenance.predecessor));
 
 function validate(record, observedHashes) {
     const errors = [];
     const check = (ok, code) => { if (!ok) errors.push(code); };
     check(record.schema === 'mtr.atlas_paired_experiment_protocol.v1' && record.unit_id === 'M04-C-FAMILY-THEME-LOGISTICS', 'identity');
     check(record.status_at_preregistration === 'protocol_only_inputs_not_ready_runtime_not_run', 'not_acceptance');
+    check(record.protocol_revision === 4, 'current_revision');
+    check(record.revision_provenance?.timed_attempt02_samples_observed_before_revision === 0, 'preregistered_before_samples');
+    check(record.revision_provenance?.predecessor === 'docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT02_PROTOCOL_REV3.json'
+        && /^[a-f0-9]{64}$/.test(record.revision_provenance?.predecessor_sha256_utf8_lf || '')
+        && observedHashes.get(record.revision_provenance?.predecessor) === record.revision_provenance?.predecessor_sha256_utf8_lf, 'predecessor_pin');
     check(JSON.stringify(record.acceptance_overrides) === '{}', 'no_gate_overrides');
     check(observedHashes.get(record.acceptance_contract) === record.acceptance_contract_sha256_utf8_lf, 'acceptance_pin');
     check(Array.isArray(record.tooling_pins) && record.tooling_pins.length === 9 && new Set(record.tooling_pins.map(p => p.path)).size === 9, 'tooling_set');
@@ -34,15 +40,31 @@ function validate(record, observedHashes) {
     return errors;
 }
 assert.deepEqual(validate(protocol, hashes), []);
-assert.equal(protocol.protocol_revision, 3);
+assert.equal(protocol.protocol_revision, 4);
 assert.equal(sha(protocol.revision_provenance.predecessor), protocol.revision_provenance.predecessor_sha256_utf8_lf);
 assert.equal(protocol.revision_provenance.timed_attempt02_samples_observed_before_revision, 0);
 const predecessor = JSON.parse(fs.readFileSync(path.join(root, protocol.revision_provenance.predecessor), 'utf8'));
-assert.equal(predecessor.protocol_revision, 2);
+assert.equal(predecessor.protocol_revision, 3);
 assert.equal(sha(predecessor.revision_provenance.predecessor), predecessor.revision_provenance.predecessor_sha256_utf8_lf);
-for (const field of ['acceptance_overrides', 'pair_order', 'android', 'web', 'evaluation', 'input_admission']) assert.deepEqual(protocol[field], predecessor[field]);
+const revision2 = JSON.parse(fs.readFileSync(path.join(root, predecessor.revision_provenance.predecessor), 'utf8'));
+assert.equal(revision2.protocol_revision, 2);
+assert.equal(sha(revision2.revision_provenance.predecessor), revision2.revision_provenance.predecessor_sha256_utf8_lf);
+const revision1 = JSON.parse(fs.readFileSync(path.join(root, revision2.revision_provenance.predecessor), 'utf8'));
+assert.equal(revision1.protocol_revision, undefined); // Original preregistration predates explicit revision numbering.
+assert.equal(revision1.schema, protocol.schema);
+assert.equal(revision1.attempt_id, protocol.attempt_id);
+assert.deepEqual(Object.keys(protocol).sort(), Object.keys(predecessor).sort());
+for (const field of Object.keys(predecessor)) {
+    if (!['protocol_revision', 'revision_provenance', 'tooling_pins'].includes(field)) assert.deepEqual(protocol[field], predecessor[field], field);
+}
+assert.deepEqual(protocol.tooling_pins.map(p => p.path), predecessor.tooling_pins.map(p => p.path));
+const changedPins = protocol.tooling_pins.filter((pin, index) => pin.sha256_utf8_lf !== predecessor.tooling_pins[index].sha256_utf8_lf);
+assert.deepEqual(changedPins.map(p => p.path), ['tools/codex/Run-MtrWebAtlasPilotQa.js']);
 let count = 4;
 const mutations = [
+    [p => { p.protocol_revision = 3; }, 'current_revision'],
+    [p => { p.revision_provenance.timed_attempt02_samples_observed_before_revision = 1; }, 'preregistered_before_samples'],
+    [p => { p.revision_provenance.predecessor_sha256_utf8_lf = 'wrong'; }, 'predecessor_pin'],
     [p => { p.acceptance_overrides.load_elapsed_ms = 9999; }, 'no_gate_overrides'],
     [p => { p.pair_order[1].order.reverse(); }, 'balanced_frozen_order'],
     [p => { p.input_admission.first_attempt_or_tooling_qualification_samples_reusable = true; }, 'input_admission'],

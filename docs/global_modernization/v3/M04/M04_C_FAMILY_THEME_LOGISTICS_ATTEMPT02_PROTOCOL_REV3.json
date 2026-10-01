@@ -2,12 +2,12 @@
   "schema": "mtr.atlas_paired_experiment_protocol.v1",
   "unit_id": "M04-C-FAMILY-THEME-LOGISTICS",
   "attempt_id": "logistics-attempt02-20261001",
-  "protocol_revision": 4,
+  "protocol_revision": 3,
   "revision_provenance": {
-    "predecessor": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT02_PROTOCOL_REV3.json",
-    "predecessor_sha256_utf8_lf": "e746cb44c3a186a811c88efe761eca61361be6a299b0ac614b5c320f74fbd2c2",
+    "predecessor": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT02_PROTOCOL_REV2.json",
+    "predecessor_sha256_utf8_lf": "c5e60f82d0f23937b0285936b60131205d0624cb447c211d60aeb1ab85ea98ad",
     "timed_attempt02_samples_observed_before_revision": 0,
-    "reason": "hosted_CI_portability_loads_Playwright_only_after_validated_CLI_input; runtime_launch_measurements_thresholds_order_input_admission_and_sample_schedule_unchanged"
+    "reason": "tooling_review_cancels_owned_Web_terminal_timeout_on_success_and_exception; metric_collection_thresholds_order_and_sample_schedule_unchanged"
   },
   "status_at_preregistration": "protocol_only_inputs_not_ready_runtime_not_run",
   "source_anchor": "7f58cf86e6f30ae032bafb1a1252961f05c833fc",
@@ -99,7 +99,7 @@
     {"path": "tools/codex/MtrAndroidQaBootPolicy.psm1", "sha256_utf8_lf": "81f9caca40d8a26c6d9cf93176e37b64f667b74c462b04942a6db6143b735504"},
     {"path": "tools/codex/MtrAndroidQaAudioGuard.ps1", "sha256_utf8_lf": "dbd99a4843d4acbcc0f4caddd14a591bb5efc835f89e6ddd73deba4d33498e81"},
     {"path": "tools/codex/Run-MtrAndroidAtlasPilotQa.ps1", "sha256_utf8_lf": "822102393c50c3f891a447538210ae2dc9969b7cbd2b710ede05b50c1e549098"},
-    {"path": "tools/codex/Run-MtrWebAtlasPilotQa.js", "sha256_utf8_lf": "a497b6bd0f3e4f5cbb889b16afbf541f175657ce8b2b60e8c946c2f3a766ed3e"},
+    {"path": "tools/codex/Run-MtrWebAtlasPilotQa.js", "sha256_utf8_lf": "64c2bef0b8497fa0bdae7a784ca692512ef448870268e774fe916181c369ae95"},
     {"path": "tools/codex/web_atlas_pilot_runtime_function.js", "sha256_utf8_lf": "d97f252adf440f6a8fe7ddcf07e0289ae861349a7f357cb8ebdbb839f3908e7a"},
     {"path": "tools/codex/Compare-MtrAtlasPilot.js", "sha256_utf8_lf": "838cca17b0425c18d260e8e7659a4dafe5b38c72ccabe85a4dbdbc1272208978"},
     {"path": "tools/codex/Compare-MtrAtlasPilotVisuals.py", "sha256_utf8_lf": "964d754a561dc853cdda8e328b4d176106bbe5c4c47fd1fe3cd8ca267c15a4ae"},

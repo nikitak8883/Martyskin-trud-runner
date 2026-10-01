@@ -13,7 +13,13 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import sys
 from typing import Any
+
+PROJECT_ROOT = str(Path(__file__).resolve().parents[2])
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+from tools.asset_generation.canonical_png import encode_png
 
 try:
     from PIL import Image, ImageDraw, ImageFont, ImageOps, __version__ as PILLOW_VERSION
@@ -205,9 +211,7 @@ def render_page(category: str, page_number: int, assets: list[dict[str, Any]], r
             details = f"{details[:24]}..."
         draw.text((x + 8, y + 150), details, fill=(145, 184, 255), font=font)
 
-    buffer = io.BytesIO()
-    page.save(buffer, format="PNG", compress_level=9, optimize=False)
-    return buffer.getvalue()
+    return encode_png(page, optimize=False)
 
 
 def html_bytes(categories: list[dict[str, Any]]) -> bytes:

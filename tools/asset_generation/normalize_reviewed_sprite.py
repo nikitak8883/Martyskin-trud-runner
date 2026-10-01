@@ -3,8 +3,14 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import sys
 
 from PIL import Image
+
+PROJECT_ROOT = str(Path(__file__).resolve().parents[2])
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+from tools.asset_generation.canonical_png import encode_png
 
 
 def normalize(source: Path, target: Path, canvas: tuple[int, int], box: tuple[int, int, int, int]) -> None:
@@ -31,8 +37,9 @@ def normalize(source: Path, target: Path, canvas: tuple[int, int], box: tuple[in
         raise ValueError("Cannot fit stable alpha bounds")
     normalized = Image.new("RGBA", canvas, (0, 0, 0, 0))
     normalized.paste(sprite, (x0, y0))
+    payload = encode_png(normalized, optimize=True)
     target.parent.mkdir(parents=True, exist_ok=True)
-    normalized.save(target, optimize=True)
+    target.write_bytes(payload)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@
 ## Текущее положение
 
 - Дополнение 2026-10-01: беззвучный QA закреплён для Android/Web, opt-in cold boot
-  проверяется fail-closed. Attempt02 protocol revision3 заранее фиксирует четыре
+  проверяется fail-closed. Attempt02 protocol revision4 заранее фиксирует четыре
   сбалансированные пары и отдельные cold/warm-storage cohorts без ослабления gates;
   inputs/runtime пока `NOT_RUN`. При tooling-QA сохранён сбой первого запуска
   `ANDROID-NATIVE-BOOTSTRAP-001` (`27/28`), отдельно settled control `28/28`.
@@ -21,11 +21,20 @@
 
 Four local prerequisites implemented under existing `M01.6`/`M12.7`: exact
 isolated TypeScript compiler, test-link cleanup, `.pac` LF checkout and immutable
-rollback source projection. Canonical gate now has34 steps; final source-pinned
-local/hosted acceptance remains a separate receipt, not inferred from mock tests.
+rollback source projection. That34-step patch passed Windows33/34/Linux31/34:
+all four fixes pass, including actual hosted source rollback10/10. The remaining
+CLI dependency ordering and PNG codec drift are now repaired with raw goldens
+unchanged; four targeted6/6 cycles pass. Canonical gate now has35 mandatory steps.
+Final clean source-pinned local/hosted acceptance is a separate receipt, not
+inferred from mocks or the local Linux diagnostic laboratory.
+The first clean35-step run failed34/35 on the frozen Web CLI pin, preserved as
+evidence. Revision4 retains exact revision3/2/1 lineage, changes only that pin
+before input/sample admission, and preserves every other protocol field/tool pin.
+Four final combined7/7 cycles pass, including protocol20/20; no gate weakening.
 Current `20/73` and source `28/95` denominators/counts are unchanged. Before native
-bootstrap/atlas input admission, verify hosted CI and resolve platform-dependent
-PNG/contact-sheet evidence. Parent `M04-C-FAMILIES` and Release remain partial.
+bootstrap/atlas input admission, verify exact published CI. See
+`docs/qa/PNG_SERIALIZATION_CONTRACT_20261001.md`. Parent `M04-C-FAMILIES` and
+Release remain partial; native bootstrap and attempt02 acceptance remain open.
 
 ## Phase 0 — contracts, toolchain и publication model
 
@@ -37,7 +46,7 @@ PNG/contact-sheet evidence. Parent `M04-C-FAMILIES` and Release remain partial.
 - machine-readable v4 execution DAG;
 - library adoption/rejection manifest;
 - schema-first roadmap validator и отрицательные тесты;
-- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 34 steps.
+- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 35 steps.
 
 ### `TC-01` — complete
 

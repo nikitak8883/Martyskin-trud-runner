@@ -5,7 +5,7 @@ descriptor or timed experiment sample. Attempt01 remains rejected at `61/63`.
 Its acceptance object and comparison math are inherited without overrides.
 New descriptor identity does not authorize source/art/runtime-code changes.
 
-Revision 3 is the active design. Review found that the bootstrap previously
+Revision 4 is the active design. Review found that the bootstrap previously
 trusted boot/AVD stdout without checking the probe exit result; revision 2 pins
 that safety correction. The exact revision-1 JSON predecessor is retained and
 hashed. No attempt02 timed sample or candidate descriptor existed before this
@@ -14,6 +14,15 @@ Revision 3 additionally cancels the owned Web marker timeout on success/error,
 avoiding a spurious 45s CLI lifetime after an early terminal. It preserves the
 exact revision-2 predecessor and the revision-1 lineage. No game metric interval
 or acceptance formula changes, and no attempt02 timed sample has been observed.
+
+Revision4 retains the exact revision3 JSON/hash and the full 3->2->1 lineage.
+It changes only the Web CLI tooling pin after the hosted-CI correction: browser
+dependency loading follows valid CLI input, so malformed-input static checks do
+not need Playwright. All other protocol fields and all eight other tooling pins
+are identical to revision3, including cold boots, settle/wait intervals, samples,
+silence, thresholds, topology and acceptance. Inputs and timed samples remain
+NOT_RUN. A full static failure caught the stale revision3 pin; it is preserved
+as failed evidence, not overwritten or excused as a product/runtime pass.
 
 ## Ordered execution
 

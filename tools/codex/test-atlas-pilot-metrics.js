@@ -559,6 +559,32 @@ const rejectedDuplicateWebArgument = childProcess.spawnSync(
 assert.notStrictEqual(rejectedDuplicateWebArgument.status, 0);
 assert.match(rejectedDuplicateWebArgument.stderr, /Duplicate argument --url\./);
 
+// No installed browser package may mask early runtime-dependency loading.
+// Intercept that dependency even on a developer host where it is available.
+const dependencyForbiddenBootstrap = `
+  const Module = require('module');
+  const load = Module._load;
+  Module._load = function (request, ...args) {
+    if (request === 'playwright-core') throw new Error('FORBIDDEN_EARLY_BROWSER_DEPENDENCY');
+    return load.call(this, request, ...args);
+  };
+  const runner = process.argv[1];
+  process.argv = [process.execPath, runner, ...process.argv.slice(2)];
+  require(runner);
+`;
+for (const [args, expected] of [
+  [['--unknown', 'value'], /Unknown argument --unknown\./],
+  [['--url', 'http://127.0.0.1:8133', '--url', 'http://localhost:8133'], /Duplicate argument --url\./],
+  [['--width', '1'], /Invalid --width\./],
+  [['--timeout-ms', '1'], /Invalid --timeout-ms\./],
+]) {
+  const rejected = childProcess.spawnSync(process.execPath, ['-e', dependencyForbiddenBootstrap, webRunnerPath, ...args],
+    { cwd: projectRoot, encoding: 'utf8' });
+  assert.notStrictEqual(rejected.status, 0);
+  assert.match(rejected.stderr, expected);
+  assert.doesNotMatch(rejected.stderr, /FORBIDDEN_EARLY_BROWSER_DEPENDENCY|Cannot find module 'playwright-core'/);
+}
+
 const artifactMeasurer = fs.readFileSync(artifactMeasurerPath, 'utf8');
 assert.ok(artifactMeasurer.includes("schema: 'mtr.atlas_pilot_artifact_metric.v1'"));
 assert.ok(artifactMeasurer.includes('skippedLinks.push(absolute)'));

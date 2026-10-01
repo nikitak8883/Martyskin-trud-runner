@@ -74,6 +74,15 @@ Disposition: `do_not_replace_existing`
 
 Расширять текущие `validate-assets.py` и `scan_and_fix_white_matte_edges.py`: alpha/matte, enclosed white islands, trim, pivot, meta/reference, provenance, quarantine, contact sheets. Любой auto-fix сначала работает на копии/fixture.
 
+### T07.1 — Byte-stable PNG serialization
+
+Disposition: `implemented_targeted_pass_hosted_receipt_required`. Shared tool-only
+Pillow12.3.0 + locked zlib-ng1.0.0/codec2.2.5 serializer preserves original PNG
+bytes without refreshing provenance/goldens or changing runtime assets. Full
+29-sheet regeneration and reviewed normalization pass; negative container/codec
+controls remain fail closed. See `docs/qa/PNG_SERIALIZATION_CONTRACT_20261001.md`.
+Final source-pinned hosted gate is separate from local diagnostic qualification.
+
 ## C01 — State machine seam
 
 Upstream: `GameSessionStateMachine.ts`  
