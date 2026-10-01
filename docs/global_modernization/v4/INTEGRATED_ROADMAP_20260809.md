@@ -2,6 +2,19 @@
 
 ## Текущее положение
 
+- Controlled pre-window supplement: two preserved debug fault controls confirm
+  the native early-destroy hang. Android-only project repair is compiled in a
+  fresh cleanb3b82b13 build/APKD323FA64. Four injected+normal pairs8/8, four
+  retained-Intent lifecycle cycles5/5 and two Android UI/all15-level startup
+  matrices28/28 pass silently;14/14 static native contracts x4. No started-app
+  cleanup, SDK, common/Web/art, protocol pin or threshold change. This repairs
+  the controlled mechanism, not a replay of the original cold/overlay trigger.
+  Full clean36-step gate and new exact published CI are separate receipts; prior
+  hosted36864040175 accepts predecessor7f081308 only. Web runtime/cold-overlay/
+  attempt02 input admission remain open. No execution-unit/count credit added:
+  20/73;53 mandatory +7 conditional. See
+  `docs/qa/ANDROID_PRE_WINDOW_DESTROY_REPAIR_20261001.md` and final local handoff.
+
 - Native lifecycle supplement: distinct retained-Intent loss reproduced and
   narrow repair/debug tracing verified on fresh emulator APK:5/5 x4 focused
   cycles,28/28 x2 Android startup/UI/all15-level matrices; clean local36/36.

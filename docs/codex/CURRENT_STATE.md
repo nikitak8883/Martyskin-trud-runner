@@ -9,7 +9,35 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 Status: `m04_c_theme_logistics_partial / alpha_source_fixed / atlas_attempt01_rejected / rollback_verified / release_blocked`
 
-## 2026-10-01 native lifecycle active overlay
+## 2026-10-01 controlled pre-window repair active overlay
+
+- Two immutable debug fault-injection controls confirm a native hang on DESTROY
+  before first INIT_WINDOW/application creation. Narrow Android-only project
+  listener requests the existing app-thread exit only when no app exists; no SDK,
+  global config, shared/Web/art changes or force-kill workaround.
+- Fresh clean build rootb3b82b1364a85bab59381be89ab98969a26129c6 compiled the new
+  native source. Debug/x86_64 APKD323FA64E4536634D8CCAAFA70FDDD2085EA1E994313F9C948E8DA1BE610392B
+  passes four injected+normal pairs8/8, four retained-Intent cycles5/5 and two
+  Android startup/UI/all15-level matrices28/28. Actual installed SHA/user0 and
+  host -no-audio/media stream3=0 verified; emulator stopped, zero residents.
+- Matrix fatal/deprecation/product/unexpected engine diagnostics are zero;
+  allowlisted Cocos diagnostics84 errors/28 warnings per matrix remain visible.
+  Native contracts14/14 x4, scoped review and sampled visual QA passed. Final
+  clean36-step gate/source-only hosted CI are separate post-documentation receipts.
+- Predecessor source7f081308 has real hosted36864040175 Windows/Linux36/36;
+  that receipt does not accept the new native repair. Exact final publication/
+  static/CI identities are recorded in the new local handoff/control checkpoint.
+- Original immediate-cold system-overlay trigger NOT replayed; this closes only
+  the controlled pre-window mechanism. Web runtime NOT_RUN due previous execution
+  policy rejection (no workaround). Full campaign/all-skin/attempt02 NOT_RUN.
+- Roadmap remains20/73 (27.3973%),53 mandatory +7 conditional; source28/95.
+  Parent M04-C/M04.5 and Release remain partial. No signed/device-valid APK,
+  physical device, main/Pages or new authority was used.
+- Next: permitted Web QA entrypoint and broader cold/overlay qualification,
+  then re-lock fresh symmetric inputs before preregistered atlas attempt02.
+  See `docs/qa/ANDROID_PRE_WINDOW_DESTROY_REPAIR_20261001.md`.
+
+## 2026-10-01 native lifecycle prior overlay
 
 - Exact published PNG/CLI source `d30c86738226ff64c745fc261d7b76a3ebc54073`
   passed hosted run36854573729 Windows35/35 and Linux35/35, with downloaded

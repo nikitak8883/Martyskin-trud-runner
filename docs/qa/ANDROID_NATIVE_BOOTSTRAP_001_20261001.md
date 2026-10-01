@@ -4,6 +4,21 @@ Status: **open**, technical follow-up under `M04-C-FAMILY-THEME-LOGISTICS`
 qualification and final `M12.7` closure. No new roadmap unit or acceptance credit.
 Not a signing/owner blocker; Codex can continue a bounded technical investigation.
 
+## 2026-10-01 controlled pre-window mechanism supplement
+
+Historical observations below are immutable failure evidence, not current
+acceptance. A debug-only one-shot pre-window recreation subsequently reproduced
+the native hang twice on diagnostic APK3F3831B3. The project-local Android native
+guard at rootb3b82b13 repairs CLOSE before application creation by requesting the
+existing app-thread exit; it leaves started-application cleanup unchanged.
+Fresh APKD323FA64 passed four injected+normal pairs8/8, four retained-Intent
+lifecycle cycles5/5 and two startup/UI/all15-level matrices28/28, all silently
+on emulator/user0. See `ANDROID_PRE_WINDOW_DESTROY_REPAIR_20261001.md` for exact
+identity and preserved negative controls. This confirms and repairs a controlled
+mechanism; the original immediate-cold system-overlay trigger itself was NOT
+replayed. Broader cold/overlay qualification and attempt02 input admission remain
+open; no roadmap credit or Release acceptance follows from these controls.
+
 ## Observed failure
 
 Current verified unpacked debug APK, SHA-256

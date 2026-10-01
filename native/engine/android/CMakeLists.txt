@@ -11,5 +11,6 @@ set(CC_ALL_SOURCES)
 include(${CMAKE_CURRENT_LIST_DIR}/../common/CMakeLists.txt)
 
 cc_android_before_target(${CC_LIB_NAME})
+list(APPEND CC_ALL_SOURCES ${CMAKE_CURRENT_LIST_DIR}/MtrPreWindowLifecycle.cpp)
 add_library(${CC_LIB_NAME} SHARED ${CC_ALL_SOURCES})
 cc_android_after_target(${CC_LIB_NAME})

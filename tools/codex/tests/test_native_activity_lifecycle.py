@@ -7,6 +7,8 @@ import importlib.util
 ROOT = Path(__file__).resolve().parents[3]
 ACTIVITY = ROOT / "native/engine/android/app/src/com/cocos/game/AppActivity.java"
 QA = ROOT / "tools/codex/Run-MtrAndroidNativeLifecycleQa.ps1"
+EARLY_CLOSE = ROOT / "native/engine/android/MtrPreWindowLifecycle.cpp"
+ANDROID_CMAKE = ROOT / "native/engine/android/CMakeLists.txt"
 
 
 def body(source, name):
@@ -81,6 +83,49 @@ class NativeActivityContracts(unittest.TestCase):
         destroy = body(self.source, "onDestroy")
         self.assertLess(destroy.index('traceLifecycle("destroy_enter");'), destroy.index("super.onDestroy();"))
         self.assertLess(destroy.index("super.onDestroy();"), destroy.index('traceLifecycle("destroy_after_cocos");'))
+
+    def test_pre_window_fault_injection_is_debug_only_once_and_surface_less(self):
+        create = body(self.source, "onCreate")
+        guard = "if (lifecycleTraceEnabled && savedInstanceState == null && getIntent() != null"
+        self.assertIn(guard, create)
+        self.assertIn('getBooleanExtra("mtr_qa_native_pre_window_recreate", false)', create)
+        self.assertLess(create.index('traceLifecycle("create_ready");'), create.index(guard))
+        self.assertLess(create.index('removeExtra("mtr_qa_native_pre_window_recreate");'), create.index("recreate();"))
+        self.assertLess(create.index("getSurfaceView().setVisibility(View.GONE);"), create.index("recreate();"))
+        self.assertEqual(create.count("recreate();"), 1)
+        self.assertNotIn('"mtr_qa_native_pre_window_recreate",', self.source.split("private static String startupQuery")[0])
+
+    def test_pre_window_guard_leaves_started_application_close_unchanged(self):
+        source = EARLY_CLOSE.read_text(encoding="utf-8")
+        close = source.index("if (event.type != cc::WindowEvent::Type::CLOSE) return;")
+        started = source.index("if (CC_CURRENT_APPLICATION()) return;")
+        exit_loop = source.index("cc::BasePlatform::getPlatform()->exit();")
+        self.assertLess(close, started)
+        self.assertLess(started, exit_loop)
+        self.assertEqual(source.count("->exit();"), 1)
+        self.assertIn("_listener.bind", source)
+        self.assertIn("PreWindowCloseGuard preWindowCloseGuard;", source)
+        for forbidden in ("kill(", "raise(", "std::thread", "getCurrentAppSafe", "onDestroy()", "cocos_main("):
+            self.assertNotIn(forbidden, source)
+
+    def test_pre_window_guard_compiles_only_in_android_target(self):
+        source = ANDROID_CMAKE.read_text(encoding="utf-8")
+        registration = "list(APPEND CC_ALL_SOURCES ${CMAKE_CURRENT_LIST_DIR}/MtrPreWindowLifecycle.cpp)"
+        self.assertEqual(source.count(registration), 1)
+        self.assertLess(source.index("cc_android_before_target"), source.index(registration))
+        self.assertLess(source.index(registration), source.index("add_library"))
+        common = (ROOT / "native/engine/common/CMakeLists.txt").read_text(encoding="utf-8")
+        self.assertNotIn("MtrPreWindowLifecycle", common)
+
+    def test_pre_window_runtime_evidence_remains_strict(self):
+        source = (ROOT / "tools/codex/Run-MtrAndroidPreWindowQa.ps1").read_text(encoding="utf-8")
+        for required in ("Assert-MtrAndroidQaAudioMuted", "$audioPolicy", "Emulator-only laboratory", "Installed APK differs",
+                         "QA requires user0", "Evidence directory already exists", "retry_count=0",
+                         "$watch.ElapsedMilliseconds -lt 35000", "$early -and $newInstance",
+                         "$facts.guard_exit_request", "$requestCount -eq 1", "create_enter_saved",
+                         "destroy_after_cocos", "finally.force-stop.txt"):
+            self.assertIn(required, source)
+        self.assertNotIn("AllowPhysicalDevice", source)
 
     def test_qa_strict_identity_audio_and_recreation(self):
         for guard in ("Assert-MtrAndroidQaAudioMuted", "Installed APK differs", "QA must use emulator user0",

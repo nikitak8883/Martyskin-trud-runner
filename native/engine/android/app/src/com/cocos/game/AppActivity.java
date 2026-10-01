@@ -31,6 +31,7 @@ import android.net.Uri;
 import android.content.pm.ApplicationInfo;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.View;
 
 import com.cocos.service.SDKWrapper;
 import com.cocos.lib.CocosActivity;
@@ -93,6 +94,14 @@ public class AppActivity extends CocosActivity {
         traceLifecycle("create_after_cocos");
         SDKWrapper.shared().init(this);
         traceLifecycle("create_ready");
+        // Fault injection is debug-only and runs once, before the first Surface.
+        if (lifecycleTraceEnabled && savedInstanceState == null && getIntent() != null
+                && getIntent().getBooleanExtra("mtr_qa_native_pre_window_recreate", false)) {
+            getIntent().removeExtra("mtr_qa_native_pre_window_recreate");
+            getSurfaceView().setVisibility(View.GONE);
+            traceLifecycle("qa_pre_window_recreate_requested");
+            recreate();
+        }
     }
 
     public static String getStartupQuery() {
