@@ -2,6 +2,20 @@
 
 ## Текущее положение
 
+- Cold-boot qualification supplement: exact repair9c0a9992 accepted by actual
+  hosted36875609617 Windows/Linux36/36,72 artifact hashes each. Frozen root8001ad73
+  /buildb3b82b13/debug APKD323FA64 passes preregistered independent AB/BA/AB/BA
+  no-snapshot cohort8/8 plus Android UI/all15-level startup matrix28/28, silent,
+  exact installed APK/user0/35s/zero retries, owned shutdown/residents0. Original
+  system-overlay trigger NOT_OBSERVED: all eight broad search candidates are
+  game DEV_OVERLAY markers, not system-resource events. Only bounded cohort is
+  completed; broader native overlay/configuration/Web/attempt02 remain open.
+  Two caller failures preserved; private EOF/UTC-culture corrections pass four
+  cycles20 process tests +40 timestamp assertions; no product/SDK/global change.
+  No roadmap credit:20/73 (27.3973%),53 mandatory +7 conditional, source28/95.
+  Next: permitted current Web preview, separate overlay acceptance and symmetric
+  fresh attempt02 inputs. See `docs/qa/ANDROID_COLD_BOOT_COHORT_20261001.md`.
+
 - Controlled pre-window supplement: two preserved debug fault controls confirm
   the native early-destroy hang. Android-only project repair is compiled in a
   fresh cleanb3b82b13 build/APKD323FA64. Four injected+normal pairs8/8, four

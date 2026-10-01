@@ -19,7 +19,31 @@ mechanism; the original immediate-cold system-overlay trigger itself was NOT
 replayed. Broader cold/overlay qualification and attempt02 input admission remain
 open; no roadmap credit or Release acceptance follows from these controls.
 
-## Observed failure
+## 2026-10-01 independent cold-boot qualification supplement
+
+The controlled repair's exact source9c0a9992 passed actual hosted36875609617,
+Windows/Linux36/36;72 artifact hashes each verified. Subsequent source-frozen
+root8001ad73 uses the same clean-built D323FA64 debug APK in preregistered
+AB/BA/AB/BA pairs: four independent immediate and four independent30s-settled
+no-snapshot cold boots.8/8 focused/rendered menus pass,35s/zero retries, then
+28/28 startup/UI/all15-level matrix. Silence and installed APK/user0 verified;
+all owned emulator processes exit normally. No reinstall/wipe/storage-cold claim.
+
+Original system-overlay trigger NOT_OBSERVED: eight resource-search candidates
+are game DEV_OVERLAY markers, not system-resource events. No natural pre-window
+DESTROY/guard/new instance occurred. Bounded cohort qualification is complete,
+but this issue stays open for broader overlay/configuration/input admission.
+Both failed caller orchestration predecessors are preserved; they admitted no
+game run. EOF ownership/bounds and typed UTC/culture conversion fixed privately,
+four cycles20 process tests +40 timestamp assertions passed, no product change.
+See `ANDROID_COLD_BOOT_COHORT_20261001.md` for exact timing/SHAs/acceptance limits.
+
+Current next: a genuinely permitted current Web QA preview (earlier localhost
+start rejected; no workaround), then separate overlay/configuration acceptance
+and re-lock fresh symmetric inputs before atlas attempt02. No Release/roadmap
+credit; old failure/control receipts and initial plan below remain historical.
+
+## Observed failure (historical)
 
 Current verified unpacked debug APK, SHA-256
 `7CBCDCADA60E0A4B6B1D7F4869FC61C20E0B47D6A9FBB363B6E0DB709F4BCFA4`.
@@ -57,7 +81,7 @@ is preserved, not relabelled or replaced. This is evidence for a test-host
 readiness condition, **not proof that native activity recreation is fixed**.
 It does not establish the cause of atlas attempt01's load/FPS failure.
 
-## Next bounded technical cycle
+## Initial investigation plan (historical, supplements above supersede)
 
 1. Recover these exact receipts and the AppActivity/AndroidManifest lifecycle
    source before changing anything. Freeze reproduction conditions and inspect

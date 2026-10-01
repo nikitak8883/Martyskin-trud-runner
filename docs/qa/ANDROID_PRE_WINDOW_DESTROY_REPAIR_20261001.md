@@ -98,8 +98,16 @@ The two negative receipts remain FAIL; they are never overwritten/relabelled.
 ## Remaining acceptance boundary
 
 Original cold system-overlay trigger has NOT been replayed. The controlled
-pre-window mechanism is fixed; wider immediate-cold/system-overlay qualification
-remains separate. Web/shared/art/build inputs are unchanged, but Web runtime
+pre-window mechanism is fixed. A subsequent preregistered AB/BA/AB/BA cold-boot
+cohort passes8/8 (four immediate, four separately30s-settled arms) on this exact
+APK, then another28/28 Android UI/all15-level startup matrix. All silent/user0;
+no artificial immediate wait/retry, installed hashes verified, zero residents.
+Eight broad resource candidates are game DEV_OVERLAY markers, not system events;
+original trigger remains NOT_OBSERVED. This completes only that bounded cold
+cohort, not wider system-overlay qualification. Actual repair source9c0a9992
+hosted36875609617 passed Windows/Linux36/36 with all artifact hashes verified.
+See `ANDROID_COLD_BOOT_COHORT_20261001.md` for immutable failures/timings/SHAs.
+Web/shared/art/build inputs are unchanged, but Web runtime
 remains NOT_RUN due prior server-start policy rejection; never bypass that
 rejection. No full campaign/all-skin/atlas attempt02, phone, signed/device-valid
 release, main/Pages or Release claim by this repair. Attempt02 must lock fresh

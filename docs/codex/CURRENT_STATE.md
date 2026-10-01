@@ -9,7 +9,37 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 Status: `m04_c_theme_logistics_partial / alpha_source_fixed / atlas_attempt01_rejected / rollback_verified / release_blocked`
 
-## 2026-10-01 controlled pre-window repair active overlay
+## 2026-10-01 cold-boot cohort active overlay
+
+- Exact repair source9c0a9992d84174ec188ae9d6e20094becea6de86 accepted by actual
+  hosted36875609617, Windows/Linux36/36, all72 artifacts each verified. Root
+  8001ad7362173c80786a4b8572370d4af606475a clean app scope; frozen native build
+  b3b82b13/APKD323FA64 unchanged. No product/build/art/shared/Web patch this slice.
+- Preregistered AB/BA/AB/BA independent no-snapshot cold boots pass8/8 (four
+  immediate with handoff522-729ms, four separately30s-settled with30500-30521ms).
+  Exact installed APK/user0/focused menu/silence35s/zero retries verified. Cold
+  boot is not cold storage; no reinstall/wipe/forced overlay/debug injection.
+- Final Android startup/UI/all15-level matrix28/28; unexpected/fatal/product/
+  deprecation diagnostics0, allowlisted84 errors/28 warnings visible. Three
+  actual screenshots sampled; not exhaustive campaign/all-skin QA. All owned
+  AVDs shut down normally; primary/headless/qemu residents0.
+- Original system-overlay trigger NOT_OBSERVED. All eight broad resource-search
+  candidates are game DEV_OVERLAY markers; no natural early DESTROY/guard/new
+  instance. This completes only the bounded cohort, not the whole native issue.
+- Two private caller failures admitted no game runtime: inherited EOF after
+  launcher exit and UTC JSON timestamp reparsed through a culture string. Both
+  preserved; bounded process ownership/EOF and typed DateTimeOffset repairs pass
+  four cycles20 process tests and40 timestamp assertions. No SDK/global hooks/
+  config/model/power changes.252 evidence records hashed and classified.
+- Roadmap20/73 (27.3973%),53 mandatory +7 conditional; source28/95 unchanged.
+  M04-C/M04.5/Release partial; attempt02 inputs/samples NOT_RUN. Web runtime
+  NOT_RUN due prior server-start rejection; never bypass. No phone/main/Pages/
+  signing/device-valid Release. New docs-only local/hosted acceptance is separate.
+- Next: permitted current Web QA entrypoint, separate overlay/configuration
+  boundary, then symmetric fresh attempt02 input lock. See
+  `docs/qa/ANDROID_COLD_BOOT_COHORT_20261001.md` and final local handoff/checkpoint.
+
+## 2026-10-01 controlled pre-window repair prior overlay
 
 - Two immutable debug fault-injection controls confirm a native hang on DESTROY
   before first INIT_WINDOW/application creation. Narrow Android-only project
