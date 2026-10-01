@@ -37,6 +37,12 @@ if ($Serial -notmatch '^emulator-\d+$') {
 }
 
 $resolvedProject = (Resolve-Path -LiteralPath $ProjectRoot).Path
+$hostGuard = Join-Path $PSScriptRoot 'runtime_qa_host_guard.js'
+$hostPreflightOutput = & node $hostGuard --project-root $resolvedProject
+if ($LASTEXITCODE -ne 0) {
+    throw "Android atlas QA host preflight blocked before any ADB mutation: $hostPreflightOutput"
+}
+$hostPreflight = $hostPreflightOutput | ConvertFrom-Json
 $projectPrefix = $resolvedProject.TrimEnd('\') + '\'
 function Resolve-MtrContainedOutput {
     param([Parameter(Mandatory = $true)][string]$Path, [Parameter(Mandatory = $true)][string]$Label)
@@ -159,6 +165,7 @@ $result = [ordered]@{
     androidUser = 0
     emulatorVerified = ($qemu -eq '1')
     audioPolicy = $audioPolicy
+    hostPreflight = $hostPreflight
     abi = $abi
     packageName = $packageName
     appProcessId = $appProcessId

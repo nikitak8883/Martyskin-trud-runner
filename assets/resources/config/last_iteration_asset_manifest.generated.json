@@ -9081,7 +9081,7 @@
       "sourceSlot": "logistics_extended",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_50_09 (2).png",
       "sourceSha256": "5F5FAE3F8069C3DD5C2418F402E4050927BDCAC0F2861D806E9ED518D1EFA8D1",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -9125,7 +9125,14 @@
       "logicalType": 6,
       "critical": true,
       "runtimeEnabled": true,
-      "runtimeSha256": "DA20B121FB6961A2FA31B91328CB2DD64FE2D90C58732EFAA2456A07DA6CAD44"
+      "runtimeSha256": "0A430E298AF44E9615DB233AE1847FBDAFAAB73792AD30AE190D435D09504933",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png",
+        "source_sha256": "0A430E298AF44E9615DB233AE1847FBDAFAAB73792AD30AE190D435D09504933",
+        "meta_sha256": "105226F1E426D08541F6A47F606452E79C9595B7ED656003B6C2D1EF5CAA320F",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 12,

@@ -22,3 +22,8 @@
 /tools/codex/validate_m04_a_asset_contract.py text eol=lf
 /tools/codex/tests/test_validate_m04_a_asset_contract.py text eol=lf
 /tools/validate-content-identity.py text eol=lf
+
+# Reviewed sprite pins preserve the original CRLF metadata bytes on every host.
+/tools/asset_generation/reviewed_runtime_sources.json text eol=lf
+/tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png.meta text eol=crlf
+/assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_002.png.meta text eol=crlf

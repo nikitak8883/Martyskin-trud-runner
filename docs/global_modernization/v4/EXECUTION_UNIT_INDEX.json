@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "plan_id": "mtr-global-modernization-v4-20260809",
-  "generated_at": "2026-09-09T16:01:12Z",
+  "generated_at": "2026-10-01T06:46:19Z",
   "basis": {
     "branch": "codex/mtr-source-freeze-v3",
     "documentation_basis_head": "95648b978117b8964469ad4fb236829d9540c239",
@@ -19,12 +19,12 @@
     "mandatory_remaining": 57
   },
   "execution_ledger": {
-    "mandatory_units_total": 72,
+    "mandatory_units_total": 73,
     "complete": 20,
     "ready": 1,
-    "planned": 48,
+    "planned": 49,
     "blocked": 3,
-    "mandatory_remaining": 52,
+    "mandatory_remaining": 53,
     "conditional_units_total": 7
   },
   "status_values": ["complete", "ready", "planned", "blocked", "conditional"],
@@ -64,7 +64,8 @@
     {"id":"M04-C-FAMILY-THEME-ARCHIVE","phase":"P2","status":"complete","source_packages":["M04.5"],"source_slice":"measured seventeen-source archive theme using one recursive parent static atlas descriptor","depends_on":["M04-C-FAMILY-UI-SHARED-CORE"],"gates":["P4","M2_PLUS"],"objective":"Migrate the archive hazard/platform family without source relocation, reject the initial Web draw regression, and retain exact visual, silent Android-emulator and rollback evidence."},
     {"id":"M04-C-FAMILY-THEME-FARM","phase":"P2","status":"complete","source_packages":["M04.5"],"source_slice":"measured twelve-source farm theme using one recursive parent static atlas descriptor","depends_on":["M04-C-FAMILY-THEME-ARCHIVE"],"gates":["P4","M2_PLUS"],"objective":"Migrate the farm hazard/platform family without source relocation, preserve exact visual parity, and retain silent Android-emulator, rollback and host-load-symmetric Web evidence."},
     {"id":"M04-C-FAMILY-THEME-CONSTRUCTION","phase":"P2","status":"complete","source_packages":["M04.5"],"source_slice":"measured twenty-four-source construction theme using one recursive parent static atlas descriptor","depends_on":["M04-C-FAMILY-THEME-FARM"],"gates":["P4","M2_PLUS"],"objective":"Migrate the construction hazard/platform family without source relocation, preserve exact visual parity, and retain silent Android-emulator, rollback and host-load-symmetric Web evidence."},
-    {"id":"M04-C-FAMILIES","phase":"P2","status":"ready","source_packages":["M04.5"],"source_slice":"remaining accepted atlas family batches","depends_on":["M04-C-FAMILY-THEME-CONSTRUCTION"],"gates":["P4","M2_PLUS"],"objective":"Migrate each remaining approved atlas family as an isolated measured child checkpoint."},
+    {"id":"M04-C-FAMILY-THEME-LOGISTICS","phase":"P2","status":"ready","source_packages":["M04.5"],"source_slice":"26-source logistics theme; reviewed lifebuoy alpha fix; recursive atlas attempt01 rejected and rolled back","depends_on":["M04-C-FAMILY-THEME-CONSTRUCTION"],"gates":["P4","M2_PLUS"],"objective":"Retain the reviewed alpha fix, isolate cold/warm performance experiments and accept only a preregistered topology passing every gate; never choose the faster repeat."},
+    {"id":"M04-C-FAMILIES","phase":"P2","status":"planned","source_packages":["M04.5"],"source_slice":"remaining accepted atlas family batches","depends_on":["M04-C-FAMILY-THEME-LOGISTICS"],"gates":["P4","M2_PLUS"],"objective":"Migrate each remaining approved atlas family as an isolated measured child checkpoint."},
     {"id":"M04-D","phase":"P2","status":"planned","source_packages":["M04.6"],"depends_on":["M04-C-PILOT"],"gates":["M2_PLUS"],"objective":"Adopt only measured dynamic-atlas families and reject native-memory regressions."},
     {"id":"M04-E","phase":"P2","status":"planned","source_packages":["M04.7"],"depends_on":["M04-A"],"gates":["P4"],"objective":"Define bundle preload/load/release/content-version ownership with optional packs excluded from startup."},
     {"id":"M04-CLOSE","phase":"P2","status":"planned","source_packages":["M04.8"],"depends_on":["M04-C-FAMILIES","M04-D","M04-E"],"gates":["M2_PLUS"],"objective":"Close M04 with draw-call, waste, load, memory and build-size before-after evidence."},

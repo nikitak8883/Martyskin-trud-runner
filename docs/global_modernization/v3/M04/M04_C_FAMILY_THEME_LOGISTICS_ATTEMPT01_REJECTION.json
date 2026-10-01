@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m04_c_family_attempt_rejection",
+  "execution_unit": "M04-C-FAMILY-THEME-LOGISTICS",
+  "attempt_id": "logistics_recursive_parent_attempt01",
+  "status": "REJECTED",
+  "candidate": {
+    "atlas_id": "level_theme_logistics",
+    "theme": "logistics",
+    "levels": [
+      4,
+      8,
+      11,
+      14
+    ],
+    "source_directories": [
+      "assets/resources/objectives/themed/last_iteration/logistics/hazards",
+      "assets/resources/objectives/themed/last_iteration/logistics/platforms"
+    ],
+    "source_count": 26,
+    "source_bytes": 2313121,
+    "source_area_px": 1888116,
+    "alpha_area_px": 1095661,
+    "estimated_combined_2048_occupancy": 0.450162,
+    "maximum_source_dimensions": {
+      "width": 739,
+      "height": 373
+    },
+    "critical_source_count": 12,
+    "source_inventory_sha256": "32633783833766C580B4525A25D0905CBE4174DDBF199E8282222A27617312A8",
+    "source_inventory_fingerprint": "sha256_of_sorted_compact_json_rows_with_sorted_keys_key_path_category_role_critical_content_meta_uuid_dimensions_alpha_trim_pivot_packable_atlas_uuid_and_levels",
+    "risk_class": "gameplay_critical_logistics_platform_collision_and_hazard_readability",
+    "fallback_policy": "block_release",
+    "split_family_contract": "one_recursive_parent_descriptor_two_child_source_directories_one_acceptance_decision",
+    "descriptor_count": 1,
+    "descriptors": [
+      {
+        "source_directory": "assets/resources/objectives/themed/last_iteration/logistics",
+        "included_child_directories": [
+          "assets/resources/objectives/themed/last_iteration/logistics/hazards",
+          "assets/resources/objectives/themed/last_iteration/logistics/platforms"
+        ],
+        "source_count": 26,
+        "source_bytes": 2313121,
+        "source_area_px": 1888116,
+        "alpha_area_px": 1095661,
+        "estimated_2048_occupancy": 0.450162,
+        "maximum_source_dimensions": {
+          "width": 739,
+          "height": 373
+        },
+        "descriptor": "assets/resources/objectives/themed/last_iteration/logistics/level_theme_logistics.pac",
+        "descriptor_uuid": "3a7e5847-fd0e-4f86-9c0c-5499a0cd82ec",
+        "allow_rotation": false
+      }
+    ],
+    "source_keys": [
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_001",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_002",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_003",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_004",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_005",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_006",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_007",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_001",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_002",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_003",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_004",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_005",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_006",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_007",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_008",
+      "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_009",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_001",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_002",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_003",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_004",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_001",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_002",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_004",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_005",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_006"
+    ],
+    "preserved_import_contract": {
+      "trim_type": "auto",
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "packable": true,
+      "atlas_uuid_before_candidate": "",
+      "source_uuid_artifacts_mutated": false
+    },
+    "expected_retained_source_uuid_artifacts_by_platform": {
+      "web": 0,
+      "android_emulator": 0
+    },
+    "configuration": {
+      "max_width": 2048,
+      "max_height": 2048,
+      "padding": 2,
+      "allow_rotation": false,
+      "algorithm": "MaxRects",
+      "format": "png",
+      "filter_unused": false,
+      "remove_source_textures_from_bundle": true,
+      "wrap_mode": "clamp-to-edge",
+      "filtering": "linear",
+      "mip_filter": "none"
+    }
+  },
+  "acceptance": {
+    "passed": 61,
+    "total": 63,
+    "failed_checks": [
+      {
+        "id": "load_elapsed_ms",
+        "platform": "android_emulator",
+        "actual": 4756,
+        "expected": "<= 2953.75",
+        "passed": false
+      },
+      {
+        "id": "fps_relative",
+        "platform": "android_emulator",
+        "actual": 4,
+        "expected": ">= 5.1",
+        "passed": false
+      }
+    ],
+    "thresholds_weakened": false,
+    "best_of_repeat_selection": false
+  },
+  "visual": {
+    "status": "pass",
+    "web": {
+      "status": "pass",
+      "baselineDimensions": [
+        1280,
+        720
+      ],
+      "candidateDimensions": [
+        1280,
+        720
+      ],
+      "contentRoiPixels": [
+        24,
+        102,
+        1256,
+        696
+      ],
+      "contentPixelCount": 731808,
+      "meanAbsoluteError": 0.056625,
+      "changedPixelCount": 1367,
+      "changedPixelFraction": 0.001867976,
+      "newNearWhitePixelCount": 0,
+      "thresholds": {
+        "channelDelta": 8,
+        "maximumMeanAbsoluteError": 0.35,
+        "maximumChangedPixelFraction": 0.003,
+        "nearWhiteChannelFloor": 245,
+        "maximumNewNearWhitePixels": 0
+      },
+      "nearWhiteThresholdCrossingPixelCount": 3,
+      "ignoredSubthresholdNearWhiteCrossings": 3
+    },
+    "android_emulator": {
+      "status": "pass",
+      "baselineDimensions": [
+        2992,
+        1344
+      ],
+      "candidateDimensions": [
+        2992,
+        1344
+      ],
+      "contentRoiPixels": [
+        344,
+        188,
+        2638,
+        1300
+      ],
+      "contentPixelCount": 2550928,
+      "meanAbsoluteError": 0.130021,
+      "changedPixelCount": 5125,
+      "changedPixelFraction": 0.002009073,
+      "newNearWhitePixelCount": 0,
+      "thresholds": {
+        "channelDelta": 8,
+        "maximumMeanAbsoluteError": 0.35,
+        "maximumChangedPixelFraction": 0.003,
+        "nearWhiteChannelFloor": 245,
+        "maximumNewNearWhitePixels": 0
+      },
+      "nearWhiteThresholdCrossingPixelCount": 39,
+      "ignoredSubthresholdNearWhiteCrossings": 39
+    },
+    "repeat_stability": {
+      "required": true,
+      "status": "pass",
+      "comparisons": {
+        "web": {
+          "status": "pass",
+          "baselineDimensions": [
+            1280,
+            720
+          ],
+          "candidateDimensions": [
+            1280,
+            720
+          ],
+          "contentRoiPixels": [
+            24,
+            102,
+            1256,
+            696
+          ],
+          "contentPixelCount": 731808,
+          "meanAbsoluteError": 0,
+          "changedPixelCount": 0,
+          "changedPixelFraction": 0,
+          "newNearWhitePixelCount": 0,
+          "thresholds": {
+            "channelDelta": 0,
+            "maximumMeanAbsoluteError": 0,
+            "maximumChangedPixelFraction": 0,
+            "nearWhiteChannelFloor": 245,
+            "maximumNewNearWhitePixels": 0
+          },
+          "nearWhiteThresholdCrossingPixelCount": 0,
+          "ignoredSubthresholdNearWhiteCrossings": 0
+        },
+        "android_emulator": {
+          "status": "pass",
+          "baselineDimensions": [
+            2992,
+            1344
+          ],
+          "candidateDimensions": [
+            2992,
+            1344
+          ],
+          "contentRoiPixels": [
+            344,
+            188,
+            2638,
+            1300
+          ],
+          "contentPixelCount": 2550928,
+          "meanAbsoluteError": 0,
+          "changedPixelCount": 0,
+          "changedPixelFraction": 0,
+          "newNearWhitePixelCount": 0,
+          "thresholds": {
+            "channelDelta": 0,
+            "maximumMeanAbsoluteError": 0,
+            "maximumChangedPixelFraction": 0,
+            "nearWhiteChannelFloor": 245,
+            "maximumNewNearWhitePixels": 0
+          },
+          "nearWhiteThresholdCrossingPixelCount": 0,
+          "ignoredSubthresholdNearWhiteCrossings": 0
+        }
+      }
+    }
+  },
+  "performance_cause": "UNCONFIRMED; cold/warm/runtime-host variance requires a separately preregistered paired experiment; faster repeat is not proof of acceptance",
+  "evidence": {
+    "baseline_root": "temp/m04-c-families/level_theme_logistics/baseline",
+    "candidate_root": "temp/m04-c-families/level_theme_logistics/candidate",
+    "candidate_repeat_root": "temp/m04-c-families/level_theme_logistics/candidate-repeat",
+    "comparison": "temp/m04-c-families/level_theme_logistics/comparison/acceptance.json",
+    "visual": "temp/m04-c-families/level_theme_logistics/comparison/visual-parity.json"
+  },
+  "decision": "Rollback atlas packaging only. Keep reviewed source alpha fix with unchanged UUID, dimensions, pivot, import metadata, resource key and level affinities.",
+  "release_status": "BLOCKED",
+  "physical_device_used": false,
+  "next": "Finish rollback verification, then freeze a non-concurrent paired performance experiment before any alternative topology."
+}

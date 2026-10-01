@@ -1,12 +1,12 @@
 # Integrated MTR implementation plan v3
 
-Статус: `m03_complete_m04_c_achievement_ui_child_complete_release_blocked`; runtime implementation продолжается bounded execution units.
+Статус: `m03_complete_m04_c_theme_logistics_partial_release_blocked`; runtime implementation продолжается bounded execution units. Живой next-action определяется `docs/codex/CURRENT_STATE.md`, а не историческими ограничениями source-freeze ниже.
 
 ## Цель
 
 Сохранить принятую рабочую игру, восстановить воспроизводимый source/release baseline и затем постепенно завершить архитектуру, assets/UI/skins, levels/audio/save, performance и optional PCG без big-bang rewrite.
 
-## Не-цели следующего bounded-шага
+## Исторические не-цели source-freeze bounded-шага
 
 - не изменять и не перезаписывать принятый source-freeze commit/tag;
 - не собирать и не устанавливать приложение;
@@ -98,6 +98,8 @@ M03 завершён strangler-патчами: inventory → state transitions/l
 ### Phase 3 — Presentation pipeline
 
 1. M04-A/B завершили inventory, policy, fail-visible pre-import checks и contact sheets; M04-C принял `objective_npc` pilot, `achievement_ui`, `runner_collectibles`, двухдескрипторный `bonus_items`, mixed-topology `ui_shared_core`, одноатласные recursive-parent `level_theme_archive`, `level_theme_farm` и `level_theme_construction` children. Далее `M04-C-FAMILIES` продолжается только по одному measured accepted family на child checkpoint; следующий кандидат выбирается и замораживается отдельным inventory-derived contract до мутации.
+
+   Активный child с 2026-10-01: `M04-C-FAMILY-THEME-LOGISTICS` partial. Reviewed alpha-fix спасательного круга реализован, первый recursive atlas attempt отклонён `61/63` и убран. Изолированный rollback QA прошёл: Web `34/34 × 2`, Android `28/28 × 2`, interaction/restart/soak; следующий paired performance experiment заморозить до мутации. Не принимать более быстрый repeat вместо первого failed результата. Aggregate `M04.5` остаётся pending.
 2. M06 SkinRegistry/BonusVisualResolver и полный lifecycle.
 3. M05 shared UI runtime на базе уже существующего UI IR.
 

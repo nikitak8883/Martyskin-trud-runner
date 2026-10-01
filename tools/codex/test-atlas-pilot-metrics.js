@@ -27,6 +27,7 @@ const themeFarmRollbackPath = path.join(projectRoot, 'docs', 'global_modernizati
 const themeConstructionContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_CONSTRUCTION_CONTRACT.json');
 const themeConstructionAcceptancePath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_CONSTRUCTION_ACCEPTANCE.json');
 const themeConstructionRollbackPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_CONSTRUCTION_ROLLBACK_MANIFEST.json');
+const themeLogisticsContractPath = path.join(projectRoot, 'docs', 'global_modernization', 'v3', 'M04', 'M04_C_FAMILY_THEME_LOGISTICS_CONTRACT.json');
 const webRuntimeFunctionPath = path.join(projectRoot, 'tools', 'codex', 'web_atlas_pilot_runtime_function.js');
 const webRunnerPath = path.join(projectRoot, 'tools', 'codex', 'Run-MtrWebAtlasPilotQa.js');
 const artifactMeasurerPath = path.join(projectRoot, 'tools', 'codex', 'Measure-MtrAtlasPilotArtifacts.js');
@@ -137,9 +138,11 @@ assert.ok(gameRootSource.includes("bonus_items: {"));
 assert.ok(gameRootSource.includes("ui_shared_core: {"));
 assert.ok(gameRootSource.includes("level_theme_archive: {"));
 assert.ok(gameRootSource.includes("level_theme_farm: {"));
+assert.ok(gameRootSource.includes("level_theme_logistics: {"));
 assert.ok(gameRootSource.includes("UI_SHARED_ASSET_KEYS.filter((key) => key.startsWith('ui/shared/'))"));
 assert.ok(gameRootSource.includes("entry.theme === 'archive'"));
 assert.ok(gameRootSource.includes("entry.theme === 'farm'"));
+assert.ok(gameRootSource.includes("entry.theme === 'logistics'"));
 assert.ok(gameRootSource.includes("'objectives/ui/ui_monkey_profile_badge_01'"));
 assert.ok(gameRootSource.includes('if (!DEBUG) return;'));
 assert.ok(gameRootSource.includes('MTR_ATLAS_PILOT_COMPLETE'));
@@ -501,6 +504,17 @@ assert.strictEqual(themeConstructionRollback.source_png_metadata_changed, false)
 assert.strictEqual(themeConstructionRollback.physical_device_used, false);
 
 const webRuntimeFunction = fs.readFileSync(webRuntimeFunctionPath, 'utf8');
+const themeLogisticsContract = JSON.parse(fs.readFileSync(themeLogisticsContractPath, 'utf8'));
+assert.strictEqual(themeLogisticsContract.unit_id, 'M04-C-FAMILY-THEME-LOGISTICS');
+assert.strictEqual(themeLogisticsContract.candidate.source_count, 26);
+assert.strictEqual(themeLogisticsContract.candidate.source_keys.length, 26);
+assert.strictEqual(themeLogisticsContract.candidate.source_inventory_sha256, '32633783833766C580B4525A25D0905CBE4174DDBF199E8282222A27617312A8');
+assert.strictEqual(themeLogisticsContract.candidate_result.status, 'rejected');
+assert.deepStrictEqual(themeLogisticsContract.candidate_result.acceptance_checks, { passed: 61, total: 63 });
+assert.strictEqual(themeLogisticsContract.candidate_result.repeat_measurement_not_used_to_override_rejection, true);
+assert.strictEqual(themeLogisticsContract.contract_corrections.every(c => c.thresholds_weakened === false), true);
+assert.strictEqual(fs.existsSync(path.join(projectRoot, themeLogisticsContract.candidate.descriptors[0].descriptor)), false);
+assert.ok(webRuntimeFunction.includes('level_theme_logistics: 26'));
 assert.ok(webRuntimeFunction.includes("schema: 'mtr.web_atlas_pilot.v1'"));
 assert.ok(webRuntimeFunction.includes("MTR_ATLAS_PILOT_COMPLETE "));
 assert.ok(webRuntimeFunction.includes("MTR_ATLAS_PILOT_FAIL "));

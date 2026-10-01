@@ -839,6 +839,11 @@ const M04_C_LEVEL_THEME_CONSTRUCTION_ATLAS_KEYS = THEMED_ASSET_ENTRIES
     .filter((entry) => entry.category === 'hazards' || entry.category === 'platforms')
     .map((entry) => entry.key);
 
+const M04_C_LEVEL_THEME_LOGISTICS_ATLAS_KEYS = THEMED_ASSET_ENTRIES
+    .filter((entry) => entry.runtimeEnabled !== false && entry.theme === 'logistics')
+    .filter((entry) => entry.category === 'hazards' || entry.category === 'platforms')
+    .map((entry) => entry.key);
+
 interface M04CAtlasQaSpec {
     atlasId: string;
     title: string;
@@ -956,6 +961,19 @@ const M04_C_ATLAS_QA_SPECS = {
         xStep: 214,
         yStep: 140,
         spriteWidth: 166,
+        spriteHeight: 100,
+    },
+    level_theme_logistics: {
+        atlasId: 'level_theme_logistics',
+        title: 'LEVEL THEME LOGISTICS',
+        keys: M04_C_LEVEL_THEME_LOGISTICS_ATLAS_KEYS,
+        category: 'platforms',
+        columns: 7,
+        xStart: 90,
+        yStart: 190,
+        xStep: 180,
+        yStep: 140,
+        spriteWidth: 150,
         spriteHeight: 100,
     },
 } as const satisfies Record<string, M04CAtlasQaSpec>;

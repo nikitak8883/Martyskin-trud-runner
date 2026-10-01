@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "runtime_resource_key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_002",
+      "source": "tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png",
+      "source_sha256": "0A430E298AF44E9615DB233AE1847FBDAFAAB73792AD30AE190D435D09504933",
+      "meta_source": "tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png.meta",
+      "meta_sha256": "105226F1E426D08541F6A47F606452E79C9595B7ED656003B6C2D1EF5CAA320F",
+      "uuid": "05b16bb5-fa0d-4bea-9c3d-3d93b4b35e15",
+      "dimensions": [244, 232],
+      "alpha_bbox": [6, 6, 238, 226],
+      "transparent_boxes": [[104, 96, 140, 132]],
+      "provenance": {
+        "generator": "built-in-imagegen",
+        "generated_source": "tools/asset_generation/source_assets/logistics/lifebuoy-generated-20261001.png",
+        "generated_sha256": "0A10CDE6C859847406B8555695A1430F613754BEE1EDC4BC51E2F867D6CFDE76",
+        "replaced_runtime_sha256": "DA20B121FB6961A2FA31B91328CB2DD64FE2D90C58732EFAA2456A07DA6CAD44",
+        "reason": "Reviewed enclosed checkerboard matte defect; border flood cannot safely remove interior matte without destroying ivory paint.",
+        "prompt": "Use case background-extraction. Production 2D sprite for Martyskin Trud Runner satirical painted construction/logistics. Edit the red/ivory lifebuoy with rope. Recreate the same single buoy, oblique front angle, circular silhouette, worn painted red and ivory, brown outline, thick braided rope and proportions. The central hole, background and rope gaps must be transparent alpha. No checkerboard, solid center, text or extra objects. Centered with a small transparent margin, crisp at 244x232.",
+        "normalization": "Pillow 12.3.0; crop actual alpha bbox, LANCZOS resize and re-trim fully transparent downsampled fringes into stable 232x220 trim, paste without alpha-mask into unchanged 244x232 canvas; no matte removal heuristic."
+      }
+    }
+  ]
+}

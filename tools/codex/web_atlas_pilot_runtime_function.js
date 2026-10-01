@@ -13,6 +13,7 @@ async function (page) {
         level_theme_archive: 17,
         level_theme_farm: 12,
         level_theme_construction: 24,
+        level_theme_logistics: 26,
     });
     if (!Object.prototype.hasOwnProperty.call(atlasSourceCounts, atlasId)) {
         throw new Error(`Unsupported atlas QA id: ${atlasId || '-'}`);

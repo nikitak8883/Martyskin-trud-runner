@@ -1,8 +1,8 @@
 # MTR global modernization v3 — project entry point
 
-Статус: `m03_complete_m04_c_theme_farm_child_complete_release_blocked`  
+Статус: `m03_complete_m04_c_theme_logistics_partial_release_blocked`  
 Дата интеграции: 2026-07-23  
-Последнее обновление: 2026-09-09  
+Последнее обновление: 2026-10-01  
 Источник: `C:\Projects\Monkey Work\Tasks\5\MTR_CODEX_CURRENT_STATE_AUDIT_AND_MODERNIZATION_LIBRARY_v3_20260715.zip`  
 SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 
@@ -80,4 +80,4 @@ SHA-256: `85639CC7C93D4C1A2541D47DE5057B62BC6E555053827D72D74CC8F41AA04AA2`
 
 ## Следующее безопасное действие
 
-Продолжать `M04-C-FAMILIES` ровно одним следующим measured child: выбрать его из актуального inventory и до мутации зафиксировать отдельный ownership/visibility/performance contract. Пакетная перепаковка, изменение общей dynamic-atlas policy, physical-device QA и release остаются запрещены до своих отдельных gates.
+Продолжать `M04-C-FAMILY-THEME-LOGISTICS`: сохранить reviewed alpha-fix, завершить rollback QA после отказа первого atlas attempt (`61/63`) и изолировать новый paired performance experiment от сборок/других QA. Более быстрый repeat не отменяет отказ. Родитель `M04-C-FAMILIES` и `M04.5` не завершены. Пакетная перепаковка, изменение общей dynamic-atlas policy, physical-device QA и release остаются запрещены до своих отдельных gates.

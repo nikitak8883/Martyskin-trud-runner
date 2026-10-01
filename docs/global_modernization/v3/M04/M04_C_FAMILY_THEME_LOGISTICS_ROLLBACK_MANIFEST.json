@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "contract": "mtr.m04_c_family_rollback_manifest",
+  "execution_unit": "M04-C-FAMILY-THEME-LOGISTICS",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "scope": "Pinned lifebuoy alpha source correction, rejected logistics atlas removal, DEBUG gallery and read-only measurement preflight",
+  "rollback": {
+    "repository_root": "C:/Projects/Monkey Work",
+    "anchor_commit": "d9175adcdbb5a6fe072063fd7ffd9275b364daf8",
+    "project_prefix": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/",
+    "pre_change_blobs": {
+      "assets/resources/config/atlas_manifest.json": "5ed21d3d326e293578e82aefb41f9821c2901bf2",
+      "assets/resources/config/last_iteration_asset_manifest.generated.json": "396be238146ddedd2d2e990817b8b0b7c759b874",
+      "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_002.png": "d62b18b9ea7f20c4e65a9a3eecf56c1cded1b789",
+      "assets/scripts/GameRoot.ts": "34b090b8d1651e4ae7d846df1254fc2e5134c9f4",
+      "docs/codex/CURRENT_STATE.md": "d2a237b889c0524dbbfd1597fbe80e7be4702952",
+      "docs/global_modernization/v3/INTEGRATED_MASTER_PLAN_20260719.md": "26c84926ace47bbeeaa8833b18fd10dc415ba5f4",
+      "docs/global_modernization/v3/M04/contact_sheet_index.json": "f4393dff5e272e56f8e67d972c8a493b28240e61",
+      "docs/global_modernization/v3/MODULE_EXECUTION_INDEX.yaml": "1fc9fb526592e5b2b73bdc052a5d5652c19f168b",
+      "docs/global_modernization/v3/README_START_HERE.md": "86279843d0841156bee0408929c717b915c02370",
+      "docs/global_modernization/v3/WORK_PACKAGE_INDEX.yaml": "c70d9f56492e4b5c214c0e9155e8b2208ddc005e",
+      "docs/global_modernization/v4/EXECUTION_UNIT_INDEX.json": "70c0011ed44da709ef785e8dc7dd97f6eae9daaf",
+      "docs/global_modernization/v4/INTEGRATED_ROADMAP_20260809.md": "d15de5fb4d2a7e76ec8a8e862cee440636be4c4f",
+      "docs/global_modernization/v4/README_START_HERE.md": "4c1bc28f3d57a5db10f4d4c1d5d2e4d7076b697a",
+      "tools/codex/Run-MtrAndroidAtlasPilotQa.ps1": "3445864f18f4ec3a55cbf2d41df02604e4cca428",
+      "tools/codex/Run-MtrWebAtlasPilotQa.js": "2f064492cf4013fb0195457df9a60b61d130ded2",
+      "tools/codex/quality-gate/static-gates.json": "1ce1f0eb4bc3b88d145cba02439344c572123c49",
+      "tools/codex/test-atlas-pilot-metrics.js": "c4cc44426f0246c43c7b8261f9794369b019d350",
+      "tools/codex/web_atlas_pilot_runtime_function.js": "35394f15e6241849ef3d36c014dab70b73b20190",
+      "tools/mtr_last_iteration_asset_pipeline.py": "8959dad39ec2f3a740fe4f2864dc45dad28dd724",
+      ".gitattributes": "c69558feaea4df5ed9c3fe877c700b5ab7983e9f"
+    },
+    "new_files_remove_on_full_source_rollback": [
+      "tools/asset_generation/README.md",
+      "tools/asset_generation/normalize_reviewed_sprite.py",
+      "tools/asset_generation/reviewed_runtime_sources.json",
+      "tools/asset_generation/reviewed_runtime_sources.py",
+      "tools/asset_generation/source_assets/logistics/lifebuoy-generated-20261001.png",
+      "tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png",
+      "tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png.meta",
+      "tools/codex/runtime_qa_host_guard.js",
+      "tools/codex/test-runtime-qa-host-guard.js",
+      "tools/codex/tests/test_reviewed_runtime_sources.py"
+    ],
+    "audit_records_preserved": [
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT01_REJECTION.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_CODE_REVIEW_REPORT.md",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_CONTRACT.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_NEXT_EXPERIMENT.md",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_VALIDATION_SUMMARY.json",
+      "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ROLLBACK_MANIFEST.json",
+      "docs/qa/CONTROL_LOG_CHECKPOINT_20261001_M04_C_FAMILY_THEME_LOGISTICS_PARTIAL.md"
+    ],
+    "policy": "Instructions only; no automatic restore/delete. Resolve paths within project, inspect current changes, preserve unrelated work and retain audit history. Prefer narrow atlas rollback, already performed, over reverting the independently validated art correction."
+  },
+  "rejected_atlas_rollback": {
+    "descriptor": "assets/resources/objectives/themed/last_iteration/logistics/level_theme_logistics.pac",
+    "metadata": "assets/resources/objectives/themed/last_iteration/logistics/level_theme_logistics.pac.meta",
+    "status": "removed",
+    "preserve_reviewed_source_fix": true,
+    "verification": "Fresh unpacked Web and Android builds: 26 source textures and 78 source UUID artifacts on each platform; see validation summary."
+  },
+  "runtime_assets_changed": true,
+  "runtime_metadata_changed": false,
+  "source_png_files_changed": 1,
+  "source_png_metadata_changed": false,
+  "source_files_relocated": false,
+  "physical_device_used": false,
+  "build_outputs_tracked": false,
+  "duplicate_backup_files_created": false
+}

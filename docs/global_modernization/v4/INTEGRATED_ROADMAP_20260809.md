@@ -3,9 +3,9 @@
 ## Текущее положение
 
 - Source ledger: `28/95 complete`; mandatory `28/85`, осталось `57`; conditional `10`. `M04.5` остаётся pending до закрытия remaining family children.
-- V4 remaining-scope execution ledger: `20/72 complete` (`27.7778%`), осталось `52`; conditional units `7`. Знаменатель расширен новым inventory-derived child `M04-C-FAMILY-THEME-CONSTRUCTION` и остаётся provisional для следующих M04/M05/M10 children.
-- Текущий milestone: `M04-C-FAMILY-THEME-CONSTRUCTION` complete; принят восьмой measured family из 24 construction PNG через один recursive parent descriptor. Final comparison `63/63`, Web draws `41 → 31`, Android draws `54 → 31`, P4 и M2_PLUS зелёные; Android QA выполнен без звука и только на эмуляторе.
-- Следующий unit: продолжение `M04-C-FAMILIES` — один новый accepted measured family на изолированный child checkpoint; broader batching не разрешён.
+- V4 remaining-scope execution ledger: `20/73 complete` (`27.3973%`), осталось `53`; conditional units `7`. Добавлен inventory-derived child `M04-C-FAMILY-THEME-LOGISTICS`, но он ещё не принят; знаменатель увеличен на один без увеличения completed.
+- Текущий milestone: `M04-C-FAMILY-THEME-LOGISTICS` partial. Исправлен PNG спасательного круга с непрозрачной внутренней подложкой; recursive-parent atlas attempt01 отклонён (`61/63`: Android load/FPS). Дескриптор убран; свежий rollback QA прошёл: Web `34/34 × 2`, Android `28/28 × 2`, interaction/restart/soak. Требуется новый заранее зафиксированный эксперимент. Восьмой и последний принятый measured family остаётся `level_theme_construction`.
+- Следующий unit: `M04-C-FAMILY-THEME-LOGISTICS` — изолировать performance-прогоны от сборок и остальных QA, установить причину отказа, затем заранее выбрать и проверить следующую topology. Быстрый repeat не заменяет первый failed result; broader batching не разрешён.
 - Release: `BLOCKED`.
 
 ## Phase 0 — contracts, toolchain и publication model

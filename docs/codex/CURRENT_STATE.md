@@ -1,13 +1,29 @@
 # CURRENT_STATE — Martyshkin Trud Runner
 
 Generated: 2026-07-02 15:44 +03:00  
-Updated: 2026-09-09  
+Updated: 2026-10-01  
 Project: `C:\Projects\Monkey Work\MTRCocosCreator_portable_transfer_20260617\MTRCocosCreator`  
 Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 ## Current implementation line
 
-Status: `runtime_baseline_green / source_frozen / m04_c_theme_construction_child_complete / m04_c_families_ready / release_blocked`
+Status: `m04_c_theme_logistics_partial / alpha_source_fixed / atlas_attempt01_rejected / rollback_verified / release_blocked`
+
+## 2026-10-01 M04-C-FAMILY-THEME-LOGISTICS active overlay
+
+This overlay supersedes every older next-action line below; older sections remain historical evidence only.
+
+- Selected child: 26 logistics hazard/platform sources, inventory affinities `[4, 8, 11, 14]`. The parent atlas batch and aggregate `M04.5` are not complete.
+- Fixed one verified source defect: lifebuoy `mtr_last_logistics_extended_hazards_002` had an opaque checkerboard center. Built-in imagegen replacement is normalized to the same 244x232 canvas and pinned with its generation prompt. UUID, raw/import dimensions, pivot, resource key and PNG metadata are unchanged. Reviewed sources live outside `assets/`.
+- `tools/asset_generation/reviewed_runtime_sources.py` checks pins/alpha/provenance by default; explicit restoration and the legacy cutter use the same reviewed source. Narrow restoration, negative controls, normalization and Git metadata checkout roundtrips have `13/13` tests. Full original sheet regeneration is `NOT_RUN`.
+- Atlas attempt01 failed `61/63`: Android load `4756 ms > 2953.75 ms`, median FPS `4 < 5.1`. Visual parity and exact candidate-repeat pixels pass; Web draws `42 -> 33`, Android draws `58 -> 33`. The faster repeat does not override rejection. Both candidate descriptor files have been removed.
+- Candidate full Android matrices also failed (`27/28`, then `25/28`) with slow sprite-load diagnostics during overlapping native build work. Preserve them as failed evidence, not acceptance. Causal attribution remains unconfirmed until isolated rollback runs.
+- Read-only host preflight now rejects atlas measurements overlapping MTR builds/other runtime QA, before gameplay mutation. This is a start-time snapshot, not an interprocess lock; serialize paired measurements in orchestration.
+- Android QA is silent: AVD `-no-audio`, STREAM_MUSIC 3 verified `0/15`; emulator-only `emulator-5554`, user `0`, no physical target.
+- Fresh unpacked Web and Android rollback builds finished. Galleries prove 26 original source textures and 78 source UUID artifacts on each platform; rollback content pixels exactly match the corrected baseline. Final Web matrices pass `34/34 × 2`, interaction/restarts `10/10 × 2`; Android matrices pass `28/28 × 2`. Final-unpacked Android interaction/name persistence passes, restart `10/10`, soak `300.642 s`, zero process loss/unexpected diagnostics. M2_PLUS passes `8/8` applicable slots; its first binding-ID failure remains preserved. The debug x86_64 APK is QA evidence only, not a release artifact. The AVD and Web server are stopped.
+- Roadmap: `20/73` mandatory units complete (`27.3973%`), `53` remain + `7` conditional. One inventory-derived logistics child was added but not completed. Source remains `28/95`, mandatory source remaining `57` + `10` conditional.
+- Current control checkpoint: `docs/qa/CONTROL_LOG_CHECKPOINT_20261001_M04_C_FAMILY_THEME_LOGISTICS_PARTIAL.md`; detailed validation and hash-bound evidence: `M04_C_FAMILY_THEME_LOGISTICS_VALIDATION_SUMMARY.json`.
+- Read `M04_C_FAMILY_THEME_LOGISTICS_CONTRACT.json`, the attempt01 rejection and next-experiment document before resuming. Next: preregister a new isolated paired performance/cache experiment; no best-of repeat or weaker gates. Release remains blocked by `M02.1`, `M02.7`, `M12.7`.
 
 ## 2026-09-09 M04-C-FAMILY-THEME-CONSTRUCTION completion overlay
 

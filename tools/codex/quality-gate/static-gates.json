@@ -370,6 +370,16 @@
       "expected_exit_codes": [0]
     },
     {
+      "id": "runtime-qa-host-preflight-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "node",
+      "arguments": ["tools/codex/test-runtime-qa-host-guard.js"],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "skin-bonus-contracts",
       "mandatory": true,
       "enabled": true,
@@ -382,6 +392,16 @@
       ],
       "working_directory": ".",
       "timeout_seconds": 300,
+      "expected_exit_codes": [0]
+    },
+    {
+      "id": "reviewed-runtime-source-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": ["-B", "-m", "unittest", "discover", "-s", "tools/codex/tests", "-p", "test_reviewed_runtime_sources.py", "-v"],
+      "working_directory": ".",
+      "timeout_seconds": 120,
       "expected_exit_codes": [0]
     },
     {

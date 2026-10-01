@@ -39,8 +39,8 @@
     ],
     "source_payload": {
       "count": 1647,
-      "bytes": 116454361,
-      "sha256": "F3CD1B18F1AB592343CA25B467B811D01E32F439C4BE11881BDD8374EB42E2F8"
+      "bytes": 116454099,
+      "sha256": "E683ED8E63F4959528D27C89D707026F9835FDB4ACBB1421406ACF732D707B7F"
     },
     "cocos_metadata": {
       "count": 1894,
@@ -49,7 +49,7 @@
     },
     "png_validation": {
       "count": 1528,
-      "bytes": 107146623,
+      "bytes": 107145957,
       "alpha_count": 1527,
       "non_alpha_count": 1,
       "decode_error_count": 0,
@@ -60,10 +60,10 @@
     "extension_counts": {
       ".html": {"count": 1, "bytes": 9969},
       ".jpg": {"count": 30, "bytes": 5999213},
-      ".json": {"count": 35, "bytes": 1163846},
+      ".json": {"count": 35, "bytes": 1164250},
       ".mp3": {"count": 1, "bytes": 116284},
       ".pac": {"count": 12, "bytes": 420},
-      ".png": {"count": 1528, "bytes": 107146623},
+      ".png": {"count": 1528, "bytes": 107145957},
       ".wav": {"count": 40, "bytes": 2018006}
     }
   },
@@ -129,7 +129,7 @@
       "bundle_id": "resources",
       "provenance": ["assets/resources/config/content_identity.json"],
       "asset_count": 29,
-      "total_bytes": 952942,
+      "total_bytes": 953346,
       "fallback_policy": "block_release"
     },
     {
@@ -273,7 +273,7 @@
       "bundle_id": "resources",
       "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
       "asset_count": 26,
-      "total_bytes": 2313787,
+      "total_bytes": 2313121,
       "fallback_policy": "block_release"
     },
     {
@@ -650,7 +650,7 @@
         "dynamic_atlas_allowed": false
       },
       "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
-      "observed": {"count": 227, "bytes": 19200041},
+      "observed": {"count": 227, "bytes": 19199375},
       "fallback_policy": "block_release",
       "runtime_effect": false
     },

@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "execution_unit": "M04-C-FAMILY-THEME-LOGISTICS",
+  "parent_execution_unit": "M04-C-FAMILIES",
+  "source_work_packages": [
+    "M04.5"
+  ],
+  "status": "partial",
+  "implementation_status": "reviewed_alpha_fix_implemented_atlas_rejected_rollback_verified",
+  "aggregate_work_package_status": "pending_remaining_families",
+  "release_status": "blocked",
+  "physical_device_used": false,
+  "source_fix": {
+    "replacement_count": 1,
+    "resource_key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_002",
+    "runtime_sha256": "0A430E298AF44E9615DB233AE1847FBDAFAAB73792AD30AE190D435D09504933",
+    "metadata_changed": false,
+    "dimensions": [
+      244,
+      232
+    ],
+    "uuid": "05b16bb5-fa0d-4bea-9c3d-3d93b4b35e15",
+    "contract": "tools/asset_generation/reviewed_runtime_sources.json",
+    "unit_tests": {
+      "status": "PASS",
+      "passed": 13,
+      "total": 13
+    },
+    "full_sheet_regeneration": "NOT_RUN",
+    "git_metadata_checkout": {
+      "status": "PASS",
+      "source_test_cycles": 4,
+      "roundtrip_cases_per_test": 4,
+      "policies": [
+        "core.autocrlf=false",
+        "core.autocrlf=true"
+      ],
+      "runtime_metadata_bytes_unchanged": true,
+      "global_git_config_changed": false,
+      "native_linux_runtime": "NOT_RUN"
+    }
+  },
+  "atlas_attempt01": {
+    "status": "REJECTED",
+    "passed": 61,
+    "total": 63,
+    "failed_gates": [
+      "android_emulator:load_elapsed_ms",
+      "android_emulator:fps_relative"
+    ],
+    "descriptor_present_in_current_source": false,
+    "visual_parity": "PASS",
+    "candidate_repeat_pixels": "EXACT_MATCH",
+    "repeat_does_not_override_rejection": true,
+    "thresholds_weakened": false,
+    "rejection": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT01_REJECTION.json"
+  },
+  "candidate_full_qa": {
+    "web": {
+      "cycles": 2,
+      "passed_per_cycle": 34,
+      "total_per_cycle": 34
+    },
+    "android_emulator": {
+      "cycle1": {
+        "passed": 27,
+        "total": 28
+      },
+      "cycle2": {
+        "passed": 25,
+        "total": 28
+      }
+    },
+    "acceptance": "NOT_ACCEPTED",
+    "interaction_soak": {
+      "status": "PASS",
+      "apk": "rejected_candidate_only",
+      "restart_passed": 10,
+      "soak_seconds": 300.75,
+      "process_losses": 0,
+      "not_reused_as_final_apk_evidence": true
+    }
+  },
+  "qa_host_preflight": {
+    "implementation": "tools/codex/runtime_qa_host_guard.js",
+    "unit_tests": {
+      "status": "PASS",
+      "checks": 14
+    },
+    "live_negative_control": "PASS: detected ongoing MTR runtime QA and returned blocked without ADB mutation",
+    "limitation": "start-time read-only process snapshot, not an interprocess lock"
+  },
+  "android_audio_policy": {
+    "status": "PASS",
+    "startup_argument": "-no-audio",
+    "media_stream": 3,
+    "volume": 0,
+    "fail_closed": true
+  },
+  "rollback": {
+    "status": "PASS",
+    "web_build": "PASS",
+    "android_build": "PASS",
+    "fresh_unpacked_apk_sha256": "7CBCDCADA60E0A4B6B1D7F4869FC61C20E0B47D6A9FBB363B6E0DB709F4BCFA4",
+    "apk_bytes": 146279961,
+    "apk_kind": "DEBUG x86_64 emulator QA only; NOT a release/device artifact",
+    "runtime_qa": {
+      "web": {
+        "status": "PASS",
+        "cycles": 2,
+        "passed_per_cycle": 34,
+        "total_per_cycle": 34,
+        "interaction": "PASS",
+        "restart_passed_per_cycle": 10
+      },
+      "android_emulator": {
+        "status": "PASS",
+        "cycles": 2,
+        "passed_per_cycle": 28,
+        "total_per_cycle": 28,
+        "level_startup_cases": 15,
+        "ui_cases": 13,
+        "serial": "emulator-5554",
+        "user": 0,
+        "audio_policy_status": "PASS",
+        "media_volume": 0
+      }
+    },
+    "visual": {
+      "status": "PASS",
+      "web_changed_pixels": 0,
+      "android_changed_pixels": 0,
+      "new_material_near_white_pixels": 0,
+      "all_26_gallery_sprites_visible": true,
+      "manual_level_screens_reviewed": [
+        4,
+        8
+      ],
+      "independent_repeat": "NOT_RUN"
+    },
+    "interaction": {
+      "status": "PASS",
+      "touch": "PASS",
+      "name_persistence": "PASS",
+      "restart_passed": 10,
+      "restart_total": 10,
+      "soak_seconds": 300.642,
+      "process_losses": 0,
+      "pss_start_kb": 206466,
+      "pss_peak_kb": 262938,
+      "pss_end_kb": 200682,
+      "unexpected_diagnostics": 0
+    },
+    "source_texture_count_per_platform": 26,
+    "source_uuid_artifact_count_per_platform": 78,
+    "atlas_accepted": false,
+    "web_server_stopped": true,
+    "emulator_stopped": true
+  },
+  "m2_plus": {
+    "status": "PASS",
+    "scope": "retained source correction, DEBUG gallery and verified unpacked rollback; does not accept the rejected atlas",
+    "applicable_passed": 8,
+    "applicable_total": 8,
+    "recovery_slots_not_applicable": 4,
+    "findings": 0,
+    "first_profile_result": "BLOCKED",
+    "first_profile_reason": "8 CHILD_GATE_ID_MISMATCH findings in temporary preparation; catalog-driven gate IDs corrected and every child/profile rerun",
+    "failed_predecessor_report": "temp/m04-c-families/level_theme_logistics/m2-profile/20261001/profile.first-id-mismatch.json",
+    "report": "temp/m04-c-families/level_theme_logistics/m2-profile/20261001/profile.report.json"
+  },
+  "roadmap": {
+    "execution_complete": 20,
+    "execution_total_current": 73,
+    "execution_remaining_current": 53,
+    "execution_percent": 27.3973,
+    "conditional_units": 7,
+    "source_complete": 28,
+    "source_total": 95,
+    "source_mandatory_remaining": 57,
+    "next_execution_unit": "M04-C-FAMILY-THEME-LOGISTICS"
+  },
+  "release_blockers": [
+    "M02.1",
+    "M02.7",
+    "M12.7"
+  ],
+  "components": {
+    "reviewed_lifebuoy_source_fix": "completed",
+    "regression_prevention": "completed",
+    "rejected_atlas_rollback": "completed",
+    "logistics_atlas_acceptance": "partial"
+  },
+  "static": {
+    "initial_cycles": [
+      {
+        "passed": 28,
+        "total": 28
+      },
+      {
+        "passed": 28,
+        "total": 28
+      }
+    ],
+    "host_guard_cycle": {
+      "passed": 29,
+      "total": 29
+    },
+    "final": {
+      "status": "PASS",
+      "passed": 29,
+      "total": 29,
+      "findings": 0,
+      "report": "temp/m04-c-families/level_theme_logistics/qa/static-checkout-pin/report.json",
+      "sha256": "03C1354D9FC0F0F3D699703CC2F189FC00BE35E27486AA12229C0DEFA3AED3AD"
+    },
+    "pre_checkout_pin": {
+      "status": "PASS",
+      "passed": 29,
+      "total": 29,
+      "findings": 0,
+      "report": "temp/m04-c-families/level_theme_logistics/qa/static-final/report.json",
+      "sha256": "C0C0A49DE77DB87ED166CFDECF7D8046594B7D66544A2AACDCEEF2BE7516FF3C"
+    }
+  },
+  "code_review": {
+    "status": "PASS_FOR_RETAINED_SOURCEFIX_AND_ROLLBACK_ONLY",
+    "corrected_findings": 9,
+    "open_followups": [
+      "Preregister and isolate logistics atlas performance/cache experiment; failure cause unconfirmed.",
+      "Preserve generic unreviewed metadata UUIDs before future full legacy cutter regeneration."
+    ],
+    "report": "docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_CODE_REVIEW_REPORT.md",
+    "external_advisory_used": false
+  },
+  "evidence": [
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/qa/web-rollback-cycle1/report.json",
+      "sha256": "2E7212F0CF80BA95D0C8CB4EB2A642659474F7C6D4ECEE950AC808FAD719051E"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/qa/web-rollback-cycle2/report.json",
+      "sha256": "C79BF821189C16BFE6FCDBC70C65DBC431A2F862EE9504EA7B8418942B17C57F"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/qa/android-rollback-cycle1/android_matrix_cycle1_summary.json",
+      "sha256": "5F182C2DFDF73A9FAC3A83864DB78E1B0A9023F131525EE7DFE8BCA9295DD3D0"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/qa/android-rollback-cycle2/android_matrix_cycle2_summary.json",
+      "sha256": "D7E5C7A72974B5B3BE9821BD3A9C88B5BB5734BF801238E20EE5B42DB7394185"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/qa/android-rollback-interaction/android_interaction_cycle1_summary.json",
+      "sha256": "8CBB59DCF2893A8DF8504149BFEB8599906754B8D864B93AB1EF59C4A221F98B"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/rollback/web/runtime.json",
+      "sha256": "855910E8D92D55EDB61F9732EDA1959E0FC0A3FC7331AAC3BB3A193C9DACDC25"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/rollback/web/artifacts.json",
+      "sha256": "6E95719A450F34C4808303094A1672890FF01CE937181466725E6723A2873135"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/rollback/android/runtime.json",
+      "sha256": "2FC7AA5C241CA0EE0DC0BD90BB02C14D564D0A2E11EB78EE427BFF8EE6E73545"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/rollback/android/artifacts.json",
+      "sha256": "2A3E24F1A87B2B9621BAF789B0E48AD84F432467652F04E40F5826E8AC4345E3"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/rollback/visual-parity.json",
+      "sha256": "0CD303279DB4F5DD33546840691F42E685AE9BA76779D0B6F49A89D5DAC5C7E5"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/comparison/acceptance.json",
+      "sha256": "72E044644CDC2F7087172F02A78091C8AEBD606769DFBE85C7A1011BBEB8F3B8"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/comparison/visual-parity.json",
+      "sha256": "7D95A7C4207BD91D1D1982C2ED5349E3AFD1088DEDBE5794995D8E77413A9321"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/m2-profile/20261001/profile.first-id-mismatch.json",
+      "sha256": "99AC958A09A783D13639BD43F29CE3C6F03950E3184C3234EFE0E3F0808B93DC"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/m2-profile/20261001/profile.report.json",
+      "sha256": "7F28471FA6624CA21DD7A08DC7B977602498545785F4BDD2A9D014E07A85CD35"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/qa/static-final/report.json",
+      "sha256": "C0C0A49DE77DB87ED166CFDECF7D8046594B7D66544A2AACDCEEF2BE7516FF3C"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/m2-profile/20261001/profile.pre-checkout-pin.json",
+      "sha256": "BB9EE81E4D59B72D6C98FE11C62E9EF60E84324CB1975DBA420E2B7C494A47A9"
+    },
+    {
+      "path": "temp/m04-c-families/level_theme_logistics/qa/static-checkout-pin/report.json",
+      "sha256": "03C1354D9FC0F0F3D699703CC2F189FC00BE35E27486AA12229C0DEFA3AED3AD"
+    }
+  ],
+  "acceptance_report": {
+    "status": "partially_working",
+    "backups_created": [
+      "Git pre-change blobs listed in rollback manifest; no duplicate runtime backup."
+    ],
+    "files_changed": "One runtime PNG, DEBUG measurement route, source-pinning/preflight/test tools, canonical manifests/contact-sheet index, roadmap and audit records. PNG .meta unchanged. Exact .gitattributes pin paths keep original CRLF metadata bytes checkout-stable without a global Git change.",
+    "commands_run": [
+      "Run-MtrCocosBuild.ps1 (Web/Android corrected baseline, candidate and unpacked rollback; verified finish)",
+      "Run-MtrWebMatrixQa.js (2 final rollback cycles)",
+      "Run-MtrAndroidEmulatorMatrixQa.ps1 (2 final silent rollback cycles)",
+      "Run-MtrAndroidEmulatorInteractionQa.ps1 (final rollback 10 restarts / 300 s soak)",
+      "Run-MtrWebAtlasPilotQa.js and Run-MtrAndroidAtlasPilotQa.ps1 (rollback gallery and host preflight)",
+      "Compare-MtrAtlasPilotVisuals.py and compare_rollback_visuals.py",
+      "Measure-MtrAtlasPilotArtifacts.js",
+      "quality-gate/run.ps1 + run-profile.ps1 (8 slots)"
+    ],
+    "tests_passed": [
+      "Reviewed-source 13/13 x4, including Git metadata roundtrip with 4 host-policy/path combinations",
+      "QA-host guard 14/14",
+      "Fresh rollback Web 34/34 x2 and Android 28/28 x2",
+      "Final unpacked interaction/name persistence/restart/soak",
+      "Rollback visual exact baseline content match on both platforms",
+      "M2_PLUS 8/8 applicable slots",
+      "Final full static gate 29/29, findings 0"
+    ],
+    "tests_failed_preserved": [
+      "Attempt01 comparison 61/63: Android load/FPS",
+      "Candidate Android full matrices 27/28 and 25/28",
+      "First temporary M2_PLUS profile blocked by exact slot/gate ID mismatch; corrected without relaxing the runner"
+    ],
+    "risks": [
+      "Atlas unit incomplete despite retained source correction.",
+      "Performance failure cause unconfirmed.",
+      "Full legacy recut NOT_RUN; generic unreviewed UUID preservation still needed.",
+      "Release blockers remain; emulator-only APK is not device release acceptance."
+    ],
+    "next_steps": [
+      "Verify final checkpoint and source projection.",
+      "Preregister one isolated paired performance/cache experiment before another descriptor.",
+      "Preserve silence and emulator-only QA; do not weaken gates or cherry-pick repeats."
+    ]
+  },
+  "control_checkpoint": "docs/qa/CONTROL_LOG_CHECKPOINT_20261001_M04_C_FAMILY_THEME_LOGISTICS_PARTIAL.md"
+}

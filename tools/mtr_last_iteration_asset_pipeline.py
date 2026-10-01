@@ -15,6 +15,7 @@ from typing import Any
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from asset_generation.reviewed_runtime_sources import apply_sources, preflight_sources
 
 
 RUNTIME_ROOT = Path("assets/resources/objectives/themed/last_iteration")
@@ -1737,6 +1738,9 @@ def validate_entries(entries: list[dict[str, Any]], source_count: int) -> tuple[
 def process_all(args: argparse.Namespace) -> dict[str, Any]:
     project_root = Path(args.project_root).resolve()
     source_dir = Path(args.source_dir).resolve()
+    # Fail before the legacy extraction/clean flow if any reviewed source pin
+    # is unavailable or invalid. The full cut pipeline is not run by QA.
+    preflight_sources(project_root)
     sources = sorted_source_pngs(source_dir)
     warnings: list[str] = []
     if len(sources) < len(SHEET_SLOTS):
@@ -1760,6 +1764,10 @@ def process_all(args: argparse.Namespace) -> dict[str, Any]:
     supplemental_ui_entries, supplemental_ui_warnings = ensure_supplemental_ui_assets(project_root, entries)
     entries.extend(supplemental_ui_entries)
     warnings.extend(supplemental_ui_warnings)
+
+    # Restore reviewed enclosed-alpha fixes after the sheet cutters. This also
+    # restores their pinned Cocos identity rather than generating new UUIDs.
+    apply_sources(project_root, entries, apply=True)
 
     validation, validation_warnings = validate_entries(entries, len(sources))
     warnings.extend(validation_warnings)

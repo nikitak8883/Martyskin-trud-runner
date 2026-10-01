@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright-core');
+const { assertHostQuiescent } = require('./runtime_qa_host_guard');
 
 const ALLOWED_ARGUMENTS = new Set([
     '--project-root',
@@ -69,6 +70,7 @@ async function main() {
         throw new Error('Invalid --timeout-ms.');
     }
     const projectRoot = path.resolve(options.projectRoot);
+    const hostPreflight = assertHostQuiescent(projectRoot);
     const output = resolveContained(projectRoot, options.output, '--output');
     const runtimeFunctionPath = resolveContained(projectRoot, options.runtimeFunction, '--runtime-function');
     const url = validateLoopbackUrl(options.url);
@@ -84,6 +86,7 @@ async function main() {
         page.setDefaultTimeout(options.timeoutMs);
         await page.goto(url, { waitUntil: 'commit', timeout: options.timeoutMs });
         const report = await runtimeFunction(page);
+        report.hostPreflight = hostPreflight;
         const screenshot = resolveContained(projectRoot, report.screenshot, 'runtime screenshot');
         const pathForComparison = (value) => {
             const normalized = path.normalize(value);

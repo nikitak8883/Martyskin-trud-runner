@@ -11,10 +11,10 @@
   },
   "source": {
     "atlasManifest": "assets/resources/config/atlas_manifest.json",
-    "atlasManifestSha256": "BD2148851BE1E28CCE3313ACE4BE71754A7D10B1487D0C52840C427C4034011B",
+    "atlasManifestSha256": "3228BA5E43F71F53509A08C345F72BD25933FCD78F8C3E24B18AC515405D978D",
     "contentIdentity": "assets/resources/config/content_identity.json",
     "logicalContentVersion": "mtr-v3-source-4492deee4209",
-    "sourcePayloadSha256": "F3CD1B18F1AB592343CA25B467B811D01E32F439C4BE11881BDD8374EB42E2F8"
+    "sourcePayloadSha256": "E683ED8E63F4959528D27C89D707026F9835FDB4ACBB1421406ACF732D707B7F"
   },
   "materialization": {
     "policy": "local_qa_evidence_not_runtime_not_committed",
@@ -23,7 +23,7 @@
     "checkCommand": "python -B tools/codex/render_m04_b_contact_sheets.py --project-root . --check",
     "html": {
       "path": "temp/m04-b-contact-sheets/m04b_contact_sheet_index.html",
-      "sha256": "38A5DA94A738E6E878F6945AA0EA0D49C4585857F6EF46DBB5F53A6B07C40D53",
+      "sha256": "BA530A3E579313077E26FD509E223B029806A6B298E4C5D066666DCDEB35789D",
       "bytes": 7016
     }
   },
@@ -30136,7 +30136,7 @@
       "label": "Obstacles and platforms",
       "assetCount": 290,
       "sheetCount": 5,
-      "sourceDigest": "DF02A57ED218F923BE91DA6E7D30B72621D61A18F793082A3EECA45F71AF45DE",
+      "sourceDigest": "1C82D2E1BD834FA412A871947678B5F48B8D7DACCC6746D3170883D6A4EA7A50",
       "atlasIds": [
         "level_theme_archive",
         "level_theme_construction",
@@ -30192,8 +30192,8 @@
         {
           "id": "obstacles-03",
           "path": "temp/m04-b-contact-sheets/m04b_obstacles-03.png",
-          "sha256": "CA472A0E61BA7D923F9AB1F1740D0888740F78FABFA4E3AF06E03329E3FB0352",
-          "bytes": 1166612,
+          "sha256": "78B8FF04FC8DAB7D64197F5A1AF8C79CBD0FF8A2AA5B13F38980058FDE3D0D30",
+          "bytes": 1164666,
           "width": 1432,
           "height": 1464,
           "assetCount": 64
@@ -34167,8 +34167,8 @@
         },
         {
           "path": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_002.png",
-          "sha256": "DA20B121FB6961A2FA31B91328CB2DD64FE2D90C58732EFAA2456A07DA6CAD44",
-          "bytes": 87246,
+          "sha256": "0A430E298AF44E9615DB233AE1847FBDAFAAB73792AD30AE190D435D09504933",
+          "bytes": 86580,
           "width": 244,
           "height": 232,
           "mode": "RGBA",
