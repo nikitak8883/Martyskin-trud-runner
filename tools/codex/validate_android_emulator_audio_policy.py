@@ -3,6 +3,11 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import re
+
+
+def has_am_start(text: str) -> bool:
+    return re.search(r"['\"]am['\"]\s*,\s*['\"]start['\"]", text) is not None
 
 
 def require(text: str, needle: str, label: str, errors: list[str]) -> None:
@@ -52,7 +57,7 @@ def main() -> int:
     qa_scripts: list[Path] = []
     for path in sorted(tools.glob("Run-MtrAndroid*Qa.ps1")):
         text = path.read_text(encoding="utf-8")
-        if "'am', 'start'" in text:
+        if has_am_start(text):
             qa_scripts.append(path)
             require(text, "MtrAndroidQaAudioGuard.ps1", path.name, errors)
             require(text, "Assert-MtrAndroidQaAudioMuted", path.name, errors)

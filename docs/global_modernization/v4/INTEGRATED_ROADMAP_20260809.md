@@ -2,6 +2,15 @@
 
 ## Текущее положение
 
+- Native lifecycle supplement: distinct retained-Intent loss reproduced and
+  narrow repair/debug tracing verified on fresh emulator APK:5/5 x4 focused
+  cycles,28/28 x2 Android startup/UI/all15-level matrices; clean local36/36.
+  Web build passes but runtime NOT_RUN due server-start execution-policy rejection
+  (no workaround). This is partial diagnostic acceptance, not full gameplay.
+  Original pre-window boot issue stays open. Silent lifecycle regression becomes
+  the36th canonical static step; no execution-unit/count/atlas-protocol changes.
+  See `docs/qa/ANDROID_NATIVE_LIFECYCLE_REPAIR_20261001.md`.
+
 - Дополнение 2026-10-01: беззвучный QA закреплён для Android/Web, opt-in cold boot
   проверяется fail-closed. Attempt02 protocol revision4 заранее фиксирует четыре
   сбалансированные пары и отдельные cold/warm-storage cohorts без ослабления gates;
@@ -46,7 +55,7 @@ Release remain partial; native bootstrap and attempt02 acceptance remain open.
 - machine-readable v4 execution DAG;
 - library adoption/rejection manifest;
 - schema-first roadmap validator и отрицательные тесты;
-- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 35 steps.
+- исторический 11-step static gate и повторный plan audit; текущий cumulative gate содержит 36 steps.
 
 ### `TC-01` — complete
 

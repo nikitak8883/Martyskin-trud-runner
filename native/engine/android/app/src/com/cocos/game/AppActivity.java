@@ -28,6 +28,9 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.content.pm.ApplicationInfo;
+import android.os.SystemClock;
+import android.util.Log;
 
 import com.cocos.service.SDKWrapper;
 import com.cocos.lib.CocosActivity;
@@ -64,14 +67,32 @@ public class AppActivity extends CocosActivity {
     };
 
     private static String startupQuery = "";
+    private boolean lifecycleTraceEnabled;
+
+    // Debug-only, numeric lifecycle evidence. Never log Intent/user data.
+    private void traceLifecycle(String event) {
+        if (!lifecycleTraceEnabled) return;
+        Configuration config = getResources().getConfiguration();
+        Log.d("MtrNativeLifecycle", "MTR_NATIVE_LIFECYCLE event=" + event
+            + " instance=" + System.identityHashCode(this)
+            + " uptimeMs=" + SystemClock.uptimeMillis()
+            + " changing=" + isChangingConfigurations()
+            + " finishing=" + isFinishing()
+            + " configChanges=" + getChangingConfigurations()
+            + " density=" + config.densityDpi
+            + " orientation=" + config.orientation
+            + " uiMode=" + config.uiMode);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        lifecycleTraceEnabled = (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        traceLifecycle(savedInstanceState == null ? "create_enter_fresh" : "create_enter_saved");
         updateStartupQueryFromIntent(getIntent());
         super.onCreate(savedInstanceState);
-        // DO OTHER INITIALIZATION BELOW
+        traceLifecycle("create_after_cocos");
         SDKWrapper.shared().init(this);
-
+        traceLifecycle("create_ready");
     }
 
     public static String getStartupQuery() {
@@ -106,24 +127,32 @@ public class AppActivity extends CocosActivity {
 
     @Override
     protected void onResume() {
+        traceLifecycle("resume_enter");
         super.onResume();
         SDKWrapper.shared().onResume();
+        traceLifecycle("resume_ready");
     }
 
     @Override
     protected void onPause() {
+        traceLifecycle("pause_enter");
         super.onPause();
         SDKWrapper.shared().onPause();
+        traceLifecycle("pause_ready");
     }
 
     @Override
     protected void onDestroy() {
+        traceLifecycle("destroy_enter");
         super.onDestroy();
+        traceLifecycle("destroy_after_cocos");
         // Workaround in https://stackoverflow.com/questions/16283079/re-launch-of-activity-on-home-button-but-only-the-first-time/16447508
         if (!isTaskRoot()) {
+            traceLifecycle("destroy_non_root");
             return;
         }
         SDKWrapper.shared().onDestroy();
+        traceLifecycle("destroy_ready");
     }
 
     @Override
@@ -134,9 +163,13 @@ public class AppActivity extends CocosActivity {
 
     @Override
     protected void onNewIntent(Intent intent) {
+        traceLifecycle("new_intent_enter");
+        // onNewIntent does not replace getIntent(); recreation must use the latest launch.
+        setIntent(intent);
         updateStartupQueryFromIntent(intent);
         super.onNewIntent(intent);
         SDKWrapper.shared().onNewIntent(intent);
+        traceLifecycle("new_intent_ready");
     }
 
     @Override
@@ -147,8 +180,10 @@ public class AppActivity extends CocosActivity {
 
     @Override
     protected void onStop() {
+        traceLifecycle("stop_enter");
         super.onStop();
         SDKWrapper.shared().onStop();
+        traceLifecycle("stop_ready");
     }
 
     @Override
@@ -159,8 +194,10 @@ public class AppActivity extends CocosActivity {
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
+        traceLifecycle("configuration_enter");
         SDKWrapper.shared().onConfigurationChanged(newConfig);
         super.onConfigurationChanged(newConfig);
+        traceLifecycle("configuration_ready");
     }
 
     @Override
@@ -171,14 +208,18 @@ public class AppActivity extends CocosActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
+        traceLifecycle("save_enter");
         SDKWrapper.shared().onSaveInstanceState(outState);
         super.onSaveInstanceState(outState);
+        traceLifecycle("save_ready");
     }
 
     @Override
     protected void onStart() {
+        traceLifecycle("start_enter");
         SDKWrapper.shared().onStart();
         super.onStart();
+        traceLifecycle("start_ready");
     }
 
     @Override

@@ -9,7 +9,34 @@ Purpose: compact resume point for Codex/Hermes/local-worker runs.
 
 Status: `m04_c_theme_logistics_partial / alpha_source_fixed / atlas_attempt01_rejected / rollback_verified / release_blocked`
 
-## 2026-10-01 PNG/CLI portability repair active overlay
+## 2026-10-01 native lifecycle active overlay
+
+- Exact published PNG/CLI source `d30c86738226ff64c745fc261d7b76a3ebc54073`
+  passed hosted run36854573729 Windows35/35 and Linux35/35, with downloaded
+  clean/stable source-pinned receipts. Prior failed receipts are preserved.
+- Native investigation reproduced a distinct latest-Intent loss after Activity
+  recreation: levels request returns original menu on the previous APK. A narrow
+  retention fix and debug-only numeric lifecycle trace are implemented. Fresh
+  builds at clean1e3e347a; successor6b419803 keeps product inputs identical.
+  Four silent lifecycle cycles pass5/5 each; two Android startup/UI/all15-level
+  matrices pass28/28 each. Original rare pre-window cold-boot failure
+  is NOT closed by positive baseline/density controls.
+- New silent emulator-only lifecycle QA and static contracts grow the canonical
+  gate35->36 steps; no atlas revision4/tool-pin/threshold change. See
+  `docs/qa/ANDROID_NATIVE_LIFECYCLE_REPAIR_20261001.md`.
+- Counts remain20/73,53 mandatory +7 conditional; source28/95. Attempt02 inputs
+  and samples NOT_RUN; parent M04-C/M04.5 and Release remain partial.
+- Clean/stable exact6b419803 local static gate passes36/36. Failed controls and
+  all72 static output artifacts are preserved. Scoped review and sampled visual
+  QA passed; this is not full campaign/all-skin or Release acceptance.
+- Web build succeeded; runtime matrices NOT_RUN because localhost server launch
+  was rejected by execution policy before execution. No bypass/retry was made.
+  Emulator stopped,zero residents; product audio/preferences unchanged.
+- Next: verify post-commit source-only publication/actual hosted receipts, then
+  obtain a permitted Web QA entrypoint and continue native cold-start diagnosis
+  before atlas attempt02 admission. See final local handoff/Hermes checkpoint.
+
+## 2026-10-01 PNG/CLI portability repair prior overlay
 
 - Previous exact source `bfeb49a46a070c83c6c7db80ffbac787e465fe84` has real hosted
   Windows `33/34`, Linux `31/34` (run `36849094035`). All four earlier fixes pass,

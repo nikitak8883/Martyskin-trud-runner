@@ -5,6 +5,16 @@
   "artifact_directory": "temp/quality-gate-m01-6/artifacts",
   "steps": [
     {
+      "id": "android-native-lifecycle-contracts",
+      "mandatory": true,
+      "enabled": true,
+      "executable": "python",
+      "arguments": ["-B", "-m", "unittest", "discover", "-s", "tools/codex/tests", "-p", "test_native_activity_lifecycle.py", "-v"],
+      "working_directory": ".",
+      "timeout_seconds": 60,
+      "expected_exit_codes": [0]
+    },
+    {
       "id": "canonical-png-codec-contracts",
       "mandatory": true,
       "enabled": true,
