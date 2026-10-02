@@ -1,0 +1,53 @@
+{
+  "schema": "mtr.reviewed_generated_source_history.v1",
+  "unit": "M04-C-QA-SOURCE-MATTE-01",
+  "date": "2026-10-02",
+  "mode": "built-in-imagegen",
+  "prompts": {
+    "logistics_pallet_20261002_prompt": "Use case: background-extraction / precise-object-edit. Input image is the EDIT TARGET, an existing game sprite, not a style inspiration. Return the SAME SINGLE wooden pallet platform as a genuinely transparent RGBA PNG. Correct only its cutout: remove the opaque white strips behind the four front openings between its five wooden support blocks; those openings are empty air and must be entirely transparent, including beneath the upper deck. Preserve the full extremely wide thin silhouette (approximately 6.85:1 trimmed aspect), same low oblique front view, same five support blocks and four openings, same top board count and arrangement, top and bottom beams, nails, brown dark outlines, ochre golden wood grain, worn hand-painted cartoon construction game style. Preserve shape, proportions, topology, top walkable surface and thickness aggressively; do not invent a new pallet, change camera, add feet/props/background/shadow. Keep highlights on wooden material; only gaps and outside object have transparent alpha. Center the complete original object with a transparent margin, do not crop its ends. Crisp production sprite, no text, no labels, no checkerboard, no white backing, no ground plane. Transparent pixels must be real alpha=0, not painted black or white.",
+    "logistics_pallet_20261002_v2_prompt": "Use case: background-extraction, precise-object-edit. Edit this SAME wooden pallet sprite only to produce a STRICT clean game cutout. The current image includes accidental barely-visible alpha=1 pixels far away from the pallet, incorrectly enlarging its bounding box. Remove absolutely all stray pixels, haze or residue outside the physical wood silhouette. Every pixel outside the physical object and in its four openings must be EXACTLY alpha=0, with NO near-transparent artifacts anywhere in the large empty margin. Keep the original pallet geometry, five wooden support blocks, four openings, same top boards, bottom beam, brown/ochre palette, worn painted cartoon look, very wide thin 6.85:1 silhouette and low oblique front camera. Complete object fully inside image with a small clear transparent margin, not cropped, no extra props, text or backdrop. No white backing in any opening; transparent empty air. Preserve wood grain, bolts, dark outlines, gold highlights. Production RGBA PNG. Only the pallet should determine the alpha bounding box.",
+    "logistics_net_20261002_prompt": "Use case: background-extraction / precise-object-edit. Input image is the EDIT TARGET, an existing game sprite, not a style inspiration. Return the SAME SINGLE horizontally stretched brown braided rope-net platform as a genuinely transparent RGBA PNG. Correct only the cutout: ALL diamond/triangular mesh openings are empty air, with transparent alpha up to the rope edges. Remove residual opaque white triangular background fragments inside the mesh, but preserve all legitimate cream/golden highlights painted ALONG the rope strands, knots and loops. Preserve the original complete net silhouette (approximately 3.03:1 trimmed aspect), same low front oblique angle, same upper curved taut horizontal rope, lower rope, four corner loops, five vertical knotted interior dividers, same crossed diagonals and mesh topology, worn ochre-brown braided fibers and dark outline, painted cartoon logistics/construction game style. Do not redraw as a different net, change camera/strand count, flatten the shading, add supports/props/background/shadow. Center complete full object with transparent margin, no clipped loops. Crisp production sprite. No scenery/text/labels/checkerboard/white backing/black fill. Outside the rope and inside every opening must be true alpha=0; highlight pixels on rope stay opaque.",
+    "logistics_net_20261002_v2_prompt": "Use case: background-extraction. This attached rope net is the EDIT TARGET. IMPORTANT: the previous cutout is FAILED because opaque WHITE TRIANGULAR PATCHES remain between the brown ropes and inside the four loop holes. REMOVE ALL of those white backing pieces. The entire background is empty air: every space not occupied by brown rope must have zero alpha. In particular remove the broad white strip just below the top heavy rope, ALL white triangles above/below each brown horizontal rope and along the diagonals, the white corners flanking each transparent diamond, and the white discs inside all four corner loops. Do not merely clear the diamond centers; the full openings must be transparent right to the rope edge. Preserve all brown/ochre/gold braided rope, knots, complete outline, loops, exact strand arrangement, facing, silhouette and proportions. Highlights which are painted along rope fibers may stay; flat white backing spanning gaps must disappear. Keep a single original net production game sprite, no new object, no scene, no text, no shadow, no fill, no checkerboard. Output genuinely transparent RGBA, outside and every gap alpha=0. THIS IS STRICT BACKGROUND REMOVAL, not style recreation."
+  },
+  "attempts": [
+    {
+      "asset": "pallet",
+      "iteration": 1,
+      "sha256": "52DFE13A6D2176C9600C090C24152B77EF62CA47704F9A71EFD1231350444895",
+      "disposition": "rejected_normalization_geometry_due_to_far_margin_alpha1",
+      "retention": "workspace_private/temp/logistics-source-alpha-20261002/pallet-generated-rejected-v1.png"
+    },
+    {
+      "asset": "pallet",
+      "iteration": 2,
+      "sha256": "6A1FD235CB25F07CC88B67C8C49738D08728BD4A98F85C085D90C10A7E293043",
+      "disposition": "reviewed_with_explicit_frame_and_no_visible_pixel_clipping",
+      "source_frame": [
+        19,
+        198,
+        2140,
+        520
+      ]
+    },
+    {
+      "asset": "rope_net",
+      "iteration": 1,
+      "sha256": "836DB4C50C5741F518AA322CF222D9F3D606AA79F3167C111C46619B77EE16CC",
+      "disposition": "rejected_opaque_white_triangular_backing",
+      "retention": "workspace_private/temp/logistics-source-alpha-20261002/net-generated-rejected-v1.png"
+    },
+    {
+      "asset": "rope_net",
+      "iteration": 2,
+      "sha256": "30178C9621A3DE6B5BCDA8630FA27F6531C8D06098AC6C6AFC94BA9BF1E6BF68",
+      "disposition": "reviewed_transparent_mesh_and_loops_preserved_highlights"
+    }
+  ],
+  "environment_issue": {
+    "code": "ModuleNotFoundError_zlib_ng",
+    "cause": "base_python_invoked_instead_of_existing_pinned_validator",
+    "resolution": "reuse bootstrap-verified venv-py313-2fbd8ac10b67; no global install/codec fallback/pin refresh"
+  },
+  "runtime_acceptance": "NOT_RUN",
+  "release_accepted": false
+}

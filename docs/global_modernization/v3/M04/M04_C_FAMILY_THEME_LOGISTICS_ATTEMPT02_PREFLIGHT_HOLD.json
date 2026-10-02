@@ -1,0 +1,59 @@
+{
+  "schema": "mtr.atlas_input_quality_disposition.v1",
+  "unit_id": "M04-C-FAMILY-THEME-LOGISTICS",
+  "attempt_id": "logistics-attempt02-20261001",
+  "execution_date": "2026-10-02",
+  "status": "not_admitted_source_art_quality_hold",
+  "input_source": "d34f953879fdc7085a641b49eea6a834676043a7",
+  "protocol_revision": 4,
+  "protocol_sha256_utf8_lf": "41f0eaf2e08268282005f0b7f14eb5a5a469fde64145db15b1872de53136d5ff",
+  "input_admission": false,
+  "registered_android_samples": 0,
+  "registered_web_samples": 0,
+  "experiment_runtime": "NOT_RUN",
+  "performance_decision": "NOT_EVALUATED",
+  "qualification": {
+    "purpose": "functional_input_preflight_only_not_performance_samples",
+    "web_pairs": 4, "web_pass_count": 272, "web_case_count": 272,
+    "android_pairs": 4, "android_pass_count": 224, "android_case_count": 224,
+    "galleries": 16, "sources_per_gallery": 26,
+    "web_restart_iterations": 80,
+    "automated_visual_paired_comparisons": 4,
+    "automated_visual_and_independent_repeat_status": "PASS",
+    "new_near_white_pixels_per_platform_comparison": 0,
+    "manual_source_visual_gate": "FAIL_preexisting_interior_matte",
+    "all_runs_muted": true,
+    "source_png_metadata_runtime_native_and_build_configs_identical_across_states": true,
+    "owned_preview_and_emulator_stopped": true,
+    "coverage_boundary": "13_UI_surfaces_and_start_gates_for_all_15_levels;not_full_campaign_or_every_skin_pose"
+  },
+  "finding": {
+    "id": "M04-C-QA-SOURCE-MATTE-01",
+    "atlas_regression": false,
+    "runtime_keys": [
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_001",
+      "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003"
+    ],
+    "note": "Zero new white pixels is relative parity, not proof of the absolute no-matte quality requirement. A prior rope-net fix and its exact current source hash are retained as provenance; no historical snapshot is rewritten. Bright-pixel counts alone are not a universal defect classifier."
+  },
+  "rollback": {
+    "scope": "only_experimental_logistics_pac_and_meta",
+    "descriptor_uuid": "95e8064a-5f85-4201-ab02-874220207a29",
+    "source_topology": "restored_unpacked_before_independent_art_unit",
+    "accepted_atlas_ownership_registered": false,
+    "source_art_modified_by_this_disposition": false,
+    "sealed_input_and_original_protocol_retention": "immutable_local_evidence_kept"
+  },
+  "evidence": [
+    {"scope": "workspace_private", "path": "temp/atlas-paired-inputs-20261001/CONTROL_STATUS.json", "sha256": "C9769A3EB0845A6DD4A9497C15EA7483A48A968750240118A811C9143BD02D79"},
+    {"scope": "workspace_private", "path": "temp/atlas-paired-inputs-20261001/RUNTIME_QUALIFICATION_REVIEW.json", "sha256": "9E1271CFE86BC3A8535D4B0C3377EF7734D595B7B625A16932C31A63EA8C5C34"},
+    {"scope": "workspace_private", "path": "temp/atlas-paired-inputs-20261001/SOURCE_MATTE_FINDING.json", "sha256": "70146E561B8391FEFEEA47D9BD2CE116686494BC5045F6099B925B5424E55981"},
+    {"scope": "project_private", "path": "temp/atlas-attempt02-inputs-20261001/qualification-visual/report.json", "sha256": "98C55FD2B880CF13BC7F2395FD148F7DCD86A330CD2D9C22C774B4D6B7C4B5A4"}
+  ],
+  "next": "Independent reviewed source cutout correction, unchanged geometry/UUID/pivot/trim/collision, negative controls, fresh silent Web and Android QA, then fresh source inventory and preregistration. Do not relabel old qualification data as timed samples or modify the frozen attempt02 inputs.",
+  "roadmap_completed": 20,
+  "roadmap_total": 73,
+  "mandatory_remaining": 53,
+  "conditional_remaining": 7,
+  "release_accepted": false
+}

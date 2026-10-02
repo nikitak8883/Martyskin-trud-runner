@@ -2,6 +2,19 @@
 
 ## Текущее положение
 
+- 2026-10-02, M04-C-QA-SOURCE-MATTE-01: two reviewed transparent logistics PNG
+  replacements are integrated;24 other PNGs/all26 metadata and runtime/native/
+  collision contracts are unchanged. Clean static37/37 x4; four matrices each:
+  fresh sealed Web136/136 total and Android emulator112/112 total,8 galleries
+  and40 Web restarts pass silently.
+  This closes only the targeted pallet/net repair, not family/Release acceptance.
+  Current gallery review confirms pre-existing coil matte02 and retains pallet-
+  jack grip semantic review03. Next: holistic26-source review and coil correction,
+  then NEW symmetric inputs/preregistration; frozen attempt02 remains HOLD,
+  zero samples/NOT_RUN. No denominator credit:20/73,53 mandatory+7 conditional,
+  source28/95. Full campaign/exhaustive poses and signed/device-valid Release
+  remain open. See `docs/qa/LOGISTICS_REVIEWED_SOURCE_RUNTIME_QA_20261002.md`.
+
 - Input-integrity prerequisite: revision4's required all-file staged hashes now
   have a deterministic standard-library seal/verify layer, independent outer pin,
   strict membership/path/schema/link/mutation checks and exclusive publication.

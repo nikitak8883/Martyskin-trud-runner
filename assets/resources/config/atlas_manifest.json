@@ -3,7 +3,7 @@
   "schema_version": 1,
   "contract": "mtr.atlas_manifest",
   "status": "contract_with_measured_runtime_families",
-  "generated_at": "2026-09-09T18:16:32+03:00",
+  "generated_at": "2026-10-02T13:23:48Z",
   "source_checkpoint": {
     "repository": "https://github.com/nikitak8883/Martyskin-trud-runner.git",
     "branch": "mtr-source-v3",
@@ -39,8 +39,8 @@
     ],
     "source_payload": {
       "count": 1647,
-      "bytes": 116454099,
-      "sha256": "E683ED8E63F4959528D27C89D707026F9835FDB4ACBB1421406ACF732D707B7F"
+      "bytes": 116455004,
+      "sha256": "85758D221070A927D2734A53DB8A708EE8133285313010687FEB2B4D9A26651B"
     },
     "cocos_metadata": {
       "count": 1894,
@@ -49,7 +49,7 @@
     },
     "png_validation": {
       "count": 1528,
-      "bytes": 107145957,
+      "bytes": 107146055,
       "alpha_count": 1527,
       "non_alpha_count": 1,
       "decode_error_count": 0,
@@ -60,10 +60,10 @@
     "extension_counts": {
       ".html": {"count": 1, "bytes": 9969},
       ".jpg": {"count": 30, "bytes": 5999213},
-      ".json": {"count": 35, "bytes": 1164250},
+      ".json": {"count": 35, "bytes": 1165057},
       ".mp3": {"count": 1, "bytes": 116284},
       ".pac": {"count": 12, "bytes": 420},
-      ".png": {"count": 1528, "bytes": 107145957},
+      ".png": {"count": 1528, "bytes": 107146055},
       ".wav": {"count": 40, "bytes": 2018006}
     }
   },
@@ -129,7 +129,7 @@
       "bundle_id": "resources",
       "provenance": ["assets/resources/config/content_identity.json"],
       "asset_count": 29,
-      "total_bytes": 953346,
+      "total_bytes": 954153,
       "fallback_policy": "block_release"
     },
     {
@@ -273,7 +273,7 @@
       "bundle_id": "resources",
       "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
       "asset_count": 26,
-      "total_bytes": 2313121,
+      "total_bytes": 2313219,
       "fallback_policy": "block_release"
     },
     {
@@ -650,7 +650,7 @@
         "dynamic_atlas_allowed": false
       },
       "provenance": ["assets/resources/config/last_iteration_asset_manifest.generated.json"],
-      "observed": {"count": 227, "bytes": 19199375},
+      "observed": {"count": 227, "bytes": 19199473},
       "fallback_policy": "block_release",
       "runtime_effect": false
     },

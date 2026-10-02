@@ -2775,7 +2775,7 @@
       "sourceSlot": "logistics_base",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_49_20 (2).png",
       "sourceSha256": "F226F283C9A5E230BEFEE033494F0E8CF92881373ECF9575A0FBE2A9326A5234",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -2819,7 +2819,14 @@
       "logicalType": null,
       "critical": true,
       "runtimeEnabled": true,
-      "runtimeSha256": "E4E3D1AA3AAC796BD7F66E36692338862F45B72275C2A7D20E903FECCC37816E"
+      "runtimeSha256": "42C8EA09D19E0CD624E2456A4637A18D2CE9F71EF608C0865525B0C7B3E97517",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/pallet-runtime-v2.png",
+        "source_sha256": "42C8EA09D19E0CD624E2456A4637A18D2CE9F71EF608C0865525B0C7B3E97517",
+        "meta_sha256": "13FA84D1C1003DDA941EA0A6254523F260580DF69F33A4A296D7704E846D6B15",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 2,
@@ -8877,7 +8884,7 @@
       "sourceSlot": "logistics_extended",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_50_09 (2).png",
       "sourceSha256": "5F5FAE3F8069C3DD5C2418F402E4050927BDCAC0F2861D806E9ED518D1EFA8D1",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -8921,7 +8928,14 @@
       "logicalType": null,
       "critical": true,
       "runtimeEnabled": true,
-      "runtimeSha256": "BDC1A0A66D2D2F554D623357780D78BCD18FB0F87B194272419AE35DE6D79883"
+      "runtimeSha256": "676192F42CC4FEA67CA2DEC8350D300A6E7E6887EB3B0635AD74DBA18563D3A2",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/rope-net-runtime.png",
+        "source_sha256": "676192F42CC4FEA67CA2DEC8350D300A6E7E6887EB3B0635AD74DBA18563D3A2",
+        "meta_sha256": "710567E174E4D72AE24ECE27E82726CAFB0C98A7C14F097C7A84569D014116CF",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 12,

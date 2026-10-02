@@ -1,0 +1,175 @@
+{
+  "schema": "mtr.logistics_reviewed_source_qa.v1",
+  "utc": "2026-10-02T14:50:33.0161911+00:00",
+  "unit": "M04-C-QA-SOURCE-MATTE-01",
+  "tested_source": "201fc1fb9814fb8e4137ce86d657acd07cf3d905",
+  "status": "completed_targeted_fix_and_functional_qualification",
+  "roadmap": {
+    "position": "M04-C/FAMILIES/M04-C-FAMILY-THEME-LOGISTICS",
+    "completed": 20,
+    "total": 73,
+    "percent": 27.3973,
+    "mandatory_remaining": 53,
+    "conditional_remaining": 7,
+    "source_ledger_completed": 28,
+    "source_ledger_total": 95,
+    "source_mandatory_remaining": 57,
+    "source_conditional": 10,
+    "parent_status": "partial"
+  },
+  "source_scope": {
+    "changed_runtime_png": 2,
+    "unchanged_other_logistics_png": 24,
+    "unchanged_meta": 26,
+    "unchanged_runtime_native_build_configuration": true,
+    "unchanged_collision_contracts": true,
+    "unchanged_other_contact_assets": 1556,
+    "unchanged_other_contact_sheets": 28
+  },
+  "assets": [
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_001",
+      "png_sha256": "42C8EA09D19E0CD624E2456A4637A18D2CE9F71EF608C0865525B0C7B3E97517",
+      "canvas": [
+        677,
+        109
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        671,
+        103
+      ],
+      "uuid": "b2a2ae16-6016-41d5-80dc-b61ade2cd7d7"
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003",
+      "png_sha256": "676192F42CC4FEA67CA2DEC8350D300A6E7E6887EB3B0635AD74DBA18563D3A2",
+      "canvas": [
+        466,
+        162
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        460,
+        156
+      ],
+      "uuid": "bd3f7950-3e52-4545-93df-a4d0f632d436"
+    }
+  ],
+  "static": {
+    "cycles": 4,
+    "gates_each": 37,
+    "pass": 148,
+    "dirty_override": false,
+    "source_methods": 17,
+    "independent_verifier_negative_methods": 6
+  },
+  "runtime": {
+    "web_cycles": 4,
+    "web_pass": 136,
+    "web_restarts": 40,
+    "android_cycles": 4,
+    "android_pass": 112,
+    "exact_apk_menu_checks": 4,
+    "galleries": 8,
+    "source_png_bindings_each_build": 26,
+    "apk_sha256": "27117ECE0428137345FC4D2A3C3DF216559A1BA5835AFAD62F6E6A0B1645F1D9",
+    "apk_kind": "debug_x86_64_not_phone_release",
+    "android_serial": "emulator-5554",
+    "android_user": 0,
+    "android_boot_flags": [
+      "-no-audio",
+      "-no-snapshot-load",
+      "-no-snapshot-save",
+      "-no-window"
+    ],
+    "android_media_stream3": 0,
+    "web_args": [
+      "--mute-audio"
+    ],
+    "product_audio_preferences_modified": false,
+    "physical_device_used": false,
+    "owned_emulator_stopped": true,
+    "owned_preview_stopped": true
+  },
+  "visual": {
+    "targeted_fix": "PASS",
+    "same_platform_gallery_repeats": "PASS_pixel_identical",
+    "manually_inspected_level_start_screens": [
+      4,
+      8,
+      11,
+      14
+    ],
+    "family_art": "HOLD",
+    "full_campaign": "NOT_RUN",
+    "exhaustive_skin_poses": "NOT_RUN"
+  },
+  "retained_failures": {
+    "first_static_cycle": "33/37;stale_current_catalogs_repaired",
+    "initial_web_gallery": "WebGL_context_loss;not_reproduced_in_old/new/old/new_controls;root_cause_NOT_ESTABLISHED",
+    "rejected_generated_variants": true,
+    "failed_runs_counted_as_pass": false,
+    "renderer_warning_allowlist_changed": false
+  },
+  "receipts": {
+    "web": {
+      "sha256": "A2E53C32B5B2E0C886D67B268479B928265D9947AE1AD0CF5FD42C4ED0427BD3",
+      "path": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/temp/logistics-source-alpha-20261002/web-successor2/summary.json"
+    },
+    "jack": {
+      "sha256": "7C8B60287DE505B71277D9218850144FC1AB374FF562CDD69684FF163DD82F28",
+      "path": "temp/logistics-source-alpha-20261002/FOLLOWUP_JACK_HANDLE_REVIEW.json"
+    },
+    "coil": {
+      "sha256": "C785DAEAD2AAB9A7173A0D2668984A599FB2156933BB8AA1B8DD269EC5544E40",
+      "path": "temp/logistics-source-alpha-20261002/FOLLOWUP_COIL_MATTE.json"
+    },
+    "webgl": {
+      "sha256": "81A77F26E83A5A8E6BB06870E4008F16D217D7D54E36CFF8DF3C6BA25C2AE4CD",
+      "path": "temp/logistics-source-alpha-20261002/WEBGL_DISPOSITION.json"
+    },
+    "visual": {
+      "sha256": "0190D67D52B26862A54DE7D3EDB1147445B847F91ED6DEA801CEB1F0FD926295",
+      "path": "temp/logistics-source-alpha-20261002/VISUAL_REVIEW.json"
+    },
+    "runtime": {
+      "sha256": "1791B1D64F8449C0095E6A68DF1C4086DF13DF86742D4E6339FF9697583F8C5E",
+      "path": "temp/logistics-source-alpha-20261002/RUNTIME_VERIFICATION.json"
+    },
+    "android": {
+      "sha256": "546B244CD68C15FE6654EFC4F2C369132268EEA865C11C8CF60F3AC2DD4715EC",
+      "path": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/temp/logistics-source-alpha-20261002/android/summary.json"
+    },
+    "static": {
+      "sha256": "076C311EB77577F5FDB3CA235CDE8B28830FBC37989348C263EA45D778D41765",
+      "path": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/temp/logistics-source-alpha-20261002/static-successor2/report.json"
+    }
+  },
+  "review": {
+    "Codex_scoped_manual_review": "PASS",
+    "CodeRabbit": "NOT_RUN_no_new_external_scope",
+    "old_protocols_and_frozen_inputs_modified": false
+  },
+  "followups": [
+    {
+      "id": "M04-C-QA-SOURCE-MATTE-02",
+      "status": "confirmed_preexisting_source_defect",
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_005",
+      "next": "First next implementation unit;reviewed generated alpha correction and full qualification."
+    },
+    {
+      "id": "M04-C-QA-SOURCE-REVIEW-03",
+      "status": "semantic_review_required",
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_006",
+      "next": "Confirm intended grip-hole geometry against provenance;preserve actual metal highlights."
+    }
+  ],
+  "next": "Holistic 26-source semantic review and confirmed coil cutout repair;only afterward create fresh symmetric source/descriptor inputs and new preregistration,never rewrite attempt02.",
+  "input_admission": false,
+  "experiment_runtime": "NOT_RUN",
+  "performance_samples": 0,
+  "release_accepted": false
+}

@@ -27,18 +27,23 @@ class ReviewedSourceTests(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
         self.config = json.loads((PROJECT / SOURCES.CONFIG).read_text(encoding="utf-8"))
-        record = self.config["entries"][0]
-        for key in ("source", "meta_source"):
-            target = self.root / record[key]
+        self.targets = []
+        self.entries = []
+        for record in self.config["entries"]:
+            for key in ("source", "meta_source"):
+                target = self.root / record[key]
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(PROJECT / record[key], target)
+            generated = record["provenance"]["generated_source"]
+            shutil.copyfile(PROJECT / generated, self.root / generated)
+            target = self.root / f"assets/resources/{record['runtime_resource_key']}.png"
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(PROJECT / record[key], target)
-        generated = record["provenance"]["generated_source"]
-        shutil.copyfile(PROJECT / generated, self.root / generated)
-        self.target = self.root / f"assets/resources/{record['runtime_resource_key']}.png"
-        self.target.parent.mkdir(parents=True, exist_ok=True)
-        self.target.write_bytes(b"old-runtime")
-        self.target.with_suffix(".png.meta").write_bytes(b"old-meta")
-        self.entries = [{"runtimeResourceKey": record["runtime_resource_key"], "sourceFile": "original-sheet.png", "sourceBounds": [1, 2, 3, 4]}]
+            target.write_bytes(b"old-runtime")
+            target.with_suffix(".png.meta").write_bytes(b"old-meta")
+            self.targets.append(target)
+            self.entries.append({"runtimeResourceKey": record["runtime_resource_key"],
+                                 "sourceFile": "original-sheet.png", "sourceBounds": [1, 2, 3, 4]})
+        self.target = self.targets[0]
         self.write_config()
 
     def write_config(self) -> None:
@@ -85,7 +90,9 @@ class ReviewedSourceTests(unittest.TestCase):
         self.write_config()
         with self.assertRaisesRegex(ValueError, "exactly one manifest"):
             SOURCES.apply_sources(self.root, self.entries, apply=True)
-        self.assertEqual(self.target.read_bytes(), b"old-runtime")
+        self.assertTrue(all(target.read_bytes() == b"old-runtime" for target in self.targets))
+        self.assertTrue(all(target.with_suffix(".png.meta").read_bytes() == b"old-meta" for target in self.targets))
+        self.assertTrue(all("reviewedSourceOverride" not in entry for entry in self.entries))
 
     def test_source_traversal_rejected(self) -> None:
         self.config["entries"][0]["source"] = "../../escape.png"
@@ -131,10 +138,73 @@ class ReviewedSourceTests(unittest.TestCase):
         assert spec and spec.loader
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
-        record = self.config["entries"][0]
         output = self.root / "normalized.png"
-        module.normalize(self.root / record["provenance"]["generated_source"], output, tuple(record["dimensions"]), tuple(record["alpha_bbox"]))
-        self.assertEqual(SOURCES.digest(output), record["source_sha256"])
+        for record in self.config["entries"]:
+            with self.subTest(key=record["runtime_resource_key"]):
+                frame = record["provenance"].get("source_box")
+                module.normalize(self.root / record["provenance"]["generated_source"], output,
+                                 tuple(record["dimensions"]), tuple(record["alpha_bbox"]),
+                                 source_box=tuple(frame) if frame is not None else None)
+                self.assertEqual(SOURCES.digest(output), record["source_sha256"])
+
+    def test_each_asset_opaque_gap_rejected_before_any_write(self) -> None:
+        for record in self.config["entries"]:
+            with self.subTest(key=record["runtime_resource_key"]):
+                source = self.root / record["source"]
+                original = source.read_bytes()
+                old_hash = record["source_sha256"]
+                x0, y0, _, _ = record["transparent_boxes"][0]
+                with Image.open(source) as image:
+                    image.putpixel((x0, y0), (255, 255, 255, 255))
+                    image.save(source)
+                record["source_sha256"] = SOURCES.digest(source)
+                self.write_config()
+                with self.assertRaisesRegex(ValueError, "Opaque pixels"):
+                    SOURCES.apply_sources(self.root, self.entries, apply=True)
+                self.assertTrue(all(target.read_bytes() == b"old-runtime" for target in self.targets))
+                self.assertTrue(all("reviewedSourceOverride" not in entry for entry in self.entries))
+                source.write_bytes(original)
+                record["source_sha256"] = old_hash
+        self.write_config()
+
+    def test_low_alpha_outliers_cannot_fake_visible_silhouette(self) -> None:
+        record = next(record for record in self.config["entries"] if "source_box" in record["provenance"])
+        source = self.root / record["source"]
+        image = Image.new("RGBA", tuple(record["dimensions"]), (0, 0, 0, 0))
+        x0, y0, x1, y1 = record["alpha_bbox"]
+        image.putpixel((x0, y0), (80, 50, 20, 1))
+        image.putpixel((x1-1, y1-1), (80, 50, 20, 1))
+        image.putpixel(((x0+x1)//2, (y0+y1)//2), (80, 50, 20, 255))
+        image.save(source)
+        record["source_sha256"] = SOURCES.digest(source)
+        self.write_config()
+        with self.assertRaisesRegex(ValueError, "Visible silhouette"):
+            SOURCES.apply_sources(self.root, self.entries, apply=True)
+        self.assertTrue(all(target.read_bytes() == b"old-runtime" for target in self.targets))
+
+    def test_reviewed_frame_never_clips_visible_pixels_or_writes_on_error(self) -> None:
+        spec = importlib.util.spec_from_file_location("normalize_source", PROJECT / "tools/asset_generation/normalize_reviewed_sprite.py")
+        assert spec and spec.loader
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        record = next(record for record in self.config["entries"] if "source_box" in record["provenance"])
+        source = self.root / record["provenance"]["generated_source"]
+        output = self.root / "no-partial-normalization.png"
+        output.write_bytes(b"previous-output")
+        frames = [(0, 0, 10, 10), (-1, 0, 20, 20)]
+        for frame in frames:
+            with self.subTest(frame=frame), self.assertRaisesRegex(ValueError, "visible artwork|source bounds"):
+                module.normalize(source, output, tuple(record["dimensions"]), tuple(record["alpha_bbox"]), source_box=frame)
+            self.assertEqual(output.read_bytes(), b"previous-output")
+
+    def test_all_runtime_metadata_and_manifest_lineage_preserved(self) -> None:
+        original = copy.deepcopy(self.entries)
+        SOURCES.apply_sources(self.root, self.entries, apply=True)
+        for record, entry, previous, target in zip(self.config["entries"], self.entries, original, self.targets):
+            self.assertEqual(target.with_suffix(".png.meta").read_bytes(), (PROJECT / record["meta_source"]).read_bytes())
+            self.assertEqual(entry["sourceFile"], previous["sourceFile"])
+            self.assertEqual(entry["sourceBounds"], previous["sourceBounds"])
+        self.assertEqual(SOURCES.apply_sources(self.root, self.entries)["reviewed_source_count"], len(self.config["entries"]))
 
     def test_pinned_metadata_git_roundtrip_ignores_host_autocrlf(self) -> None:
         SOURCES.apply_sources(self.root, self.entries, apply=True)
@@ -146,15 +216,17 @@ class ReviewedSourceTests(unittest.TestCase):
                                   capture_output=True, creationflags=flags).stdout
 
         git("init", "--quiet")
-        record = self.config["entries"][0]
-        relatives = [record["meta_source"], f"assets/resources/{record['runtime_resource_key']}.png.meta"]
+        relatives = [relative for record in self.config["entries"]
+                     for relative in (record["meta_source"], f"assets/resources/{record['runtime_resource_key']}.png.meta")]
+        pins = {relative: record["meta_sha256"] for record in self.config["entries"]
+                for relative in (record["meta_source"], f"assets/resources/{record['runtime_resource_key']}.png.meta")}
         for policy in ("false", "true"):
             for relative in relatives:
                 blob = git("-c", f"core.autocrlf={policy}", "hash-object", "-w",
                            f"--path={relative}", relative).decode().strip()
                 payload = git("-c", f"core.autocrlf={policy}", "cat-file", "--filters",
                               f"--path={relative}", blob)
-                self.assertEqual(hashlib.sha256(payload).hexdigest().upper(), record["meta_sha256"])
+                self.assertEqual(hashlib.sha256(payload).hexdigest().upper(), pins[relative])
 
 
 if __name__ == "__main__":

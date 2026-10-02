@@ -11,10 +11,10 @@
   },
   "source": {
     "atlasManifest": "assets/resources/config/atlas_manifest.json",
-    "atlasManifestSha256": "3228BA5E43F71F53509A08C345F72BD25933FCD78F8C3E24B18AC515405D978D",
+    "atlasManifestSha256": "E7C00A501F26B3EF7DD2A17CACDF3C7683A8754D3597B74748109D99AB88E92E",
     "contentIdentity": "assets/resources/config/content_identity.json",
     "logicalContentVersion": "mtr-v3-source-4492deee4209",
-    "sourcePayloadSha256": "E683ED8E63F4959528D27C89D707026F9835FDB4ACBB1421406ACF732D707B7F"
+    "sourcePayloadSha256": "85758D221070A927D2734A53DB8A708EE8133285313010687FEB2B4D9A26651B"
   },
   "materialization": {
     "policy": "local_qa_evidence_not_runtime_not_committed",
@@ -23,7 +23,7 @@
     "checkCommand": "python -B tools/codex/render_m04_b_contact_sheets.py --project-root . --check",
     "html": {
       "path": "temp/m04-b-contact-sheets/m04b_contact_sheet_index.html",
-      "sha256": "BA530A3E579313077E26FD509E223B029806A6B298E4C5D066666DCDEB35789D",
+      "sha256": "F0CC891462039F52711EE5CAB81D1FB065EC8F1DF02BBEF4C38C7CB2DC831A63",
       "bytes": 7016
     }
   },
@@ -30136,7 +30136,7 @@
       "label": "Obstacles and platforms",
       "assetCount": 290,
       "sheetCount": 5,
-      "sourceDigest": "1C82D2E1BD834FA412A871947678B5F48B8D7DACCC6746D3170883D6A4EA7A50",
+      "sourceDigest": "CD482C4DA01C3BBFBEC70D849FD86797FC2121F92E897FA8755780CB602388A4",
       "atlasIds": [
         "level_theme_archive",
         "level_theme_construction",
@@ -30192,8 +30192,8 @@
         {
           "id": "obstacles-03",
           "path": "temp/m04-b-contact-sheets/m04b_obstacles-03.png",
-          "sha256": "78B8FF04FC8DAB7D64197F5A1AF8C79CBD0FF8A2AA5B13F38980058FDE3D0D30",
-          "bytes": 1164666,
+          "sha256": "F72904304E016FC03F07A4FA7158971BF184054FC517A18FB51DA9332E89012B",
+          "bytes": 1163343,
           "width": 1432,
           "height": 1464,
           "assetCount": 64
@@ -34359,8 +34359,8 @@
         },
         {
           "path": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_001.png",
-          "sha256": "E4E3D1AA3AAC796BD7F66E36692338862F45B72275C2A7D20E903FECCC37816E",
-          "bytes": 117523,
+          "sha256": "42C8EA09D19E0CD624E2456A4637A18D2CE9F71EF608C0865525B0C7B3E97517",
+          "bytes": 103980,
           "width": 677,
           "height": 109,
           "mode": "RGBA",
@@ -34503,8 +34503,8 @@
         },
         {
           "path": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003.png",
-          "sha256": "8F3E7766D686F12DF71024E1CF66CEEB31CE9C6BADED79EB0CB95F5AA74ED389",
-          "bytes": 116994,
+          "sha256": "676192F42CC4FEA67CA2DEC8350D300A6E7E6887EB3B0635AD74DBA18563D3A2",
+          "bytes": 130635,
           "width": 466,
           "height": 162,
           "mode": "RGBA",

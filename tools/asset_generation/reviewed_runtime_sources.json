@@ -8,9 +8,24 @@
       "meta_source": "tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png.meta",
       "meta_sha256": "105226F1E426D08541F6A47F606452E79C9595B7ED656003B6C2D1EF5CAA320F",
       "uuid": "05b16bb5-fa0d-4bea-9c3d-3d93b4b35e15",
-      "dimensions": [244, 232],
-      "alpha_bbox": [6, 6, 238, 226],
-      "transparent_boxes": [[104, 96, 140, 132]],
+      "dimensions": [
+        244,
+        232
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        238,
+        226
+      ],
+      "transparent_boxes": [
+        [
+          104,
+          96,
+          140,
+          132
+        ]
+      ],
       "provenance": {
         "generator": "built-in-imagegen",
         "generated_source": "tools/asset_generation/source_assets/logistics/lifebuoy-generated-20261001.png",
@@ -19,6 +34,218 @@
         "reason": "Reviewed enclosed checkerboard matte defect; border flood cannot safely remove interior matte without destroying ivory paint.",
         "prompt": "Use case background-extraction. Production 2D sprite for Martyskin Trud Runner satirical painted construction/logistics. Edit the red/ivory lifebuoy with rope. Recreate the same single buoy, oblique front angle, circular silhouette, worn painted red and ivory, brown outline, thick braided rope and proportions. The central hole, background and rope gaps must be transparent alpha. No checkerboard, solid center, text or extra objects. Centered with a small transparent margin, crisp at 244x232.",
         "normalization": "Pillow 12.3.0; crop actual alpha bbox, LANCZOS resize and re-trim fully transparent downsampled fringes into stable 232x220 trim, paste without alpha-mask into unchanged 244x232 canvas; no matte removal heuristic."
+      }
+    },
+    {
+      "runtime_resource_key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_001",
+      "source": "tools/asset_generation/source_assets/logistics/pallet-runtime-v2.png",
+      "source_sha256": "42C8EA09D19E0CD624E2456A4637A18D2CE9F71EF608C0865525B0C7B3E97517",
+      "meta_source": "tools/asset_generation/source_assets/logistics/pallet-runtime.png.meta",
+      "meta_sha256": "13FA84D1C1003DDA941EA0A6254523F260580DF69F33A4A296D7704E846D6B15",
+      "uuid": "b2a2ae16-6016-41d5-80dc-b61ade2cd7d7",
+      "dimensions": [
+        677,
+        109
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        671,
+        103
+      ],
+      "transparent_boxes": [
+        [
+          110,
+          63,
+          130,
+          67
+        ],
+        [
+          260,
+          63,
+          280,
+          67
+        ],
+        [
+          405,
+          63,
+          425,
+          67
+        ],
+        [
+          548,
+          63,
+          568,
+          67
+        ]
+      ],
+      "visible_alpha_bbox": {
+        "threshold": 128,
+        "max_inset": 4
+      },
+      "provenance": {
+        "generator": "built-in-imagegen",
+        "generated_source": "tools/asset_generation/source_assets/logistics/pallet-generated-v2-20261002.png",
+        "generated_sha256": "6A1FD235CB25F07CC88B67C8C49738D08728BD4A98F85C085D90C10A7E293043",
+        "replaced_runtime_sha256": "E4E3D1AA3AAC796BD7F66E36692338862F45B72275C2A7D20E903FECCC37816E",
+        "reason": "Four opaque background strips in pallet openings. Preserve five supports, palette and import/physics identity.",
+        "prompt": "Use case: background-extraction, precise-object-edit. Edit this SAME wooden pallet sprite only to produce a STRICT clean game cutout. The current image includes accidental barely-visible alpha=1 pixels far away from the pallet, incorrectly enlarging its bounding box. Remove absolutely all stray pixels, haze or residue outside the physical wood silhouette. Every pixel outside the physical object and in its four openings must be EXACTLY alpha=0, with NO near-transparent artifacts anywhere in the large empty margin. Keep the original pallet geometry, five wooden support blocks, four openings, same top boards, bottom beam, brown/ochre palette, worn painted cartoon look, very wide thin 6.85:1 silhouette and low oblique front camera. Complete object fully inside image with a small clear transparent margin, not cropped, no extra props, text or backdrop. No white backing in any opening; transparent empty air. Preserve wood grain, bolts, dark outlines, gold highlights. Production RGBA PNG. Only the pallet should determine the alpha bounding box.",
+        "source_box": [
+          19,
+          198,
+          2140,
+          520
+        ],
+        "normalization": "Pinned Pillow 12.3.0 / zlib-ng 1.0.0 codec 2.2.5. Explicit reviewed source frame excludes only alpha<=1 far-margin residue; fail if any alpha>=2 artwork would be clipped. Actual alpha crop, LANCZOS resize/retrim into unchanged 665x97 trim and 677x109 canvas. No color threshold or semantic matte removal.",
+        "generation_history": "docs/qa/LOGISTICS_REVIEWED_SOURCE_PROMPTS_20261002.json"
+      }
+    },
+    {
+      "runtime_resource_key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003",
+      "source": "tools/asset_generation/source_assets/logistics/rope-net-runtime.png",
+      "source_sha256": "676192F42CC4FEA67CA2DEC8350D300A6E7E6887EB3B0635AD74DBA18563D3A2",
+      "meta_source": "tools/asset_generation/source_assets/logistics/rope-net-runtime.png.meta",
+      "meta_sha256": "710567E174E4D72AE24ECE27E82726CAFB0C98A7C14F097C7A84569D014116CF",
+      "uuid": "bd3f7950-3e52-4545-93df-a4d0f632d436",
+      "dimensions": [
+        466,
+        162
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        460,
+        156
+      ],
+      "transparent_boxes": [
+        [
+          82,
+          58,
+          88,
+          62
+        ],
+        [
+          155,
+          63,
+          161,
+          67
+        ],
+        [
+          229,
+          65,
+          235,
+          69
+        ],
+        [
+          303,
+          63,
+          309,
+          67
+        ],
+        [
+          379,
+          58,
+          385,
+          62
+        ],
+        [
+          82,
+          85,
+          88,
+          89
+        ],
+        [
+          155,
+          87,
+          161,
+          91
+        ],
+        [
+          229,
+          89,
+          235,
+          93
+        ],
+        [
+          303,
+          88,
+          309,
+          92
+        ],
+        [
+          380,
+          85,
+          386,
+          89
+        ],
+        [
+          82,
+          114,
+          88,
+          118
+        ],
+        [
+          155,
+          114,
+          161,
+          118
+        ],
+        [
+          229,
+          114,
+          235,
+          118
+        ],
+        [
+          303,
+          114,
+          309,
+          118
+        ],
+        [
+          380,
+          114,
+          386,
+          118
+        ],
+        [
+          37,
+          22,
+          39,
+          24
+        ],
+        [
+          427,
+          21,
+          429,
+          23
+        ],
+        [
+          24,
+          137,
+          26,
+          139
+        ],
+        [
+          439,
+          137,
+          441,
+          139
+        ]
+      ],
+      "visible_alpha_bbox": {
+        "threshold": 128,
+        "max_inset": 4
+      },
+      "provenance": {
+        "generator": "built-in-imagegen",
+        "generated_source": "tools/asset_generation/source_assets/logistics/rope-net-generated-20261002.png",
+        "generated_sha256": "30178C9621A3DE6B5BCDA8630FA27F6531C8D06098AC6C6AFC94BA9BF1E6BF68",
+        "replaced_runtime_sha256": "8F3E7766D686F12DF71024E1CF66CEEB31CE9C6BADED79EB0CB95F5AA74ED389",
+        "reason": "Residual rope-mesh backing after historical July correction, not an atlas regression. Preserve actual rope highlights.",
+        "prompt": "Use case: background-extraction. This attached rope net is the EDIT TARGET. IMPORTANT: the previous cutout is FAILED because opaque WHITE TRIANGULAR PATCHES remain between the brown ropes and inside the four loop holes. REMOVE ALL of those white backing pieces. The entire background is empty air: every space not occupied by brown rope must have zero alpha. In particular remove the broad white strip just below the top heavy rope, ALL white triangles above/below each brown horizontal rope and along the diagonals, the white corners flanking each transparent diamond, and the white discs inside all four corner loops. Do not merely clear the diamond centers; the full openings must be transparent right to the rope edge. Preserve all brown/ochre/gold braided rope, knots, complete outline, loops, exact strand arrangement, facing, silhouette and proportions. Highlights which are painted along rope fibers may stay; flat white backing spanning gaps must disappear. Keep a single original net production game sprite, no new object, no scene, no text, no shadow, no fill, no checkerboard. Output genuinely transparent RGBA, outside and every gap alpha=0. THIS IS STRICT BACKGROUND REMOVAL, not style recreation.",
+        "normalization": "Pinned Pillow 12.3.0 / zlib-ng 1.0.0 codec 2.2.5; actual alpha crop, LANCZOS resize/retrim into unchanged 454x150 trim and 466x162 canvas; no color/matte-removal heuristic.",
+        "generation_history": "docs/qa/LOGISTICS_REVIEWED_SOURCE_PROMPTS_20261002.json"
       }
     }
   ]

@@ -28,3 +28,8 @@
 /tools/asset_generation/reviewed_runtime_sources.json text eol=lf
 /tools/asset_generation/source_assets/logistics/lifebuoy-runtime.png.meta text eol=crlf
 /assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_002.png.meta text eol=crlf
+/tools/asset_generation/source_assets/logistics/pallet-runtime.png.meta text eol=crlf
+/tools/asset_generation/source_assets/logistics/rope-net-runtime.png.meta text eol=crlf
+/assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_001.png.meta text eol=crlf
+/assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003.png.meta text eol=crlf
+/docs/qa/LOGISTICS_REVIEWED_SOURCE_*_20261002.* text eol=lf

@@ -34,6 +34,15 @@ def validate_image(path: Path, record: dict[str, Any]) -> None:
         alpha = image.getchannel("A")
         if list(alpha.getbbox() or ()) != record["alpha_bbox"]:
             raise ValueError(f"Alpha bbox mismatch: {path}")
+        policy = record.get("visible_alpha_bbox")
+        if policy is not None:
+            if policy != {"threshold": 128, "max_inset": 4}:
+                raise ValueError("Unsupported visible alpha bbox policy")
+            visible = alpha.point(lambda value: 255 if value >= 128 else 0).getbbox()
+            bounds = record["alpha_bbox"]
+            if visible is None or any(abs(value - expected) > 4
+                                      for value, expected in zip(visible, bounds)):
+                raise ValueError(f"Visible silhouette bbox mismatch: {path}")
         for box in record["transparent_boxes"]:
             x0, y0, x1, y1 = box
             if not (0 <= x0 < x1 <= image.width and 0 <= y0 < y1 <= image.height):
