@@ -2,6 +2,21 @@
 
 ## Текущее положение
 
+- 2026-10-02, M04-C-QA-SOURCE-MATTE-02 / SOURCE-REVIEW-03: holistic26-source
+  review confirms eight additional enclosed backing defects; eight reviewed
+  transparent replacements are integrated.18 other PNGs/all26 metadata and
+  runtime/native/collision/build contracts are unchanged. Clean static37/37 x4;
+  fresh sealed Web136/136 and Android-emulator112/112,8 galleries,40 Web restarts
+  pass silently. Static-source/gallery semantic review passes within its actual
+  bounded scope; all15 levels are START gates, not full campaign completion.
+  First35/37 catalog-binding failure and initial Android ADB transport failure
+  remain retained; four NEW successor cycles pass. ADB root cause is not proven;
+  no global server restart or foreign process stop. Logistics atlas performance,
+  native original-trigger acceptance and Release remain partial. Next NEW
+  isolated symmetric anchors/preregistration; frozen attempt02 remains HOLD,
+  zero samples/NOT_RUN. No denominator credit:20/73,53 mandatory+7 conditional,
+  source28/95. See `docs/qa/LOGISTICS_FAMILY_SOURCE_RUNTIME_QA_20261002.md`.
+
 - 2026-10-02, M04-C-QA-SOURCE-MATTE-01: two reviewed transparent logistics PNG
   replacements are integrated;24 other PNGs/all26 metadata and runtime/native/
   collision contracts are unchanged. Clean static37/37 x4; four matrices each:

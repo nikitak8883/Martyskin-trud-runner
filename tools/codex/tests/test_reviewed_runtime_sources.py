@@ -206,6 +206,36 @@ class ReviewedSourceTests(unittest.TestCase):
             self.assertEqual(entry["sourceBounds"], previous["sourceBounds"])
         self.assertEqual(SOURCES.apply_sources(self.root, self.entries)["reviewed_source_count"], len(self.config["entries"]))
 
+    def test_every_reviewed_gap_blocks_repinning_opaque_backing(self) -> None:
+        for record in self.config["entries"]:
+            source = self.root / record["source"]
+            original = source.read_bytes()
+            original_hash = record["source_sha256"]
+            for box in record["transparent_boxes"]:
+                with self.subTest(key=record["runtime_resource_key"], box=box):
+                    with Image.open(source) as image:
+                        image.putpixel((box[0], box[1]), (255, 255, 255, 255))
+                        image.save(source)
+                    record["source_sha256"] = SOURCES.digest(source)
+                    self.write_config()
+                    with self.assertRaisesRegex(ValueError, "Opaque pixels"):
+                        SOURCES.apply_sources(self.root, self.entries, apply=True)
+                    self.assertTrue(all(target.read_bytes() == b"old-runtime" for target in self.targets))
+                    self.assertTrue(all(target.with_suffix(".png.meta").read_bytes() == b"old-meta" for target in self.targets))
+                    source.write_bytes(original)
+            record["source_sha256"] = original_hash
+        self.write_config()
+
+    def test_raw_generation_pin_rejects_before_any_runtime_write(self) -> None:
+        record = self.config["entries"][-1]
+        generated = self.root / record["provenance"]["generated_source"]
+        generated.write_bytes(generated.read_bytes() + b"drift")
+        with self.assertRaisesRegex(ValueError, "hash mismatch"):
+            SOURCES.apply_sources(self.root, self.entries, apply=True)
+        self.assertTrue(all(target.read_bytes() == b"old-runtime" for target in self.targets))
+        self.assertTrue(all(target.with_suffix(".png.meta").read_bytes() == b"old-meta" for target in self.targets))
+        self.assertTrue(all("reviewedSourceOverride" not in entry for entry in self.entries))
+
     def test_pinned_metadata_git_roundtrip_ignores_host_autocrlf(self) -> None:
         SOURCES.apply_sources(self.root, self.entries, apply=True)
         shutil.copyfile(PROJECT / ".gitattributes", self.root / ".gitattributes")

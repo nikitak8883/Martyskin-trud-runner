@@ -1,0 +1,297 @@
+{
+  "schema": "mtr.logistics_family_source_qa.v1",
+  "utc": "2026-10-02T17:05:42.698849+00:00",
+  "unit": "M04-C-QA-SOURCE-MATTE-02",
+  "semantic_prerequisite": "M04-C-QA-SOURCE-REVIEW-03",
+  "tested_source": "b3a73221e0bbb9c4f363bc219ea05af7b6f418ed",
+  "previous_source": "c016a7e0b0d435fa3a840720c7cb08aaf0bee804",
+  "status": "completed_bounded_source_repair_and_functional_qualification",
+  "roadmap": {
+    "position": "M04-C/FAMILIES/M04-C-FAMILY-THEME-LOGISTICS",
+    "completed": 20,
+    "total": 73,
+    "percent": 27.3973,
+    "mandatory_remaining": 53,
+    "conditional_remaining": 7,
+    "source_ledger_completed": 28,
+    "source_ledger_total": 95,
+    "source_mandatory_remaining": 57,
+    "source_conditional": 10,
+    "parent_status": "partial"
+  },
+  "source_scope": {
+    "inspected_logistics_sources": 26,
+    "changed_runtime_png": 8,
+    "unchanged_other_logistics_png": 18,
+    "unchanged_meta": 26,
+    "unchanged_import_dimensions_trim_pivot_uuid": true,
+    "unchanged_runtime_native_build_collision_configuration": true,
+    "original_sheet_lineage_preserved": true,
+    "unchanged_other_contact_assets": 1550,
+    "unchanged_other_contact_sheets": 28,
+    "historical_atlas_policy_and_measurements_unchanged": true
+  },
+  "assets": [
+    {
+      "name": "crate",
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_001",
+      "png_sha256": "507E740E260688B34A1C75EF5B2C24A37FB53F29357C4A5A9AF46FE5B2B24DCE",
+      "meta_sha256": "975C69B1F96455E39D1E1CC30420BA416C215F8B4D51BE7482E20A0CC729F872",
+      "canvas": [
+        183,
+        207
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        177,
+        201
+      ],
+      "uuid": "36578b9a-2c1a-4856-b2d5-26b9e988d448"
+    },
+    {
+      "name": "forklift",
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_003",
+      "png_sha256": "CBDB8929BBE0CC6D9E5E2C15D0608AFF91570C93268DB791D5F8FB87BA714228",
+      "meta_sha256": "58AD9A2694604298913EBA1C1755974D668A89433E94ED970F07BE036518CB42",
+      "canvas": [
+        276,
+        284
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        270,
+        278
+      ],
+      "uuid": "d833c44d-91f5-479c-be3a-83cdf6026f44"
+    },
+    {
+      "name": "coil",
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_005",
+      "png_sha256": "3B6F23B896314D6E10A0AE1446CA0D43AE2D83918FFB4968378C13544A20228D",
+      "meta_sha256": "95AE5CE77E212EBC3F8F3668D079029D74611D7062178345D3730CFD2EE40402",
+      "canvas": [
+        191,
+        177
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        185,
+        171
+      ],
+      "uuid": "c9b2c89f-efe4-4591-8f99-95978d2e88ca"
+    },
+    {
+      "name": "jack",
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_006",
+      "png_sha256": "D69F039A65B31A8023D0A35C8BF6C05B1EE4D17E6FE84E6E65ACB6EEEFFD9F74",
+      "meta_sha256": "067FFD44619BA9F3A037BAD2F347B842A39B01AF54A78CDCEBB426132959BAEA",
+      "canvas": [
+        253,
+        253
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        247,
+        247
+      ],
+      "uuid": "844e4534-eead-40e8-bda5-7468756010d4"
+    },
+    {
+      "name": "hanging_v2",
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_004",
+      "png_sha256": "1F653448BBD63645C32D00A77209EA389C862400E048444E6BD0D5D960C69E47",
+      "meta_sha256": "83362ABB3F66DC7167AC240EF1331762FDA5912174B1302E5756C63D155FD3F4",
+      "canvas": [
+        663,
+        247
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        657,
+        241
+      ],
+      "uuid": "e0462ae8-4219-4aff-a757-df88042c1ec0"
+    },
+    {
+      "name": "bridge",
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_004",
+      "png_sha256": "01F8E62340FC9B840E0E09E88150859581FAA8DFD18FC7D7FB04B5B1AF1D4BAD",
+      "meta_sha256": "A563167DA23A3D97CCC7095CE77ABA142D0CE162F69787AAA1DA5081E52D3613",
+      "canvas": [
+        492,
+        174
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        486,
+        168
+      ],
+      "uuid": "bb6d3266-a5c4-4f46-a277-2c5aed4734b9"
+    },
+    {
+      "name": "cart",
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_006",
+      "png_sha256": "4A746603A34957E2D9F5311D1CF8F38DA431791F3D7A944487680115DC254EC3",
+      "meta_sha256": "3174874B4057052A89DFCE699DE82861BD968F923B4E79D243C795CAE34B7AC0",
+      "canvas": [
+        380,
+        196
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        374,
+        190
+      ],
+      "uuid": "30f65c63-1419-410e-bc47-36a017dece7d"
+    },
+    {
+      "name": "chain",
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_009",
+      "png_sha256": "48069A30F452DF173C8C4CEC269933E9ECD00E0E822C7B37FD6AD69D1265A5D1",
+      "meta_sha256": "6311A421157580594F80586A148ECCE06875F41720D035B280BE2770FA226901",
+      "canvas": [
+        43,
+        169
+      ],
+      "alpha_bbox": [
+        6,
+        6,
+        37,
+        163
+      ],
+      "uuid": "b137c37a-c06a-41f7-a67c-cbaa03d3b96c"
+    }
+  ],
+  "static": {
+    "cycles": 4,
+    "gates_each": 37,
+    "pass": 148,
+    "artifact_hashes_verified": 296,
+    "source_methods": 19,
+    "diagnostic_negative_methods": 7,
+    "transport_negative_methods": 6,
+    "dirty_override": false,
+    "source_configuration_records": 11,
+    "transparent_roi_mutation_controls": 48
+  },
+  "runtime": {
+    "web_cycles": 4,
+    "web_pass": 136,
+    "web_restarts": 40,
+    "android_cycles": 4,
+    "android_pass": 112,
+    "exact_apk_menu_checks": 4,
+    "galleries": 8,
+    "source_png_bindings_each_build": 26,
+    "sealed_files": 4483,
+    "apk_sha256": "908894291408BD49F8AD6DAC6DD5470C9B3CB2EDF7F1CF229E7CDBE201F276A9",
+    "apk_kind": "signature_valid_debug_x86_64_not_phone_release",
+    "android_serial": "emulator-5554",
+    "android_user": 0,
+    "android_boot_flags": [
+      "-no-audio",
+      "-no-snapshot-load",
+      "-no-snapshot-save",
+      "-no-window"
+    ],
+    "android_media_stream3": 0,
+    "web_args": [
+      "--mute-audio"
+    ],
+    "product_audio_preferences_modified": false,
+    "physical_device_used": false,
+    "owned_emulator_stopped": true,
+    "owned_preview_stopped": true,
+    "adb_endpoint_checks": 12,
+    "adb_server_restarted_or_foreign_process_stopped": false,
+    "all15_levels": "START_GATES_ONLY_NOT_CAMPAIGN_COMPLETION"
+  },
+  "visual": {
+    "eight_confirmed_matte_repairs": "PASS",
+    "all26_static_source_and_gallery_review": "PASS_BOUNDED_REVIEW",
+    "same_platform_gallery_repeats": "PASS_pixel_identical_four_per_platform",
+    "manual_level_start_capture_review": [
+      4,
+      8,
+      11,
+      14
+    ],
+    "fixed_size_gallery_tiles": "diagnostic_stretches_thin_chain_hook_not_natural_aspect_proof",
+    "full_campaign": "NOT_RUN",
+    "exhaustive_skin_poses": "NOT_RUN",
+    "not_cross_platform_pixel_identity": true
+  },
+  "retained_failures": {
+    "first_static_cycle": "35/37;contact index read atlas before final timestamp;canonical regeneration fixed exact binding",
+    "initial_android": "menu/gallery passed;ADB matrix transport failure before first cycle summary;0 accepted cycles",
+    "adb_root_cause": "NOT_ESTABLISHED_same_live_SDK_client_server_no_port_override",
+    "private_controller_repair": "forward child error before report read;explicit endpoint preflights;fresh four-cycle successor",
+    "failed_runs_counted_as_pass": false,
+    "renderer_warning_allowlist_changed": false,
+    "hanging_generation_v1_and_initial_chain_normalization": "rejected_retained_private_outside_runtime"
+  },
+  "receipts": {
+    "static": {
+      "path": "temp/logistics-family-alpha-20261002/LOCAL_STATIC_UNIT.json",
+      "sha256": "CE1B6632135EE807D07BCFC81EACBA8FC873B69D69CCF924D3EA9963D926DF25"
+    },
+    "runtime": {
+      "path": "temp/logistics-family-alpha-20261002/RUNTIME_VERIFICATION.json",
+      "sha256": "8542684EC164AC3F00687CBF48E9D3C70017668D8197CC3F1A0A70FBE19F3908"
+    },
+    "visual": {
+      "path": "temp/logistics-family-alpha-20261002/VISUAL_REVIEW.json",
+      "sha256": "E4AF11A4B3E0D6593DE05A5F8CB743BC3CD27F612927EEC2B7E4FE2ECE764FC8"
+    },
+    "seal": {
+      "path": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/temp/logistics-family-alpha-20261002/inputs.seal.json",
+      "sha256": "1D5CC16DF6F58B0E32FC36243B0BF9AA9D07C187984299FA402D51A36FE6901F"
+    },
+    "web": {
+      "path": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/temp/logistics-family-alpha-20261002/web/summary.json",
+      "sha256": "1AB75F48C9CF1469A3919E5ACA0C5878599C225F92B8F41FC05C968C12FD5E3A"
+    },
+    "android": {
+      "path": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/temp/logistics-family-alpha-20261002/android-successor1/summary.json",
+      "sha256": "85B6D0199F133FE366144794CAC219F96C5A04DCF72D6EE20C6902E98249CEAC"
+    },
+    "failed_static": {
+      "path": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/temp/logistics-family-alpha-20261002/static/c1/report.json",
+      "sha256": "D7D68106CA99767FDF6E507F44813E57E1B9142823A0EA9F6330E95F56B03916"
+    },
+    "failed_android": {
+      "path": "MTRCocosCreator_portable_transfer_20260617/MTRCocosCreator/temp/logistics-family-alpha-20261002/android/summary.json",
+      "sha256": "70D4AE0D2B1E95E5494B87CEE2C1FC6B31844FCCCF67C311746840E3F388FDC5"
+    },
+    "adb_failure_disposition": {
+      "path": "temp/logistics-family-alpha-20261002/ADB_FAILURE_DISPOSITION.json",
+      "sha256": "4D1C99C5BB7114DDF4F6DD8D8FA7BBA755A22326C2099B85FF368E52DE36B68D"
+    },
+    "diagnostic_transport_tests_stdout": {
+      "path": "temp/logistics-family-alpha-20261002/verifier-negative-controls.stdout.txt",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    "diagnostic_transport_tests_stderr": {
+      "path": "temp/logistics-family-alpha-20261002/verifier-negative-controls.stderr.txt",
+      "sha256": "7FDBA0EF742DABF54C1989BC50943E4B63AB8C92D9ACF400BC4BF0AFC1649E64"
+    }
+  },
+  "review": {
+    "Codex_scoped_manual_review": "PASS",
+    "CodeRabbit": "NOT_RUN_no_new_external_diff_scope",
+    "old_protocols_and_frozen_inputs_modified": false,
+    "hygiene": "No temporary or rejected variants in runtime/Git;reviewed generated sources retained as provenance;unrelated ROOT work preserved"
+  },
+  "next": "New isolated preregistration and fresh symmetric baseline/candidate anchors for logistics atlas performance;frozen attempt02 remains HOLD/zero samples.",
+  "input_admission": false,
+  "experiment_runtime": "NOT_RUN",
+  "performance_samples": 0,
+  "release_accepted": false
+}

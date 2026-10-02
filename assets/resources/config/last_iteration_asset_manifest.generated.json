@@ -2833,7 +2833,7 @@
       "sourceSlot": "logistics_base",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_49_20 (2).png",
       "sourceSha256": "F226F283C9A5E230BEFEE033494F0E8CF92881373ECF9575A0FBE2A9326A5234",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -2877,7 +2877,14 @@
       "logicalType": 3,
       "critical": true,
       "runtimeEnabled": true,
-      "runtimeSha256": "23F2DB7FDEA98522605D95153968F831BC113C3510D8E92AD08BB1AAF6563740"
+      "runtimeSha256": "507E740E260688B34A1C75EF5B2C24A37FB53F29357C4A5A9AF46FE5B2B24DCE",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/crate-runtime-20261002.png",
+        "source_sha256": "507E740E260688B34A1C75EF5B2C24A37FB53F29357C4A5A9AF46FE5B2B24DCE",
+        "meta_sha256": "975C69B1F96455E39D1E1CC30420BA416C215F8B4D51BE7482E20A0CC729F872",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 2,
@@ -2986,7 +2993,7 @@
       "sourceSlot": "logistics_base",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_49_20 (2).png",
       "sourceSha256": "F226F283C9A5E230BEFEE033494F0E8CF92881373ECF9575A0FBE2A9326A5234",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -3030,7 +3037,14 @@
       "logicalType": 11,
       "critical": true,
       "runtimeEnabled": true,
-      "runtimeSha256": "9A972649E84163FEF934A07D309487A09D7CDB6D32668A1757DD30DA357007A2"
+      "runtimeSha256": "CBDB8929BBE0CC6D9E5E2C15D0608AFF91570C93268DB791D5F8FB87BA714228",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/forklift-runtime-20261002.png",
+        "source_sha256": "CBDB8929BBE0CC6D9E5E2C15D0608AFF91570C93268DB791D5F8FB87BA714228",
+        "meta_sha256": "58AD9A2694604298913EBA1C1755974D668A89433E94ED970F07BE036518CB42",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 2,
@@ -3139,7 +3153,7 @@
       "sourceSlot": "logistics_base",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_49_20 (2).png",
       "sourceSha256": "F226F283C9A5E230BEFEE033494F0E8CF92881373ECF9575A0FBE2A9326A5234",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -3183,14 +3197,21 @@
       "logicalType": 3,
       "critical": false,
       "runtimeEnabled": true,
-      "runtimeSha256": "F36CFE7613B27890726EFE4582AA6F2DB01D6E2601DD0AF0D15A8FF9408F01BC"
+      "runtimeSha256": "3B6F23B896314D6E10A0AE1446CA0D43AE2D83918FFB4968378C13544A20228D",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/coil-runtime-20261002.png",
+        "source_sha256": "3B6F23B896314D6E10A0AE1446CA0D43AE2D83918FFB4968378C13544A20228D",
+        "meta_sha256": "95AE5CE77E212EBC3F8F3668D079029D74611D7062178345D3730CFD2EE40402",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 2,
       "sourceSlot": "logistics_base",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_49_20 (2).png",
       "sourceSha256": "F226F283C9A5E230BEFEE033494F0E8CF92881373ECF9575A0FBE2A9326A5234",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -3234,14 +3255,21 @@
       "logicalType": 6,
       "critical": false,
       "runtimeEnabled": true,
-      "runtimeSha256": "38462EE9CC1272A5205090936A563F0E7A3D15E93856C38E51412B0F3B2A02C9"
+      "runtimeSha256": "D69F039A65B31A8023D0A35C8BF6C05B1EE4D17E6FE84E6E65ACB6EEEFFD9F74",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/pallet-jack-runtime-20261002.png",
+        "source_sha256": "D69F039A65B31A8023D0A35C8BF6C05B1EE4D17E6FE84E6E65ACB6EEEFFD9F74",
+        "meta_sha256": "067FFD44619BA9F3A037BAD2F347B842A39B01AF54A78CDCEBB426132959BAEA",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 2,
       "sourceSlot": "logistics_base",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_49_20 (2).png",
       "sourceSha256": "F226F283C9A5E230BEFEE033494F0E8CF92881373ECF9575A0FBE2A9326A5234",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -3285,7 +3313,14 @@
       "logicalType": null,
       "critical": false,
       "runtimeEnabled": true,
-      "runtimeSha256": "36D4F81B97BA72E3759E3D4AF8183673A4B634AB5BD3464A53141D20940AC19F"
+      "runtimeSha256": "1F653448BBD63645C32D00A77209EA389C862400E048444E6BD0D5D960C69E47",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/hanging-platform-runtime-20261002.png",
+        "source_sha256": "1F653448BBD63645C32D00A77209EA389C862400E048444E6BD0D5D960C69E47",
+        "meta_sha256": "83362ABB3F66DC7167AC240EF1331762FDA5912174B1302E5756C63D155FD3F4",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 2,
@@ -8942,7 +8977,7 @@
       "sourceSlot": "logistics_extended",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_50_09 (2).png",
       "sourceSha256": "5F5FAE3F8069C3DD5C2418F402E4050927BDCAC0F2861D806E9ED518D1EFA8D1",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -8986,7 +9021,14 @@
       "logicalType": null,
       "critical": false,
       "runtimeEnabled": true,
-      "runtimeSha256": "3A8DEB40FFBB17A36955DEFC276D6754FC2BD4B8C0540EDB936FEA46683A9EE6"
+      "runtimeSha256": "01F8E62340FC9B840E0E09E88150859581FAA8DFD18FC7D7FB04B5B1AF1D4BAD",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/bridge-runtime-20261002.png",
+        "source_sha256": "01F8E62340FC9B840E0E09E88150859581FAA8DFD18FC7D7FB04B5B1AF1D4BAD",
+        "meta_sha256": "A563167DA23A3D97CCC7095CE77ABA142D0CE162F69787AAA1DA5081E52D3613",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 12,
@@ -9306,7 +9348,7 @@
       "sourceSlot": "logistics_extended",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_50_09 (2).png",
       "sourceSha256": "5F5FAE3F8069C3DD5C2418F402E4050927BDCAC0F2861D806E9ED518D1EFA8D1",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -9350,7 +9392,14 @@
       "logicalType": 6,
       "critical": false,
       "runtimeEnabled": true,
-      "runtimeSha256": "4BEC2F49C8ADC06D3AC3C6CBFDE59BE75DAD7E715F59D0C5DDE173DFFCFC4F39"
+      "runtimeSha256": "4A746603A34957E2D9F5311D1CF8F38DA431791F3D7A944487680115DC254EC3",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/flatbed-cart-runtime-20261002.png",
+        "source_sha256": "4A746603A34957E2D9F5311D1CF8F38DA431791F3D7A944487680115DC254EC3",
+        "meta_sha256": "3174874B4057052A89DFCE699DE82861BD968F923B4E79D243C795CAE34B7AC0",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 12,
@@ -9459,7 +9508,7 @@
       "sourceSlot": "logistics_extended",
       "sourceFile": "C:\\Test\\MTRCocosCreator\\nessesary\\9\\ChatGPT Image 3 июн. 2026 г., 23_50_09 (2).png",
       "sourceSha256": "5F5FAE3F8069C3DD5C2418F402E4050927BDCAC0F2861D806E9ED518D1EFA8D1",
-      "sourceCutoutMethod": "edge_flood_checkerboard",
+      "sourceCutoutMethod": "reviewed_generated_transparent_source:v1",
       "theme": "logistics",
       "levels": [
         4,
@@ -9503,7 +9552,14 @@
       "logicalType": 3,
       "critical": false,
       "runtimeEnabled": true,
-      "runtimeSha256": "3FAC8D8D81CDB6F3C9365437255238C7FD18E0177904F9179D683CF52ED50659"
+      "runtimeSha256": "48069A30F452DF173C8C4CEC269933E9ECD00E0E822C7B37FD6AD69D1265A5D1",
+      "reviewedSourceOverride": {
+        "schema_version": 1,
+        "source": "tools/asset_generation/source_assets/logistics/chain-runtime-20261002.png",
+        "source_sha256": "48069A30F452DF173C8C4CEC269933E9ECD00E0E822C7B37FD6AD69D1265A5D1",
+        "meta_sha256": "6311A421157580594F80586A148ECCE06875F41720D035B280BE2770FA226901",
+        "generator": "built-in-imagegen"
+      }
     },
     {
       "sheetIndex": 12,

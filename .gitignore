@@ -83,6 +83,7 @@ __pycache__/
 /docs/qa/*
 !/docs/qa/*.md
 !/docs/qa/LOGISTICS_REVIEWED_SOURCE_PROMPTS_20261002.json
+!/docs/qa/LOGISTICS_FAMILY_REVIEWED_SOURCE_PROMPTS_20261002.json
 /docs/restore/
 /docs/skins_integration/qa/
 /docs/skins_integration/skin_pack_contact_sheet.png
