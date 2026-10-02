@@ -2,6 +2,19 @@
 
 ## Текущее положение
 
+- 2026-10-02, M04-C-LOGISTICS-ATTEMPT03-PREP: new revision1 preregistration
+  freezes the reviewed26-source inventory against published project87dd0fcb;
+  old attempt02 revision4 remains HOLD/zero samples. Original63 criteria,
+  nine measurement tools and16 Android/8 Web paired schedule are unchanged.
+  Explicit attempt registry and current-source negative controls are integrated;
+  mandatory static suite37->38. Four clean38/38 cycles and fresh sealed baseline:
+  Web136/136, Android112/112,8 galleries/40 restarts pass silently. Exact baseline
+  Web c4 repeat differs in456 pixels by at most1 RGB level; zero new near-white
+  pixels, cause NOT_ESTABLISHED. All captures/failure retained; no recapture or
+  waiver. Candidate NOT_BUILT, admission false/performance0 samples. Next isolated
+  non-acceptance Web rendering diagnostic. No roadmap credit:20/73,53+7 remain.
+  See `docs/qa/LOGISTICS_ATTEMPT03_PREPARATION_20261002.md`.
+
 - 2026-10-02, M04-C-QA-SOURCE-MATTE-02 / SOURCE-REVIEW-03: holistic26-source
   review confirms eight additional enclosed backing defects; eight reviewed
   transparent replacements are integrated.18 other PNGs/all26 metadata and

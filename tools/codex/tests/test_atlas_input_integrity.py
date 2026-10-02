@@ -262,6 +262,71 @@ class InputIntegrity(unittest.TestCase):
         r = subprocess.run(args + ['--unknown', 'x'], capture_output=True, text=True, timeout=15)
         self.assertEqual(r.returncode, 2)
 
+    def third_protocol(self, *, identity=None, revision=1):
+        path = self.project / m.PROTOCOLS[m.ATTEMPT03][0]
+        raw = json.dumps({'attempt_id': identity or m.ATTEMPT03, 'protocol_revision': revision}).encode() + b'\r\n'
+        path.write_bytes(raw)
+        return hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest()
+
+    def test_explicit_third_attempt_and_default_second_remain_distinct(self):
+        third = self.third_protocol()
+        old, _ = self.seal()
+        new = m.make_seal(self.project, 'temp/staged', third, attempt=m.ATTEMPT03)
+        self.assertEqual((old['attempt_id'], old['protocol_revision']), (m.ATTEMPT, 4))
+        self.assertEqual((new['attempt_id'], new['protocol_revision']), (m.ATTEMPT03, 1))
+        self.assertEqual(old['files'], new['files'])
+        self.assertFalse(new['input_admission'])
+        self.assertEqual(new['experiment_runtime'], 'NOT_RUN')
+
+    def test_attempt_not_inferred_from_outer_pin_or_seal(self):
+        third = self.third_protocol()
+        with self.assertRaisesRegex(ValueError, 'PROTOCOL_CHANGED'):
+            m.make_seal(self.project, 'temp/staged', third)
+        with self.assertRaisesRegex(ValueError, 'PROTOCOL_CHANGED'):
+            m.make_seal(self.project, 'temp/staged', self.pin, attempt=m.ATTEMPT03)
+        value = m.make_seal(self.project, 'temp/staged', third, attempt=m.ATTEMPT03)
+        raw = m.encoded(value)
+        m.publish(self.project, 'temp/staged', 'temp/seal.json', raw)
+        with self.assertRaisesRegex(ValueError, 'INVENTORY_CHANGED'):
+            self.verify(hashlib.sha256(raw).hexdigest())
+
+    def test_unregistered_attempt_rejected_without_path_selection(self):
+        for wrong in ('logistics-attempt04', '../other.json', True, None, []):
+            with self.subTest(attempt=wrong), self.assertRaisesRegex(ValueError, 'ATTEMPT_NOT_REGISTERED'):
+                m.make_seal(self.project, 'temp/staged', self.pin, attempt=wrong)
+
+    def test_registered_identity_wrong_revision_and_bool_rejected(self):
+        for identity, revision in ((m.ATTEMPT, 1), (m.ATTEMPT03, True), (m.ATTEMPT03, 1.0), (m.ATTEMPT03, 4)):
+            with self.subTest(identity=identity, revision=revision):
+                pin = self.third_protocol(identity=identity, revision=revision)
+                with self.assertRaisesRegex(ValueError, 'PROTOCOL_IDENTITY'):
+                    m.make_seal(self.project, 'temp/staged', pin, attempt=m.ATTEMPT03)
+
+    def test_third_attempt_live_cli_seal_verify_and_unknown_attempt(self):
+        pin = self.third_protocol()
+        args = [sys.executable, '-B', str(TOOL), 'seal', '--project-root', str(self.project),
+                '--staging-root', 'temp/staged', '--expected-protocol-sha256', pin,
+                '--seal', 'temp/seal.json', '--attempt', m.ATTEMPT03]
+        r = subprocess.run(args, capture_output=True, text=True, timeout=15)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        digest = json.loads(r.stdout)['seal_sha256']
+        args[3] = 'verify'
+        r = subprocess.run(args + ['--expected-seal-sha256', digest], capture_output=True, text=True, timeout=15)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertFalse(json.loads(r.stdout)['input_admission'])
+        args[-1] = 'unregistered'
+        r = subprocess.run(args, capture_output=True, text=True, timeout=15)
+        self.assertEqual(r.returncode, 2)
+
+    def test_third_seal_cannot_be_relabelled_even_with_new_outer_pin(self):
+        third = self.third_protocol()
+        wrong = m.make_seal(self.project, 'temp/staged', third, attempt=m.ATTEMPT03)
+        wrong.update(attempt_id=m.ATTEMPT, protocol_revision=4)
+        raw = m.encoded(wrong)
+        m.publish(self.project, 'temp/staged', 'temp/seal.json', raw)
+        with self.assertRaisesRegex(ValueError, 'INVENTORY_CHANGED'):
+            m.verify(self.project, 'temp/staged', 'temp/seal.json', hashlib.sha256(raw).hexdigest(), third, attempt=m.ATTEMPT03)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,95 @@
+{
+  "schema": "mtr.atlas_attempt03_preparation_qa.v1",
+  "unit_id": "M04-C-LOGISTICS-ATTEMPT03-PREP",
+  "status": "partial_functional_PASS_baseline_exact_repeat_HOLD",
+  "source": "98d46205a2526462545b36b65b97d1796f49ab21",
+  "attempt_id": "logistics-attempt03-20261002",
+  "protocol_revision": 1,
+  "protocol_sha256_utf8_lf": "9a11c35f8917ab428eb57dc36ec9eb48d8bc82b20842615eae39327aeec201ed",
+  "inventory_sha256_utf8_lf": "3f17899674c392fb5f88fcc8e36678a1ffdaa3fb4cb76bd1ec1016f30399b002",
+  "roadmap": {
+    "completed": 20,
+    "total": 73,
+    "mandatory_remaining": 53,
+    "conditional_remaining": 7,
+    "no_denominator_credit": true
+  },
+  "static": {
+    "cycles": 4,
+    "steps_each": 38,
+    "checks": 152,
+    "artifact_hashes": 304,
+    "receipt_sha256": "AEAC8198B88094CB9D2224E1E14B881DC129731F1BE918D0A7A3799C1D5DB206"
+  },
+  "tests": {
+    "byte_seal_methods": 30,
+    "preregistration_source_methods": 11,
+    "old_protocol_checks": 20,
+    "private_descriptor_fixture_methods": 5,
+    "private_diagnostic_transport_methods": 13
+  },
+  "baseline": {
+    "fresh_serial_builds": [
+      "web",
+      "android_emulator"
+    ],
+    "staged_files": 4483,
+    "bytes": 273782410,
+    "source_bindings": 26,
+    "apk_sha256": "908894291408BD49F8AD6DAC6DD5470C9B3CB2EDF7F1CF229E7CDBE201F276A9",
+    "apk": "signature_valid_debug_x86_64_not_phone_release",
+    "binding_sha256": "d7ac3dcc9a4618cfb70564f396d7e06f09aaa7f3667454e43b37b25d85f450f4",
+    "seal_sha256": "8c1fe5a44886ff9c8c0f5be77d97110cd70b78a97423f0c04ba9585bdc177f7b",
+    "receipt_sha256": "E811D4DE41871F0449178224371FD4AD84D33E3E5437E8C956EF2B984E13DC6A",
+    "native_dex_manifest_and_web_javascript_unchanged": true
+  },
+  "functional": {
+    "web": "34/34x4",
+    "android": "28/28x4",
+    "exact_uninjected_apk_menu_cycles": 4,
+    "galleries": 8,
+    "web_restarts": 40,
+    "adb_endpoint_probes": 12,
+    "runtime_receipt_sha256": "D7BC820D6397C86DCF8C935E418B26997D03C75E2A80F9ED9ED15FA6C004D04B",
+    "owned_preview_and_emulator_stopped": true
+  },
+  "visual": {
+    "manual_scope": "Current c1 Web and Android galleries,26 sprites each; eight level-start captures; Web name-entry spot-check",
+    "baseline_exact_repeat": "HOLD_Web_c4_vs_c1",
+    "android_exact_repeat": "PASS_4_of_4",
+    "web_exact_repeat": "3_of_4_identical_to_c1",
+    "changed_pixels": 456,
+    "changed_fraction": 0.0004947916666666667,
+    "channel_max_delta": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "rgb_mae": 0.0001830150462962963,
+    "added_near_white_pixels": 0,
+    "cause": "NOT_ESTABLISHED",
+    "diagnostic_sha256": "735A57D326E227E153E3EE38D787DE1C2FAEEAD50EA4E2FD5444ACAF04935F8B",
+    "failure_retained_no_recapture_no_threshold_waiver": true,
+    "baseline_repeat_check_not_63_check_performance_execution": true
+  },
+  "silence": {
+    "web": "--mute-audio",
+    "android": "-no-audio_and_verified_media_stream3_zero",
+    "product_audio_preferences_changed": false,
+    "physical_device_used": false
+  },
+  "coverage": {
+    "all15_levels": "START_GATES_ONLY",
+    "full_campaign": "NOT_RUN",
+    "exhaustive_skin_poses": "NOT_RUN",
+    "native_original_trigger_acceptance": "OPEN",
+    "candidate": "NOT_BUILT",
+    "paired_performance_samples": 0,
+    "frozen_attempt02": "HOLD_zero_samples_NOT_RUN"
+  },
+  "input_admission": false,
+  "experiment_runtime": "NOT_RUN",
+  "release_accepted": false,
+  "next": "Separate non-acceptance Web rendering diagnostic for retained 1-LSB baseline repeat variance; establish cause without rerunning only c4 or changing frozen criteria. Then descriptor-only candidate, symmetric exports/qualification and separate semantic admission. Preserve all old protocols/seals."
+}

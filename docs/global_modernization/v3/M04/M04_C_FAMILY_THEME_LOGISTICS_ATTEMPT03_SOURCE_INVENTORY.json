@@ -1,0 +1,922 @@
+{
+  "schema": "mtr.atlas_source_inventory.v1",
+  "attempt_id": "logistics-attempt03-20261002",
+  "source_anchor": "87dd0fcbefc5ff19e3ba4a296cc7514886b16d7b",
+  "source_project_tree": "072b893af8fe33cf256a79c48ded40fbff083a65",
+  "hash_policy": "PNG_raw_bytes; metadata_and_manifest_UTF8_bytes_after_CRLF_to_LF_only",
+  "manifest": "assets/resources/config/last_iteration_asset_manifest.generated.json",
+  "manifest_sha256_utf8_lf": "9676808b005b686f0e13a0f89eac9e818682f0e3ee63fb27aca10d6917c37e29",
+  "source_count": 26,
+  "items": [
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_001",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_001.png",
+      "sha256": "507e740e260688b34a1c75ef5b2c24a37fb53f29357c4a5a9af46fe5b2b24dce",
+      "bytes": 63566,
+      "meta_sha256_utf8_lf": "0c403f3bdeef5517be3b2d33c26c5082558028a318831be090f0bc3568e82242",
+      "uuid": "36578b9a-2c1a-4856-b2d5-26b9e988d448",
+      "sprite_frame_uuid": "36578b9a-2c1a-4856-b2d5-26b9e988d448@f9941",
+      "dimensions": [
+        183,
+        207
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 171,
+        "height": 195,
+        "rawWidth": 183,
+        "rawHeight": 207,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": true,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_002",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_002.png",
+      "sha256": "29b25758853f8a10c7fe1ebebec08126e45b09d5b6ab941be603a70e32b043cc",
+      "bytes": 47255,
+      "meta_sha256_utf8_lf": "7fae84ffa65346599832ec949ecd1709650f8735ad6d51b915728afacd9b977f",
+      "uuid": "bed7f836-0caa-4181-b274-cc7f8bcff97f",
+      "sprite_frame_uuid": "bed7f836-0caa-4181-b274-cc7f8bcff97f@f9941",
+      "dimensions": [
+        136,
+        215
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 124,
+        "height": 203,
+        "rawWidth": 136,
+        "rawHeight": 215,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": true,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_003",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_003.png",
+      "sha256": "cbdb8929bbe0cc6d9e5e2c15d0608aff91570c93268db791d5f8fb87ba714228",
+      "bytes": 70409,
+      "meta_sha256_utf8_lf": "e585fea189f34538d0caf3a6fd40c1621ec4c83aac20fd01424f1624cebdad96",
+      "uuid": "d833c44d-91f5-479c-be3a-83cdf6026f44",
+      "sprite_frame_uuid": "d833c44d-91f5-479c-be3a-83cdf6026f44@f9941",
+      "dimensions": [
+        276,
+        284
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 264,
+        "height": 272,
+        "rawWidth": 276,
+        "rawHeight": 284,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": true,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_004",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_004.png",
+      "sha256": "a7c605ece978251734dfb5fa151ad36d1348de34882e39634d7f3c2b7064f94c",
+      "bytes": 38275,
+      "meta_sha256_utf8_lf": "777d20f3af4db70a75d961ecf4f66172757f243c05d2362e864261f0eb6c675a",
+      "uuid": "4a098bbe-d660-44e9-8362-8a0bbcb74a39",
+      "sprite_frame_uuid": "4a098bbe-d660-44e9-8362-8a0bbcb74a39@f9941",
+      "dimensions": [
+        99,
+        268
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 87,
+        "height": 256,
+        "rawWidth": 99,
+        "rawHeight": 268,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "InteractiveProp",
+      "critical": false,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_005",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_005.png",
+      "sha256": "3b6f23b896314d6e10a0ae1446ca0d43ae2d83918ffb4968378c13544a20228d",
+      "bytes": 60154,
+      "meta_sha256_utf8_lf": "45b5da4162ed21e93be0779b79e3816e8536d8452fec0a891f503ae049a41545",
+      "uuid": "c9b2c89f-efe4-4591-8f99-95978d2e88ca",
+      "sprite_frame_uuid": "c9b2c89f-efe4-4591-8f99-95978d2e88ca@f9941",
+      "dimensions": [
+        191,
+        177
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 179,
+        "height": 165,
+        "rawWidth": 191,
+        "rawHeight": 177,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "InteractiveProp",
+      "critical": false,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_006",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_006.png",
+      "sha256": "d69f039a65b31a8023d0a35c8bf6c05b1ee4d17e6fe84e6e65acb6eeeffd9f74",
+      "bytes": 49093,
+      "meta_sha256_utf8_lf": "d7495a065035312ca6edfb36d26cc53735e72cfc7e1421d2930d5f5e8fc45cb6",
+      "uuid": "844e4534-eead-40e8-bda5-7468756010d4",
+      "sprite_frame_uuid": "844e4534-eead-40e8-bda5-7468756010d4@f9941",
+      "dimensions": [
+        253,
+        253
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 241,
+        "height": 241,
+        "rawWidth": 253,
+        "rawHeight": 253,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "InteractiveProp",
+      "critical": false,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_007",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_base_hazards_007.png",
+      "sha256": "9638719e3457cfe7d9901e9a063dc418db1e891815c7f4be2775f4ea8309a7f2",
+      "bytes": 63888,
+      "meta_sha256_utf8_lf": "e10ab91ec41ed1bb4cda8129446f169ae893e4504a65ab2f37e7e041b76e1106",
+      "uuid": "c2f475a7-6c6c-4a33-9053-e675899e695b",
+      "sprite_frame_uuid": "c2f475a7-6c6c-4a33-9053-e675899e695b@f9941",
+      "dimensions": [
+        219,
+        195
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 207,
+        "height": 183,
+        "rawWidth": 219,
+        "rawHeight": 195,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "InteractiveProp",
+      "critical": false,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_001",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_001.png",
+      "sha256": "073a2938ef96e43fe071c1697cfb49a02558a74412a72fcb61445c1fea1a404a",
+      "bytes": 48682,
+      "meta_sha256_utf8_lf": "5c30633e0134a0e7bc271e36dc964083347f5e35b545510ef68a29c74478d3e5",
+      "uuid": "389b11b6-2dd8-4075-844f-b33e38638e76",
+      "sprite_frame_uuid": "389b11b6-2dd8-4075-844f-b33e38638e76@f9941",
+      "dimensions": [
+        125,
+        287
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 113,
+        "height": 275,
+        "rawWidth": 125,
+        "rawHeight": 287,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": true,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_002",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_002.png",
+      "sha256": "0a430e298af44e9615db233ae1847fbdafaab73792ad30ae190d435d09504933",
+      "bytes": 86580,
+      "meta_sha256_utf8_lf": "42dccff4bd1c5e4a1a2f41797d52571c5027db5d06eabb8c5140df82e3bb9c47",
+      "uuid": "05b16bb5-fa0d-4bea-9c3d-3d93b4b35e15",
+      "sprite_frame_uuid": "05b16bb5-fa0d-4bea-9c3d-3d93b4b35e15@f9941",
+      "dimensions": [
+        244,
+        232
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 232,
+        "height": 220,
+        "rawWidth": 244,
+        "rawHeight": 232,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": true,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_003",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_003.png",
+      "sha256": "6b419561f10b045a65260039aa139c2b6b8289fa1b19b46b0f87f2f62d1caa6a",
+      "bytes": 131907,
+      "meta_sha256_utf8_lf": "f1023aaff417bfeb438c6ec5456c22df77c491cebd9eb7d72869e436a05e6133",
+      "uuid": "da41e300-bb62-44cc-8ee9-6e3eb3badc26",
+      "sprite_frame_uuid": "da41e300-bb62-44cc-8ee9-6e3eb3badc26@f9941",
+      "dimensions": [
+        351,
+        225
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 339,
+        "height": 213,
+        "rawWidth": 351,
+        "rawHeight": 225,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": true,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_004",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_004.png",
+      "sha256": "a808805ed02949315e83a2b3b9f2b61fa6c0a22e6625dc7553b4715682d955a9",
+      "bytes": 78744,
+      "meta_sha256_utf8_lf": "b9444c9d7db7495d48f492d5f0f32be17d819d8f6e7b74793c74544baec2c356",
+      "uuid": "cc70e16c-a967-4b6d-aa10-f03fe306cef2",
+      "sprite_frame_uuid": "cc70e16c-a967-4b6d-aa10-f03fe306cef2@f9941",
+      "dimensions": [
+        262,
+        199
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 250,
+        "height": 187,
+        "rawWidth": 262,
+        "rawHeight": 199,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": false,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_005",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_005.png",
+      "sha256": "4b383e5a4f8271f7c217725c3d1c0cd626db3f23b68196c536f4dd0adb16058e",
+      "bytes": 98674,
+      "meta_sha256_utf8_lf": "5cec98a739f0a4b8c6763ee7ca1eb76a5fa3db4eca9fa1207ea167aa0344cb6b",
+      "uuid": "305a5e68-71a5-4e10-9448-64f3bf9636da",
+      "sprite_frame_uuid": "305a5e68-71a5-4e10-9448-64f3bf9636da@f9941",
+      "dimensions": [
+        223,
+        373
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 211,
+        "height": 361,
+        "rawWidth": 223,
+        "rawHeight": 373,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": false,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_006",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_006.png",
+      "sha256": "4a746603a34957e2d9f5311d1cf8f38da431791f3d7a944487680115dc254ec3",
+      "bytes": 61702,
+      "meta_sha256_utf8_lf": "8f25c9e0d2bde641fe5fae3215a0e5c1cfdf49835573a762ca8385d7607e41ef",
+      "uuid": "30f65c63-1419-410e-bc47-36a017dece7d",
+      "sprite_frame_uuid": "30f65c63-1419-410e-bc47-36a017dece7d@f9941",
+      "dimensions": [
+        380,
+        196
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 368,
+        "height": 184,
+        "rawWidth": 380,
+        "rawHeight": 196,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": false,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_007",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_007.png",
+      "sha256": "6cf9863b5b541f17f90d873e94cc4e6b5ee72033f63c14cfc57939f0a3df07f5",
+      "bytes": 110812,
+      "meta_sha256_utf8_lf": "a3eba9a664f2b1d1d35c47ad1ac9d9195e3619f0f97ba5adcf07976943e65668",
+      "uuid": "e3b7cfe5-6ac4-4877-9ce8-9a510761f3b4",
+      "sprite_frame_uuid": "e3b7cfe5-6ac4-4877-9ce8-9a510761f3b4@f9941",
+      "dimensions": [
+        461,
+        324
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 449,
+        "height": 312,
+        "rawWidth": 461,
+        "rawHeight": 324,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": false,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_008",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_008.png",
+      "sha256": "5f7d8d03172b9e0110e5db642b88277dc6a6ef6d71bc09a9a55326895c60ecf9",
+      "bytes": 51942,
+      "meta_sha256_utf8_lf": "844b91abd2e151e68e5804b868700bb074e061c910aac484fd6bec3c0534418a",
+      "uuid": "358ada67-d86e-4582-8a19-f61c6b98ac83",
+      "sprite_frame_uuid": "358ada67-d86e-4582-8a19-f61c6b98ac83@f9941",
+      "dimensions": [
+        167,
+        189
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 155,
+        "height": 177,
+        "rawWidth": 167,
+        "rawHeight": 189,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": false,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_009",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/hazards/mtr_last_logistics_extended_hazards_009.png",
+      "sha256": "48069a30f452df173c8c4cec269933e9ecd00e0e822c7b37fd6ad69d1265a5d1",
+      "bytes": 10089,
+      "meta_sha256_utf8_lf": "3c4867089b8b35e20f86c5d2f4872669b150e3adc2721bcbcb04bd94b09c290e",
+      "uuid": "b137c37a-c06a-41f7-a67c-cbaa03d3b96c",
+      "sprite_frame_uuid": "b137c37a-c06a-41f7-a67c-cbaa03d3b96c@f9941",
+      "dimensions": [
+        43,
+        169
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 31,
+        "height": 157,
+        "rawWidth": 43,
+        "rawHeight": 169,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "hazards",
+      "role": "Obstacle",
+      "critical": false,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_001",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_001.png",
+      "sha256": "42c8ea09d19e0cd624e2456a4637a18d2ce9f71ef608c0865525b0c7b3e97517",
+      "bytes": 103980,
+      "meta_sha256_utf8_lf": "b469b6785533f30c9e5477cb95e30b7abd403eb71297e43910a3f41d84de6a3d",
+      "uuid": "b2a2ae16-6016-41d5-80dc-b61ade2cd7d7",
+      "sprite_frame_uuid": "b2a2ae16-6016-41d5-80dc-b61ade2cd7d7@f9941",
+      "dimensions": [
+        677,
+        109
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 665,
+        "height": 97,
+        "rawWidth": 677,
+        "rawHeight": 109,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformMain",
+      "critical": true,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_002",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_002.png",
+      "sha256": "202a2ee6d13935860a56e7e596295e2b8cea29046580e5ba06b5127822a8c775",
+      "bytes": 240836,
+      "meta_sha256_utf8_lf": "23b950b1a3717704b5ef7421488c614dad08cedc23b763c92b99d720afeb8d0e",
+      "uuid": "5d8622dc-5825-49d0-a970-50a567d4f898",
+      "sprite_frame_uuid": "5d8622dc-5825-49d0-a970-50a567d4f898@f9941",
+      "dimensions": [
+        689,
+        288
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 5,
+        "trimY": 5,
+        "width": 679,
+        "height": 278,
+        "rawWidth": 689,
+        "rawHeight": 288,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformMain",
+      "critical": true,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_003",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_003.png",
+      "sha256": "c83725b310e7c10b78157c97419b6a94c3f23eff602c211ba5f52a1e59460990",
+      "bytes": 184406,
+      "meta_sha256_utf8_lf": "81fdc888ee8dd76c6f25843bd388b7da8cae13142ef28cdef76afe0581ba18ad",
+      "uuid": "99d7e4fb-03ca-4649-aae6-3428e6ec0a12",
+      "sprite_frame_uuid": "99d7e4fb-03ca-4649-aae6-3428e6ec0a12@f9941",
+      "dimensions": [
+        739,
+        198
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 727,
+        "height": 186,
+        "rawWidth": 739,
+        "rawHeight": 198,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformMain",
+      "critical": true,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_004",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_base_platforms_004.png",
+      "sha256": "1f653448bbd63645c32d00a77209ea389c862400e048444e6bd0d5d960c69e47",
+      "bytes": 183612,
+      "meta_sha256_utf8_lf": "c0854f244df8c4e360d4c3d3b81bc6c854985fa761c59948423cf3093ebb6392",
+      "uuid": "e0462ae8-4219-4aff-a757-df88042c1ec0",
+      "sprite_frame_uuid": "e0462ae8-4219-4aff-a757-df88042c1ec0@f9941",
+      "dimensions": [
+        663,
+        247
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 651,
+        "height": 235,
+        "rawWidth": 663,
+        "rawHeight": 247,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformMain",
+      "critical": false,
+      "levels": [
+        4,
+        8,
+        11
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_001",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_001.png",
+      "sha256": "8cd1c6e8c9a710511ed577733ca0a728d51b6da132628c0f6ed81730bfd27a75",
+      "bytes": 84040,
+      "meta_sha256_utf8_lf": "2f4097903161f9a91dcd5c338e109031c00cd21d56ba06f5608afa60a1490567",
+      "uuid": "10af269e-b969-4441-a751-2f8457ee34c8",
+      "sprite_frame_uuid": "10af269e-b969-4441-a751-2f8457ee34c8@f9941",
+      "dimensions": [
+        447,
+        130
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 435,
+        "height": 118,
+        "rawWidth": 447,
+        "rawHeight": 130,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformAlt",
+      "critical": true,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_002",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_002.png",
+      "sha256": "6888532eebd5f2049fabe8ec6372862de43eec6c2ff149fef9259e50e31a5909",
+      "bytes": 86087,
+      "meta_sha256_utf8_lf": "64fc480dbc523110ce9fa07eceb3eca3a42947ed252b48516c049a2a8e145160",
+      "uuid": "d14786e0-51a2-4e73-a603-68fb8d4758f7",
+      "sprite_frame_uuid": "d14786e0-51a2-4e73-a603-68fb8d4758f7@f9941",
+      "dimensions": [
+        392,
+        152
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 380,
+        "height": 140,
+        "rawWidth": 392,
+        "rawHeight": 152,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformAlt",
+      "critical": true,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_003.png",
+      "sha256": "676192f42cc4fea67ca2dec8350d300a6e7e6887eb3b0635ad74dba18563d3a2",
+      "bytes": 130635,
+      "meta_sha256_utf8_lf": "dcd347a46d1603358ab0e8413d5c121cc5f8ad36eac42e1c95a5b3e2e4cd7907",
+      "uuid": "bd3f7950-3e52-4545-93df-a4d0f632d436",
+      "sprite_frame_uuid": "bd3f7950-3e52-4545-93df-a4d0f632d436@f9941",
+      "dimensions": [
+        466,
+        162
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 454,
+        "height": 150,
+        "rawWidth": 466,
+        "rawHeight": 162,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformAlt",
+      "critical": true,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_004",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_004.png",
+      "sha256": "01f8e62340fc9b840e0e09e88150859581faa8dfd18fc7d7fb04b5b1af1d4bad",
+      "bytes": 112468,
+      "meta_sha256_utf8_lf": "a6d3df909bf4be26982ebca53c54f2d82450ded47652f92eea550a5be7b16bf7",
+      "uuid": "bb6d3266-a5c4-4f46-a277-2c5aed4734b9",
+      "sprite_frame_uuid": "bb6d3266-a5c4-4f46-a277-2c5aed4734b9@f9941",
+      "dimensions": [
+        492,
+        174
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 480,
+        "height": 162,
+        "rawWidth": 492,
+        "rawHeight": 174,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformAlt",
+      "critical": false,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_005",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_005.png",
+      "sha256": "5955c891bcec52c393aac9760625fc7a29c851755ee5be02907fb025dc378f3b",
+      "bytes": 116734,
+      "meta_sha256_utf8_lf": "c43a67da519b35cbf27bf0f8cbd64ec6337690b39adb304d8decd224d69188f1",
+      "uuid": "1476338f-313d-439a-8ea0-508c55a0fd9f",
+      "sprite_frame_uuid": "1476338f-313d-439a-8ea0-508c55a0fd9f@f9941",
+      "dimensions": [
+        531,
+        209
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 519,
+        "height": 197,
+        "rawWidth": 531,
+        "rawHeight": 209,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformAlt",
+      "critical": false,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    },
+    {
+      "key": "objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_006",
+      "path": "assets/resources/objectives/themed/last_iteration/logistics/platforms/mtr_last_logistics_extended_platforms_006.png",
+      "sha256": "f69ff2977f2f6565ebece77f238b62392eb75971253ec7872031e0366fb9800a",
+      "bytes": 28588,
+      "meta_sha256_utf8_lf": "f1df84ffa1be849b0fd13cddbad7f91b029e6f0d676fa5aaa0ec72a2584b6c0d",
+      "uuid": "3d58ee88-6d76-41ae-a236-41fb268f1e97",
+      "sprite_frame_uuid": "3d58ee88-6d76-41ae-a236-41fb268f1e97@f9941",
+      "dimensions": [
+        362,
+        94
+      ],
+      "geometry": {
+        "trimType": "auto",
+        "trimX": 6,
+        "trimY": 6,
+        "width": 350,
+        "height": 82,
+        "rawWidth": 362,
+        "rawHeight": 94,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotated": false,
+        "packable": true,
+        "atlasUuid": ""
+      },
+      "category": "platforms",
+      "role": "PlatformAlt",
+      "critical": false,
+      "levels": [
+        4,
+        11,
+        14
+      ]
+    }
+  ]
+}

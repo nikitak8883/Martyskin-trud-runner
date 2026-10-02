@@ -13,6 +13,11 @@ import uuid
 
 PROTOCOL = 'docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT02_PROTOCOL.json'
 ATTEMPT = 'logistics-attempt02-20261001'
+ATTEMPT03 = 'logistics-attempt03-20261002'
+PROTOCOLS = {
+    ATTEMPT: (PROTOCOL, 4),
+    ATTEMPT03: ('docs/global_modernization/v3/M04/M04_C_FAMILY_THEME_LOGISTICS_ATTEMPT03_PROTOCOL.json', 1),
+}
 MAX_SEAL_BYTES = 32 * 1024 * 1024
 MAX_FILES = 100000
 HASH = re.compile(r'[a-f0-9]{64}\Z')
@@ -132,26 +137,33 @@ def bounded_bytes(path: Path) -> bytes:
     return raw
 
 
-def protocol_hash(project: Path, expected: str) -> str:
+def protocol_identity(attempt: str) -> tuple[str, int]:
+    require(type(attempt) is str and attempt in PROTOCOLS, 'ATTEMPT_NOT_REGISTERED')
+    return PROTOCOLS[attempt]
+
+
+def protocol_hash(project: Path, expected: str, *, attempt: str = ATTEMPT) -> str:
+    relative, revision = protocol_identity(attempt)
     require(isinstance(expected, str) and HASH.fullmatch(expected) is not None, 'PROTOCOL_PIN_REQUIRED')
-    path = guarded(project / PROTOCOL)
+    path = guarded(project / relative)
     require(path.stat().st_size <= MAX_SEAL_BYTES, 'PROTOCOL_SIZE_LIMIT')
     raw = bounded_bytes(path)
     digest = hashlib.sha256(raw.replace(b'\r\n', b'\n')).hexdigest()
     require(digest == expected, 'PROTOCOL_CHANGED')
     p = json.loads(raw.decode('utf-8'), object_pairs_hook=no_duplicate_keys)
-    require(p['attempt_id'] == ATTEMPT and type(p['protocol_revision']) is int and p['protocol_revision'] == 4, 'PROTOCOL_IDENTITY')
+    require(p['attempt_id'] == attempt and type(p['protocol_revision']) is int and p['protocol_revision'] == revision, 'PROTOCOL_IDENTITY')
     return digest
 
 
-def make_seal(project: Path, staging: str, expected_protocol: str) -> dict:
-    pin = protocol_hash(project, expected_protocol)
+def make_seal(project: Path, staging: str, expected_protocol: str, *, attempt: str = ATTEMPT) -> dict:
+    _, revision = protocol_identity(attempt)
+    pin = protocol_hash(project, expected_protocol, attempt=attempt)
     root = scoped(project, staging)
     first = inventory(root)
     require(inventory(root) == first, 'STAGING_CHANGED')
-    require(protocol_hash(project, expected_protocol) == pin, 'PROTOCOL_CHANGED')
-    return {'schema': 'mtr.atlas_input_integrity.v1', 'attempt_id': ATTEMPT,
-            'protocol_revision': 4, 'protocol_sha256_utf8_lf': pin,
+    require(protocol_hash(project, expected_protocol, attempt=attempt) == pin, 'PROTOCOL_CHANGED')
+    return {'schema': 'mtr.atlas_input_integrity.v1', 'attempt_id': attempt,
+            'protocol_revision': revision, 'protocol_sha256_utf8_lf': pin,
             'staging_root': staging, 'input_admission': False,
             'experiment_runtime': 'NOT_RUN', 'files': first,
             'file_count': len(first), 'total_bytes': sum(r['bytes'] for r in first)}
@@ -188,7 +200,8 @@ def publish(project: Path, staging: str, output: str, raw: bytes) -> None:
             temporary.unlink()
 
 
-def verify(project: Path, staging: str, seal_path: str, expected_seal: str, expected_protocol: str) -> dict:
+def verify(project: Path, staging: str, seal_path: str, expected_seal: str, expected_protocol: str, *, attempt: str = ATTEMPT) -> dict:
+    protocol_identity(attempt)
     require(isinstance(expected_seal, str) and HASH.fullmatch(expected_seal) is not None, 'SEAL_PIN_REQUIRED')
     path = scoped(project, seal_path)
     regular_info(path)
@@ -198,7 +211,7 @@ def verify(project: Path, staging: str, seal_path: str, expected_seal: str, expe
     seal = json.loads(raw.decode('utf-8'), object_pairs_hook=no_duplicate_keys)
     require(type(seal) is dict and set(seal) == {'schema', 'attempt_id', 'protocol_revision', 'protocol_sha256_utf8_lf', 'staging_root', 'input_admission', 'experiment_runtime', 'files', 'file_count', 'total_bytes'}, 'SEAL_SCHEMA')
     require(seal['schema'] == 'mtr.atlas_input_integrity.v1' and seal['input_admission'] is False and seal['experiment_runtime'] == 'NOT_RUN', 'NOT_ADMISSION')
-    expected = make_seal(project, staging, expected_protocol)
+    expected = make_seal(project, staging, expected_protocol, attempt=attempt)
     # Exact typed canonical representation also rejects bool-as-int, duplicate,
     # omitted/unlisted files, unknown keys, path aliases and unsorted inventories.
     require(encoded(seal) == encoded(expected), 'INVENTORY_CHANGED')
@@ -218,6 +231,7 @@ def main(argv=None) -> int:
     parser.add_argument('--expected-protocol-sha256', required=True)
     parser.add_argument('--seal', required=True)
     parser.add_argument('--expected-seal-sha256')
+    parser.add_argument('--attempt', choices=tuple(PROTOCOLS), default=ATTEMPT)
     keys = [a.split('=', 1)[0] for a in argv if a.startswith('--')]
     if len(keys) != len(set(keys)):
         parser.error('Duplicate options are forbidden.')
@@ -225,14 +239,14 @@ def main(argv=None) -> int:
     try:
         if args.mode == 'seal':
             require(args.expected_seal_sha256 is None, 'SEAL_MODE_PIN_NOT_ALLOWED')
-            raw = encoded(make_seal(args.project_root, args.staging_root, args.expected_protocol_sha256))
+            raw = encoded(make_seal(args.project_root, args.staging_root, args.expected_protocol_sha256, attempt=args.attempt))
             publish(args.project_root, args.staging_root, args.seal, raw)
             result = {'status': 'SEALED', 'seal_sha256': hashlib.sha256(raw).hexdigest(),
                       'acceptance_layer': 'byte_integrity_only', 'input_admission': False,
                       'experiment_runtime': 'NOT_RUN', 'release_accepted': False}
         else:
             result = verify(args.project_root, args.staging_root, args.seal,
-                            args.expected_seal_sha256, args.expected_protocol_sha256)
+                            args.expected_seal_sha256, args.expected_protocol_sha256, attempt=args.attempt)
         print(json.dumps(result))
         return 0
     except (ValueError, OSError, KeyError, TypeError, UnicodeError) as error:
